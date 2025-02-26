@@ -6,6 +6,7 @@ import { Alert, Button, Form } from 'react-bootstrap'
 import { ArrowLeftIcon } from 'lucide-react'
 import * as yup from 'yup'
 
+import { VerifyTimer } from '@/components/features/auth/verify-timer'
 import { messages } from '@/messages'
 
 const validationSchema = yup.object().shape({
@@ -73,12 +74,7 @@ export const VerifyForm = ({ email, status, isLoading, onVerifyOtp, onResendOtp,
             <Form.Group controlId="signUpEmail">
                 <Form.Label className="flex! items-center justify-between">
                     Код
-                    <div
-                        className="flex cursor-pointer items-center justify-center gap-x-1 text-sm text-gray-500"
-                        onClick={onResendOtp}
-                    >
-                        Отправить код повторно
-                    </div>
+                    <VerifyTimer onResendOtp={onResendOtp} />
                 </Form.Label>
                 <Form.Control
                     type="otp"
@@ -98,7 +94,7 @@ export const VerifyForm = ({ email, status, isLoading, onVerifyOtp, onResendOtp,
             </Button>
 
             <div
-                className="flex cursor-pointer items-center justify-center gap-x-1 text-sm text-gray-500"
+                className="flex cursor-pointer items-center justify-center gap-x-1 text-sm text-gray-500 hover:text-gray-600"
                 onClick={onBack}
             >
                 <ArrowLeftIcon size={16} />
