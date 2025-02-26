@@ -10,7 +10,14 @@ import Link from 'next/link'
 import { messages } from '@/messages'
 
 const validationSchema = yup.object().shape({
-    email: yup.string().trim().required('Введите email').email('Введите корректный email'),
+    email: yup
+        .string()
+        .trim()
+        .required('Введите email')
+        .matches(
+            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
+            'Введите корректный email',
+        ),
 })
 
 type SignUpFormProps = {
