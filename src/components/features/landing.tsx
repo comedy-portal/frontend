@@ -1,5 +1,3 @@
-import { Header } from '@/components/ui/header'
-
 export const Landing = () => {
-    return <Header />
+    return <div>Landing</div>
 }
