@@ -9,8 +9,14 @@ type LogoProps = {
 
 export const Logo = ({ className }: LogoProps) => {
     return (
-        <Link href="/" className={classNames('flex items-center gap-x-2 font-bold uppercase no-underline!', className)}>
-            <MicIcon strokeWidth={2.5} />
+        <Link
+            href="/"
+            className={classNames(
+                'flex items-center gap-x-2 font-bold whitespace-nowrap uppercase no-underline!',
+                className,
+            )}
+        >
+            <MicIcon strokeWidth={2.5} className="hidden sm:block" />
             Comedy Portal
         </Link>
     )

@@ -1,5 +1,6 @@
 import { getContentMany } from '@/services/content'
-import { ContentSortBy, Order } from '@/services/content.types'
+import { Order } from '@/types/common'
+import { ContentSortBy } from '@/types/content'
 
 import { LandingContentFeed } from './components/landing-content-feed'
 
