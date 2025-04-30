@@ -1,4 +1,4 @@
-import { LandingContentBlock } from './landing-content-block'
+import { ContentBlock } from '@/components/ui/content-block'
 
 type LandingContentFeedProps = {
     title: string
@@ -16,7 +16,7 @@ export const LandingContentFeed = (props: LandingContentFeedProps) => {
 
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
                 {props.items.map(item => (
-                    <LandingContentBlock key={`content-block-${item.id}`} title={item.name} imgSrc={item.image} />
+                    <ContentBlock key={`content-block-${item.id}`} title={item.name} imgSrc={item.image} />
                 ))}
             </div>
         </section>
