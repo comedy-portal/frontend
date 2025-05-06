@@ -10,7 +10,7 @@ export const Nav = () => {
                 <Link href="/content" className="text-sm text-white no-underline! hover:underline!">
                     Контент
                 </Link>
-                <Link href="/comediants" className="text-sm text-white no-underline! hover:underline!">
+                <Link href="/comedians" className="text-sm text-white no-underline! hover:underline!">
                     Комики
                 </Link>
             </nav>

@@ -3,16 +3,17 @@ import { getContentMany } from '@/services/content'
 import { Order } from '@/types/common'
 import { ContentSortBy, ContentType } from '@/types/content'
 
-type SearchParams = Promise<{ type: ContentType; sort_by: ContentSortBy; order: Order }>
+type SearchParams = Promise<{ page: string; type: ContentType; sort_by: ContentSortBy; order: Order }>
 
 export default async function ContentPage({ searchParams }: { searchParams: SearchParams }) {
-    const { type, sort_by, order } = await searchParams
+    const { page, type, sort_by, order } = await searchParams
 
-    const { items } = await getContentMany({
+    const { total, items } = await getContentMany({
+        ...(page && { cursor: page }),
         ...(type && { type }),
         ...(sort_by && { sort_by }),
         ...(order && { order }),
     })
 
-    return <Content items={items} />
+    return <Content total={total} currentPage={page ? +page : 1} items={items} />
 }

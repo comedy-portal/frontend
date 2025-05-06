@@ -1,4 +1,3 @@
-import { LandingComedian } from './landing-comedian'
 import { LandingHero } from './landing-hero'
 import { LandingNew } from './landing-new'
 import { LandingRecommended } from './landing-recommended'
@@ -9,7 +8,6 @@ export const Landing = () => {
             <LandingHero />
             <LandingNew />
             <LandingRecommended />
-            <LandingComedian />
         </div>
     )
 }

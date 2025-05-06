@@ -6,8 +6,6 @@ export async function getContentMany(getContentManyRequest: GetContentManyReques
     const url = process.env.NEXT_PUBLIC_API_URL + '/content' + '?' + new URLSearchParams(getContentManyRequest)
     const res = await fetch(url)
 
-    console.log(res)
-
     if (!res.ok) {
         if (res.status === 404) {
             notFound()

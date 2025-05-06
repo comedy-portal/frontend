@@ -10,11 +10,5 @@ export const LandingNew = async () => {
         order: Order.DESC,
     })
 
-    const items = content.items.map(item => ({
-        id: item.id,
-        name: item.name,
-        image: item.contentImages[0].url,
-    }))
-
-    return <LandingContentFeed title="Новое" items={items} />
+    return <LandingContentFeed title="Новое" items={content.items} />
 }

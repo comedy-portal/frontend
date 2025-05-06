@@ -13,9 +13,9 @@ export enum ContentType {
     PODCAST = 'PODCAST',
     ROAST_BATTLE = 'ROAST_BATTLE',
     SERIES = 'SERIES',
-    SHORT_SPECIAL = 'SHORT_SPECIAL',
     SKETCH = 'SKETCH',
     SPECIAL = 'SPECIAL',
+    STANDUP = 'STANDUP',
     TALK_SHOW = 'TALK_SHOW',
 }
 
