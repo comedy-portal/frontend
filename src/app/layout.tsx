@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 
 import { Geist, Geist_Mono } from 'next/font/google'
 
+import { ReduxProvider } from '@/redux/provider'
 import { SuperTokensInit } from '@/utils/supertokens/supertokens-init'
 
 import './globals.css'
@@ -29,7 +30,9 @@ export default function RootLayout({
     return (
         <html lang="en" className="h-full">
             <SuperTokensInit>
-                <body className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>{children}</body>
+                <body className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+                    <ReduxProvider>{children}</ReduxProvider>
+                </body>
             </SuperTokensInit>
         </html>
     )

@@ -16,18 +16,16 @@ export const ContentBlock = ({ content }: ContentBlock) => {
                     src={content.contentImages[0]?.url || ''}
                     width={300}
                     height={200}
-                    className="aspect-video rounded-lg align-top"
+                    className="aspect-video h-auto w-auto rounded-lg align-top"
                     alt={content.name}
                 />
             </Link>
-            <figcaption>
-                <div>
-                    <Link href={`/content/${content.id}`} className="text-black no-underline!">
-                        {content.name}
-                    </Link>
-                </div>
-                <div className="text-sm text-gray-500">{content.year}</div>
-            </figcaption>
+
+            <div>
+                <Link href={`/content/${content.id}`} className="text-black no-underline!">
+                    {content.name}
+                </Link>
+            </div>
         </div>
     )
 }

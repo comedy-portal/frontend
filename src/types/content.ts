@@ -2,21 +2,21 @@ import { IComedian } from './comedian'
 import { IMetaInfo } from './meta-info'
 
 export enum ContentSortBy {
-    DATE = 'date',
-    NAME = 'name',
-    RATING = 'rating',
+    DATE_DESC = 'date_desc',
+    DATE_ASC = 'date_asc',
+    RATING_DESC = 'rating_desc',
 }
 
 export enum ContentType {
-    DISCUSSION = 'DISCUSSION',
-    IMPROV_SHOW = 'IMPROV_SHOW',
-    PODCAST = 'PODCAST',
-    ROAST_BATTLE = 'ROAST_BATTLE',
-    SERIES = 'SERIES',
-    SKETCH = 'SKETCH',
-    SPECIAL = 'SPECIAL',
-    STANDUP = 'STANDUP',
-    TALK_SHOW = 'TALK_SHOW',
+    DISCUSSION = 'discussion',
+    IMPROV_SHOW = 'improv_show',
+    PODCAST = 'podcast',
+    ROAST_BATTLE = 'roast_battle',
+    SERIES = 'series',
+    SKETCH = 'sketch',
+    SPECIAL = 'special',
+    STANDUP = 'standup',
+    TALK_SHOW = 'talk_show',
 }
 
 export type IContent = {

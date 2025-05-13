@@ -1,17 +1,14 @@
-import { Paginator } from '@/components/ui/paginator'
-import { IContent } from '@/types/content'
+import { ContentType } from '@/types/content'
 
 import { ContentCategories } from './components/content-categories'
 import { ContentFeed } from './components/content-feed'
 import { ContentSortDropdown } from './components/content-sort-dropdown'
 
 type ContentProps = {
-    total: number
-    currentPage: number
-    items: IContent[]
+    slug: ContentType
 }
 
-export const Content = ({ total, currentPage, items }: ContentProps) => {
+export const Content = ({ slug }: ContentProps) => {
     return (
         <div className="flex flex-col gap-y-12">
             <div>
@@ -20,12 +17,10 @@ export const Content = ({ total, currentPage, items }: ContentProps) => {
                     <ContentSortDropdown />
                 </div>
                 <hr />
-                <ContentCategories />
+                <ContentCategories currentType={slug} />
             </div>
-            <ContentFeed items={items} />
-            <div className="flex justify-center">
-                <Paginator pages={total} currentPage={currentPage} />
-            </div>
+
+            <ContentFeed type={slug} />
         </div>
     )
 }

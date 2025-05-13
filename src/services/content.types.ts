@@ -1,12 +1,10 @@
-import { Order } from '@/types/common'
-import { ContentSortBy, ContentType, IContent } from '@/types/content'
+import { IContent } from '@/types/content'
 
 export type GetContentManyRequest = {
     cursor?: string
-
-    sort_by?: ContentSortBy
-    order?: Order
-    type?: ContentType
+    sort_by?: string
+    order?: string
+    type?: string
 }
 
 export type GetContentManyResponse = {
