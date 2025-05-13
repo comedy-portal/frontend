@@ -2,6 +2,8 @@
 
 import { useMemo } from 'react'
 
+import { PackageOpenIcon } from 'lucide-react'
+
 import { ContentBlock } from '@/components/ui/content-block'
 import { getContentCursor, getContentSortBy } from '@/redux/features/content-slice'
 import { useAppSelector } from '@/redux/hooks'
@@ -49,7 +51,8 @@ export const ContentFeed = ({ type }: ContentFeedProps) => {
 
     if (isSuccess && data.items.length === 0) {
         return (
-            <div className="text-center text-gray-500">
+            <div className="flex flex-col items-center gap-y-4 py-24 text-center text-gray-500">
+                <PackageOpenIcon size={64} className="text-gray-400" />
                 Контент в этой категории пока отсутствует.
                 <br />
                 Попробуйте выбрать другую категорию или зайдите позже.
