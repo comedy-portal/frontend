@@ -31,23 +31,23 @@ const categories: Category[] = [
 ]
 
 type ContentCategoriesProps = {
-    currentType: ContentType
+    slug: ContentType
 }
 
-export const ContentCategories = ({ currentType }: ContentCategoriesProps) => {
+export const ContentCategories = ({ slug }: ContentCategoriesProps) => {
     const dispatch = useAppDispatch()
-    const current = currentType.toLowerCase()
+    const currentType = slug.toLowerCase()
 
     useEffect(() => {
         dispatch(setContentCursor(0))
-    }, [current, dispatch])
+    }, [currentType, dispatch])
 
     return (
         <ScrollContainer>
             <nav>
                 <ul className="flex gap-2 p-0">
                     {categories.map(({ type, label }) => {
-                        const isActive = current === type.toLowerCase()
+                        const isActive = currentType === type.toLowerCase()
 
                         return (
                             <li key={`content-type-${type}`}>
