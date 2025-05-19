@@ -9,8 +9,11 @@ export const contentAPI = api.injectEndpoints({
                 return 'content?' + new URLSearchParams(params).toString()
             },
             serializeQueryArgs: ({ queryArgs }) => {
-                const { cursor, ...rest } = queryArgs
-                return JSON.stringify(rest)
+                return JSON.stringify({
+                    type: queryArgs.type,
+                    order: queryArgs.order,
+                    sort_by: queryArgs.sort_by,
+                })
             },
             merge: (currentCache, newResponse, { arg }) => {
                 const cursor = Number(arg.cursor)

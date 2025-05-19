@@ -1,11 +1,10 @@
 'use client'
 
-import { useEffect } from 'react'
 import ScrollContainer from 'react-indiana-drag-scroll'
 
 import classNames from 'classnames'
 
-import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 import { setContentCursor } from '@/redux/features/content-slice'
 import { useAppDispatch } from '@/redux/hooks'
@@ -19,14 +18,14 @@ type Category = {
 }
 
 const categories: Category[] = [
+    { type: ContentType.SPECIAL, label: 'Спешл' },
+    { type: ContentType.STANDUP, label: 'Стендап' },
     { type: ContentType.DISCUSSION, label: 'Дискуссия' },
     { type: ContentType.IMPROV_SHOW, label: 'Импровизация' },
     { type: ContentType.PODCAST, label: 'Подкаст' },
     { type: ContentType.ROAST_BATTLE, label: 'Прожарка' },
     { type: ContentType.SERIES, label: 'Сериалы' },
     { type: ContentType.SKETCH, label: 'Скетчи' },
-    { type: ContentType.SPECIAL, label: 'Спешиал' },
-    { type: ContentType.STANDUP, label: 'Стендап' },
     { type: ContentType.TALK_SHOW, label: 'Ток-шоу' },
 ]
 
@@ -35,12 +34,14 @@ type ContentCategoriesProps = {
 }
 
 export const ContentCategories = ({ slug }: ContentCategoriesProps) => {
+    const router = useRouter()
     const dispatch = useAppDispatch()
     const currentType = slug.toLowerCase()
 
-    useEffect(() => {
+    const handleClick = (type: ContentType) => {
+        router.push(`/content/${type.toLowerCase()}`)
         dispatch(setContentCursor(0))
-    }, [currentType, dispatch])
+    }
 
     return (
         <ScrollContainer>
@@ -51,17 +52,17 @@ export const ContentCategories = ({ slug }: ContentCategoriesProps) => {
 
                         return (
                             <li key={`content-type-${type}`}>
-                                <Link
-                                    href={`/content/${type.toLowerCase()}`}
+                                <div
                                     className={classNames(
-                                        'block rounded bg-gray-100 px-4 py-2 whitespace-nowrap text-black no-underline! hover:bg-gray-300 hover:text-black',
+                                        'cursor-pointer rounded bg-gray-100 px-4 py-2 whitespace-nowrap text-black hover:bg-gray-300 hover:text-black',
                                         {
                                             'bg-gray-300': isActive,
                                         },
                                     )}
+                                    onClick={() => handleClick(type)}
                                 >
                                     {label}
-                                </Link>
+                                </div>
                             </li>
                         )
                     })}

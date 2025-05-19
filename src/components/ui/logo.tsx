@@ -16,7 +16,7 @@ export const Logo = ({ className }: LogoProps) => {
                 className,
             )}
         >
-            <MicIcon strokeWidth={2.5} className="hidden sm:block" />
+            <MicIcon strokeWidth={2.5} />
             Comedy Portal
         </Link>
     )

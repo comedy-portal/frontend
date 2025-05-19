@@ -2,8 +2,8 @@ import { ReactNode } from 'react'
 
 import type { Metadata } from 'next/types'
 
+import { Header } from '@/components/features/layout/header/header'
 import { Footer } from '@/components/ui/footer'
-import { Header } from '@/components/ui/header'
 
 export const metadata: Metadata = {
     robots: 'noindex, nofollow',

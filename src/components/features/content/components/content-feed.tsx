@@ -18,8 +18,8 @@ type ContentFeedProps = {
 }
 
 export const ContentFeed = ({ type }: ContentFeedProps) => {
-    const contentCursor = useAppSelector(getContentCursor)
     const contentSortBy = useAppSelector(getContentSortBy)
+    const contentCursor = useAppSelector(getContentCursor)
 
     const { sortBy, order } = useMemo(() => {
         switch (contentSortBy) {
@@ -36,7 +36,7 @@ export const ContentFeed = ({ type }: ContentFeedProps) => {
 
     const { data, isFetching, isSuccess, isError } = contentAPI.useGetContentManyQuery({
         type: type.toUpperCase(),
-        cursor: contentCursor?.toString() ?? '0',
+        cursor: contentCursor.toString(),
         sort_by: sortBy,
         order,
     })

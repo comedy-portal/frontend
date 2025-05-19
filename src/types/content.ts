@@ -29,12 +29,10 @@ export type IContent = {
     createdAt: string
     updatedAt: string
     comedians: IComedian[]
-    group: IGroup | null
+    group: null
     rating: IRating
     contentImages: IContentImage[]
 }
-
-export type IGroup = any
 
 export type IRating = {
     avgRating: number

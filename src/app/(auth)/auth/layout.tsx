@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 export default function AuthLayout({ children }: { children: ReactNode }) {
     return (
         <div className="relative size-full">
-            <Logo className="absolute top-6 left-6 text-black" />
+            <Logo className="absolute top-4 left-3 text-black" />
             <Link href="/">
-                <CloseButton className="fixed top-6 right-6" aria-label="Hide" />
+                <CloseButton className="fixed top-4 right-4" aria-label="Hide" />
             </Link>
             <div className="flex size-full items-center justify-center">
                 <div className="mx-auto w-full max-w-[400px] p-6">{children}</div>

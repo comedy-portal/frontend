@@ -21,8 +21,8 @@ export const ProfileLogout = () => {
     }
 
     return (
-        <div className="flex items-center gap-x-2 text-sm text-white" onClick={signOut}>
-            <LogOutIcon size={16} />
+        <div className="flex cursor-pointer items-center gap-x-2 text-white sm:text-sm" onClick={signOut}>
+            <LogOutIcon size={16} className="hidden sm:block" />
             Выйти
         </div>
     )

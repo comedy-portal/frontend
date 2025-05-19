@@ -3,7 +3,7 @@ import { ProfileLogout } from '@/components/ui/profile-logout'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 
-export default async function ProfileEntryPoint() {
+export async function ProfileEntryPoint() {
     const { accessTokenPayload, hasToken } = await getSSRSessionHelper()
 
     if (accessTokenPayload === undefined) {
