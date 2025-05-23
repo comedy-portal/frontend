@@ -10,16 +10,18 @@ type ContentFeedItemType = {
 
 export const ContentFeedItem = ({ id, name, imageUrl }: ContentFeedItemType) => {
     return (
-        <div className="flex gap-x-4 border-b border-gray-200 py-4 first:border-t">
-            <ImageWithFallback
-                src={imageUrl || ''}
-                width={300}
-                height={200}
-                className="aspect-video w-32 rounded align-top"
-                alt={name}
-            />
+        <div className="m-0 flex flex-col gap-y-2">
+            <Link href={`/content/${id}`}>
+                <ImageWithFallback
+                    src={imageUrl || ''}
+                    width={300}
+                    height={200}
+                    className="aspect-video h-auto w-auto rounded-lg align-top"
+                    alt={name}
+                />
+            </Link>
 
-            <div className="text-center font-bold uppercase">
+            <div>
                 <Link href={`/content/${id}`} className="text-black no-underline!">
                     {name}
                 </Link>

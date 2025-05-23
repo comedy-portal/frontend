@@ -67,7 +67,7 @@ export const ContentFeed = ({ type }: ContentFeedProps) => {
 
     return (
         <div className="flex flex-col gap-y-12">
-            <div className="flex flex-col">
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
                 {data.items.map(item => (
                     <ContentFeedItem
                         key={`content-feed-item-${item.id}`}
