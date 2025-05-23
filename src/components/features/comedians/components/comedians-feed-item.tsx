@@ -9,7 +9,7 @@ type ComediansFeedItemType = {
 
 export const ComediansFeedItem = ({ slug, name, surname, imageUrl }: ComediansFeedItemType) => {
     return (
-        <div className="flex gap-x-4 border-b border-gray-200 py-4 first:border-t">
+        <div className="flex gap-x-4 border-b border-gray-200 py-4">
             <div
                 className="aspect-square w-32 rounded bg-gray-500 bg-cover bg-center bg-no-repeat align-top"
                 style={{ backgroundImage: `url(${imageUrl})` }}

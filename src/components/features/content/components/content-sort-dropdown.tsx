@@ -1,34 +1,36 @@
 'use client'
 
+import { useRouter, useSearchParams } from 'next/navigation'
+
 import { CustomDropdown, CustomDropdownItem } from '@/components/ui/dropdown'
-import { getContentSortBy, setContentSortBy } from '@/redux/features/content-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { ContentSortBy } from '@/utils/enums/common'
+import { ContentUrlSortBy } from '@/utils/enums/common'
 
 export const ContentSortDropdown = () => {
-    const dispatch = useAppDispatch()
-    const contentSortBy = useAppSelector(getContentSortBy)
+    const router = useRouter()
+    const searchParams = useSearchParams()
 
     const contentSortOptions: CustomDropdownItem[] = [
         {
             label: 'Сначала новые',
-            value: ContentSortBy.DATE_DESC,
+            value: ContentUrlSortBy.DATE_DESC,
         },
         {
             label: 'Сначала старые',
-            value: ContentSortBy.DATE_ASC,
+            value: ContentUrlSortBy.DATE_ASC,
         },
         {
             label: 'По популярности',
-            value: ContentSortBy.RATING_DESC,
+            value: ContentUrlSortBy.RATING_DESC,
         },
     ]
 
     return (
         <CustomDropdown
             items={contentSortOptions}
-            selectedValue={contentSortBy}
-            onSelect={item => dispatch(setContentSortBy(item.value))}
+            selectedValue={searchParams.get('sort') || ContentUrlSortBy.DATE_DESC}
+            onSelect={item => {
+                router.push(`?sort=${item.value}`)
+            }}
         />
     )
 }

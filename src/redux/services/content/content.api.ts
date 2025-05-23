@@ -6,7 +6,13 @@ export const contentAPI = api.injectEndpoints({
     endpoints: build => ({
         getContentMany: build.query<GetContentManyResponse, GetContentManyParams>({
             query: params => {
-                return 'content?' + new URLSearchParams(params).toString()
+                const filteredParams = Object.fromEntries(
+                    // Filter out undefined values from params
+                    // and convert all values to strings
+                    Object.entries(params).flatMap(([k, v]) => (v !== undefined ? [[k, String(v)]] : [])),
+                )
+
+                return 'content?' + new URLSearchParams(filteredParams).toString()
             },
             serializeQueryArgs: ({ queryArgs }) => {
                 return JSON.stringify({
@@ -16,16 +22,18 @@ export const contentAPI = api.injectEndpoints({
                 })
             },
             merge: (currentCache, newResponse, { arg }) => {
-                const cursor = Number(arg.cursor)
-
-                if (!cursor || !currentCache) {
+                if (arg.cursor === undefined) {
                     return newResponse
                 }
 
-                return {
-                    ...newResponse,
-                    items: [...currentCache.items, ...newResponse.items],
+                if (currentCache) {
+                    return {
+                        ...newResponse,
+                        items: [...currentCache.items, ...newResponse.items],
+                    }
                 }
+
+                return newResponse
             },
             forceRefetch({ currentArg, previousArg }) {
                 return JSON.stringify(currentArg) !== JSON.stringify(previousArg)

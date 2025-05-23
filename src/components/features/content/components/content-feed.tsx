@@ -1,14 +1,14 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 
 import { PackageOpenIcon } from 'lucide-react'
 
+import { useSearchParams } from 'next/navigation'
+
 import { LoadMore } from '@/components/ui/load-more'
-import { getContentCursor, getContentSortBy, setContentCursor } from '@/redux/features/content-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { contentAPI } from '@/redux/services/content/content.api'
-import { ContentSortBy, ContentType } from '@/utils/enums/common'
+import { ContentSortBy, ContentType, ContentUrlSortBy, Order } from '@/utils/enums/common'
 
 import { ContentFeedItem } from './content-feed-item'
 import { ContentFeedSkeleton } from './content-feed-skeleton'
@@ -18,28 +18,28 @@ type ContentFeedProps = {
 }
 
 export const ContentFeed = ({ type }: ContentFeedProps) => {
-    const dispatch = useAppDispatch()
-    const contentSortBy = useAppSelector(getContentSortBy)
-    const contentCursor = useAppSelector(getContentCursor)
+    const searchParams = useSearchParams()
+    const [cursor, setCursor] = useState<number>()
 
     const { sortBy, order } = useMemo(() => {
-        switch (contentSortBy) {
-            case ContentSortBy.DATE_DESC:
-                return { sortBy: 'date', order: 'desc' }
-            case ContentSortBy.DATE_ASC:
-                return { sortBy: 'date', order: 'asc' }
-            case ContentSortBy.RATING_DESC:
-                return { sortBy: 'rating', order: 'desc' }
+        setCursor(undefined)
+        switch (searchParams.get('sort')) {
+            case ContentUrlSortBy.DATE_DESC:
+                return { sortBy: ContentSortBy.DATE, order: Order.DESC }
+            case ContentUrlSortBy.DATE_ASC:
+                return { sortBy: ContentSortBy.DATE, order: Order.ASC }
+            case ContentUrlSortBy.RATING_DESC:
+                return { sortBy: ContentSortBy.RATING, order: Order.DESC }
             default:
-                return { sortBy: 'date', order: 'desc' } // fallback
+                return { sortBy: ContentSortBy.DATE, order: Order.DESC } // fallback
         }
-    }, [contentSortBy])
+    }, [searchParams])
 
     const { data, isFetching, isSuccess, isError } = contentAPI.useGetContentManyQuery({
-        type: type.toUpperCase(),
-        cursor: contentCursor.toString(),
-        sort_by: sortBy,
+        type,
         order,
+        sort_by: sortBy,
+        cursor,
     })
 
     if (isError) {
@@ -81,7 +81,9 @@ export const ContentFeed = ({ type }: ContentFeedProps) => {
             {data.items.length < data.total && (
                 <LoadMore
                     isLoading={isFetching}
-                    onClick={() => dispatch(setContentCursor(data.items[data.items.length - 1]?.id))}
+                    onClick={() => {
+                        setCursor(data.items[data.items.length - 1]?.id)
+                    }}
                 />
             )}
         </div>

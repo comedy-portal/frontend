@@ -6,8 +6,6 @@ import classNames from 'classnames'
 
 import { useRouter } from 'next/navigation'
 
-import { setContentCursor } from '@/redux/features/content-slice'
-import { useAppDispatch } from '@/redux/hooks'
 import { ContentType } from '@/utils/enums/common'
 
 import 'react-indiana-drag-scroll/dist/style.css'
@@ -35,12 +33,10 @@ type ContentCategoriesProps = {
 
 export const ContentCategories = ({ slug }: ContentCategoriesProps) => {
     const router = useRouter()
-    const dispatch = useAppDispatch()
     const currentType = slug.toLowerCase()
 
     const handleClick = (type: ContentType) => {
         router.push(`/content/${type.toLowerCase()}`)
-        dispatch(setContentCursor(0))
     }
 
     return (

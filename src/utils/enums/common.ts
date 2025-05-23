@@ -1,8 +1,3 @@
-export enum Order {
-    ASC = 'asc',
-    DESC = 'desc',
-}
-
 export enum Platform {
     BOOSTY = 'BOOSTY',
     INSTAGRAM = 'INSTAGRAM',
@@ -27,7 +22,18 @@ export enum ContentType {
     TALK_SHOW = 'talk_show',
 }
 
+export enum Order {
+    ASC = 'asc',
+    DESC = 'desc',
+}
+
 export enum ContentSortBy {
+    DATE = 'date',
+    NAME = 'name',
+    RATING = 'rating',
+}
+
+export enum ContentUrlSortBy {
     DATE_DESC = 'date_desc',
     DATE_ASC = 'date_asc',
     RATING_DESC = 'rating_desc',
