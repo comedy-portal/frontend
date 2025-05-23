@@ -10,10 +10,10 @@ import { comediansAPI } from '@/redux/services/comedians/comedians.api'
 import { ComediansFeedItem } from './comedians-feed-item'
 
 export const ComediansFeed = () => {
-    const [cursor, setCursor] = useState(0)
+    const [cursor, setCursor] = useState<number>()
 
     const { data, isFetching, isSuccess, isError } = comediansAPI.useGetComediansQuery({
-        cursor: cursor.toString(),
+        cursor,
     })
 
     if (isError) {

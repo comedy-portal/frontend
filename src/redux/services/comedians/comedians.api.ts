@@ -6,13 +6,17 @@ export const comediansAPI = api.injectEndpoints({
     endpoints: build => ({
         getComedians: build.query<GetComediansResponse, GetComediansParams>({
             query: params => {
-                return 'comedians?' + new URLSearchParams(params).toString()
+                const filteredParams = Object.fromEntries(
+                    Object.entries(params)
+                        .filter(([_, value]) => value !== undefined)
+                        .map(([key, value]) => [key, String(value)]),
+                )
+
+                return 'comedians?' + new URLSearchParams(filteredParams).toString()
             },
-            serializeQueryArgs: ({ endpointName }) => {
-                return endpointName
-            },
+            serializeQueryArgs: ({ endpointName }) => endpointName,
             merge: (currentCache, newResponse, otherArgs) => {
-                if (otherArgs.arg.cursor === '0') {
+                if (otherArgs.arg.cursor === undefined) {
                     return newResponse
                 }
 
