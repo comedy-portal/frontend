@@ -3,7 +3,7 @@
 import { CustomDropdown, CustomDropdownItem } from '@/components/ui/dropdown'
 import { getContentSortBy, setContentSortBy } from '@/redux/features/content-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { ContentSortBy } from '@/types/content'
+import { ContentSortBy } from '@/utils/enums/common'
 
 export const ContentSortDropdown = () => {
     const dispatch = useAppDispatch()

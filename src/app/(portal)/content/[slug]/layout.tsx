@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 import { ContentCategories } from '@/components/features/content/components/content-categories'
 import { ContentSortDropdown } from '@/components/features/content/components/content-sort-dropdown'
-import { ContentType } from '@/types/content'
+import { ContentType } from '@/utils/enums/common'
 
 type Params = Promise<{ slug: ContentType }>
 

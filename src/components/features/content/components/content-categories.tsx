@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 
 import { setContentCursor } from '@/redux/features/content-slice'
 import { useAppDispatch } from '@/redux/hooks'
-import { ContentType } from '@/types/content'
+import { ContentType } from '@/utils/enums/common'
 
 import 'react-indiana-drag-scroll/dist/style.css'
 

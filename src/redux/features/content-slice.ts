@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import { RootState } from '@/redux/store'
-import { ContentSortBy } from '@/types/content'
+import { ContentSortBy } from '@/utils/enums/common'
 
 interface ContentState {
     cursor: number

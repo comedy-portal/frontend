@@ -1,4 +1,4 @@
-import { IContent } from '@/types/content'
+import { IContent } from '@/utils/types/content'
 
 export type GetContentManyRequest = {
     cursor?: string

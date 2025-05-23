@@ -1,5 +1,5 @@
-import { PaginatedResponse } from '@/types/common'
-import { IContent } from '@/types/content'
+import { PaginatedResponse } from '@/utils/types/common'
+import { IContent } from '@/utils/types/content'
 
 export type GetContentManyParams = {
     type: string

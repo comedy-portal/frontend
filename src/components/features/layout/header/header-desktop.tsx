@@ -1,7 +1,8 @@
 import Link from 'next/link'
 
-import { ProfileEntryPoint } from '@/components/features/common/profile-entry-point'
 import { Logo } from '@/components/ui/logo'
+
+import { HeaderProfileEntryPoint } from './header-profile-entry-point'
 
 export const HeaderDesktop = () => {
     return (
@@ -19,7 +20,7 @@ export const HeaderDesktop = () => {
                 </nav>
             </div>
 
-            <ProfileEntryPoint />
+            <HeaderProfileEntryPoint />
         </div>
     )
 }

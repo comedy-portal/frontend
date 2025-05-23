@@ -30,7 +30,7 @@ export const contentAPI = api.injectEndpoints({
             forceRefetch({ currentArg, previousArg }) {
                 return JSON.stringify(currentArg) !== JSON.stringify(previousArg)
             },
-            providesTags: ['Content'],
+            providesTags: ['ContentMany'],
         }),
     }),
     overrideExisting: false,

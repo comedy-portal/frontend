@@ -7,10 +7,13 @@ import { PackageOpenIcon } from 'lucide-react'
 import { ContentBlock } from '@/components/ui/content-block'
 import { getContentCursor, getContentSortBy } from '@/redux/features/content-slice'
 import { useAppSelector } from '@/redux/hooks'
-import { contentAPI } from '@/redux/services/content.api'
-import { ContentSortBy, ContentType, IContent } from '@/types/content'
+import { contentAPI } from '@/redux/services/content/content.api'
+import { ContentSortBy, ContentType } from '@/utils/enums/common'
+import { IContent } from '@/utils/types/content'
 
-import { ContentFeedLoadMore } from './content-feed-load-more'
+// import { contentAPI } from '@/redux/services/content.api'
+// import { ContentSortBy, ContentType, IContent } from '@/types/content'
+
 import { ContentFeedSkeleton } from './content-feed-skeleton'
 
 type ContentFeedProps = {
@@ -34,7 +37,7 @@ export const ContentFeed = ({ type }: ContentFeedProps) => {
         }
     }, [contentSortBy])
 
-    const { data, isFetching, isSuccess, isError } = contentAPI.useGetContentManyQuery({
+    const { data, isSuccess, isError } = contentAPI.useGetContentManyQuery({
         type: type.toUpperCase(),
         cursor: contentCursor.toString(),
         sort_by: sortBy,
@@ -68,13 +71,18 @@ export const ContentFeed = ({ type }: ContentFeedProps) => {
         <div className="flex flex-col gap-y-12">
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
                 {data.items.map((item: IContent) => (
-                    <ContentBlock key={`content-block-${item.id}`} content={item} />
+                    <ContentBlock
+                        key={`content-block-${item.id}`}
+                        id={item.id}
+                        name={item.name}
+                        imageUrl={item.contentImages[0]?.url}
+                    />
                 ))}
             </div>
 
-            {data.items.length < data.total && (
+            {/* {data.items.length < data.total && (
                 <ContentFeedLoadMore cursor={data.items[data.items.length - 1]?.id} isFetching={isFetching} />
-            )}
+            )} */}
         </div>
     )
 }
