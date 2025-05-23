@@ -1,14 +1,14 @@
 import Link from 'next/link'
 
-import { ImageWithFallback } from './image-with-fallback'
+import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 
-type ContentBlockType = {
+type ContentFeedItemType = {
     id: number
     name: string
     imageUrl: string | null
 }
 
-export const ContentBlock = ({ id, name, imageUrl }: ContentBlockType) => {
+export const ContentFeedItem = ({ id, name, imageUrl }: ContentFeedItemType) => {
     return (
         <div className="flex gap-x-4 border-b border-gray-200 py-4 first:border-t">
             <ImageWithFallback

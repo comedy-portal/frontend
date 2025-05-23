@@ -1,7 +1,8 @@
-import { ProfileLogin } from '@/components/ui/profile-login'
-import { ProfileLogout } from '@/components/ui/profile-logout'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
+
+import { HeaderLogin } from './header-login'
+import { HeaderLogout } from './header-logout'
 
 export async function HeaderProfileEntryPoint() {
     const { accessTokenPayload, hasToken } = await getSSRSessionHelper()
@@ -12,7 +13,7 @@ export async function HeaderProfileEntryPoint() {
              * This means that the user is not logged in. If you want to display some other UI in this
              * case, you can do so here.
              */
-            return <ProfileLogin />
+            return <HeaderLogin />
         }
 
         /**
@@ -24,5 +25,5 @@ export async function HeaderProfileEntryPoint() {
         return <TryRefreshComponent key={Date.now()} />
     }
 
-    return <ProfileLogout />
+    return <HeaderLogout />
 }

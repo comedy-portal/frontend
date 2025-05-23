@@ -21,3 +21,10 @@ export type Rating = {
     avgRating: number
     reviewsCount: number
 }
+
+export type Group = {
+    id: number
+    name: string
+    slug: string
+    groupImages: Image[]
+}

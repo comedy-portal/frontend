@@ -10,7 +10,7 @@ export const Header = () => {
                     <HeaderMobile profileEntryPointComponent={<HeaderProfileEntryPoint />} />
                 </div>
 
-                <div className="hidden sm:block">
+                <div className="hidden h-full sm:block">
                     <HeaderDesktop />
                 </div>
             </div>

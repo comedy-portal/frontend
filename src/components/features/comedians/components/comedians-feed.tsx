@@ -4,9 +4,10 @@ import { useState } from 'react'
 
 import { PackageOpenIcon } from 'lucide-react'
 
-import { ComedianBlock } from '@/components/ui/comedian-block'
 import { LoadMore } from '@/components/ui/load-more'
 import { comediansAPI } from '@/redux/services/comedians/comedians.api'
+
+import { ComediansFeedItem } from './comedians-feed-item'
 
 export const ComediansFeed = () => {
     const [cursor, setCursor] = useState(0)
@@ -42,8 +43,8 @@ export const ComediansFeed = () => {
         <div className="flex flex-col gap-y-12">
             <div className="flex flex-col">
                 {data.items.map(item => (
-                    <ComedianBlock
-                        key={`comedian-block-${item.id}`}
+                    <ComediansFeedItem
+                        key={`comedians-feed-item-${item.id}`}
                         slug={item.slug}
                         name={item.name}
                         surname={item.surname}
