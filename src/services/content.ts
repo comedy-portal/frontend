@@ -1,9 +1,15 @@
 import { notFound } from 'next/navigation'
 
-import { GetContentManyRequest, GetContentManyResponse } from './content.types'
+import { GetContentManyParams, GetContentManyResponse } from './content.types'
 
-export async function getContentMany(getContentManyRequest: GetContentManyRequest): Promise<GetContentManyResponse> {
-    const url = process.env.NEXT_PUBLIC_API_URL + '/content' + '?' + new URLSearchParams(getContentManyRequest)
+export async function getContentMany(getContentManyParams: GetContentManyParams): Promise<GetContentManyResponse> {
+    const filteredParams = Object.fromEntries(
+        // Filter out undefined values from params
+        // and convert all values to strings
+        Object.entries(getContentManyParams).flatMap(([k, v]) => (v !== undefined ? [[k, String(v)]] : [])),
+    )
+
+    const url = process.env.NEXT_PUBLIC_API_URL + '/content' + '?' + new URLSearchParams(filteredParams).toString()
     const res = await fetch(url)
 
     if (!res.ok) {

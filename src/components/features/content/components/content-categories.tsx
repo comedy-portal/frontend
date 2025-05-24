@@ -6,7 +6,7 @@ import classNames from 'classnames'
 
 import { useRouter, useSearchParams } from 'next/navigation'
 
-import { ContentSortBy, ContentType, ContentUrlSortBy } from '@/utils/enums/common'
+import { ContentType, ContentUrlSortBy } from '@/utils/enums/common'
 
 import 'react-indiana-drag-scroll/dist/style.css'
 
