@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 
 import { messages } from '@/messages'
 
-export const ProfileLogout = () => {
+export const HeaderLogout = () => {
     const router = useRouter()
 
     const signOut = async () => {

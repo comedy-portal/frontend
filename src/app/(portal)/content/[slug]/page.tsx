@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 
 import { Content } from '@/components/features/content/content'
-import { ContentType } from '@/types/content'
+import { ContentType } from '@/utils/enums/common'
 
 type Params = Promise<{ slug: ContentType }>
 

@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 
-import { ContentType } from '@/types/content'
+import { ContentType } from '@/utils/enums/common'
 
-export default async function ContentPage() {
+export default function ContentPage() {
     redirect('/content/' + ContentType.SPECIAL)
 }

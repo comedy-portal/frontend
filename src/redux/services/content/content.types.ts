@@ -8,4 +8,5 @@ export type GetContentManyParams = {
     sort_by?: ContentSortBy
     cursor?: number
 }
+
 export type GetContentManyResponse = PaginatedResponse<IContent>

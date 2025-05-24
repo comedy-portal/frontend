@@ -1,4 +1,4 @@
-import { ContentType } from '@/types/content'
+import { ContentType } from '@/utils/enums/common'
 
 import { ContentFeed } from './components/content-feed'
 

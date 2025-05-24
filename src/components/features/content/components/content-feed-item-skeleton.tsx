@@ -1,4 +1,4 @@
-export const ContentBlockSkeleton = () => {
+export const ContentFeedItemSkeleton = () => {
     return (
         <div className="flex flex-col gap-y-2">
             <div className="flex aspect-video items-center justify-center rounded-lg bg-gray-100">

@@ -4,11 +4,9 @@ import ScrollContainer from 'react-indiana-drag-scroll'
 
 import classNames from 'classnames'
 
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
-import { setContentCursor } from '@/redux/features/content-slice'
-import { useAppDispatch } from '@/redux/hooks'
-import { ContentType } from '@/types/content'
+import { ContentType, ContentUrlSortBy } from '@/utils/enums/common'
 
 import 'react-indiana-drag-scroll/dist/style.css'
 
@@ -35,12 +33,11 @@ type ContentCategoriesProps = {
 
 export const ContentCategories = ({ slug }: ContentCategoriesProps) => {
     const router = useRouter()
-    const dispatch = useAppDispatch()
+    const searchParams = useSearchParams()
     const currentType = slug.toLowerCase()
 
     const handleClick = (type: ContentType) => {
-        router.push(`/content/${type.toLowerCase()}`)
-        dispatch(setContentCursor(0))
+        router.push(`/content/${type.toLowerCase()}?sort=${searchParams.get('sort') || ContentUrlSortBy.DATE_DESC}`)
     }
 
     return (
