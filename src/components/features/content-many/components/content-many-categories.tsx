@@ -32,7 +32,7 @@ export const ContentManyCategories = ({ slug }: ContentManyCategoriesProps) => {
                         const isActive = currentType === type.toLowerCase()
 
                         return (
-                            <li key={`content-type-${type}`}>
+                            <li key={`content-many-categories-${type}`}>
                                 <div
                                     className={classNames(
                                         'cursor-pointer rounded bg-gray-100 px-4 py-2 whitespace-nowrap text-black hover:bg-gray-300 hover:text-black',

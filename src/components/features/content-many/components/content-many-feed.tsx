@@ -70,7 +70,7 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
                 {data.items.map(item => (
                     <ContentManyFeedItem
-                        key={`content-feed-item-${item.id}`}
+                        key={`content-many-feed-item-${item.id}`}
                         id={item.id}
                         type={item.type}
                         name={item.name}
