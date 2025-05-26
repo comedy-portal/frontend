@@ -1,11 +1,13 @@
 import { notFound } from 'next/navigation'
 
-import { Content } from '@/components/features/content/content'
+import { ContentManyCategories } from '@/components/features/content-many/components/content-many-categories'
+import { ContentManySortDropdown } from '@/components/features/content-many/components/content-many-sort-dropdown'
+import { ContentMany } from '@/components/features/content-many/content-many'
 import { ContentType } from '@/utils/enums/common'
 
 type Params = Promise<{ slug: ContentType }>
 
-export default async function ContentPage(props: { params: Params }) {
+export default async function ContentManyPage(props: { params: Params }) {
     const params = await props.params
 
     // Check if the slug is included in the ContentType enum
@@ -13,5 +15,18 @@ export default async function ContentPage(props: { params: Params }) {
         notFound()
     }
 
-    return <Content slug={params.slug} />
+    return (
+        <div className="flex flex-col gap-y-12">
+            <div>
+                <div className="flex items-end justify-between">
+                    <h1 className="mb-0 text-2xl font-bold">Контент</h1>
+                    <ContentManySortDropdown />
+                </div>
+                <hr />
+                <ContentManyCategories slug={params.slug} />
+            </div>
+
+            <ContentMany slug={params.slug} />
+        </div>
+    )
 }

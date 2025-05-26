@@ -10,14 +10,14 @@ import { LoadMore } from '@/components/ui/load-more'
 import { contentAPI } from '@/redux/services/content/content.api'
 import { ContentSortBy, ContentType, ContentUrlSortBy, Order } from '@/utils/enums/common'
 
-import { ContentFeedItem } from './content-feed-item'
-import { ContentFeedSkeleton } from './content-feed-skeleton'
+import { ContentManyFeedItem } from './content-many-feed-item'
+import { ContentManyFeedSkeleton } from './content-many-feed-skeleton'
 
-type ContentFeedProps = {
+type ContentManyFeedProps = {
     type: ContentType
 }
 
-export const ContentFeed = ({ type }: ContentFeedProps) => {
+export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
     const searchParams = useSearchParams()
     const [cursor, setCursor] = useState<number>()
 
@@ -62,16 +62,17 @@ export const ContentFeed = ({ type }: ContentFeedProps) => {
     }
 
     if (!isSuccess) {
-        return <ContentFeedSkeleton />
+        return <ContentManyFeedSkeleton />
     }
 
     return (
         <div className="flex flex-col gap-y-12">
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
                 {data.items.map(item => (
-                    <ContentFeedItem
+                    <ContentManyFeedItem
                         key={`content-feed-item-${item.id}`}
                         id={item.id}
+                        type={item.type}
                         name={item.name}
                         imageUrl={item.contentImages[0]?.url}
                     />

@@ -27,11 +27,11 @@ const categories: Category[] = [
     { type: ContentType.TALK_SHOW, label: 'Ток-шоу' },
 ]
 
-type ContentCategoriesProps = {
+type ContentManyCategoriesProps = {
     slug: ContentType
 }
 
-export const ContentCategories = ({ slug }: ContentCategoriesProps) => {
+export const ContentManyCategories = ({ slug }: ContentManyCategoriesProps) => {
     const router = useRouter()
     const searchParams = useSearchParams()
     const currentType = slug.toLowerCase()
