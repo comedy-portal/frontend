@@ -12,4 +12,6 @@ export type GetContentManyParams = {
     cursor?: number
     take?: number
 }
+
 export type GetContentManyResponse = PaginatedResponse<IContent>
+export type GetContentResponse = IContent

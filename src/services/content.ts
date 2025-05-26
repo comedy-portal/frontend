@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { GetContentManyParams, GetContentManyResponse } from './content.types'
+import { GetContentManyParams, GetContentManyResponse, GetContentResponse } from './content.types'
 
 export async function getContentMany(getContentManyParams: GetContentManyParams): Promise<GetContentManyResponse> {
     const filteredParams = Object.fromEntries(
@@ -10,6 +10,21 @@ export async function getContentMany(getContentManyParams: GetContentManyParams)
     )
 
     const url = process.env.NEXT_PUBLIC_API_URL + '/content' + '?' + new URLSearchParams(filteredParams).toString()
+    const res = await fetch(url)
+
+    if (!res.ok) {
+        if (res.status === 404) {
+            notFound()
+        }
+
+        throw new Error(res.statusText)
+    }
+
+    return res.json()
+}
+
+export async function getContentById(id: number): Promise<GetContentResponse> {
+    const url = process.env.NEXT_PUBLIC_API_URL + '/content/' + id
     const res = await fetch(url)
 
     if (!res.ok) {

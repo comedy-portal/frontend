@@ -1,14 +1,17 @@
-// import { notFound } from 'next/navigation'
+import { notFound } from 'next/navigation'
+
+import { Content } from '@/components/features/content/content'
+import { getContentById } from '@/services/content'
 
 type Params = Promise<{ id: number }>
 
 export default async function ContentPage(props: { params: Params }) {
     const params = await props.params
+    const content = await getContentById(params.id)
 
-    // // Check if the slug is included in the ContentType enum
-    // if (!Object.values(ContentType).includes(params.slug.toLocaleLowerCase() as ContentType)) {
-    //     notFound()
-    // }
+    if (!content) {
+        notFound()
+    }
 
-    return <div>Content page {params.id}</div>
+    return <Content name={content.name} imageUrl={content.contentImages[0].url} type={content.type} />
 }
