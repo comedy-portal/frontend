@@ -7,6 +7,7 @@ export const LandingNew = async () => {
     const content = await getContentMany({
         sort_by: ContentSortBy.DATE,
         order: Order.DESC,
+        take: 8,
     })
 
     return <LandingContentFeed title="Новое" items={content.items} />
