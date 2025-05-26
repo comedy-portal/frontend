@@ -13,7 +13,7 @@ type ContentManyFeedItemType = {
 export const ContentManyFeedItem = ({ id, type, name, imageUrl }: ContentManyFeedItemType) => {
     return (
         <div className="m-0 flex flex-col gap-y-2">
-            <Link href={`/content/${type.toLocaleLowerCase()}/${id}`}>
+            <Link href={`/content/${type.toLowerCase()}/${id}`}>
                 <ImageWithFallback
                     src={imageUrl || ''}
                     width={300}
@@ -24,7 +24,7 @@ export const ContentManyFeedItem = ({ id, type, name, imageUrl }: ContentManyFee
             </Link>
 
             <div>
-                <Link href={`/content/${type.toLocaleLowerCase()}/${id}`} className="text-black no-underline!">
+                <Link href={`/content/${type.toLowerCase()}/${id}`} className="text-black no-underline!">
                     {name}
                 </Link>
             </div>

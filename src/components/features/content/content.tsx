@@ -18,8 +18,8 @@ export const Content = ({ imageUrl, name, type }: ContentProps) => {
                     Главная
                 </Link>
                 <span>|</span>
-                <Link href={`/content/${type}`} className="text-blue-500 hover:underline">
-                    {categories.find(category => category.type === type.toLocaleLowerCase())?.label}
+                <Link href={`/content/${type.toLowerCase()}`} className="text-blue-500 hover:underline">
+                    {categories.find(category => category.type === type.toLowerCase())?.label}
                 </Link>
                 <span>|</span>
                 <span>{name}</span>
