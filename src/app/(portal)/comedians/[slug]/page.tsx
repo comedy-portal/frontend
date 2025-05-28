@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { Comedian } from '@/components/features/comedian/comedian'
@@ -13,5 +14,23 @@ export default async function ComedianPage(props: { params: Params }) {
         notFound()
     }
 
-    return <Comedian name={comedian.name} surname={comedian.surname} imageUrl={comedian.comedianImages[0]?.url} />
+    return (
+        <div className="flex flex-col gap-y-12">
+            <nav className="flex gap-x-2">
+                <Link href="/" className="text-blue-500 hover:underline">
+                    Главная
+                </Link>
+                <span>|</span>
+                <Link href="/comedians" className="text-blue-500 hover:underline">
+                    Комики
+                </Link>
+                <span>|</span>
+                <span>
+                    {comedian.name} {comedian.surname}
+                </span>
+            </nav>
+
+            <Comedian name={comedian.name} surname={comedian.surname} imageUrl={comedian.comedianImages[0]?.url} />
+        </div>
+    )
 }

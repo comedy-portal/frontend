@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { Logo } from '@/components/ui/logo'
 
-export default async function NotFound() {
+export default function NotFound() {
     return (
         <div className="relative size-full">
             <Logo className="absolute top-6 left-6 text-black" />
