@@ -8,7 +8,7 @@ type ContentProps = {
     imageUrl: string | null
 }
 
-export const Content = ({ imageUrl, name, type }: ContentProps) => {
+export const Content = ({ imageUrl, name }: ContentProps) => {
     return (
         <div>{imageUrl && <Image src={imageUrl} width={300} height={200} className="aspect-video" alt={name} />}</div>
     )

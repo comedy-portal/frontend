@@ -1,5 +1,3 @@
-import { notFound } from 'next/navigation'
-
 import { GetContentByIdResponse, GetContentManyParams, GetContentManyResponse } from './content.types'
 
 export async function getContentMany(getContentManyParams: GetContentManyParams): Promise<GetContentManyResponse> {
