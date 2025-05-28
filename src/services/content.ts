@@ -13,10 +13,6 @@ export async function getContentMany(getContentManyParams: GetContentManyParams)
     const res = await fetch(url)
 
     if (!res.ok) {
-        if (res.status === 404) {
-            notFound()
-        }
-
         throw new Error(res.statusText)
     }
 
@@ -26,6 +22,10 @@ export async function getContentMany(getContentManyParams: GetContentManyParams)
 export async function getContentById(id: number): Promise<GetContentByIdResponse> {
     const url = process.env.NEXT_PUBLIC_API_URL + '/content/' + id
     const res = await fetch(url)
+
+    if (isNaN(id) || id <= 0) {
+        notFound()
+    }
 
     if (!res.ok) {
         if (res.status === 404) {
