@@ -37,6 +37,10 @@ export const HeaderMobile = ({ profileEntryPointComponent }: HeaderMobileProps) 
                     <Link href="/comedians" className="text-white no-underline! hover:underline!" onClick={toggleMenu}>
                         Комики
                     </Link>
+                    <Link href="/about" className="text-white no-underline! hover:underline!" onClick={toggleMenu}>
+                        О проекте
+                    </Link>
+
                     {profileEntryPointComponent}
                 </nav>
             )}

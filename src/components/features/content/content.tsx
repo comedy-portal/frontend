@@ -1,11 +1,15 @@
+import Image from 'next/image'
+
 import { ContentType } from '@/utils/enums/common'
 
-import { ContentFeed } from './components/content-feed'
-
 type ContentProps = {
-    slug: ContentType
+    type: ContentType
+    name: string
+    imageUrl: string | null
 }
 
-export const Content = ({ slug }: ContentProps) => {
-    return <ContentFeed type={slug} />
+export const Content = ({ imageUrl, name }: ContentProps) => {
+    return (
+        <div>{imageUrl && <Image src={imageUrl} width={300} height={200} className="aspect-video" alt={name} />}</div>
+    )
 }

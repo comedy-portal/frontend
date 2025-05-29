@@ -1,17 +1,19 @@
 import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
+import { ContentType } from '@/utils/enums/common'
 
-type ContentFeedItemType = {
+type ContentManyFeedItemType = {
     id: number
+    type: ContentType
     name: string
     imageUrl: string | null
 }
 
-export const ContentFeedItem = ({ id, name, imageUrl }: ContentFeedItemType) => {
+export const ContentManyFeedItem = ({ id, type, name, imageUrl }: ContentManyFeedItemType) => {
     return (
         <div className="m-0 flex flex-col gap-y-2">
-            <Link href={`/content/${id}`}>
+            <Link href={`/content/${type.toLowerCase()}/${id}`}>
                 <ImageWithFallback
                     src={imageUrl || ''}
                     width={300}
@@ -22,7 +24,7 @@ export const ContentFeedItem = ({ id, name, imageUrl }: ContentFeedItemType) => 
             </Link>
 
             <div>
-                <Link href={`/content/${id}`} className="text-black no-underline!">
+                <Link href={`/content/${type.toLowerCase()}/${id}`} className="text-black no-underline!">
                     {name}
                 </Link>
             </div>

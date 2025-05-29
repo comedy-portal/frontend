@@ -17,6 +17,7 @@ export const LandingContentFeed = (props: LandingContentFeedProps) => {
                     <LandingContentFeedItem
                         key={`landing-content-feed-item-${item.id}`}
                         id={item.id}
+                        type={item.type}
                         name={item.name}
                         imageUrl={item.contentImages[0]?.url}
                     />

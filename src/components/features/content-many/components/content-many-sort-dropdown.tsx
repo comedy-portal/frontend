@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { CustomDropdown, CustomDropdownItem } from '@/components/ui/dropdown'
 import { ContentUrlSortBy } from '@/utils/enums/common'
 
-export const ContentSortDropdown = () => {
+export const ContentManySortDropdown = () => {
     const router = useRouter()
     const searchParams = useSearchParams()
 

@@ -17,6 +17,9 @@ export const HeaderDesktop = () => {
                     <Link href="/comedians" className="text-white no-underline! hover:underline!">
                         Комики
                     </Link>
+                    <Link href="/about" className="text-white no-underline! hover:underline!">
+                        О проекте
+                    </Link>
                 </nav>
             </div>
 
