@@ -29,7 +29,7 @@ export default async function ContentPage(props: { params: Params }) {
                 <span>{content.name}</span>
             </nav>
 
-            <Content name={content.name} imageUrl={content.contentImages[0].url} type={content.type} />
+            <Content name={content.name} imageUrl={content.contentImages[0]?.url} type={content.type} />
         </div>
     )
 }

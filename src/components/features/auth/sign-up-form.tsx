@@ -84,7 +84,9 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
             </Button>
 
             <p className="text-center text-xs text-gray-500">
-                Регистрируясь, Вы принимаете все условия <Link href="#">пользовательского соглашения</Link>.
+                Регистрируясь, Вы принимаете все условия{' '}
+                <Link href="/legal/terms-of-service">Пользовательского соглашения</Link> и{' '}
+                <Link href="/legal/privacy-policy">Политики конфиденциальности</Link>.
             </p>
         </Form>
     )
