@@ -8,6 +8,7 @@ type Category = {
 export const categories: Category[] = [
     { type: ContentType.SPECIAL, label: 'Спешл' },
     { type: ContentType.STANDUP, label: 'Стендап' },
+    { type: ContentType.BLOG, label: 'Блоги' },
     { type: ContentType.DISCUSSION, label: 'Дискуссия' },
     { type: ContentType.IMPROV_SHOW, label: 'Импровизация' },
     { type: ContentType.PODCAST, label: 'Подкаст' },

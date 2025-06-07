@@ -1,15 +1,29 @@
-import Image from 'next/image'
+import { IContent } from '@/utils/types/content'
 
-import { ContentType } from '@/utils/enums/common'
+import { ContentFacts } from './components/content-facts'
+import { ContentHeader } from './components/content-header'
+import { ContentReviews } from './components/content-reviews'
 
-type ContentProps = {
-    type: ContentType
-    name: string
-    imageUrl: string | null
-}
+type ContentProps = IContent
 
-export const Content = ({ imageUrl, name }: ContentProps) => {
+export const Content = (props: ContentProps) => {
     return (
-        <div>{imageUrl && <Image src={imageUrl} width={300} height={200} className="aspect-video" alt={name} />}</div>
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+            <div className="space-y-12 lg:col-span-2">
+                <ContentHeader
+                    name={props.name}
+                    cover={props.contentImages[0]?.url}
+                    month={props.month}
+                    year={props.year}
+                    duration={props.duration}
+                    description={props.metaInfo?.description ?? null}
+                />
+
+                <ContentFacts facts={props.metaInfo?.facts ?? null} />
+                <ContentReviews />
+            </div>
+
+            <div className="space-y-4 lg:col-span-1"></div>
+        </div>
     )
 }

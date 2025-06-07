@@ -12,6 +12,7 @@ export enum Platform {
 
 export enum ContentType {
     DISCUSSION = 'discussion',
+    BLOG = 'blog',
     IMPROV_SHOW = 'improv_show',
     PODCAST = 'podcast',
     ROAST_BATTLE = 'roast_battle',

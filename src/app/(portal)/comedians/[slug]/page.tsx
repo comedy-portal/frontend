@@ -30,7 +30,7 @@ export default async function ComedianPage(props: { params: Params }) {
                 </span>
             </nav>
 
-            <Comedian name={comedian.name} surname={comedian.surname} imageUrl={comedian.comedianImages[0]?.url} />
+            <Comedian {...comedian} />
         </div>
     )
 }
