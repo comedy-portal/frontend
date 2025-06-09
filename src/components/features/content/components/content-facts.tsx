@@ -1,5 +1,5 @@
 type ContentFactsProps = {
-    facts: string[] | null
+    facts?: string[] | null
 }
 
 export const ContentFacts = ({ facts }: ContentFactsProps) => {
