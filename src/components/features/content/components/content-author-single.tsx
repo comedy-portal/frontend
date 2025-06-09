@@ -13,7 +13,7 @@ type ContentAuthorSingleProps = {
 export const ContentAuthorSingle = ({ name, surname, slug, month, year }: ContentAuthorSingleProps) => {
     return (
         <div className="flex gap-x-2">
-            <Link href={`/comedians/${slug}`} className="text-black no-underline! hover:underline!">
+            <Link href={`/comedians/${slug}`} className="text-black no-underline! hover:text-blue-700!">
                 {name} {surname}
             </Link>
             <span className="text-gray-500">•</span>
