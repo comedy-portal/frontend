@@ -12,7 +12,7 @@ type ContentAuthorGroupProps = {
 export const ContentAuthorGroup = ({ slug, name, month, year }: ContentAuthorGroupProps) => {
     return (
         <div className="flex gap-x-2">
-            <Link href={`/groups/${slug}`} className="text-black no-underline! hover:text-blue-700!">
+            <Link href={`/groups/${slug}`} className="no-underline!">
                 {name}
             </Link>
             <span className="text-gray-500">•</span>

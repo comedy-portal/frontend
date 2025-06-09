@@ -28,7 +28,7 @@ export const ContentAuthorMany = ({ comedians, month, year }: ContentAuthorManyP
     const renderComedianList = (list: Comedian[]) =>
         list.map((comedian, index) => (
             <span key={`comedian-${comedian.id}`}>
-                <Link href={`/comedians/${comedian.slug}`} className="text-black no-underline! hover:text-blue-700!">
+                <Link href={`/comedians/${comedian.slug}`} className="no-underline!">
                     {comedian.name} {comedian.surname}
                 </Link>
                 {index < list.length - 1 && <span className="text-gray-500">, </span>}
@@ -39,7 +39,7 @@ export const ContentAuthorMany = ({ comedians, month, year }: ContentAuthorManyP
         <div>
             {renderComedianList(visibleComedians)}
             {!isShowMore && comedians.length > 2 && (
-                <span onClick={() => setIsShowMore(true)} className="cursor-pointer hover:text-blue-700">
+                <span onClick={() => setIsShowMore(true)} className="cursor-pointer text-blue-500 hover:text-blue-700">
                     {' '}
                     ...
                 </span>
