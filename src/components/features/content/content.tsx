@@ -10,7 +10,6 @@ import { ContentMyRating } from './components/content-my-rating'
 import { ContentPlay } from './components/content-play'
 import { ContentRating } from './components/content-rating'
 import { ContentReviews } from './components/content-reviews'
-import { ContentSuggested } from './components/content-suggested'
 
 type ContentProps = IContent
 
