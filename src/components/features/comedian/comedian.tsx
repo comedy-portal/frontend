@@ -26,7 +26,7 @@ export const Comedian = (props: ComedianProps) => {
             </div>
 
             <section className="flex flex-col gap-y-8">
-                <h2 className="m-0">Контент</h2>
+                <h2 className="mb-0!">Контент</h2>
 
                 {props.content && props.content.length > 0 && (
                     <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
@@ -42,32 +42,6 @@ export const Comedian = (props: ComedianProps) => {
                     </div>
                 )}
             </section>
-
-            {/* <div>
-                <h1 className="font-bold">{`${props.name} ${props.surname}`}</h1>
-                <div>{props.metaInfo?.description}</div>
-            </div>
-
-            <section>
-                <h2 className="font-semibold">Контент</h2>
-                <div>
-                    {props.content?.map(item => (
-                        <div key={item.id}>
-                            <h3 className="font-medium">{item.name}</h3>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {props.comedianImages[0] && (
-                <Image
-                    src={props.comedianImages[0].url}
-                    width={500}
-                    height={500}
-                    className="rounded-full"
-                    alt={`${props.name} ${props.surname}`}
-                />
-            )} */}
         </div>
     )
 }

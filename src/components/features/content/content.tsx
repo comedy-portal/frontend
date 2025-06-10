@@ -10,6 +10,7 @@ import { ContentMyRating } from './components/content-my-rating'
 import { ContentPlay } from './components/content-play'
 import { ContentRating } from './components/content-rating'
 import { ContentReviews } from './components/content-reviews'
+import { ContentSuggested } from './components/content-suggested'
 
 type ContentProps = IContent
 
@@ -18,7 +19,13 @@ export const Content = (props: ContentProps) => {
         <div>
             <div className="mb-3 space-y-2">
                 <ContentHeader name={props.name} />
-                <ContentAuthor month={props.month} year={props.year} comedians={props.comedians} group={props.group} />
+                <ContentAuthor
+                    month={props.month}
+                    year={props.year}
+                    type={props.type}
+                    comedians={props.comedians}
+                    group={props.group}
+                />
             </div>
 
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">

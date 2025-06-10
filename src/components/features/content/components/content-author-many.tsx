@@ -4,6 +4,9 @@ import { useState } from 'react'
 
 import Link from 'next/link'
 
+import { categories } from '@/utils/dict/categories'
+import { ContentType } from '@/utils/enums/common'
+
 import { ContentDate } from './content-date'
 
 type Comedian = {
@@ -16,11 +19,12 @@ type Comedian = {
 
 type ContentAuthorManyProps = {
     comedians: Comedian[]
+    type: ContentType
     month: number | null
     year: number
 }
 
-export const ContentAuthorMany = ({ comedians, month, year }: ContentAuthorManyProps) => {
+export const ContentAuthorMany = ({ comedians, type, month, year }: ContentAuthorManyProps) => {
     const [isShowMore, setIsShowMore] = useState(false)
 
     const visibleComedians = isShowMore ? comedians : comedians.slice(0, 2)
@@ -45,7 +49,13 @@ export const ContentAuthorMany = ({ comedians, month, year }: ContentAuthorManyP
                 </span>
             )}
 
-            <ContentDate month={month} year={year} />
+            <div className="flex gap-x-2">
+                <Link href={`/content/${type.toLowerCase()}`} className="no-underline!">
+                    {categories.find(category => category.type === type.toLowerCase())?.label}
+                </Link>
+                <span className="text-gray-500">•</span>
+                <ContentDate month={month} year={year} />
+            </div>
         </div>
     )
 }

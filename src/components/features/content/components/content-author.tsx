@@ -1,3 +1,5 @@
+import { ContentType } from '@/utils/enums/common'
+
 import { ContentAuthorGroup } from './content-author-group'
 import { ContentAuthorMany } from './content-author-many'
 import { ContentAuthorSingle } from './content-author-single'
@@ -5,6 +7,7 @@ import { ContentAuthorSingle } from './content-author-single'
 type ContentFactsProps = {
     month: number | null
     year: number
+    type: ContentType
     comedians: {
         id: number
         name: string
@@ -25,13 +28,13 @@ type ContentFactsProps = {
     } | null
 }
 
-export const ContentAuthor = ({ month, year, comedians, group }: ContentFactsProps) => {
+export const ContentAuthor = ({ month, year, type, comedians, group }: ContentFactsProps) => {
     if (comedians.length > 1) {
-        return <ContentAuthorMany comedians={comedians} month={month} year={year} />
+        return <ContentAuthorMany comedians={comedians} type={type} month={month} year={year} />
     }
 
     if (group) {
-        return <ContentAuthorGroup month={month} year={year} slug={group.slug} name={group.name} />
+        return <ContentAuthorGroup name={group.name} slug={group.slug} type={type} month={month} year={year} />
     }
 
     return (
@@ -39,6 +42,7 @@ export const ContentAuthor = ({ month, year, comedians, group }: ContentFactsPro
             name={comedians[0].name}
             surname={comedians[0].surname}
             slug={comedians[0].slug}
+            type={type}
             month={month}
             year={year}
         />
