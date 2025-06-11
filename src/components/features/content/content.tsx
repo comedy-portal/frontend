@@ -5,7 +5,7 @@ import { ContentAuthor } from './components/content-author'
 import { ContentCover } from './components/content-cover'
 import { ContentDescription } from './components/content-description'
 import { ContentFacts } from './components/content-facts'
-import { ContentHeader } from './components/content-header'
+import { ContentTitle } from './components/content-header'
 import { ContentMyRating } from './components/content-my-rating'
 import { ContentPlay } from './components/content-play'
 import { ContentRating } from './components/content-rating'
@@ -17,7 +17,7 @@ export const Content = (props: ContentProps) => {
     return (
         <div>
             <div className="mb-3 space-y-2">
-                <ContentHeader name={props.name} />
+                <ContentTitle name={props.name} />
                 <ContentAuthor
                     month={props.month}
                     year={props.year}
@@ -25,6 +25,12 @@ export const Content = (props: ContentProps) => {
                     comedians={props.comedians}
                     group={props.group}
                 />
+                <div className="grid grid-cols-2 gap-4 py-4 sm:hidden">
+                    <ContentRating avgRating={props.rating.avgRating} reviewsCount={props.rating.reviewsCount} />
+                    <ContentMyRating />
+                    <ContentAddToWatchList />
+                    <ContentPlay duration={props.duration} />
+                </div>
             </div>
 
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
@@ -36,7 +42,7 @@ export const Content = (props: ContentProps) => {
                 </div>
 
                 <div className="space-y-12 lg:col-span-1">
-                    <div className="sticky top-20 flex flex-col gap-y-6">
+                    <div className="sticky top-20 hidden flex-col gap-y-6 sm:flex">
                         <ContentRating avgRating={props.rating.avgRating} reviewsCount={props.rating.reviewsCount} />
                         <ContentMyRating />
                         <ContentAddToWatchList />

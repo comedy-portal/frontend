@@ -1,7 +1,7 @@
-type ContentHeaderProps = {
+type ContentTitleProps = {
     name: string
 }
 
-export const ContentHeader = ({ name }: ContentHeaderProps) => {
-    return <h1 className="mb-0! truncate">{name}</h1>
+export const ContentTitle = ({ name }: ContentTitleProps) => {
+    return <h1 className="mb-0! truncate text-center sm:!text-left">{name}</h1>
 }
