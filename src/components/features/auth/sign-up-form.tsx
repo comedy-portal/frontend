@@ -13,10 +13,10 @@ const validationSchema = yup.object().shape({
     email: yup
         .string()
         .trim()
-        .required('Введите email')
+        .required('Введите почту')
         .matches(
             /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
-            'Введите корректный email',
+            'Такой почты не существует',
         ),
 })
 
@@ -55,8 +55,13 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
     }
 
     return (
-        <Form onSubmit={handleSubmit} noValidate className="flex flex-col gap-y-6">
-            <h2 className="text-center text-2xl!">Вход</h2>
+        <Form onSubmit={handleSubmit} noValidate className="flex flex-col gap-y-6 sm:w-104">
+            <div>
+                <h2 className="text-center text-2xl!">Войти</h2>
+                <p className="text-center text-xs text-gray-500 sm:m-auto sm:w-2/3">
+                    Для этого укажите только электронную почту, мы отправим на нее данные для входа
+                </p>
+            </div>
 
             {status && status !== 'OK' && (
                 <Alert variant="danger" className="mb-0 text-sm">
@@ -65,12 +70,11 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
             )}
 
             <Form.Group controlId="signUpEmail">
-                <Form.Label>Email</Form.Label>
+                <Form.Label>Электронная почта</Form.Label>
                 <Form.Control
                     type="email"
                     name="email"
                     value={email}
-                    placeholder="name@example.com"
                     autoFocus
                     disabled={isLoading}
                     isInvalid={!!errors.email}
@@ -83,10 +87,10 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
                 Продолжить
             </Button>
 
-            <p className="text-center text-xs text-gray-500">
-                Регистрируясь, Вы принимаете все условия{' '}
-                <Link href="/legal/terms-of-service">Пользовательского соглашения</Link> и{' '}
-                <Link href="/legal/privacy-policy">Политики конфиденциальности</Link>.
+            <p className="text-center text-xs text-gray-500 sm:m-auto sm:w-3/4">
+                Нажимая кнопку Продолжить, я подтверждаю, что ознакомился с{' '}
+                <Link href="/legal/privacy-policy">Политикой конфиденциальности</Link> и{' '}
+                <Link href="/legal/terms-of-service">Пользовательским соглашением</Link>
             </p>
         </Form>
     )
