@@ -8,9 +8,9 @@ export const ContentDescription = ({ description }: ContentDescriptionProps) => 
     }
 
     return (
-        <section className="flex flex-col gap-y-4">
-            <h2 className="mb-0!">Описание</h2>
-            <div className="mt-2">{description}</div>
+        <section>
+            <h2 className="mb-4! text-2xl!">О выступлении</h2>
+            <div>{description}</div>
         </section>
     )
 }

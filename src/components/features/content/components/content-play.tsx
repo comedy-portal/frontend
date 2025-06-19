@@ -6,9 +6,9 @@ type ContentPlayProps = {
 
 export const ContentPlay = ({ duration }: ContentPlayProps) => {
     return (
-        <div className="flex flex-col items-center justify-center gap-2 text-center sm:flex-row sm:!items-start sm:!justify-start sm:!text-left">
+        <div className="flex cursor-pointer items-center gap-x-2 hover:text-blue-500">
             <CirclePlayIcon size={40} strokeWidth={1.5} />
-            <div>
+            <div className="hidden gap-x-2 text-sm sm:flex sm:flex-col">
                 <div>Смотреть</div>
                 {duration && <div className="text-nowrap">{duration} мин.</div>}
             </div>

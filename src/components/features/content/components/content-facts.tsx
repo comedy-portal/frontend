@@ -8,14 +8,15 @@ export const ContentFacts = ({ facts }: ContentFactsProps) => {
     }
 
     return (
-        <section className="flex flex-col gap-y-4">
-            <h2 className="mb-0!">Факты</h2>
-
-            {facts.map((fact, index) => (
-                <div key={`content-facts-item-${index}`} className="rounded border border-gray-300 p-3">
-                    {fact}
-                </div>
-            ))}
+        <section>
+            <h2 className="mb-4! text-2xl!">Факты</h2>
+            <div className="space-y-4">
+                {facts.map((fact, index) => (
+                    <div key={`content-facts-item-${index}`} className="border-l-4 border-blue-200 pl-4">
+                        {fact}
+                    </div>
+                ))}
+            </div>
         </section>
     )
 }

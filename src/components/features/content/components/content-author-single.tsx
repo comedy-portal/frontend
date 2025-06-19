@@ -16,12 +16,12 @@ type ContentAuthorSingleProps = {
 
 export const ContentAuthorSingle = ({ name, surname, slug, type, month, year }: ContentAuthorSingleProps) => {
     return (
-        <div className="flex flex-col gap-x-2 text-center sm:!flex-row sm:!items-center sm:!text-left">
+        <div className="flex flex-col gap-x-2 sm:!flex-row sm:!items-center">
             <Link href={`/comedians/${slug}`} className="no-underline!">
                 {name} {surname}
             </Link>
             <span className="hidden text-gray-500 sm:block">•</span>
-            <div className="m-auto flex gap-x-2 sm:!m-0">
+            <div className="flex gap-x-2">
                 <Link href={`/content/${type.toLowerCase()}`} className="no-underline!">
                     {categories.find(category => category.type === type.toLowerCase())?.label}
                 </Link>

@@ -2,11 +2,11 @@ import { StarIcon } from 'lucide-react'
 
 export const ContentMyRating = () => {
     return (
-        <div className="flex flex-col items-center justify-center gap-2 text-center sm:flex-row sm:!items-start sm:!justify-start sm:!text-left">
+        <div className="flex items-center gap-x-2">
             <StarIcon size={40} strokeWidth={1.5} stroke="rgb(245, 197, 24)" />
-            <div>
+            <div className="text-sm">
                 <div className="text-nowrap">Мой рейтинг</div>
-                <div>Оценить</div>
+                <div className="cursor-pointer hover:text-blue-500">Оценить</div>
             </div>
         </div>
     )

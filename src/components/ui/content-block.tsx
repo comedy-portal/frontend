@@ -12,11 +12,12 @@ type ContentBlockType = {
     imageUrl: string | null
     year: number
     avgRating: number
+    reviewsCount: number
 }
 
-export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: ContentBlockType) => {
+export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, reviewsCount }: ContentBlockType) => {
     return (
-        <div className="m-0 flex flex-col rounded-lg shadow-lg">
+        <div className="m-0 flex flex-col rounded-lg bg-white shadow-lg">
             <Link href={`/content/${type.toLowerCase()}/${id}`}>
                 <ImageWithFallback
                     src={imageUrl || ''}
@@ -43,7 +44,9 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: Cont
                         </div>
                         <div className="flex items-center gap-x-2 text-sm">
                             <StarIcon size={16} fill="rgb(245, 197, 24)" stroke="rgb(245, 197, 24)" />
-                            <strong>{avgRating}</strong>
+                            <strong>
+                                {avgRating} / {reviewsCount}
+                            </strong>
                         </div>
                     </div>
 

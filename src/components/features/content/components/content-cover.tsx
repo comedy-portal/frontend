@@ -11,7 +11,7 @@ export const ContentCover = ({ cover, name }: ContentCoverProps) => {
             src={cover}
             width={500}
             height={500}
-            className="aspect-video w-full rounded-2xl object-cover"
+            className="aspect-video w-full rounded-lg object-cover"
             alt={name}
         />
     )

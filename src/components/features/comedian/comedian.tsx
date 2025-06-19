@@ -38,6 +38,7 @@ export const Comedian = (props: ComedianProps) => {
                                 imageUrl={item.contentImages[0]?.url}
                                 year={item.year}
                                 avgRating={item.rating.avgRating}
+                                reviewsCount={item.rating.reviewsCount}
                             />
                         ))}
                     </div>
