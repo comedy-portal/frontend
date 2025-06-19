@@ -1,4 +1,4 @@
-import { BookmarkIcon, CalendarIcon, StarIcon } from 'lucide-react'
+import { CalendarIcon, HeartPlusIcon, StarIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
@@ -27,10 +27,10 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: Cont
                 />
             </Link>
 
-            <div className="flex flex-col gap-y-2 p-3">
+            <div className="flex h-full flex-col justify-between gap-y-2 p-3">
                 <Link
                     href={`/content/${type.toLowerCase()}/${id}`}
-                    className="font-semibold text-black no-underline! hover:text-blue-500!"
+                    className="line-clamp-2 h-12 font-semibold text-black no-underline! hover:text-blue-500!"
                 >
                     {name}
                 </Link>
@@ -48,7 +48,7 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: Cont
                     </div>
 
                     <div className="cursor-pointer hover:text-blue-500">
-                        <BookmarkIcon />
+                        <HeartPlusIcon />
                     </div>
                 </div>
             </div>
