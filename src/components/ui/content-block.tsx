@@ -1,4 +1,4 @@
-import { BookmarkIcon, CalendarIcon, HeartPlusIcon, StarIcon } from 'lucide-react'
+import { BookmarkIcon, CalendarIcon, StarIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
