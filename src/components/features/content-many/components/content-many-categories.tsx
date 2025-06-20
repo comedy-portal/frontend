@@ -27,7 +27,7 @@ export const ContentManyCategories = ({ slug }: ContentManyCategoriesProps) => {
     return (
         <ScrollContainer>
             <nav>
-                <ul className="flex gap-2 p-0">
+                <ul className="m-0! flex gap-2 p-0!">
                     {categories.map(({ type, label }) => {
                         const isActive = currentType === type.toLowerCase()
 

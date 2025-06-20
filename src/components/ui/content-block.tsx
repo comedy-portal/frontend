@@ -17,7 +17,7 @@ type ContentBlockType = {
 
 export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, reviewsCount }: ContentBlockType) => {
     return (
-        <div className="m-0 flex flex-col rounded-lg bg-white shadow-lg">
+        <div className="m-0 flex flex-col rounded-lg bg-white shadow-xs">
             <Link href={`/content/${type.toLowerCase()}/${id}`}>
                 <ImageWithFallback
                     src={imageUrl || ''}

@@ -4,10 +4,11 @@ import { useState } from 'react'
 
 import { PackageOpenIcon } from 'lucide-react'
 
+import Link from 'next/link'
+
+import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LoadMore } from '@/components/ui/load-more'
 import { comediansAPI } from '@/redux/services/comedians/comedians.api'
-
-import { ComediansFeedItem } from './comedians-feed-item'
 
 export const ComediansFeed = () => {
     const [cursor, setCursor] = useState<number>()
@@ -40,18 +41,37 @@ export const ComediansFeed = () => {
     }
 
     return (
-        <div className="flex flex-col gap-y-12">
-            <div className="flex flex-col">
-                {data.items.map(item => (
-                    <ComediansFeedItem
-                        key={`comedians-feed-item-${item.id}`}
-                        slug={item.slug}
-                        name={item.name}
-                        surname={item.surname}
-                        imageUrl={item.comedianImages[0]?.url}
-                    />
-                ))}
-            </div>
+        <div className="grid grid-cols-3 gap-y-4">
+            {data.items.map(item => (
+                <div key={`comedians-feed-item-${item.id}`} className="flex items-center gap-x-4">
+                    <Link href={`/comedians/${item.slug}`}>
+                        <ImageWithFallback
+                            src={item.comedianImages[0]?.url || ''}
+                            width={128}
+                            height={128}
+                            className="size-32 rounded-full align-top"
+                            alt={item.name}
+                        />
+                    </Link>
+                    <div className="flex flex-col items-start gap-y-1">
+                        <Link
+                            href={`/comedians/${item.slug}`}
+                            className="text-lg font-semibold text-black no-underline! hover:text-blue-500!"
+                        >
+                            {item.name} {item.surname}
+                        </Link>
+                        {item.groups.map((group, index) => (
+                            <Link
+                                key={`comedians-feed-item-${item.id}-group-${index}`}
+                                href={`/groups/${group.slug}`}
+                                className="inline-block rounded bg-gray-200 px-2 py-1 text-xs font-semibold text-gray-700! no-underline! hover:text-blue-500!"
+                            >
+                                {group.name}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            ))}
 
             {data.items.length < data.total && (
                 <LoadMore

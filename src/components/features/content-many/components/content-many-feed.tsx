@@ -11,8 +11,6 @@ import { LoadMore } from '@/components/ui/load-more'
 import { contentAPI } from '@/redux/services/content/content.api'
 import { ContentSortBy, ContentType, ContentUrlSortBy, Order } from '@/utils/enums/common'
 
-import { ContentManyFeedSkeleton } from './content-many-feed-skeleton'
-
 type ContentManyFeedProps = {
     type: ContentType
 }
@@ -62,7 +60,7 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
     }
 
     if (!isSuccess) {
-        return <ContentManyFeedSkeleton />
+        return <div>Загрузка ...</div>
     }
 
     return (

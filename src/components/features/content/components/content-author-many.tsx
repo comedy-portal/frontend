@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import Link from 'next/link'
 
+import { Tag } from '@/components/ui/tag'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
@@ -40,19 +41,25 @@ export const ContentAuthorMany = ({ comedians, type, month, year }: ContentAutho
         ))
 
     return (
-        <div>
-            {renderComedianList(visibleComedians)}
-            {!isShowMore && comedians.length > 2 && (
-                <span onClick={() => setIsShowMore(true)} className="cursor-pointer text-blue-500 hover:text-blue-700">
-                    {' '}
-                    ...
-                </span>
-            )}
+        <div className="flex flex-col gap-y-2">
+            <div>
+                {renderComedianList(visibleComedians)}
+                {!isShowMore && comedians.length > 2 && (
+                    <span
+                        onClick={() => setIsShowMore(true)}
+                        className="cursor-pointer text-blue-500 hover:text-blue-700"
+                    >
+                        {' '}
+                        ...
+                    </span>
+                )}
+            </div>
 
-            <div className="flex gap-x-2">
-                <Link href={`/content/${type.toLowerCase()}`} className="no-underline!">
-                    {categories.find(category => category.type === type.toLowerCase())?.label}
-                </Link>
+            <div className="flex items-center gap-x-2">
+                <Tag
+                    link={`/content/${type.toLowerCase()}`}
+                    title={categories.find(category => category.type === type.toLowerCase())?.label || ''}
+                />
                 <span className="text-gray-500">•</span>
                 <ContentDate month={month} year={year} />
             </div>
