@@ -12,7 +12,6 @@ export const UserLogout = () => {
     const signOut = async () => {
         try {
             await Session.signOut()
-            router.push('/')
             router.refresh()
         } catch {
             console.error(messages.COMMON_ERROR)
