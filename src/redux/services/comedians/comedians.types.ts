@@ -1,5 +1,5 @@
 import { ComedianSortBy, Order } from '@/utils/enums/common'
-import { IComedian } from '@/utils/types/comedians'
+import { IComedian } from '@/utils/types/comedian'
 import { PaginatedResponse } from '@/utils/types/common'
 
 export type GetComediansParams = {

@@ -13,7 +13,7 @@ export const ContentRating = ({ avgRating, reviewsCount }: ContentRatingProps) =
                 <div>
                     Рейтинг: <strong>{avgRating} / 10</strong>
                 </div>
-                <div>Отзывов: {reviewsCount}</div>
+                <div>Рецензий: {reviewsCount}</div>
             </div>
         </div>
     )

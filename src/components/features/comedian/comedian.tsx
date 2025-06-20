@@ -1,5 +1,5 @@
 import { ContentBlock } from '@/components/ui/content-block'
-import { IComedian } from '@/utils/types/comedians'
+import { IComedian } from '@/utils/types/comedian'
 
 type ComedianProps = IComedian
 

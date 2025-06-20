@@ -1,3 +1,3 @@
-import { IComedian } from '@/utils/types/comedians'
+import { IComedian } from '@/utils/types/comedian'
 
-export type GetComedianBySlugResponse = IComedian
+export type GetComedianBySlugResponse = Promise<IComedian | undefined>
