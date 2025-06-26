@@ -28,7 +28,6 @@ export const watchlistsAPI = api.injectEndpoints({
             forceRefetch({ currentArg, previousArg }) {
                 return currentArg !== previousArg
             },
-            // providesTags: (result, error, { placeId }) => [{ type: 'PlaceReviews', id: placeId }],
             providesTags: (result, error, { username }) => [{ type: 'Watchlist', id: username }],
         }),
         addToWatchlist: build.mutation<void, number>({

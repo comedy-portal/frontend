@@ -2,12 +2,13 @@
 
 import { useState } from 'react'
 
-import { PackageOpenIcon } from 'lucide-react'
+import { MicOffIcon } from 'lucide-react'
 
 import { LoadMore } from '@/components/ui/load-more'
 import { watchlistsAPI } from '@/redux/services/watchlists/watchlists.api'
 
 import { UserWatchlistsFeedItem } from './user-watchlists-feed-item'
+import { UserWatchlistsFeedSkeleton } from './user-watchlists-feed-skeleton'
 
 type UserWatchlistsFeedProps = {
     username: string
@@ -31,22 +32,21 @@ export const UserWatchlistsFeed = ({ username }: UserWatchlistsFeedProps) => {
 
     if (isSuccess && data.items.length === 0) {
         return (
-            <div className="flex flex-col items-center gap-y-4 py-24 text-center text-gray-500">
-                <PackageOpenIcon size={64} className="text-gray-400" />
-                Ваш список просмотра пуст!
+            <div className="flex flex-col items-center gap-y-4 py-24 text-center text-sm text-gray-500">
+                <MicOffIcon strokeWidth={1} size={64} className="text-gray-400" />
+                Ваше избранное пусто.
                 <br />
-                Добавьте сюда контент, который хотите посмотреть позже.
+                Добавьте контент в избранное, чтобы он появился здесь.
             </div>
         )
     }
 
-    if (!isSuccess) {
-        return <div>Загрузка ...</div>
+    if (!isSuccess || isFetching) {
+        return <UserWatchlistsFeedSkeleton />
     }
 
     return (
         <div className="space-y-2">
-            <h1 className="mb-4! text-lg! font-semibold!">Смотреть позже</h1>
             <div className="space-y-2">
                 {data.items.map(item => (
                     <UserWatchlistsFeedItem
