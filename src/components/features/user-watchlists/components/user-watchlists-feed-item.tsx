@@ -18,7 +18,7 @@ type UserWatchlistsFeedItemProps = {
 export const UserWatchlistsFeedItem = (props: UserWatchlistsFeedItemProps) => {
     return (
         <Link
-            href={`/content/${props.type}/${props.id}`}
+            href={`/content/${props.type.toLowerCase()}/${props.id}`}
             className="flex cursor-pointer items-center justify-between rounded bg-gray-50 px-4 py-2 text-black! no-underline! hover:bg-gray-100"
         >
             <div className="space-y-2">
