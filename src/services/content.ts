@@ -1,6 +1,6 @@
 import { GetContentByIdResponse, GetContentManyParams, GetContentManyResponse } from './content.types'
 
-export async function getContentMany(getContentManyParams: GetContentManyParams): Promise<GetContentManyResponse> {
+export async function getContentMany(getContentManyParams: GetContentManyParams): GetContentManyResponse {
     const filteredParams = Object.fromEntries(
         // Filter out undefined values from params
         // and convert all values to strings
@@ -17,12 +17,12 @@ export async function getContentMany(getContentManyParams: GetContentManyParams)
     return res.json()
 }
 
-export async function getContentById(id: number): Promise<GetContentByIdResponse | undefined> {
+export async function getContentById(id: number): GetContentByIdResponse {
     const url = process.env.NEXT_PUBLIC_API_URL + '/content/' + id
     const res = await fetch(url)
 
     if (!res.ok) {
-        return undefined
+        throw new Error(res.statusText)
     }
 
     return res.json()

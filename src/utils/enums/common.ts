@@ -1,3 +1,10 @@
+export enum Keys {
+    ENTER = 'Enter',
+    ESCAPE = 'Escape',
+    UP = 'ArrowUp',
+    DOWN = 'ArrowDown',
+}
+
 export enum Platform {
     BOOSTY = 'BOOSTY',
     INSTAGRAM = 'INSTAGRAM',
@@ -12,6 +19,7 @@ export enum Platform {
 
 export enum ContentType {
     DISCUSSION = 'discussion',
+    BLOG = 'blog',
     IMPROV_SHOW = 'improv_show',
     PODCAST = 'podcast',
     ROAST_BATTLE = 'roast_battle',

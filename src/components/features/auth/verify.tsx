@@ -6,6 +6,8 @@ import { clearLoginAttemptInfo, consumeCode, resendCode } from 'supertokens-web-
 
 import { useRouter } from 'next/navigation'
 
+import { useDialog } from '@/utils/providers/dialog-provider'
+
 import { VerifyForm } from './verify-form'
 
 type VerifyProps = {
@@ -15,6 +17,7 @@ type VerifyProps = {
 
 export const Verify = ({ email, onBack }: VerifyProps) => {
     const router = useRouter()
+    const dialog = useDialog()
     const [status, setStatus] = useState<string>()
     const [isLoading, setIsLoading] = useState(false)
 
@@ -27,8 +30,8 @@ export const Verify = ({ email, onBack }: VerifyProps) => {
 
             if (response.status === 'OK') {
                 await clearLoginAttemptInfo()
-                router.replace('/')
                 router.refresh()
+                dialog.close()
             }
         } catch {
             setStatus('GENERAL_ERROR')

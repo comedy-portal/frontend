@@ -4,19 +4,16 @@ type ComediansFeedItemType = {
     slug: string
     name: string
     surname: string
-    imageUrl: string | null
 }
 
-export const ComediansFeedItem = ({ slug, name, surname, imageUrl }: ComediansFeedItemType) => {
+export const ComediansFeedItem = ({ slug, name, surname }: ComediansFeedItemType) => {
     return (
-        <div className="flex gap-x-4 border-b border-gray-200 py-4">
-            <div
-                className="aspect-square w-32 rounded bg-gray-500 bg-cover bg-center bg-no-repeat align-top"
-                style={{ backgroundImage: `url(${imageUrl})` }}
-            />
-
-            <div className="text-center font-bold uppercase">
-                <Link href={`/comedians/${slug}`} className="text-black no-underline!">
+        <div className="flex items-center gap-x-4">
+            <div className="flex flex-col items-start gap-y-1">
+                <Link
+                    href={`/comedians/${slug}`}
+                    className="text-lg font-semibold text-black no-underline! hover:text-blue-500!"
+                >
                     {name} {surname}
                 </Link>
             </div>

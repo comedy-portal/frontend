@@ -7,14 +7,12 @@ export type IComedian = {
     surname: string
     slug: string
     birthDay: string | null
-    metaInfo:
-        | {
-              bio: string | null
-              description: string | null
-              facts: string[]
-              links: Link[]
-          }[]
-        | null
+    metaInfo: {
+        bio: string | null
+        description: string | null
+        facts: string[]
+        links: Link[]
+    } | null
     content:
         | {
               id: number

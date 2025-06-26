@@ -41,14 +41,13 @@ export const ComediansFeed = () => {
 
     return (
         <div className="flex flex-col gap-y-12">
-            <div className="flex flex-col">
+            <div>
                 {data.items.map(item => (
                     <ComediansFeedItem
-                        key={`comedians-feed-item-${item.id}`}
+                        key={`comedians-feed-item-${item.slug}`}
                         slug={item.slug}
                         name={item.name}
                         surname={item.surname}
-                        imageUrl={item.comedianImages[0]?.url}
                     />
                 ))}
             </div>

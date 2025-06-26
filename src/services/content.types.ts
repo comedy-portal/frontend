@@ -13,5 +13,5 @@ export type GetContentManyParams = {
     take?: number
 }
 
-export type GetContentManyResponse = PaginatedResponse<IContent>
-export type GetContentByIdResponse = IContent
+export type GetContentManyResponse = Promise<PaginatedResponse<IContent>>
+export type GetContentByIdResponse = Promise<IContent>

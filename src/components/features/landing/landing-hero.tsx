@@ -2,29 +2,25 @@
 
 import { Carousel } from 'react-bootstrap'
 
+import Image from 'next/image'
+
 export const LandingHero = () => {
     return (
-        <Carousel className="h-[400px] w-full rounded-lg bg-gray-500">
+        <Carousel className="w-full rounded bg-gray-500">
             <Carousel.Item>
-                <div className="h-[400px] w-full"></div>
-                <Carousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </Carousel.Caption>
+                <div className="h-[400px] w-full">
+                    <Image src="/images/hero/hero-1.webp" alt="Landing Hero" fill className="rounded object-cover" />
+                </div>
             </Carousel.Item>
             <Carousel.Item>
-                <div className="h-[400px] w-full"></div>
-                <Carousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </Carousel.Caption>
+                <div className="h-[400px] w-full">
+                    <Image src="/images/hero/hero-2.webp" alt="Landing Hero" fill className="rounded object-cover" />
+                </div>
             </Carousel.Item>
             <Carousel.Item>
-                <div className="h-[400px] w-full"></div>
-                <Carousel.Caption>
-                    <h3>Third slide label</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </Carousel.Caption>
+                <div className="h-[400px] w-full">
+                    <Image src="/images/hero/hero-3.jpg" alt="Landing Hero" fill className="rounded object-cover" />
+                </div>
             </Carousel.Item>
         </Carousel>
     )

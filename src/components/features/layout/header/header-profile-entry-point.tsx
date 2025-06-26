@@ -1,8 +1,9 @@
+import { getUserData } from '@/services/user'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 
 import { HeaderLogin } from './header-login'
-import { HeaderLogout } from './header-logout'
+import { HeaderProfile } from './header-profile'
 
 export async function HeaderProfileEntryPoint() {
     const { accessTokenPayload, hasToken } = await getSSRSessionHelper()
@@ -25,5 +26,7 @@ export async function HeaderProfileEntryPoint() {
         return <TryRefreshComponent key={Date.now()} />
     }
 
-    return <HeaderLogout />
+    const userData = await getUserData()
+
+    return <HeaderProfile slug={userData.username} />
 }

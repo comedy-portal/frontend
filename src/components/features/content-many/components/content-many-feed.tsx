@@ -6,12 +6,10 @@ import { PackageOpenIcon } from 'lucide-react'
 
 import { useSearchParams } from 'next/navigation'
 
+import { ContentBlock } from '@/components/ui/content-block'
 import { LoadMore } from '@/components/ui/load-more'
 import { contentAPI } from '@/redux/services/content/content.api'
 import { ContentSortBy, ContentType, ContentUrlSortBy, Order } from '@/utils/enums/common'
-
-import { ContentManyFeedItem } from './content-many-feed-item'
-import { ContentManyFeedSkeleton } from './content-many-feed-skeleton'
 
 type ContentManyFeedProps = {
     type: ContentType
@@ -62,19 +60,22 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
     }
 
     if (!isSuccess) {
-        return <ContentManyFeedSkeleton />
+        return <div>Загрузка ...</div>
     }
 
     return (
         <div className="flex flex-col gap-y-12">
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
                 {data.items.map(item => (
-                    <ContentManyFeedItem
+                    <ContentBlock
                         key={`content-many-feed-item-${item.id}`}
                         id={item.id}
                         type={item.type}
                         name={item.name}
                         imageUrl={item.contentImages[0]?.url}
+                        year={item.year}
+                        avgRating={item.rating.avgRating}
+                        reviewsCount={item.rating.reviewsCount}
                     />
                 ))}
             </div>

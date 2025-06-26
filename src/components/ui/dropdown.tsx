@@ -16,8 +16,8 @@ type CustomDropdownProps = {
 export const CustomDropdown = ({ items, selectedValue, onSelect }: CustomDropdownProps) => {
     return (
         <Dropdown>
-            <Dropdown.Toggle id="custom-dropdown" as="div">
-                <span style={{ cursor: 'pointer' }}>{items.find(item => item.value === selectedValue)?.label}</span>
+            <Dropdown.Toggle id="custom-dropdown" as="div" className="cursor-pointer">
+                {items.find(item => item.value === selectedValue)?.label}
             </Dropdown.Toggle>
 
             <Dropdown.Menu as="div">

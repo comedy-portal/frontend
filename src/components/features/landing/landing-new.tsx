@@ -7,8 +7,8 @@ export const LandingNew = async () => {
     const content = await getContentMany({
         sort_by: ContentSortBy.DATE,
         order: Order.DESC,
-        take: 8,
+        take: 4,
     })
 
-    return <LandingContentFeed title="Новое" items={content.items} />
+    return <LandingContentFeed title="Новое" href="/content/special?sort=date_desc" items={content.items} />
 }

@@ -1,7 +1,5 @@
 import { notFound } from 'next/navigation'
 
-import { ContentManyCategories } from '@/components/features/content-many/components/content-many-categories'
-import { ContentManySortDropdown } from '@/components/features/content-many/components/content-many-sort-dropdown'
 import { ContentMany } from '@/components/features/content-many/content-many'
 import { ContentType } from '@/utils/enums/common'
 
@@ -15,18 +13,5 @@ export default async function ContentManyPage(props: { params: Params }) {
         notFound()
     }
 
-    return (
-        <div className="flex flex-col gap-y-12">
-            <div>
-                <div className="flex items-end justify-between">
-                    <h1 className="mb-0 text-2xl font-bold">Контент</h1>
-                    <ContentManySortDropdown />
-                </div>
-                <hr />
-                <ContentManyCategories slug={params.slug} />
-            </div>
-
-            <ContentMany slug={params.slug} />
-        </div>
-    )
+    return <ContentMany slug={params.slug} />
 }
