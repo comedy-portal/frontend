@@ -12,7 +12,7 @@ export const HeaderProfile = ({ slug }: HeaderProfileProps) => {
             href={`/users/${slug}`}
             className="flex items-center gap-x-2 text-white no-underline! hover:underline! sm:text-sm"
         >
-            <CircleUserRoundIcon />
+            <CircleUserRoundIcon strokeWidth={1} />
             Профиль
         </Link>
     )
