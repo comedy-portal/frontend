@@ -1,14 +1,9 @@
-import { UserWatchlistsItem } from './components/user-watchlists-item'
+import { UserWatchlistsFeed } from './components/user-watchlists-feed'
 
-export const UserWatchlists = () => {
-    return (
-        <div className="space-y-2">
-            <h1 className="mb-4! text-lg! font-semibold!">Смотреть позже</h1>
-            <UserWatchlistsItem />
-            <UserWatchlistsItem />
-            <UserWatchlistsItem />
-            <UserWatchlistsItem />
-            <UserWatchlistsItem />
-        </div>
-    )
+type UserWatchlistsProps = {
+    username: string
+}
+
+export const UserWatchlists = ({ username }: UserWatchlistsProps) => {
+    return <UserWatchlistsFeed username={username} />
 }

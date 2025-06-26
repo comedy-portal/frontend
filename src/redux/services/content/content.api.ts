@@ -5,15 +5,11 @@ import { GetContentManyParams, GetContentManyResponse } from './content.types'
 export const contentAPI = api.injectEndpoints({
     endpoints: build => ({
         getContentMany: build.query<GetContentManyResponse, GetContentManyParams>({
-            query: params => {
-                const filteredParams = Object.fromEntries(
-                    // Filter out undefined values from params
-                    // and convert all values to strings
-                    Object.entries(params).flatMap(([k, v]) => (v !== undefined ? [[k, String(v)]] : [])),
-                )
-
-                return 'content?' + new URLSearchParams(filteredParams).toString()
-            },
+            query: params => ({
+                url: 'content',
+                method: 'GET',
+                params,
+            }),
             serializeQueryArgs: ({ queryArgs }) => {
                 return JSON.stringify({
                     type: queryArgs.type,

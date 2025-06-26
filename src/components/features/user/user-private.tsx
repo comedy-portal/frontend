@@ -13,13 +13,6 @@ export const UserPrivate = ({ username }: UserPrivateProps) => {
         <div>
             <UserHeader username={username} />
             <div className="container py-12">
-                {/* <p className="text-center text-gray-500">
-                    This is private user profile area for <strong>{username}</strong>.<br />
-                    Only the user can see this content.
-                    <br />
-                    <UserLogout />
-                </p> */}
-
                 <div className="grid grid-cols-1 gap-4 lg:grid-cols-[250px_1fr]">
                     <aside className="hidden flex-col gap-y-2 sm:flex">
                         <Link

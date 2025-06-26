@@ -46,6 +46,6 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 
 export const api = createApi({
     baseQuery: baseQueryWithReauth,
-    tagTypes: ['Comedians', 'ContentMany'],
+    tagTypes: ['Comedians', 'ContentMany', 'Watchlist'],
     endpoints: () => ({}),
 })

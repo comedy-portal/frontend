@@ -51,3 +51,9 @@ export enum ComedianSortBy {
     NAME = 'name',
     SURNAME = 'surname',
 }
+
+export enum WatchlistSortBy {
+    CONTENT_DATE = 'content_date',
+    RATING = 'rating',
+    SAVED_AT = 'saved_at',
+}

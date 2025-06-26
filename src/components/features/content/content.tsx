@@ -38,7 +38,7 @@ export const Content = (props: ContentProps) => {
                             <ContentMyRating />
                         </div>
                         <div className="flex items-center gap-x-6">
-                            <ContentAddToWatchList contentId={props.id} />
+                            <ContentAddToWatchList contentId={props.id} isInWatchlist={!!props.watchlists?.length} />
                             <ContentPlay duration={props.duration} />
                         </div>
                     </div>
