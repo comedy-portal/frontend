@@ -28,16 +28,16 @@ export const UserNav = ({ slug }: UserNavProps) => {
                 Смотреть позже
             </Link>
             <Link
-                href={`/users/${slug}/ratings`}
+                href={`/users/${slug}/reviews`}
                 className={classNames(
                     'flex items-center gap-x-2 rounded p-2 text-sm font-semibold text-black no-underline! hover:bg-gray-200',
                     {
-                        'bg-gray-200': pathname.toLowerCase() === `/users/${slug}/ratings`,
+                        'bg-gray-200': pathname.toLowerCase() === `/users/${slug}/reviews`,
                     },
                 )}
             >
                 <StarIcon />
-                Мои оценки
+                Мои рецензии
             </Link>
             <Link
                 href={`/users/${slug}/settings`}

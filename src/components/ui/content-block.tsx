@@ -1,11 +1,14 @@
-import { CalendarIcon, HeartPlusIcon, StarIcon } from 'lucide-react'
+import { HeartPlusIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
-import { Tag } from '@/components/ui/tag'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
+
+import { ContentDate } from './content-date'
+import { ContentRating } from './content-rating'
+import { ContentTag } from './content-tag'
 
 type ContentBlockType = {
     id: number
@@ -43,19 +46,11 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, review
 
                 <div className="flex items-center justify-between gap-x-2">
                     <div className="flex flex-wrap items-center gap-x-2">
-                        <div className="flex items-center gap-x-2 text-sm">
-                            <CalendarIcon size={16} />
-                            {year}
-                        </div>
-                        <div className="flex items-center gap-x-2 text-sm">
-                            <StarIcon size={16} fill="rgb(245, 197, 24)" stroke="rgb(245, 197, 24)" />
-                            <strong>
-                                {avgRating} / {reviewsCount}
-                            </strong>
-                        </div>
+                        <ContentDate year={year} />
+                        <ContentRating avgRating={avgRating} reviewsCount={reviewsCount} />
                     </div>
 
-                    <Tag
+                    <ContentTag
                         link={`/content/${type.toLowerCase()}`}
                         title={categories.find(category => category.type === type.toLowerCase())?.label || ''}
                     />

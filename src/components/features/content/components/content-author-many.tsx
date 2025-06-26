@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import Link from 'next/link'
 
-import { Tag } from '@/components/ui/tag'
+import { ContentTag } from '@/components/ui/content-tag'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
@@ -56,7 +56,7 @@ export const ContentAuthorMany = ({ comedians, type, month, year }: ContentAutho
             </div>
 
             <div className="flex items-center gap-x-2">
-                <Tag
+                <ContentTag
                     link={`/content/${type.toLowerCase()}`}
                     title={categories.find(category => category.type === type.toLowerCase())?.label || ''}
                 />
