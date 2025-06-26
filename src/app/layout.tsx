@@ -4,6 +4,8 @@ import type { Metadata } from 'next'
 
 import { Roboto } from 'next/font/google'
 
+import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
+
 import './globals.css'
 
 import { Providers } from './providers'
@@ -23,6 +25,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <html lang="en" className="h-full">
             <body className={`${roboto.variable} h-full bg-gray-50! antialiased`}>
                 <Providers>{children}</Providers>
+                <TailwindIndicator />
             </body>
         </html>
     )

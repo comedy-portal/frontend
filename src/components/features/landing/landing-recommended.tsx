@@ -7,8 +7,8 @@ export const LandingRecommended = async () => {
     const content = await getContentMany({
         sort_by: ContentSortBy.RATING,
         order: Order.DESC,
-        take: 8,
+        take: 4,
     })
 
-    return <LandingContentFeed title="Рекомендуемое" items={content.items} />
+    return <LandingContentFeed title="Рекомендуемое" href="/content/special?sort=rating_desc" items={content.items} />
 }

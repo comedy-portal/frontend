@@ -1,7 +1,7 @@
 export const ContentBlockSkeleton = () => {
     return (
         <div className="flex flex-col gap-y-2">
-            <div className="flex aspect-video items-center justify-center rounded-lg bg-gray-100">
+            <div className="flex aspect-video items-center justify-center rounded bg-gray-100">
                 <svg
                     className="w-10 text-gray-200"
                     aria-hidden="true"

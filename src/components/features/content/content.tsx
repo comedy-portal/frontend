@@ -16,7 +16,7 @@ type ContentProps = IContent
 export const Content = (props: ContentProps) => {
     return (
         <div className="container py-12">
-            <div className="space-y-8 rounded-lg bg-white px-4 py-8 shadow-xs sm:w-3/4">
+            <div className="space-y-8 rounded bg-white px-4 py-8 shadow-xs sm:w-3/4">
                 <div className="space-y-4">
                     <div className="flex flex-col gap-y-2">
                         <ContentTitle name={props.name} />
@@ -29,7 +29,7 @@ export const Content = (props: ContentProps) => {
                         />
                     </div>
 
-                    <div className="flex items-center justify-between rounded-lg bg-gray-100 p-4">
+                    <div className="flex items-center justify-between rounded bg-gray-100 p-4">
                         <div className="flex items-center gap-x-6">
                             <ContentRating
                                 avgRating={props.rating.avgRating}
@@ -38,7 +38,7 @@ export const Content = (props: ContentProps) => {
                             <ContentMyRating />
                         </div>
                         <div className="flex items-center gap-x-6">
-                            <ContentAddToWatchList />
+                            <ContentAddToWatchList contentId={props.id} />
                             <ContentPlay duration={props.duration} />
                         </div>
                     </div>

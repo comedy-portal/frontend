@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export const ReviewBlock = () => {
     return (
-        <div className="space-y-4 rounded-lg border-l-4 border-green-100 bg-green-50 p-4">
+        <div className="space-y-4 rounded border-l-4 border-green-100 bg-green-50 p-4">
             <div className="flex items-start justify-between">
                 <div className="text-sm">
                     <Link
