@@ -1,2 +1,10 @@
 @import 'tailwindcss';
 @import 'bootstrap/dist/css/bootstrap.min.css';
+
+.wrapper-sm {
+  @apply mx-auto max-w-4xl px-4 sm:px-6 lg:px-8;
+}
+
+.wrapper-lg {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}

@@ -27,7 +27,7 @@ export const HeaderMobile = ({ profileEntryPointComponent }: HeaderMobileProps) 
     }
 
     return (
-        <div className="flex items-center justify-between">
+        <div className="flex h-full items-center justify-between">
             <Logo className="text-white" />
 
             {isMobileMenuOpen ? (
