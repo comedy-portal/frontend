@@ -17,13 +17,13 @@ type NavItem = {
 
 const NAV_ITEMS: NavItem[] = [
     {
+        label: 'Рецензии',
+        path: slug => `/users/${slug.toLowerCase()}/reviews`,
+    },
+    {
         label: 'Избранное',
         path: slug => `/users/${slug.toLowerCase()}/watchlists`,
         exact: true,
-    },
-    {
-        label: 'Рецензии',
-        path: slug => `/users/${slug.toLowerCase()}/reviews`,
     },
 ]
 

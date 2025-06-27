@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation'
+
 import { GetUserByNameResponse } from './users.type'
 
 export async function getUserByName(username: string): GetUserByNameResponse {
@@ -6,7 +8,7 @@ export async function getUserByName(username: string): GetUserByNameResponse {
 
     if (!res.ok) {
         if (res.status === 404) {
-            throw new Error('User not found')
+            notFound()
         }
 
         throw new Error(res.statusText)
