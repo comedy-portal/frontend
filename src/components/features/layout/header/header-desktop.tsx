@@ -8,7 +8,7 @@ import { HeaderSearch } from './header-search/header-search'
 export const HeaderDesktop = () => {
     return (
         <div className="flex h-full flex-row items-center justify-between">
-            <div className="flex items-center justify-center gap-x-8">
+            <div className="flex h-full items-center justify-center gap-x-8">
                 <Logo className="text-white" />
                 <HeaderSearch />
 

@@ -16,7 +16,7 @@ export const HeaderSearch = () => {
     }
 
     return (
-        <div className="relative w-[350px]">
+        <div className="relative w-[330px]">
             <div className="absolute top-1/2 left-4 -translate-y-1/2 transform">
                 <SearchIcon size={16} absoluteStrokeWidth />
             </div>
@@ -26,7 +26,7 @@ export const HeaderSearch = () => {
                 name="search"
                 value={searchTerm}
                 autoComplete="off"
-                className="h-9 w-full rounded bg-white px-10 text-sm! focus:outline-none"
+                className="h-8 w-full rounded-full bg-white px-10 text-sm! focus:outline-none"
                 placeholder="Поиск..."
                 onChange={handleChange}
             />

@@ -12,12 +12,12 @@ export const Logo = ({ className }: LogoProps) => {
         <Link
             href="/"
             className={classNames(
-                'flex items-center gap-x-2 font-bold whitespace-nowrap uppercase no-underline!',
+                'flex h-full items-center gap-x-2 font-bold whitespace-nowrap uppercase no-underline!',
                 className,
             )}
         >
             <MicIcon strokeWidth={2.5} />
-            Comedy Portal
+            ComedyPortal
         </Link>
     )
 }
