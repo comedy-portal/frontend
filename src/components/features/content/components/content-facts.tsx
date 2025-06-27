@@ -9,7 +9,10 @@ export const ContentFacts = ({ facts }: ContentFactsProps) => {
 
     return (
         <section>
-            <h2 className="mb-4! text-2xl!">Факты</h2>
+            <div className="mb-4">
+                <h4 className="mb-2!">Факты</h4>
+                <hr className="m-0 border-gray-200! opacity-100!" />
+            </div>
             <div className="space-y-4">
                 {facts.map((fact, index) => (
                     <div key={`content-facts-item-${index}`} className="border-l-4 border-blue-200 pl-4">

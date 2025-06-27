@@ -2,17 +2,19 @@
 
 import { useState } from 'react'
 
-import { MicOffIcon } from 'lucide-react'
-
 import { LoadMore } from '@/components/ui/load-more'
-import { comediansAPI } from '@/redux/services/comedians/comedians.api'
+import { ReviewBlock } from '@/components/ui/review-block'
+import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
 
-import { ComediansFeedItem } from './comedians-feed-item'
+type ContentReviewsFeedProps = {
+    contentId: number
+}
 
-export const ComediansFeed = () => {
+export const ContentReviewsFeed = ({ contentId }: ContentReviewsFeedProps) => {
     const [cursor, setCursor] = useState<number>()
 
-    const { data, isFetching, isSuccess, isError } = comediansAPI.useGetComediansQuery({
+    const { data, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsQuery({
+        content_id: contentId,
         cursor,
     })
 
@@ -26,11 +28,10 @@ export const ComediansFeed = () => {
 
     if (isSuccess && data.items.length === 0) {
         return (
-            <div className="flex flex-col items-center gap-y-4 py-24 text-center text-gray-500">
-                <MicOffIcon strokeWidth={1} size={64} className="text-gray-400" />
-                Контент в этой категории пока отсутствует.
+            <div className="text-sm text-gray-500">
+                Рецензии к этому контенту пока отсутствуют.
                 <br />
-                Попробуйте выбрать другую категорию или зайдите позже.
+                Станьте первым, кто оставит рецензию!
             </div>
         )
     }
@@ -41,14 +42,14 @@ export const ComediansFeed = () => {
 
     return (
         <div className="flex flex-col gap-y-12">
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-5 sm:gap-8">
+            <div className="space-y-4">
                 {data.items.map(item => (
-                    <ComediansFeedItem
-                        key={`comedians-feed-item-${item.slug}`}
-                        slug={item.slug}
-                        name={item.name}
-                        surname={item.surname}
-                        image={item.comedianImages[0]?.url || ''}
+                    <ReviewBlock
+                        key={`content-reviews-feed-item-${item.id}`}
+                        text={item.text}
+                        rating={item.mark}
+                        username={item.user.username}
+                        createdAt={item.createdAt}
                     />
                 ))}
             </div>

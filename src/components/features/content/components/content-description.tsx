@@ -9,7 +9,10 @@ export const ContentDescription = ({ description }: ContentDescriptionProps) => 
 
     return (
         <section>
-            <h2 className="mb-4! text-2xl!">О выступлении</h2>
+            <div className="mb-4">
+                <h4 className="mb-2!">О выступлении</h4>
+                <hr className="m-0 border-gray-200! opacity-100!" />
+            </div>
             <div>{description}</div>
         </section>
     )

@@ -28,7 +28,7 @@ export const UserWatchlistsFeedItem = (props: UserWatchlistsFeedItemProps) => {
                     <ContentRating avgRating={props.avgRating} reviewsCount={props.reviewsCount} />
                 </div>
             </div>
-            <ChevronRightIcon />
+            <ChevronRightIcon strokeWidth={1.5} />
         </Link>
     )
 }

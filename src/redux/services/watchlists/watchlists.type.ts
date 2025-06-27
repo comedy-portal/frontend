@@ -1,6 +1,12 @@
-import { ContentType, Order, WatchlistSortBy } from '@/utils/enums/common'
+import { ContentType, Order } from '@/utils/enums/common'
 import { PaginatedResponse } from '@/utils/types/common'
 import { IWatchlist } from '@/utils/types/watchlist'
+
+export enum WatchlistSortBy {
+    CONTENT_DATE = 'content_date',
+    RATING = 'rating',
+    SAVED_AT = 'saved_at',
+}
 
 export type GetWatchlistParams = {
     username: string

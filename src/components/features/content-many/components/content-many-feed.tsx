@@ -9,7 +9,8 @@ import { useSearchParams } from 'next/navigation'
 import { ContentBlock } from '@/components/ui/content-block'
 import { LoadMore } from '@/components/ui/load-more'
 import { contentAPI } from '@/redux/services/content/content.api'
-import { ContentSortBy, ContentType, ContentUrlSortBy, Order } from '@/utils/enums/common'
+import { ContentSortBy } from '@/redux/services/content/content.types'
+import { ContentType, ContentUrlSortBy, Order } from '@/utils/enums/common'
 
 type ContentManyFeedProps = {
     type: ContentType
@@ -43,7 +44,7 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
     if (isError) {
         return (
             <div className="text-center text-gray-500">
-                Ошибка загрузки контента. Попробуйте обновить страницу или зайдите позже.
+                Ошибка загрузки. Попробуйте обновить страницу или зайдите позже.
             </div>
         )
     }

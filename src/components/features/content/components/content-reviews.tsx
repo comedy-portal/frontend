@@ -1,32 +1,22 @@
-import { Button } from 'react-bootstrap'
+import { ContentAddReview } from './content-add-review'
+import { ContentReviewsFeed } from './content-reviews-feed/content-reviews-feed'
 
-import { MessageCircleCodeIcon } from 'lucide-react'
+type ContentReviewsProps = {
+    id: number
+    isAuth: boolean
+}
 
-import { ReviewBlock } from '@/components/ui/review-block'
-
-export const ContentReviews = () => {
+export const ContentReviews = ({ id, isAuth }: ContentReviewsProps) => {
     return (
         <section>
-            <div className="mb-4 flex items-center justify-between">
-                <h2 className="mb-0! text-2xl!">Рецензии</h2>
-                <Button size="sm" className="flex! items-center gap-x-2">
-                    <MessageCircleCodeIcon size={16} /> Оставить рецензию
-                </Button>
+            <div className="mb-4">
+                <div className="mb-2 flex items-center justify-between">
+                    <h4 className="mb-0!">Рецензии</h4>
+                    <ContentAddReview isAuth={isAuth} />
+                </div>
+                <hr className="m-0 border-gray-200! opacity-100!" />
             </div>
-
-            {/* <p className="text-gray-500">Рецензии пользователей пока отсутствуют.</p> */}
-            <div className="space-y-8">
-                <ReviewBlock />
-                <ReviewBlock />
-                <ReviewBlock />
-                <ReviewBlock />
-                <ReviewBlock />
-                <ReviewBlock />
-                <ReviewBlock />
-                <ReviewBlock />
-                <ReviewBlock />
-                <ReviewBlock />
-            </div>
+            <ContentReviewsFeed contentId={id} />
         </section>
     )
 }

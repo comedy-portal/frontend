@@ -1,6 +1,12 @@
-import { ContentSortBy, ContentType, Order } from '@/utils/enums/common'
+import { ContentType, Order } from '@/utils/enums/common'
 import { PaginatedResponse } from '@/utils/types/common'
 import { IContent } from '@/utils/types/content'
+
+export enum ContentSortBy {
+    DATE = 'date',
+    NAME = 'name',
+    RATING = 'rating',
+}
 
 export type GetContentManyParams = {
     sort_by?: ContentSortBy
