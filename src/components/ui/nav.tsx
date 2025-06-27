@@ -5,36 +5,24 @@ import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-type UserNavProps = {
-    slug: string
+type NavProps = {
+    items: {
+        label: string
+        href: string
+        exact?: boolean
+    }[]
 }
 
-type NavItem = {
-    label: string
-    path: (slug: string) => string
-    exact?: boolean // если true — сравниваем строго, иначе через startsWith
-}
-
-const NAV_ITEMS: NavItem[] = [
-    {
-        label: 'Рецензии',
-        path: slug => `/users/${slug.toLowerCase()}/reviews`,
-    },
-    {
-        label: 'Избранное',
-        path: slug => `/users/${slug.toLowerCase()}/watchlists`,
-        exact: true,
-    },
-]
-
-export const UserNav = ({ slug }: UserNavProps) => {
+export const Nav = ({ items }: NavProps) => {
     const pathname = usePathname().toLowerCase()
+
+    const getLastSegment = (path: string) => path.split('/').filter(Boolean).pop()
 
     return (
         <nav className="flex gap-x-6 border-b border-gray-200 pb-3">
-            {NAV_ITEMS.map(({ label, path, exact = false }) => {
-                const href = path(slug)
-                const isActive = exact ? pathname === href : pathname.startsWith(href)
+            {items.map(({ label, href, exact = false }) => {
+                const target = href.toLowerCase()
+                const isActive = exact ? pathname === target : getLastSegment(pathname) === getLastSegment(target)
 
                 return (
                     <Link

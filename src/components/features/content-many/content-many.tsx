@@ -9,12 +9,6 @@ type ContentManyProps = {
 
 export const ContentMany = ({ slug }: ContentManyProps) => {
     return (
-        // <div>
-        //     <ContentManyHeader slug={slug} />
-        //     <div className="container py-12">
-        //         <ContentManyFeed type={slug} />
-        //     </div>
-        // </div>
         <div className="wrapper-lg py-8 sm:py-16">
             <div className="flex flex-col gap-y-4 sm:gap-y-8">
                 <h1 className="mb-0!">Контент</h1>

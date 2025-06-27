@@ -1,18 +1,19 @@
-import { StarIcon } from 'lucide-react'
-
 import Link from 'next/link'
 
-type ReviewBlockProps = {
+import { Rating } from '@/components/ui/rating'
+
+type ContentReviewsFeedItemProps = {
     text: string
     rating: number
     username: string
     createdAt: string
 }
 
-export const ReviewBlock = (props: ReviewBlockProps) => {
+export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
     return (
-        <div className="space-y-4 rounded border-l-4 border-green-100 bg-green-50 p-4">
-            <div className="flex items-start justify-between">
+        <div className="space-y-4 rounded bg-gray-100 p-4">
+            <div className="flex items-center gap-x-4">
+                <Rating value={props.rating} />
                 <div className="text-sm">
                     <Link
                         href={`/users/${props.username}`}
@@ -27,10 +28,6 @@ export const ReviewBlock = (props: ReviewBlockProps) => {
                             day: 'numeric',
                         })}
                     </div>
-                </div>
-                <div className="flex items-center gap-x-2 text-sm">
-                    <StarIcon size={16} fill="rgb(245, 197, 24)" stroke="rgb(245, 197, 24)" />
-                    <strong>{props.rating} / 10</strong>
                 </div>
             </div>
 

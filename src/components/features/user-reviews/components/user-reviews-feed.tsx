@@ -2,19 +2,23 @@
 
 import { useState } from 'react'
 
+import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
-import { ReviewBlock } from '@/components/ui/review-block'
 import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
+import { ContentType } from '@/utils/enums/common'
 
-type ContentReviewsFeedProps = {
-    contentId: number
+import { UserReviewsFeedItem } from './user-reviews-feed-item'
+import { UserReviewsFeedSkeleton } from './user-reviews-feed-skeleton'
+
+type UserReviewsFeedProps = {
+    userId: number
 }
 
-export const ContentReviewsFeed = ({ contentId }: ContentReviewsFeedProps) => {
+export const UserReviewsFeed = ({ userId }: UserReviewsFeedProps) => {
     const [cursor, setCursor] = useState<number>()
 
     const { data, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsQuery({
-        content_id: contentId,
+        user_id: userId,
         cursor,
     })
 
@@ -28,27 +32,32 @@ export const ContentReviewsFeed = ({ contentId }: ContentReviewsFeedProps) => {
 
     if (isSuccess && data.items.length === 0) {
         return (
-            <div className="text-sm text-gray-500">
-                Рецензии к этому контенту пока отсутствуют.
-                <br />
-                Станьте первым, кто оставит рецензию!
-            </div>
+            <EmptyMessage
+                text={
+                    <div>
+                        Здесь пока нет рецензий.
+                        <br />
+                        Когда они появятся — вы увидите их здесь.
+                    </div>
+                }
+            />
         )
     }
 
     if (!isSuccess) {
-        return <div>Загрузка ...</div>
+        return <UserReviewsFeedSkeleton />
     }
 
     return (
         <div className="flex flex-col gap-y-12">
             <div className="space-y-4">
                 {data.items.map(item => (
-                    <ReviewBlock
+                    <UserReviewsFeedItem
                         key={`content-reviews-feed-item-${item.id}`}
                         text={item.text}
                         rating={item.mark}
-                        username={item.user.username}
+                        contentName={item.content.name}
+                        contentType={ContentType.BLOG}
                         createdAt={item.createdAt}
                     />
                 ))}

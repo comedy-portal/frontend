@@ -2,8 +2,7 @@
 
 import { useState } from 'react'
 
-import { MicOffIcon } from 'lucide-react'
-
+import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { watchlistsAPI } from '@/redux/services/watchlists/watchlists.api'
 
@@ -32,12 +31,15 @@ export const UserWatchlistsFeed = ({ username }: UserWatchlistsFeedProps) => {
 
     if (isSuccess && data.items.length === 0) {
         return (
-            <div className="flex flex-col items-center gap-y-4 py-24 text-center text-sm text-gray-500">
-                <MicOffIcon strokeWidth={1} size={64} className="text-gray-400" />
-                Ваше избранное пусто.
-                <br />
-                Добавьте контент в избранное, чтобы он появился здесь.
-            </div>
+            <EmptyMessage
+                text={
+                    <div>
+                        Здесь пока нет избранного.
+                        <br />
+                        Контент, добавленный в список, появится здесь.
+                    </div>
+                }
+            />
         )
     }
 
