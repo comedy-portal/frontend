@@ -4,7 +4,8 @@ import ScrollContainer from 'react-indiana-drag-scroll'
 
 import classNames from 'classnames'
 
-import { useRouter, useSearchParams } from 'next/navigation'
+import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 
 import { categories } from '@/utils/dict/categories'
 import { ContentType, ContentUrlSortBy } from '@/utils/enums/common'
@@ -16,38 +17,30 @@ type ContentManyCategoriesProps = {
 }
 
 export const ContentManyCategories = ({ slug }: ContentManyCategoriesProps) => {
-    const router = useRouter()
     const searchParams = useSearchParams()
     const currentType = slug.toLowerCase()
 
-    const handleClick = (type: ContentType) => {
-        router.push(`/content/${type.toLowerCase()}?sort=${searchParams.get('sort') || ContentUrlSortBy.DATE_DESC}`)
-    }
-
     return (
         <ScrollContainer>
-            <nav>
-                <ul className="m-0! flex gap-2 p-0!">
-                    {categories.map(({ type, label }) => {
-                        const isActive = currentType === type.toLowerCase()
+            <nav className="flex gap-x-6 border-b border-gray-200 pb-3">
+                {categories.map(({ type, label }) => {
+                    const href = `/content/${type.toLowerCase()}?sort=${searchParams.get('sort') || ContentUrlSortBy.DATE_DESC}`
+                    const isActive = currentType === type.toLowerCase()
 
-                        return (
-                            <li key={`content-many-categories-${type}`}>
-                                <div
-                                    className={classNames(
-                                        'cursor-pointer rounded bg-gray-100 px-4 py-2 whitespace-nowrap text-black hover:bg-gray-300 hover:text-black',
-                                        {
-                                            'bg-gray-300': isActive,
-                                        },
-                                    )}
-                                    onClick={() => handleClick(type)}
-                                >
-                                    {label}
-                                </div>
-                            </li>
-                        )
-                    })}
-                </ul>
+                    return (
+                        <Link
+                            key={label}
+                            href={href}
+                            className={classNames('relative text-sm whitespace-nowrap no-underline!', {
+                                'text-black! after:absolute after:-bottom-[17px] after:left-0 after:h-[1px] after:w-full after:bg-black':
+                                    isActive,
+                                'text-gray-500! hover:text-black!': !isActive,
+                            })}
+                        >
+                            {label}
+                        </Link>
+                    )
+                })}
             </nav>
         </ScrollContainer>
     )
