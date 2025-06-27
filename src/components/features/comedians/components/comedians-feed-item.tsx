@@ -1,22 +1,22 @@
-import Link from 'next/link'
+import Image from 'next/image'
 
 type ComediansFeedItemType = {
     slug: string
     name: string
     surname: string
+    image: string
 }
 
-export const ComediansFeedItem = ({ slug, name, surname }: ComediansFeedItemType) => {
+export const ComediansFeedItem = ({ name, surname, image }: ComediansFeedItemType) => {
     return (
-        <div className="flex items-center gap-x-4">
-            <div className="flex flex-col items-start gap-y-1">
-                <Link
-                    href={`/comedians/${slug}`}
-                    className="text-lg font-semibold text-black no-underline! hover:text-blue-500!"
-                >
-                    {name} {surname}
-                </Link>
-            </div>
+        <div>
+            <Image
+                src={image}
+                alt={`${name} ${surname}`}
+                width={100}
+                height={100}
+                className="aspect-square w-full rounded"
+            />
         </div>
     )
 }

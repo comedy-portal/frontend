@@ -1,11 +1,11 @@
 import { ComediansFeed } from './components/comedians-feed'
-import { ComediansHeader } from './components/comedians-header'
 
 export const Comedians = () => {
     return (
-        <div>
-            <ComediansHeader />
-            <div className="container py-12">
+        <div className="container py-8 sm:py-16">
+            <div className="m-auto flex flex-col gap-y-4 sm:gap-y-8">
+                <h1 className="mb-0!">Комики</h1>
+                <hr />
                 <ComediansFeed />
             </div>
         </div>

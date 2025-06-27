@@ -3,21 +3,23 @@ import Link from 'next/link'
 import { Logo } from '@/components/ui/logo'
 
 import { HeaderProfileEntryPoint } from './header-profile-entry-point'
+import { HeaderSearch } from './header-search/header-search'
 
 export const HeaderDesktop = () => {
     return (
-        <div className="flex flex-row items-center justify-between">
+        <div className="flex h-full flex-row items-center justify-between">
             <div className="flex items-center justify-center gap-x-8">
                 <Logo className="text-white" />
+                <HeaderSearch />
 
                 <nav className="flex items-center justify-center gap-x-4 text-sm">
-                    <Link href="/content" className="text-white no-underline! hover:underline!">
+                    <Link href="/content" className="text-nowrap text-white no-underline! hover:underline!">
                         Контент
                     </Link>
-                    <Link href="/comedians" className="text-white no-underline! hover:underline!">
+                    <Link href="/comedians" className="text-nowrap text-white no-underline! hover:underline!">
                         Комики
                     </Link>
-                    <Link href="/about" className="text-white no-underline! hover:underline!">
+                    <Link href="/about" className="text-nowrap text-white no-underline! hover:underline!">
                         О проекте
                     </Link>
                 </nav>
