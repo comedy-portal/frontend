@@ -48,7 +48,6 @@ export const ComediansFeed = () => {
                         slug={item.slug}
                         name={item.name}
                         surname={item.surname}
-                        image={item.comedianImages[0]?.url || ''}
                     />
                 ))}
             </div>

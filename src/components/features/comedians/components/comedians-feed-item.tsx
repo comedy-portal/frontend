@@ -1,12 +1,9 @@
-import { s } from 'framer-motion/client'
-
 import Image from 'next/image'
 
 type ComediansFeedItemType = {
     slug: string
     name: string
     surname: string
-    image: string
 }
 
 export const ComediansFeedItem = ({ slug, name, surname }: ComediansFeedItemType) => {
