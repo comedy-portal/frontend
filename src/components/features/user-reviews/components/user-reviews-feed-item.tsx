@@ -4,10 +4,11 @@ import { Rating } from '@/components/ui/rating'
 import { ContentType } from '@/utils/enums/common'
 
 type UserReviewsFeedItemProps = {
+    id: number
+    type: ContentType
+    name: string
     text: string
     rating: number
-    contentName: string
-    contentType: ContentType
     createdAt: string
 }
 
@@ -18,10 +19,10 @@ export const UserReviewsFeedItem = (props: UserReviewsFeedItemProps) => {
                 <Rating value={props.rating} />
                 <div className="text-sm">
                     <Link
-                        href={`/content/${props.contentType.toLowerCase()}/${props.contentName}`}
+                        href={`/content/${props.type.toLowerCase()}/${props.id}`}
                         className="font-semibold text-black! no-underline! hover:text-blue-500!"
                     >
-                        {props.contentName}
+                        {props.name}
                     </Link>
                     <div className="text-gray-500">
                         {new Date(props.createdAt).toLocaleDateString('ru-RU', {

@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
-import { ContentType } from '@/utils/enums/common'
 
 import { UserReviewsFeedItem } from './user-reviews-feed-item'
 import { UserReviewsFeedSkeleton } from './user-reviews-feed-skeleton'
@@ -54,10 +53,11 @@ export const UserReviewsFeed = ({ userId }: UserReviewsFeedProps) => {
                 {data.items.map(item => (
                     <UserReviewsFeedItem
                         key={`content-reviews-feed-item-${item.id}`}
+                        id={item.content.id}
+                        type={item.content.type}
+                        name={item.content.name}
                         text={item.text}
                         rating={item.mark}
-                        contentName={item.content.name}
-                        contentType={ContentType.BLOG}
                         createdAt={item.createdAt}
                     />
                 ))}

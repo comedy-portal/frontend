@@ -1,4 +1,4 @@
-import { ContentType } from '../enums/common'
+import { ContentType } from '@/utils/enums/common'
 
 export type IWatchlist = {
     id: number

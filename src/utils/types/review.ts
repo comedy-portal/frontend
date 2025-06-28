@@ -1,4 +1,5 @@
-import { Image } from './common'
+import { ContentType } from '@/utils/enums/common'
+import { Image } from '@/utils/types/common'
 
 export type IReview = {
     id: number
@@ -17,6 +18,7 @@ type ReviewContentType = {
     id: number
     name: string
     year: number
+    type: ContentType
     comedians: {
         name: string
         surname: string

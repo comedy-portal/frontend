@@ -17,12 +17,12 @@ export const Content = ({ content, children }: ContentProps) => {
                     items={[
                         {
                             label: 'Описание',
-                            href: `/content/special/${content.id}`,
+                            href: `/content/${content.type.toLowerCase()}/${content.id}`,
                             exact: true,
                         },
                         {
                             label: `Рецензии (${content.rating.reviewsCount})`,
-                            href: `/content/special/${content.id}/reviews`,
+                            href: `/content/${content.type.toLowerCase()}/${content.id}/reviews`,
                             exact: true,
                         },
                     ]}
