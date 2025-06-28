@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 import type { Metadata } from 'next/types'
 
-import { User } from '@/components/features/user/user'
+import { Layout } from '@/components/features/layout/layout/layout'
 import { getUserByName } from '@/services/users'
 
 export const metadata: Metadata = {
@@ -14,5 +14,24 @@ type Params = Promise<{ username: string }>
 export default async function UsersLayout(props: { children: ReactNode; params: Params }) {
     const params = await props.params
     const user = await getUserByName(params.username)
-    return <User username={user.username}>{props.children}</User>
+    const lowerUsername = user.username.toLowerCase()
+
+    return (
+        <Layout
+            title={user.username}
+            size="sm"
+            nav={[
+                {
+                    label: 'Рецензии',
+                    href: `/users/${lowerUsername}/reviews`,
+                },
+                {
+                    label: 'Избранное',
+                    href: `/users/${lowerUsername}/watchlists`,
+                },
+            ]}
+        >
+            {props.children}
+        </Layout>
+    )
 }

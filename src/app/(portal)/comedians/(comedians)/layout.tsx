@@ -6,19 +6,19 @@ export const metadata: Metadata = {
     robots: 'noindex, nofollow',
 }
 
-export default function AboutLayout(props: { children: React.ReactNode }) {
+export default function ComediansLayout(props: { children: React.ReactNode }) {
     return (
         <Layout
-            title="О проекте"
-            size="sm"
+            title="Комики"
+            size="lg"
             nav={[
                 {
-                    label: 'Кто мы?',
-                    href: '/about',
+                    label: 'Соло-комики',
+                    href: '/comedians',
                 },
                 {
-                    label: 'Разбираемся в форматах',
-                    href: '/about/formats',
+                    label: 'Группы',
+                    href: '/comedians/groups',
                 },
             ]}
         >

@@ -1,4 +1,4 @@
-import { UserReviews } from '@/components/features/user-reviews/user-reviews'
+import { UserReviews } from '@/components/features/user/user-reviews/user-reviews'
 import { getUserByName } from '@/services/users'
 
 type Params = Promise<{ username: string }>

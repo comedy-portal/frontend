@@ -4,9 +4,9 @@ import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
-import { ContentDate } from './content-date'
-import { ContentRating } from './content-rating'
-import { ContentTag } from './content-tag'
+import { ContentBlockDate } from './content-block-date'
+import { ContentBlockTag } from './content-block-tag'
+import { Rating } from './rating'
 
 type ContentBlockType = {
     id: number
@@ -18,9 +18,9 @@ type ContentBlockType = {
     reviewsCount: number
 }
 
-export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, reviewsCount }: ContentBlockType) => {
+export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: ContentBlockType) => {
     return (
-        <div className="m-0 flex flex-col rounded bg-white shadow-sm">
+        <div className="flex flex-col rounded bg-white shadow-sm">
             <Link href={`/content/${type.toLowerCase()}/${id}`}>
                 <ImageWithFallback
                     src={imageUrl || ''}
@@ -31,24 +31,30 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, review
                 />
             </Link>
 
-            <div className="flex h-full flex-col justify-between gap-y-2 p-3">
-                <Link
-                    href={`/content/${type.toLowerCase()}/${id}`}
-                    className="line-clamp-2 h-12 font-semibold text-black no-underline! hover:text-blue-500!"
-                >
-                    {name}
-                </Link>
+            <div className="flex h-full flex-col justify-between gap-y-3 p-3">
+                <div className="flex items-start justify-between gap-x-4">
+                    <div className="flex flex-col gap-y-1">
+                        <Link
+                            href={`/content/${type.toLowerCase()}/${id}`}
+                            className="line-clamp-2 font-semibold text-black no-underline! hover:text-blue-500!"
+                        >
+                            {name}
+                        </Link>
 
-                <div className="flex items-center justify-between gap-x-2">
-                    <div className="flex flex-wrap items-center gap-x-2">
-                        <ContentDate year={year} />
-                        <ContentRating avgRating={avgRating} reviewsCount={reviewsCount} />
+                        {/* <div className="text-sm">Author</div> */}
                     </div>
 
-                    <ContentTag
+                    <Rating value={avgRating} className="size-12 flex-shrink-0" />
+                </div>
+
+                <hr className="m-0! border-gray-200! opacity-100!" />
+
+                <div className="flex items-center justify-between">
+                    <ContentBlockTag
                         link={`/content/${type.toLowerCase()}`}
                         title={categories.find(category => category.type === type.toLowerCase())?.label || ''}
                     />
+                    <ContentBlockDate year={year} />
                 </div>
             </div>
         </div>

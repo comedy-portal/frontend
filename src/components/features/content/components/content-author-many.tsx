@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import Link from 'next/link'
 
-import { ContentTag } from '@/components/ui/content-tag'
+import { ContentBlockTag } from '@/components/ui/content-block-tag'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
@@ -56,7 +56,7 @@ export const ContentAuthorMany = ({ comedians, type, month, year }: ContentAutho
             </div>
 
             <div className="flex items-center gap-x-2">
-                <ContentTag
+                <ContentBlockTag
                     link={`/content/${type.toLowerCase()}`}
                     title={categories.find(category => category.type === type.toLowerCase())?.label || ''}
                 />

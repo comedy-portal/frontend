@@ -1,3 +1,5 @@
+import { notFound } from 'next/navigation'
+
 import { GetComedianBySlugResponse } from './comedians.types'
 
 export async function getComedianBySlug(slug: string): GetComedianBySlugResponse {
@@ -5,7 +7,11 @@ export async function getComedianBySlug(slug: string): GetComedianBySlugResponse
     const res = await fetch(url)
 
     if (!res.ok) {
-        return undefined
+        if (res.status === 404) {
+            notFound()
+        }
+
+        throw new Error(res.statusText)
     }
 
     return res.json()

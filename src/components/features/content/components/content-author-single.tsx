@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { ContentTag } from '@/components/ui/content-tag'
+import { ContentBlockTag } from '@/components/ui/content-block-tag'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
@@ -18,7 +18,7 @@ type ContentAuthorSingleProps = {
 export const ContentAuthorSingle = ({ name, surname, slug, type, month, year }: ContentAuthorSingleProps) => {
     return (
         <div className="flex flex-col gap-x-2 sm:!flex-row sm:!items-center">
-            <ContentTag
+            <ContentBlockTag
                 link={`/content/${type.toLowerCase()}`}
                 title={categories.find(category => category.type === type.toLowerCase())?.label || ''}
             />
