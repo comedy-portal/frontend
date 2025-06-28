@@ -11,7 +11,7 @@ export const ComediansFeedItem = ({ name, surname, image }: ComediansFeedItemTyp
     return (
         <div>
             <Image
-                src={image}
+                src={`/images/${image}`}
                 alt={`${name} ${surname}`}
                 width={100}
                 height={100}
