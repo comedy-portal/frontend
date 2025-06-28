@@ -1,3 +1,5 @@
+import { s } from 'framer-motion/client'
+
 import Image from 'next/image'
 
 type ComediansFeedItemType = {
@@ -7,11 +9,11 @@ type ComediansFeedItemType = {
     image: string
 }
 
-export const ComediansFeedItem = ({ name, surname, image }: ComediansFeedItemType) => {
+export const ComediansFeedItem = ({ slug, name, surname }: ComediansFeedItemType) => {
     return (
         <div>
             <Image
-                src={`/images/${image}`}
+                src={`/images/comedians/${slug}.jpg`}
                 alt={`${name} ${surname}`}
                 width={100}
                 height={100}
