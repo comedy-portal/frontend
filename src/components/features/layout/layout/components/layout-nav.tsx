@@ -33,6 +33,7 @@ export const LayoutNav = ({ items }: LayoutNavProps) => {
                         <Link
                             key={`nav-item-${label}`}
                             href={href}
+                            replace
                             className={classNames('relative text-nowrap no-underline!', {
                                 'text-black! after:absolute after:-bottom-[17px] after:left-0 after:h-[1px] after:w-full after:bg-black':
                                     isActive,
