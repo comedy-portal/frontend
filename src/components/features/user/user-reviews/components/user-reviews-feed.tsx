@@ -31,15 +31,11 @@ export const UserReviewsFeed = ({ userId }: UserReviewsFeedProps) => {
 
     if (isSuccess && data.items.length === 0) {
         return (
-            <EmptyMessage
-                text={
-                    <div>
-                        Здесь пока нет рецензий.
-                        <br />
-                        Когда они появятся — вы увидите их здесь.
-                    </div>
-                }
-            />
+            <EmptyMessage>
+                Здесь пока нет рецензий.
+                <br />
+                Когда они появятся — вы увидите их здесь.
+            </EmptyMessage>
         )
     }
 

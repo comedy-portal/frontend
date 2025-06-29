@@ -2,8 +2,7 @@
 
 import { useState } from 'react'
 
-import { MicOffIcon } from 'lucide-react'
-
+import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { comediansAPI } from '@/redux/services/comedians/comedians.api'
 
@@ -26,12 +25,11 @@ export const ComediansSoloFeed = () => {
 
     if (isSuccess && data.items.length === 0) {
         return (
-            <div className="flex flex-col items-center gap-y-4 py-24 text-center text-gray-500">
-                <MicOffIcon strokeWidth={1} size={64} className="text-gray-400" />
+            <EmptyMessage>
                 Контент в этой категории пока отсутствует.
                 <br />
                 Попробуйте выбрать другую категорию или зайдите позже.
-            </div>
+            </EmptyMessage>
         )
     }
 

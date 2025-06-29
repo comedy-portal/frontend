@@ -2,11 +2,10 @@
 
 import { useMemo, useState } from 'react'
 
-import { MicOffIcon } from 'lucide-react'
-
 import { useSearchParams } from 'next/navigation'
 
 import { ContentBlock } from '@/components/ui/content-block'
+import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { contentAPI } from '@/redux/services/content/content.api'
 import { ContentSortBy } from '@/redux/services/content/content.types'
@@ -51,12 +50,11 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
 
     if (isSuccess && data.items.length === 0) {
         return (
-            <div className="flex flex-col items-center gap-y-4 py-24 text-center text-gray-500">
-                <MicOffIcon strokeWidth={1} size={64} className="text-gray-400" />
+            <EmptyMessage>
                 Контент в этой категории пока отсутствует.
                 <br />
                 Попробуйте выбрать другую категорию или зайдите позже.
-            </div>
+            </EmptyMessage>
         )
     }
 

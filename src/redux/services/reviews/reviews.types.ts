@@ -18,3 +18,19 @@ export type GetReviewsParams = {
 }
 
 export type GetReviewsResponse = PaginatedResponse<IReview>
+
+export type CreateReviewInputs = {
+    contentId: number
+    mark: number
+    text?: string
+}
+
+export type UpdateReviewInputs = {
+    id: number
+    mark?: number
+    text?: string
+}
+
+export type CreateReviewResponse = {
+    id: number
+}

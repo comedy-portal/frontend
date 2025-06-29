@@ -33,16 +33,12 @@ export const ContentReviewsFeed = ({ contentId, isAuth }: ContentReviewsFeedProp
 
     if (isSuccess && data.items.length === 0) {
         return (
-            <EmptyMessage
-                text={
-                    <div>
-                        Здесь пока нет рецензий.
-                        <br />
-                        Оставьте первую — поделитесь своим мнением.
-                        <ContentReviewAddButton className="mt-4" isAuth={isAuth} />
-                    </div>
-                }
-            />
+            <EmptyMessage>
+                Здесь пока нет рецензий.
+                <br />
+                Оставьте первую — поделитесь своим мнением.
+                <ContentReviewAddButton className="mt-4" isAuth={isAuth} />
+            </EmptyMessage>
         )
     }
 

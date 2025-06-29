@@ -25,7 +25,7 @@ export default async function ComedianLayout(props: { children: ReactNode; param
                     href: `/comedians/${params.slug}/`,
                 },
                 {
-                    label: 'Контент',
+                    label: `Контент (${comedian.content?.length || 0})`,
                     href: `/comedians/${params.slug}/content`,
                 },
             ]}

@@ -31,15 +31,11 @@ export const UserWatchlistsFeed = ({ username }: UserWatchlistsFeedProps) => {
 
     if (isSuccess && data.items.length === 0) {
         return (
-            <EmptyMessage
-                text={
-                    <div>
-                        Здесь пока нет избранного.
-                        <br />
-                        Контент, добавленный в список, появится здесь.
-                    </div>
-                }
-            />
+            <EmptyMessage>
+                Здесь пока нет избранного.
+                <br />
+                Контент, добавленный в список, появится здесь.
+            </EmptyMessage>
         )
     }
 
