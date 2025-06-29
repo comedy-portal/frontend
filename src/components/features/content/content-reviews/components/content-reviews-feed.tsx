@@ -6,7 +6,7 @@ import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
 
-import { ContentAddReview } from '../../components/content-add-review'
+import { ContentReviewAddButton } from './content-review-add-button'
 import { ContentReviewsFeedItem } from './content-reviews-feed-item'
 import { ContentReviewsFeedSkeleton } from './content-reviews-feed-skeleton'
 
@@ -39,7 +39,7 @@ export const ContentReviewsFeed = ({ contentId, isAuth }: ContentReviewsFeedProp
                         Здесь пока нет рецензий.
                         <br />
                         Оставьте первую — поделитесь своим мнением.
-                        <ContentAddReview className="mt-4" isAuth={isAuth} />
+                        <ContentReviewAddButton className="mt-4" isAuth={isAuth} />
                     </div>
                 }
             />
@@ -51,10 +51,10 @@ export const ContentReviewsFeed = ({ contentId, isAuth }: ContentReviewsFeedProp
     }
 
     return (
-        <div className="flex flex-col gap-y-12">
+        <div className="relative flex flex-col gap-y-12">
             <div>
-                <div className="mb-4">
-                    <ContentAddReview isAuth={isAuth} className="w-full justify-center sm:w-auto" />
+                <div className="mb-4 sm:absolute sm:-top-[76px] sm:right-0 sm:mb-0">
+                    <ContentReviewAddButton isAuth={isAuth} className="w-full justify-center sm:w-auto" />
                 </div>
                 <div className="space-y-4">
                     {data.items.map(item => (

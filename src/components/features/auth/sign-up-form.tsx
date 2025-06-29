@@ -58,7 +58,7 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
         <Form onSubmit={handleSubmit} noValidate className="flex flex-col gap-y-6 sm:w-104">
             <div>
                 <h2 className="text-center text-2xl!">Войти</h2>
-                <p className="text-center text-xs text-gray-500 sm:m-auto sm:w-2/3">
+                <p className="text-center text-sm text-gray-500 sm:m-auto sm:w-3/4">
                     Для этого укажите только электронную почту, мы отправим на нее данные для входа
                 </p>
             </div>
@@ -87,7 +87,7 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
                 Продолжить
             </Button>
 
-            <p className="text-center text-xs text-gray-500 sm:m-auto sm:w-3/4">
+            <p className="text-center text-sm text-gray-500">
                 Нажимая кнопку Продолжить, я подтверждаю, что ознакомился с{' '}
                 <Link href="/legal/privacy-policy">Политикой конфиденциальности</Link> и{' '}
                 <Link href="/legal/terms-of-service">Пользовательским соглашением</Link>

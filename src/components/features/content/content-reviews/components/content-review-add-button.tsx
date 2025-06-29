@@ -6,14 +6,15 @@ import classNames from 'classnames'
 import { MessageCircleCodeIcon } from 'lucide-react'
 
 import { SignUp } from '@/components/features/auth/sign-up'
+import { ReviewForm } from '@/components/features/dialogs/reviews-form/review-form'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
-type ContentAddReviewProps = {
+type ContentReviewAddButtonProps = {
     className?: string
     isAuth: boolean
 }
 
-export const ContentAddReview = ({ className, isAuth }: ContentAddReviewProps) => {
+export const ContentReviewAddButton = ({ className, isAuth }: ContentReviewAddButtonProps) => {
     const dialog = useDialog()
 
     const handleClick = () => {
@@ -21,6 +22,8 @@ export const ContentAddReview = ({ className, isAuth }: ContentAddReviewProps) =
             dialog.open(<SignUp />)
             return
         }
+
+        dialog.open(<ReviewForm />)
     }
 
     return (

@@ -14,6 +14,7 @@ type Params = Promise<{ id: number }>
 export default async function ContentLayout(props: { children: ReactNode; params: Params }) {
     const params = await props.params
     const content = await getContentById(params.id)
+
     return (
         <Layout
             title={content.name}

@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 
-import { Nav } from '@/components/ui/nav'
+import { LayoutNav } from './components/layout-nav'
 
 type LayoutProps = {
     children: React.ReactNode
@@ -18,9 +18,9 @@ export const Layout = ({ children, title, size, nav }: LayoutProps) => {
 
     return (
         <div className={classNames(wrapperSize, 'py-8 sm:py-16')}>
-            <div className="flex flex-col gap-y-4 sm:gap-y-8">
+            <div className="flex flex-col gap-y-8 sm:gap-y-8">
                 <h1 className="mb-0!">{title}</h1>
-                <Nav items={nav} />
+                <LayoutNav items={nav} />
                 {children}
             </div>
         </div>

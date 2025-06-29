@@ -21,7 +21,7 @@ export const ComediansSoloFeedItem = ({ slug, name, surname }: ComediansSoloFeed
                 className="aspect-square w-full rounded"
             />
 
-            <div className="text-sm font-semibold">
+            <div className="font-semibold">
                 {name} {surname}
             </div>
         </Link>

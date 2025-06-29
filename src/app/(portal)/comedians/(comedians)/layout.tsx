@@ -9,11 +9,11 @@ export const metadata: Metadata = {
 export default function ComediansLayout(props: { children: React.ReactNode }) {
     return (
         <Layout
-            title="Комики"
+            title="Авторы"
             size="lg"
             nav={[
                 {
-                    label: 'Соло-комики',
+                    label: 'Комики',
                     href: '/comedians',
                 },
                 {
