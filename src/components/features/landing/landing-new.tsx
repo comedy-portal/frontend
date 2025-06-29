@@ -1,5 +1,5 @@
 import { ContentSortBy } from '@/redux/services/content/content.types'
-import { getContentMany } from '@/services/content'
+import { getContentMany } from '@/services/content/content'
 import { Order } from '@/utils/enums/common'
 
 import { LandingContentFeed } from './components/landing-content-feed'

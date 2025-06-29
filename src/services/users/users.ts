@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { GetUserByNameResponse } from './users.type'
+import { GetUserByNameResponse } from './users.types'
 
 export async function getUserByName(username: string): GetUserByNameResponse {
     const url = process.env.NEXT_PUBLIC_API_URL + '/users/' + username

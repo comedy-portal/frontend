@@ -1,4 +1,4 @@
-import { getUserData } from '@/services/user'
+import { getUserData } from '@/services/user/user'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 

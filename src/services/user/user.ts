@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers'
 
-import { GetUserDataResponse } from './user.type'
+import { GetUserDataResponse } from './user.types'
 
 export async function getUserData(): GetUserDataResponse {
     const cookieStore = await cookies()

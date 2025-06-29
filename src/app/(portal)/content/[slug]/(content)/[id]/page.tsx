@@ -1,5 +1,5 @@
 import { ContentDescription } from '@/components/features/content/content-description/content-description'
-import { getContentById } from '@/services/content'
+import { getContentById } from '@/services/content/content'
 
 type Params = Promise<{ id: number }>
 

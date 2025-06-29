@@ -1,5 +1,5 @@
 import { ContentReviews } from '@/components/features/content/content-reviews/content-reviews'
-import { getContentById } from '@/services/content'
+import { getContentById } from '@/services/content/content'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 

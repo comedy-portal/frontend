@@ -1,5 +1,5 @@
 import { ComedianContent } from '@/components/features/comedian/comedian-content/comedian-content'
-import { getComedianBySlug } from '@/services/comedians'
+import { getComedianBySlug } from '@/services/comedians/comedians'
 
 type Params = Promise<{ slug: string }>
 

@@ -20,6 +20,10 @@ export default function AboutLayout(props: { children: React.ReactNode }) {
                     label: 'Разбираемся в форматах',
                     href: '/about/formats',
                 },
+                {
+                    label: 'Как мы оцениваем',
+                    href: '/about/ratings',
+                },
             ]}
         >
             {props.children}

@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 import type { Metadata } from 'next/types'
 
 import { Layout } from '@/components/features/layout/layout/layout'
-import { getUserByName } from '@/services/users'
+import { getUserByName } from '@/services/users/users'
 
 export const metadata: Metadata = {
     robots: 'noindex, nofollow',
