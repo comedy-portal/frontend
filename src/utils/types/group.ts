@@ -1,3 +1,5 @@
+import { ContentType } from '@/utils/enums/common'
+
 import { Image, Link, Rating } from './common'
 
 export type IGroup = {
@@ -12,7 +14,7 @@ export type IGroup = {
     content: {
         id: number
         name: string
-        type: string
+        type: ContentType
         year: number
         month: number
         duration?: number

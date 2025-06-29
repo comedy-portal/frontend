@@ -1,13 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-type ComediansSoloFeedItemType = {
+type ComedianBlockType = {
     slug: string
     name: string
     surname: string
 }
 
-export const ComediansSoloFeedItem = ({ slug, name, surname }: ComediansSoloFeedItemType) => {
+export const ComedianBlock = ({ slug, name, surname }: ComedianBlockType) => {
     return (
         <Link
             href={`/comedians/${slug}`}

@@ -4,14 +4,14 @@ import { useState } from 'react'
 
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
-import { comediansAPI } from '@/redux/services/comedians/comedians.api'
+import { groupsAPI } from '@/redux/services/groups/groups.api'
 
-import { ComediansSoloFeedItem } from './comedians-solo-feed-item'
+import { ComediansGroupsFeedItem } from './comedians-groups-feed-item'
 
-export const ComediansSoloFeed = () => {
+export const ComediansGroupsFeed = () => {
     const [cursor, setCursor] = useState<number>()
 
-    const { data, isFetching, isSuccess, isError } = comediansAPI.useGetComediansQuery({
+    const { data, isFetching, isSuccess, isError } = groupsAPI.useGetGroupsQuery({
         cursor,
     })
 
@@ -41,11 +41,11 @@ export const ComediansSoloFeed = () => {
         <div className="flex flex-col gap-y-12">
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-8 md:grid-cols-4 lg:grid-cols-5">
                 {data.items.map(item => (
-                    <ComediansSoloFeedItem
-                        key={`comedians-solo-feed-item-${item.slug}`}
+                    <ComediansGroupsFeedItem
+                        key={`comedians-groups-feed-item-${item.slug}`}
                         slug={item.slug}
                         name={item.name}
-                        surname={item.surname}
+                        image={item.groupImages[0]?.url}
                     />
                 ))}
             </div>

@@ -4,6 +4,8 @@ import type { Metadata } from 'next'
 
 import { Roboto } from 'next/font/google'
 
+import { Footer } from '@/components/features/layout/footer/footer'
+import { Header } from '@/components/features/layout/header/header'
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
 
 import './globals.css'
@@ -24,7 +26,13 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     return (
         <html lang="en" className="h-full">
             <body className={`${roboto.variable} h-full antialiased`}>
-                <Providers>{children}</Providers>
+                <Providers>
+                    <div className="flex min-h-screen flex-col">
+                        <Header />
+                        <main className="flex-1">{children}</main>
+                        <Footer />
+                    </div>
+                </Providers>
                 <TailwindIndicator />
             </body>
         </html>
