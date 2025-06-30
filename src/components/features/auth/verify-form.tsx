@@ -1,12 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { Alert, Button, Form } from 'react-bootstrap'
 
 import { ArrowLeftIcon } from 'lucide-react'
 import * as yup from 'yup'
 
 import { VerifyTimer } from '@/components/features/auth/verify-timer'
+import { Button } from '@/components/ui/forms/button'
+import { Input } from '@/components/ui/forms/input'
 import { messages } from '@/messages'
 
 const validationSchema = yup.object().shape({
@@ -54,44 +55,40 @@ export const VerifyForm = ({ email, status, isLoading, onVerifyOtp, onResendOtp,
     }
 
     return (
-        <Form onSubmit={handleSubmit} noValidate className="flex flex-col gap-y-6 sm:w-104">
-            <div>
-                <h2 className="text-center text-2xl">Код подтверждения</h2>
-                <p className="text-center text-sm text-gray-500">
-                    Мы отправили письмо с кодом подтверждения на
-                    <br />
-                    <strong>{email}</strong>
-                </p>
-            </div>
+        <form className="sm:w-104" onSubmit={handleSubmit}>
+            <h1 className="mb-2 text-center text-xl font-semibold">Код подтверждения</h1>
+            <p className="m-auto mb-8 text-center text-sm text-gray-500 sm:w-5/6">
+                Мы отправили письмо с кодом подтверждения на
+                <br />
+                <strong>{email}</strong>
+            </p>
 
             {status && status !== 'OK' && (
-                <Alert variant="danger" className="mb-0 text-sm">
+                <div className="mb-4 rounded-lg border border-red-100 bg-red-50 p-4 text-center text-sm text-red-500">
                     {status === 'EXPIRED_USER_INPUT_CODE_ERROR' && 'Код подтверждения устарел'}
                     {status === 'INCORRECT_USER_INPUT_CODE_ERROR' && 'Неверный код подтверждения'}
                     {status === 'RESTART_FLOW_ERROR' && messages.COMMON_ERROR}
                     {status === 'SIGN_IN_UP_NOT_ALLOWED' && messages.COMMON_ERROR}
-                </Alert>
+                </div>
             )}
 
-            <Form.Group controlId="signUpEmail">
-                <Form.Label className="flex items-center justify-between">
-                    Код
+            <div className="mb-4">
+                <div className="mb-2 flex items-center justify-between">
+                    <label className="block text-sm text-gray-700">Код подтверждения</label>
                     <VerifyTimer onResendOtp={onResendOtp} />
-                </Form.Label>
-                <Form.Control
-                    type="otp"
+                </div>
+                <Input
+                    type="text"
                     name="otp"
-                    value={otp}
-                    placeholder="123456"
                     autoFocus
+                    value={otp}
+                    error={errors.otp}
                     disabled={isLoading}
-                    isInvalid={!!errors.otp}
                     onChange={e => setOtp(e.target.value)}
                 />
-                <Form.Control.Feedback type="invalid">{errors.otp}</Form.Control.Feedback>
-            </Form.Group>
+            </div>
 
-            <Button variant="primary" type="submit" className="w-full" disabled={isLoading}>
+            <Button type="submit" className="mb-6 w-full" disabled={isLoading}>
                 Подтвердить
             </Button>
 
@@ -102,6 +99,6 @@ export const VerifyForm = ({ email, status, isLoading, onVerifyOtp, onResendOtp,
                 <ArrowLeftIcon size={16} />
                 Изменить email
             </div>
-        </Form>
+        </form>
     )
 }

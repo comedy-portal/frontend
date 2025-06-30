@@ -1,12 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { Alert, Button, Form } from 'react-bootstrap'
 
 import * as yup from 'yup'
 
 import Link from 'next/link'
 
+import { Button } from '@/components/ui/forms/button'
+import { Input } from '@/components/ui/forms/input'
 import { messages } from '@/messages'
 
 const validationSchema = yup.object().shape({
@@ -55,43 +56,37 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
     }
 
     return (
-        <Form onSubmit={handleSubmit} noValidate className="flex flex-col gap-y-6 sm:w-104">
-            <div>
-                <h2 className="text-center text-2xl">Войти</h2>
-                <p className="text-center text-sm text-gray-500 sm:m-auto sm:w-3/4">
-                    Для этого укажите только электронную почту, мы отправим на нее данные для входа
-                </p>
-            </div>
+        <form className="sm:w-104" onSubmit={handleSubmit}>
+            <h1 className="mb-2 text-center text-xl font-semibold">Войти</h1>
+            <p className="m-auto mb-8 text-center text-sm text-gray-500 sm:w-3/4">
+                Для этого укажите только электронную почту, мы отправим на нее данные для входа
+            </p>
 
             {status && status !== 'OK' && (
-                <Alert variant="danger" className="mb-0 text-sm">
+                <div className="mb-4 rounded-lg border border-red-100 bg-red-50 p-4 text-center text-sm text-red-500">
                     {messages.COMMON_ERROR}
-                </Alert>
+                </div>
             )}
 
-            <Form.Group controlId="signUpEmail">
-                <Form.Label>Электронная почта</Form.Label>
-                <Form.Control
-                    type="email"
+            <div className="mb-4">
+                <label className="mb-2 block text-sm text-gray-700">Электронная почта</label>
+                <Input
+                    type="text"
                     name="email"
-                    value={email}
                     autoFocus
+                    value={email}
+                    error={errors.email}
                     disabled={isLoading}
-                    isInvalid={!!errors.email}
                     onChange={e => setEmail(e.target.value)}
                 />
-                <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
-            </Form.Group>
+            </div>
 
-            <Button variant="primary" type="submit" className="w-full" disabled={isLoading}>
+            <Button type="submit" className="mb-4 w-full" disabled={isLoading}>
                 Продолжить
             </Button>
 
-            <p className="text-center text-sm text-gray-500">
-                Нажимая кнопку Продолжить, я подтверждаю, что ознакомился с{' '}
-                <Link href="/legal/privacy-policy">Политикой конфиденциальности</Link> и{' '}
-                <Link href="/legal/terms-of-service">Пользовательским соглашением</Link>
-            </p>
-        </Form>
+            {/* prettier-ignore */}
+            <p className="m-auto text-center text-xs text-gray-400 sm:w-3/4">Нажимая кнопку Продолжить, я подтверждаю, что ознакомился с <Link href="/legal/privacy-policy" className="text-blue-500">Политикой конфиденциальности</Link> и <Link href="/legal/terms-of-service" className="text-blue-500">Пользовательским соглашением</Link></p>
+        </form>
     )
 }

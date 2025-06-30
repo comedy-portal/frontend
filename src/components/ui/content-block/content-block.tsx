@@ -20,8 +20,8 @@ type ContentBlockType = {
 
 export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: ContentBlockType) => {
     return (
-        <div>
-            <Link href={`/content/${type.toLowerCase()}/${id}`} className="relative">
+        <div className="relative">
+            <Link href={`/content/${type.toLowerCase()}/${id}`}>
                 <div className="absolute top-0 right-0 rounded-bl-lg bg-white pb-1 pl-1">
                     <Rating value={avgRating} className="size-12 text-xl" />
                 </div>
