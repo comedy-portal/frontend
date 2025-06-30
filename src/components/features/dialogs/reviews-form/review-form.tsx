@@ -13,7 +13,7 @@ import { ReviewFormRating } from './components/review-form-rating'
 type ReviewFormProps = {
     initialValues: CreateReviewInputs | UpdateReviewInputs
     isLoading: boolean
-    onSubmit: (data: CreateReviewInputs | any) => void
+    onSubmit: (data: CreateReviewInputs | UpdateReviewInputs) => void
 }
 
 export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormProps) => {

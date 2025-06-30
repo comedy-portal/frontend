@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { ContentBlockTag } from '@/components/ui/content-block-tag'
+import { ContentBlockTag } from '@/components/ui/content-block/components/content-block-tag'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
