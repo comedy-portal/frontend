@@ -74,7 +74,7 @@ export const VerifyForm = ({ email, status, isLoading, onVerifyOtp, onResendOtp,
 
             <div className="mb-4">
                 <div className="mb-2 flex items-center justify-between">
-                    <label className="block text-sm font-semibold text-gray-700">Код подтверждения</label>
+                    <label className="block text-sm font-semibold text-gray-700">Код</label>
                     <VerifyTimer onResendOtp={onResendOtp} />
                 </div>
                 <Input
