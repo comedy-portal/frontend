@@ -20,7 +20,7 @@ type ContentBlockType = {
 
 export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: ContentBlockType) => {
     return (
-        <div className="flex flex-col rounded bg-gray-50 p-2 shadow-sm">
+        <div className="flex flex-col gap-y-3 rounded bg-gray-50 p-3 shadow-sm">
             <Link href={`/content/${type.toLowerCase()}/${id}`}>
                 <ImageWithFallback
                     src={imageUrl || ''}
@@ -31,7 +31,7 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: Cont
                 />
             </Link>
 
-            <div className="flex h-full flex-col justify-between gap-y-3 p-3">
+            <div className="flex h-full flex-col justify-between gap-y-3">
                 <div className="flex items-start gap-x-4">
                     <Rating value={avgRating} className="size-12 flex-shrink-0" />
 
