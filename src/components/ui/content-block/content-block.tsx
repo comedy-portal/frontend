@@ -20,7 +20,7 @@ type ContentBlockType = {
 
 export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: ContentBlockType) => {
     return (
-        <div className="flex flex-col gap-y-4 rounded-lg bg-white p-4">
+        <div>
             <Link href={`/content/${type.toLowerCase()}/${id}`} className="relative">
                 <div className="absolute top-0 right-0 rounded-bl-lg bg-white pb-1 pl-1">
                     <Rating value={avgRating} className="size-12 text-xl" />
@@ -30,27 +30,28 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: Cont
                     src={imageUrl || ''}
                     width={254}
                     height={160}
-                    className="aspect-video h-auto w-auto rounded-lg align-top"
+                    className="aspect-video h-auto w-auto rounded-t-lg align-top"
                     alt={name}
                 />
             </Link>
 
-            <div>
-                <div className="text-sm text-gray-700">Евгений Чебатков</div>
-                <Link
-                    href={`/content/${type.toLowerCase()}/${id}`}
-                    className="line-clamp-2 h-12 font-semibold hover:text-blue-500"
-                >
-                    {name}
-                </Link>
-            </div>
-
-            <div className="flex items-center justify-between">
-                <ContentBlockTag
-                    link={`/content/${type.toLowerCase()}`}
-                    title={categories.find(category => category.type === type.toLowerCase())?.label || ''}
-                />
-                <ContentBlockDate year={year} />
+            <div className="flex flex-col gap-y-4 rounded-b-lg border-x border-b border-[#DFE2E6] p-4">
+                <div>
+                    <div className="text-sm text-gray-700">Евгений Чебатков</div>
+                    <Link
+                        href={`/content/${type.toLowerCase()}/${id}`}
+                        className="line-clamp-2 h-12 font-semibold hover:text-blue-500"
+                    >
+                        {name}
+                    </Link>
+                </div>
+                <div className="flex items-center justify-between">
+                    <ContentBlockTag
+                        link={`/content/${type.toLowerCase()}`}
+                        title={categories.find(category => category.type === type.toLowerCase())?.label || ''}
+                    />
+                    <ContentBlockDate year={year} />
+                </div>
             </div>
         </div>
     )

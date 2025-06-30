@@ -14,7 +14,7 @@ type UserReviewsFeedItemProps = {
 
 export const UserReviewsFeedItem = (props: UserReviewsFeedItemProps) => {
     return (
-        <div className="space-y-4 rounded-lg bg-gray-50 p-4 hover:bg-gray-100">
+        <div className="space-y-4 rounded-lg bg-white p-4">
             <div className="flex items-center gap-x-4">
                 <Rating value={props.rating} className="size-11" />
                 <div className="text-sm">

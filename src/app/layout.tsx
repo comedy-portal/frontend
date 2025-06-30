@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
     return (
         <html lang="en" className="h-full">
-            <body className={`${roboto.variable} h-full bg-[#f5f6f7] antialiased`}>
+            <body className={`${roboto.variable} h-full antialiased`}>
                 <Providers>
                     <div className="flex min-h-screen flex-col">
                         <Header />
