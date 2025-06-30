@@ -14,13 +14,13 @@ type UserReviewsFeedItemProps = {
 
 export const UserReviewsFeedItem = (props: UserReviewsFeedItemProps) => {
     return (
-        <div className="space-y-4 rounded bg-gray-100 p-4">
+        <div className="space-y-4 rounded-lg bg-gray-50 p-4 hover:bg-gray-100">
             <div className="flex items-center gap-x-4">
-                <Rating value={props.rating} />
+                <Rating value={props.rating} className="size-11" />
                 <div className="text-sm">
                     <Link
                         href={`/content/${props.type.toLowerCase()}/${props.id}`}
-                        className="font-semibold text-black! no-underline! hover:text-blue-500!"
+                        className="text-base font-semibold text-black hover:text-blue-500"
                     >
                         {props.name}
                     </Link>

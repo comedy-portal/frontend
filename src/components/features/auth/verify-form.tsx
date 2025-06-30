@@ -56,7 +56,7 @@ export const VerifyForm = ({ email, status, isLoading, onVerifyOtp, onResendOtp,
     return (
         <Form onSubmit={handleSubmit} noValidate className="flex flex-col gap-y-6 sm:w-104">
             <div>
-                <h2 className="text-center text-2xl!">Код подтверждения</h2>
+                <h2 className="text-center text-2xl">Код подтверждения</h2>
                 <p className="text-center text-sm text-gray-500">
                     Мы отправили письмо с кодом подтверждения на
                     <br />
@@ -74,7 +74,7 @@ export const VerifyForm = ({ email, status, isLoading, onVerifyOtp, onResendOtp,
             )}
 
             <Form.Group controlId="signUpEmail">
-                <Form.Label className="flex! items-center justify-between">
+                <Form.Label className="flex items-center justify-between">
                     Код
                     <VerifyTimer onResendOtp={onResendOtp} />
                 </Form.Label>

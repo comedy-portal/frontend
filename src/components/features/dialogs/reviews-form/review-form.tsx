@@ -2,39 +2,69 @@
 
 import { Button, Form } from 'react-bootstrap'
 
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+
+import { CreateReviewInputs, UpdateReviewInputs } from '@/redux/services/reviews/reviews.types'
+import { useDialog } from '@/utils/providers/dialog-provider'
+
 import { ReviewFormRating } from './components/review-form-rating'
 
-export const ReviewForm = () => {
+type ReviewFormProps = {
+    initialValues: CreateReviewInputs | UpdateReviewInputs
+    isLoading: boolean
+    onSubmit: (data: CreateReviewInputs | any) => void
+}
+
+export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormProps) => {
+    const dialog = useDialog()
+
+    const validationSchema = Yup.object().shape({
+        // mark: Yup.number().min(1, t('validation.required')),
+        // text: Yup.string()
+        //     .trim()
+        //     .required(t('validation.required'))
+        //     .min(reviewTextMinLength, t('validation.text.minLength', { minLength: reviewTextMinLength }))
+        //     .max(reviewTextMaxLength, t('validation.text.maxLength', { maxLength: reviewTextMaxLength })),
+    })
+
+    const formik = useFormik({
+        initialValues,
+        validateOnBlur: false,
+        validateOnChange: false,
+        validationSchema,
+        onSubmit,
+    })
+
     return (
-        <Form noValidate className="flex flex-col gap-y-6 sm:w-104">
+        <Form noValidate className="flex flex-col gap-y-6 sm:w-104" onSubmit={formik.handleSubmit}>
             <div>
-                <h4 className="mb-4!">Моя рецензия</h4>
-                <hr className="m-0!" />
+                <h2>Моя рецензия</h2>
+                <hr />
             </div>
 
-            <ReviewFormRating />
+            <ReviewFormRating value={formik.values.mark} onChange={value => formik.setFieldValue('mark', value)} />
 
-            <Form.Group controlId="signUpEmail">
-                <Form.Label className="">Напишите свой отзыв</Form.Label>
+            <Form.Group controlId="reviewText">
+                <Form.Label>Напишите свой отзыв</Form.Label>
                 <Form.Control
                     as="textarea"
-                    rows={6}
                     type="text"
-                    name="review"
-                    value=""
-                    disabled={false}
-                    className="resize-none!"
-                    // isInvalid={!!errors.email}
-                    // onChange={e => setEmail(e.target.value)}
+                    rows={6}
+                    value={formik.values.text}
+                    disabled={isLoading}
+                    isInvalid={!!formik.errors.text}
+                    className="resize-none"
+                    onChange={formik.handleChange}
                 />
-                {/* <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback> */}
+                <Form.Control.Feedback type="invalid">{formik.errors.text}</Form.Control.Feedback>
             </Form.Group>
 
             <div className="flex gap-x-2">
-                <Button variant="primary" type="submit" disabled={false}>
+                <Button variant="primary" type="submit" disabled={isLoading}>
                     Сохранить
                 </Button>
-                <Button variant="outline-secondary" disabled={false}>
+                <Button variant="outline-secondary" disabled={isLoading} onClick={() => dialog.close()}>
                     Отменить
                 </Button>
             </div>

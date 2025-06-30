@@ -26,7 +26,7 @@ export const HeaderSearch = () => {
                 name="search"
                 value={searchTerm}
                 autoComplete="off"
-                className="h-8 w-full rounded-full bg-white px-10 text-sm! focus:outline-none"
+                className="h-8 w-full rounded-full bg-white px-10 text-sm focus:outline-none"
                 placeholder="Поиск..."
                 onChange={handleChange}
             />

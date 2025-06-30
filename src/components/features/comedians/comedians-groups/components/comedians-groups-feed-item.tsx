@@ -10,16 +10,13 @@ type ComediansGroupsFeedItemType = {
 
 export const ComediansGroupsFeedItem = ({ slug, name, image }: ComediansGroupsFeedItemType) => {
     return (
-        <Link
-            href={`/comedians/groups/${slug}`}
-            className="flex flex-col gap-y-2 text-black no-underline! hover:text-blue-500!"
-        >
+        <Link href={`/comedians/groups/${slug}`} className="flex flex-col gap-y-2 text-black hover:text-blue-500">
             <ImageWithFallback
                 src={image}
                 alt={`${name}`}
                 width={100}
                 height={100}
-                className="aspect-square w-full rounded"
+                className="aspect-square w-full rounded-lg"
             />
 
             <div className="font-semibold">{name}</div>

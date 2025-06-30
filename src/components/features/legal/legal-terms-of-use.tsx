@@ -3,7 +3,7 @@ import Link from 'next/link'
 export const LegalTermsOfUse = () => {
     return (
         <div className="flex flex-col gap-y-8">
-            <div>
+            <div className="space-y-4">
                 <p className="text-gray-500">Дата последнего обновления: 1&nbsp;июня 2025&nbsp;года.</p>
 
                 <p>
@@ -19,8 +19,8 @@ export const LegalTermsOfUse = () => {
                 </p>
             </div>
 
-            <section>
-                <h5 className="mb-4!">1. Общие положения</h5>
+            <section className="space-y-4">
+                <h2 className="text-xl font-semibold">1. Общие положения</h2>
                 <p>
                     1.1. Сервис Comedy Portal предоставляет пользователям возможность оставлять отзывы и&nbsp;оценки к
                     юмористическому контенту, сохранять интересный контент в&nbsp;&laquo;Списке для просмотра&raquo;
@@ -38,14 +38,14 @@ export const LegalTermsOfUse = () => {
                 </p>
             </section>
 
-            <section>
-                <h5 className="mb-4!">2. Контент и&nbsp;правила поведения</h5>
+            <section className="space-y-4">
+                <h2 className="text-xl font-semibold">2. Контент и&nbsp;правила поведения</h2>
                 <p>
                     2.1. Пользователь обязуется публиковать исключительно релевантные, уважительные и&nbsp;тематические
                     отзывы о&nbsp;юмористическом контенте.
                 </p>
                 <p>2.2. Запрещается размещение:</p>
-                <ul className="list-disc">
+                <ul className="list-disc pl-12">
                     <li>персональной информации третьих лиц;</li>
                     <li>любых форм агрессии, дискриминации, унижения достоинства;</li>
                     <li>угроз, пропаганды насилия, политической или религиозной вражды;</li>
@@ -66,8 +66,8 @@ export const LegalTermsOfUse = () => {
                 </p>
             </section>
 
-            <section>
-                <h5 className="mb-4!">3. Ответственность сторон</h5>
+            <section className="space-y-4">
+                <h2 className="text-xl font-semibold">3. Ответственность сторон</h2>
                 <p>
                     3.1. Все отзывы и&nbsp;оценки публикуются от&nbsp;имени пользователей. Ответственность
                     за&nbsp;их&nbsp;содержание несёт исключительно пользователь, разместивший контент.
@@ -79,8 +79,8 @@ export const LegalTermsOfUse = () => {
                 </p>
             </section>
 
-            <section>
-                <h5 className="mb-4!">4. Удаление аккаунта</h5>
+            <section className="space-y-4">
+                <h2 className="text-xl font-semibold">4. Удаление аккаунта</h2>
                 <p>4.1. Пользователь имеет право удалить свой аккаунт самостоятельно через интерфейс профиля.</p>
                 <p>
                     4.2. Удаление аккаунта происходит в&nbsp;течение 14&nbsp;дней с&nbsp;момента запроса. На&nbsp;это
@@ -88,10 +88,10 @@ export const LegalTermsOfUse = () => {
                 </p>
             </section>
 
-            <section>
-                <h5 className="mb-4!">5. Использование email и&nbsp;cookies</h5>
+            <section className="space-y-4">
+                <h2 className="text-xl font-semibold">5. Использование email и&nbsp;cookies</h2>
                 <p>5.1. Email используется исключительно для:</p>
-                <ul className="list-disc">
+                <ul className="list-disc pl-12">
                     <li>регистрации и&nbsp;авторизации;</li>
                     <li>возможности публиковать отзывы и&nbsp;формировать личный список;</li>
                     <li>
@@ -105,24 +105,26 @@ export const LegalTermsOfUse = () => {
                 </p>
             </section>
 
-            <section>
-                <h5 className="mb-4!">6. Служба поддержки</h5>
+            <section className="space-y-4">
+                <h2 className="text-xl font-semibold">6. Служба поддержки</h2>
                 <p>
                     По&nbsp;вопросам, связанным с&nbsp;работой Сервиса, обращайтесь по&nbsp;адресу:{' '}
-                    <Link href="mailto:comedyportal.team@gmail.com">comedyportal.team@gmail.com</Link>
+                    <Link href="mailto:comedyportal.team@gmail.com" className="text-blue-500 hover:text-blue-700">
+                        comedyportal.team@gmail.com
+                    </Link>
                 </p>
             </section>
 
-            <section>
-                <h5 className="mb-4!">7. Изменения условий</h5>
+            <section className="space-y-4">
+                <h2 className="text-xl font-semibold">7. Изменения условий</h2>
                 <p>
                     Сервис оставляет за&nbsp;собой право изменять настоящее Соглашение в&nbsp;любое время. Продолжение
                     использования Сервиса после публикации обновлений считается акцептом новой редакции Соглашения.
                 </p>
             </section>
 
-            <section>
-                <h5 className="mb-4!">8. Прочие условия</h5>
+            <section className="space-y-4">
+                <h2 className="text-xl font-semibold">8. Прочие условия</h2>
                 <p>
                     8.1. Настоящее Соглашение регулируется общими принципами международного права и&nbsp;стандартами
                     надлежащей интернет-практики.

@@ -33,7 +33,7 @@ export const ContentAuthorMany = ({ comedians, type, month, year }: ContentAutho
     const renderComedianList = (list: Comedian[]) =>
         list.map((comedian, index) => (
             <span key={`comedian-${comedian.id}`}>
-                <Link href={`/comedians/${comedian.slug}`} className="no-underline!">
+                <Link href={`/comedians/${comedian.slug}`} className="no-underline">
                     {comedian.name} {comedian.surname}
                 </Link>
                 {index < list.length - 1 && <span className="text-gray-500">, </span>}

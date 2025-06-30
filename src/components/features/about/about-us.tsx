@@ -1,6 +1,6 @@
 export const AboutUs = () => {
     return (
-        <div>
+        <div className="space-y-4">
             <p>
                 <strong>&laquo;Comedy Portal&raquo;</strong>&nbsp;&mdash; это ваш путеводитель по&nbsp;миру
                 русскоязычной комедии, созданный такими же&nbsp;увлечёнными людьми, как и&nbsp;Вы. Мы&nbsp;искренне

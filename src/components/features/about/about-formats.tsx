@@ -8,7 +8,7 @@ export const AboutFormats = () => {
             </p>
 
             <section>
-                <h5 className="mb-4!">Спешлы</h5>
+                <h2 className="mb-4 text-xl font-semibold">Спешлы</h2>
                 <p>
                     От&nbsp;английского &laquo;Comedy special&raquo;. Это полноценные{' '}
                     <strong>сольные стендап концерты</strong> одного комика, часто записанные для большой аудитории.
@@ -20,7 +20,7 @@ export const AboutFormats = () => {
             </section>
 
             <section>
-                <h5 className="mb-4!">Стендап</h5>
+                <h2 className="mb-4 text-xl font-semibold">Стендап</h2>
                 <p>
                     Здесь собраны <strong>выступления одного или нескольких комиков</strong> в&nbsp;формате комедийных
                     монологов. Это могут быть как{' '}
@@ -32,7 +32,7 @@ export const AboutFormats = () => {
             </section>
 
             <section>
-                <h5 className="mb-4!">Дискуссии</h5>
+                <h2 className="mb-4 text-xl font-semibold">Дискуссии</h2>
                 <p>
                     В&nbsp;этом разделе&nbsp;Вы найдёте <strong>шоу, где комики обсуждают различные темы</strong>. Хотя
                     часто используются заранее подготовленные шутки и&nbsp;направления для разговора, здесь также много
@@ -42,7 +42,7 @@ export const AboutFormats = () => {
             </section>
 
             <section>
-                <h5 className="mb-4!">Импровизация</h5>
+                <h2 className="mb-4 text-xl font-semibold">Импровизация</h2>
                 <p>
                     Это <strong>комедия без сценария</strong>! Комики создают шутки и&nbsp;ситуации прямо на&nbsp;ваших
                     глазах, реагируя на&nbsp;предложения зрителей (краудворк, от&nbsp;англ.
@@ -52,7 +52,7 @@ export const AboutFormats = () => {
             </section>
 
             <section>
-                <h5 className="mb-4!">Подкасты</h5>
+                <h2 className="mb-4 text-xl font-semibold">Подкасты</h2>
                 <p>
                     Слушайте или смотрите <strong>подкасты, которые ведут комики</strong>. Независимо от&nbsp;формата
                     (аудио или видео), большинство из&nbsp;них наполнены юмором, но&nbsp;также могут затрагивать темы
@@ -62,7 +62,7 @@ export const AboutFormats = () => {
             </section>
 
             <section>
-                <h5 className="mb-4!">Прожарки</h5>
+                <h2 className="mb-4 text-xl font-semibold">Прожарки</h2>
                 <p>
                     Готовьтесь к&nbsp;порции <strong>жёстких, но&nbsp;смешных шуток</strong>! В&nbsp;прожарках комики
                     собираются, чтобы высмеять кого-то одного&nbsp;&mdash; другого комика, знаменитость или приглашённую
@@ -72,7 +72,7 @@ export const AboutFormats = () => {
             </section>
 
             <section>
-                <h5 className="mb-4!">Сериалы</h5>
+                <h2 className="mb-4 text-xl font-semibold">Сериалы</h2>
                 <p>
                     Здесь представлены <strong>комедийные сериалы</strong>, в&nbsp;которых снимаются наши любимые
                     комики. От ситкомов до&nbsp;более сложных комедийных драм&nbsp;&mdash; эти сериалы подарят вам
@@ -81,7 +81,7 @@ export const AboutFormats = () => {
             </section>
 
             <section>
-                <h5 className="mb-4!">Скетчи</h5>
+                <h2 className="mb-4 text-xl font-semibold">Скетчи</h2>
                 <p>
                     <strong>Короткие, остроумные юмористические сценки</strong>, которые могут разыгрывать один или
                     несколько актёров и\или комиков. Скетчи&nbsp;&mdash; это быстрый и&nbsp;концентрированный источник
@@ -91,7 +91,7 @@ export const AboutFormats = () => {
             </section>
 
             <section>
-                <h5 className="mb-4!">Ток-шоу</h5>
+                <h2 className="mb-4 text-xl font-semibold">Ток-шоу</h2>
                 <p>
                     Смотрите <strong>комедийные ток-шоу</strong>, где ведущий и&nbsp;приглашённые гости (часто другие
                     комики или знаменитости) обсуждают различные темы, шутят, играют в&nbsp;игры и&nbsp;создают
@@ -101,7 +101,7 @@ export const AboutFormats = () => {
             </section>
 
             <section>
-                <h5 className="mb-4!">Блоги</h5>
+                <h2 className="mb-4 text-xl font-semibold">Блоги</h2>
                 <p>
                     <strong>Авторский контент</strong>, где комик или другая медийная личность делится своими{' '}
                     <strong>личными мыслями, наблюдениями, историями или размышлениями</strong> в&nbsp;более{' '}

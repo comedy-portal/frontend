@@ -6,15 +6,16 @@ import classNames from 'classnames'
 import { MessageCircleCodeIcon } from 'lucide-react'
 
 import { SignUp } from '@/components/features/auth/sign-up'
-import { ReviewForm } from '@/components/features/dialogs/reviews-form/review-form'
+import { ReviewCreate } from '@/components/features/dialogs/reviews-form/review-create'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
 type ContentReviewAddButtonProps = {
+    contentId: number
     className?: string
     isAuth: boolean
 }
 
-export const ContentReviewAddButton = ({ className, isAuth }: ContentReviewAddButtonProps) => {
+export const ContentReviewAddButton = ({ contentId, className, isAuth }: ContentReviewAddButtonProps) => {
     const dialog = useDialog()
 
     const handleClick = () => {
@@ -23,11 +24,11 @@ export const ContentReviewAddButton = ({ className, isAuth }: ContentReviewAddBu
             return
         }
 
-        dialog.open(<ReviewForm />)
+        dialog.open(<ReviewCreate contentId={contentId} />)
     }
 
     return (
-        <Button size="sm" className={classNames('flex! items-center gap-x-2', className)} onClick={handleClick}>
+        <Button size="sm" className={classNames('flex items-center gap-x-2', className)} onClick={handleClick}>
             <MessageCircleCodeIcon size={16} /> Оставить рецензию
         </Button>
     )

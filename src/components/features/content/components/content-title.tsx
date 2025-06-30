@@ -9,7 +9,7 @@ export const ContentTitle = ({ name, avgRating }: ContentTitleProps) => {
     return (
         <div className="flex items-center gap-x-4">
             <Rating value={avgRating} className="flex-shrink-0" />
-            <h1 className="mb-0! truncate">{name}</h1>
+            <h1 className="truncate">{name}</h1>
         </div>
     )
 }

@@ -17,7 +17,7 @@ export const Rating = ({ value, className }: RatingProps) => {
     return (
         <div
             className={classNames(
-                'flex size-10 items-center justify-center rounded text-lg font-semibold text-white',
+                'flex size-10 items-center justify-center rounded text-lg font-bold text-white',
                 getColor(value),
                 className,
             )}

@@ -37,7 +37,7 @@ export const ContentReviewsFeed = ({ contentId, isAuth }: ContentReviewsFeedProp
                 Здесь пока нет рецензий.
                 <br />
                 Оставьте первую — поделитесь своим мнением.
-                <ContentReviewAddButton className="mt-4" isAuth={isAuth} />
+                <ContentReviewAddButton contentId={contentId} className="mt-4" isAuth={isAuth} />
             </EmptyMessage>
         )
     }
@@ -50,7 +50,11 @@ export const ContentReviewsFeed = ({ contentId, isAuth }: ContentReviewsFeedProp
         <div className="relative flex flex-col gap-y-12">
             <div>
                 <div className="mb-4 sm:absolute sm:-top-[76px] sm:right-0 sm:mb-0">
-                    <ContentReviewAddButton isAuth={isAuth} className="w-full justify-center sm:w-auto" />
+                    <ContentReviewAddButton
+                        contentId={contentId}
+                        isAuth={isAuth}
+                        className="w-full justify-center sm:w-auto"
+                    />
                 </div>
                 <div className="space-y-4">
                     {data.items.map(item => (

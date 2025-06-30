@@ -39,7 +39,7 @@ export const ComediansGroupsFeed = () => {
 
     return (
         <div className="flex flex-col gap-y-12">
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-8 md:grid-cols-4 lg:grid-cols-5">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 md:grid-cols-4 lg:grid-cols-5">
                 {data.items.map(item => (
                     <ComediansGroupsFeedItem
                         key={`comedians-groups-feed-item-${item.slug}`}

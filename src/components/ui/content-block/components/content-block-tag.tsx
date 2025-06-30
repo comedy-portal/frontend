@@ -7,10 +7,7 @@ type ContentBlockTagProps = {
 
 export const ContentBlockTag = ({ link, title }: ContentBlockTagProps) => {
     return (
-        <Link
-            href={link}
-            className="inline-block rounded border border-gray-500 bg-white px-3 py-1 text-xs text-gray-500! no-underline!"
-        >
+        <Link href={link} className="inline-block rounded bg-gray-200 px-3 py-1 text-xs text-gray-500">
             {title}
         </Link>
     )

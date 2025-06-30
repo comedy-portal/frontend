@@ -13,7 +13,7 @@ export default function NotFound() {
                 <div className="flex size-full items-center justify-center">
                     <div className="flex flex-col gap-y-8 text-center">
                         <MicOffIcon size={128} className="m-auto" />
-                        <h1 className="mb-0 text-2xl font-bold!">Страница не найдена</h1>
+                        <h1 className="mb-0 text-2xl font-bold">Страница не найдена</h1>
                         <p>
                             Возможно, она была перемещена,
                             <br />

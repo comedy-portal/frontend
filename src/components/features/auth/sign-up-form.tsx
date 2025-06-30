@@ -57,7 +57,7 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
     return (
         <Form onSubmit={handleSubmit} noValidate className="flex flex-col gap-y-6 sm:w-104">
             <div>
-                <h2 className="text-center text-2xl!">Войти</h2>
+                <h2 className="text-center text-2xl">Войти</h2>
                 <p className="text-center text-sm text-gray-500 sm:m-auto sm:w-3/4">
                     Для этого укажите только электронную почту, мы отправим на нее данные для входа
                 </p>

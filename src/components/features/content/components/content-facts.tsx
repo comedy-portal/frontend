@@ -10,8 +10,8 @@ export const ContentFacts = ({ facts }: ContentFactsProps) => {
     return (
         <section>
             <div className="mb-4">
-                <h4 className="mb-2!">Факты</h4>
-                <hr className="m-0 border-gray-200! opacity-100!" />
+                <h4 className="mb-2">Факты</h4>
+                <hr className="m-0 border-gray-200 opacity-100" />
             </div>
             <div className="space-y-4">
                 {facts.map((fact, index) => (

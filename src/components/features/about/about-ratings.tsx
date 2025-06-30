@@ -16,8 +16,8 @@ export const AboutRatings = () => {
             </p>
 
             <section>
-                <h5 className="mb-4!">Как формируется рейтинг?</h5>
-                <ul className="list-disc">
+                <h2 className="mb-4 text-xl font-semibold">Как формируется рейтинг?</h2>
+                <ul className="list-disc space-y-2 pl-6">
                     <li>
                         <strong>Ваш голос важен:</strong> Рейтинги формируются исключительно{' '}
                         <strong>пользователями</strong> нашего сервиса. Каждая Ваша оценка имеет значение!
@@ -52,7 +52,7 @@ export const AboutRatings = () => {
             </section>
 
             <section>
-                <h5 className="mb-4!">Почему рейтинги так важны?</h5>
+                <h2 className="mb-4 text-xl font-semibold">Почему рейтинги так важны?</h2>
                 <p>
                     Только благодаря Вашим оценкам мы&nbsp;
                     <strong>вместе можем понять (конечно&nbsp;же, субъективно)</strong>, какой комедийный контент

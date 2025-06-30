@@ -13,13 +13,13 @@ export const HeaderDesktop = () => {
                 <HeaderSearch />
 
                 <nav className="flex items-center justify-center gap-x-4 text-sm">
-                    <Link href="/content" className="text-nowrap text-white no-underline! hover:underline!">
+                    <Link href="/content" className="text-nowrap text-white hover:underline">
                         Контент
                     </Link>
-                    <Link href="/comedians" className="text-nowrap text-white no-underline! hover:underline!">
+                    <Link href="/comedians" className="text-nowrap text-white hover:underline">
                         Комики
                     </Link>
-                    <Link href="/about" className="text-nowrap text-white no-underline! hover:underline!">
+                    <Link href="/about" className="text-nowrap text-white hover:underline">
                         О проекте
                     </Link>
                 </nav>

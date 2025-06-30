@@ -1,4 +1,4 @@
-import { ContentBlock } from '@/components/ui/content-block'
+import { ContentBlock } from '@/components/ui/content-block/content-block'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { ContentType } from '@/utils/enums/common'
 import { Image, Rating } from '@/utils/types/common'
@@ -30,7 +30,7 @@ export const ComedianContent = ({ content }: ComedianContentProps) => {
     }
 
     return (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
             {content.map(item => (
                 <ContentBlock
                     key={`content-many-feed-item-${item.id}`}

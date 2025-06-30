@@ -27,7 +27,7 @@ export type CreateReviewInputs = {
 
 export type UpdateReviewInputs = {
     id: number
-    mark?: number
+    mark: number
     text?: string
 }
 

@@ -8,10 +8,7 @@ type HeaderProfileProps = {
 
 export const HeaderProfile = ({ slug }: HeaderProfileProps) => {
     return (
-        <Link
-            href={`/users/${slug}`}
-            className="flex items-center gap-x-2 text-white no-underline! hover:underline! sm:text-sm"
-        >
+        <Link href={`/users/${slug}`} className="flex items-center gap-x-2 text-white hover:underline sm:text-sm">
             <CircleUserRoundIcon strokeWidth={1} />
             Профиль
         </Link>

@@ -13,12 +13,16 @@ const getColorByIndex = (index: number) => {
     return 'bg-gray-400'
 }
 
-export const ReviewFormRating = () => {
-    const [selected, setSelected] = useState(0)
+type ReviewFormRatingProps = {
+    value: number
+    onChange: (value: number) => void
+}
+
+export const ReviewFormRating = ({ value, onChange }: ReviewFormRatingProps) => {
     const [hovered, setHovered] = useState<number | null>(null)
 
-    const currentRating = hovered ?? selected
-    const isDimmed = selected === 0 && hovered === null
+    const currentRating = hovered ?? value
+    const isDimmed = value === 0 && hovered === null
 
     return (
         <div className="flex items-start space-x-4">
@@ -36,7 +40,7 @@ export const ReviewFormRating = () => {
                     {Array.from({ length: 10 }).map((_, index) => {
                         const isActive = currentRating > 0 && index < currentRating
                         const color =
-                            hovered !== null || selected > 0
+                            hovered !== null || value > 0
                                 ? isActive
                                     ? getColorByIndex(currentRating - 1)
                                     : 'bg-gray-300'
@@ -47,7 +51,7 @@ export const ReviewFormRating = () => {
                                 key={index}
                                 onMouseEnter={() => setHovered(index + 1)}
                                 onMouseLeave={() => setHovered(null)}
-                                onClick={() => setSelected(index + 1)}
+                                onClick={() => onChange(index + 1)}
                                 className={classNames(
                                     'h-3 flex-1 cursor-pointer transition-colors duration-200',
                                     color,

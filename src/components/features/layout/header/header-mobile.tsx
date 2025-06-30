@@ -38,13 +38,13 @@ export const HeaderMobile = ({ profileEntryPointComponent }: HeaderMobileProps) 
 
             {isMobileMenuOpen && (
                 <nav className="absolute top-14 right-0 left-0 flex h-screen flex-col gap-y-3 bg-black p-3 text-white">
-                    <Link href="/content" className="text-white no-underline!" onClick={closeMobileMenu}>
+                    <Link href="/content" className="text-white" onClick={closeMobileMenu}>
                         Контент
                     </Link>
-                    <Link href="/comedians" className="text-white no-underline!" onClick={closeMobileMenu}>
+                    <Link href="/comedians" className="text-white" onClick={closeMobileMenu}>
                         Комики
                     </Link>
-                    <Link href="/about" className="text-white no-underline!" onClick={closeMobileMenu}>
+                    <Link href="/about" className="text-white" onClick={closeMobileMenu}>
                         О проекте
                     </Link>
 

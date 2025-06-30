@@ -34,10 +34,10 @@ export const LayoutNav = ({ items }: LayoutNavProps) => {
                             key={`nav-item-${label}`}
                             href={href}
                             replace
-                            className={classNames('relative text-nowrap no-underline!', {
-                                'text-black! after:absolute after:-bottom-[17px] after:left-0 after:h-[1px] after:w-full after:bg-black':
+                            className={classNames('relative text-nowrap', {
+                                'text-black after:absolute after:-bottom-[13px] after:left-0 after:h-[1px] after:w-full after:bg-black':
                                     isActive,
-                                'text-gray-500! hover:text-black!': !isActive,
+                                'text-gray-500 hover:text-black': !isActive,
                             })}
                         >
                             {label}

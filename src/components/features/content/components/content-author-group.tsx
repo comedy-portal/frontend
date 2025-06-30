@@ -16,13 +16,13 @@ type ContentAuthorGroupProps = {
 
 export const ContentAuthorGroup = ({ name, slug, type, month, year }: ContentAuthorGroupProps) => {
     return (
-        <div className="flex flex-col gap-x-2 sm:!flex-row sm:!items-center">
+        <div className="flex flex-col gap-x-2 sm:flex-row sm:items-center">
             <ContentBlockTag
                 link={`/content/${type.toLowerCase()}`}
                 title={categories.find(category => category.type === type.toLowerCase())?.label || ''}
             />
             <span className="text-gray-500">•</span>
-            <Link href={`/groups/${slug}`} className="no-underline!">
+            <Link href={`/groups/${slug}`} className="no-underline">
                 {name}
             </Link>
             <span className="text-gray-500">•</span>
