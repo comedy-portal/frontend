@@ -15,52 +15,59 @@ const getColorByIndex = (index: number) => {
 
 type ReviewFormRatingProps = {
     value: number
+    error?: string
     onChange: (value: number) => void
 }
 
-export const ReviewFormRating = ({ value, onChange }: ReviewFormRatingProps) => {
+export const ReviewFormRating = ({ value, error, onChange }: ReviewFormRatingProps) => {
     const [hovered, setHovered] = useState<number | null>(null)
 
     const currentRating = hovered ?? value
     const isDimmed = value === 0 && hovered === null
 
     return (
-        <div className="flex items-start space-x-4">
-            <Rating value={currentRating} className="size-12 flex-shrink-0 text-lg" />
+        <div>
+            <div className="flex items-center gap-x-4">
+                <Rating value={currentRating} className="size-12 flex-shrink-0 text-lg" />
 
-            <div className="flex w-full flex-col space-y-3">
-                <span className="font-medium text-gray-700">Мой рейтинг</span>
+                <div className="flex w-full flex-col space-y-3.5">
+                    <span className="text-sm font-semibold text-gray-700">Рейтинг</span>
 
-                <div
-                    className={classNames('flex items-center space-x-0.5 overflow-hidden rounded transition-opacity', {
-                        'opacity-50': isDimmed,
-                        'opacity-100': !isDimmed,
-                    })}
-                >
-                    {Array.from({ length: 10 }).map((_, index) => {
-                        const isActive = currentRating > 0 && index < currentRating
-                        const color =
-                            hovered !== null || value > 0
-                                ? isActive
-                                    ? getColorByIndex(currentRating - 1)
-                                    : 'bg-gray-300'
-                                : getColorByIndex(index)
+                    <div
+                        className={classNames(
+                            'flex items-center space-x-0.5 overflow-hidden rounded transition-opacity',
+                            {
+                                'opacity-50': isDimmed,
+                                'opacity-100': !isDimmed,
+                            },
+                        )}
+                    >
+                        {Array.from({ length: 10 }).map((_, index) => {
+                            const isActive = currentRating > 0 && index < currentRating
+                            const color =
+                                hovered !== null || value > 0
+                                    ? isActive
+                                        ? getColorByIndex(currentRating - 1)
+                                        : 'bg-gray-300'
+                                    : getColorByIndex(index)
 
-                        return (
-                            <div
-                                key={index}
-                                onMouseEnter={() => setHovered(index + 1)}
-                                onMouseLeave={() => setHovered(null)}
-                                onClick={() => onChange(index + 1)}
-                                className={classNames(
-                                    'h-3 flex-1 cursor-pointer transition-colors duration-200',
-                                    color,
-                                )}
-                            />
-                        )
-                    })}
+                            return (
+                                <div
+                                    key={index}
+                                    onMouseEnter={() => setHovered(index + 1)}
+                                    onMouseLeave={() => setHovered(null)}
+                                    onClick={() => onChange(index + 1)}
+                                    className={classNames(
+                                        'h-3.5 flex-1 cursor-pointer transition-colors duration-200',
+                                        color,
+                                    )}
+                                />
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
+            {error && <div className="mt-1 pl-16 text-xs text-red-500">{error}</div>}
         </div>
     )
 }

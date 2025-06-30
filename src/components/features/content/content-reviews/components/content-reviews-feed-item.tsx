@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Rating } from '@/components/ui/rating'
 
 type ContentReviewsFeedItemProps = {
-    text: string
+    text: string | null
     rating: number
     username: string
     createdAt: string
@@ -11,7 +11,7 @@ type ContentReviewsFeedItemProps = {
 
 export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
     return (
-        <div className="space-y-4 rounded-lg bg-white p-4">
+        <div className="space-y-4 rounded-lg bg-gray-100 p-4">
             <div className="flex items-center gap-x-4">
                 <Rating value={props.rating} />
                 <div className="text-sm">
@@ -28,7 +28,7 @@ export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
                 </div>
             </div>
 
-            <div>{props.text}</div>
+            {props.text && <p>{props.text}</p>}
         </div>
     )
 }

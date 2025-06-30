@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from 'react-bootstrap'
+import { Button } from '@/components/ui/forms/button'
 
 type LoadMoreProps = {
     isLoading: boolean
@@ -9,7 +9,7 @@ type LoadMoreProps = {
 
 export const LoadMore = ({ isLoading, onClick }: LoadMoreProps) => {
     return (
-        <Button variant="outline-secondary" className="w-full" disabled={isLoading} onClick={onClick}>
+        <Button variant="outline" className="w-full" disabled={isLoading} onClick={onClick}>
             {isLoading ? 'Загрузка...' : 'Показать еще'}
         </Button>
     )

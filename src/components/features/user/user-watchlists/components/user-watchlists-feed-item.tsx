@@ -18,7 +18,7 @@ export const UserWatchlistsFeedItem = (props: UserWatchlistsFeedItemProps) => {
     return (
         <Link
             href={`/content/${props.type.toLowerCase()}/${props.id}`}
-            className="flex cursor-pointer items-center justify-between gap-x-4 rounded-lg bg-white p-4 text-black"
+            className="flex cursor-pointer items-center justify-between gap-x-4 rounded-lg bg-gray-100 p-4 text-black"
         >
             <div className="flex min-w-0 flex-1 items-center gap-x-4">
                 <Rating value={props.avgRating} className="flex-shrink-0" />

@@ -57,7 +57,7 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
 
     return (
         <form className="sm:w-104" onSubmit={handleSubmit}>
-            <h1 className="mb-2 text-center text-xl font-semibold">Войти</h1>
+            <h1 className="mb-2 text-center text-lg font-semibold">Войти</h1>
             <p className="m-auto mb-8 text-center text-sm text-gray-500 sm:w-3/4">
                 Для этого укажите только электронную почту, мы отправим на нее данные для входа
             </p>
@@ -69,7 +69,7 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
             )}
 
             <div className="mb-4">
-                <label className="mb-2 block text-sm text-gray-700">Электронная почта</label>
+                <label className="mb-2 block text-sm font-semibold text-gray-700">Электронная почта</label>
                 <Input
                     type="text"
                     name="email"

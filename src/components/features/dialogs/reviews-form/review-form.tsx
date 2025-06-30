@@ -1,10 +1,10 @@
 'use client'
 
-import { Button, Form } from 'react-bootstrap'
-
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
+import { Button } from '@/components/ui/forms/button'
+import { Textarea } from '@/components/ui/forms/textarea'
 import { CreateReviewInputs, UpdateReviewInputs } from '@/redux/services/reviews/reviews.types'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
@@ -20,12 +20,11 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
     const dialog = useDialog()
 
     const validationSchema = Yup.object().shape({
-        // mark: Yup.number().min(1, t('validation.required')),
-        // text: Yup.string()
-        //     .trim()
-        //     .required(t('validation.required'))
-        //     .min(reviewTextMinLength, t('validation.text.minLength', { minLength: reviewTextMinLength }))
-        //     .max(reviewTextMaxLength, t('validation.text.maxLength', { maxLength: reviewTextMaxLength })),
+        mark: Yup.number().min(1, 'Рейтинг обязателен').required('Рейтинг обязателен'),
+        text: Yup.string()
+            .trim()
+            .min(20, `Минимальная длина текста отзыва 20 символов`)
+            .max(500, `Максимальная длина текста отзыва 500 символов`),
     })
 
     const formik = useFormik({
@@ -37,37 +36,36 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
     })
 
     return (
-        <Form noValidate className="flex flex-col gap-y-6 sm:w-104" onSubmit={formik.handleSubmit}>
-            <div>
-                <h2>Моя рецензия</h2>
-                <hr />
+        <form className="flex flex-col gap-y-8" onSubmit={formik.handleSubmit}>
+            <div className="flex flex-col gap-y-4">
+                <ReviewFormRating
+                    value={formik.values.mark}
+                    error={formik.errors.mark}
+                    onChange={value => formik.setFieldValue('mark', value)}
+                />
+
+                <div className="flex flex-col gap-y-2">
+                    <label className="mb-2 block text-sm font-semibold text-gray-700">Напишите свой отзыв</label>
+                    <Textarea
+                        name="text"
+                        autoFocus
+                        rows={6}
+                        value={formik.values.text}
+                        error={formik.errors.text}
+                        disabled={isLoading}
+                        onChange={formik.handleChange}
+                    />
+                </div>
             </div>
 
-            <ReviewFormRating value={formik.values.mark} onChange={value => formik.setFieldValue('mark', value)} />
-
-            <Form.Group controlId="reviewText">
-                <Form.Label>Напишите свой отзыв</Form.Label>
-                <Form.Control
-                    as="textarea"
-                    type="text"
-                    rows={6}
-                    value={formik.values.text}
-                    disabled={isLoading}
-                    isInvalid={!!formik.errors.text}
-                    className="resize-none"
-                    onChange={formik.handleChange}
-                />
-                <Form.Control.Feedback type="invalid">{formik.errors.text}</Form.Control.Feedback>
-            </Form.Group>
-
             <div className="flex gap-x-2">
-                <Button variant="primary" type="submit" disabled={isLoading}>
+                <Button type="submit" disabled={isLoading || !formik.dirty}>
                     Сохранить
                 </Button>
-                <Button variant="outline-secondary" disabled={isLoading} onClick={() => dialog.close()}>
+                <Button variant="outline" disabled={isLoading} onClick={() => dialog.close()}>
                     Отменить
                 </Button>
             </div>
-        </Form>
+        </form>
     )
 }

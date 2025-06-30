@@ -1,12 +1,11 @@
 'use client'
 
-import { Button } from 'react-bootstrap'
-
 import classNames from 'classnames'
 import { MessageCircleCodeIcon } from 'lucide-react'
 
 import { SignUp } from '@/components/features/auth/sign-up'
 import { ReviewCreate } from '@/components/features/dialogs/reviews-form/review-create'
+import { Button } from '@/components/ui/forms/button'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
 type ContentReviewAddButtonProps = {

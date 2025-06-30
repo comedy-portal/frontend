@@ -7,14 +7,14 @@ type UserReviewsFeedItemProps = {
     id: number
     type: ContentType
     name: string
-    text: string
+    text: string | null
     rating: number
     createdAt: string
 }
 
 export const UserReviewsFeedItem = (props: UserReviewsFeedItemProps) => {
     return (
-        <div className="space-y-4 rounded-lg bg-white p-4">
+        <div className="space-y-4 rounded-lg bg-gray-100 p-4">
             <div className="flex items-center gap-x-4">
                 <Rating value={props.rating} className="size-11" />
                 <div className="text-sm">
@@ -34,7 +34,7 @@ export const UserReviewsFeedItem = (props: UserReviewsFeedItemProps) => {
                 </div>
             </div>
 
-            <div>{props.text}</div>
+            {props.text && <p>{props.text}</p>}
         </div>
     )
 }

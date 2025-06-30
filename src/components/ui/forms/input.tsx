@@ -22,10 +22,10 @@ export const Input = (props: InputProps) => {
                     {...rest}
                     ref={ref}
                     className={classNames(
-                        'placeholder:text-black-40 h-10 w-full rounded-lg border border-gray-300 bg-white px-4 text-sm focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
+                        'h-10 w-full rounded-lg border border-gray-300 bg-white px-4 text-sm focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
                         {
-                            'border-red-500 pr-10': error,
                             'hover:border-gray-400 focus:border-gray-400': !error,
+                            'border-red-500 pr-10': error,
                         },
                         className,
                     )}
