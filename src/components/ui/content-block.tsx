@@ -20,19 +20,21 @@ type ContentBlockType = {
 
 export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: ContentBlockType) => {
     return (
-        <div className="flex flex-col rounded bg-white shadow-sm">
+        <div className="flex flex-col rounded bg-gray-50 p-2 shadow-sm">
             <Link href={`/content/${type.toLowerCase()}/${id}`}>
                 <ImageWithFallback
                     src={imageUrl || ''}
                     width={300}
                     height={200}
-                    className="aspect-video h-auto w-auto rounded-t align-top"
+                    className="aspect-video h-auto w-auto rounded align-top"
                     alt={name}
                 />
             </Link>
 
             <div className="flex h-full flex-col justify-between gap-y-3 p-3">
-                <div className="flex items-start justify-between gap-x-4">
+                <div className="flex items-start gap-x-4">
+                    <Rating value={avgRating} className="size-12 flex-shrink-0" />
+
                     <div className="flex flex-col gap-y-1">
                         <Link
                             href={`/content/${type.toLowerCase()}/${id}`}
@@ -43,8 +45,6 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: Cont
 
                         {/* <div className="text-sm">Author</div> */}
                     </div>
-
-                    <Rating value={avgRating} className="size-12 flex-shrink-0" />
                 </div>
 
                 <hr className="m-0! border-gray-200! opacity-100!" />
