@@ -20,9 +20,9 @@ type ContentBlockType = {
 
 export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: ContentBlockType) => {
     return (
-        <div className="flex flex-col gap-y-4 rounded bg-[#F5F6F7] p-4">
+        <div className="flex flex-col gap-y-4 rounded-lg bg-white p-4">
             <Link href={`/content/${type.toLowerCase()}/${id}`} className="relative">
-                <div className="absolute top-0 right-0 rounded-bl bg-gray-100 pb-1 pl-1">
+                <div className="absolute top-0 right-0 rounded-bl-lg bg-white pb-1 pl-1">
                     <Rating value={avgRating} className="size-12 text-xl" />
                 </div>
 
@@ -30,7 +30,7 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: Cont
                     src={imageUrl || ''}
                     width={254}
                     height={160}
-                    className="aspect-video h-auto w-auto rounded align-top"
+                    className="aspect-video h-auto w-auto rounded-lg align-top"
                     alt={name}
                 />
             </Link>
