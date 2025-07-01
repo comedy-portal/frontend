@@ -31,6 +31,7 @@ export default async function ComediansGroupLayout(props: { children: React.Reac
                     href: `/comedians/groups/${group.slug}/content`,
                 },
             ]}
+            backURL="/comedians/groups"
         >
             {props.children}
         </Layout>

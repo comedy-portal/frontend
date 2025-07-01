@@ -29,6 +29,7 @@ export default async function ComedianLayout(props: { children: ReactNode; param
                     href: `/comedians/${params.slug}/content`,
                 },
             ]}
+            backURL="/comedians"
         >
             {props.children}
         </Layout>

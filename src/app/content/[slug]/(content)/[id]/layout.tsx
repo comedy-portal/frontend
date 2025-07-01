@@ -31,6 +31,7 @@ export default async function ContentLayout(props: { children: ReactNode; params
                     exact: true,
                 },
             ]}
+            backURL={`/content/${content.type.toLowerCase()}`}
         >
             {props.children}
         </Layout>
