@@ -30,7 +30,7 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: Cont
                     src={imageUrl || ''}
                     width={254}
                     height={160}
-                    className="aspect-video h-auto w-auto rounded-t-lg align-top"
+                    className="aspect-video rounded-t-lg align-top"
                     alt={name}
                 />
             </Link>

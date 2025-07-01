@@ -7,6 +7,7 @@ import { LoadMore } from '@/components/ui/load-more'
 import { groupsAPI } from '@/redux/services/groups/groups.api'
 
 import { ComediansGroupsFeedItem } from './comedians-groups-feed-item'
+import { ComediansGroupsFeedSkeleton } from './comedians-groups-feed-skeleton'
 
 export const ComediansGroupsFeed = () => {
     const [cursor, setCursor] = useState<number>()
@@ -34,7 +35,7 @@ export const ComediansGroupsFeed = () => {
     }
 
     if (!isSuccess) {
-        return <div>Загрузка ...</div>
+        return <ComediansGroupsFeedSkeleton />
     }
 
     return (

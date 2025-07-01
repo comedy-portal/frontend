@@ -2,10 +2,12 @@
 
 import { useState } from 'react'
 
-import { ComedianBlock } from '@/components/ui/comedians-block'
+import { ComedianBlock } from '@/components/ui/comedian-block/comedian-block'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { comediansAPI } from '@/redux/services/comedians/comedians.api'
+
+import { ComediansFeedSkeleton } from './comedians-feed-skeleton'
 
 export const ComediansFeed = () => {
     const [cursor, setCursor] = useState<number>()
@@ -33,7 +35,7 @@ export const ComediansFeed = () => {
     }
 
     if (!isSuccess) {
-        return <div>Загрузка ...</div>
+        return <ComediansFeedSkeleton />
     }
 
     return (

@@ -1,4 +1,4 @@
-import { ComedianBlock } from '@/components/ui/comedians-block'
+import { ComedianBlock } from '@/components/ui/comedian-block/comedian-block'
 import { EmptyMessage } from '@/components/ui/empty-message'
 
 type GroupCompositionProps = {
