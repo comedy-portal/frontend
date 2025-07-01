@@ -31,7 +31,7 @@ export const LayoutNav = ({ items }: LayoutNavProps) => {
 
                     return (
                         <Link
-                            key={`nav-item-${label}`}
+                            key={`layout-nav-item-${label}`}
                             href={href}
                             replace
                             className={classNames('relative text-nowrap', {
