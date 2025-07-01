@@ -1,10 +1,6 @@
-import type { Metadata } from 'next/types'
-
 import { Layout } from '@/components/features/layout/layout/layout'
 
-export const metadata: Metadata = {
-    robots: 'noindex, nofollow',
-}
+export const dynamic = 'force-static'
 
 export default function AboutLayout(props: { children: React.ReactNode }) {
     return (

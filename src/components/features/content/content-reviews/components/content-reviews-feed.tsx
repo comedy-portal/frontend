@@ -50,7 +50,7 @@ export const ContentReviewsFeed = ({ contentId, isAuth }: ContentReviewsFeedProp
     return (
         <div className="relative flex flex-col gap-y-12">
             <div>
-                <div className="mb-4 sm:absolute sm:-top-[73px] sm:right-0 sm:mb-0">
+                <div className="sm:absolute sm:-top-[73px] sm:right-0">
                     <ContentReviewAddButton
                         contentId={contentId}
                         isAuth={isAuth}

@@ -1,11 +1,5 @@
-import type { Metadata } from 'next/types'
-
 import { Layout } from '@/components/features/layout/layout/layout'
 import { getGroupsBySlug } from '@/services/groups/groups'
-
-export const metadata: Metadata = {
-    robots: 'noindex, nofollow',
-}
 
 type Params = Promise<{ slug: string }>
 

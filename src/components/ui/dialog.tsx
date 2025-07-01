@@ -1,10 +1,8 @@
-import { ReactNode } from 'react'
-
 import { XIcon } from 'lucide-react'
 import { useScrollLock } from 'usehooks-ts'
 
 type DialogProps = {
-    content: ReactNode
+    content: React.ReactNode
     onClose: () => void
 }
 

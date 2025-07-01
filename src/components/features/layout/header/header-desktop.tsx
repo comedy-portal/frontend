@@ -1,8 +1,7 @@
 import Link from 'next/link'
 
-import { Logo } from '@/components/ui/logo'
-
 import { HeaderProfileEntryPoint } from './header-profile-entry-point'
+import { Logo } from './header-search/header-logo'
 import { HeaderSearch } from './header-search/header-search'
 
 export const HeaderDesktop = () => {

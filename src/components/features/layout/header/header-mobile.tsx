@@ -1,17 +1,16 @@
 'use client'
 
-import { ReactNode } from 'react'
-
 import { MenuIcon, XIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
-import { Logo } from '@/components/ui/logo'
 import { getIsMobileMenuOpen, toggleMobileMenu } from '@/redux/features/app-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 
+import { Logo } from './header-search/header-logo'
+
 type HeaderMobileProps = {
-    profileEntryPointComponent: ReactNode
+    profileEntryPointComponent: React.ReactNode
 }
 
 export const HeaderMobile = ({ profileEntryPointComponent }: HeaderMobileProps) => {
