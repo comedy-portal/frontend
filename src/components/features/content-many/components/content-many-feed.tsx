@@ -11,6 +11,8 @@ import { contentAPI } from '@/redux/services/content/content.api'
 import { ContentSortBy } from '@/redux/services/content/content.types'
 import { ContentType, ContentUrlSortBy, Order } from '@/utils/enums/common'
 
+import { ContentManyFeedSkeleton } from './content-many-feed-skeleton'
+
 type ContentManyFeedProps = {
     type: ContentType
 }
@@ -59,7 +61,7 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
     }
 
     if (!isSuccess) {
-        return <div>Загрузка ...</div>
+        return <ContentManyFeedSkeleton />
     }
 
     return (
