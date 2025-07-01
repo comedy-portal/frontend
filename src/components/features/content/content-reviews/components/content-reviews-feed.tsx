@@ -20,6 +20,7 @@ export const ContentReviewsFeed = ({ contentId, isAuth }: ContentReviewsFeedProp
 
     const { data, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsQuery({
         content_id: contentId,
+        with_text: true,
         cursor,
     })
 

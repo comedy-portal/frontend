@@ -17,14 +17,14 @@ export const UserReviewsFeedItem = (props: UserReviewsFeedItemProps) => {
         <div className="space-y-4 rounded-lg bg-gray-100 p-4">
             <div className="flex items-center gap-x-4">
                 <Rating value={props.rating} className="size-11" />
-                <div className="text-sm">
+                <div>
                     <Link
                         href={`/content/${props.type.toLowerCase()}/${props.id}`}
                         className="text-base font-semibold text-black hover:text-blue-500"
                     >
                         {props.name}
                     </Link>
-                    <div className="text-gray-500">
+                    <div className="text-sm text-gray-500">
                         {new Date(props.createdAt).toLocaleDateString('ru-RU', {
                             year: 'numeric',
                             month: 'long',
