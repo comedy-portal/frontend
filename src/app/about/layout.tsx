@@ -1,7 +1,5 @@
 import { Layout } from '@/components/features/layout/layout/layout'
 
-export const dynamic = 'force-static'
-
 export default function AboutLayout(props: { children: React.ReactNode }) {
     return (
         <Layout
