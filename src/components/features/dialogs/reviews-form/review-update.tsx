@@ -6,6 +6,7 @@ import { UpdateReviewInputs } from '@/redux/services/reviews/reviews.types'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
 import { ReviewForm } from './review-form'
+import { ReviewUpdateSkeleton } from './review-update-skeleton'
 
 type ReviewUpdateProps = {
     id: number
@@ -18,7 +19,7 @@ export const ReviewUpdate = ({ id }: ReviewUpdateProps) => {
     const [updateReview, { isLoading }] = reviewsAPI.useUpdateReviewMutation()
 
     if (isReviewLoading || !isSuccess) {
-        return <div>Загрузка ...</div>
+        return <ReviewUpdateSkeleton />
     }
 
     if (isError) {
