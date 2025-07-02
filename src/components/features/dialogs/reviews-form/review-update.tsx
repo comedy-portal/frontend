@@ -2,34 +2,43 @@
 
 import { messages } from '@/messages'
 import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
-import { CreateReviewInputs } from '@/redux/services/reviews/reviews.types'
+import { UpdateReviewInputs } from '@/redux/services/reviews/reviews.types'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
 import { ReviewForm } from './review-form'
 
-type ReviewCreateProps = {
-    contentId: number
+type ReviewUpdateProps = {
+    id: number
 }
 
-export const ReviewCreate = ({ contentId }: ReviewCreateProps) => {
+export const ReviewUpdate = ({ id }: ReviewUpdateProps) => {
     const dialog = useDialog()
+    const { data, isLoading: isReviewLoading, isSuccess, isError } = reviewsAPI.useGetReviewByIdQuery({ id })
 
-    const [createReview, { isLoading }] = reviewsAPI.useCreateReviewMutation()
+    const [updateReview, { isLoading }] = reviewsAPI.useUpdateReviewMutation()
 
-    const initialValues: CreateReviewInputs = {
-        contentId,
-        mark: 0,
-        text: '',
+    if (isReviewLoading || !isSuccess) {
+        return <div>Загрузка ...</div>
     }
 
-    const handleSubmit = async (inputs: CreateReviewInputs) => {
+    if (isError) {
+        return <div>{messages.COMMON_ERROR}</div>
+    }
+
+    const initialValues: UpdateReviewInputs = {
+        id: data.id,
+        mark: data.mark,
+        text: data.text || '',
+    }
+
+    const handleSubmit = async (inputs: UpdateReviewInputs) => {
         try {
             const trimmedInputs = {
-                contentId: inputs.contentId,
+                id: inputs.id,
                 mark: inputs.mark,
                 ...(inputs.text?.trim().length ? { text: inputs.text.trim() } : { text: null }),
             }
-            createReview(trimmedInputs)
+            updateReview(trimmedInputs)
             dialog.close()
         } catch {
             console.error(messages.COMMON_ERROR)
@@ -43,7 +52,7 @@ export const ReviewCreate = ({ contentId }: ReviewCreateProps) => {
             <ReviewForm
                 initialValues={initialValues}
                 isLoading={isLoading}
-                onSubmit={inputs => handleSubmit(inputs as CreateReviewInputs)}
+                onSubmit={inputs => handleSubmit(inputs as UpdateReviewInputs)}
             />
         </div>
     )

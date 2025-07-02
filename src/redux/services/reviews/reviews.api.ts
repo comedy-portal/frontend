@@ -3,6 +3,7 @@ import { api } from '@/redux/services/api'
 import {
     CreateReviewInputs,
     CreateReviewResponse,
+    GetReviewByIdResponse,
     GetReviewsParams,
     GetReviewsResponse,
     UpdateReviewInputs,
@@ -34,7 +35,14 @@ export const reviewsAPI = api.injectEndpoints({
             forceRefetch({ currentArg, previousArg }) {
                 return currentArg !== previousArg
             },
-            providesTags: (result, error, { content_id }) => [{ type: 'Reviews', id: content_id }],
+            providesTags: [{ type: 'Reviews', id: 'LIST' }],
+        }),
+        getReviewById: build.query<GetReviewByIdResponse, { id: number }>({
+            query: ({ id }) => ({
+                url: `reviews/${id}`,
+                method: 'GET',
+            }),
+            providesTags: (result, error, { id }) => [{ type: 'Reviews', id }],
         }),
         createReview: build.mutation<CreateReviewResponse, CreateReviewInputs>({
             query: body => ({
@@ -42,7 +50,7 @@ export const reviewsAPI = api.injectEndpoints({
                 method: 'POST',
                 body,
             }),
-            invalidatesTags: (result, error, { contentId }) => [{ type: 'Reviews', id: contentId }],
+            invalidatesTags: [{ type: 'Reviews', id: 'LIST' }],
         }),
         updateReview: build.mutation<void, UpdateReviewInputs>({
             query: ({ id, ...body }) => ({
@@ -50,7 +58,14 @@ export const reviewsAPI = api.injectEndpoints({
                 method: 'PATCH',
                 body,
             }),
-            invalidatesTags: (result, error, { id }) => [{ type: 'Reviews', id }],
+            invalidatesTags: ['Reviews'],
+        }),
+        deleteReview: build.mutation<void, { id: number }>({
+            query: ({ id }) => ({
+                url: `reviews/${id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: [{ type: 'Reviews', id: 'LIST' }],
         }),
     }),
     overrideExisting: false,

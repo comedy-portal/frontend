@@ -1,5 +1,6 @@
 import { ContentReviews } from '@/components/features/content/content-reviews/content-reviews'
 import { getContentById } from '@/services/content/content'
+import { getUserData } from '@/services/user/user'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 
@@ -17,7 +18,7 @@ export default async function ContentReviewsPage(props: { params: Params }) {
              * This means that the user is not logged in. If you want to display some other UI in this
              * case, you can do so here.
              */
-            return <ContentReviews contentId={content.id} isAuth={false} />
+            return <ContentReviews contentId={content.id} activeUserId={null} isAuth={false} />
         }
 
         /**
@@ -29,5 +30,7 @@ export default async function ContentReviewsPage(props: { params: Params }) {
         return <TryRefreshComponent key={Date.now()} />
     }
 
-    return <ContentReviews contentId={content.id} isAuth={true} />
+    const activeUser = await getUserData()
+
+    return <ContentReviews contentId={content.id} activeUserId={activeUser.id} isAuth={true} />
 }

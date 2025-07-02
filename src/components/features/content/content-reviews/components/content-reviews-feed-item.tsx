@@ -2,11 +2,15 @@ import Link from 'next/link'
 
 import { Rating } from '@/components/ui/rating'
 
+import { ContentReviewsFeedItemControls } from './content-reviews-feed-item-controls'
+
 type ContentReviewsFeedItemProps = {
+    id: number
     text: string | null
     rating: number
     username: string
     createdAt: string
+    isMyReview?: boolean
 }
 
 export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
@@ -29,6 +33,7 @@ export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
             </div>
 
             {props.text && <p>{props.text}</p>}
+            {props.isMyReview && <ContentReviewsFeedItemControls id={props.id} />}
         </div>
     )
 }

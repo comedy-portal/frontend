@@ -11,9 +11,11 @@ import { UserReviewsFeedSkeleton } from './user-reviews-feed-skeleton'
 
 type UserReviewsFeedProps = {
     userId: number
+    activeUserId: number | null
+    isAuth: boolean
 }
 
-export const UserReviewsFeed = ({ userId }: UserReviewsFeedProps) => {
+export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFeedProps) => {
     const [cursor, setCursor] = useState<number>()
 
     const { data, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsQuery({
@@ -49,12 +51,14 @@ export const UserReviewsFeed = ({ userId }: UserReviewsFeedProps) => {
                 {data.items.map(item => (
                     <UserReviewsFeedItem
                         key={`content-reviews-feed-item-${item.id}`}
-                        id={item.content.id}
+                        id={item.id}
+                        contentId={item.content.id}
                         type={item.content.type}
                         name={item.content.name}
                         text={item.text}
                         rating={item.mark}
                         createdAt={item.createdAt}
+                        isMyReview={isAuth && activeUserId === userId && item.user.id === activeUserId}
                     />
                 ))}
             </div>

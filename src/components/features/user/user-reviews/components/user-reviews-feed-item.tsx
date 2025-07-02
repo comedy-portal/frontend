@@ -3,13 +3,17 @@ import Link from 'next/link'
 import { Rating } from '@/components/ui/rating'
 import { ContentType } from '@/utils/enums/common'
 
+import { UserReviewsFeedItemControls } from './user-reviews-feed-item-controls'
+
 type UserReviewsFeedItemProps = {
     id: number
+    contentId: number
     type: ContentType
     name: string
     text: string | null
     rating: number
     createdAt: string
+    isMyReview?: boolean
 }
 
 export const UserReviewsFeedItem = (props: UserReviewsFeedItemProps) => {
@@ -19,7 +23,7 @@ export const UserReviewsFeedItem = (props: UserReviewsFeedItemProps) => {
                 <Rating value={props.rating} className="size-11" />
                 <div>
                     <Link
-                        href={`/content/${props.type.toLowerCase()}/${props.id}`}
+                        href={`/content/${props.type.toLowerCase()}/${props.contentId}`}
                         className="text-base font-semibold text-black hover:text-blue-500"
                     >
                         {props.name}
@@ -35,6 +39,7 @@ export const UserReviewsFeedItem = (props: UserReviewsFeedItemProps) => {
             </div>
 
             {props.text && <p>{props.text}</p>}
+            {props.isMyReview && <UserReviewsFeedItemControls id={props.id} />}
         </div>
     )
 }

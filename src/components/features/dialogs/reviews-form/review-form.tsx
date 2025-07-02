@@ -50,7 +50,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                         name="text"
                         autoFocus
                         rows={6}
-                        value={formik.values.text}
+                        value={formik.values.text || ''}
                         error={formik.errors.text}
                         disabled={isLoading}
                         onChange={formik.handleChange}
