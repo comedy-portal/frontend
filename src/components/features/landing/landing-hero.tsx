@@ -10,7 +10,7 @@ import 'react-alice-carousel/lib/alice-carousel.css'
 
 export const LandingHero = () => {
     const items = [
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center" key={`landing-hero-item-1`}>
             <Image
                 src="/images/hero/hero-2.webp"
                 alt="Landing Hero"
@@ -19,7 +19,7 @@ export const LandingHero = () => {
                 className="align-top sm:rounded-xl"
             />
         </div>,
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center" key={`landing-hero-item-2`}>
             <Image
                 src="/images/hero/hero-2.webp"
                 alt="Landing Hero"
@@ -28,7 +28,7 @@ export const LandingHero = () => {
                 className="align-top sm:rounded-xl"
             />
         </div>,
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center" key={`landing-hero-item-3`}>
             <Image
                 src="/images/hero/hero-2.webp"
                 alt="Landing Hero"

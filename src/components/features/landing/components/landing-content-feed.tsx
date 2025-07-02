@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { ContentBlock } from '@/components/ui/content-block/content-block'
+import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
 import { IContent } from '@/utils/types/content'
 
 type LandingContentFeedProps = {
@@ -29,7 +30,7 @@ export const LandingContentFeed = (props: LandingContentFeedProps) => {
                         imageUrl={item.contentImages[0]?.url}
                         year={item.year}
                         avgRating={item.rating.avgRating}
-                        reviewsCount={item.rating.reviewsCount}
+                        author={getAuthorDisplayNameForContent(item)}
                     />
                 ))}
             </div>

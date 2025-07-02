@@ -10,6 +10,7 @@ import { LoadMore } from '@/components/ui/load-more'
 import { contentAPI } from '@/redux/services/content/content.api'
 import { ContentSortBy } from '@/redux/services/content/content.types'
 import { ContentType, ContentUrlSortBy, Order } from '@/utils/enums/common'
+import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
 
 import { ContentManyFeedSkeleton } from './content-many-feed-skeleton'
 
@@ -76,7 +77,7 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
                         imageUrl={item.contentImages[0]?.url}
                         year={item.year}
                         avgRating={item.rating.avgRating}
-                        reviewsCount={item.rating.reviewsCount}
+                        author={getAuthorDisplayNameForContent(item)}
                     />
                 ))}
             </div>

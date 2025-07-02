@@ -5,6 +5,7 @@ import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
 import { Rating } from '../rating'
+import { ContentBlockAuthor } from './components/content-block-author'
 import { ContentBlockDate } from './components/content-block-date'
 import { ContentBlockTag } from './components/content-block-tag'
 
@@ -15,10 +16,13 @@ type ContentBlockType = {
     imageUrl: string | null
     year: number
     avgRating: number
-    reviewsCount: number
+    author?: {
+        name: string
+        url: string
+    }
 }
 
-export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: ContentBlockType) => {
+export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, author }: ContentBlockType) => {
     return (
         <div className="relative">
             <Link href={`/content/${type.toLowerCase()}/${id}`}>
@@ -37,11 +41,8 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating }: Cont
 
             <div className="flex flex-col gap-y-4 rounded-b-lg border-x border-b border-[#DFE2E6] p-4">
                 <div>
-                    <div className="text-sm text-gray-700">Евгений Чебатков</div>
-                    <Link
-                        href={`/content/${type.toLowerCase()}/${id}`}
-                        className="line-clamp-2 h-12 font-semibold hover:text-blue-500"
-                    >
+                    {author && <ContentBlockAuthor name={author.name} url={author.url} />}
+                    <Link href={`/content/${type.toLowerCase()}/${id}`} className="line-clamp-2 h-12 font-semibold">
                         {name}
                     </Link>
                 </div>

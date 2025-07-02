@@ -40,7 +40,6 @@ export const ComedianContent = ({ content }: ComedianContentProps) => {
                     imageUrl={item.contentImages[0]?.url}
                     year={item.year}
                     avgRating={item.rating.avgRating}
-                    reviewsCount={item.rating.reviewsCount}
                 />
             ))}
         </div>
