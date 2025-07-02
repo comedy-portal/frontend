@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 import type { Metadata } from 'next'
 
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
 
 import { Footer } from '@/components/features/layout/footer/footer'
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                     </div>
                 </Providers>
                 <TailwindIndicator />
+                <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string} />
             </body>
         </html>
     )
