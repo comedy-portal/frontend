@@ -7,3 +7,7 @@
 .wrapper-lg {
   @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
 }
+
+.alice-carousel__dots {
+  @apply absolute -bottom-14 left-1/2 z-10 -translate-x-1/2 items-center justify-center gap-x-4 m-0! hidden sm:flex;
+}

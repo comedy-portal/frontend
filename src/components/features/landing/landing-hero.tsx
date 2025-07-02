@@ -1,16 +1,63 @@
 'use client'
 
+import AliceCarousel from 'react-alice-carousel'
+
+import classNames from 'classnames'
+
 import Image from 'next/image'
 
+import 'react-alice-carousel/lib/alice-carousel.css'
+
 export const LandingHero = () => {
-    return (
-        <div className="flex items-center justify-center bg-black sm:pt-10 sm:pb-20">
+    const items = [
+        <div className="flex items-center justify-center">
             <Image
                 src="/images/hero/hero-2.webp"
                 alt="Landing Hero"
                 width={1216}
                 height={400}
                 className="align-top sm:rounded-xl"
+            />
+        </div>,
+        <div className="flex items-center justify-center">
+            <Image
+                src="/images/hero/hero-2.webp"
+                alt="Landing Hero"
+                width={1216}
+                height={400}
+                className="align-top sm:rounded-xl"
+            />
+        </div>,
+        <div className="flex items-center justify-center">
+            <Image
+                src="/images/hero/hero-2.webp"
+                alt="Landing Hero"
+                width={1216}
+                height={400}
+                className="align-top sm:rounded-xl"
+            />
+        </div>,
+    ]
+
+    return (
+        <div className="relative flex items-center justify-center bg-black sm:pt-10 sm:pb-20">
+            <AliceCarousel
+                mouseTracking
+                disableButtonsControls
+                infinite
+                items={items}
+                responsive={{
+                    0: {
+                        items: 1,
+                    },
+                }}
+                renderDotsItem={e => (
+                    <div
+                        className={classNames('relative h-2 w-6 cursor-pointer rounded-full border-2 border-white', {
+                            'bg-white': e.isActive,
+                        })}
+                    />
+                )}
             />
         </div>
     )

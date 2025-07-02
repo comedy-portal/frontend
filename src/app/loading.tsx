@@ -2,9 +2,12 @@ import { MicIcon } from 'lucide-react'
 
 export default function Loading() {
     return (
-        <div className="flex h-screen w-screen animate-pulse flex-col items-center justify-center gap-y-4 font-semibold">
-            <MicIcon size={48} />
-            <div>Загрузка ...</div>
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-y-8 bg-black font-semibold text-white">
+            <div className="relative flex items-center justify-center">
+                <div className="absolute h-20 w-20 animate-spin rounded-full border-4 border-gray-500 border-t-white" />
+                <MicIcon size={48} className="z-10" />
+            </div>
+            <div>Загрузка</div>
         </div>
     )
 }

@@ -31,6 +31,7 @@ export type IContent = {
     watchlists?: {
         createdAt: Date
     }[]
+    _count?: { reviews: number }
     contentImages: Image[]
     createdAt: string
     updatedAt: string

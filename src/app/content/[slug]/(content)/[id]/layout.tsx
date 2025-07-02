@@ -18,7 +18,7 @@ export default async function ContentLayout(props: { children: React.ReactNode; 
                     exact: true,
                 },
                 {
-                    label: `Рецензии (${content.rating.reviewsCount})`,
+                    label: `Рецензии (${content._count?.reviews || 0})`,
                     href: `/content/${content.type.toLowerCase()}/${content.id}/reviews`,
                     exact: true,
                 },
