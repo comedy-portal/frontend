@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import type { Metadata } from 'next'
 
 import { Roboto } from 'next/font/google'
@@ -11,7 +12,6 @@ import './globals.css'
 import { Providers } from './providers'
 
 const roboto = Roboto({
-    variable: '--font-roboto',
     subsets: ['latin', 'cyrillic'],
 })
 
@@ -23,8 +23,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <html lang="en" className="h-full">
-            <body className={`${roboto.variable} h-full antialiased`}>
+        <html lang="en" className={classNames('h-full', roboto.className)}>
+            <body className="h-full antialiased">
                 <Providers>
                     <div className="flex min-h-full flex-col">
                         <Header />
