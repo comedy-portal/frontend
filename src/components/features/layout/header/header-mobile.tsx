@@ -47,7 +47,7 @@ export const HeaderMobile = ({ profileEntryPointComponent }: HeaderMobileProps) 
                         О проекте
                     </Link>
 
-                    <hr />
+                    <hr className="my-2 border-gray-500" />
 
                     {profileEntryPointComponent}
                 </nav>
