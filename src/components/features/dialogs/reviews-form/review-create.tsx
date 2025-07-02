@@ -1,5 +1,7 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+
 import { messages } from '@/messages'
 import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
 import { CreateReviewInputs } from '@/redux/services/reviews/reviews.types'
@@ -13,6 +15,7 @@ type ReviewCreateProps = {
 
 export const ReviewCreate = ({ contentId }: ReviewCreateProps) => {
     const dialog = useDialog()
+    const router = useRouter()
 
     const [createReview, { isLoading }] = reviewsAPI.useCreateReviewMutation()
 
@@ -30,6 +33,7 @@ export const ReviewCreate = ({ contentId }: ReviewCreateProps) => {
                 ...(inputs.text?.trim().length ? { text: inputs.text.trim() } : { text: null }),
             }
             createReview(trimmedInputs)
+            router.refresh()
             dialog.close()
         } catch {
             console.error(messages.COMMON_ERROR)

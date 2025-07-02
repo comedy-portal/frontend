@@ -45,7 +45,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                 />
 
                 <div className="flex flex-col gap-y-2">
-                    <label className="text-sm font-semibold text-gray-700">Напишите свой отзыв</label>
+                    <label className="text-sm font-semibold text-gray-700">Напишите свою рецензию</label>
                     <Textarea
                         name="text"
                         autoFocus

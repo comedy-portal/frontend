@@ -14,9 +14,10 @@ type ContentReviewsFeedProps = {
     contentId: number
     activeUserId: number | null
     isAuth: boolean
+    hasMyReview: boolean
 }
 
-export const ContentReviewsFeed = ({ contentId, activeUserId, isAuth }: ContentReviewsFeedProps) => {
+export const ContentReviewsFeed = ({ contentId, activeUserId, isAuth, hasMyReview }: ContentReviewsFeedProps) => {
     const [cursor, setCursor] = useState<number>()
 
     const { data, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsQuery({
@@ -51,13 +52,15 @@ export const ContentReviewsFeed = ({ contentId, activeUserId, isAuth }: ContentR
     return (
         <div className="relative flex flex-col gap-y-12">
             <div>
-                <div className="mb-6 sm:absolute sm:-top-[73px] sm:right-0 sm:mb-0">
-                    <ContentReviewAddButton
-                        contentId={contentId}
-                        isAuth={isAuth}
-                        className="w-full justify-center sm:w-auto"
-                    />
-                </div>
+                {!hasMyReview && (
+                    <div className="mb-6 sm:absolute sm:-top-[73px] sm:right-0 sm:mb-0">
+                        <ContentReviewAddButton
+                            contentId={contentId}
+                            isAuth={isAuth}
+                            className="w-full justify-center sm:w-auto"
+                        />
+                    </div>
+                )}
                 <div className="space-y-4">
                     {data.items.map(item => (
                         <ContentReviewsFeedItem

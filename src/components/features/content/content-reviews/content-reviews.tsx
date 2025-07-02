@@ -4,8 +4,16 @@ type ContentReviewsProps = {
     contentId: number
     activeUserId: number | null
     isAuth: boolean
+    hasMyReview: boolean
 }
 
-export const ContentReviews = ({ contentId, activeUserId, isAuth }: ContentReviewsProps) => {
-    return <ContentReviewsFeed contentId={contentId} activeUserId={activeUserId} isAuth={isAuth} />
+export const ContentReviews = ({ contentId, activeUserId, isAuth, hasMyReview }: ContentReviewsProps) => {
+    return (
+        <ContentReviewsFeed
+            contentId={contentId}
+            activeUserId={activeUserId}
+            isAuth={isAuth}
+            hasMyReview={hasMyReview}
+        />
+    )
 }
