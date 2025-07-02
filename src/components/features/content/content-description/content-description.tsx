@@ -1,6 +1,6 @@
-import { IContent } from '@/utils/types/content'
+import Image from 'next/image'
 
-import { ContentDescriptionCover } from './components/content-description-cover'
+import { IContent } from '@/utils/types/content'
 
 type ContentDescriptionProps = {
     content: IContent
@@ -9,7 +9,13 @@ type ContentDescriptionProps = {
 export const ContentDescription = ({ content }: ContentDescriptionProps) => {
     return (
         <div className="space-y-4">
-            <ContentDescriptionCover cover={content.contentImages[0].url} name={content.name} />
+            <Image
+                src={content.contentImages[0].url}
+                width={500}
+                height={500}
+                className="aspect-video w-full rounded-lg object-cover"
+                alt={content.name}
+            />
             <div>{content.metaInfo?.description}</div>
         </div>
     )
