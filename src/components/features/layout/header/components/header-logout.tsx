@@ -1,6 +1,5 @@
 'use client'
 
-import { LogOutIcon } from 'lucide-react'
 import Session from 'supertokens-web-js/recipe/session'
 
 import { useRouter } from 'next/navigation'
@@ -22,7 +21,6 @@ export const HeaderLogout = () => {
 
     return (
         <div className="flex items-center gap-x-2 text-red-500 hover:underline" onClick={signOut}>
-            {/* <LogOutIcon strokeWidth={1.5} /> */}
             Выйти
         </div>
     )
