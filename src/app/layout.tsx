@@ -5,7 +5,7 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
 
 import { Footer } from '@/components/features/layout/footer/footer'
-import { Header } from '@/components/features/layout/header/header'
+import { HeaderAuthWrapper } from '@/components/features/layout/header/header-auth-wrapper'
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
 
 import './globals.css'
@@ -28,7 +28,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <body className="h-full antialiased">
                 <Providers>
                     <div className="flex min-h-full flex-col">
-                        <Header />
+                        <HeaderAuthWrapper />
                         <main className="flex-1">{children}</main>
                         <Footer />
                     </div>

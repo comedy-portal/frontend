@@ -3,17 +3,18 @@
 import { LogInIcon } from 'lucide-react'
 
 import { SignUp } from '@/components/features/auth/sign-up'
-import { toggleMobileMenu } from '@/redux/features/app-slice'
-import { useAppDispatch } from '@/redux/hooks'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
-export const HeaderLogin = () => {
-    const dispatch = useAppDispatch()
+type HeaderLoginProps = {
+    onClick?: () => void
+}
+
+export const HeaderLogin = ({ onClick }: HeaderLoginProps) => {
     const dialog = useDialog()
 
     const handleClick = () => {
         dialog.open(<SignUp />)
-        dispatch(toggleMobileMenu(false))
+        onClick?.()
     }
 
     return (

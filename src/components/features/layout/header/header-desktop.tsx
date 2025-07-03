@@ -1,10 +1,17 @@
+import { CircleUserRoundIcon } from 'lucide-react'
+
 import Link from 'next/link'
 
-import { HeaderProfileEntryPoint } from './header-profile-entry-point'
-import { Logo } from './header-search/header-logo'
-import { HeaderSearch } from './header-search/header-search'
+import { HeaderLogin } from './components/header-login'
+import { Logo } from './components/header-search/header-logo'
+import { HeaderSearch } from './components/header-search/header-search'
 
-export const HeaderDesktop = () => {
+type HeaderDesktopProps = {
+    username?: string
+    isAuth: boolean
+}
+
+export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
     return (
         <div className="flex h-full flex-row items-center justify-between">
             <div className="flex h-full items-center justify-center gap-x-8">
@@ -24,7 +31,17 @@ export const HeaderDesktop = () => {
                 </nav>
             </div>
 
-            <HeaderProfileEntryPoint />
+            {isAuth ? (
+                <Link
+                    href={`/users/${username}`}
+                    className="flex items-center gap-x-2 text-sm text-white hover:underline"
+                >
+                    {username}
+                    <CircleUserRoundIcon strokeWidth={1} />
+                </Link>
+            ) : (
+                <HeaderLogin />
+            )}
         </div>
     )
 }
