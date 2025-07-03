@@ -18,8 +18,7 @@ export const HeaderLogin = ({ onClick }: HeaderLoginProps) => {
     }
 
     return (
-        <div className="flex cursor-pointer items-center gap-x-2 text-white sm:text-sm" onClick={handleClick}>
-            <LogInIcon size={16} />
+        <div className="cursor-pointer hover:text-white sm:text-sm sm:text-gray-200" onClick={handleClick}>
             Войти
         </div>
     )
