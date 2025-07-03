@@ -46,6 +46,9 @@ export const HeaderMobile = ({ username, isAuth }: HeaderMobileProps) => {
                     <Link href="/about" className="text-white" onClick={closeMobileMenu}>
                         О проекте
                     </Link>
+                    <Link href="/content/add" className="text-white" onClick={closeMobileMenu}>
+                        Предложить контент
+                    </Link>
 
                     <hr className="my-2 border-gray-500" />
 

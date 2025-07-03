@@ -21,8 +21,8 @@ export const HeaderLogout = () => {
     }
 
     return (
-        <div className="flex cursor-pointer items-center gap-x-2 text-white sm:text-sm" onClick={signOut}>
-            <LogOutIcon size={16} className="hidden sm:block" />
+        <div className="flex items-center gap-x-2 text-red-500 hover:underline" onClick={signOut}>
+            {/* <LogOutIcon strokeWidth={1.5} /> */}
             Выйти
         </div>
     )

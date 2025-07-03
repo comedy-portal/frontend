@@ -19,29 +19,34 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
                 <HeaderSearch />
 
                 <nav className="flex items-center justify-center gap-x-4 text-sm">
-                    <Link href="/content" className="text-nowrap text-white hover:underline">
+                    <Link href="/content" className="text-nowrap text-gray-200 hover:text-white">
                         Контент
                     </Link>
-                    <Link href="/comedians" className="text-nowrap text-white hover:underline">
+                    <Link href="/comedians" className="text-nowrap text-gray-200 hover:text-white">
                         Комики
                     </Link>
-                    <Link href="/about" className="text-nowrap text-white hover:underline">
+                    <Link href="/about" className="text-nowrap text-gray-200 hover:text-white">
                         О проекте
                     </Link>
                 </nav>
             </div>
 
-            {isAuth ? (
-                <Link
-                    href={`/users/${username}`}
-                    className="flex items-center gap-x-2 text-sm text-white hover:underline"
-                >
-                    {username}
-                    <CircleUserRoundIcon strokeWidth={1} />
+            <div className="flex items-center justify-center gap-x-4 text-sm">
+                <Link href="/content/add" className="cursor-pointer text-gray-200 hover:text-white">
+                    Предложить контент
                 </Link>
-            ) : (
-                <HeaderLogin />
-            )}
+                {isAuth ? (
+                    <Link
+                        href={`/users/${username}`}
+                        className="flex items-center gap-x-2 text-gray-200 hover:text-white"
+                    >
+                        {/* {username} */}
+                        <CircleUserRoundIcon strokeWidth={1.5} />
+                    </Link>
+                ) : (
+                    <HeaderLogin />
+                )}
+            </div>
         </div>
     )
 }
