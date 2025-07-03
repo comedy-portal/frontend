@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
@@ -15,6 +15,13 @@ import { Providers } from './providers'
 const roboto = Roboto({
     subsets: ['latin', 'cyrillic'],
 })
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+}
 
 // prettier-ignore
 export const metadata: Metadata = {
