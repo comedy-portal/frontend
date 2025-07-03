@@ -28,5 +28,5 @@ export async function HeaderProfileEntryPoint() {
 
     const userData = await getUserData()
 
-    return <HeaderProfile slug={userData.username} />
+    return <HeaderProfile username={userData.username} />
 }
