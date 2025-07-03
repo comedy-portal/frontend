@@ -1,3 +1,5 @@
+import { Metadata } from 'next'
+
 import { UserReviews } from '@/components/features/user/user-reviews/user-reviews'
 import { getUserData } from '@/services/user/user'
 import { getUserByName } from '@/services/users/users'
@@ -5,6 +7,14 @@ import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 
 type Params = Promise<{ username: string }>
+
+export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
+    const params = await props.params
+
+    return {
+        title: `Рецензии пользователя ${params.username} - Comedy Portal`,
+    }
+}
 
 export default async function UserReviewsPage(props: { params: Params }) {
     const params = await props.params
