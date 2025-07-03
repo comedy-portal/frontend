@@ -37,7 +37,7 @@ export default async function ContentReviewsPage(props: { params: Params }) {
             contentId={content.id}
             activeUserId={activeUser.id}
             isAuth={true}
-            hasMyReview={content.reviews?.length! > 0}
+            hasMyReview={!!content.reviews?.length}
         />
     )
 }
