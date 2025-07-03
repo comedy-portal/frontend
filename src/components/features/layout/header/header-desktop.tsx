@@ -2,6 +2,7 @@ import { CircleUserRoundIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
+import { HeaderContentProposal } from './components/header-content-proposal'
 import { HeaderLogin } from './components/header-login'
 import { Logo } from './components/header-search/header-logo'
 import { HeaderSearch } from './components/header-search/header-search'
@@ -32,9 +33,7 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
             </div>
 
             <div className="flex items-center justify-center gap-x-4 text-sm">
-                <Link href="/content/add" className="cursor-pointer text-gray-200 hover:text-white">
-                    Предложить контент
-                </Link>
+                <HeaderContentProposal isAuth={isAuth} />
                 {isAuth ? (
                     <Link
                         href={`/users/${username}`}

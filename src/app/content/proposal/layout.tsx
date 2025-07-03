@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: 'Предложить контент - Comedy Portal',
 }
 
-export default function ContentAddLayout(props: { children: React.ReactNode }) {
+export default function ContentProposalLayout(props: { children: React.ReactNode }) {
     return (
         <Layout title="Предложить контент" size="sm">
             {props.children}

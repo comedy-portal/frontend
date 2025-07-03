@@ -40,9 +40,7 @@ export const Textarea = (props: TextareaProps) => {
                             'border-red-500': error,
                         },
                     )}
-                >
-                    {props.value}
-                </textarea>
+                />
             </div>
 
             {error && <div className="mt-1 text-xs text-red-500">{error}</div>}

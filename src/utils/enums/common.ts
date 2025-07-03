@@ -40,3 +40,8 @@ export enum ContentUrlSortBy {
     DATE_ASC = 'date_asc',
     RATING_DESC = 'rating_desc',
 }
+
+export enum ItemToProcessStatus {
+    PENDING = 'pending',
+    RESOLVED = 'resolved',
+}
