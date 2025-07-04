@@ -6,9 +6,9 @@ import { CircleUserRoundIcon, MenuIcon, XIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
-import { HeaderContentProposal } from './components/header-content-proposal'
 import { HeaderLogin } from './components/header-login'
 import { Logo } from './components/header-logo'
+import { HeaderSubmitContent } from './components/header-submit-content'
 
 type HeaderMobileProps = {
     username?: string
@@ -47,7 +47,7 @@ export const HeaderMobile = ({ username, isAuth }: HeaderMobileProps) => {
                     <Link href="/about" className="text-white" onClick={closeMobileMenu}>
                         О проекте
                     </Link>
-                    <HeaderContentProposal isAuth={isAuth} onClick={closeMobileMenu} />
+                    <HeaderSubmitContent isAuth={isAuth} onClick={closeMobileMenu} />
 
                     <hr className="my-2 border-gray-500" />
 

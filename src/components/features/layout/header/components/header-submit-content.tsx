@@ -5,12 +5,12 @@ import { useRouter } from 'next/navigation'
 import { SignUp } from '@/components/features/auth/sign-up'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
-type HeaderContentProposalProps = {
+type HeaderSubmitContentProps = {
     isAuth: boolean
     onClick?: () => void
 }
 
-export const HeaderContentProposal = ({ isAuth, onClick }: HeaderContentProposalProps) => {
+export const HeaderSubmitContent = ({ isAuth, onClick }: HeaderSubmitContentProps) => {
     const dialog = useDialog()
     const router = useRouter()
 
@@ -22,7 +22,7 @@ export const HeaderContentProposal = ({ isAuth, onClick }: HeaderContentProposal
             return
         }
 
-        router.push('/content/proposal')
+        router.push('/content/submit')
     }
 
     return (
