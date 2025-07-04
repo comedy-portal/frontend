@@ -36,8 +36,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <body className="h-full antialiased">
                 <Providers>
                     <div className="flex min-h-full flex-col">
-                        <HeaderAuthWrapper />
                         <AlphaBanner />
+                        <HeaderAuthWrapper />
                         <main className="flex-1">{children}</main>
                         <Footer />
                     </div>
