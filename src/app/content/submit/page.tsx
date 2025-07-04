@@ -1,10 +1,10 @@
 import { notFound } from 'next/navigation'
 
-import { ContentProposal } from '@/components/features/content-proposal/content-proposal'
+import { ContentSubmit } from '@/components/features/content-submit/content-submit'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 
-export default async function ContentProposalPage() {
+export default async function ContentSubmitPage() {
     const { accessTokenPayload, hasToken } = await getSSRSessionHelper()
 
     if (!accessTokenPayload) {
@@ -25,5 +25,5 @@ export default async function ContentProposalPage() {
         return <TryRefreshComponent key={Date.now()} />
     }
 
-    return <ContentProposal />
+    return <ContentSubmit />
 }

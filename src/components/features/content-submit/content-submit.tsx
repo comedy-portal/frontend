@@ -12,7 +12,7 @@ import { messages } from '@/messages'
 import { ContentProposalsAPI } from '@/redux/services/content-proposals/content-proposals.api'
 import { CreateProposalsInputs } from '@/redux/services/content-proposals/content-proposals.types'
 
-export const ContentProposal = () => {
+export const ContentSubmit = () => {
     const [status, setStatus] = useState<string | null>(null)
     const [createProposal, { isLoading }] = ContentProposalsAPI.useCreateProposalMutation()
 
