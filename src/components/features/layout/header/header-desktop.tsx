@@ -4,8 +4,8 @@ import Link from 'next/link'
 
 import { HeaderContentProposal } from './components/header-content-proposal'
 import { HeaderLogin } from './components/header-login'
-import { Logo } from './components/header-search/header-logo'
-import { HeaderSearch } from './components/header-search/header-search'
+import { Logo } from './components/header-logo'
+import { HeaderSearch } from './components/header-search'
 
 type HeaderDesktopProps = {
     username?: string

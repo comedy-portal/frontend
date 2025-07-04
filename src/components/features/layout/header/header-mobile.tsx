@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 import { HeaderContentProposal } from './components/header-content-proposal'
 import { HeaderLogin } from './components/header-login'
-import { Logo } from './components/header-search/header-logo'
+import { Logo } from './components/header-logo'
 
 type HeaderMobileProps = {
     username?: string
