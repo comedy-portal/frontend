@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from 'next'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
 
+import { AlphaBanner } from '@/components/features/layout/alpha-banner/alpha-banner'
 import { Footer } from '@/components/features/layout/footer/footer'
 import { HeaderAuthWrapper } from '@/components/features/layout/header/header-auth-wrapper'
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <body className="h-full antialiased">
                 <Providers>
                     <div className="flex min-h-full flex-col">
+                        <AlphaBanner />
                         <HeaderAuthWrapper />
                         <main className="flex-1">{children}</main>
                         <Footer />
