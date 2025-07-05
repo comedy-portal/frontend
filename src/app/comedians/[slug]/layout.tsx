@@ -1,7 +1,19 @@
+import { Metadata } from 'next'
+
 import { Layout } from '@/components/features/layout/layout/layout'
 import { getComedianBySlug } from '@/services/comedians/comedians'
 
 type Params = Promise<{ slug: string }>
+
+export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
+    const params = await props.params
+    const comedian = await getComedianBySlug(params.slug)
+
+    return {
+        title: `${comedian.name} ${comedian.surname} - Comedy Portal`,
+        description: comedian.metaInfo?.description,
+    }
+}
 
 export default async function ComedianLayout(props: { children: React.ReactNode; params: Params }) {
     const params = await props.params

@@ -1,6 +1,5 @@
 'use client'
 
-import { LogOutIcon } from 'lucide-react'
 import Session from 'supertokens-web-js/recipe/session'
 
 import { useRouter } from 'next/navigation'
@@ -21,8 +20,7 @@ export const HeaderLogout = () => {
     }
 
     return (
-        <div className="flex cursor-pointer items-center gap-x-2 text-white sm:text-sm" onClick={signOut}>
-            <LogOutIcon size={16} className="hidden sm:block" />
+        <div className="flex items-center gap-x-2 text-red-500 hover:underline" onClick={signOut}>
             Выйти
         </div>
     )

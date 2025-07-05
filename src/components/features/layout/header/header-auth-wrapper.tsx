@@ -2,10 +2,9 @@ import { getUserData } from '@/services/user/user'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 
-import { HeaderLogin } from './header-login'
-import { HeaderProfile } from './header-profile'
+import { Header } from './header'
 
-export async function HeaderProfileEntryPoint() {
+export const HeaderAuthWrapper = async () => {
     const { accessTokenPayload, hasToken } = await getSSRSessionHelper()
 
     if (accessTokenPayload === undefined) {
@@ -14,7 +13,7 @@ export async function HeaderProfileEntryPoint() {
              * This means that the user is not logged in. If you want to display some other UI in this
              * case, you can do so here.
              */
-            return <HeaderLogin />
+            return <Header isAuth={false} />
         }
 
         /**
@@ -28,5 +27,5 @@ export async function HeaderProfileEntryPoint() {
 
     const userData = await getUserData()
 
-    return <HeaderProfile slug={userData.username} />
+    return <Header username={userData.username} isAuth={true} />
 }

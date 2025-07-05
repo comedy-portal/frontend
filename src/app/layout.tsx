@@ -1,11 +1,12 @@
 import classNames from 'classnames'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
 
+import { AlphaBanner } from '@/components/features/layout/alpha-banner/alpha-banner'
 import { Footer } from '@/components/features/layout/footer/footer'
-import { Header } from '@/components/features/layout/header/header'
+import { HeaderAuthWrapper } from '@/components/features/layout/header/header-auth-wrapper'
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
 
 import './globals.css'
@@ -15,6 +16,13 @@ import { Providers } from './providers'
 const roboto = Roboto({
     subsets: ['latin', 'cyrillic'],
 })
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+}
 
 // prettier-ignore
 export const metadata: Metadata = {
@@ -28,7 +36,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <body className="h-full antialiased">
                 <Providers>
                     <div className="flex min-h-full flex-col">
-                        <Header />
+                        <AlphaBanner />
+                        <HeaderAuthWrapper />
                         <main className="flex-1">{children}</main>
                         <Footer />
                     </div>

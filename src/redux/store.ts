@@ -1,11 +1,9 @@
 import { Action, ThunkAction, combineReducers, configureStore } from '@reduxjs/toolkit'
 
-import appReducer from '@/redux/features/app-slice'
 import { api } from '@/redux/services/api'
 
 export const store = configureStore({
     reducer: combineReducers({
-        app: appReducer,
         [api.reducerPath]: api.reducer,
     }),
     middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }).concat([api.middleware]),

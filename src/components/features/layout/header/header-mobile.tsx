@@ -1,41 +1,42 @@
 'use client'
 
-import { MenuIcon, XIcon } from 'lucide-react'
+import { useState } from 'react'
+
+import { CircleUserRoundIcon, MenuIcon, XIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
-import { getIsMobileMenuOpen, toggleMobileMenu } from '@/redux/features/app-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-
-import { Logo } from './header-search/header-logo'
+import { HeaderLogin } from './components/header-login'
+import { Logo } from './components/header-logo'
+import { HeaderSubmitContent } from './components/header-submit-content'
 
 type HeaderMobileProps = {
-    profileEntryPointComponent: React.ReactNode
+    username?: string
+    isAuth: boolean
 }
 
-export const HeaderMobile = ({ profileEntryPointComponent }: HeaderMobileProps) => {
-    const isMobileMenuOpen = useAppSelector(getIsMobileMenuOpen)
-    const dispatch = useAppDispatch()
+export const HeaderMobile = ({ username, isAuth }: HeaderMobileProps) => {
+    const [isOpen, setIsOpen] = useState(false)
 
     const openMobileMenu = () => {
-        dispatch(toggleMobileMenu(true))
+        setIsOpen(true)
     }
 
     const closeMobileMenu = () => {
-        dispatch(toggleMobileMenu(false))
+        setIsOpen(false)
     }
 
     return (
         <div className="flex h-full items-center justify-between">
             <Logo className="text-white" />
 
-            {isMobileMenuOpen ? (
+            {isOpen ? (
                 <XIcon className="text-white" onClick={closeMobileMenu} />
             ) : (
                 <MenuIcon className="text-white" onClick={openMobileMenu} />
             )}
 
-            {isMobileMenuOpen && (
+            {isOpen && (
                 <nav className="absolute top-14 right-0 left-0 flex h-screen flex-col gap-y-3 bg-black p-3 text-white">
                     <Link href="/content" className="text-white" onClick={closeMobileMenu}>
                         Контент
@@ -46,10 +47,22 @@ export const HeaderMobile = ({ profileEntryPointComponent }: HeaderMobileProps) 
                     <Link href="/about" className="text-white" onClick={closeMobileMenu}>
                         О проекте
                     </Link>
+                    <HeaderSubmitContent isAuth={isAuth} onClick={closeMobileMenu} />
 
                     <hr className="my-2 border-gray-500" />
 
-                    {profileEntryPointComponent}
+                    {isAuth ? (
+                        <Link
+                            href={`/users/${username}`}
+                            className="flex items-center gap-x-2 text-white hover:underline"
+                            onClick={closeMobileMenu}
+                        >
+                            <CircleUserRoundIcon strokeWidth={1} />
+                            {username}
+                        </Link>
+                    ) : (
+                        <HeaderLogin onClick={closeMobileMenu} />
+                    )}
                 </nav>
             )}
         </div>

@@ -40,7 +40,7 @@ export const ContentReviewsFeed = ({ contentId, activeUserId, isAuth, hasMyRevie
                 Здесь пока нет рецензий.
                 <br />
                 Оставьте первую — поделитесь своим мнением.
-                <ContentReviewAddButton contentId={contentId} className="mt-4" isAuth={isAuth} />
+                {!hasMyReview && <ContentReviewAddButton contentId={contentId} className="mt-4" isAuth={isAuth} />}
             </EmptyMessage>
         )
     }

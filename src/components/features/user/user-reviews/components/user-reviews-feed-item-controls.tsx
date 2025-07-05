@@ -1,7 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-
 import { ReviewUpdate } from '@/components/features/dialogs/reviews-form/review-update'
 import { Confirmation } from '@/components/ui/confirmation'
 import { messages } from '@/messages'
@@ -14,7 +12,6 @@ type UserReviewsFeedItemProps = {
 
 export const UserReviewsFeedItemControls = ({ id }: UserReviewsFeedItemProps) => {
     const dialog = useDialog()
-    const router = useRouter()
 
     const [deleteReview] = reviewsAPI.useDeleteReviewMutation()
 
@@ -30,7 +27,6 @@ export const UserReviewsFeedItemControls = ({ id }: UserReviewsFeedItemProps) =>
                 onConfirm={async () => {
                     try {
                         await deleteReview({ id })
-                        router.refresh()
                         dialog.close()
                     } catch {
                         console.error(messages.COMMON_ERROR)
