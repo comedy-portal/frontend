@@ -4,7 +4,7 @@ import { AboutAlpha } from '@/components/features/about/about-alpha'
 
 // prettier-ignore
 export const metadata: Metadata = {
-    title: 'Разбираемся в форматах - Comedy Portal',
+    title: 'Об альфа-версии - Comedy Portal',
 }
 
 export default function AboutAlphaPage() {
