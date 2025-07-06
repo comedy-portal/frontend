@@ -75,6 +75,7 @@ export const ContentSubmit = () => {
                 <label className="text-sm font-semibold text-gray-700">Ссылка на видео</label>
                 <Input
                     name="url"
+                    autoFocus
                     value={formik.values.url}
                     error={formik.errors.url}
                     disabled={isLoading}
@@ -86,7 +87,6 @@ export const ContentSubmit = () => {
                 <label className="text-sm font-semibold text-gray-700">Описание видео</label>
                 <Textarea
                     name="text"
-                    autoFocus
                     rows={12}
                     value={formik.values.text}
                     error={formik.errors.text}
