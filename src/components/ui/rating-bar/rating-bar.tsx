@@ -31,7 +31,10 @@ export const RatingBar = ({ value, caption, editable = false, error, onChange }:
         <div>
             <div className={classNames('flex items-center gap-x-4', editable && 'cursor-pointer')}>
                 <div className="flex w-full flex-col gap-y-2">
-                    <div className="font-bold">{caption}</div>
+                    <div className="flex items-center justify-between text-gray-700">
+                        <div className="font-bold">{caption}</div>
+                        {/* <div className="text-sm text-gray-500">(отзывов 20)</div> */}
+                    </div>
 
                     <div
                         className={classNames('flex items-center overflow-hidden rounded-2xl transition-opacity', {
