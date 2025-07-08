@@ -18,17 +18,13 @@ type UserReviewsFeedItemProps = {
 
 export const UserReviewsFeedItem = (props: UserReviewsFeedItemProps) => {
     return (
-        <div className="space-y-4 rounded-lg bg-gray-100 p-4">
-            <div className="flex items-center gap-x-4">
-                <Rating value={props.rating} className="size-11" />
+        <div className="space-y-4 rounded-lg border border-gray-300 p-6">
+            <div className="flex items-center justify-between gap-x-4">
                 <div>
-                    <Link
-                        href={`/content/${props.type.toLowerCase()}/${props.contentId}`}
-                        className="text-base font-semibold"
-                    >
+                    <Link href={`/content/${props.type.toLowerCase()}/${props.contentId}`} className="font-bold">
                         {props.name}
                     </Link>
-                    <div className="text-sm text-gray-500">
+                    <div className="text-gray-500">
                         {new Date(props.createdAt).toLocaleDateString('ru-RU', {
                             year: 'numeric',
                             month: 'long',
@@ -36,10 +32,14 @@ export const UserReviewsFeedItem = (props: UserReviewsFeedItemProps) => {
                         })}
                     </div>
                 </div>
+
+                <div className="flex items-center gap-x-4">
+                    {props.isMyReview && <UserReviewsFeedItemControls id={props.id} />}
+                    <Rating value={props.rating} className="size-12" />
+                </div>
             </div>
 
-            {props.text && <p>{props.text}</p>}
-            {props.isMyReview && <UserReviewsFeedItemControls id={props.id} />}
+            {props.text && <div className="text-gray-700">{props.text}</div>}
         </div>
     )
 }

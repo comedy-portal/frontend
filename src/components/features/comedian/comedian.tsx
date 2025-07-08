@@ -18,7 +18,7 @@ export const Comedian = ({ comedian }: ComedianProps) => {
                     <ComedianContent content={comedian.content} />
                 </div>
 
-                <div className="flex shrink-0 flex-col sm:w-[392px]">
+                <div className="flex shrink-0 flex-col sm:w-[368px]">
                     <ImageWithFallback
                         src={`/images/comedians/${comedian.slug}.jpg`}
                         alt={`${comedian.name}`}

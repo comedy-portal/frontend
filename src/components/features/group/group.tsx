@@ -20,7 +20,7 @@ export const Group = ({ group }: GroupProps) => {
                     <GroupContent content={group.content} />
                 </div>
 
-                <div className="flex shrink-0 flex-col sm:w-[392px]">
+                <div className="flex shrink-0 flex-col sm:w-[368px]">
                     <ImageWithFallback
                         src={group.groupImages[0]?.url}
                         alt={`${group.name}`}

@@ -11,6 +11,7 @@ import { ContentBack } from './components/content-back'
 import { ContentDate } from './components/content-date'
 import { ContentDuration } from './components/content-duration'
 import { ContentEditReviewButton } from './components/content-edit-review-button'
+import { ContentReviewButton } from './components/content-review-button'
 import { ContentReviewsFeed } from './components/content-reviews/content-reviews-feed'
 import { ContentType } from './components/content-type'
 import { ContentWatch } from './components/content-watch'
@@ -47,7 +48,7 @@ export const Content = ({ content, activeUserId, isAuth }: ContentProps) => {
                     </section>
                 </div>
 
-                <div className="flex shrink-0 flex-col gap-y-6 sm:w-[392px]">
+                <div className="flex shrink-0 flex-col gap-y-6 sm:w-[368px]">
                     <h1 className="text-4xl font-bold">{content.name}</h1>
 
                     <RatingBar value={content.rating.avgRating} caption="Общий рейтинг" />
@@ -69,17 +70,21 @@ export const Content = ({ content, activeUserId, isAuth }: ContentProps) => {
 
                     {content.metaInfo && <ContentWatch links={content.metaInfo.links} />}
 
-                    <ContentAddToWatchList
-                        contentId={content.id}
-                        isAuth={isAuth}
-                        isInWatchlist={(content.watchlists?.length ?? 0) > 0}
-                    />
+                    <div className="flex flex-col gap-y-2">
+                        <ContentAddToWatchList
+                            contentId={content.id}
+                            isAuth={isAuth}
+                            isInWatchlist={(content.watchlists?.length ?? 0) > 0}
+                        />
 
-                    {content.reviews && content.reviews.length > 0 ? (
-                        <ContentEditReviewButton reviewId={content.reviews[0].id} isAuth={isAuth} />
-                    ) : (
-                        <ContentAddReviewButton contentId={content.id} isAuth={isAuth} />
-                    )}
+                        <ContentReviewButton contentId={content.id} review={content.reviews?.[0]} isAuth={isAuth} />
+
+                        {/* {content.reviews && content.reviews.length > 0 ? (
+                            <ContentEditReviewButton reviewId={content.reviews[0].id} isAuth={isAuth} />
+                        ) : (
+                            <ContentAddReviewButton contentId={content.id} isAuth={isAuth} />
+                        )} */}
+                    </div>
                 </div>
             </div>
         </div>

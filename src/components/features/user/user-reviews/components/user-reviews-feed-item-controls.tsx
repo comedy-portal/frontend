@@ -1,5 +1,7 @@
 'use client'
 
+import { SquarePenIcon, TrashIcon } from 'lucide-react'
+
 import { ReviewUpdate } from '@/components/features/dialogs/reviews-form/review-update'
 import { Confirmation } from '@/components/ui/confirmation'
 import { messages } from '@/messages'
@@ -37,12 +39,12 @@ export const UserReviewsFeedItemControls = ({ id }: UserReviewsFeedItemProps) =>
     }
 
     return (
-        <div className="flex items-center justify-start gap-x-2">
-            <div className="cursor-pointer text-xs text-red-500 hover:text-red-700" onClick={handleEditClick}>
-                Изменить
+        <div className="flex items-center justify-start gap-x-4">
+            <div className="cursor-pointer text-xs text-gray-300 hover:text-gray-950" onClick={handleEditClick}>
+                <SquarePenIcon />
             </div>
-            <div className="cursor-pointer text-xs text-red-500 hover:text-red-700" onClick={handleDeleteClick}>
-                Удалить
+            <div className="cursor-pointer text-xs text-gray-300 hover:text-gray-950" onClick={handleDeleteClick}>
+                <TrashIcon />
             </div>
         </div>
     )

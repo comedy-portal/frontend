@@ -30,12 +30,13 @@ export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
                     </div>
                 </div>
 
-                <Rating value={props.rating} className="size-12" />
+                <div className="flex items-center gap-x-4">
+                    {props.isMyReview && <ContentReviewsFeedItemControls id={props.id} />}
+                    <Rating value={props.rating} className="size-12" />
+                </div>
             </div>
 
             {props.text && <div className="text-gray-700">{props.text}</div>}
-
-            {props.isMyReview && <ContentReviewsFeedItemControls id={props.id} />}
         </div>
     )
 }
