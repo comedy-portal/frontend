@@ -3,9 +3,10 @@ import classNames from 'classnames'
 type RatingProps = {
     value: number
     className?: string
+    onClick?: () => void
 }
 
-export const Rating = ({ value, className }: RatingProps) => {
+export const Rating = ({ value, className, onClick }: RatingProps) => {
     const getColor = (value: number) => {
         if (value === 0) return 'bg-gray-200'
         if (value >= 1 && value <= 3) return 'bg-red-400'
@@ -22,6 +23,7 @@ export const Rating = ({ value, className }: RatingProps) => {
                 getColor(value),
                 className,
             )}
+            onClick={onClick}
         >
             {value}
         </div>

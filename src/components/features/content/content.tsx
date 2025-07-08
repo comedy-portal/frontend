@@ -4,13 +4,11 @@ import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
 import { IContent } from '@/utils/types/content'
 
 import { ContentAddMyRating } from './components/content-add-my-rating'
-import { ContentAddReviewButton } from './components/content-add-review-button'
 import { ContentAddToWatchList } from './components/content-add-to-watch-list'
 import { ContentAuthors } from './components/content-authors'
 import { ContentBack } from './components/content-back'
 import { ContentDate } from './components/content-date'
 import { ContentDuration } from './components/content-duration'
-import { ContentEditReviewButton } from './components/content-edit-review-button'
 import { ContentReviewButton } from './components/content-review-button'
 import { ContentReviewsFeed } from './components/content-reviews/content-reviews-feed'
 import { ContentType } from './components/content-type'
@@ -51,7 +49,11 @@ export const Content = ({ content, activeUserId, isAuth }: ContentProps) => {
                 <div className="flex shrink-0 flex-col gap-y-6 sm:w-[368px]">
                     <h1 className="text-4xl font-bold">{content.name}</h1>
 
-                    <RatingBar value={content.rating.avgRating} caption="Общий рейтинг" />
+                    <RatingBar
+                        value={content.rating.avgRating}
+                        reviewsCount={content.rating.reviewsCount}
+                        caption="Общий рейтинг"
+                    />
 
                     {content.reviews && content.reviews.length > 0 ? (
                         <RatingBar value={content.reviews[0].mark} caption="Мой рейтинг" />
@@ -78,12 +80,6 @@ export const Content = ({ content, activeUserId, isAuth }: ContentProps) => {
                         />
 
                         <ContentReviewButton contentId={content.id} review={content.reviews?.[0]} isAuth={isAuth} />
-
-                        {/* {content.reviews && content.reviews.length > 0 ? (
-                            <ContentEditReviewButton reviewId={content.reviews[0].id} isAuth={isAuth} />
-                        ) : (
-                            <ContentAddReviewButton contentId={content.id} isAuth={isAuth} />
-                        )} */}
                     </div>
                 </div>
             </div>

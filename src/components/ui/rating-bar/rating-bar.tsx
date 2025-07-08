@@ -15,13 +15,14 @@ const getColorByIndex = (index: number) => {
 
 type RatingBarProps = {
     value: number
+    reviewsCount?: number
     caption: string
     editable?: boolean
     error?: string
     onChange?: (value: number) => void
 }
 
-export const RatingBar = ({ value, caption, editable = false, error, onChange }: RatingBarProps) => {
+export const RatingBar = ({ value, reviewsCount, caption, editable = false, error, onChange }: RatingBarProps) => {
     const [hovered, setHovered] = useState<number | null>(null)
 
     const currentRating = hovered ?? value
@@ -33,7 +34,7 @@ export const RatingBar = ({ value, caption, editable = false, error, onChange }:
                 <div className="flex w-full flex-col gap-y-2">
                     <div className="flex items-center justify-between text-gray-700">
                         <div className="font-bold">{caption}</div>
-                        {/* <div className="text-sm text-gray-500">(отзывов 20)</div> */}
+                        {!!reviewsCount && <div className="text-sm text-gray-500">(отзывов {reviewsCount})</div>}
                     </div>
 
                     <div
