@@ -5,12 +5,12 @@ import { LinksBlock } from '@/components/ui/links-block'
 import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
 import { IContent } from '@/utils/types/content'
 
-import { ContentAddMyRating } from './components/content-add-my-rating'
 import { ContentAddToWatchList } from './components/content-add-to-watch-list'
 import { ContentAuthors } from './components/content-authors'
 import { ContentBack } from './components/content-back'
 import { ContentDate } from './components/content-date'
 import { ContentDuration } from './components/content-duration'
+import { ContentMyRating } from './components/content-my-rating'
 import { ContentReviewButton } from './components/content-review-button'
 import { ContentReviewsFeed } from './components/content-reviews/content-reviews-feed'
 import { ContentType } from './components/content-type'
@@ -58,15 +58,7 @@ export const Content = ({ content, activeUserId, isAuth }: ContentProps) => {
                         caption="Общий рейтинг"
                     />
 
-                    {content.reviews && content.reviews.length > 0 ? (
-                        <RatingBar value={content.reviews[0].mark} caption="Мой рейтинг" />
-                    ) : (
-                        <ContentAddMyRating
-                            contentId={content.id}
-                            value={content.reviews?.[0]?.mark || null}
-                            isAuth={isAuth}
-                        />
-                    )}
+                    <ContentMyRating contentId={content.id} review={content.reviews?.[0]} isAuth={isAuth} />
 
                     <ContentAuthors comedians={content.comedians} group={content.group} />
                     <ContentType type={content.type} />

@@ -20,17 +20,38 @@ type RatingBarProps = {
     editable?: boolean
     error?: string
     onChange?: (value: number) => void
+    onClick?: () => void
 }
 
-export const RatingBar = ({ value, reviewsCount, caption, editable = false, error, onChange }: RatingBarProps) => {
+export const RatingBar = ({
+    value,
+    reviewsCount,
+    caption,
+    editable = false,
+    error,
+    onChange,
+    onClick,
+}: RatingBarProps) => {
     const [hovered, setHovered] = useState<number | null>(null)
 
     const currentRating = hovered ?? value
     const isDimmed = editable && value === 0 && hovered === null
 
+    const isReadOnlyClickable = !!onClick && !editable
+    const showPointerOnBar = editable || isReadOnlyClickable
+    const showPointerOnRating = !!onClick
+
+    const handleBarClick = (index: number) => {
+        if (editable) {
+            onChange?.(index)
+        } else if (isReadOnlyClickable) {
+            onClick?.()
+        }
+    }
+
     return (
         <div>
-            <div className={classNames('flex items-center gap-x-4', editable && 'cursor-pointer')}>
+            <div className={classNames('flex items-center gap-x-4')}>
                 <div className="flex w-full flex-col gap-y-2">
                     <div className="flex items-center justify-between text-gray-700">
                         <div className="font-bold">{caption}</div>
@@ -61,18 +82,22 @@ export const RatingBar = ({ value, reviewsCount, caption, editable = false, erro
                                     className={classNames(
                                         'ml-0.5 h-4 flex-1 transition-colors duration-200 first:ml-0',
                                         color,
-                                        editable && 'cursor-pointer',
+                                        showPointerOnBar && 'cursor-pointer',
                                     )}
                                     onMouseEnter={() => editable && setHovered(index + 1)}
                                     onMouseLeave={() => editable && setHovered(null)}
-                                    onClick={() => editable && onChange?.(index + 1)}
+                                    onClick={() => handleBarClick(index + 1)}
                                 />
                             )
                         })}
                     </div>
                 </div>
 
-                <Rating value={currentRating} className="size-12 flex-shrink-0 text-lg" />
+                <Rating
+                    value={currentRating}
+                    className={classNames('size-12 flex-shrink-0 text-lg', showPointerOnRating && 'cursor-pointer')}
+                    onClick={onClick}
+                />
             </div>
 
             {error && <div className="mt-1 text-xs text-red-500">{error}</div>}
