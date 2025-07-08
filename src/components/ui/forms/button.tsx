@@ -17,8 +17,8 @@ export const Button = (props: ButtonProps) => {
             className={classNames(
                 'cursor-pointer rounded-lg focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
                 {
-                    'bg-blue-500 text-white enabled:hover:bg-blue-600': variant === 'primary',
-                    'border border-blue-500 text-blue-500 enabled:hover:border-blue-600 enabled:hover:text-blue-600':
+                    'bg-gray-700 text-white enabled:hover:bg-gray-950': variant === 'primary',
+                    'border border-gray-700 text-gray-700 enabled:hover:border-gray-950 enabled:hover:text-gray-950':
                         variant === 'outline',
                 },
                 {

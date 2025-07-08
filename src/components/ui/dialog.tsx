@@ -11,11 +11,14 @@ export const Dialog = ({ content, onClose }: DialogProps) => {
 
     return (
         <div className="fixed top-0 right-0 bottom-0 left-0 z-50 overflow-y-auto p-4 sm:p-16">
-            <div className="fixed top-0 right-0 bottom-0 left-0 z-40 bg-black opacity-75" />
+            <div className="fixed top-0 right-0 bottom-0 left-0 z-40 bg-gray-950 opacity-50" />
             <div className="flex min-h-full items-center justify-center">
-                <div className="relative z-50 w-full rounded-2xl bg-white p-8 shadow-lg sm:w-auto sm:p-16">
-                    <div className="hover-animated absolute top-4 right-3 cursor-pointer sm:right-4" onClick={onClose}>
-                        <XIcon className="text-gray-500 hover:text-black" />
+                <div className="relative z-50 w-full rounded-2xl bg-white p-8 shadow-lg sm:w-auto sm:p-12">
+                    <div
+                        className="hover-animated absolute top-[52px] right-12 cursor-pointer text-gray-500 hover:text-gray-950"
+                        onClick={onClose}
+                    >
+                        <XIcon />
                     </div>
                     {content}
                 </div>

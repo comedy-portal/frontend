@@ -25,7 +25,7 @@ export const Textarea = (props: TextareaProps) => {
         <div className={className}>
             <div className="relative">
                 {props.maxLength && (
-                    <div className="text-black-40 absolute -top-7 right-0">
+                    <div className="absolute -top-7 right-0">
                         {characterCount} / {props.maxLength}
                     </div>
                 )}
@@ -34,7 +34,7 @@ export const Textarea = (props: TextareaProps) => {
                     {...rest}
                     ref={ref}
                     className={classNames(
-                        'w-full resize-none rounded-lg border border-gray-300 bg-white p-2.5 align-top text-sm focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
+                        'w-full resize-none rounded-lg border border-gray-300 bg-white p-3 align-top focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
                         {
                             'hover:border-gray-400 focus:border-gray-400': !error,
                             'border-red-500': error,

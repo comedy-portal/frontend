@@ -24,7 +24,7 @@ export const UserReviewsFeedItem = (props: UserReviewsFeedItemProps) => {
                 <div>
                     <Link
                         href={`/content/${props.type.toLowerCase()}/${props.contentId}`}
-                        className="text-base font-semibold text-black hover:text-blue-500"
+                        className="text-base font-semibold"
                     >
                         {props.name}
                     </Link>

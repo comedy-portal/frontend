@@ -1,4 +1,6 @@
-import { ContentReviews } from '@/components/features/content/content-reviews/content-reviews'
+import { Metadata } from 'next'
+
+import { Content } from '@/components/features/content/content'
 import { getContentById } from '@/services/content/content'
 import { getUserData } from '@/services/user/user'
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
@@ -6,7 +8,17 @@ import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 
 type Params = Promise<{ id: number }>
 
-export default async function ContentReviewsPage(props: { params: Params }) {
+export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
+    const params = await props.params
+    const content = await getContentById(params.id)
+
+    return {
+        title: `${content.name} - Comedy Portal`,
+        description: content.metaInfo?.description,
+    }
+}
+
+export default async function ContentPage(props: { params: Params }) {
     const params = await props.params
     const content = await getContentById(params.id)
 
@@ -18,7 +30,7 @@ export default async function ContentReviewsPage(props: { params: Params }) {
              * This means that the user is not logged in. If you want to display some other UI in this
              * case, you can do so here.
              */
-            return <ContentReviews contentId={content.id} activeUserId={null} isAuth={false} hasMyReview={false} />
+            return <Content content={content} activeUserId={null} isAuth={false} hasMyReview={false} />
         }
 
         /**
@@ -33,11 +45,11 @@ export default async function ContentReviewsPage(props: { params: Params }) {
     const activeUser = await getUserData()
 
     return (
-        <ContentReviews
-            contentId={content.id}
+        <Content
+            content={content}
             activeUserId={activeUser.id}
             isAuth={true}
-            hasMyReview={!!content.reviews?.length}
+            hasMyReview={!!content.reviews?.[0]?.text}
         />
     )
 }

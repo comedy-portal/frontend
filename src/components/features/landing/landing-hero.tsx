@@ -10,7 +10,10 @@ import 'react-alice-carousel/lib/alice-carousel.css'
 
 export const LandingHero = () => {
     const items = [
-        <div className="flex items-center justify-center" key={`landing-hero-item-1`}>
+        <div
+            className="mx-auto flex items-center justify-center sm:max-w-[1224px] sm:px-6 lg:px-8"
+            key={`landing-hero-item-1`}
+        >
             <Image
                 src="/images/hero/hero-2.webp"
                 alt="Landing Hero"
@@ -19,7 +22,10 @@ export const LandingHero = () => {
                 className="align-top sm:rounded-xl"
             />
         </div>,
-        <div className="flex items-center justify-center" key={`landing-hero-item-2`}>
+        <div
+            className="mx-auto flex items-center justify-center sm:max-w-[1224px] sm:px-6 lg:px-8"
+            key={`landing-hero-item-2`}
+        >
             <Image
                 src="/images/hero/hero-2.webp"
                 alt="Landing Hero"
@@ -28,7 +34,10 @@ export const LandingHero = () => {
                 className="align-top sm:rounded-xl"
             />
         </div>,
-        <div className="flex items-center justify-center" key={`landing-hero-item-3`}>
+        <div
+            className="mx-auto flex items-center justify-center sm:max-w-[1224px] sm:px-6 lg:px-8"
+            key={`landing-hero-item-3`}
+        >
             <Image
                 src="/images/hero/hero-2.webp"
                 alt="Landing Hero"
@@ -40,7 +49,7 @@ export const LandingHero = () => {
     ]
 
     return (
-        <div className="relative flex items-center justify-center bg-black sm:pt-10 sm:pb-20">
+        <div className="relative flex items-center justify-center border bg-gray-950 sm:pt-10 sm:pb-20">
             <AliceCarousel
                 mouseTracking
                 disableButtonsControls

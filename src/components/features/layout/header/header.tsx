@@ -8,7 +8,7 @@ type HeaderProps = {
 
 export const Header = ({ username, isAuth }: HeaderProps) => {
     return (
-        <header className="sticky top-0 z-40 bg-black">
+        <header className="sticky top-0 z-40 bg-gray-950">
             <div className="wrapper-lg h-14">
                 <div className="block h-full lg:hidden">
                     <HeaderMobile username={username} isAuth={isAuth} />

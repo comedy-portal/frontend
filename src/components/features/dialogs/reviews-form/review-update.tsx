@@ -47,9 +47,8 @@ export const ReviewUpdate = ({ id }: ReviewUpdateProps) => {
     }
 
     return (
-        <div className="flex w-full flex-col gap-y-4 sm:w-104">
-            <h1 className="text-lg font-semibold">Моя рецензия</h1>
-            <hr className="border-gray-400" />
+        <div className="flex w-full flex-col gap-y-6 sm:w-104">
+            <h1 className="text-2xl font-bold">Моя рецензия</h1>
             <ReviewForm
                 initialValues={initialValues}
                 isLoading={isLoading}

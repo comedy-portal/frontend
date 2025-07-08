@@ -15,11 +15,10 @@ type ContentReviewsFeedItemProps = {
 
 export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
     return (
-        <div className="space-y-4 rounded-lg bg-gray-100 p-4">
-            <div className="flex items-center gap-x-4">
-                <Rating value={props.rating} />
-                <div className="text-sm">
-                    <Link href={`/users/${props.username}`} className="font-semibold text-black hover:text-blue-500">
+        <div className="space-y-4 rounded-lg border border-gray-300 p-6">
+            <div className="flex items-center justify-between gap-x-4">
+                <div>
+                    <Link href={`/users/${props.username}`} className="font-bold">
                         {props.username}
                     </Link>
                     <div className="text-gray-500">
@@ -30,9 +29,12 @@ export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
                         })}
                     </div>
                 </div>
+
+                <Rating value={props.rating} className="size-12" />
             </div>
 
-            {props.text && <p>{props.text}</p>}
+            {props.text && <div className="text-gray-700">{props.text}</div>}
+
             {props.isMyReview && <ContentReviewsFeedItemControls id={props.id} />}
         </div>
     )

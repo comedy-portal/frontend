@@ -18,6 +18,7 @@ export const Rating = ({ value, className }: RatingProps) => {
         <div
             className={classNames(
                 'flex size-10 items-center justify-center rounded-lg text-lg font-bold text-white',
+                'transition-colors duration-200',
                 getColor(value),
                 className,
             )}

@@ -5,6 +5,7 @@ import { BookmarkIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import { SignUp } from '@/components/features/auth/sign-up'
+import { Button } from '@/components/ui/forms/button'
 import { watchlistsAPI } from '@/redux/services/watchlists/watchlists.api'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
@@ -35,28 +36,14 @@ export const ContentAddToWatchList = ({ contentId, isAuth, isInWatchlist }: Cont
     }
 
     return (
-        <div className="flex cursor-pointer items-center gap-x-2 hover:text-blue-500" onClick={toggle}>
+        <Button size="lg" variant="outline" className="flex items-center justify-center gap-x-2" onClick={toggle}>
             <BookmarkIcon
-                size={40}
+                size={24}
                 strokeWidth={1.5}
-                stroke="rgb(87, 153, 239)"
-                fill={isInWatchlist ? 'rgb(87, 153, 239)' : 'none'}
+                stroke="currentColor"
+                fill={isInWatchlist ? 'currentColor' : 'none'}
             />
-            <div className="text-sm">
-                {isInWatchlist ? (
-                    <div>
-                        В списке
-                        <br />
-                        просмотра
-                    </div>
-                ) : (
-                    <div>
-                        Смотреть
-                        <br />
-                        позже
-                    </div>
-                )}
-            </div>
-        </div>
+            {isInWatchlist ? 'В списке просмотра' : 'Смотреть позже'}
+        </Button>
     )
 }

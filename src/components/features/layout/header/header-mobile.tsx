@@ -37,7 +37,7 @@ export const HeaderMobile = ({ username, isAuth }: HeaderMobileProps) => {
             )}
 
             {isOpen && (
-                <nav className="absolute top-14 right-0 left-0 flex h-screen flex-col gap-y-3 bg-black p-3 text-white">
+                <nav className="absolute top-14 right-0 left-0 flex h-screen flex-col gap-y-3 bg-gray-950 p-3 text-white">
                     <Link href="/content" className="text-white" onClick={closeMobileMenu}>
                         Контент
                     </Link>

@@ -35,9 +35,9 @@ export const LayoutNav = ({ items }: LayoutNavProps) => {
                             href={href}
                             replace
                             className={classNames('relative text-nowrap', {
-                                'text-black after:absolute after:-bottom-[13px] after:left-0 after:h-[1px] after:w-full after:bg-black':
+                                'after:absolute after:-bottom-[13px] after:left-0 after:h-[1px] after:w-full after:bg-gray-950':
                                     isActive,
-                                'text-gray-500 hover:text-black': !isActive,
+                                '': !isActive,
                             })}
                         >
                             {label}

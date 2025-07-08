@@ -7,7 +7,7 @@ type ContentBlockAuthorProps = {
 
 export const ContentBlockAuthor = ({ name, url }: ContentBlockAuthorProps) => {
     return (
-        <Link href={url} className="text-sm text-gray-700 hover:text-black">
+        <Link href={url} className="text-sm">
             {name}
         </Link>
     )

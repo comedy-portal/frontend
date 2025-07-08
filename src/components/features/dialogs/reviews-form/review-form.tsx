@@ -5,10 +5,9 @@ import * as Yup from 'yup'
 
 import { Button } from '@/components/ui/forms/button'
 import { Textarea } from '@/components/ui/forms/textarea'
+import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
 import { CreateReviewInputs, UpdateReviewInputs } from '@/redux/services/reviews/reviews.types'
 import { useDialog } from '@/utils/providers/dialog-provider'
-
-import { ReviewFormRating } from './components/review-form-rating'
 
 type ReviewFormProps = {
     initialValues: CreateReviewInputs | UpdateReviewInputs
@@ -36,19 +35,22 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
     })
 
     return (
-        <form className="flex flex-col gap-y-8" onSubmit={formik.handleSubmit}>
+        <form className="flex flex-col gap-y-6" onSubmit={formik.handleSubmit}>
             <div className="flex flex-col gap-y-4">
-                <ReviewFormRating
-                    value={formik.values.mark}
+                <RatingBar
+                    value={formik.values.mark || 0}
+                    caption="Рейтинг"
+                    editable
                     error={formik.errors.mark}
-                    onChange={value => formik.setFieldValue('mark', value)}
+                    onChange={newValue => formik.setFieldValue('mark', newValue)}
                 />
 
                 <div className="flex flex-col gap-y-2">
-                    <label className="text-sm font-semibold text-gray-700">Напишите свою рецензию</label>
+                    <label className="font-bold">Отзыв</label>
                     <Textarea
                         name="text"
                         autoFocus
+                        placeholder="Введите текст ..."
                         rows={6}
                         value={formik.values.text || ''}
                         error={formik.errors.text}

@@ -6,7 +6,6 @@ import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
 
-import { ContentReviewAddButton } from './content-review-add-button'
 import { ContentReviewsFeedItem } from './content-reviews-feed-item'
 import { ContentReviewsFeedSkeleton } from './content-reviews-feed-skeleton'
 
@@ -14,10 +13,9 @@ type ContentReviewsFeedProps = {
     contentId: number
     activeUserId: number | null
     isAuth: boolean
-    hasMyReview: boolean
 }
 
-export const ContentReviewsFeed = ({ contentId, activeUserId, isAuth, hasMyReview }: ContentReviewsFeedProps) => {
+export const ContentReviewsFeed = ({ contentId, activeUserId, isAuth }: ContentReviewsFeedProps) => {
     const [cursor, setCursor] = useState<number>()
 
     const { data, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsQuery({
@@ -40,7 +38,6 @@ export const ContentReviewsFeed = ({ contentId, activeUserId, isAuth, hasMyRevie
                 Здесь пока нет рецензий.
                 <br />
                 Оставьте первую — поделитесь своим мнением.
-                {!hasMyReview && <ContentReviewAddButton contentId={contentId} className="mt-4" isAuth={isAuth} />}
             </EmptyMessage>
         )
     }
@@ -51,29 +48,18 @@ export const ContentReviewsFeed = ({ contentId, activeUserId, isAuth, hasMyRevie
 
     return (
         <div className="relative flex flex-col gap-y-12">
-            <div>
-                {!hasMyReview && (
-                    <div className="mb-6 sm:absolute sm:-top-[73px] sm:right-0 sm:mb-0">
-                        <ContentReviewAddButton
-                            contentId={contentId}
-                            isAuth={isAuth}
-                            className="w-full justify-center sm:w-auto"
-                        />
-                    </div>
-                )}
-                <div className="space-y-4">
-                    {data.items.map(item => (
-                        <ContentReviewsFeedItem
-                            key={`content-reviews-feed-item-${item.id}`}
-                            id={item.id}
-                            text={item.text}
-                            rating={item.mark}
-                            username={item.user.username}
-                            createdAt={item.createdAt}
-                            isMyReview={isAuth && activeUserId === item.user.id}
-                        />
-                    ))}
-                </div>
+            <div className="space-y-2">
+                {data.items.map(item => (
+                    <ContentReviewsFeedItem
+                        key={`content-reviews-feed-item-${item.id}`}
+                        id={item.id}
+                        text={item.text}
+                        rating={item.mark}
+                        username={item.user.username}
+                        createdAt={item.createdAt}
+                        isMyReview={isAuth && activeUserId === item.user.id}
+                    />
+                ))}
             </div>
 
             {data.items.length < data.total && (
