@@ -11,9 +11,10 @@ import { ReviewForm } from './review-form'
 
 type ReviewCreateProps = {
     contentId: number
+    initialMark?: number
 }
 
-export const ReviewCreate = ({ contentId }: ReviewCreateProps) => {
+export const ReviewCreate = ({ contentId, initialMark }: ReviewCreateProps) => {
     const dialog = useDialog()
     const router = useRouter()
 
@@ -21,7 +22,7 @@ export const ReviewCreate = ({ contentId }: ReviewCreateProps) => {
 
     const initialValues: CreateReviewInputs = {
         contentId,
-        mark: 0,
+        mark: initialMark ?? 0,
         text: '',
     }
 

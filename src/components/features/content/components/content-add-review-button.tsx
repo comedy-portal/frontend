@@ -1,6 +1,5 @@
 'use client'
 
-import classNames from 'classnames'
 import { MessageCircleCodeIcon } from 'lucide-react'
 
 import { SignUp } from '@/components/features/auth/sign-up'
@@ -8,13 +7,12 @@ import { ReviewCreate } from '@/components/features/dialogs/reviews-form/review-
 import { Button } from '@/components/ui/forms/button'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
-type ContentReviewAddButtonProps = {
+type ContentAddReviewButtonProps = {
     contentId: number
-    className?: string
     isAuth: boolean
 }
 
-export const ContentReviewAddButton = ({ contentId, className, isAuth }: ContentReviewAddButtonProps) => {
+export const ContentAddReviewButton = ({ contentId, isAuth }: ContentAddReviewButtonProps) => {
     const dialog = useDialog()
 
     const handleClick = () => {
@@ -27,8 +25,8 @@ export const ContentReviewAddButton = ({ contentId, className, isAuth }: Content
     }
 
     return (
-        <Button size="sm" className={classNames('flex items-center gap-x-2', className)} onClick={handleClick}>
-            <MessageCircleCodeIcon size={16} /> Оставить рецензию
+        <Button size="lg" className="flex items-center justify-center gap-x-2" onClick={handleClick}>
+            <MessageCircleCodeIcon size={24} /> Оставить рецензию
         </Button>
     )
 }

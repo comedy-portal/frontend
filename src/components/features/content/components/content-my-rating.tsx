@@ -1,12 +1,8 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-
 import { SignUp } from '@/components/features/auth/sign-up'
+import { ReviewCreate } from '@/components/features/dialogs/reviews-form/review-create'
 import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
-import { messages } from '@/messages'
-import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
-import { CreateReviewInputs } from '@/redux/services/reviews/reviews.types'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
 type ContentMyRatingProps = {
@@ -16,28 +12,16 @@ type ContentMyRatingProps = {
 }
 
 export const ContentMyRating = ({ contentId, value, isAuth }: ContentMyRatingProps) => {
-    const router = useRouter()
     const dialog = useDialog()
-    const [createReview] = reviewsAPI.useCreateReviewMutation()
 
-    const handleChange = async (value: number) => {
+    const handleClick = (newValue: number) => {
         if (!isAuth) {
             dialog.open(<SignUp />)
             return
         }
 
-        try {
-            const inputs: CreateReviewInputs = {
-                contentId,
-                mark: value || 0,
-                text: null,
-            }
-            createReview(inputs)
-            router.refresh()
-        } catch {
-            console.error(messages.COMMON_ERROR)
-        }
+        dialog.open(<ReviewCreate contentId={contentId} initialMark={newValue} />)
     }
 
-    return <RatingBar value={value || 0} caption="Моя рейтинг" editable={!value} onChange={handleChange} />
+    return <RatingBar value={value || 0} caption="Мой рейтинг" editable onChange={handleClick} />
 }

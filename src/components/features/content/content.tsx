@@ -3,13 +3,14 @@ import Image from 'next/image'
 import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
 import { IContent } from '@/utils/types/content'
 
+import { ContentAddReviewButton } from './components/content-add-review-button'
 import { ContentAddToWatchList } from './components/content-add-to-watch-list'
 import { ContentAuthors } from './components/content-authors'
 import { ContentBack } from './components/content-back'
 import { ContentDate } from './components/content-date'
 import { ContentDuration } from './components/content-duration'
+import { ContentEditReviewButton } from './components/content-edit-review-button'
 import { ContentMyRating } from './components/content-my-rating'
-import { ContentReviewAddButton } from './components/content-reviews/content-review-add-button'
 import { ContentReviewsFeed } from './components/content-reviews/content-reviews-feed'
 import { ContentType } from './components/content-type'
 import { ContentWatch } from './components/content-watch'
@@ -18,15 +19,14 @@ type ContentProps = {
     content: IContent
     activeUserId: number | null
     isAuth: boolean
-    hasMyReview: boolean
 }
 
-export const Content = ({ content, activeUserId, isAuth, hasMyReview }: ContentProps) => {
+export const Content = ({ content, activeUserId, isAuth }: ContentProps) => {
     return (
         <div className="wrapper-lg sm: space-y-12 pt-12 pb-24">
             <ContentBack contentType={content.type} />
 
-            <div className="flex flex-col-reverse gap-6 sm:flex-row">
+            <div className="flex flex-col-reverse gap-12 sm:flex-row sm:gap-6">
                 <div className="flex flex-1 flex-col gap-y-12">
                     <Image
                         src={content.contentImages[0].url}
@@ -42,16 +42,7 @@ export const Content = ({ content, activeUserId, isAuth, hasMyReview }: ContentP
                     </section>
 
                     <section className="space-y-6">
-                        <h2 className="flex items-center justify-between gap-x-2 text-2xl font-bold">
-                            Рецензии
-                            {!hasMyReview && (
-                                <ContentReviewAddButton
-                                    contentId={content.id}
-                                    isAuth={isAuth}
-                                    className="w-full justify-center sm:w-auto"
-                                />
-                            )}
-                        </h2>
+                        <h2 className="text-2xl font-bold">Рецензии</h2>
                         <ContentReviewsFeed contentId={content.id} activeUserId={activeUserId} isAuth={isAuth} />
                     </section>
                 </div>
@@ -78,6 +69,12 @@ export const Content = ({ content, activeUserId, isAuth, hasMyReview }: ContentP
                         isAuth={isAuth}
                         isInWatchlist={(content.watchlists?.length ?? 0) > 0}
                     />
+
+                    {content.reviews && content.reviews.length > 0 ? (
+                        <ContentEditReviewButton reviewId={content.id} isAuth={isAuth} />
+                    ) : (
+                        <ContentAddReviewButton contentId={content.id} isAuth={isAuth} />
+                    )}
                 </div>
             </div>
         </div>

@@ -30,7 +30,7 @@ export default async function ContentPage(props: { params: Params }) {
              * This means that the user is not logged in. If you want to display some other UI in this
              * case, you can do so here.
              */
-            return <Content content={content} activeUserId={null} isAuth={false} hasMyReview={false} />
+            return <Content content={content} activeUserId={null} isAuth={false} />
         }
 
         /**
@@ -44,12 +44,5 @@ export default async function ContentPage(props: { params: Params }) {
 
     const activeUser = await getUserData()
 
-    return (
-        <Content
-            content={content}
-            activeUserId={activeUser.id}
-            isAuth={true}
-            hasMyReview={!!content.reviews?.[0]?.text}
-        />
-    )
+    return <Content content={content} activeUserId={activeUser.id} isAuth={true} />
 }
