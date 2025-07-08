@@ -36,7 +36,7 @@ export const Content = ({ content, activeUserId, isAuth }: ContentProps) => {
                     />
 
                     <section className="space-y-6">
-                        <h2 className="text-2xl font-bold">{content.name}</h2>
+                        <h2 className="text-2xl font-bold">Описание</h2>
                         <p>{content.metaInfo?.description}</p>
                     </section>
 

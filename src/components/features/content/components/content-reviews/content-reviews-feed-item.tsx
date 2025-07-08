@@ -36,7 +36,7 @@ export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
                 </div>
             </div>
 
-            {props.text && <div className="text-gray-700">{props.text}</div>}
+            {props.text && <div className="text-sm text-gray-700">{props.text}</div>}
         </div>
     )
 }
