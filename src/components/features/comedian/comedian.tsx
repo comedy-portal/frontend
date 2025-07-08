@@ -1,4 +1,5 @@
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
+import { LinksBlock } from '@/components/ui/links-block'
 import { IComedian } from '@/utils/types/comedian'
 
 import { ComedianBack } from './components/comedian-back'
@@ -34,6 +35,8 @@ export const Comedian = ({ comedian }: ComedianProps) => {
                             </h1>
                             <div>{comedian.metaInfo?.description}</div>
                         </section>
+
+                        <LinksBlock caption="Ссылки" links={comedian.metaInfo?.links || []} />
                     </div>
                 </div>
             </div>

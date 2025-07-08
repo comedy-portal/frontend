@@ -1,10 +1,12 @@
 import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
+import { LinksBlock } from '@/components/ui/links-block'
 import { IGroup } from '@/utils/types/group'
 
 import { GroupBack } from './component/group-back'
 import { GroupContent } from './component/group-content'
+import { GroupLinks } from './component/group-links'
 
 type GroupProps = {
     group: IGroup
@@ -48,6 +50,8 @@ export const Group = ({ group }: GroupProps) => {
                                 </div>
                             ))}
                         </section>
+
+                        <LinksBlock caption="Ссылки" links={group.metaInfo?.links || []} />
                     </div>
                 </div>
             </div>

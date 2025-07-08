@@ -1,3 +1,4 @@
+import { Platform } from '../enums/common'
 import { IContent } from '../types/content'
 
 export function getMonthNameRu(monthNumber: number): string {
@@ -35,4 +36,29 @@ export function getAuthorDisplayNameForContent(content: IContent): { name: strin
     }
 
     return undefined
+}
+
+export const getPlatformUrl = (platform: Platform, identifier: string) => {
+    switch (platform) {
+        case Platform.YOUTUBE:
+            return { href: `https://www.youtube.com/${identifier}`, label: 'YouTube' }
+        case Platform.TIKTOK:
+            return { href: `https://www.tiktok.com/@${identifier}`, label: 'TikTok' }
+        case Platform.INSTAGRAM:
+            return { href: `https://www.instagram.com/${identifier}`, label: 'Instagram' }
+        case Platform.TELEGRAM:
+            return { href: `https://t.me/${identifier}`, label: 'Telegram' }
+        case Platform.PATREON:
+            return { href: `https://www.patreon.com/${identifier}`, label: 'Patreon' }
+        case Platform.VK:
+            return { href: `https://vk.com/${identifier}`, label: 'VK' }
+        case Platform.BOOSTY:
+            return { href: `https://boosty.to/${identifier}`, label: 'Boosty' }
+        case Platform.SPECIALS_COMEDY:
+            return { href: `https://specialscomedy.com/concert/${identifier}`, label: 'Specials Comedy' }
+        case Platform.OTHER:
+            return { href: identifier, label: 'Ссылка' }
+        default:
+            return null
+    }
 }

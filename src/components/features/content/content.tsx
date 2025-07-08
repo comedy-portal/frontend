@@ -1,5 +1,6 @@
 import Image from 'next/image'
 
+import { LinksBlock } from '@/components/ui/links-block'
 import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
 import { IContent } from '@/utils/types/content'
 
@@ -12,7 +13,6 @@ import { ContentDuration } from './components/content-duration'
 import { ContentReviewButton } from './components/content-review-button'
 import { ContentReviewsFeed } from './components/content-reviews/content-reviews-feed'
 import { ContentType } from './components/content-type'
-import { ContentWatch } from './components/content-watch'
 
 type ContentProps = {
     content: IContent
@@ -70,7 +70,7 @@ export const Content = ({ content, activeUserId, isAuth }: ContentProps) => {
                     <ContentDate month={content.month} year={content.year} />
                     <ContentDuration duration={content.duration} />
 
-                    {content.metaInfo && <ContentWatch links={content.metaInfo.links} />}
+                    <LinksBlock caption="Смотреть" links={content.metaInfo?.links || []} />
 
                     <div className="flex flex-col gap-y-2">
                         <ContentAddToWatchList
