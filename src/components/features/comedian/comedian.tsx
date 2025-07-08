@@ -1,3 +1,4 @@
+import { DescriptionBlock } from '@/components/ui/description-block'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LinksBlock } from '@/components/ui/links-block'
 import { IComedian } from '@/utils/types/comedian'
@@ -29,12 +30,14 @@ export const Comedian = ({ comedian }: ComedianProps) => {
                     />
 
                     <div className="flex flex-col gap-y-6">
-                        <section className="space-y-6">
-                            <h1 className="text-4xl font-bold">
-                                {comedian.name} {comedian.surname}
-                            </h1>
-                            <div>{comedian.metaInfo?.description}</div>
-                        </section>
+                        {comedian.metaInfo?.description && (
+                            <section className="space-y-6">
+                                <h1 className="text-4xl font-bold">
+                                    {comedian.name} {comedian.surname}
+                                </h1>
+                                <DescriptionBlock text={comedian.metaInfo.description} limit={500} />
+                            </section>
+                        )}
 
                         <LinksBlock caption="Ссылки" links={comedian.metaInfo?.links || []} />
                     </div>

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 
+import { DescriptionBlock } from '@/components/ui/description-block'
 import { LinksBlock } from '@/components/ui/links-block'
 import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
 import { IContent } from '@/utils/types/content'
@@ -35,10 +36,12 @@ export const Content = ({ content, activeUserId, isAuth }: ContentProps) => {
                         alt={content.name}
                     />
 
-                    <section className="space-y-6">
-                        <h2 className="text-2xl font-bold">Описание</h2>
-                        <p>{content.metaInfo?.description}</p>
-                    </section>
+                    {content.metaInfo?.description && (
+                        <section className="space-y-6">
+                            <h2 className="text-2xl font-bold">Описание</h2>
+                            <DescriptionBlock text={content.metaInfo.description} limit={1000} />
+                        </section>
+                    )}
 
                     <section className="space-y-6">
                         <h2 className="text-2xl font-bold">Рецензии</h2>

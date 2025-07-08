@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import { DescriptionBlock } from '@/components/ui/description-block'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LinksBlock } from '@/components/ui/links-block'
 import { IGroup } from '@/utils/types/group'
@@ -31,10 +32,12 @@ export const Group = ({ group }: GroupProps) => {
                     />
 
                     <div className="flex flex-col gap-y-6">
-                        <section className="space-y-6">
-                            <h1 className="text-4xl font-bold">{group.name}</h1>
-                            <div>{group.metaInfo?.description}</div>
-                        </section>
+                        {group.metaInfo?.description && (
+                            <section className="space-y-6">
+                                <h1 className="text-4xl font-bold">{group.name}</h1>
+                                <DescriptionBlock text={group.metaInfo.description} limit={500} />
+                            </section>
+                        )}
 
                         <section className="space-y-2">
                             <h3 className="font-bold">Авторы</h3>
