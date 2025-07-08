@@ -13,7 +13,7 @@ export const Comedian = ({ comedian }: ComedianProps) => {
         <div className="wrapper-lg sm: space-y-12 pt-12 pb-24">
             <ComedianBack />
 
-            <div className="flex flex-col-reverse gap-12 sm:flex-row sm:gap-6">
+            <div className="flex flex-col-reverse gap-12 sm:flex-row">
                 <div className="flex flex-1 flex-col gap-y-12">
                     <ComedianContent content={comedian.content} />
                 </div>

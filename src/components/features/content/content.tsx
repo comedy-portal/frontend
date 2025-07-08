@@ -23,7 +23,7 @@ type ContentProps = {
 
 export const Content = ({ content, activeUserId, isAuth }: ContentProps) => {
     return (
-        <div className="wrapper-lg sm: space-y-12 pt-12 pb-24">
+        <div className="wrapper-lg space-y-12 pt-12 pb-24">
             <ContentBack contentType={content.type} />
 
             <div className="flex flex-col-reverse gap-12 sm:flex-row">

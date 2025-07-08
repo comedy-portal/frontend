@@ -12,10 +12,10 @@ type GroupProps = {
 
 export const Group = ({ group }: GroupProps) => {
     return (
-        <div className="wrapper-lg sm: space-y-12 pt-12 pb-24">
+        <div className="wrapper-lg space-y-12 pt-12 pb-24">
             <GroupBack />
 
-            <div className="flex flex-col-reverse gap-12 sm:flex-row sm:gap-6">
+            <div className="flex flex-col-reverse gap-12 sm:flex-row">
                 <div className="flex flex-1 flex-col gap-y-12">
                     <GroupContent content={group.content} />
                 </div>
