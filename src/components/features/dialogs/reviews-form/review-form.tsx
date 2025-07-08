@@ -61,7 +61,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
             </div>
 
             <div className="flex gap-x-2">
-                <Button type="submit" disabled={isLoading || !formik.dirty}>
+                <Button type="submit" disabled={isLoading}>
                     Сохранить
                 </Button>
                 <Button variant="outline" disabled={isLoading} onClick={() => dialog.close()}>
