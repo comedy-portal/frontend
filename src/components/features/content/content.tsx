@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
 import { IContent } from '@/utils/types/content'
 
+import { ContentAddMyRating } from './components/content-add-my-rating'
 import { ContentAddReviewButton } from './components/content-add-review-button'
 import { ContentAddToWatchList } from './components/content-add-to-watch-list'
 import { ContentAuthors } from './components/content-authors'
@@ -10,7 +11,6 @@ import { ContentBack } from './components/content-back'
 import { ContentDate } from './components/content-date'
 import { ContentDuration } from './components/content-duration'
 import { ContentEditReviewButton } from './components/content-edit-review-button'
-import { ContentMyRating } from './components/content-my-rating'
 import { ContentReviewsFeed } from './components/content-reviews/content-reviews-feed'
 import { ContentType } from './components/content-type'
 import { ContentWatch } from './components/content-watch'
@@ -51,11 +51,16 @@ export const Content = ({ content, activeUserId, isAuth }: ContentProps) => {
                     <h1 className="text-4xl font-bold">{content.name}</h1>
 
                     <RatingBar value={content.rating.avgRating} caption="Общий рейтинг" />
-                    <ContentMyRating
-                        contentId={content.id}
-                        value={content.reviews?.[0]?.mark || null}
-                        isAuth={isAuth}
-                    />
+
+                    {content.reviews && content.reviews.length > 0 ? (
+                        <RatingBar value={content.reviews[0].mark} caption="Мой рейтинг" />
+                    ) : (
+                        <ContentAddMyRating
+                            contentId={content.id}
+                            value={content.reviews?.[0]?.mark || null}
+                            isAuth={isAuth}
+                        />
+                    )}
 
                     <ContentAuthors comedians={content.comedians} group={content.group} />
                     <ContentType type={content.type} />
@@ -71,7 +76,7 @@ export const Content = ({ content, activeUserId, isAuth }: ContentProps) => {
                     />
 
                     {content.reviews && content.reviews.length > 0 ? (
-                        <ContentEditReviewButton reviewId={content.id} isAuth={isAuth} />
+                        <ContentEditReviewButton reviewId={content.reviews[0].id} isAuth={isAuth} />
                     ) : (
                         <ContentAddReviewButton contentId={content.id} isAuth={isAuth} />
                     )}

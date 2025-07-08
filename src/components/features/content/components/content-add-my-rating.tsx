@@ -5,13 +5,13 @@ import { ReviewCreate } from '@/components/features/dialogs/reviews-form/review-
 import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
-type ContentMyRatingProps = {
+type ContentAddMyRatingProps = {
     contentId: number
     value: number | null
     isAuth: boolean
 }
 
-export const ContentMyRating = ({ contentId, value, isAuth }: ContentMyRatingProps) => {
+export const ContentAddMyRating = ({ contentId, value, isAuth }: ContentAddMyRatingProps) => {
     const dialog = useDialog()
 
     const handleClick = (newValue: number) => {
