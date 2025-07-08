@@ -34,7 +34,7 @@ export const RatingBar = ({ value, reviewsCount, caption, editable = false, erro
                 <div className="flex w-full flex-col gap-y-2">
                     <div className="flex items-center justify-between text-gray-700">
                         <div className="font-bold">{caption}</div>
-                        {!!reviewsCount && <div className="text-sm text-gray-500">(рецензий {reviewsCount})</div>}
+                        {!!reviewsCount && <div className="text-sm text-gray-500">рецензий: {reviewsCount}</div>}
                     </div>
 
                     <div
