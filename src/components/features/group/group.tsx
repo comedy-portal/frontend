@@ -6,7 +6,6 @@ import { IGroup } from '@/utils/types/group'
 
 import { GroupBack } from './component/group-back'
 import { GroupContent } from './component/group-content'
-import { GroupLinks } from './component/group-links'
 
 type GroupProps = {
     group: IGroup
