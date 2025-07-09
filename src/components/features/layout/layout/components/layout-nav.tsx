@@ -23,8 +23,13 @@ export const LayoutNav = ({ items }: LayoutNavProps) => {
     const getLastSegment = (path: string) => path.split('/').filter(Boolean).pop()
 
     return (
-        <ScrollContainer>
-            <nav className="relative flex gap-x-4 border-b border-gray-300 pb-[19px]">
+        <nav className="">
+            <ScrollContainer
+                className="relative flex gap-x-4 pb-5"
+                style={{
+                    boxShadow: 'inset 0 -1px 0 0 #D1D5DB',
+                }}
+            >
                 {items.map(({ label, href, exact = false }) => {
                     const target = href.toLowerCase()
                     const isActive = exact ? pathname === target : getLastSegment(pathname) === getLastSegment(target)
@@ -35,7 +40,7 @@ export const LayoutNav = ({ items }: LayoutNavProps) => {
                             href={href}
                             replace
                             className={classNames('relative text-lg text-nowrap text-gray-500 hover:text-gray-950', {
-                                'text-gray-950 after:absolute after:-bottom-[20px] after:left-0 after:h-[1px] after:w-full after:bg-gray-950':
+                                'text-gray-950 after:absolute after:-bottom-5 after:left-0 after:h-[1px] after:w-full after:bg-gray-950':
                                     isActive,
                                 '': !isActive,
                             })}
@@ -44,7 +49,7 @@ export const LayoutNav = ({ items }: LayoutNavProps) => {
                         </Link>
                     )
                 })}
-            </nav>
-        </ScrollContainer>
+            </ScrollContainer>
+        </nav>
     )
 }
