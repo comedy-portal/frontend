@@ -25,7 +25,7 @@ export const Textarea = (props: TextareaProps) => {
         <div className={className}>
             <div className="relative">
                 {props.maxLength && (
-                    <div className="absolute -top-7 right-0">
+                    <div className="absolute -top-7 right-0 text-xs text-gray-500">
                         {characterCount} / {props.maxLength}
                     </div>
                 )}

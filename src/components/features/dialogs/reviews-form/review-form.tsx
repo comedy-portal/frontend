@@ -23,7 +23,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
         text: Yup.string()
             .trim()
             .min(20, `Минимальная длина текста отзыва 20 символов`)
-            .max(500, `Максимальная длина текста отзыва 500 символов`),
+            .max(2000, `Максимальная длина текста отзыва 2000 символов`),
     })
 
     const formik = useFormik({
@@ -52,6 +52,7 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                         autoFocus
                         placeholder="Введите текст ..."
                         rows={6}
+                        maxLength={2000}
                         value={formik.values.text || ''}
                         error={formik.errors.text}
                         disabled={isLoading}
