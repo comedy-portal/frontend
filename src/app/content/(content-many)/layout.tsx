@@ -1,3 +1,4 @@
+import { ContentManyFilter } from '@/components/features/content-many/components/content-many-filter'
 import { Layout } from '@/components/features/layout/layout/layout'
 import { categories } from '@/utils/dict/categories'
 
@@ -13,6 +14,7 @@ export default async function ContentManyLayout(props: { children: React.ReactNo
                     href: `/content/${type.toLowerCase()}`,
                 })),
             ]}
+            filter={<ContentManyFilter />}
         >
             {props.children}
         </Layout>
