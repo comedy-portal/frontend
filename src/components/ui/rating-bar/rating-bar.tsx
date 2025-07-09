@@ -23,29 +23,21 @@ type RatingBarProps = {
     onClick?: () => void
 }
 
-export const RatingBar = ({
-    value,
-    reviewsCount,
-    caption,
-    editable = false,
-    error,
-    onChange,
-    onClick,
-}: RatingBarProps) => {
+export const RatingBar = (props: RatingBarProps) => {
     const [hovered, setHovered] = useState<number | null>(null)
 
-    const currentRating = hovered ?? value
-    const isDimmed = editable && value === 0 && hovered === null
+    const currentRating = hovered ?? props.value
+    const isDimmed = props.editable && props.value === 0 && hovered === null
 
-    const isReadOnlyClickable = !!onClick && !editable
-    const showPointerOnBar = editable || isReadOnlyClickable
-    const showPointerOnRating = !!onClick
+    const isReadOnlyClickable = !!props.onClick && !props.editable
+    const showPointerOnBar = props.editable || isReadOnlyClickable
+    const showPointerOnRating = !!props.onClick
 
     const handleBarClick = (index: number) => {
-        if (editable) {
-            onChange?.(index)
+        if (props.editable) {
+            props.onChange?.(index)
         } else if (isReadOnlyClickable) {
-            onClick?.()
+            props.onClick?.()
         }
     }
 
@@ -54,8 +46,19 @@ export const RatingBar = ({
             <div className={classNames('flex items-center gap-x-4')}>
                 <div className="flex w-full flex-col gap-y-2">
                     <div className="flex items-center justify-between text-gray-700">
-                        <div className="font-bold">{caption}</div>
-                        {!!reviewsCount && <div className="text-sm text-gray-500">(оценок: {reviewsCount})</div>}
+                        <div className="font-bold">{props.caption}</div>
+                        {!!props.reviewsCount && (
+                            <div className="text-sm text-gray-500">Оценок: {props.reviewsCount}</div>
+                        )}
+
+                        {!!props.onClick && (
+                            <div
+                                onClick={props.onClick}
+                                className="cursor-pointer text-sm text-gray-500 hover:text-gray-950"
+                            >
+                                Оценить
+                            </div>
+                        )}
                     </div>
 
                     <div
@@ -68,11 +71,11 @@ export const RatingBar = ({
                             const isActive = currentRating > 0 && index < currentRating
 
                             const color =
-                                hovered !== null || value > 0
+                                hovered !== null || props.value > 0
                                     ? isActive
                                         ? getColorByIndex(currentRating - 1)
                                         : 'bg-gray-300'
-                                    : editable
+                                    : props.editable
                                       ? getColorByIndex(index)
                                       : 'bg-gray-200'
 
@@ -84,8 +87,8 @@ export const RatingBar = ({
                                         color,
                                         showPointerOnBar && 'cursor-pointer',
                                     )}
-                                    onMouseEnter={() => editable && setHovered(index + 1)}
-                                    onMouseLeave={() => editable && setHovered(null)}
+                                    onMouseEnter={() => props.editable && setHovered(index + 1)}
+                                    onMouseLeave={() => props.editable && setHovered(null)}
                                     onClick={() => handleBarClick(index + 1)}
                                 />
                             )
@@ -96,11 +99,11 @@ export const RatingBar = ({
                 <Rating
                     value={currentRating}
                     className={classNames('size-12 flex-shrink-0 text-lg', showPointerOnRating && 'cursor-pointer')}
-                    onClick={onClick}
+                    onClick={props.onClick}
                 />
             </div>
 
-            {error && <div className="mt-1 text-xs text-red-500">{error}</div>}
+            {props.error && <div className="mt-1 text-xs text-red-500">{props.error}</div>}
         </div>
     )
 }

@@ -10,6 +10,7 @@ import { ContentAuthors } from './components/content-authors'
 import { ContentBack } from './components/content-back'
 import { ContentDate } from './components/content-date'
 import { ContentDuration } from './components/content-duration'
+import { ContentMyRating } from './components/content-my-rating'
 import { ContentReviewButton } from './components/content-review-button'
 import { ContentReviewsFeed } from './components/content-reviews/content-reviews-feed'
 import { ContentType } from './components/content-type'
@@ -56,27 +57,21 @@ export const Content = ({ content, activeUserId, isAuth }: ContentProps) => {
                         reviewsCount={content.rating.reviewsCount}
                         caption="Общий рейтинг"
                     />
-
-                    <RatingBar value={content.reviews?.[0]?.mark || 0} caption="Мой рейтинг" />
-
-                    <div className="flex flex-col gap-y-2">
-                        <ContentReviewButton contentId={content.id} review={content.reviews?.[0]} isAuth={isAuth} />
-
-                        <ContentAddToWatchList
-                            contentId={content.id}
-                            isAuth={isAuth}
-                            isInWatchlist={(content.watchlists?.length ?? 0) > 0}
-                        />
-                    </div>
-
-                    {/* <ContentMyRating contentId={content.id} review={content.reviews?.[0]} isAuth={isAuth} /> */}
+                    <ContentMyRating contentId={content.id} review={content.reviews?.[0]} isAuth={isAuth} />
+                    <ContentReviewButton contentId={content.id} review={content.reviews?.[0]} isAuth={isAuth} />
 
                     <ContentAuthors comedians={content.comedians} group={content.group} />
                     <ContentType type={content.type} />
                     <ContentDate month={content.month} year={content.year} />
                     <ContentDuration duration={content.duration} />
 
-                    <LinksBlock caption="Смотреть" links={content.metaInfo?.links || []} />
+                    <LinksBlock caption="Где посмотреть" links={content.metaInfo?.links || []} />
+
+                    <ContentAddToWatchList
+                        contentId={content.id}
+                        isAuth={isAuth}
+                        isInWatchlist={(content.watchlists?.length ?? 0) > 0}
+                    />
                 </div>
             </div>
         </div>
