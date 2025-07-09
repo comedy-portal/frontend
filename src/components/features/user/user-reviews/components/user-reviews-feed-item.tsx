@@ -34,7 +34,7 @@ export const UserReviewsFeedItem = (props: UserReviewsFeedItemProps) => {
                 </div>
 
                 <div className="flex items-center gap-x-4">
-                    {props.isMyReview && <UserReviewsFeedItemControls id={props.id} />}
+                    {props.isMyReview && <UserReviewsFeedItemControls id={props.id} contentId={props.contentId} />}
                     <Rating value={props.rating} className="size-12" />
                 </div>
             </div>

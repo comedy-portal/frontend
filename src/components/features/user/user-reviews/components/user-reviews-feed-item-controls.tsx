@@ -10,9 +10,10 @@ import { useDialog } from '@/utils/providers/dialog-provider'
 
 type UserReviewsFeedItemProps = {
     id: number
+    contentId: number
 }
 
-export const UserReviewsFeedItemControls = ({ id }: UserReviewsFeedItemProps) => {
+export const UserReviewsFeedItemControls = ({ id, contentId }: UserReviewsFeedItemProps) => {
     const dialog = useDialog()
 
     const [deleteReview] = reviewsAPI.useDeleteReviewMutation()
@@ -28,7 +29,7 @@ export const UserReviewsFeedItemControls = ({ id }: UserReviewsFeedItemProps) =>
                 message="Вы уверены, что хотите удалить эту рецензию? Это действие необратимо."
                 onConfirm={async () => {
                     try {
-                        await deleteReview({ id })
+                        await deleteReview({ id, contentId })
                         dialog.close()
                     } catch {
                         console.error(messages.COMMON_ERROR)
