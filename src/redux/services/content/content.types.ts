@@ -20,3 +20,4 @@ export type GetContentManyParams = {
 }
 
 export type GetContentManyResponse = PaginatedResponse<IContent>
+export type GetContentByIdResponse = IContent
