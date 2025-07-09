@@ -25,9 +25,9 @@ type ContentProps = {
 }
 
 export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
-    const { data, isLoading, error } = contentAPI.useGetContentByIdQuery(contentId)
+    const { data, isSuccess, error } = contentAPI.useGetContentByIdQuery(contentId)
 
-    if (isLoading) {
+    if (!isSuccess) {
         return <GlobalLoading />
     }
 
