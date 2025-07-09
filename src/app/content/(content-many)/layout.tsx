@@ -6,10 +6,13 @@ export default async function ContentManyLayout(props: { children: React.ReactNo
         <Layout
             title="Контент"
             size="lg"
-            nav={categories.map(({ type, label }) => ({
-                label,
-                href: `/content/${type.toLowerCase()}`,
-            }))}
+            nav={[
+                { label: 'Весь контент', href: '/content' },
+                ...categories.map(({ type, label }) => ({
+                    label,
+                    href: `/content/${type.toLowerCase()}`,
+                })),
+            ]}
         >
             {props.children}
         </Layout>

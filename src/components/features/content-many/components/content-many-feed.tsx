@@ -15,7 +15,7 @@ import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
 import { ContentManyFeedSkeleton } from './content-many-feed-skeleton'
 
 type ContentManyFeedProps = {
-    type: ContentType
+    type?: ContentType
 }
 
 export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {

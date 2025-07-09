@@ -17,7 +17,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     }
 }
 
-export default async function ContentManyPage(props: { params: Params }) {
+export default async function ContentManyBySlugPage(props: { params: Params }) {
     const params = await props.params
 
     // Check if the slug is included in the ContentType enum

@@ -1,5 +1,7 @@
 import classNames from 'classnames'
 
+// import { FunnelIcon } from 'lucide-react'
+
 import { LayoutNav } from './components/layout-nav'
 
 type LayoutProps = {
@@ -18,9 +20,16 @@ export const Layout = ({ children, title, size, nav }: LayoutProps) => {
 
     return (
         <div className={classNames(wrapperSize, 'pt-12 pb-24')}>
-            <div className="mb-8">
-                <h1 className="mb-4 text-2xl font-semibold sm:text-3xl">{title}</h1>
-                {nav ? <LayoutNav items={nav} /> : <hr className="border-gray-200" />}
+            <div className="mb-12">
+                <h1 className="mb-6 text-4xl font-bold sm:text-3xl">{title}</h1>
+                <div className="flex items-center gap-x-6 text-gray-500">
+                    {/* <div className="shrink-0">
+                        <FunnelIcon />
+                    </div> */}
+                    <div className="min-w-0 flex-1">
+                        {nav ? <LayoutNav items={nav} /> : <hr className="border-gray-200" />}
+                    </div>
+                </div>
             </div>
             {children}
         </div>
