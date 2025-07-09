@@ -1,5 +1,4 @@
 import classNames from 'classnames'
-import { FunnelIcon } from 'lucide-react'
 
 import { LayoutNav } from './components/layout-nav'
 
