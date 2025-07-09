@@ -53,6 +53,7 @@ export const ContentReviewsFeed = ({ contentId, activeUserId, isAuth }: ContentR
                     <ContentReviewsFeedItem
                         key={`content-reviews-feed-item-${item.id}`}
                         id={item.id}
+                        contentId={contentId}
                         text={item.text}
                         rating={item.mark}
                         username={item.user.username}

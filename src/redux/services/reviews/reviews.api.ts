@@ -3,6 +3,7 @@ import { api } from '@/redux/services/api'
 import {
     CreateReviewInputs,
     CreateReviewResponse,
+    DeleteReviewParams,
     GetReviewByIdResponse,
     GetReviewsParams,
     GetReviewsResponse,
@@ -50,7 +51,10 @@ export const reviewsAPI = api.injectEndpoints({
                 method: 'POST',
                 body,
             }),
-            invalidatesTags: [{ type: 'Reviews', id: 'LIST' }],
+            invalidatesTags: (result, error, body) => [
+                { type: 'Reviews', id: 'LIST' },
+                { type: 'Content', id: body.contentId },
+            ],
         }),
         updateReview: build.mutation<void, UpdateReviewInputs>({
             query: ({ id, ...body }) => ({
@@ -58,14 +62,22 @@ export const reviewsAPI = api.injectEndpoints({
                 method: 'PATCH',
                 body,
             }),
-            invalidatesTags: ['Reviews'],
+            invalidatesTags: (result, error, body) => [
+                { type: 'Reviews', id: 'LIST' },
+                { type: 'Reviews', id: body.id },
+                { type: 'Content', id: body.contentId },
+            ],
         }),
-        deleteReview: build.mutation<void, { id: number }>({
-            query: ({ id }) => ({
-                url: `reviews/${id}`,
+        deleteReview: build.mutation<void, DeleteReviewParams>({
+            query: params => ({
+                url: `reviews/${params.id}`,
                 method: 'DELETE',
             }),
-            invalidatesTags: [{ type: 'Reviews', id: 'LIST' }],
+            invalidatesTags: (result, error, params) => [
+                { type: 'Reviews', id: 'LIST' },
+                { type: 'Reviews', id: params.id },
+                { type: 'Content', id: params.contentId },
+            ],
         }),
     }),
     overrideExisting: false,

@@ -31,6 +31,7 @@ export const ReviewUpdate = ({ id }: ReviewUpdateProps) => {
 
     const initialValues: UpdateReviewInputs = {
         id: data.id,
+        contentId: data.content.id,
         mark: data.mark,
         text: data.text || '',
     }
@@ -39,6 +40,7 @@ export const ReviewUpdate = ({ id }: ReviewUpdateProps) => {
         try {
             const trimmedInputs = {
                 id: inputs.id,
+                contentId: inputs.contentId,
                 mark: inputs.mark,
                 ...(inputs.text?.trim().length ? { text: inputs.text.trim() } : { text: null }),
             }

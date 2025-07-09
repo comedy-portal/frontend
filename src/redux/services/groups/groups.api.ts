@@ -28,7 +28,7 @@ export const groupsAPI = api.injectEndpoints({
             forceRefetch({ currentArg, previousArg }) {
                 return currentArg !== previousArg
             },
-            providesTags: ['Groups'],
+            providesTags: () => [{ type: 'Groups', id: 'LIST' }],
         }),
     }),
     overrideExisting: false,

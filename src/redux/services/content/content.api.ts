@@ -1,4 +1,5 @@
 import { api } from '@/redux/services/api'
+import { getContentById } from '@/services/content/content'
 
 import { GetContentManyParams, GetContentManyResponse } from './content.types'
 
@@ -34,7 +35,14 @@ export const contentAPI = api.injectEndpoints({
             forceRefetch({ currentArg, previousArg }) {
                 return JSON.stringify(currentArg) !== JSON.stringify(previousArg)
             },
-            providesTags: ['ContentMany'],
+            providesTags: () => [{ type: 'Content', id: 'LIST' }],
+        }),
+        getContentById: build.query({
+            query: (id: number) => ({
+                url: `content/${id}`,
+                method: 'GET',
+            }),
+            providesTags: (result, error, id) => [{ type: 'Content', id }],
         }),
     }),
     overrideExisting: false,

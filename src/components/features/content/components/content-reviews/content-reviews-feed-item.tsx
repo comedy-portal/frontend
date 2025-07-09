@@ -6,6 +6,7 @@ import { ContentReviewsFeedItemControls } from './content-reviews-feed-item-cont
 
 type ContentReviewsFeedItemProps = {
     id: number
+    contentId: number
     text: string | null
     rating: number
     username: string
@@ -31,7 +32,7 @@ export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
                 </div>
 
                 <div className="flex items-center gap-x-4">
-                    {props.isMyReview && <ContentReviewsFeedItemControls id={props.id} />}
+                    {props.isMyReview && <ContentReviewsFeedItemControls id={props.id} contentId={props.contentId} />}
                     <Rating value={props.rating} className="size-12" />
                 </div>
             </div>

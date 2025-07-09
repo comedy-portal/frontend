@@ -28,7 +28,7 @@ export const comediansAPI = api.injectEndpoints({
             forceRefetch({ currentArg, previousArg }) {
                 return currentArg !== previousArg
             },
-            providesTags: ['Comedians'],
+            providesTags: () => [{ type: 'Comedians', id: 'LIST' }],
         }),
     }),
     overrideExisting: false,

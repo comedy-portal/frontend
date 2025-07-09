@@ -1,4 +1,3 @@
-import { cookies } from 'next/headers'
 import { notFound } from 'next/navigation'
 
 import { GetContentByIdResponse, GetContentManyParams, GetContentManyResponse } from './content.types'
@@ -21,15 +20,8 @@ export async function getContentMany(getContentManyParams: GetContentManyParams)
 }
 
 export async function getContentById(id: number): GetContentByIdResponse {
-    const cookieStore = await cookies()
-    const accessToken = cookieStore.get('sAccessToken')?.value
     const url = process.env.NEXT_PUBLIC_API_URL + '/content/' + id
-    const res = await fetch(url, {
-        cache: 'no-cache',
-        headers: {
-            Authorization: 'Bearer ' + accessToken,
-        },
-    })
+    const res = await fetch(url)
 
     if (!res.ok) {
         if (res.status === 404) {

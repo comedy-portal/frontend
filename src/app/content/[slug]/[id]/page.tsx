@@ -20,7 +20,6 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 
 export default async function ContentPage(props: { params: Params }) {
     const params = await props.params
-
     const { accessTokenPayload, hasToken } = await getSSRSessionHelper()
 
     if (!accessTokenPayload) {
@@ -29,8 +28,7 @@ export default async function ContentPage(props: { params: Params }) {
              * This means that the user is not logged in. If you want to display some other UI in this
              * case, you can do so here.
              */
-            const content = await getContentById(params.id)
-            return <Content content={content} activeUserId={null} isAuth={false} />
+            return <Content contentId={params.id} activeUserId={null} isAuth={false} />
         }
 
         /**
@@ -42,8 +40,7 @@ export default async function ContentPage(props: { params: Params }) {
         return <TryRefreshComponent key={Date.now()} />
     }
 
-    const content = await getContentById(params.id)
     const activeUser = await getUserData()
 
-    return <Content content={content} activeUserId={activeUser.id} isAuth={true} />
+    return <Content contentId={params.id} activeUserId={activeUser.id} isAuth={true} />
 }

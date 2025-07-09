@@ -28,8 +28,14 @@ export type CreateReviewInputs = {
 
 export type UpdateReviewInputs = {
     id: number
+    contentId: number
     mark: number
     text: string | null
+}
+
+export type DeleteReviewParams = {
+    id: number
+    contentId: number
 }
 
 export type CreateReviewResponse = {

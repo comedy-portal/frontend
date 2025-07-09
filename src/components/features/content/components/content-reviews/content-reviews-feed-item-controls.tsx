@@ -12,9 +12,10 @@ import { useDialog } from '@/utils/providers/dialog-provider'
 
 type ContentReviewsFeedItemProps = {
     id: number
+    contentId: number
 }
 
-export const ContentReviewsFeedItemControls = ({ id }: ContentReviewsFeedItemProps) => {
+export const ContentReviewsFeedItemControls = ({ id, contentId }: ContentReviewsFeedItemProps) => {
     const dialog = useDialog()
     const router = useRouter()
 
@@ -31,7 +32,7 @@ export const ContentReviewsFeedItemControls = ({ id }: ContentReviewsFeedItemPro
                 message="Вы уверены, что хотите удалить эту рецензию? Это действие необратимо."
                 onConfirm={async () => {
                     try {
-                        await deleteReview({ id })
+                        await deleteReview({ id, contentId })
                         router.refresh()
                         dialog.close()
                     } catch {

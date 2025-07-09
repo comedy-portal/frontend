@@ -28,7 +28,7 @@ export const watchlistsAPI = api.injectEndpoints({
             forceRefetch({ currentArg, previousArg }) {
                 return currentArg !== previousArg
             },
-            providesTags: (result, error, { username }) => [{ type: 'Watchlist', id: username }],
+            providesTags: () => [{ type: 'Watchlist', id: 'LIST' }],
         }),
         addToWatchlist: build.mutation<void, number>({
             query: contentId => ({
@@ -36,6 +36,10 @@ export const watchlistsAPI = api.injectEndpoints({
                 method: 'POST',
                 body: { contentId },
             }),
+            invalidatesTags: (result, error, contentId) => [
+                { type: 'Watchlist', id: 'LIST' },
+                { type: 'Content', id: contentId },
+            ],
         }),
         deleteFromWatchlist: build.mutation<void, number>({
             query: contentId => ({
@@ -43,6 +47,10 @@ export const watchlistsAPI = api.injectEndpoints({
                 method: 'DELETE',
                 body: { contentId },
             }),
+            invalidatesTags: (result, error, contentId) => [
+                { type: 'Watchlist', id: 'LIST' },
+                { type: 'Content', id: contentId },
+            ],
         }),
     }),
     overrideExisting: false,
