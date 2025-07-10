@@ -40,7 +40,7 @@ export const Group = ({ group }: GroupProps) => {
                         )}
 
                         <section className="space-y-2">
-                            <h3 className="font-bold">Авторы</h3>
+                            <h3 className="font-bold">Участники</h3>
                             {group.comedians.map(comedian => (
                                 <div key={`group-author-${comedian.id}`}>
                                     <Link
