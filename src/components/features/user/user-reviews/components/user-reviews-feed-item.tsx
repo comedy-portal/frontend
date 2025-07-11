@@ -1,45 +1,39 @@
 import Link from 'next/link'
 
 import { Rating } from '@/components/ui/rating'
-import { ContentType } from '@/utils/enums/common'
+import { IReview } from '@/utils/types/review'
 
+import { UserReviewsFeedItemAuthor } from './user-reviews-feed-item-author'
 import { UserReviewsFeedItemControls } from './user-reviews-feed-item-controls'
 
 type UserReviewsFeedItemProps = {
-    id: number
-    contentId: number
-    type: ContentType
-    name: string
-    text: string | null
-    rating: number
-    createdAt: string
+    review: IReview
     isMyReview?: boolean
 }
 
-export const UserReviewsFeedItem = (props: UserReviewsFeedItemProps) => {
+export const UserReviewsFeedItem = ({ review, isMyReview }: UserReviewsFeedItemProps) => {
     return (
         <div className="space-y-4 rounded-lg border border-gray-300 p-6">
             <div className="flex items-center justify-between gap-x-4">
                 <div>
-                    <Link href={`/content/${props.type.toLowerCase()}/${props.contentId}`} className="font-bold">
-                        {props.name}
+                    <Link
+                        href={`/content/${review.content.type.toLowerCase()}/${review.content.id}`}
+                        className="font-bold"
+                    >
+                        {review.content.name}
                     </Link>
-                    <div className="text-gray-500">
-                        {new Date(props.createdAt).toLocaleDateString('ru-RU', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                        })}
+                    <div>
+                        <UserReviewsFeedItemAuthor comedians={review.content.comedians} group={review.content.group} />
                     </div>
                 </div>
 
                 <div className="flex items-center gap-x-4">
-                    {props.isMyReview && <UserReviewsFeedItemControls id={props.id} contentId={props.contentId} />}
-                    <Rating value={props.rating} className="size-12" />
+                    {isMyReview && <UserReviewsFeedItemControls id={review.id} contentId={review.content.id} />}
+                    <Rating value={review.mark} className="size-12" />
                 </div>
             </div>
 
-            {props.text && <div className="text-sm text-gray-700">{props.text}</div>}
+            {review.text && <div className="text-sm text-gray-700">{review.text}</div>}
         </div>
     )
 }

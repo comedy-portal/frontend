@@ -51,13 +51,7 @@ export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFee
                 {data.items.map(item => (
                     <UserReviewsFeedItem
                         key={`content-reviews-feed-item-${item.id}`}
-                        id={item.id}
-                        contentId={item.content.id}
-                        type={item.content.type}
-                        name={item.content.name}
-                        text={item.text}
-                        rating={item.mark}
-                        createdAt={item.createdAt}
+                        review={item}
                         isMyReview={isAuth && activeUserId === userId && item.user.id === activeUserId}
                     />
                 ))}
