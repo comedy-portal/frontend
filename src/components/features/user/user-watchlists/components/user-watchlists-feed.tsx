@@ -2,11 +2,11 @@
 
 import { useState } from 'react'
 
+import { ContentBlock } from '@/components/ui/content-block/content-block'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { watchlistsAPI } from '@/redux/services/watchlists/watchlists.api'
 
-import { UserWatchlistsFeedItem } from './user-watchlists-feed-item'
 import { UserWatchlistsFeedSkeleton } from './user-watchlists-feed-skeleton'
 
 type UserWatchlistsFeedProps = {
@@ -45,16 +45,16 @@ export const UserWatchlistsFeed = ({ username }: UserWatchlistsFeedProps) => {
 
     return (
         <div className="space-y-2">
-            <div className="space-y-2">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
                 {data.items.map(item => (
-                    <UserWatchlistsFeedItem
+                    <ContentBlock
                         key={`user-watchlists-feed-item-${item.id}`}
                         id={item.content.id}
                         type={item.content.type}
                         name={item.content.name}
+                        imageUrl={item.content.contentImages[0]?.url}
                         year={item.content.year}
                         avgRating={item.content.rating.avgRating}
-                        reviewsCount={item.content.rating.reviewsCount}
                     />
                 ))}
             </div>
