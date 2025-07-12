@@ -1,9 +1,12 @@
+import { CircleArrowLeftIcon } from 'lucide-react'
+
+import Link from 'next/link'
+
 import { DescriptionBlock } from '@/components/ui/description-block'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LinksBlock } from '@/components/ui/links-block'
 import { IComedian } from '@/utils/types/comedian'
 
-import { ComedianBack } from './components/comedian-back'
 import { ComedianContent } from './components/comedian-content'
 
 type ComedianProps = {
@@ -13,7 +16,10 @@ type ComedianProps = {
 export const Comedian = ({ comedian }: ComedianProps) => {
     return (
         <div className="wrapper-lg sm: space-y-12 pt-12 pb-24">
-            <ComedianBack />
+            <Link href="/comedians" className="flex items-center gap-x-2 hover:text-black">
+                <CircleArrowLeftIcon size={24} className="text-inherit" />
+                Все комики
+            </Link>
 
             <div className="flex flex-col-reverse gap-12 sm:flex-row">
                 <div className="flex flex-1 flex-col gap-y-12">
@@ -36,6 +42,24 @@ export const Comedian = ({ comedian }: ComedianProps) => {
                                     {comedian.name} {comedian.surname}
                                 </h1>
                                 <DescriptionBlock text={comedian.metaInfo.description} limit={500} />
+                            </section>
+                        )}
+
+                        {comedian.groups.length > 0 && (
+                            <section className="space-y-2">
+                                <h3 className="font-bold">Группы</h3>
+                                {comedian.groups.map(group => {
+                                    return (
+                                        <div key={`comedian-group-${group.slug}`}>
+                                            <Link
+                                                href={`/comedians/groups/${group.slug}`}
+                                                className="text-gray-500 hover:text-gray-950"
+                                            >
+                                                <span>{group.name}</span>
+                                            </Link>
+                                        </div>
+                                    )
+                                })}
                             </section>
                         )}
 

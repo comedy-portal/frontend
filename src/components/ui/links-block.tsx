@@ -1,11 +1,11 @@
 import Link from 'next/link'
 
 import { getPlatformUrl } from '@/utils/helpers/common'
-import { Link as LinkType } from '@/utils/types/common'
+import { ILink } from '@/utils/types/common'
 
 type LinksBlockProps = {
     caption: string
-    links: LinkType[]
+    links: ILink[]
 }
 
 export const LinksBlock = ({ caption, links }: LinksBlockProps) => {
@@ -18,7 +18,7 @@ export const LinksBlock = ({ caption, links }: LinksBlockProps) => {
                 if (!platformData) return null
 
                 return (
-                    <div key={`group-link-${link.platform}-${link.identifier}`}>
+                    <div key={`link-block-${link.platform}-${link.identifier}`}>
                         <Link
                             href={platformData.href}
                             className="text-gray-500 hover:text-gray-950"

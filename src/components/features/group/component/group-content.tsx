@@ -1,7 +1,7 @@
 import { ContentBlock } from '@/components/ui/content-block/content-block'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { ContentType } from '@/utils/enums/common'
-import { Image, Rating } from '@/utils/types/common'
+import { IImage, IRating } from '@/utils/types/common'
 
 type GroupContentProps = {
     content: {
@@ -11,8 +11,8 @@ type GroupContentProps = {
         year: number
         month: number
         duration?: number
-        rating: Rating
-        contentImages: Image[]
+        rating: IRating
+        contentImages: IImage[]
     }[]
 }
 

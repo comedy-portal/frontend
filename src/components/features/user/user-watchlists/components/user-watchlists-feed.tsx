@@ -6,6 +6,7 @@ import { ContentBlock } from '@/components/ui/content-block/content-block'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { watchlistsAPI } from '@/redux/services/watchlists/watchlists.api'
+import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
 
 import { UserWatchlistsFeedSkeleton } from './user-watchlists-feed-skeleton'
 
@@ -55,6 +56,10 @@ export const UserWatchlistsFeed = ({ username }: UserWatchlistsFeedProps) => {
                         imageUrl={item.content.contentImages[0]?.url}
                         year={item.content.year}
                         avgRating={item.content.rating.avgRating}
+                        author={getAuthorDisplayNameForContent({
+                            comedians: item.content.comedians,
+                            group: item.content.group,
+                        })}
                     />
                 ))}
             </div>

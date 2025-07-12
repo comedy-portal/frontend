@@ -1,3 +1,5 @@
+import { CircleArrowLeftIcon } from 'lucide-react'
+
 import Link from 'next/link'
 
 import { DescriptionBlock } from '@/components/ui/description-block'
@@ -5,7 +7,6 @@ import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LinksBlock } from '@/components/ui/links-block'
 import { IGroup } from '@/utils/types/group'
 
-import { GroupBack } from './component/group-back'
 import { GroupContent } from './component/group-content'
 
 type GroupProps = {
@@ -15,7 +16,10 @@ type GroupProps = {
 export const Group = ({ group }: GroupProps) => {
     return (
         <div className="wrapper-lg space-y-12 pt-12 pb-24">
-            <GroupBack />
+            <Link href="/comedians/groups" className="flex items-center gap-x-2 hover:text-black">
+                <CircleArrowLeftIcon size={24} className="text-inherit" />
+                Все группы
+            </Link>
 
             <div className="flex flex-col-reverse gap-12 sm:flex-row">
                 <div className="flex flex-1 flex-col gap-y-12">

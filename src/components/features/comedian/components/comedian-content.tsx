@@ -1,7 +1,7 @@
 import { ContentBlock } from '@/components/ui/content-block/content-block'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { ContentType } from '@/utils/enums/common'
-import { Image, Rating } from '@/utils/types/common'
+import { IImage, IRating } from '@/utils/types/common'
 
 type ComedianContentProps = {
     content:
@@ -12,8 +12,8 @@ type ComedianContentProps = {
               year: number
               month: number | null
               duration: number | null
-              rating: Rating
-              contentImages: Image[]
+              rating: IRating
+              contentImages: IImage[]
           }[]
         | null
 }

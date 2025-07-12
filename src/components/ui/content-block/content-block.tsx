@@ -1,10 +1,10 @@
 import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
+import { Rating } from '@/components/ui/rating'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
-import { Rating } from '../rating'
 import { ContentBlockAuthor } from './components/content-block-author'
 import { ContentBlockDate } from './components/content-block-date'
 import { ContentBlockTag } from './components/content-block-tag'

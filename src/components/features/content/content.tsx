@@ -1,16 +1,19 @@
 'use client'
 
+import { CircleArrowLeftIcon } from 'lucide-react'
+
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { DescriptionBlock } from '@/components/ui/description-block'
 import { GlobalLoading } from '@/components/ui/global-loading'
 import { LinksBlock } from '@/components/ui/links-block'
 import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
 import { contentAPI } from '@/redux/services/content/content.api'
+import { categories } from '@/utils/dict/categories'
 
 import { ContentAddToWatchList } from './components/content-add-to-watch-list'
 import { ContentAuthors } from './components/content-authors'
-import { ContentBack } from './components/content-back'
 import { ContentDate } from './components/content-date'
 import { ContentDuration } from './components/content-duration'
 import { ContentMyRating } from './components/content-my-rating'
@@ -37,7 +40,11 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
 
     return (
         <div className="wrapper-lg space-y-12 pt-12 pb-24">
-            <ContentBack contentType={data.type} />
+            <Link href={`/content/${data.type.toLowerCase()}`} className="flex items-center gap-x-2 hover:text-black">
+                <CircleArrowLeftIcon size={24} className="text-inherit" />
+                {categories.find(category => category.type === data.type.toLowerCase())?.toBackLabel ||
+                    'Назад к контенту'}
+            </Link>
 
             <div className="flex flex-col-reverse gap-12 sm:flex-row">
                 <div className="flex flex-1 flex-col gap-y-12">

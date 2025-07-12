@@ -1,24 +1,10 @@
 import Link from 'next/link'
 
+import { IComedianPreview, IGroupPreview } from '@/utils/types/common'
+
 type ContentAuthorsProps = {
-    comedians: {
-        id: number
-        name: string
-        surname: string
-        slug: string
-        isAgent: boolean
-    }[]
-    group: {
-        id: number
-        name: string
-        slug: string
-        groupImages: {
-            id: number
-            url: string
-            copyright: string
-            isCover: boolean
-        }[]
-    } | null
+    comedians: IComedianPreview[]
+    group: IGroupPreview | null
 }
 
 export const ContentAuthors = ({ comedians, group }: ContentAuthorsProps) => {

@@ -1,5 +1,7 @@
 import { ContentType } from '@/utils/enums/common'
 
+import { IComedianPreview, IGroupPreview } from './common'
+
 export type IWatchlist = {
     id: number
     createdAt: Date
@@ -19,5 +21,7 @@ export type IWatchlist = {
             copyright: string
             isCover: boolean
         }[]
+        comedians: IComedianPreview[]
+        group: IGroupPreview | null
     }
 }

@@ -1,5 +1,5 @@
-import { Platform } from '../enums/common'
-import { IContent } from '../types/content'
+import { Platform } from '@/utils/enums/common'
+import { IComedianPreview, IGroupPreview } from '@/utils/types/common'
 
 export function getMonthNameRu(monthNumber: number): string {
     if (monthNumber < 1 || monthNumber > 12) return ''
@@ -11,24 +11,30 @@ export function getMonthNameRu(monthNumber: number): string {
     return monthName.charAt(0).toUpperCase() + monthName.slice(1)
 }
 
-export function getAuthorDisplayNameForContent(content: IContent): { name: string; url: string } | undefined {
-    if (content.group) {
+export function getAuthorDisplayNameForContent({
+    comedians,
+    group,
+}: {
+    comedians: IComedianPreview[]
+    group: IGroupPreview | null
+}): { name: string; url: string } | undefined {
+    if (group) {
         return {
-            name: content.group.name,
-            url: `/comedians/groups/${content.group.slug}`,
+            name: group.name,
+            url: `/comedians/groups/${group.slug}`,
         }
     }
 
-    if (content.comedians.length === 1) {
-        const comedian = content.comedians[0]
+    if (comedians.length === 1) {
+        const comedian = comedians[0]
         return {
             name: `${comedian.name} ${comedian.surname}`,
             url: `/comedians/${comedian.slug}`,
         }
     }
 
-    if (content.comedians.length > 1) {
-        const [first, ...rest] = content.comedians
+    if (comedians.length > 1) {
+        const [first, ...rest] = comedians
         return {
             name: `${first.name} ${first.surname} +${rest.length}`,
             url: `/comedians/${first.slug}`,
