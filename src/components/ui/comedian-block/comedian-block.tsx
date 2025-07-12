@@ -11,7 +11,7 @@ export const ComedianBlock = ({ slug, name, surname }: ComedianBlockType) => {
     return (
         <Link href={`/comedians/${slug}`} className="flex flex-col gap-y-2">
             <Image
-                src={`/images/comedians/${slug}.jpg`}
+                src={`/images/comedians/${slug}.jpeg`}
                 alt={`${name} ${surname}`}
                 width={100}
                 height={100}
