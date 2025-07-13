@@ -3,7 +3,7 @@
 import { useState } from 'react'
 
 import { useFormik } from 'formik'
-import * as Yup from 'yup'
+import * as yup from 'yup'
 
 import { Button } from '@/components/ui/forms/button'
 import { Input } from '@/components/ui/forms/input'
@@ -16,9 +16,10 @@ export const ContentSubmit = () => {
     const [status, setStatus] = useState<string | null>(null)
     const [createProposal, { isLoading }] = ContentProposalsAPI.useCreateProposalMutation()
 
-    const validationSchema = Yup.object().shape({
-        url: Yup.string().trim().url('Введите корректный URL').required('Ссылка на видео обязательна'),
-        text: Yup.string()
+    const validationSchema = yup.object().shape({
+        url: yup.string().trim().url('Введите корректный URL').required('Ссылка на видео обязательна'),
+        text: yup
+            .string()
             .trim()
             .min(20, `Минимальная длина текста отзыва 20 символов`)
             .max(500, `Максимальная длина текста отзыва 500 символов`),
