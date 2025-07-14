@@ -1,5 +1,5 @@
 import { ContentType } from '@/utils/enums/common'
-import { Group, Image, Link, Rating } from '@/utils/types/common'
+import { IComedianPreview, IGroupPreview, IImage, ILink, IRating } from '@/utils/types/common'
 
 export type IContent = {
     id: number
@@ -10,19 +10,23 @@ export type IContent = {
     metaInfo: {
         description: string | null
         facts: string[]
-        links: Link[]
+        links: ILink[]
     } | null
     duration: number | null
-    group: Group | null
-    comedians: {
+    group: IGroupPreview | null
+    comedians: IComedianPreview[]
+    rating: IRating
+    reviews?: {
         id: number
-        name: string
-        surname: string
-        slug: string
-        isAgent: boolean
+        mark: number
+        text?: string // not needed for "get content many"
+        createdAt: Date
     }[]
-    rating: Rating
-    contentImages: Image[]
+    watchlists?: {
+        createdAt: Date
+    }[]
+    _count?: { reviews: number }
+    contentImages: IImage[]
     createdAt: string
     updatedAt: string
 }

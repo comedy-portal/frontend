@@ -1,32 +1,49 @@
 'use client'
 
-import { HeartPlusIcon } from 'lucide-react'
+import { BookmarkIcon } from 'lucide-react'
 
+import { useRouter } from 'next/navigation'
+
+import { SignUp } from '@/components/features/auth/sign-up'
+import { Button } from '@/components/ui/forms/button'
 import { watchlistsAPI } from '@/redux/services/watchlists/watchlists.api'
+import { useDialog } from '@/utils/providers/dialog-provider'
 
 type ContentAddToWatchListProps = {
     contentId: number
+    isAuth: boolean
+    isInWatchlist: boolean
 }
 
-export const ContentAddToWatchList = ({ contentId }: ContentAddToWatchListProps) => {
+export const ContentAddToWatchList = ({ contentId, isAuth, isInWatchlist }: ContentAddToWatchListProps) => {
+    const router = useRouter()
+    const dialog = useDialog()
     const [addToWatchlist] = watchlistsAPI.useAddToWatchlistMutation()
-    // const [deleteFromWatchlist] = watchlistsAPI.useDeleteFromWatchlistMutation()
+    const [deleteFromWatchlist] = watchlistsAPI.useDeleteFromWatchlistMutation()
 
     const toggle = async () => {
+        if (!isAuth) {
+            dialog.open(<SignUp />)
+            return
+        }
+
         try {
-            await addToWatchlist(contentId)
+            await (isInWatchlist ? deleteFromWatchlist(contentId) : addToWatchlist(contentId))
+            router.refresh()
         } catch {
             alert('Ошибка при добавлении в список просмотра')
         }
     }
 
     return (
-        <div className="flex items-center gap-x-2" onClick={toggle}>
-            <HeartPlusIcon size={40} strokeWidth={1.5} stroke="rgb(87, 153, 239)" />
-            <div className="cursor-pointer text-sm hover:text-blue-500">
-                <div className="hidden sm:block">Смотреть</div>
-                <div>позже</div>
-            </div>
-        </div>
+        <Button size="lg" variant="outline" className="flex items-center justify-center gap-x-2" onClick={toggle}>
+            <BookmarkIcon
+                size={24}
+                strokeWidth={1.5}
+                stroke="currentColor"
+                fill={isInWatchlist ? 'currentColor' : 'none'}
+            />
+            {isInWatchlist ? 'В списке просмотра' : 'Смотреть позже'}
+        </Button>
     )
 }

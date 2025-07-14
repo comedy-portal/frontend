@@ -1,0 +1,59 @@
+import Link from 'next/link'
+
+import { ImageWithFallback } from '@/components/ui/image-with-fallback'
+import { Rating } from '@/components/ui/rating'
+import { categories } from '@/utils/dict/categories'
+import { ContentType } from '@/utils/enums/common'
+
+import { ContentBlockAuthor } from './components/content-block-author'
+import { ContentBlockDate } from './components/content-block-date'
+import { ContentBlockTag } from './components/content-block-tag'
+
+type ContentBlockType = {
+    id: number
+    type: ContentType
+    name: string
+    imageUrl: string | null
+    year: number
+    avgRating: number
+    author?: {
+        name: string
+        url: string
+    }
+}
+
+export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, author }: ContentBlockType) => {
+    return (
+        <div className="relative">
+            <Link href={`/content/${type.toLowerCase()}/${id}`}>
+                <div className="absolute top-0 right-0 rounded-bl-lg bg-white pb-1 pl-1">
+                    <Rating value={avgRating} className="size-12 text-xl" />
+                </div>
+
+                <ImageWithFallback
+                    src={imageUrl || ''}
+                    width={254}
+                    height={160}
+                    className="aspect-video h-auto w-auto rounded-t-lg align-top"
+                    alt={name}
+                />
+            </Link>
+
+            <div className="flex flex-col gap-y-4 rounded-b-lg border-x border-b border-[#DFE2E6] p-4">
+                <div>
+                    {author && <ContentBlockAuthor name={author.name} url={author.url} />}
+                    <Link href={`/content/${type.toLowerCase()}/${id}`} className="line-clamp-2 h-12 font-bold">
+                        {name}
+                    </Link>
+                </div>
+                <div className="flex items-center justify-between">
+                    <ContentBlockTag
+                        link={`/content/${type.toLowerCase()}`}
+                        title={categories.find(category => category.type === type.toLowerCase())?.label || ''}
+                    />
+                    <ContentBlockDate year={year} />
+                </div>
+            </div>
+        </div>
+    )
+}

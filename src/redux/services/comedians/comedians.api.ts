@@ -5,15 +5,11 @@ import { GetComediansParams, GetComediansResponse } from './comedians.types'
 export const comediansAPI = api.injectEndpoints({
     endpoints: build => ({
         getComedians: build.query<GetComediansResponse, GetComediansParams>({
-            query: params => {
-                const filteredParams = Object.fromEntries(
-                    // Filter out undefined values from params
-                    // and convert all values to strings
-                    Object.entries(params).flatMap(([k, v]) => (v !== undefined ? [[k, String(v)]] : [])),
-                )
-
-                return 'comedians?' + new URLSearchParams(filteredParams).toString()
-            },
+            query: params => ({
+                url: 'comedians',
+                method: 'GET',
+                params,
+            }),
             serializeQueryArgs: ({ endpointName }) => {
                 return endpointName
             },
@@ -32,7 +28,7 @@ export const comediansAPI = api.injectEndpoints({
             forceRefetch({ currentArg, previousArg }) {
                 return currentArg !== previousArg
             },
-            providesTags: ['Comedians'],
+            providesTags: () => [{ type: 'Comedians', id: 'LIST' }],
         }),
     }),
     overrideExisting: false,

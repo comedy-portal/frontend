@@ -1,32 +1,31 @@
 'use client'
 
-import Dropdown from 'react-bootstrap/Dropdown'
+// export type CustomDropdownItem = {
+//     label: string
+//     value: string
+// }
 
-export type CustomDropdownItem = {
-    label: string
-    value: string
-}
+// type CustomDropdownProps = {
+//     items: CustomDropdownItem[]
+//     selectedValue: string
+//     onSelect: (item: CustomDropdownItem) => void
+// }
 
-type CustomDropdownProps = {
-    items: CustomDropdownItem[]
-    selectedValue: string
-    onSelect: (item: CustomDropdownItem) => void
-}
-
-export const CustomDropdown = ({ items, selectedValue, onSelect }: CustomDropdownProps) => {
+export const CustomDropdown = () => {
     return (
-        <Dropdown>
-            <Dropdown.Toggle id="custom-dropdown" as="div" className="cursor-pointer">
-                {items.find(item => item.value === selectedValue)?.label}
-            </Dropdown.Toggle>
+        <div>Dropdown</div>
+        // <Dropdown>
+        //     <Dropdown.Toggle id="custom-dropdown" as="div" className="cursor-pointer">
+        //         {items.find(item => item.value === selectedValue)?.label}
+        //     </Dropdown.Toggle>
 
-            <Dropdown.Menu as="div">
-                {items.map(item => (
-                    <Dropdown.Item key={item.value} onClick={() => onSelect(item)}>
-                        {item.label}
-                    </Dropdown.Item>
-                ))}
-            </Dropdown.Menu>
-        </Dropdown>
+        //     <Dropdown.Menu as="div">
+        //         {items.map(item => (
+        //             <Dropdown.Item key={item.value} onClick={() => onSelect(item)}>
+        //                 {item.label}
+        //             </Dropdown.Item>
+        //         ))}
+        //     </Dropdown.Menu>
+        // </Dropdown>
     )
 }

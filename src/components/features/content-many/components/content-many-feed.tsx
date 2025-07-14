@@ -2,17 +2,20 @@
 
 import { useMemo, useState } from 'react'
 
-import { PackageOpenIcon } from 'lucide-react'
-
 import { useSearchParams } from 'next/navigation'
 
-import { ContentBlock } from '@/components/ui/content-block'
+import { ContentBlock } from '@/components/ui/content-block/content-block'
+import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { contentAPI } from '@/redux/services/content/content.api'
-import { ContentSortBy, ContentType, ContentUrlSortBy, Order } from '@/utils/enums/common'
+import { ContentSortBy } from '@/redux/services/content/content.types'
+import { ContentType, ContentUrlSortBy, Order } from '@/utils/enums/common'
+import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
+
+import { ContentManyFeedSkeleton } from './content-many-feed-skeleton'
 
 type ContentManyFeedProps = {
-    type: ContentType
+    type?: ContentType
 }
 
 export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
@@ -43,29 +46,28 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
     if (isError) {
         return (
             <div className="text-center text-gray-500">
-                Ошибка загрузки контента. Попробуйте обновить страницу или зайдите позже.
+                Ошибка загрузки. Попробуйте обновить страницу или зайдите позже.
             </div>
         )
     }
 
     if (isSuccess && data.items.length === 0) {
         return (
-            <div className="flex flex-col items-center gap-y-4 py-24 text-center text-gray-500">
-                <PackageOpenIcon size={64} className="text-gray-400" />
+            <EmptyMessage>
                 Контент в этой категории пока отсутствует.
                 <br />
                 Попробуйте выбрать другую категорию или зайдите позже.
-            </div>
+            </EmptyMessage>
         )
     }
 
     if (!isSuccess) {
-        return <div>Загрузка ...</div>
+        return <ContentManyFeedSkeleton />
     }
 
     return (
         <div className="flex flex-col gap-y-12">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
                 {data.items.map(item => (
                     <ContentBlock
                         key={`content-many-feed-item-${item.id}`}
@@ -75,7 +77,7 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
                         imageUrl={item.contentImages[0]?.url}
                         year={item.year}
                         avgRating={item.rating.avgRating}
-                        reviewsCount={item.rating.reviewsCount}
+                        author={getAuthorDisplayNameForContent(item)}
                     />
                 ))}
             </div>

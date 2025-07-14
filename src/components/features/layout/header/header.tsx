@@ -1,17 +1,21 @@
 import { HeaderDesktop } from './header-desktop'
 import { HeaderMobile } from './header-mobile'
-import { HeaderProfileEntryPoint } from './header-profile-entry-point'
 
-export const Header = () => {
+type HeaderProps = {
+    username?: string
+    isAuth: boolean
+}
+
+export const Header = ({ username, isAuth }: HeaderProps) => {
     return (
-        <header className="sticky top-0 z-40 bg-black">
-            <div className="container py-3">
-                <div className="block sm:hidden">
-                    <HeaderMobile profileEntryPointComponent={<HeaderProfileEntryPoint />} />
+        <header className="sticky top-0 z-40 bg-gray-950">
+            <div className="wrapper-lg h-14">
+                <div className="block h-full lg:hidden">
+                    <HeaderMobile username={username} isAuth={isAuth} />
                 </div>
 
-                <div className="hidden h-full sm:block">
-                    <HeaderDesktop />
+                <div className="hidden h-full lg:block">
+                    <HeaderDesktop username={username} isAuth={isAuth} />
                 </div>
             </div>
         </header>

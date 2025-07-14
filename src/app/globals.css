@@ -1,2 +1,22 @@
 @import 'tailwindcss';
-@import 'bootstrap/dist/css/bootstrap.min.css';
+
+html {
+  font-family: var(--font-roboto), sans-serif;
+  color: var(--color-gray-950);
+}
+
+.container {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.wrapper-sm {
+  @apply mx-auto max-w-4xl px-4 sm:px-6 lg:px-8;
+}
+
+.wrapper-lg {
+  @apply mx-auto max-w-[1224px] px-4 sm:px-6 lg:px-8 box-content;
+}
+
+.alice-carousel__dots {
+  @apply absolute -bottom-14 left-1/2 z-10 -translate-x-1/2 items-center justify-center gap-x-4 m-0! hidden sm:flex;
+}

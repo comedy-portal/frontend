@@ -35,19 +35,13 @@ export enum Order {
     DESC = 'desc',
 }
 
-export enum ContentSortBy {
-    DATE = 'date',
-    NAME = 'name',
-    RATING = 'rating',
-}
-
 export enum ContentUrlSortBy {
     DATE_DESC = 'date_desc',
     DATE_ASC = 'date_asc',
     RATING_DESC = 'rating_desc',
 }
 
-export enum ComedianSortBy {
-    NAME = 'name',
-    SURNAME = 'surname',
+export enum ItemToProcessStatus {
+    PENDING = 'pending',
+    RESOLVED = 'resolved',
 }

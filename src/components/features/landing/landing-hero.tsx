@@ -1,27 +1,53 @@
 'use client'
 
-import { Carousel } from 'react-bootstrap'
+import AliceCarousel from 'react-alice-carousel'
+
+import classNames from 'classnames'
 
 import Image from 'next/image'
+import Link from 'next/link'
+
+import 'react-alice-carousel/lib/alice-carousel.css'
 
 export const LandingHero = () => {
+    const items = [
+        <Link
+            key="landing-hero-item-1"
+            href="https://comedyportal.ru/content/improv_show/119"
+            className="mx-auto flex items-center justify-center sm:max-w-[1224px] sm:px-6 lg:px-8"
+        >
+            <div className="relative max-h-[400px] w-full bg-gray-950 sm:overflow-hidden sm:rounded-2xl">
+                <Image
+                    src="/images/promo/promo.jpg"
+                    alt="Три Гиены"
+                    width={1224}
+                    height={671}
+                    className="h-auto max-h-[400px] w-full object-cover"
+                />
+            </div>
+        </Link>,
+    ]
+
     return (
-        <Carousel className="w-full rounded bg-gray-500">
-            <Carousel.Item>
-                <div className="h-[400px] w-full">
-                    <Image src="/images/hero/hero-1.webp" alt="Landing Hero" fill className="rounded object-cover" />
-                </div>
-            </Carousel.Item>
-            <Carousel.Item>
-                <div className="h-[400px] w-full">
-                    <Image src="/images/hero/hero-2.webp" alt="Landing Hero" fill className="rounded object-cover" />
-                </div>
-            </Carousel.Item>
-            <Carousel.Item>
-                <div className="h-[400px] w-full">
-                    <Image src="/images/hero/hero-3.jpg" alt="Landing Hero" fill className="rounded object-cover" />
-                </div>
-            </Carousel.Item>
-        </Carousel>
+        <div className="relative flex items-center justify-center border bg-gray-950 sm:pt-10 sm:pb-20">
+            <AliceCarousel
+                mouseTracking
+                disableButtonsControls
+                infinite
+                items={items}
+                responsive={{
+                    0: {
+                        items: 1,
+                    },
+                }}
+                renderDotsItem={e => (
+                    <div
+                        className={classNames('relative h-2 w-6 cursor-pointer rounded-full border-2 border-white', {
+                            'bg-white': e.isActive,
+                        })}
+                    />
+                )}
+            />
+        </div>
     )
 }

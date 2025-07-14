@@ -10,6 +10,7 @@ interface EnvVariables {
     NODE_ENV: string
     SUPERTOKENS_API_KEY: string
     SUPERTOKENS_CONNECTION_URI: string
+    NEXT_PUBLIC_GA_MEASUREMENT_ID: string
 }
 
 const defaultValues: EnvVariables = {
@@ -22,6 +23,7 @@ const defaultValues: EnvVariables = {
     NODE_ENV: 'development',
     SUPERTOKENS_API_KEY: 'SHOULD_BE_SET',
     SUPERTOKENS_CONNECTION_URI: 'SHOULD_BE_SET',
+    NEXT_PUBLIC_GA_MEASUREMENT_ID: 'SHOULD_BE_SET',
 }
 
 const envSchema = yup.object().shape(

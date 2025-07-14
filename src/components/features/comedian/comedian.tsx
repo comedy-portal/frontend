@@ -1,49 +1,72 @@
-import { ContentBlock } from '@/components/ui/content-block'
+import { CircleArrowLeftIcon } from 'lucide-react'
+
+import Link from 'next/link'
+
+import { DescriptionBlock } from '@/components/ui/description-block'
+import { ImageWithFallback } from '@/components/ui/image-with-fallback'
+import { LinksBlock } from '@/components/ui/links-block'
 import { IComedian } from '@/utils/types/comedian'
 
-type ComedianProps = IComedian
+import { ComedianContent } from './components/comedian-content'
 
-export const Comedian = (props: ComedianProps) => {
+type ComedianProps = {
+    comedian: IComedian
+}
+
+export const Comedian = ({ comedian }: ComedianProps) => {
     return (
-        <div className="flex flex-col gap-y-12">
-            <div className="relative h-[600px] w-full bg-gray-100">
-                <div
-                    className="absolute inset-0 z-0 bg-gray-200"
-                    style={{
-                        backgroundImage: `url(${props.comedianImages[0]?.url || '/default-comedian-image.jpg'})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}
-                />
+        <div className="wrapper-lg sm: space-y-12 pt-12 pb-24">
+            <Link href="/comedians" className="flex items-center gap-x-2 hover:text-black">
+                <CircleArrowLeftIcon size={24} className="text-inherit" />
+                Все комики
+            </Link>
 
-                <section className="relative z-10 flex h-full w-full items-center justify-center bg-gradient-to-t from-gray-900 to-transparent p-4 text-white">
-                    <div className="flex flex-col items-center gap-y-4 text-center">
-                        <h1 className="text-6xl! font-bold">{`${props.name} ${props.surname}`}</h1>
-                        <p className="max-w-3/4 text-xl">{props.metaInfo?.description}</p>
+            <div className="flex flex-col-reverse gap-12 sm:flex-row">
+                <div className="flex flex-1 flex-col gap-y-12">
+                    <ComedianContent content={comedian.content} />
+                </div>
+
+                <div className="flex shrink-0 flex-col sm:w-[368px]">
+                    <ImageWithFallback
+                        src={`/images/comedians/${comedian.slug}.jpg`}
+                        alt={`${comedian.name}`}
+                        width={100}
+                        height={100}
+                        className="mb-12 aspect-square w-full rounded-lg"
+                    />
+
+                    <div className="flex flex-col gap-y-6">
+                        {comedian.metaInfo?.description && (
+                            <section className="space-y-6">
+                                <h1 className="text-4xl font-bold">
+                                    {comedian.name} {comedian.surname}
+                                </h1>
+                                <DescriptionBlock text={comedian.metaInfo.description} limit={500} />
+                            </section>
+                        )}
+
+                        {comedian.groups.length > 0 && (
+                            <section className="space-y-2">
+                                <h3 className="font-bold">Группы</h3>
+                                {comedian.groups.map(group => {
+                                    return (
+                                        <div key={`comedian-group-${group.slug}`}>
+                                            <Link
+                                                href={`/comedians/groups/${group.slug}`}
+                                                className="text-gray-500 hover:text-gray-950"
+                                            >
+                                                <span>{group.name}</span>
+                                            </Link>
+                                        </div>
+                                    )
+                                })}
+                            </section>
+                        )}
+
+                        <LinksBlock caption="Ссылки" links={comedian.metaInfo?.links || []} />
                     </div>
-                </section>
+                </div>
             </div>
-
-            <section className="flex flex-col gap-y-8">
-                <h2 className="mb-0!">Контент</h2>
-
-                {props.content && props.content.length > 0 && (
-                    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
-                        {props.content.map(item => (
-                            <ContentBlock
-                                key={`landing-content-feed-item-${item.id}`}
-                                id={item.id}
-                                type={item.type}
-                                name={item.name}
-                                imageUrl={item.contentImages[0]?.url}
-                                year={item.year}
-                                avgRating={item.rating.avgRating}
-                                reviewsCount={item.rating.reviewsCount}
-                            />
-                        ))}
-                    </div>
-                )}
-            </section>
         </div>
     )
 }

@@ -1,19 +1,15 @@
 import { api } from '@/redux/services/api'
 
-import { GetContentManyParams, GetContentManyResponse } from './content.types'
+import { GetContentByIdResponse, GetContentManyParams, GetContentManyResponse } from './content.types'
 
 export const contentAPI = api.injectEndpoints({
     endpoints: build => ({
         getContentMany: build.query<GetContentManyResponse, GetContentManyParams>({
-            query: params => {
-                const filteredParams = Object.fromEntries(
-                    // Filter out undefined values from params
-                    // and convert all values to strings
-                    Object.entries(params).flatMap(([k, v]) => (v !== undefined ? [[k, String(v)]] : [])),
-                )
-
-                return 'content?' + new URLSearchParams(filteredParams).toString()
-            },
+            query: params => ({
+                url: 'content',
+                method: 'GET',
+                params,
+            }),
             serializeQueryArgs: ({ queryArgs }) => {
                 return JSON.stringify({
                     type: queryArgs.type,
@@ -38,7 +34,14 @@ export const contentAPI = api.injectEndpoints({
             forceRefetch({ currentArg, previousArg }) {
                 return JSON.stringify(currentArg) !== JSON.stringify(previousArg)
             },
-            providesTags: ['ContentMany'],
+            providesTags: () => [{ type: 'Content', id: 'LIST' }],
+        }),
+        getContentById: build.query<GetContentByIdResponse, number>({
+            query: id => ({
+                url: `content/${id}`,
+                method: 'GET',
+            }),
+            providesTags: (result, error, id) => [{ type: 'Content', id }],
         }),
     }),
     overrideExisting: false,

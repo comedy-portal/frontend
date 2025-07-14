@@ -1,54 +1,98 @@
-import { IContent } from '@/utils/types/content'
+'use client'
+
+import { CircleArrowLeftIcon } from 'lucide-react'
+
+import Image from 'next/image'
+import Link from 'next/link'
+
+import { DescriptionBlock } from '@/components/ui/description-block'
+import { GlobalLoading } from '@/components/ui/global-loading'
+import { LinksBlock } from '@/components/ui/links-block'
+import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
+import { contentAPI } from '@/redux/services/content/content.api'
+import { categories } from '@/utils/dict/categories'
 
 import { ContentAddToWatchList } from './components/content-add-to-watch-list'
-import { ContentAuthor } from './components/content-author'
-import { ContentCover } from './components/content-cover'
-import { ContentDescription } from './components/content-description'
-import { ContentFacts } from './components/content-facts'
+import { ContentAuthors } from './components/content-authors'
+import { ContentDate } from './components/content-date'
+import { ContentDuration } from './components/content-duration'
 import { ContentMyRating } from './components/content-my-rating'
-import { ContentPlay } from './components/content-play'
-import { ContentRating } from './components/content-rating'
-import { ContentReviews } from './components/content-reviews'
-import { ContentTitle } from './components/content-title'
+import { ContentReviewButton } from './components/content-review-button'
+import { ContentReviewsFeed } from './components/content-reviews/content-reviews-feed'
+import { ContentType } from './components/content-type'
 
-type ContentProps = IContent
+type ContentProps = {
+    contentId: number
+    activeUserId: number | null
+    isAuth: boolean
+}
 
-export const Content = (props: ContentProps) => {
+export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
+    const { data, isSuccess, error } = contentAPI.useGetContentByIdQuery(contentId)
+
+    if (!isSuccess) {
+        return <GlobalLoading />
+    }
+
+    if (error) {
+        return <div>Error loading content</div>
+    }
+
     return (
-        <div className="container py-12">
-            <div className="space-y-8 rounded bg-white px-4 py-8 shadow-xs sm:w-3/4">
-                <div className="space-y-4">
-                    <div className="flex flex-col gap-y-2">
-                        <ContentTitle name={props.name} />
-                        <ContentAuthor
-                            month={props.month}
-                            year={props.year}
-                            type={props.type}
-                            comedians={props.comedians}
-                            group={props.group}
-                        />
-                    </div>
+        <div className="wrapper-lg space-y-12 pt-12 pb-24">
+            <Link href={`/content/${data.type.toLowerCase()}`} className="flex items-center gap-x-2 hover:text-black">
+                <CircleArrowLeftIcon size={24} className="text-inherit" />
+                {categories.find(category => category.type === data.type.toLowerCase())?.toBackLabel ||
+                    'Назад к контенту'}
+            </Link>
 
-                    <div className="flex items-center justify-between rounded bg-gray-100 p-4">
-                        <div className="flex items-center gap-x-6">
-                            <ContentRating
-                                avgRating={props.rating.avgRating}
-                                reviewsCount={props.rating.reviewsCount}
-                            />
-                            <ContentMyRating />
-                        </div>
-                        <div className="flex items-center gap-x-6">
-                            <ContentAddToWatchList contentId={props.id} />
-                            <ContentPlay duration={props.duration} />
-                        </div>
-                    </div>
+            <div className="flex flex-col-reverse gap-12 sm:flex-row">
+                <div className="flex flex-1 flex-col gap-y-12">
+                    <Image
+                        src={data.contentImages[0].url}
+                        width={500}
+                        height={500}
+                        className="aspect-video w-full rounded-lg object-cover"
+                        alt={data.name}
+                    />
 
-                    <ContentCover cover={props.contentImages[0]?.url} name={props.name} />
+                    {data.metaInfo?.description && (
+                        <section className="space-y-6">
+                            <h2 className="text-2xl font-bold">Описание</h2>
+                            <DescriptionBlock text={data.metaInfo.description} limit={1000} />
+                        </section>
+                    )}
+
+                    <section className="space-y-6">
+                        <h2 className="text-2xl font-bold">Рецензии</h2>
+                        <ContentReviewsFeed contentId={data.id} activeUserId={activeUserId} isAuth={isAuth} />
+                    </section>
                 </div>
 
-                <ContentDescription description={props.metaInfo?.description} />
-                <ContentFacts facts={props.metaInfo?.facts} />
-                <ContentReviews />
+                <div className="flex shrink-0 flex-col gap-y-6 sm:w-[368px]">
+                    <h1 className="text-4xl font-bold">{data.name}</h1>
+
+                    <RatingBar
+                        value={data.rating.avgRating}
+                        reviewsCount={data.rating.reviewsCount}
+                        caption="Общий рейтинг"
+                    />
+                    <ContentMyRating contentId={data.id} review={data.reviews?.[0]} isAuth={isAuth} />
+                    <ContentReviewButton contentId={data.id} review={data.reviews?.[0]} isAuth={isAuth} />
+
+                    <ContentAuthors comedians={data.comedians} group={data.group} />
+                    <ContentType type={data.type} />
+                    <ContentDate month={data.month} year={data.year} />
+                    <ContentDuration duration={data.duration} />
+
+                    <LinksBlock caption="Где посмотреть" links={data.metaInfo?.links || []} />
+
+                    <ContentAddToWatchList
+                        contentId={data.id}
+                        isAuth={isAuth}
+                        isInWatchlist={(data.watchlists?.length ?? 0) > 0}
+                    />
+                </div>
             </div>
         </div>
     )
