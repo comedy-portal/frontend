@@ -22,8 +22,6 @@ export default async function UserReviewsPage(props: { params: Params }) {
 
     const { accessTokenPayload, hasToken } = await getSSRSessionHelper()
 
-    // return <UserReviews userId={user.id} />
-
     if (!accessTokenPayload) {
         if (!hasToken) {
             /**

@@ -26,13 +26,31 @@ export const viewport: Viewport = {
 
 // prettier-ignore
 export const metadata: Metadata = {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_WEBSITE_DOMAIN as string),
+    alternates: {
+        canonical: '/',
+    },
     title: 'Comedy Portal – ваш портал в мир комедии: смотреть юмор онлайн, стендап, комедии, шоу.',
     description: 'Откройте Comedy Portal – ваш портал в мир комедии! Смотрите лучшие стендап-выступления, комедийные шоу и фильмы онлайн. Оценивайте контент, читайте отзывы и находите новый юмор каждый день.',
+    appleWebApp: {
+        title: 'Comedy Portal',
+    },
+    openGraph: {
+        title: 'Comedy Portal – ваш портал в мир комедии',
+        type: 'website',
+        locale: 'ru_RU',
+        url: '/',
+        siteName: 'Comedy Portal',
+    },
+    twitter: {
+        title: 'Comedy Portal – ваш портал в мир комедии',
+        card: 'summary_large_image',
+    },
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <html lang="en" className={classNames('h-full', roboto.className)}>
+        <html lang="ru" className={classNames('h-full', roboto.className)}>
             <head>
                 <meta name="verify-admitad" content="42d1abdfa5" />
             </head>
