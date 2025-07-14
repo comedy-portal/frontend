@@ -43,5 +43,5 @@ export default async function UserSettingsPage(props: { params: Params }) {
         notFound()
     }
 
-    return <UserSettings username={lowerUsername} />
+    return <UserSettings username={activeUser.username} />
 }
