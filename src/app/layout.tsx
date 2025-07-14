@@ -51,6 +51,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="ru" className={classNames('h-full', roboto.className)}>
+            <head>
+                <meta name="verify-admitad" content="42d1abdfa5" />
+            </head>
             <body className="h-full antialiased">
                 <Providers>
                     <div className="flex min-h-full flex-col">
