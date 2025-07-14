@@ -121,7 +121,7 @@ export const VerifyForm = ({ email, status, isLoading, onVerifyOtp, onResendOtp,
                     <VerifyTimer onResendOtp={onResendOtp} />
                 </div>
 
-                <div className="flex items-center justify-between gap-x-2">
+                <div className="flex items-center justify-between sm:gap-x-2">
                     {Array.from({ length: CODE_LENGTH }).map((_, i) => (
                         <input
                             key={i}
@@ -134,7 +134,7 @@ export const VerifyForm = ({ email, status, isLoading, onVerifyOtp, onResendOtp,
                             value={otpValues[i]}
                             disabled={isLoading}
                             className={classNames(
-                                'size-12 rounded-lg border text-center text-lg disabled:cursor-no-drop disabled:opacity-30',
+                                'size-10 rounded-lg border text-center text-lg disabled:cursor-no-drop disabled:opacity-30 sm:size-12',
                                 {
                                     'border-red-500': errors.otp,
                                     'border-gray-300 hover:border-gray-400 focus:border-gray-400': !errors.otp,
