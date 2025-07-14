@@ -11,6 +11,8 @@ import { messages } from '@/messages'
 import { userAPI } from '@/redux/services/user/user.api'
 import { ChangeUserNameInputs } from '@/redux/services/user/user.types'
 
+import { UserSettingsLogout } from './components/user-settings-logout'
+
 type UserSettingsProps = {
     username: string
 }
@@ -59,24 +61,30 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
     })
 
     return (
-        <form className="flex flex-col gap-y-8 sm:w-1/2" onSubmit={formik.handleSubmit}>
-            <div className="flex flex-col gap-y-2">
-                <label className="text-sm font-semibold text-gray-700">Имя пользователя</label>
-                <Input
-                    name="username"
-                    autoFocus
-                    value={formik.values.username}
-                    error={formik.errors.username}
-                    disabled={isLoading}
-                    onChange={formik.handleChange}
-                />
-            </div>
+        <div className="flex flex-col gap-y-8">
+            <form className="flex flex-col gap-y-8 sm:w-1/2" onSubmit={formik.handleSubmit}>
+                <div className="flex flex-col gap-y-2">
+                    <label className="text-sm font-semibold text-gray-700">Имя пользователя</label>
+                    <Input
+                        name="username"
+                        autoFocus
+                        value={formik.values.username}
+                        error={formik.errors.username}
+                        disabled={isLoading}
+                        onChange={formik.handleChange}
+                    />
+                </div>
 
-            <div className="flex gap-x-2">
-                <Button type="submit" disabled={isLoading || !formik.dirty}>
-                    Сохранить настройки
-                </Button>
-            </div>
-        </form>
+                <div className="flex gap-x-2">
+                    <Button type="submit" disabled={isLoading || !formik.dirty}>
+                        Сохранить настройки
+                    </Button>
+                </div>
+            </form>
+
+            <hr className="border-gray-200" />
+
+            <UserSettingsLogout />
+        </div>
     )
 }
