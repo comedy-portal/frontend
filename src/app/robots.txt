@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+Disallow:
+Sitemap: https://api.comedyportal.ru/public/sitemap.xml
