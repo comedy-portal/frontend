@@ -1,11 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 import { clearLoginAttemptInfo, consumeCode, resendCode } from 'supertokens-web-js/recipe/passwordless'
 
 import { useRouter } from 'next/navigation'
 
+import { api } from '@/redux/services/api'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
 import { VerifyForm } from './verify-form'
@@ -18,6 +20,7 @@ type VerifyProps = {
 export const Verify = ({ email, onBack }: VerifyProps) => {
     const router = useRouter()
     const dialog = useDialog()
+    const dispatch = useDispatch()
     const [status, setStatus] = useState<string>()
     const [isLoading, setIsLoading] = useState(false)
 
@@ -31,6 +34,7 @@ export const Verify = ({ email, onBack }: VerifyProps) => {
             if (response.status === 'OK') {
                 await clearLoginAttemptInfo()
                 router.refresh()
+                dispatch(api.util.resetApiState())
                 dialog.close()
             }
         } catch {
