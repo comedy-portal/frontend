@@ -5,7 +5,6 @@ import { Rating } from '@/components/ui/rating'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
-import { ContentBlockAuthor } from './components/content-block-author'
 import { ContentBlockDate } from './components/content-block-date'
 import { ContentBlockTag } from './components/content-block-tag'
 
@@ -41,7 +40,7 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, author
 
             <div className="flex flex-col gap-y-4 rounded-b-lg border-x border-b border-[#DFE2E6] p-4">
                 <div>
-                    {author && <ContentBlockAuthor name={author.name} url={author.url} />}
+                    {author && <div className="text-sm">{author.name}</div>}
                     <Link href={`/content/${type.toLowerCase()}/${id}`} className="line-clamp-2 h-12 font-bold">
                         {name}
                     </Link>
