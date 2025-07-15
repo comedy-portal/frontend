@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import { Platform } from '@/utils/enums/common'
 import { getPlatformUrl } from '@/utils/helpers/common'
 import { ILink } from '@/utils/types/common'
 
@@ -25,7 +26,7 @@ export const LinksBlock = ({ caption, links }: LinksBlockProps) => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <span>{platformData.label}</span>
+                            <span>{`${platformData.label} ${link.platform === Platform.INSTAGRAM ? '**' : ''}`}</span>
                         </Link>
                     </div>
                 )
