@@ -32,7 +32,7 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
             case ContentUrlSortBy.RATING_DESC:
                 return { sortBy: ContentSortBy.RATING, order: Order.DESC }
             default:
-                return { sortBy: ContentSortBy.DATE, order: Order.DESC } // fallback
+                return { sortBy: ContentSortBy.DATE, order: Order.DESC }
         }
     }, [searchParams])
 
