@@ -53,6 +53,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <html lang="ru" className={classNames('h-full', roboto.className)}>
             <head>
                 <meta name="verify-admitad" content="42d1abdfa5" />
+                <link rel="icon" href="/favicon.png" type="image/png" />
             </head>
             <body className="h-full antialiased">
                 <Providers>
