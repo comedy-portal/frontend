@@ -22,9 +22,12 @@ export const Comedian = ({ comedian }: ComedianProps) => {
             </Link>
 
             <div className="flex flex-col-reverse gap-12 sm:flex-row">
-                <div className="flex flex-1 flex-col gap-y-12">
-                    <ComedianContent content={comedian.content} />
-                </div>
+                <section className="space-y-6 sm:space-y-0">
+                    <h2 className="text-2xl font-bold sm:hidden">Все видео</h2>
+                    <div className="flex flex-1 flex-col gap-y-12">
+                        <ComedianContent content={comedian.content} />
+                    </div>
+                </section>
 
                 <div className="flex shrink-0 flex-col sm:w-[368px]">
                     <ImageWithFallback
