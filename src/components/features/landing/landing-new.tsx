@@ -11,5 +11,5 @@ export const LandingNew = async () => {
         take: 4,
     })
 
-    return <LandingContentFeed title="Новое видео" href="/content/special?sort=date_desc" items={content.items} />
+    return <LandingContentFeed title="Новое видео" href="/content?sort=date_desc" items={content.items} />
 }

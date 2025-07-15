@@ -11,5 +11,5 @@ export const LandingRecommended = async () => {
         take: 4,
     })
 
-    return <LandingContentFeed title="Рекомендуемое" href="/content/special?sort=rating_desc" items={content.items} />
+    return <LandingContentFeed title="Рекомендуемое" href="/content?sort=rating_desc" items={content.items} />
 }
