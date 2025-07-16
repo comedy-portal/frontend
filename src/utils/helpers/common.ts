@@ -28,7 +28,7 @@ export function getAuthorDisplayNameForContent({
     if (comedians.length === 1) {
         const comedian = comedians[0]
         return {
-            name: `${comedian.name} ${comedian.surname}`,
+            name: `${comedian.name} ${comedian.surname} ${comedian.isAgent ? '*' : ''}`,
             url: `/comedians/${comedian.slug}`,
         }
     }
@@ -36,7 +36,7 @@ export function getAuthorDisplayNameForContent({
     if (comedians.length > 1) {
         const [first, ...rest] = comedians
         return {
-            name: `${first.name} ${first.surname} +${rest.length}`,
+            name: `${first.name} ${first.surname} ${first.isAgent ? '*' : ''}, +${rest.length}`,
             url: `/comedians/${first.slug}`,
         }
     }
