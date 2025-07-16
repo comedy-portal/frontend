@@ -42,7 +42,7 @@ export const Comedian = ({ comedian }: ComedianProps) => {
                         {comedian.metaInfo?.description && (
                             <section className="space-y-6">
                                 <h1 className="text-4xl font-bold">
-                                    {comedian.name} {comedian.surname}
+                                    {comedian.name} {comedian.surname} {comedian.isAgent ? '*' : ''}
                                 </h1>
                                 <DescriptionBlock text={comedian.metaInfo.description} limit={500} />
                             </section>
