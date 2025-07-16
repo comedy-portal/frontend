@@ -17,7 +17,7 @@ export const ImageWithFallback = (props: ImageProps) => {
 
     if (error || !props.src) {
         return (
-            <div className={classNames('flex items-center justify-center bg-gray-200', props.className)}>
+            <div className={classNames('flex aspect-square items-center justify-center bg-gray-200', props.className)}>
                 <ImageStub className="w-1/5 text-gray-300" />
             </div>
         )
