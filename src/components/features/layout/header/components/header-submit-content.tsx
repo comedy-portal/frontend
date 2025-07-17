@@ -1,6 +1,6 @@
 'use client'
 
-import { MessageCircleIcon, PlusCircleIcon } from 'lucide-react'
+import { PlusCircleIcon } from 'lucide-react'
 
 import { useRouter } from 'next/navigation'
 
