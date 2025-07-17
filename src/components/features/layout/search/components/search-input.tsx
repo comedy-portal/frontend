@@ -2,17 +2,19 @@
 
 import { ChangeEvent } from 'react'
 
+import classNames from 'classnames'
 import { SearchIcon, XIcon } from 'lucide-react'
 
 type SearchInputProps = {
     searchTerm: string
     isLoading: boolean
+    isResultVisible: boolean
     onChange: (value: string) => void
     onClick?: () => void
     onClear: () => void
 }
 
-export const SearchInput = ({ searchTerm, onChange, onClick, onClear }: SearchInputProps) => {
+export const SearchInput = ({ searchTerm, isResultVisible, onChange, onClick, onClear }: SearchInputProps) => {
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         onChange(e.target.value)
     }
@@ -28,7 +30,12 @@ export const SearchInput = ({ searchTerm, onChange, onClick, onClear }: SearchIn
                 name="search"
                 value={searchTerm}
                 autoComplete="off"
-                className="h-8 w-full rounded-lg bg-gray-700 px-9 text-sm text-gray-300 placeholder:text-gray-300 focus:bg-white focus:text-gray-950 focus:outline-none focus:placeholder:text-gray-950"
+                className={classNames(
+                    'h-8 w-full rounded-lg bg-gray-700 px-9 text-sm text-gray-300 placeholder:text-gray-300 focus:bg-white focus:text-gray-950 focus:outline-none focus:placeholder:text-gray-950',
+                    {
+                        'bg-white text-gray-950 placeholder:text-gray-950': isResultVisible,
+                    },
+                )}
                 placeholder="Найти..."
                 onChange={handleChange}
                 onClick={onClick}

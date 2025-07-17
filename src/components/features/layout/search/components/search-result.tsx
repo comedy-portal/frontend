@@ -62,39 +62,48 @@ export const HeaderSearchResult = ({
     if (isSuccess && items && isResultVisible) {
         return (
             <div className="absolute top-full right-0 left-0 z-0 rounded-lg bg-white p-1 shadow">
-                {items?.content.map(item => (
-                    <div key={`search-result-item-content-${item.id}`}>
+                {items.content.length > 0 && (
+                    <div>
                         <div className="p-1 text-sm text-gray-300">Контент</div>
-                        <SearchResultItem
-                            title={item.name}
-                            icon={<ClapperboardIcon size={20} />}
-                            href={`/content/${item.type.toLowerCase()}/${item.id}`}
-                            hideResults={hideResults}
-                        />
+                        {items.content.map(item => (
+                            <SearchResultItem
+                                key={`search-result-item-content-${item.id}`}
+                                title={item.name}
+                                icon={<ClapperboardIcon size={20} />}
+                                href={`/content/${item.type.toLowerCase()}/${item.id}`}
+                                hideResults={hideResults}
+                            />
+                        ))}
                     </div>
-                ))}
-                {items?.comedians.map(item => (
-                    <div key={`search-result-item-comedian-${item.slug}`}>
+                )}
+                {items.comedians.length > 0 && (
+                    <div>
                         <div className="p-1 text-sm text-gray-300">Комики</div>
-                        <SearchResultItem
-                            title={`${item.name} ${item.surname}`}
-                            icon={<UserIcon size={20} strokeWidth={2.5} />}
-                            href={`/comedians/${item.slug}`}
-                            hideResults={hideResults}
-                        />
+                        {items.comedians.map(item => (
+                            <SearchResultItem
+                                key={`search-result-item-comedian-${item.slug}`}
+                                title={`${item.name} ${item.surname}`}
+                                icon={<UserIcon size={20} strokeWidth={2.5} />}
+                                href={`/comedians/${item.slug}`}
+                                hideResults={hideResults}
+                            />
+                        ))}
                     </div>
-                ))}
-                {items?.groups.map(item => (
-                    <div key={`search-result-item-group-${item.slug}`}>
+                )}
+                {items.groups.length > 0 && (
+                    <div>
                         <div className="p-1 text-sm text-gray-300">Группы</div>
-                        <SearchResultItem
-                            title={item.name}
-                            icon={<UsersIcon size={20} />}
-                            href={`/comedians/groups/${item.slug}`}
-                            hideResults={hideResults}
-                        />
+                        {items.groups.map(item => (
+                            <SearchResultItem
+                                key={`search-result-item-group-${item.slug}`}
+                                title={item.name}
+                                icon={<UsersIcon size={20} />}
+                                href={`/comedians/groups/${item.slug}`}
+                                hideResults={hideResults}
+                            />
+                        ))}
                     </div>
-                ))}
+                )}
             </div>
         )
     }

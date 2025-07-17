@@ -52,6 +52,7 @@ export const Search = ({ closeMobileMenu }: SearchProps) => {
             <SearchInput
                 searchTerm={searchTerm}
                 isLoading={isLoading}
+                isResultVisible={isResultVisible}
                 onChange={setSearchTerm}
                 onClick={handleInputClick}
                 onClear={handleInputClear}
