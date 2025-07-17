@@ -82,7 +82,7 @@ export const HeaderSearchResult = ({
                         {items.comedians.map(item => (
                             <SearchResultItem
                                 key={`search-result-item-comedian-${item.slug}`}
-                                title={`${item.name} ${item.surname}`}
+                                title={`${item.name} ${item.surname}${item.isAgent ? '\u00A0*' : ''}`}
                                 icon={<UserIcon size={20} strokeWidth={2.5} />}
                                 href={`/comedians/${item.slug}`}
                                 hideResults={hideResults}
