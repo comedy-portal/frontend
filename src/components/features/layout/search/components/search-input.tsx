@@ -1,22 +1,24 @@
 'use client'
 
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent } from 'react'
 
 import { SearchIcon, XIcon } from 'lucide-react'
 
-export const HeaderSearch = () => {
-    const [searchTerm, setSearchTerm] = useState<string>('')
+type SearchInputProps = {
+    searchTerm: string
+    isLoading: boolean
+    onChange: (value: string) => void
+    onClick: () => void
+    onClear: () => void
+}
 
+export const SearchInput = ({ searchTerm, isLoading, onChange, onClick, onClear }: SearchInputProps) => {
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setSearchTerm(e.target.value)
-    }
-
-    const handleInputClear = () => {
-        setSearchTerm('')
+        onChange(e.target.value)
     }
 
     return (
-        <div className="relative w-[330px]">
+        <div className="relative z-40">
             <div className="absolute top-1/2 left-4 -translate-y-1/2 transform">
                 <SearchIcon size={16} absoluteStrokeWidth />
             </div>
@@ -26,16 +28,14 @@ export const HeaderSearch = () => {
                 name="search"
                 value={searchTerm}
                 autoComplete="off"
-                className="h-8 w-full rounded-full bg-white px-10 text-sm focus:outline-none"
+                className="h-8 w-full rounded-2xl bg-white px-10 text-sm focus:border focus:border-gray-950 focus:outline-none"
                 placeholder="Поиск..."
                 onChange={handleChange}
+                onClick={onClick}
             />
 
             {searchTerm.length > 0 && (
-                <div
-                    className="absolute top-1/2 right-4 -translate-y-1/2 transform cursor-pointer"
-                    onClick={handleInputClear}
-                >
+                <div className="absolute top-1/2 right-4 -translate-y-1/2 transform cursor-pointer" onClick={onClear}>
                     <XIcon size={16} absoluteStrokeWidth />
                 </div>
             )}
