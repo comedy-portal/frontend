@@ -47,6 +47,7 @@ export const ComediansFeed = () => {
                         slug={item.slug}
                         name={item.name}
                         surname={item.surname}
+                        isAgent={item.isAgent}
                     />
                 ))}
             </div>
