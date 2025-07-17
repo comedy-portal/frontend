@@ -12,7 +12,7 @@ type SearchInputProps = {
     onClear: () => void
 }
 
-export const SearchInput = ({ searchTerm, isLoading, onChange, onClick, onClear }: SearchInputProps) => {
+export const SearchInput = ({ searchTerm, onChange, onClick, onClear }: SearchInputProps) => {
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         onChange(e.target.value)
     }

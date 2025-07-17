@@ -1,4 +1,3 @@
-import { ContentType } from '@/utils/enums/common'
 import { ISearch } from '@/utils/types/search'
 
 export type SearchParams = {
