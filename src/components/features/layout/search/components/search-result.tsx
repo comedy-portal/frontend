@@ -13,11 +13,17 @@ import { SearchResultItem } from './search-result-item'
 
 type HeaderSearchResultProps = {
     searchTerm: string
+    isResultVisible: boolean
     setIsLoading: (loading: boolean) => void
     hideResults: () => void
 }
 
-export const HeaderSearchResult = ({ searchTerm, setIsLoading, hideResults }: HeaderSearchResultProps) => {
+export const HeaderSearchResult = ({
+    searchTerm,
+    isResultVisible,
+    setIsLoading,
+    hideResults,
+}: HeaderSearchResultProps) => {
     const [items, setItems] = useState<ISearch | null>(null)
     const [search, { data, isFetching, isSuccess, isError }] = searchAPI.useLazySearchQuery()
 
@@ -53,7 +59,7 @@ export const HeaderSearchResult = ({ searchTerm, setIsLoading, hideResults }: He
         )
     }
 
-    if (isSuccess && items) {
+    if (isSuccess && items && isResultVisible) {
         return (
             <div className="absolute top-full right-0 left-0 z-0 rounded-lg bg-white p-1 shadow">
                 {items?.content.map(item => (
