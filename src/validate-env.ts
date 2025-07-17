@@ -7,6 +7,7 @@ interface EnvVariables {
     NEXT_PUBLIC_APP_NAME: string
     NEXT_PUBLIC_WEBSITE_AUTH_CALLBACK_PATH: string
     NEXT_PUBLIC_WEBSITE_DOMAIN: string
+    NEXT_PUBLIC_INTERNAL_API_URL: string
     NODE_ENV: string
     SUPERTOKENS_API_KEY: string
     SUPERTOKENS_CONNECTION_URI: string
@@ -20,6 +21,7 @@ const defaultValues: EnvVariables = {
     NEXT_PUBLIC_APP_NAME: 'ComedyPortal',
     NEXT_PUBLIC_WEBSITE_AUTH_CALLBACK_PATH: 'http://localhost:3000/auth/callback',
     NEXT_PUBLIC_WEBSITE_DOMAIN: 'http://localhost:3000',
+    NEXT_PUBLIC_INTERNAL_API_URL: 'http://localhost:3000/api',
     NODE_ENV: 'development',
     SUPERTOKENS_API_KEY: 'SHOULD_BE_SET',
     SUPERTOKENS_CONNECTION_URI: 'SHOULD_BE_SET',

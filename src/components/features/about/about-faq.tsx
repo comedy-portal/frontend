@@ -1,22 +1,9 @@
-import { Rating } from '@/components/ui/rating'
+import { AboutFaqExpander } from './components/about-faq-expander'
 
-export const AboutRatings = () => {
+export const AboutFaq = () => {
     return (
-        <div className="flex flex-col gap-y-8">
-            <div className="m-auto hidden items-center gap-x-2 sm:flex">
-                {Array.from({ length: 10 }, (_, index) => (
-                    <Rating key={`rating-${index}`} value={index + 1} />
-                ))}
-            </div>
-
-            <p>
-                Comedy Portal создан, чтобы&nbsp;Вы могли легко ориентироваться в&nbsp;мире комедии, и&nbsp;рейтинги
-                играют в&nbsp;этом ключевую роль. Они помогают нам всем вместе понять, какой контент действительно стоит
-                Вашего внимания. Вот как это работает:
-            </p>
-
-            <section>
-                <h2 className="mb-4 text-xl font-semibold">Как формируется рейтинг?</h2>
+        <div className="space-y-4">
+            <AboutFaqExpander title="Как формируется рейтинг?">
                 <ul className="list-disc space-y-2 pl-6">
                     <li>
                         <strong>Ваш голос важен:</strong> Рейтинги формируются исключительно{' '}
@@ -49,10 +36,9 @@ export const AboutRatings = () => {
                         <strong>не&nbsp;оставляя рецензию</strong>.
                     </li>
                 </ul>
-            </section>
+            </AboutFaqExpander>
 
-            <section>
-                <h2 className="mb-4 text-xl font-semibold">Почему рейтинги так важны?</h2>
+            <AboutFaqExpander title="Почему рейтинги так важны?">
                 <p>
                     Только благодаря Вашим оценкам мы&nbsp;
                     <strong>вместе можем понять (конечно&nbsp;же, субъективно)</strong>, какой комедийный контент
@@ -62,11 +48,30 @@ export const AboutRatings = () => {
                     впечатления и&nbsp;сможете легко порекомендовать полюбившиеся шоу или концерты своим друзьям
                     и&nbsp;знакомым.
                 </p>
-            </section>
+            </AboutFaqExpander>
 
-            <p>
-                <strong>Давайте вместе создавать самую честную и&nbsp;полезную систему оценки юмора!</strong>
-            </p>
+            <AboutFaqExpander title="Как добавить наш сайт на главный экран как приложение?">
+                <h4 className="mb-2 font-bold">Для устройств Apple (iPhone/iPad) с браузером Safari:</h4>
+                <ol className="mb-4 list-decimal space-y-2 pl-6">
+                    <li>Откройте наш сайт в браузере Safari.</li>
+                    <li>Нажмите на кнопку «Поделиться» (квадрат со стрелкой вверх) в нижней части экрана.</li>
+                    <li>В появившемся меню прокрутите вниз и выберите «Добавить на домашний экран».</li>
+                    <li>
+                        Нажмите «Добавить» в правом верхнем углу, и иконка нашего сайта появится среди ваших приложений.
+                    </li>
+                </ol>
+
+                <h4 className="mb-2 font-bold">Для устройств Android с браузером Chrome:</h4>
+                <ol className="list-decimal space-y-2 pl-6">
+                    <li>Откройте наш сайт в браузере Chrome.</li>
+                    <li>Нажмите на кнопку меню (три точки) в правом верхнем углу экрана.</li>
+                    <li>В выпадающем меню выберите «Установить приложение» (или «Добавить на главный экран»).</li>
+                    <li>
+                        Подтвердите действие, нажав «Установить» (или «Добавить»), и иконка нашего сайта появится на
+                        вашем главном экране.
+                    </li>
+                </ol>
+            </AboutFaqExpander>
         </div>
     )
 }
