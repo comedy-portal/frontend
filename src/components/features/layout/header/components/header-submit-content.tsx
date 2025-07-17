@@ -1,5 +1,7 @@
 'use client'
 
+import { MessageCircleIcon } from 'lucide-react'
+
 import { useRouter } from 'next/navigation'
 
 import { SignUp } from '@/components/features/auth/sign-up'
@@ -26,8 +28,14 @@ export const HeaderSubmitContent = ({ isAuth, onClick }: HeaderSubmitContentProp
     }
 
     return (
-        <div className="cursor-pointer text-gray-200 hover:text-white" onClick={handleClick}>
+        <div
+            className="flex cursor-pointer items-center justify-between text-gray-300 hover:text-white sm:flex-none"
+            onClick={handleClick}
+        >
             Предложить контент
+            <div className="text-gray-700 sm:hidden">
+                <MessageCircleIcon size={20} />
+            </div>
         </div>
     )
 }
