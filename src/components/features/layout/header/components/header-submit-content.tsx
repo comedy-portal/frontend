@@ -1,6 +1,6 @@
 'use client'
 
-import { MessageCircleIcon } from 'lucide-react'
+import { MessageCircleIcon, PlusCircleIcon } from 'lucide-react'
 
 import { useRouter } from 'next/navigation'
 
@@ -28,13 +28,16 @@ export const HeaderSubmitContent = ({ isAuth, onClick }: HeaderSubmitContentProp
     }
 
     return (
-        <div
-            className="flex cursor-pointer items-center justify-between text-gray-300 hover:text-white sm:flex-none"
-            onClick={handleClick}
-        >
-            Предложить контент
-            <div className="text-gray-700 sm:hidden">
-                <MessageCircleIcon size={20} />
+        <div className="cursor-pointer text-gray-300 hover:text-white sm:flex-none" onClick={handleClick}>
+            <div className="flex items-center justify-between sm:hidden">
+                Предложить контент
+                <div className="text-gray-700">
+                    <PlusCircleIcon size={20} />
+                </div>
+            </div>
+
+            <div className="hidden sm:block">
+                <PlusCircleIcon />
             </div>
         </div>
     )

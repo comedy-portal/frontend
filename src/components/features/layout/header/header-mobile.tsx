@@ -60,6 +60,16 @@ export const HeaderMobile = ({ username, isAuth }: HeaderMobileProps) => {
                                 <ChevronRightIcon size={20} />
                             </div>
                         </Link>
+                        <Link
+                            href="/comedians/groups"
+                            className="flex items-center justify-between"
+                            onClick={closeMobileMenu}
+                        >
+                            Группы
+                            <div className="text-gray-700">
+                                <ChevronRightIcon size={20} />
+                            </div>
+                        </Link>
                         <Link href="/about" className="flex items-center justify-between" onClick={closeMobileMenu}>
                             О проекте
                             <div className="text-gray-700">
