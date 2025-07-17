@@ -26,7 +26,7 @@ export const ContentAuthors = ({ comedians, group }: ContentAuthorsProps) => {
                         href={`/comedians/${comedian.slug.toLowerCase()}`}
                         className="text-gray-500 hover:text-gray-950"
                     >
-                        {comedian.name} {comedian.surname} {comedian.isAgent ? '*' : ''}
+                        {comedian.name} {comedian.surname}&nbsp;{comedian.isAgent ? '*' : ''}
                     </Link>
                 </div>
             ))}

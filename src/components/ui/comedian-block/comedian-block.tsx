@@ -20,7 +20,7 @@ export const ComedianBlock = ({ slug, name, surname, isAgent }: ComedianBlockTyp
             />
 
             <div className="font-semibold">
-                {name} {surname} {isAgent && ' *'}
+                {name} {surname}&nbsp;{isAgent && '*'}
             </div>
         </Link>
     )
