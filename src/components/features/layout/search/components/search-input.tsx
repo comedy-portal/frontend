@@ -8,11 +8,10 @@ type SearchInputProps = {
     searchTerm: string
     isLoading: boolean
     onChange: (value: string) => void
-    onClick: () => void
     onClear: () => void
 }
 
-export const SearchInput = ({ searchTerm, onChange, onClick, onClear }: SearchInputProps) => {
+export const SearchInput = ({ searchTerm, onChange, onClear }: SearchInputProps) => {
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         onChange(e.target.value)
     }
@@ -31,7 +30,6 @@ export const SearchInput = ({ searchTerm, onChange, onClick, onClear }: SearchIn
                 className="h-8 w-full rounded-lg bg-gray-700 px-9 text-sm text-gray-300 placeholder:text-gray-300 focus:bg-white focus:text-gray-950 focus:outline-none focus:placeholder:text-gray-950"
                 placeholder="Найти..."
                 onChange={handleChange}
-                onClick={onClick}
             />
 
             {searchTerm.length > 0 && (

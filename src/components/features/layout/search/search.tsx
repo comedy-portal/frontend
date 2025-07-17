@@ -1,11 +1,6 @@
 'use client'
 
-import { RefObject, useRef, useState } from 'react'
-
-import { useOnClickOutside } from 'usehooks-ts'
-
-import { Keys } from '@/utils/enums/common'
-import { useKeypress } from '@/utils/hooks/use-keypress'
+import { useRef, useState } from 'react'
 
 import { SearchInput } from './components/search-input'
 import { HeaderSearchResult } from './components/search-result'
@@ -19,31 +14,13 @@ export const Search = ({ closeMobileMenu }: SearchProps) => {
 
     const [searchTerm, setSearchTerm] = useState<string>('')
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    const [isResultVisible, setIsResultVisible] = useState<boolean>(false)
-
-    useKeypress(Keys.ESCAPE, () => {
-        setIsResultVisible(false)
-    })
-
-    // TODO: Consider switching to a different package or waiting for a fix
-    // Issue: `useOnClickOutside` does not support a `null` ref
-    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
-    useOnClickOutside(ref as RefObject<HTMLDivElement>, () => {
-        setIsResultVisible(false)
-    })
-
-    const handleInputClick = () => {
-        setIsResultVisible(true)
-    }
 
     const handleInputClear = () => {
         setSearchTerm('')
-        setIsResultVisible(false)
     }
 
     const hideResults = () => {
         setSearchTerm('')
-        setIsResultVisible(false)
         closeMobileMenu?.()
     }
 
@@ -53,7 +30,6 @@ export const Search = ({ closeMobileMenu }: SearchProps) => {
                 searchTerm={searchTerm}
                 isLoading={isLoading}
                 onChange={setSearchTerm}
-                onClick={handleInputClick}
                 onClear={handleInputClear}
             />
 
