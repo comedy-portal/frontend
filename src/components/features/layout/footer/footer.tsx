@@ -4,11 +4,7 @@ export const Footer = async () => {
     return (
         <div>
             <div className="wrapper-lg py-2 text-xs text-gray-500">
-                <div>* Министерством юстиции РФ признан иностранным агентом</div>
-                <div>
-                    ** Meta Platforms Inc. признана экстремистской организацией и запрещена на территории Российской
-                    Федерации
-                </div>
+                * Министерством юстиции РФ признан иностранным агентом
             </div>
             <footer className="border-t border-gray-300">
                 <div className="wrapper-lg flex flex-col items-center justify-between gap-2 py-6 text-sm sm:flex-row sm:gap-4">
