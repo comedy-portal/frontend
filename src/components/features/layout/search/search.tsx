@@ -10,7 +10,11 @@ import { useKeypress } from '@/utils/hooks/use-keypress'
 import { SearchInput } from './components/search-input'
 import { HeaderSearchResult } from './components/search-result'
 
-export const Search = () => {
+type SearchProps = {
+    closeMobileMenu?: () => void
+}
+
+export const Search = ({ closeMobileMenu }: SearchProps) => {
     const ref = useRef<HTMLDivElement>(null)
 
     const [searchTerm, setSearchTerm] = useState<string>('')
@@ -40,6 +44,7 @@ export const Search = () => {
     const hideResults = () => {
         setSearchTerm('')
         setIsResultVisible(false)
+        closeMobileMenu?.()
     }
 
     return (
@@ -47,22 +52,18 @@ export const Search = () => {
             <SearchInput
                 searchTerm={searchTerm}
                 isLoading={isLoading}
+                isResultVisible={isResultVisible}
                 onChange={setSearchTerm}
                 onClick={handleInputClick}
                 onClear={handleInputClear}
             />
 
-            {isResultVisible && (
-                <div className="absolute -top-1 -right-1 -left-1 z-0">
-                    <div className="rounded-lg bg-white p-1 pt-10 shadow-lg">
-                        <HeaderSearchResult
-                            searchTerm={searchTerm}
-                            setIsLoading={setIsLoading}
-                            hideResults={hideResults}
-                        />
-                    </div>
-                </div>
-            )}
+            <HeaderSearchResult
+                searchTerm={searchTerm}
+                isResultVisible={isResultVisible}
+                setIsLoading={setIsLoading}
+                hideResults={hideResults}
+            />
         </div>
     )
 }

@@ -16,6 +16,7 @@ import { ContentAddToWatchList } from './components/content-add-to-watch-list'
 import { ContentAuthors } from './components/content-authors'
 import { ContentDate } from './components/content-date'
 import { ContentDuration } from './components/content-duration'
+import { ContentFacts } from './components/content-facts'
 import { ContentMyRating } from './components/content-my-rating'
 import { ContentReviewButton } from './components/content-review-button'
 import { ContentReviewsFeed } from './components/content-reviews/content-reviews-feed'
@@ -60,6 +61,13 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
                         <section className="space-y-6">
                             <h2 className="text-2xl font-bold">Описание</h2>
                             <DescriptionBlock text={data.metaInfo.description} limit={1000} />
+                        </section>
+                    )}
+
+                    {data.metaInfo?.facts && data.metaInfo.facts.length > 0 && (
+                        <section className="space-y-6">
+                            <h2 className="text-2xl font-bold">Факты</h2>
+                            <ContentFacts facts={data.metaInfo.facts} />
                         </section>
                     )}
 

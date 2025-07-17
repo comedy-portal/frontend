@@ -2,11 +2,15 @@ import { Action, ThunkAction, combineReducers, configureStore } from '@reduxjs/t
 
 import { api } from '@/redux/services/api'
 
+import { internalApi } from './services/internal/internal.api'
+
 export const store = configureStore({
     reducer: combineReducers({
         [api.reducerPath]: api.reducer,
+        [internalApi.reducerPath]: internalApi.reducer,
     }),
-    middleware: getDefaultMiddleware => getDefaultMiddleware({ serializableCheck: false }).concat([api.middleware]),
+    middleware: getDefaultMiddleware =>
+        getDefaultMiddleware({ serializableCheck: false }).concat([api.middleware, internalApi.middleware]),
     devTools: process.env.NODE_ENV !== 'production',
 })
 

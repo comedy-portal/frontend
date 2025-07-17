@@ -5,9 +5,10 @@ type ComedianBlockType = {
     slug: string
     name: string
     surname: string
+    isAgent: boolean
 }
 
-export const ComedianBlock = ({ slug, name, surname }: ComedianBlockType) => {
+export const ComedianBlock = ({ slug, name, surname, isAgent }: ComedianBlockType) => {
     return (
         <Link href={`/comedians/${slug}`} className="flex flex-col gap-y-2">
             <Image
@@ -19,7 +20,7 @@ export const ComedianBlock = ({ slug, name, surname }: ComedianBlockType) => {
             />
 
             <div className="font-semibold">
-                {name} {surname}
+                {name} {surname}&nbsp;{isAgent && '*'}
             </div>
         </Link>
     )
