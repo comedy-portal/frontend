@@ -20,7 +20,7 @@ export const LinksBlock = ({ caption, links }: LinksBlockProps) => {
     }
 
     const filteredLinks = links.filter(link => {
-        if (data?.countryCode === 'RU' && link.platform === Platform.INSTAGRAM) {
+        if (data?.countryCode?.toUpperCase() === 'RU' && link.platform === Platform.INSTAGRAM) {
             return false
         }
         return true
