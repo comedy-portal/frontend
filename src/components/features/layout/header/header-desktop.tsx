@@ -2,9 +2,10 @@ import { CircleUserRoundIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
+import { Search } from '@/components/features/layout/search/search'
+
 import { HeaderLogin } from './components/header-login'
 import { Logo } from './components/header-logo'
-import { HeaderSearch } from './components/header-search'
 import { HeaderSubmitContent } from './components/header-submit-content'
 
 type HeaderDesktopProps = {
@@ -17,7 +18,7 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
         <div className="flex h-full flex-row items-center justify-between">
             <div className="flex h-full items-center justify-center gap-x-8">
                 <Logo className="text-white" />
-                <HeaderSearch />
+                <Search />
 
                 <nav className="flex items-center justify-center gap-x-4 text-sm">
                     <Link href="/content" className="text-nowrap text-gray-200 hover:text-white">
