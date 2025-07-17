@@ -58,7 +58,7 @@ export const HeaderSearchResult = ({ searchTerm, setIsLoading, hideResults }: He
             <div className="absolute top-full right-0 left-0 z-0 rounded-lg bg-white p-1 shadow">
                 {items?.content.map(item => (
                     <div key={`search-result-item-content-${item.id}`}>
-                        <div className="p-1 text-sm text-gray-300">Выступления</div>
+                        <div className="p-1 text-sm text-gray-300">Контент</div>
                         <SearchResultItem
                             title={item.name}
                             icon={<ClapperboardIcon size={20} />}
