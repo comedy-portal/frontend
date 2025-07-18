@@ -45,3 +45,13 @@ export enum ItemToProcessStatus {
     PENDING = 'pending',
     RESOLVED = 'resolved',
 }
+
+export enum ComplaintReasons {
+    ABUSE = 'ABUSE',
+    BIASED = 'BIASED',
+    FRAUD = 'FRAUD',
+    OFF_TOPIC = 'OFF_TOPIC',
+    OTHER = 'OTHER',
+    SPAM = 'SPAM',
+    SPOILERS = 'SPOILERS',
+}
