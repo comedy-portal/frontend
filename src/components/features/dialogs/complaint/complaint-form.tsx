@@ -25,8 +25,8 @@ export const ComplaintForm = ({ initialValues, isLoading, onSubmit }: ComplaintF
     const validationSchema = Yup.object().shape({
         text: Yup.string()
             .trim()
-            .min(20, `Минимальная длина текста отзыва 20 символов`)
-            .max(500, `Максимальная длина текста отзыва 500 символов`),
+            .min(20, `Минимальная длина текста жалобы 20 символов`)
+            .max(500, `Максимальная длина текста жалобы 500 символов`),
     })
 
     const formik = useFormik({
