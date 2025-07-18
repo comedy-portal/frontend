@@ -1,10 +1,8 @@
-import { ReactNode } from 'react'
-
 import Link from 'next/link'
 
 type SearchResultItemProps = {
     title: string
-    icon: ReactNode
+    icon: React.ReactNode
     href: string
     hideResults: () => void
 }

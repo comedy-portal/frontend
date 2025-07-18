@@ -15,7 +15,7 @@ type ComedianProps = {
 
 export const Comedian = ({ comedian }: ComedianProps) => {
     return (
-        <div className="wrapper-lg sm: space-y-12 pt-12 pb-24">
+        <div className="wrapper space-y-12 pt-12 pb-24">
             <Link href="/comedians" className="flex items-center gap-x-2 hover:text-black">
                 <CircleArrowLeftIcon size={24} className="text-inherit" />
                 Все комики

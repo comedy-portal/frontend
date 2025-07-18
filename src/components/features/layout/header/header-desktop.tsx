@@ -15,7 +15,7 @@ type HeaderDesktopProps = {
 export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
     return (
         <div className="flex h-full flex-row items-center justify-between">
-            <div className="flex h-full items-center justify-center gap-x-6">
+            <div className="flex h-full items-center justify-center gap-x-4 xl:gap-x-6">
                 <Link href="/" className="relative flex h-full items-center gap-x-2 whitespace-nowrap text-white">
                     <MicIcon size={32} strokeWidth={2} />
                     <div>
@@ -26,7 +26,10 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
 
                 <Search />
 
-                <nav className="flex items-center justify-center gap-x-4 text-sm">
+                <nav className="flex items-center justify-center gap-x-3 text-sm xl:gap-x-4">
+                    <Link href="/top-50-special/2025" className="text-nowrap text-gray-300 hover:text-white">
+                        Топ 50
+                    </Link>
                     <Link href="/content" className="text-nowrap text-gray-300 hover:text-white">
                         Контент
                     </Link>
@@ -42,7 +45,7 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
                 </nav>
             </div>
 
-            <div className="flex items-center justify-center gap-x-4 text-sm">
+            <div className="flex items-center justify-center gap-x-3 text-sm xl:gap-x-4">
                 <HeaderSubmitContent isAuth={isAuth} />
                 {isAuth ? (
                     <Link href={`/users/${username}`} className="text-gray-300 hover:text-white">
