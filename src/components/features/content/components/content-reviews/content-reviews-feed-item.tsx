@@ -2,16 +2,19 @@ import Link from 'next/link'
 
 import { Rating } from '@/components/ui/rating'
 
+import { ContentReviewsFeedItemComplaint } from './content-reviews-feed-item-complaint'
 import { ContentReviewsFeedItemControls } from './content-reviews-feed-item-controls'
 
 type ContentReviewsFeedItemProps = {
     id: number
     contentId: number
+    userId: number
     text: string | null
     rating: number
     username: string
     createdAt: string
-    isMyReview?: boolean
+    activeUserId: number | null
+    isAuth: boolean
 }
 
 export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
@@ -32,7 +35,11 @@ export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
                 </div>
 
                 <div className="flex items-center gap-x-4">
-                    {props.isMyReview && <ContentReviewsFeedItemControls id={props.id} contentId={props.contentId} />}
+                    {props.isAuth && props.activeUserId === props.userId ? (
+                        <ContentReviewsFeedItemControls reviewId={props.id} contentId={props.contentId} />
+                    ) : (
+                        <ContentReviewsFeedItemComplaint reviewId={props.id} isAuth={props.isAuth} />
+                    )}
                     <Rating value={props.rating} className="size-12" />
                 </div>
             </div>

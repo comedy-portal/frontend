@@ -1,3 +1,5 @@
+import { create } from 'domain'
+
 import { api } from '@/redux/services/api'
 
 import {
@@ -7,6 +9,7 @@ import {
     GetReviewByIdResponse,
     GetReviewsParams,
     GetReviewsResponse,
+    ReviewComplaintInputs,
     UpdateReviewInputs,
 } from './reviews.types'
 
@@ -78,6 +81,13 @@ export const reviewsAPI = api.injectEndpoints({
                 { type: 'Reviews', id: params.id },
                 { type: 'Content', id: params.contentId },
             ],
+        }),
+        createReviewComplaint: build.mutation<void, ReviewComplaintInputs>({
+            query: inputs => ({
+                url: `reviews/${inputs.reviewId}/complaints`,
+                method: 'POST',
+                body: inputs,
+            }),
         }),
     }),
     overrideExisting: false,
