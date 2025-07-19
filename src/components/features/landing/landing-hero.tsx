@@ -18,7 +18,7 @@ export const LandingHero = () => {
         >
             <div className="relative max-h-[400px] w-full bg-gray-950 sm:overflow-hidden sm:rounded-2xl">
                 <Image
-                    src="/images/promo/top-50-special-banner.png"
+                    src="/images/promo/top-50-special-banner.jpg"
                     alt="Три Гиены"
                     width={1224}
                     height={671}
