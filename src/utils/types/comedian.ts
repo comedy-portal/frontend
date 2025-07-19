@@ -23,6 +23,17 @@ export type IComedian = {
               duration: number | null
               rating: IRating
               contentImages: IImage[]
+              // own review for logged-in user only, 1 object in the array
+              reviews?: {
+                  id: number
+                  mark: number
+                  text?: string // not needed for "get content many"
+                  createdAt: Date
+              }[]
+              // own added to watchlist date for logged-in user only, 1 object in the array
+              watchlists?: {
+                  createdAt: Date
+              }[]
           }[]
         | null
     groups: IGroupPreview[]

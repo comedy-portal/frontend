@@ -1,5 +1,3 @@
-import { create } from 'domain'
-
 import { api } from '@/redux/services/api'
 
 import {
