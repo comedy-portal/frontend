@@ -56,6 +56,8 @@ export const reviewsAPI = api.injectEndpoints({
             }),
             invalidatesTags: (result, error, body) => [
                 { type: 'Reviews', id: 'LIST' },
+                { type: 'Content', id: 'LIST' },
+                { type: 'Content', id: 'TOP' },
                 { type: 'Content', id: body.contentId },
             ],
         }),
@@ -68,6 +70,8 @@ export const reviewsAPI = api.injectEndpoints({
             invalidatesTags: (result, error, body) => [
                 { type: 'Reviews', id: 'LIST' },
                 { type: 'Reviews', id: body.id },
+                { type: 'Content', id: 'LIST' },
+                { type: 'Content', id: 'TOP' },
                 { type: 'Content', id: body.contentId },
             ],
         }),
@@ -79,6 +83,8 @@ export const reviewsAPI = api.injectEndpoints({
             invalidatesTags: (result, error, params) => [
                 { type: 'Reviews', id: 'LIST' },
                 { type: 'Reviews', id: params.id },
+                { type: 'Content', id: 'LIST' },
+                { type: 'Content', id: 'TOP' },
                 { type: 'Content', id: params.contentId },
             ],
         }),

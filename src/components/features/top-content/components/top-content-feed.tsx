@@ -55,6 +55,7 @@ export const TopContentFeed = ({ type, year, take }: TopContentFeedProps) => {
                     imageUrl={item.contentImages[0]?.url}
                     year={item.year}
                     avgRating={item.rating.avgRating}
+                    myRating={item.reviews?.[0]?.mark}
                     author={getAuthorDisplayNameForContent(item)}
                 />
             ))}

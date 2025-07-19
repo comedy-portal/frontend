@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { Rating } from '@/components/ui/rating'
+import { RatingMini } from '@/components/ui/rating-mini'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
@@ -15,13 +16,14 @@ type ContentBlockType = {
     imageUrl: string | null
     year: number
     avgRating: number
+    myRating?: number
     author?: {
         name: string
         url: string
     }
 }
 
-export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, author }: ContentBlockType) => {
+export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, myRating, author }: ContentBlockType) => {
     return (
         <div className="relative">
             <Link href={`/content/${type.toLowerCase()}/${id}`}>
@@ -50,7 +52,10 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, author
                         link={`/content/${type.toLowerCase()}`}
                         title={categories.find(category => category.type === type.toLowerCase())?.label || ''}
                     />
-                    <ContentBlockDate year={year} />
+                    <div className="flex items-center gap-x-2">
+                        <ContentBlockDate year={year} />
+                        {myRating && <RatingMini value={myRating} />}
+                    </div>
                 </div>
             </div>
         </div>
