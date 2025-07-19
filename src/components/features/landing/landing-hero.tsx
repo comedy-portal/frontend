@@ -50,6 +50,8 @@ export const LandingHero = () => {
                 disableButtonsControls
                 infinite
                 items={items}
+                autoPlay
+                autoPlayInterval={5000}
                 responsive={{
                     0: {
                         items: 1,
