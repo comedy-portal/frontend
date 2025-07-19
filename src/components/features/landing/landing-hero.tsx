@@ -13,6 +13,21 @@ export const LandingHero = () => {
     const items = [
         <Link
             key="landing-hero-item-1"
+            href="/top-50-special/2025"
+            className="mx-auto flex items-center justify-center sm:max-w-[1224px] sm:px-6 lg:px-8"
+        >
+            <div className="relative max-h-[400px] w-full bg-gray-950 sm:overflow-hidden sm:rounded-2xl">
+                <Image
+                    src="/images/promo/top-50-special-banner.png"
+                    alt="Три Гиены"
+                    width={1224}
+                    height={671}
+                    className="aspect-video h-auto max-h-[400px] w-full object-cover"
+                />
+            </div>
+        </Link>,
+        <Link
+            key="landing-hero-item-1"
             href="https://comedyportal.ru/content/improv_show/119"
             className="mx-auto flex items-center justify-center sm:max-w-[1224px] sm:px-6 lg:px-8"
         >
@@ -22,7 +37,7 @@ export const LandingHero = () => {
                     alt="Три Гиены"
                     width={1224}
                     height={671}
-                    className="h-auto max-h-[400px] w-full object-cover"
+                    className="aspect-video h-auto max-h-[400px] w-full object-cover"
                 />
             </div>
         </Link>,

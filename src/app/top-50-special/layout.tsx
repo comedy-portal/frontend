@@ -17,7 +17,7 @@ export default function Top50SpecialLayout(props: { children: React.ReactNode })
                     href: '/top-50-special/2025',
                 },
                 {
-                    label: 'За все время',
+                    label: 'За всё время',
                     href: '/top-50-special',
                 },
             ]}
