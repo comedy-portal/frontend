@@ -44,10 +44,20 @@ export const HeaderMobile = ({ username, isAuth }: HeaderMobileProps) => {
             )}
 
             {isOpen && (
-                <div className="wrapper-lg absolute top-full right-0 left-0 flex h-screen flex-col gap-y-6 bg-gray-950 py-3">
+                <div className="wrapper absolute top-full right-0 left-0 flex h-screen flex-col gap-y-6 bg-gray-950 py-3">
                     <Search closeMobileMenu={closeMobileMenu} />
 
                     <nav className="flex flex-col gap-y-4 text-sm text-gray-300">
+                        <Link
+                            href="/top-50-special/2025"
+                            className="flex items-center justify-between"
+                            onClick={closeMobileMenu}
+                        >
+                            Топ 50
+                            <div className="text-gray-700">
+                                <ChevronRightIcon size={20} />
+                            </div>
+                        </Link>
                         <Link href="/content" className="flex items-center justify-between" onClick={closeMobileMenu}>
                             Контент
                             <div className="text-gray-700">

@@ -5,16 +5,17 @@ html {
   color: var(--color-gray-950);
 }
 
-.container {
-  @apply mx-auto px-4 sm:px-6 lg:px-8;
-}
 
-.wrapper-sm {
-  @apply mx-auto max-w-4xl px-4 sm:px-6 lg:px-8;
-}
-
-.wrapper-lg {
+.wrapper {
   @apply mx-auto max-w-[1224px] px-4 sm:px-6 lg:px-8 box-content;
+}
+
+.inner-wrapper-sm {
+  @apply max-w-[808px];
+}
+
+.inner-wrapper-lg {
+  @apply max-w-full;
 }
 
 .alice-carousel__dots {

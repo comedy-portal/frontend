@@ -1,6 +1,12 @@
 import { api } from '@/redux/services/api'
 
-import { GetContentByIdResponse, GetContentManyParams, GetContentManyResponse } from './content.types'
+import {
+    GetContentByIdResponse,
+    GetContentManyParams,
+    GetContentManyResponse,
+    GetTopContentParams,
+    GetTopContentResponse,
+} from './content.types'
 
 export const contentAPI = api.injectEndpoints({
     endpoints: build => ({
@@ -35,6 +41,14 @@ export const contentAPI = api.injectEndpoints({
                 return JSON.stringify(currentArg) !== JSON.stringify(previousArg)
             },
             providesTags: () => [{ type: 'Content', id: 'LIST' }],
+        }),
+        getTopContent: build.query<GetTopContentResponse, GetTopContentParams>({
+            query: params => ({
+                url: 'content/top',
+                method: 'GET',
+                params,
+            }),
+            providesTags: () => [{ type: 'Content', id: 'TOP' }],
         }),
         getContentById: build.query<GetContentByIdResponse, number>({
             query: id => ({

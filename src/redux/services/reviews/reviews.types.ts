@@ -1,4 +1,4 @@
-import { Order } from '@/utils/enums/common'
+import { ComplaintReasons, Order } from '@/utils/enums/common'
 import { PaginatedResponse } from '@/utils/types/common'
 import { IReview } from '@/utils/types/review'
 
@@ -31,6 +31,12 @@ export type UpdateReviewInputs = {
     contentId: number
     mark: number
     text: string | null
+}
+
+export type ReviewComplaintInputs = {
+    reviewId: number
+    reason: ComplaintReasons
+    text: string
 }
 
 export type DeleteReviewParams = {
