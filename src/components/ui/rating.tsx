@@ -25,7 +25,7 @@ export const Rating = ({ value, className, onClick }: RatingProps) => {
             )}
             onClick={onClick}
         >
-            {value}
+            {value === 0 ? '—' : value}
         </div>
     )
 }

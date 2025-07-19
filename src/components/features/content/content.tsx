@@ -40,7 +40,7 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
     }
 
     return (
-        <div className="wrapper-lg space-y-12 pt-12 pb-24">
+        <div className="wrapper space-y-12 pt-12 pb-24">
             <Link href={`/content/${data.type.toLowerCase()}`} className="flex items-center gap-x-2 hover:text-black">
                 <CircleArrowLeftIcon size={24} className="text-inherit" />
                 {categories.find(category => category.type === data.type.toLowerCase())?.toBackLabel ||

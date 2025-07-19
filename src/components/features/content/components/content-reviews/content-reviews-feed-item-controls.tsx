@@ -11,18 +11,18 @@ import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
 type ContentReviewsFeedItemProps = {
-    id: number
+    reviewId: number
     contentId: number
 }
 
-export const ContentReviewsFeedItemControls = ({ id, contentId }: ContentReviewsFeedItemProps) => {
+export const ContentReviewsFeedItemControls = ({ reviewId, contentId }: ContentReviewsFeedItemProps) => {
     const dialog = useDialog()
     const router = useRouter()
 
     const [deleteReview] = reviewsAPI.useDeleteReviewMutation()
 
     const handleEditClick = () => {
-        dialog.open(<ReviewUpdate id={id} />)
+        dialog.open(<ReviewUpdate id={reviewId} />)
     }
 
     const handleDeleteClick = () => {
@@ -32,7 +32,7 @@ export const ContentReviewsFeedItemControls = ({ id, contentId }: ContentReviews
                 message="Вы уверены, что хотите удалить эту рецензию? Это действие необратимо."
                 onConfirm={async () => {
                     try {
-                        await deleteReview({ id, contentId })
+                        await deleteReview({ id: reviewId, contentId })
                         router.refresh()
                         dialog.close()
                     } catch {

@@ -15,16 +15,16 @@ type ComedianProps = {
 
 export const Comedian = ({ comedian }: ComedianProps) => {
     return (
-        <div className="wrapper-lg sm: space-y-12 pt-12 pb-24">
+        <div className="wrapper space-y-12 pt-12 pb-24">
             <Link href="/comedians" className="flex items-center gap-x-2 hover:text-black">
                 <CircleArrowLeftIcon size={24} className="text-inherit" />
                 Все комики
             </Link>
 
             <div className="flex flex-col-reverse gap-12 sm:flex-row">
-                <section className="space-y-6 sm:space-y-0">
+                <section className="flex-1 space-y-6 sm:space-y-0">
                     <h2 className="text-2xl font-bold sm:hidden">Все видео</h2>
-                    <div className="flex flex-1 flex-col gap-y-12">
+                    <div className="flex flex-col gap-y-12">
                         <ComedianContent content={comedian.content} />
                     </div>
                 </section>
