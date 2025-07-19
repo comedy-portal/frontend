@@ -41,7 +41,7 @@ export const ContentMyRating = ({ contentId, review, isAuth }: ContentMyRatingPr
         return (
             <RatingBar
                 value={0}
-                caption="Мой рейтинг"
+                caption="Моя оценка"
                 editable
                 onChange={handleCreateClick}
                 onClick={() => handleCreateClick(0)}
@@ -49,5 +49,5 @@ export const ContentMyRating = ({ contentId, review, isAuth }: ContentMyRatingPr
         )
     }
 
-    return <RatingBar value={review.mark} caption="Мой рейтинг" onClick={() => handleUpdateClick(review.id)} />
+    return <RatingBar value={review.mark} caption="Моя оценка" isBlue onClick={() => handleUpdateClick(review.id)} />
 }

@@ -15,18 +15,23 @@ type ContentBlockType = {
     imageUrl: string | null
     year: number
     avgRating: number
+    myRating?: number
     author?: {
         name: string
         url: string
     }
 }
 
-export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, author }: ContentBlockType) => {
+export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, myRating, author }: ContentBlockType) => {
     return (
         <div className="relative">
             <Link href={`/content/${type.toLowerCase()}/${id}`}>
-                <div className="absolute top-0 right-0 rounded-bl-lg bg-white pb-1 pl-1">
+                <div className="absolute top-0 right-0 rounded-bl-lg bg-white pb-1 pl-1" title="Средний рейтинг">
                     <Rating value={avgRating} className="size-12 text-xl" />
+                </div>
+
+                <div className="absolute top-0 right-[50px] rounded-bl-lg bg-white pb-0.5 pl-0.5" title="Моя оценка">
+                    {myRating && <Rating value={myRating} className="size-8! border-2 bg-blue-400! text-sm" />}
                 </div>
 
                 <ImageWithFallback
