@@ -31,6 +31,10 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, myRati
                     <Rating value={avgRating} className="size-12 text-xl" />
                 </div>
 
+                <div className="absolute top-0 right-[50px] rounded-bl-lg bg-white pb-0.5 pl-0.5">
+                    {myRating && <RatingMini value={myRating} />}
+                </div>
+
                 <ImageWithFallback
                     src={imageUrl || ''}
                     width={254}
@@ -52,10 +56,7 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, myRati
                         link={`/content/${type.toLowerCase()}`}
                         title={categories.find(category => category.type === type.toLowerCase())?.label || ''}
                     />
-                    <div className="flex items-center gap-x-2">
-                        <ContentBlockDate year={year} />
-                        {myRating && <RatingMini value={myRating} />}
-                    </div>
+                    <ContentBlockDate year={year} />
                 </div>
             </div>
         </div>
