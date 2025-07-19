@@ -2,7 +2,6 @@ import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { Rating } from '@/components/ui/rating'
-import { RatingMini } from '@/components/ui/rating-mini'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
@@ -32,7 +31,7 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, myRati
                 </div>
 
                 <div className="absolute top-0 right-[50px] rounded-bl-lg bg-white pb-0.5 pl-0.5">
-                    {myRating && <RatingMini value={myRating} />}
+                    {myRating && <Rating value={myRating} className="size-8! border-2 bg-blue-400! text-sm" />}
                 </div>
 
                 <ImageWithFallback
