@@ -19,7 +19,7 @@ type RatingBarProps = {
     caption: string
     editable?: boolean
     error?: string
-    isBlue?: boolean
+    isHighlight?: boolean
     onChange?: (value: number) => void
     onClick?: () => void
 }
@@ -101,8 +101,8 @@ export const RatingBar = (props: RatingBarProps) => {
                     value={currentRating}
                     className={classNames('size-12 flex-shrink-0 text-lg', {
                         'cursor-pointer': showPointerOnRating,
-                        'bg-blue-400!': props.isBlue,
                     })}
+                    isHighlight={props.isHighlight}
                     onClick={props.onClick}
                 />
             </div>

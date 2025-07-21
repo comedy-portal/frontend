@@ -13,12 +13,12 @@ export const LandingHero = () => {
     const items = [
         <Link
             key="landing-hero-item-1"
-            href="/top-50-special/2025"
+            href="/top-special/2025"
             className="mx-auto flex items-center justify-center sm:max-w-[1224px] sm:px-6 lg:px-8"
         >
             <div className="relative max-h-[400px] w-full bg-gray-950 sm:overflow-hidden sm:rounded-2xl">
                 <Image
-                    src="/images/promo/top-50-special-banner.jpg"
+                    src="/images/promo/top-special-banner.jpg"
                     alt="Три Гиены"
                     width={1224}
                     height={671}

@@ -49,11 +49,11 @@ export const HeaderMobile = ({ username, isAuth }: HeaderMobileProps) => {
 
                     <nav className="flex flex-col gap-y-4 text-sm text-gray-300">
                         <Link
-                            href="/top-50-special/2025"
+                            href="/top-special/2025"
                             className="flex items-center justify-between"
                             onClick={closeMobileMenu}
                         >
-                            Топ 50
+                            Топ
                             <div className="text-gray-700">
                                 <ChevronRightIcon size={20} />
                             </div>

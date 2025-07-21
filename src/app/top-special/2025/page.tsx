@@ -1,0 +1,16 @@
+import { Metadata } from 'next'
+
+import { TopContent } from '@/components/features/top-content/top-content'
+import { GetTopContentTake } from '@/redux/services/content/content.types'
+import { ContentType } from '@/utils/enums/common'
+
+// prettier-ignore
+export const metadata: Metadata = {
+    title: 'Топ сольных стендап концертов 2025 года на русском языке - Comedy Portal',
+    description:'На этой странице собраны лучшие русские стендап концерты 2025 года. Этот топ выступлений сформирован на основе Ваших оценок и является результатом выбора сообщества. Эта подборка поможет вам выбрать идеальное шоу на вечер. Если Вам нужен топ стендапа на русском за 2025 год, этот рейтинг для Вас.',
+    keywords: ['стендап на русском 2025', 'топ стендап концертов', 'лучшие стендап концерты 2025', 'лучшие стендап концерты на русском 2025', 'стендап рейтинг 2025', 'лучшие русские стендап концерты 2025 года'],
+}
+
+export default function TopSpecial2025Page() {
+    return <TopContent type={ContentType.SPECIAL} year={2025} take={GetTopContentTake.FIFTY} />
+}

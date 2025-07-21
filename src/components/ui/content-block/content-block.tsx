@@ -1,11 +1,11 @@
 import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
-import { Rating } from '@/components/ui/rating'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
 import { ContentBlockDate } from './components/content-block-date'
+import { ContentBlockRating } from './components/content-block-rating'
 import { ContentBlockTag } from './components/content-block-tag'
 
 type ContentBlockType = {
@@ -25,14 +25,8 @@ type ContentBlockType = {
 export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, myRating, author }: ContentBlockType) => {
     return (
         <div className="relative">
-            <Link href={`/content/${type.toLowerCase()}/${id}`}>
-                <div className="absolute top-0 right-0 rounded-bl-lg bg-white pb-1 pl-1" title="Средний рейтинг">
-                    <Rating value={avgRating} className="size-12 text-xl" />
-                </div>
-
-                <div className="absolute top-0 right-[50px] rounded-bl-lg bg-white pb-0.5 pl-0.5" title="Моя оценка">
-                    {myRating && <Rating value={myRating} className="size-8! border-2 bg-blue-400! text-sm" />}
-                </div>
+            <Link href={`/content/${type.toLowerCase()}/${id}`} target="_blank">
+                <ContentBlockRating avgRating={avgRating} myRating={myRating} />
 
                 <ImageWithFallback
                     src={imageUrl || ''}
@@ -46,7 +40,11 @@ export const ContentBlock = ({ id, type, name, imageUrl, year, avgRating, myRati
             <div className="flex flex-col gap-y-4 rounded-b-lg border-x border-b border-[#DFE2E6] p-4">
                 <div>
                     {author && <div className="text-sm">{author.name}</div>}
-                    <Link href={`/content/${type.toLowerCase()}/${id}`} className="line-clamp-2 h-12 font-bold">
+                    <Link
+                        href={`/content/${type.toLowerCase()}/${id}`}
+                        className="line-clamp-2 h-12 font-bold"
+                        target="_blank"
+                    >
                         {name}
                     </Link>
                 </div>
