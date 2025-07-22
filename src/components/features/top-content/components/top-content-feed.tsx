@@ -55,6 +55,7 @@ export const TopContentFeed = ({ type, year, take }: TopContentFeedProps) => {
                     name={item.name}
                     description={item.metaInfo?.description}
                     year={item.year}
+                    duration={item.duration}
                     avgRating={item.rating.avgRating}
                     myRating={item.reviews?.[0]?.mark}
                     contentUrl={`/content/${item.type.toLowerCase()}/${item.id}`}

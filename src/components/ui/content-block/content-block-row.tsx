@@ -7,6 +7,7 @@ import { ContentType } from '@/utils/enums/common'
 
 import { ImageWithFallback } from '../image-with-fallback'
 import { ContentBlockDate } from './components/content-block-date'
+import { ContentBlockDuration } from './components/content-block-duration'
 import { ContentBlockRating } from './components/content-block-rating'
 import { ContentBlockTag } from './components/content-block-tag'
 
@@ -16,6 +17,7 @@ type ContentBlockRowType = {
     description?: string | null
     type?: ContentType
     year: number
+    duration?: number | null
     avgRating: number
     myRating?: number
     contentUrl: string
@@ -82,7 +84,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                     )}
                 </div>
 
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-x-4">
                     {props.type && (
                         <ContentBlockTag
                             link={`/content/${props.type.toLowerCase()}`}
@@ -95,14 +97,17 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                     {props.author && !props.type ? (
                         <Link
                             href={props.author.url}
-                            className="text-sm text-gray-500 hover:text-gray-950"
+                            className="max-w-[200px] truncate overflow-hidden text-sm whitespace-nowrap text-gray-500 hover:text-gray-950"
                             target="_blank"
                         >
                             {props.author.name}
                         </Link>
                     ) : null}
 
-                    <ContentBlockDate year={props.year} />
+                    <div className="flex items-center gap-x-2">
+                        {props.duration && <ContentBlockDuration duration={props.duration} />}
+                        <ContentBlockDate year={props.year} />
+                    </div>
                 </div>
             </div>
         </div>
