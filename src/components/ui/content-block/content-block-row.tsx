@@ -80,7 +80,11 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                     )}
 
                     {props.author && (
-                        <Link href={props.author.url} className="text-sm" target="_blank">
+                        <Link
+                            href={props.author.url}
+                            className="text-sm text-gray-500 hover:text-gray-950"
+                            target="_blank"
+                        >
                             {props.author.name}
                         </Link>
                     )}
