@@ -76,6 +76,7 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
                         name={item.name}
                         imageUrl={item.contentImages[0]?.url}
                         year={item.year}
+                        duration={item.duration}
                         avgRating={item.rating.avgRating}
                         myRating={item.reviews?.[0]?.mark}
                         author={getAuthorDisplayNameForContent(item)}

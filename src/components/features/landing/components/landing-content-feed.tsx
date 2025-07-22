@@ -29,6 +29,7 @@ export const LandingContentFeed = (props: LandingContentFeedProps) => {
                         name={item.name}
                         imageUrl={item.contentImages[0]?.url}
                         year={item.year}
+                        duration={item.duration}
                         avgRating={item.rating.avgRating}
                         author={getAuthorDisplayNameForContent(item)}
                     />

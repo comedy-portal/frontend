@@ -2,7 +2,9 @@
 
 import { useState } from 'react'
 
-import { ContentBlock } from '@/components/ui/content-block/content-block'
+import classNames from 'classnames'
+
+import { ContentBlockRow } from '@/components/ui/content-block/content-block-row'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { watchlistsAPI } from '@/redux/services/watchlists/watchlists.api'
@@ -46,16 +48,19 @@ export const UserWatchlistsFeed = ({ username }: UserWatchlistsFeedProps) => {
 
     return (
         <div className="space-y-2">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
+            <div className={classNames('lg:block lg:space-y-2', 'grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6')}>
                 {data.items.map(item => (
-                    <ContentBlock
+                    <ContentBlockRow
                         key={`user-watchlists-feed-item-${item.id}`}
                         id={item.content.id}
-                        type={item.content.type}
                         name={item.content.name}
-                        imageUrl={item.content.contentImages[0]?.url}
+                        description={item.content.metaInfo?.description}
+                        type={item.content.type}
                         year={item.content.year}
+                        duration={item.content.duration}
                         avgRating={item.content.rating.avgRating}
+                        contentUrl={`/content/${item.content.type.toLowerCase()}/${item.id}`}
+                        imageUrl={item.content.contentImages[0]?.url}
                         author={getAuthorDisplayNameForContent({
                             comedians: item.content.comedians,
                             group: item.content.group,
