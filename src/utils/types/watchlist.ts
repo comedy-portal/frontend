@@ -11,6 +11,7 @@ export type IWatchlist = {
         year: number
         month: number
         type: ContentType
+        duration: number | null
         rating: {
             avgRating: number
             reviewsCount: number

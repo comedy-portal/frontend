@@ -57,6 +57,7 @@ export const UserWatchlistsFeed = ({ username }: UserWatchlistsFeedProps) => {
                         description={item.content.metaInfo?.description}
                         type={item.content.type}
                         year={item.content.year}
+                        duration={item.content.duration}
                         avgRating={item.content.rating.avgRating}
                         contentUrl={`/content/${item.content.type.toLowerCase()}/${item.id}`}
                         imageUrl={item.content.contentImages[0]?.url}
