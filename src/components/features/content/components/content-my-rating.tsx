@@ -49,5 +49,7 @@ export const ContentMyRating = ({ contentId, review, isAuth }: ContentMyRatingPr
         )
     }
 
-    return <RatingBar value={review.mark} caption="Моя оценка" isBlue onClick={() => handleUpdateClick(review.id)} />
+    return (
+        <RatingBar value={review.mark} caption="Моя оценка" isHighlight onClick={() => handleUpdateClick(review.id)} />
+    )
 }

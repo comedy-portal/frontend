@@ -1,9 +1,9 @@
 import { Layout } from '@/components/features/layout/layout/layout'
 
-export default function Top50SpecialLayout(props: { children: React.ReactNode }) {
+export default function TopSpecialLayout(props: { children: React.ReactNode }) {
     return (
         <Layout
-            title="Топ-50 спешлов"
+            title="Топ спешлов"
             info={
                 <div>
                     Этот топ выступлений сформирован на основе Ваших оценок и является результатом выбора сообщества.
@@ -14,11 +14,11 @@ export default function Top50SpecialLayout(props: { children: React.ReactNode })
             nav={[
                 {
                     label: 'За 2025 год',
-                    href: '/top-50-special/2025',
+                    href: '/top-special/2025',
                 },
                 {
                     label: 'За всё время',
-                    href: '/top-50-special',
+                    href: '/top-special',
                 },
             ]}
         >
