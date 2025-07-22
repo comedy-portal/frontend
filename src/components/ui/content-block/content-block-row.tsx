@@ -54,6 +54,10 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                 )}
             >
                 <div>
+                    {props.author && props.type ? (
+                        <div className="text-sm text-gray-500">{props.author.name}</div>
+                    ) : null}
+
                     <Link
                         href={props.contentUrl}
                         className={classNames(
@@ -66,7 +70,16 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                         {`${props.position ? props.position + '. ' : ''} ${props.name}`}
                     </Link>
 
-                    {props.description && <div className="line-clamp-3 h-15 text-sm">{props.description}</div>}
+                    {props.description && (
+                        <div
+                            className={classNames('text-sm', {
+                                'line-clamp-3 h-15': !props.type,
+                                'line-clamp-2 h-10': props.type,
+                            })}
+                        >
+                            {props.description}
+                        </div>
+                    )}
                 </div>
 
                 <div className="flex items-center justify-between">
@@ -79,7 +92,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                         />
                     )}
 
-                    {props.author && (
+                    {props.author && !props.type ? (
                         <Link
                             href={props.author.url}
                             className="text-sm text-gray-500 hover:text-gray-950"
@@ -87,7 +100,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                         >
                             {props.author.name}
                         </Link>
-                    )}
+                    ) : null}
 
                     <ContentBlockDate year={props.year} />
                 </div>

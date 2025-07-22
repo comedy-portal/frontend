@@ -1,6 +1,6 @@
 import { ContentType } from '@/utils/enums/common'
 
-import { IComedianPreview, IGroupPreview } from './common'
+import { IComedianPreview, IGroupPreview, ILink } from './common'
 
 export type IWatchlist = {
     id: number
@@ -15,6 +15,11 @@ export type IWatchlist = {
             avgRating: number
             reviewsCount: number
         }
+        metaInfo: {
+            description: string | null
+            facts: string[]
+            links: ILink[]
+        } | null
         contentImages: {
             id: number
             url: string
