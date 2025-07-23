@@ -12,6 +12,20 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     return {
         title: `${comedian.name} ${comedian.surname} - Comedy Portal`,
         description: comedian.metaInfo?.description,
+        openGraph: {
+            title: `${comedian.name} ${comedian.surname} - Comedy Portal`,
+            description: comedian.metaInfo?.description || 'Comedy Portal - Discover the best comedy content',
+            images: [
+                {
+                    url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/comedians/${comedian.slug}.jpg`,
+                    width: 500,
+                    height: 500,
+                    type: 'image/jpeg',
+                    alt: `${comedian.name} ${comedian.surname}`,
+                },
+            ],
+            url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/comedians/${comedian.slug}`,
+        },
     }
 }
 

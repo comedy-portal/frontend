@@ -2,8 +2,6 @@
 
 import { useMemo, useState } from 'react'
 
-import { useSearchParams } from 'next/navigation'
-
 import { ContentBlock } from '@/components/ui/content-block/content-block'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
@@ -11,6 +9,7 @@ import { contentAPI } from '@/redux/services/content/content.api'
 import { ContentSortBy } from '@/redux/services/content/content.types'
 import { ContentType, ContentUrlSortBy, Order } from '@/utils/enums/common'
 import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
+import { useSortFilters } from '@/utils/helpers/use-sort-filters'
 
 import { ContentManyFeedSkeleton } from './content-many-feed-skeleton'
 
@@ -19,12 +18,12 @@ type ContentManyFeedProps = {
 }
 
 export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
-    const searchParams = useSearchParams()
+    const [filters] = useSortFilters()
     const [cursor, setCursor] = useState<number>()
 
     const { sortBy, order } = useMemo(() => {
         setCursor(undefined)
-        switch (searchParams.get('sort')) {
+        switch (filters.sort) {
             case ContentUrlSortBy.DATE_DESC:
                 return { sortBy: ContentSortBy.DATE, order: Order.DESC }
             case ContentUrlSortBy.DATE_ASC:
@@ -34,13 +33,15 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
             default:
                 return { sortBy: ContentSortBy.DATE, order: Order.DESC }
         }
-    }, [searchParams])
+    }, [filters.sort])
 
     const { data, isFetching, isSuccess, isError } = contentAPI.useGetContentManyQuery({
         type,
         order,
         sort_by: sortBy,
         cursor,
+        min_rating: filters.min_rating,
+        max_rating: filters.max_rating,
     })
 
     if (isError) {
@@ -56,7 +57,7 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
             <EmptyMessage>
                 Контент в этой категории пока отсутствует.
                 <br />
-                Попробуйте выбрать другую категорию или зайдите позже.
+                Попробуйте выбрать другую категорию или изменить фильтры.
             </EmptyMessage>
         )
     }
@@ -67,7 +68,7 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
 
     return (
         <div className="flex flex-col gap-y-12">
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4">
                 {data.items.map(item => (
                     <ContentBlock
                         key={`content-many-feed-item-${item.id}`}

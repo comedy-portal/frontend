@@ -85,6 +85,74 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
             <hr className="border-gray-200" />
 
             <UserSettingsLogout />
+
+            {/* <div>
+                <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
+                    <div className="flex items-center justify-between">
+                        <div className="text-lg font-bold">Электронная почта</div>
+                        <div
+                            className="link cursor-pointer text-sm font-medium text-gray-500 hover:text-gray-950"
+                            onClick={() => {}}
+                        >
+                            Изменить
+                        </div>
+                    </div>
+                    <div className="text-sm text-gray-500">
+                        Ваш адрес электронной почты используется для входа в систему и получения уведомлений.
+                    </div>
+                </div>
+
+                <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
+                    <div className="flex items-center justify-between">
+                        <div className="text-lg font-bold">Персональные данные</div>
+                        <div
+                            className="link cursor-pointer text-sm font-medium text-gray-500 hover:text-gray-950"
+                            onClick={() => {}}
+                        >
+                            Запросить копию
+                        </div>
+                    </div>
+                    <div className="text-sm text-gray-500">
+                        Вы можете запросить копию ваших персональных данных, которые мы храним. Это включает в себя
+                        любую информацию, которую вы предоставили нам при регистрации, например, ваше имя пользователя,
+                        адрес электронной почты и другие дополнительные сведения. Подробнее см. в нашей Политике
+                        конфиденциальности.
+                    </div>
+                </div>
+
+                <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
+                    <div className="flex items-center justify-between">
+                        <div className="text-lg font-bold">Аккаунт</div>
+                        <div
+                            className="link cursor-pointer text-sm font-medium text-red-400 hover:text-red-500"
+                            onClick={() => {}}
+                        >
+                            Удалить аккаунт
+                        </div>
+                    </div>
+                    <div className="text-sm text-gray-500">
+                        Вы можете запросить удаление своей учётной записи и всех связанных с ней данных. Вы сможете
+                        восстановить её, перейдя по ссылке, отправленной на ваш адрес электронной почты до завершения
+                        процесса удаления.
+                    </div>
+                </div>
+
+                <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
+                    <div className="flex items-center justify-between">
+                        <div className="text-lg font-bold">Сессии</div>
+                        <div
+                            className="link cursor-pointer text-sm font-medium text-red-400 hover:text-red-500"
+                            onClick={() => {}}
+                        >
+                            Выйти из всех сессий
+                        </div>
+                    </div>
+                    <div className="text-sm text-gray-500">
+                        Вы можете выйти из всех активных сессий, чтобы защитить свою учётную запись. Это полезно, если
+                        вы подозреваете, что кто-то получил доступ к вашей учётной записи без вашего разрешения.
+                    </div>
+                </div>
+            </div> */}
         </div>
     )
 }

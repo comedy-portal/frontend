@@ -23,6 +23,11 @@ export type IComedian = {
               duration: number | null
               rating: IRating
               contentImages: IImage[]
+              metaInfo: {
+                  description: string | null
+                  facts: string[]
+                  links: ILink[]
+              } | null
               // own review for logged-in user only, 1 object in the array
               reviews?: {
                   id: number

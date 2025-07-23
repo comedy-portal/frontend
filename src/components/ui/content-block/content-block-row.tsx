@@ -75,8 +75,8 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                     {props.description && (
                         <div
                             className={classNames('text-sm', {
-                                'line-clamp-3 h-15': !props.type,
-                                'line-clamp-2 h-10': props.type,
+                                'line-clamp-3 h-15': !props.type || !props.author,
+                                'line-clamp-2 h-10': props.type && props.author,
                             })}
                         >
                             {props.description}

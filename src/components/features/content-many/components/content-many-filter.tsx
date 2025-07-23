@@ -15,7 +15,10 @@ export const ContentManyFilter = () => {
         dialog.open(<Filters />)
     }
 
-    const hasActiveFilters = filters.sort !== DEFAULT_SORT_FILTERS.sort
+    const hasActiveFilters =
+        filters.sort !== DEFAULT_SORT_FILTERS.sort ||
+        filters.min_rating !== DEFAULT_SORT_FILTERS.min_rating ||
+        filters.max_rating !== DEFAULT_SORT_FILTERS.max_rating
 
     return (
         <div className="relative">

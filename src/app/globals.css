@@ -21,3 +21,31 @@ html {
 .alice-carousel__dots {
   @apply absolute -bottom-14 left-1/2 z-10 -translate-x-1/2 items-center justify-center gap-x-4 m-0! hidden sm:flex;
 }
+
+.range {
+    @apply h-0.5! bg-gray-300!;
+}
+.range[data-disabled] {
+    /* CSS for disabled range slider element */
+}
+.range .range-slider__range {
+    @apply h-0.5! bg-gray-950!;
+}
+.range .range-slider__range[data-active] {
+    /* CSS for active (actively being dragged) range */
+}
+.range .range-slider__thumb {
+    @apply size-6 bg-white! border-2 border-gray-950;
+}
+.range .range-slider__thumb[data-lower] {
+    /* CSS for lower thumb */
+}
+.range .range-slider__thumb[data-upper] {
+    /* CSS for upper thumb */
+}
+.range .range-slider__thumb[data-active] {
+    /* CSS for active (actively being dragged) thumbs */
+}
+.range .range-slider__thumb[data-disabled] {
+    /* CSS for disabled thumbs */
+}
