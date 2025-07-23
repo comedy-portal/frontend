@@ -30,21 +30,21 @@ export const Comedian = ({ comedian }: ComedianProps) => {
                 />
             </div>
 
-            <div className="flex flex-col-reverse gap-12 sm:flex-row">
-                <section className="flex-1 space-y-6 sm:space-y-0">
-                    <h2 className="text-2xl font-bold sm:hidden">Все видео</h2>
+            <div className="flex flex-col-reverse gap-12 lg:flex-row">
+                <section className="flex-1 space-y-6 lg:space-y-0">
+                    <h2 className="text-2xl font-bold lg:hidden">Все видео</h2>
                     <div className="flex flex-col gap-y-12">
                         <ComedianContent content={comedian.content} />
                     </div>
                 </section>
 
-                <div className="flex shrink-0 flex-col sm:w-[368px]">
+                <div className="flex shrink-0 flex-col md:flex-row md:gap-x-6 lg:w-[300px] lg:flex-col xl:w-[368px]">
                     <ImageWithFallback
                         src={`/images/comedians/${comedian.slug}.jpg`}
                         alt={`${comedian.name}`}
                         width={100}
                         height={100}
-                        className="mb-12 aspect-square w-full rounded-lg"
+                        className="mb-12 aspect-square w-full rounded-lg md:size-[300px] lg:size-auto"
                     />
 
                     <div className="flex flex-col gap-y-6">
@@ -53,7 +53,7 @@ export const Comedian = ({ comedian }: ComedianProps) => {
                                 <h1 className="text-4xl font-bold">
                                     {comedian.name} {comedian.surname}&nbsp;{comedian.isAgent ? '*' : ''}
                                 </h1>
-                                <DescriptionBlock text={comedian.metaInfo.description} limit={500} />
+                                <DescriptionBlock text={comedian.metaInfo.description} limit={200} />
                             </section>
                         )}
 

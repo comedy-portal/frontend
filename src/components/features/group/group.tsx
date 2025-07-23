@@ -30,46 +30,48 @@ export const Group = ({ group }: GroupProps) => {
                 />
             </div>
 
-            <div className="flex flex-col-reverse gap-12 sm:flex-row">
-                <section className="space-y-6 sm:space-y-0">
-                    <h2 className="text-2xl font-bold sm:hidden">Все видео</h2>
-                    <div className="flex flex-1 flex-col gap-y-12">
+            <div className="flex flex-col-reverse gap-12 lg:flex-row">
+                <section className="flex-1 space-y-6 lg:space-y-0">
+                    <h2 className="text-2xl font-bold lg:hidden">Все видео</h2>
+                    <div className="flex flex-col gap-y-12">
                         <GroupContent content={group.content} />
                     </div>
                 </section>
 
-                <div className="flex shrink-0 flex-col sm:w-[368px]">
+                <div className="flex shrink-0 flex-col md:flex-row md:gap-x-6 lg:w-[300px] lg:flex-col xl:w-[368px]">
                     <ImageWithFallback
                         src={group.groupImages[0]?.url}
                         alt={`${group.name}`}
                         width={100}
                         height={100}
-                        className="mb-12 aspect-square w-full rounded-lg"
+                        className="mb-12 aspect-square w-full rounded-lg md:size-[300px] lg:size-auto"
                     />
 
                     <div className="flex flex-col gap-y-6">
                         {group.metaInfo?.description && (
                             <section className="space-y-6">
                                 <h1 className="text-4xl font-bold">{group.name}</h1>
-                                <DescriptionBlock text={group.metaInfo.description} limit={500} />
+                                <DescriptionBlock text={group.metaInfo.description} limit={200} />
                             </section>
                         )}
 
-                        <section className="space-y-2">
-                            <h3 className="font-bold">Участники</h3>
-                            {group.comedians.map(comedian => (
-                                <div key={`group-author-${comedian.id}`}>
-                                    <Link
-                                        href={`/comedians/${comedian.slug.toLowerCase()}`}
-                                        className="text-gray-500 hover:text-gray-950"
-                                    >
-                                        {comedian.name} {comedian.surname}
-                                    </Link>
-                                </div>
-                            ))}
-                        </section>
+                        <div className="flex flex-col gap-y-6 md:flex-row md:gap-x-12 lg:flex-col lg:gap-x-0">
+                            <section className="space-y-2">
+                                <h3 className="font-bold">Участники</h3>
+                                {group.comedians.map(comedian => (
+                                    <div key={`group-author-${comedian.id}`}>
+                                        <Link
+                                            href={`/comedians/${comedian.slug.toLowerCase()}`}
+                                            className="text-gray-500 hover:text-gray-950"
+                                        >
+                                            {comedian.name} {comedian.surname}
+                                        </Link>
+                                    </div>
+                                ))}
+                            </section>
 
-                        <LinksBlock caption="Ссылки" links={group.metaInfo?.links || []} />
+                            <LinksBlock caption="Ссылки" links={group.metaInfo?.links || []} />
+                        </div>
                     </div>
                 </div>
             </div>
