@@ -9,6 +9,7 @@ import { DescriptionBlock } from '@/components/ui/description-block'
 import { GlobalLoading } from '@/components/ui/global-loading'
 import { LinksBlock } from '@/components/ui/links-block'
 import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
+import { Share } from '@/components/ui/share'
 import { contentAPI } from '@/redux/services/content/content.api'
 import { categories } from '@/utils/dict/categories'
 
@@ -41,14 +42,22 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
 
     return (
         <div className="wrapper space-y-12 pt-12 pb-24">
-            <Link
-                href={`/content/${data.type.toLowerCase()}`}
-                className="inline-flex items-center gap-x-2 hover:text-black"
-            >
-                <CircleArrowLeftIcon size={24} className="text-inherit" />
-                {categories.find(category => category.type === data.type.toLowerCase())?.toBackLabel ||
-                    'Назад к контенту'}
-            </Link>
+            <div className="flex items-center justify-between">
+                <Link
+                    href={`/content/${data.type.toLowerCase()}`}
+                    className="inline-flex items-center gap-x-2 hover:text-black"
+                >
+                    <CircleArrowLeftIcon size={24} className="text-inherit" />
+                    {categories.find(category => category.type === data.type.toLowerCase())?.toBackLabel ||
+                        'Назад к контенту'}
+                </Link>
+
+                <Share
+                    title={data.name}
+                    text={data.metaInfo?.description}
+                    url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/content/${data.type.toLowerCase()}/${data.id}`}
+                />
+            </div>
 
             <div className="flex flex-col-reverse gap-12 sm:flex-row">
                 <div className="flex flex-1 flex-col gap-y-12">

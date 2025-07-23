@@ -1,7 +1,9 @@
-import { ContentBlock } from '@/components/ui/content-block/content-block'
+import classNames from 'classnames'
+
+import { ContentBlockRow } from '@/components/ui/content-block/content-block-row'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { ContentType } from '@/utils/enums/common'
-import { IImage, IRating } from '@/utils/types/common'
+import { IImage, ILink, IRating } from '@/utils/types/common'
 
 type GroupContentProps = {
     content: {
@@ -13,6 +15,11 @@ type GroupContentProps = {
         duration?: number
         rating: IRating
         contentImages: IImage[]
+        metaInfo: {
+            description: string | null
+            facts: string[]
+            links: ILink[]
+        } | null
     }[]
 }
 
@@ -28,16 +35,19 @@ export const GroupContent = ({ content }: GroupContentProps) => {
     }
 
     return (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
+        <div className={classNames('lg:block lg:space-y-2', 'grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6')}>
             {content.map(item => (
-                <ContentBlock
-                    key={`content-many-feed-item-${item.id}`}
+                <ContentBlockRow
+                    key={`group-content-feed-item-${item.id}`}
                     id={item.id}
-                    type={item.type}
                     name={item.name}
-                    imageUrl={item.contentImages[0]?.url}
+                    description={item.metaInfo?.description}
+                    type={item.type}
                     year={item.year}
+                    duration={item.duration}
                     avgRating={item.rating.avgRating}
+                    contentUrl={`/content/${item.type.toLowerCase()}/${item.id}`}
+                    imageUrl={item.contentImages[0]?.url || ''}
                 />
             ))}
         </div>

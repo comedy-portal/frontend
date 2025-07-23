@@ -27,6 +27,7 @@
     "react-alice-carousel": "^2.9.1",
     "react-dom": "^19.1.0",
     "react-indiana-drag-scroll": "^2.2.1",
+    "react-range-slider-input": "^3.2.1",
     "supertokens-node": "^21.1.2",
     "supertokens-web-js": "^0.14.0",
     "usehooks-ts": "^3.1.1",
