@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { DescriptionBlock } from '@/components/ui/description-block'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LinksBlock } from '@/components/ui/links-block'
+import { Share } from '@/components/ui/share'
 import { IGroup } from '@/utils/types/group'
 
 import { GroupContent } from './component/group-content'
@@ -16,10 +17,18 @@ type GroupProps = {
 export const Group = ({ group }: GroupProps) => {
     return (
         <div className="wrapper space-y-12 pt-12 pb-24">
-            <Link href="/comedians/groups" className="inline-flex items-center gap-x-2 hover:text-black">
-                <CircleArrowLeftIcon size={24} className="text-inherit" />
-                Все группы
-            </Link>
+            <div className="flex items-center justify-between">
+                <Link href="/comedians/groups" className="inline-flex items-center gap-x-2 hover:text-black">
+                    <CircleArrowLeftIcon size={24} className="text-inherit" />
+                    Все группы
+                </Link>
+
+                <Share
+                    title={group.name}
+                    text={group.metaInfo?.description}
+                    url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/comedians/groups/${group.slug}`}
+                />
+            </div>
 
             <div className="flex flex-col-reverse gap-12 sm:flex-row">
                 <section className="space-y-6 sm:space-y-0">

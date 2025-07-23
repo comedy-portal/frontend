@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { DescriptionBlock } from '@/components/ui/description-block'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LinksBlock } from '@/components/ui/links-block'
+import { Share } from '@/components/ui/share'
 import { IComedian } from '@/utils/types/comedian'
 
 import { ComedianContent } from './components/comedian-content'
@@ -16,10 +17,18 @@ type ComedianProps = {
 export const Comedian = ({ comedian }: ComedianProps) => {
     return (
         <div className="wrapper space-y-12 pt-12 pb-24">
-            <Link href="/comedians" className="inline-flex items-center gap-x-2 hover:text-black">
-                <CircleArrowLeftIcon size={24} className="text-inherit" />
-                Все комики
-            </Link>
+            <div className="flex items-center justify-between">
+                <Link href="/comedians" className="inline-flex items-center gap-x-2 hover:text-black">
+                    <CircleArrowLeftIcon size={24} className="text-inherit" />
+                    Все комики
+                </Link>
+
+                <Share
+                    title={`${comedian.name} ${comedian.surname}`}
+                    text={comedian.metaInfo?.description}
+                    url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/comedians/${comedian.slug}`}
+                />
+            </div>
 
             <div className="flex flex-col-reverse gap-12 sm:flex-row">
                 <section className="flex-1 space-y-6 sm:space-y-0">

@@ -15,6 +15,20 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     return {
         title: `${content.name} - Comedy Portal`,
         description: content.metaInfo?.description,
+        openGraph: {
+            title: `${content.name} - Comedy Portal`,
+            description: content.metaInfo?.description || 'Comedy Portal - Discover the best comedy content',
+            images: [
+                {
+                    url: content.contentImages[0].url,
+                    width: 500,
+                    height: 500,
+                    type: 'image/jpeg',
+                    alt: content.name,
+                },
+            ],
+            url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/content/${content.type.toLowerCase()}/${content.id}`,
+        },
     }
 }
 
