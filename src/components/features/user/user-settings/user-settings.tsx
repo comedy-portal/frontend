@@ -82,11 +82,11 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
                 </div>
             </form>
 
-            {/* <hr className="border-gray-200" /> */}
+            <hr className="border-gray-200" />
 
-            {/* <UserSettingsLogout /> */}
+            <UserSettingsLogout />
 
-            <div>
+            {/* <div>
                 <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
                     <div className="flex items-center justify-between">
                         <div className="text-lg font-bold">Электронная почта</div>
@@ -152,7 +152,7 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
                         вы подозреваете, что кто-то получил доступ к вашей учётной записи без вашего разрешения.
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
