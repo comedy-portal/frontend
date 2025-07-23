@@ -57,7 +57,7 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
             <EmptyMessage>
                 Контент в этой категории пока отсутствует.
                 <br />
-                Попробуйте выбрать другую категорию или зайдите позже.
+                Попробуйте выбрать другую категорию или изменить фильтры.
             </EmptyMessage>
         )
     }
