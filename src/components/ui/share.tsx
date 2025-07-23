@@ -20,10 +20,8 @@ export const Share = ({ title, text, url }: ShareProps) => {
                 text: text || '',
                 url,
             })
-        } catch (err: any) {
-            if (err.name !== 'AbortError') {
-                console.error(messages.COMMON_ERROR)
-            }
+        } catch {
+            console.error(messages.COMMON_ERROR)
         }
     }
 
