@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { ContentBlock } from '@/components/ui/content-block/content-block'
 import { EmptyMessage } from '@/components/ui/empty-message'
@@ -21,8 +21,11 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
     const [filters] = useSortFilters()
     const [cursor, setCursor] = useState<number>()
 
-    const { sortBy, order } = useMemo(() => {
+    useEffect(() => {
         setCursor(undefined)
+    }, [filters.sort, filters.min_rating, filters.max_rating])
+
+    const { sortBy, order } = useMemo(() => {
         switch (filters.sort) {
             case ContentUrlSortBy.DATE_DESC:
                 return { sortBy: ContentSortBy.DATE, order: Order.DESC }
