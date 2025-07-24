@@ -59,7 +59,7 @@ export const UserWatchlistsFeed = ({ username }: UserWatchlistsFeedProps) => {
                         year={item.content.year}
                         duration={item.content.duration}
                         avgRating={item.content.rating.avgRating}
-                        contentUrl={`/content/${item.content.type.toLowerCase()}/${item.id}`}
+                        contentUrl={`/content/${item.content.type.toLowerCase()}/${item.content.id}`}
                         imageUrl={item.content.contentImages[0]?.url}
                         author={getAuthorDisplayNameForContent({
                             comedians: item.content.comedians,
