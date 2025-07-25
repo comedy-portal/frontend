@@ -10,7 +10,7 @@ type ComedianBlockType = {
 
 export const ComedianBlock = ({ slug, name, surname, isAgent }: ComedianBlockType) => {
     return (
-        <Link href={`/comedians/${slug}`} className="flex flex-col gap-y-2">
+        <Link href={`/comedians/${slug}`} className="flex flex-col gap-y-2" target="_blank">
             <Image
                 src={`/images/comedians/${slug}.jpg`}
                 alt={`${name} ${surname}`}
