@@ -21,11 +21,8 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
     const [filters] = useSortFilters()
     const [cursor, setCursor] = useState<number>()
 
-    useEffect(() => {
-        setCursor(undefined)
-    }, [filters.sort, filters.min_rating, filters.max_rating])
-
     const { sortBy, order } = useMemo(() => {
+        setCursor(undefined)
         switch (filters.sort) {
             case ContentUrlSortBy.DATE_DESC:
                 return { sortBy: ContentSortBy.DATE, order: Order.DESC }
@@ -36,7 +33,7 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
             default:
                 return { sortBy: ContentSortBy.DATE, order: Order.DESC }
         }
-    }, [filters.sort])
+    }, [filters.sort, filters.min_rating, filters.max_rating])
 
     const { data, isFetching, isSuccess, isError } = contentAPI.useGetContentManyQuery({
         type,
