@@ -50,13 +50,13 @@ export const LandingContentFeed = (props: LandingContentFeedProps) => {
                 <ContentBlock
                     key={`landing-content-feed-item-${item.id}`}
                     id={item.id}
-                    type={item.type}
                     name={item.name}
-                    imageUrl={item.contentImages[0]?.url}
+                    type={item.type}
                     year={item.year}
                     duration={item.duration}
                     avgRating={item.rating.avgRating}
                     myRating={item.reviews?.[0]?.mark}
+                    imageUrl={item.contentImages[0]?.url}
                     author={getAuthorDisplayNameForContent(item)}
                 />
             ))}
