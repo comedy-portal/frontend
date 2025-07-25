@@ -86,8 +86,8 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
 
             <UserSettingsLogout />
 
-            {/* <div>
-                <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
+            {/* <div> */}
+            {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
                     <div className="flex items-center justify-between">
                         <div className="text-lg font-bold">Электронная почта</div>
                         <div
@@ -100,9 +100,9 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
                     <div className="text-sm text-gray-500">
                         Ваш адрес электронной почты используется для входа в систему и получения уведомлений.
                     </div>
-                </div>
+                </div> */}
 
-                <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
+            {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
                     <div className="flex items-center justify-between">
                         <div className="text-lg font-bold">Персональные данные</div>
                         <div
@@ -118,9 +118,9 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
                         адрес электронной почты и другие дополнительные сведения. Подробнее см. в нашей Политике
                         конфиденциальности.
                     </div>
-                </div>
+                </div> */}
 
-                <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
+            {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
                     <div className="flex items-center justify-between">
                         <div className="text-lg font-bold">Аккаунт</div>
                         <div
@@ -135,9 +135,9 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
                         восстановить её, перейдя по ссылке, отправленной на ваш адрес электронной почты до завершения
                         процесса удаления.
                     </div>
-                </div>
+                </div> */}
 
-                <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
+            {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
                     <div className="flex items-center justify-between">
                         <div className="text-lg font-bold">Сессии</div>
                         <div
@@ -151,8 +151,8 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
                         Вы можете выйти из всех активных сессий, чтобы защитить свою учётную запись. Это полезно, если
                         вы подозреваете, что кто-то получил доступ к вашей учётной записи без вашего разрешения.
                     </div>
-                </div>
-            </div> */}
+                </div> */}
+            {/* </div> */}
         </div>
     )
 }

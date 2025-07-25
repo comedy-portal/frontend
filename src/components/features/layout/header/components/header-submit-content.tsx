@@ -28,15 +28,15 @@ export const HeaderSubmitContent = ({ isAuth, onClick }: HeaderSubmitContentProp
     }
 
     return (
-        <div className="cursor-pointer text-gray-300 hover:text-white sm:flex-none" onClick={handleClick}>
-            <div className="flex items-center justify-between sm:hidden">
+        <div className="cursor-pointer text-gray-300 hover:text-white lg:flex-none" onClick={handleClick}>
+            <div className="flex items-center justify-between lg:hidden">
                 Предложить контент
                 <div className="text-gray-700">
                     <PlusCircleIcon size={20} />
                 </div>
             </div>
 
-            <div className="hidden sm:block">
+            <div className="hidden lg:block">
                 <PlusCircleIcon />
             </div>
         </div>

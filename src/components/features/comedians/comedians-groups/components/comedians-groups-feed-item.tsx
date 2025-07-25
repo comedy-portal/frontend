@@ -10,7 +10,7 @@ type ComediansGroupsFeedItemType = {
 
 export const ComediansGroupsFeedItem = ({ slug, name, image }: ComediansGroupsFeedItemType) => {
     return (
-        <Link href={`/comedians/groups/${slug}`} className="flex flex-col gap-y-2">
+        <Link href={`/comedians/groups/${slug}`} className="flex flex-col gap-y-2" target="_blank">
             <ImageWithFallback
                 src={image}
                 alt={`${name}`}

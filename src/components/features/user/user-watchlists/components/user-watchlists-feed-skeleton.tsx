@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 
-import { ContentBlockSkeleton } from '@/components/ui/content-block/content-block-skeleton'
+import { ContentBlockRowSkeleton } from '@/components/ui/content-block/content-block-row-skeleton'
 
 const BLOCK_QTY = 3
 
@@ -15,7 +15,7 @@ export const UserWatchlistsFeedSkeleton = () => {
             )}
         >
             {Array.from({ length: BLOCK_QTY }).map((_, i) => (
-                <ContentBlockSkeleton key={`user-watchlists-feed-item-skeleton-${i}`} />
+                <ContentBlockRowSkeleton key={`user-watchlists-feed-item-skeleton-${i}`} />
             ))}
         </div>
     )

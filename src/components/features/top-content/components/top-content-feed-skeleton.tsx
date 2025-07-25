@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 
-import { ContentBlockSkeleton } from '@/components/ui/content-block/content-block-skeleton'
+import { ContentBlockRowSkeleton } from '@/components/ui/content-block/content-block-row-skeleton'
 
 const BLOCK_QTY = 8
 
@@ -15,7 +15,7 @@ export const TopContentFeedSkeleton = () => {
             )}
         >
             {Array.from({ length: BLOCK_QTY }).map((_, i) => (
-                <ContentBlockSkeleton key={`top-content-feed-item-skeleton-${i}`} />
+                <ContentBlockRowSkeleton key={`top-content-feed-item-skeleton-${i}`} />
             ))}
         </div>
     )
