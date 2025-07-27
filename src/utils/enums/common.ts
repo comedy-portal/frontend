@@ -11,6 +11,7 @@ export enum Platform {
     OTHER = 'OTHER',
     PATREON = 'PATREON',
     SPECIALS_COMEDY = 'SPECIALS_COMEDY',
+    SPOTIFY = 'SPOTIFY',
     TELEGRAM = 'TELEGRAM',
     TIKTOK = 'TIKTOK',
     VK = 'VK',
