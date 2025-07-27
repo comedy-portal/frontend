@@ -63,7 +63,7 @@ export const getPlatformUrl = (platform: Platform, identifier: string) => {
         case Platform.SPECIALS_COMEDY:
             return { href: `https://specialscomedy.com/concert/${identifier}`, label: 'Specials Comedy' }
         case Platform.SPOTIFY:
-            return { href: `https://open.spotify.com/artist/${identifier}`, label: 'Spotify' }
+            return { href: `https://open.spotify.com/show/${identifier}`, label: 'Spotify' }
         case Platform.OTHER:
             return { href: identifier, label: 'Ссылка' }
         default:
