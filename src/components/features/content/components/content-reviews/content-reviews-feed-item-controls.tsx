@@ -5,10 +5,11 @@ import { SquarePenIcon, TrashIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import { ReviewUpdate } from '@/components/features/dialogs/reviews-form/review-update'
-import { Confirmation } from '@/components/ui/confirmation'
+import { Confirmation } from '@/components/ui/confirmation/confirmation'
 import { messages } from '@/messages'
 import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
 import { useDialog } from '@/utils/providers/dialog-provider'
+import { useToast } from '@/utils/providers/toast-provider'
 
 type ContentReviewsFeedItemProps = {
     reviewId: number
@@ -17,6 +18,7 @@ type ContentReviewsFeedItemProps = {
 
 export const ContentReviewsFeedItemControls = ({ reviewId, contentId }: ContentReviewsFeedItemProps) => {
     const dialog = useDialog()
+    const toast = useToast()
     const router = useRouter()
 
     const [deleteReview] = reviewsAPI.useDeleteReviewMutation()
@@ -36,7 +38,7 @@ export const ContentReviewsFeedItemControls = ({ reviewId, contentId }: ContentR
                         router.refresh()
                         dialog.close()
                     } catch {
-                        console.error(messages.COMMON_ERROR)
+                        toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
                     }
                 }}
             />,

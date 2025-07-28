@@ -1,7 +1,8 @@
 import { ComplaintReasons } from './utils/enums/common'
 
 export const messages = {
-    COMMON_ERROR: 'Упс! Что-то пошло не так. Попробуйте позже.',
+    COMMON_ERROR: 'Ошибка',
+    COMMON_ERROR_MESSAGE: 'Что-то пошло не так. Попробуйте позже.',
 }
 
 export const complaintReasons = {

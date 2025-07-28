@@ -3,10 +3,11 @@
 import { SquarePenIcon, TrashIcon } from 'lucide-react'
 
 import { ReviewUpdate } from '@/components/features/dialogs/reviews-form/review-update'
-import { Confirmation } from '@/components/ui/confirmation'
+import { Confirmation } from '@/components/ui/confirmation/confirmation'
 import { messages } from '@/messages'
 import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
 import { useDialog } from '@/utils/providers/dialog-provider'
+import { useToast } from '@/utils/providers/toast-provider'
 
 type UserReviewsFeedItemProps = {
     id: number
@@ -15,6 +16,7 @@ type UserReviewsFeedItemProps = {
 
 export const UserReviewsFeedItemControls = ({ id, contentId }: UserReviewsFeedItemProps) => {
     const dialog = useDialog()
+    const toast = useToast()
 
     const [deleteReview] = reviewsAPI.useDeleteReviewMutation()
 
@@ -32,7 +34,7 @@ export const UserReviewsFeedItemControls = ({ id, contentId }: UserReviewsFeedIt
                         await deleteReview({ id, contentId })
                         dialog.close()
                     } catch {
-                        console.error(messages.COMMON_ERROR)
+                        toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
                     }
                 }}
             />,

@@ -6,6 +6,7 @@ import { messages } from '@/messages'
 import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
 import { UpdateReviewInputs } from '@/redux/services/reviews/reviews.types'
 import { useDialog } from '@/utils/providers/dialog-provider'
+import { useToast } from '@/utils/providers/toast-provider'
 
 import { ReviewForm } from './review-form'
 import { ReviewUpdateSkeleton } from './review-update-skeleton'
@@ -16,6 +17,7 @@ type ReviewUpdateProps = {
 
 export const ReviewUpdate = ({ id }: ReviewUpdateProps) => {
     const dialog = useDialog()
+    const toast = useToast()
     const router = useRouter()
     const { data, isLoading: isReviewLoading, isSuccess, isError } = reviewsAPI.useGetReviewByIdQuery({ id })
 
@@ -48,7 +50,7 @@ export const ReviewUpdate = ({ id }: ReviewUpdateProps) => {
             router.refresh()
             dialog.close()
         } catch {
-            console.error(messages.COMMON_ERROR)
+            toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
         }
     }
 

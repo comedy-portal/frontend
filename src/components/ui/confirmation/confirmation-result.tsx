@@ -5,17 +5,16 @@ import { Keys } from '@/utils/enums/common'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
-type ConfirmationProps = {
+type ConfirmationResultProps = {
     title: string
     message: string
-    onConfirm: () => void
 }
 
-export const Confirmation = ({ title, message, onConfirm }: ConfirmationProps) => {
+export const ConfirmationResult = ({ title, message }: ConfirmationResultProps) => {
     const dialog = useDialog()
 
     useKeypress(Keys.ENTER, () => {
-        onConfirm()
+        dialog.close()
     })
 
     return (
@@ -25,12 +24,10 @@ export const Confirmation = ({ title, message, onConfirm }: ConfirmationProps) =
                 <hr className="border-gray-400" />
                 <p>{message}</p>
             </div>
-            <div className="flex gap-x-2">
-                <Button onClick={onConfirm}>Да, я уверен</Button>
-                <Button variant="outline" onClick={() => dialog.close()}>
-                    Отмена
-                </Button>
-            </div>
+
+            <Button variant="outline" onClick={() => dialog.close()}>
+                Закрыть
+            </Button>
         </div>
     )
 }

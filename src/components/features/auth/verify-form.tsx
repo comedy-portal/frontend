@@ -111,7 +111,8 @@ export const VerifyForm = ({ email, status, isLoading, onVerifyOtp, onResendOtp,
                 <div className="mb-4 rounded-lg border border-red-100 bg-red-50 p-4 text-center text-sm text-red-500">
                     {status === 'EXPIRED_USER_INPUT_CODE_ERROR' && 'Код подтверждения устарел'}
                     {status === 'INCORRECT_USER_INPUT_CODE_ERROR' && 'Неверный код подтверждения'}
-                    {(status === 'RESTART_FLOW_ERROR' || status === 'SIGN_IN_UP_NOT_ALLOWED') && messages.COMMON_ERROR}
+                    {(status === 'RESTART_FLOW_ERROR' || status === 'SIGN_IN_UP_NOT_ALLOWED') &&
+                        messages.COMMON_ERROR_MESSAGE}
                 </div>
             )}
 
