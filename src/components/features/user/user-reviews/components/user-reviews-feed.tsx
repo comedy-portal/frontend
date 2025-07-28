@@ -36,7 +36,7 @@ export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFee
             <EmptyMessage>
                 Здесь пока нет рецензий.
                 <br />
-                Когда они появятся — вы увидите их здесь.
+                Когда они появятся — Вы увидите их здесь.
             </EmptyMessage>
         )
     }

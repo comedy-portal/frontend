@@ -89,7 +89,7 @@ export const ChangeEmail = () => {
         <form className="sm:w-104" onSubmit={formik.handleSubmit}>
             <h1 className="mb-2 text-center text-lg font-semibold">Изменить электронную почту</h1>
             <p className="m-auto mb-8 text-center text-sm text-gray-500 sm:w-3/4">
-                Укажите новый адрес электронной почты, который вы хотите использовать для входа в систему и получения
+                Укажите новый адрес электронной почты, который Вы хотите использовать для входа в систему и получения
                 уведомлений.
             </p>
 
