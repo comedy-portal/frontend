@@ -1,5 +1,3 @@
-import classNames from 'classnames'
-
 import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
