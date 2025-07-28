@@ -17,7 +17,7 @@ export const UserSettingsRequestPersonalData = () => {
         dialog.open(
             <Confirmation
                 title="Запрос персональных данных"
-                message="Мы отправим вам копию ваших персональных данных на вашу электронную почту. Вы уверены, что хотите продолжить?"
+                message="Мы отправим Вам копию ваших персональных данных на вашу электронную почту. Вы уверены, что хотите продолжить?"
                 onConfirm={async () => {
                     try {
                         await requestPersonalData()
