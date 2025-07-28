@@ -4,7 +4,6 @@ import { useState } from 'react'
 
 import { verifyEmail } from 'supertokens-web-js/recipe/emailverification'
 
-import { messages } from '@/messages'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 
 export const VerifyEmail = () => {

@@ -11,7 +11,7 @@ export const UserSettingsRequestPersonalData = () => {
     const dialog = useDialog()
     const toast = useToast()
 
-    const [requestPersonalData, { isLoading }] = userAPI.useRequestPersonalDataMutation()
+    const [requestPersonalData] = userAPI.useRequestPersonalDataMutation()
 
     const handleRequestPersonalData = () => {
         dialog.open(

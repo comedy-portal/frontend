@@ -4,7 +4,6 @@ import type { Metadata, Viewport } from 'next'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
 
-import { AlphaBanner } from '@/components/features/layout/alpha-banner/alpha-banner'
 import { Footer } from '@/components/features/layout/footer/footer'
 import { HeaderAuthWrapper } from '@/components/features/layout/header/header-auth-wrapper'
 import ScrollToTopButton from '@/components/features/layout/scroll-to-top-button/scroll-to-top-button'
