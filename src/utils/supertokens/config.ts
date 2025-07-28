@@ -1,6 +1,6 @@
-import EmailVerificationWebJs from 'supertokens-web-js/recipe/emailverification'
 import PasswordlessWebJs from 'supertokens-web-js/recipe/passwordless'
 import SessionWebJs from 'supertokens-web-js/recipe/session'
+import ThirdPartyWebJs from 'supertokens-web-js/recipe/thirdparty'
 import { SuperTokensConfig } from 'supertokens-web-js/types'
 
 import { api } from '@/redux/services/api'
@@ -14,8 +14,8 @@ export const config = (): SuperTokensConfig => {
             apiBasePath: (process.env.NEXT_PUBLIC_API_BASE_PATH + '/auth') as string,
         },
         recipeList: [
+            ThirdPartyWebJs.init(),
             PasswordlessWebJs.init(),
-            EmailVerificationWebJs.init(),
             SessionWebJs.init({
                 override: {
                     functions: oI => {
