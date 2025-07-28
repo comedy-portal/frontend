@@ -43,7 +43,7 @@ export const UserSettingsRequestPersonalData = () => {
                     className="link cursor-pointer text-sm font-medium text-gray-500 hover:text-gray-950"
                     onClick={handleRequestPersonalData}
                 >
-                    Запросить копию
+                    Запросить
                 </div>
             </div>
 
