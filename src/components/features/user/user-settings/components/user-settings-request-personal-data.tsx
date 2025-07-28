@@ -1,6 +1,6 @@
 'use client'
 
-import { Confirmation } from '@/components/ui/confirmation/confirmation'
+import { Confirmation } from '@/components/ui/confirmation'
 import { ExternalLink } from '@/components/ui/external-link'
 import { messages } from '@/messages'
 import { userAPI } from '@/redux/services/user/user.api'

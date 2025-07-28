@@ -5,7 +5,7 @@ import { SquarePenIcon, TrashIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import { ReviewUpdate } from '@/components/features/dialogs/reviews-form/review-update'
-import { Confirmation } from '@/components/ui/confirmation/confirmation'
+import { Confirmation } from '@/components/ui/confirmation'
 import { messages } from '@/messages'
 import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
 import { useDialog } from '@/utils/providers/dialog-provider'
