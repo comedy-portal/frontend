@@ -13,7 +13,7 @@ export type IComedian = {
         facts: string[]
         links: ILink[]
     } | null
-    content?:
+    content:
         | {
               id: number
               name: string
