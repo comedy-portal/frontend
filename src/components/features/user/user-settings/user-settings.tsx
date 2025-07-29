@@ -12,7 +12,6 @@ import { userAPI } from '@/redux/services/user/user.api'
 import { ChangeUserNameInputs } from '@/redux/services/user/user.types'
 import { useToast } from '@/utils/providers/toast-provider'
 
-import { UserSettingsLogout } from './components/user-settings-logout'
 import { UserSettingsRequestPersonalData } from './components/user-settings-request-personal-data'
 
 type UserSettingsProps = {
@@ -84,10 +83,6 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
                     </Button>
                 </div>
             </form>
-
-            <hr className="border-gray-200" />
-
-            <UserSettingsLogout />
 
             <div>
                 {/* <UserSettingsBlockChangeEmail /> */}
