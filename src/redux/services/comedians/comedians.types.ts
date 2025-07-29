@@ -5,6 +5,7 @@ import { PaginatedResponse } from '@/utils/types/common'
 export enum ComedianSortBy {
     NAME = 'name',
     SURNAME = 'surname',
+    CREATED_AT = 'created_at',
 }
 
 export type GetComediansParams = {
@@ -13,6 +14,7 @@ export type GetComediansParams = {
     letter?: string
     born_today?: boolean
     cursor?: number
+    take?: number
 }
 
 export type GetComediansResponse = PaginatedResponse<IComedian>
