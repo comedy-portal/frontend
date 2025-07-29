@@ -10,11 +10,15 @@ export const comediansAPI = api.injectEndpoints({
                 method: 'GET',
                 params,
             }),
-            serializeQueryArgs: ({ endpointName }) => {
-                return endpointName
+            serializeQueryArgs: ({ queryArgs }) => {
+                return JSON.stringify({
+                    sort_by: queryArgs.sort_by,
+                    order: queryArgs.order,
+                    take: queryArgs.take,
+                })
             },
-            merge: (currentCache, newResponse, otherArgs) => {
-                if (otherArgs.arg.cursor === undefined) {
+            merge: (currentCache, newResponse, { arg }) => {
+                if (arg.cursor === undefined) {
                     return newResponse
                 }
 
@@ -24,9 +28,11 @@ export const comediansAPI = api.injectEndpoints({
                         items: [...currentCache.items, ...newResponse.items],
                     }
                 }
+
+                return newResponse
             },
             forceRefetch({ currentArg, previousArg }) {
-                return currentArg !== previousArg
+                return JSON.stringify(currentArg) !== JSON.stringify(previousArg)
             },
             providesTags: () => [{ type: 'Comedians', id: 'LIST' }],
         }),

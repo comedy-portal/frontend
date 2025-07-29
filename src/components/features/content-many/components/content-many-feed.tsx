@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { ContentBlock } from '@/components/ui/content-block/content-block'
 import { EmptyMessage } from '@/components/ui/empty-message'

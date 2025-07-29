@@ -10,14 +10,16 @@ import { Input } from '@/components/ui/forms/input'
 import { messages } from '@/messages'
 import { userAPI } from '@/redux/services/user/user.api'
 import { ChangeUserNameInputs } from '@/redux/services/user/user.types'
+import { useToast } from '@/utils/providers/toast-provider'
 
-import { UserSettingsLogout } from './components/user-settings-logout'
+import { UserSettingsRequestPersonalData } from './components/user-settings-request-personal-data'
 
 type UserSettingsProps = {
     username: string
 }
 
 export const UserSettings = ({ username }: UserSettingsProps) => {
+    const toast = useToast()
     const router = useRouter()
 
     const [changeUsername, { isLoading }] = userAPI.useChangeUsernameMutation()
@@ -48,7 +50,7 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
             router.replace(`/users/${trimmedInputs.username}/settings`)
             router.refresh()
         } catch {
-            console.error(messages.COMMON_ERROR)
+            toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
         }
     }
 
@@ -82,45 +84,11 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
                 </div>
             </form>
 
-            <hr className="border-gray-200" />
+            <div>
+                {/* <UserSettingsBlockChangeEmail /> */}
+                <UserSettingsRequestPersonalData />
 
-            <UserSettingsLogout />
-
-            {/* <div> */}
-            {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
-                    <div className="flex items-center justify-between">
-                        <div className="text-lg font-bold">Электронная почта</div>
-                        <div
-                            className="link cursor-pointer text-sm font-medium text-gray-500 hover:text-gray-950"
-                            onClick={() => {}}
-                        >
-                            Изменить
-                        </div>
-                    </div>
-                    <div className="text-sm text-gray-500">
-                        Ваш адрес электронной почты используется для входа в систему и получения уведомлений.
-                    </div>
-                </div> */}
-
-            {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
-                    <div className="flex items-center justify-between">
-                        <div className="text-lg font-bold">Персональные данные</div>
-                        <div
-                            className="link cursor-pointer text-sm font-medium text-gray-500 hover:text-gray-950"
-                            onClick={() => {}}
-                        >
-                            Запросить копию
-                        </div>
-                    </div>
-                    <div className="text-sm text-gray-500">
-                        Вы можете запросить копию ваших персональных данных, которые мы храним. Это включает в себя
-                        любую информацию, которую вы предоставили нам при регистрации, например, ваше имя пользователя,
-                        адрес электронной почты и другие дополнительные сведения. Подробнее см. в нашей Политике
-                        конфиденциальности.
-                    </div>
-                </div> */}
-
-            {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
+                {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
                     <div className="flex items-center justify-between">
                         <div className="text-lg font-bold">Аккаунт</div>
                         <div
@@ -132,12 +100,12 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
                     </div>
                     <div className="text-sm text-gray-500">
                         Вы можете запросить удаление своей учётной записи и всех связанных с ней данных. Вы сможете
-                        восстановить её, перейдя по ссылке, отправленной на ваш адрес электронной почты до завершения
+                        восстановить её, перейдя по ссылке, отправленной на Ваш адрес электронной почты до завершения
                         процесса удаления.
                     </div>
                 </div> */}
 
-            {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
+                {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
                     <div className="flex items-center justify-between">
                         <div className="text-lg font-bold">Сессии</div>
                         <div
@@ -149,10 +117,10 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
                     </div>
                     <div className="text-sm text-gray-500">
                         Вы можете выйти из всех активных сессий, чтобы защитить свою учётную запись. Это полезно, если
-                        вы подозреваете, что кто-то получил доступ к вашей учётной записи без вашего разрешения.
+                        Вы подозреваете, что кто-то получил доступ к Вашей учётной записи без Вашего разрешения.
                     </div>
                 </div> */}
-            {/* </div> */}
+            </div>
         </div>
     )
 }

@@ -33,7 +33,7 @@ export const LegalPrivacyPolicy = () => {
                     <li>обеспечения корректной работы Сервиса (например, сохранения сессии входа);</li>
                     <li>аналитики и&nbsp;улучшения качества работы через сервис Google Analytics.</li>
                 </ul>
-                <p>Вы&nbsp;можете отключить cookies в&nbsp;настройках вашего браузера.</p>
+                <p>Вы&nbsp;можете отключить cookies в&nbsp;настройках Вашего браузера.</p>
             </section>
 
             <section className="space-y-4">

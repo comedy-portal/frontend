@@ -16,7 +16,7 @@ type LandingContentFeedProps = {
 }
 
 export const LandingContentFeed = (props: LandingContentFeedProps) => {
-    const { data, isFetching, isSuccess, isError } = contentAPI.useGetContentManyQuery({
+    const { data, isSuccess, isError } = contentAPI.useGetContentManyQuery({
         order: props.order,
         sort_by: props.sortBy,
         take: props.take,

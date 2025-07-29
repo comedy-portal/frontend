@@ -4,10 +4,6 @@ import type { Metadata, Viewport } from 'next'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
 
-import { AlphaBanner } from '@/components/features/layout/alpha-banner/alpha-banner'
-import { Footer } from '@/components/features/layout/footer/footer'
-import { HeaderAuthWrapper } from '@/components/features/layout/header/header-auth-wrapper'
-import ScrollToTopButton from '@/components/features/layout/scroll-to-top-button/scroll-to-top-button'
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
 
 import './globals.css'
@@ -31,20 +27,20 @@ export const metadata: Metadata = {
     alternates: {
         canonical: '/',
     },
-    title: 'Comedy Portal – ваш портал в мир комедии: смотреть юмор онлайн, стендап, комедии, шоу.',
-    description: 'Откройте Comedy Portal – ваш портал в мир комедии! Смотрите лучшие стендап-выступления, комедийные шоу и фильмы онлайн. Оценивайте контент, читайте отзывы и находите новый юмор каждый день.',
+    title: 'Comedy Portal – Ваш портал в мир комедии: смотреть юмор онлайн, стендап, комедии, шоу.',
+    description: 'Откройте Comedy Portal – Ваш портал в мир комедии! Смотрите лучшие стендап-выступления, комедийные шоу и фильмы онлайн. Оценивайте контент, читайте отзывы и находите новый юмор каждый день.',
     appleWebApp: {
         title: 'Comedy Portal',
     },
     openGraph: {
-        title: 'Comedy Portal – ваш портал в мир комедии',
+        title: 'Comedy Portal – Ваш портал в мир комедии',
         type: 'website',
         locale: 'ru_RU',
         url: '/',
         siteName: 'Comedy Portal',
     },
     twitter: {
-        title: 'Comedy Portal – ваш портал в мир комедии',
+        title: 'Comedy Portal – Ваш портал в мир комедии',
         card: 'summary_large_image',
     },
 }
@@ -57,15 +53,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <link rel="icon" href="/favicon.png" type="image/png" />
             </head>
             <body className="h-full antialiased">
-                <Providers>
-                    <div className="flex min-h-full flex-col">
-                        <AlphaBanner />
-                        <HeaderAuthWrapper />
-                        <main className="flex-1">{children}</main>
-                        <Footer />
-                        <ScrollToTopButton />
-                    </div>
-                </Providers>
+                <Providers>{children}</Providers>
                 <TailwindIndicator />
                 <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string} />
             </body>

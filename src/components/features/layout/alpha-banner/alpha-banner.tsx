@@ -7,7 +7,7 @@ export const AlphaBanner = () => {
             <Link href="/about/alpha" className="text-blue-500 hover:text-blue-700">
                 разработке
             </Link>
-            , и мы будем рады вашим отзывам и предложениям.
+            , и мы будем рады Вашим отзывам и предложениям.
         </div>
     )
 }

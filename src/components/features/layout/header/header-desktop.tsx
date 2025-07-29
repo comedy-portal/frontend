@@ -1,8 +1,19 @@
+'use client'
+
+import { RefObject, useRef, useState } from 'react'
+
 import { CircleUserIcon, MicIcon } from 'lucide-react'
+import Session from 'supertokens-web-js/recipe/session'
+import { useOnClickOutside } from 'usehooks-ts'
 
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 import { Search } from '@/components/features/layout/search/search'
+import { messages } from '@/messages'
+import { Keys } from '@/utils/enums/common'
+import { useKeypress } from '@/utils/hooks/use-keypress'
+import { useToast } from '@/utils/providers/toast-provider'
 
 import { HeaderLogin } from './components/header-login'
 import { HeaderSubmitContent } from './components/header-submit-content'
@@ -13,6 +24,26 @@ type HeaderDesktopProps = {
 }
 
 export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
+    const toast = useToast()
+    const router = useRouter()
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const ref = useRef<HTMLDivElement>(null)
+
+    useOnClickOutside(ref as RefObject<HTMLDivElement>, () => setIsMenuOpen(false))
+
+    useKeypress(Keys.ESCAPE, () => setIsMenuOpen(false))
+
+    const handleSignOut = async () => {
+        try {
+            await Session.signOut()
+            setIsMenuOpen(false)
+            router.push('/')
+            router.refresh()
+        } catch {
+            toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
+        }
+    }
+
     return (
         <div className="flex h-full flex-row items-center justify-between">
             <div className="flex h-full items-center justify-center gap-x-4 xl:gap-x-6">
@@ -45,12 +76,50 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
                 </nav>
             </div>
 
-            <div className="flex items-center justify-center gap-x-3 text-sm xl:gap-x-4">
+            <div className="relative flex items-center justify-center gap-x-3 text-sm xl:gap-x-4">
                 <HeaderSubmitContent isAuth={isAuth} />
                 {isAuth ? (
-                    <Link href={`/users/${username}`} className="text-gray-300 hover:text-white">
-                        <CircleUserIcon />
-                    </Link>
+                    <div className="relative" ref={ref}>
+                        <button
+                            onClick={() => setIsMenuOpen(prev => !prev)}
+                            className="cursor-pointer text-gray-300 hover:text-white"
+                        >
+                            <CircleUserIcon />
+                        </button>
+
+                        {isMenuOpen && (
+                            <div className="absolute right-0 z-50 w-48 overflow-hidden rounded-lg bg-white shadow-md">
+                                <ul className="text-sm text-gray-700">
+                                    <li>
+                                        <Link
+                                            href={`/users/${username}`}
+                                            className="block px-4 py-2 hover:bg-gray-100 hover:text-gray-950"
+                                            onClick={() => setIsMenuOpen(false)}
+                                        >
+                                            Мой профиль
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            href={`/users/${username}/settings`}
+                                            className="block px-4 py-2 hover:bg-gray-100 hover:text-gray-950"
+                                            onClick={() => setIsMenuOpen(false)}
+                                        >
+                                            Настройки
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <button
+                                            onClick={handleSignOut}
+                                            className="w-full cursor-pointer px-4 py-2 text-left text-red-400 hover:bg-gray-100 hover:text-red-500"
+                                        >
+                                            Выйти
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        )}
+                    </div>
                 ) : (
                     <HeaderLogin />
                 )}
