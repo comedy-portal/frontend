@@ -6,6 +6,7 @@ import { messages } from '@/messages'
 import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
 import { CreateReviewInputs } from '@/redux/services/reviews/reviews.types'
 import { useDialog } from '@/utils/providers/dialog-provider'
+import { useToast } from '@/utils/providers/toast-provider'
 
 import { ReviewForm } from './review-form'
 
@@ -16,6 +17,7 @@ type ReviewCreateProps = {
 
 export const ReviewCreate = ({ contentId, initialMark }: ReviewCreateProps) => {
     const dialog = useDialog()
+    const toast = useToast()
     const router = useRouter()
 
     const [createReview, { isLoading }] = reviewsAPI.useCreateReviewMutation()
@@ -37,7 +39,7 @@ export const ReviewCreate = ({ contentId, initialMark }: ReviewCreateProps) => {
             router.refresh()
             dialog.close()
         } catch {
-            console.error(messages.COMMON_ERROR)
+            toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
         }
     }
 

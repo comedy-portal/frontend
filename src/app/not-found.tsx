@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function NotFound() {
     return (
-        <div className="wrapper flex items-center justify-center py-16 sm:py-24">
+        <div className="wrapper flex h-full items-center justify-center">
             <div className="flex flex-col gap-y-8 text-center">
                 <MicOffIcon size={128} className="m-auto" />
                 <h1 className="text-2xl font-bold">Страница не найдена</h1>

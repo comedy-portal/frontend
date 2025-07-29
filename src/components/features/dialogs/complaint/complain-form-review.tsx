@@ -5,11 +5,13 @@ import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
 import { ReviewComplaintInputs } from '@/redux/services/reviews/reviews.types'
 import { ComplaintReasons } from '@/utils/enums/common'
 import { useDialog } from '@/utils/providers/dialog-provider'
+import { useToast } from '@/utils/providers/toast-provider'
 
 import { ComplaintForm } from './complaint-form'
 
 export const ComplainFormReview = ({ reviewId }: { reviewId: number }) => {
     const dialog = useDialog()
+    const toast = useToast()
 
     const [complain, { isLoading }] = reviewsAPI.useCreateReviewComplaintMutation()
 
@@ -22,7 +24,7 @@ export const ComplainFormReview = ({ reviewId }: { reviewId: number }) => {
             await complain(trimmedInputs)
             dialog.close()
         } catch {
-            console.error(messages.COMMON_ERROR)
+            toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
         }
     }
 

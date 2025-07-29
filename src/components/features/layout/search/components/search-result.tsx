@@ -48,7 +48,7 @@ export const HeaderSearchResult = ({
     }, [data, isSuccess, searchTerm])
 
     if (isError) {
-        return <div className="p-3 text-sm text-red-500">{messages.COMMON_ERROR}</div>
+        return <div className="p-3 text-sm text-red-500">{messages.COMMON_ERROR_MESSAGE}</div>
     }
 
     if (isSuccess && items?.comedians.length === 0 && items?.groups.length === 0 && items?.content.length === 0) {

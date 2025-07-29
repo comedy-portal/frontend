@@ -8,6 +8,7 @@ import { useDialog } from '@/utils/providers/dialog-provider'
 type ConfirmationProps = {
     title: string
     message: string
+
     onConfirm: () => void
 }
 

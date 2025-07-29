@@ -15,7 +15,7 @@ export default async function UsersLayout(props: { children: React.ReactNode; pa
 
     const nav = [
         {
-            label: 'Рецензии',
+            label: 'Оценки',
             href: `/users/${lowerUsername}`,
         },
         {

@@ -11,8 +11,10 @@ import { Textarea } from '@/components/ui/forms/textarea'
 import { messages } from '@/messages'
 import { ContentProposalsAPI } from '@/redux/services/content-proposals/content-proposals.api'
 import { CreateProposalsInputs } from '@/redux/services/content-proposals/content-proposals.types'
+import { useToast } from '@/utils/providers/toast-provider'
 
 export const ContentSubmit = () => {
+    const toast = useToast()
     const [status, setStatus] = useState<string | null>(null)
     const [createProposal, { isLoading }] = ContentProposalsAPI.useCreateProposalMutation()
 
@@ -39,7 +41,7 @@ export const ContentSubmit = () => {
             createProposal(trimmedInputs)
             setStatus('CONTENT_PROPOSAL_CREATED')
         } catch {
-            console.error(messages.COMMON_ERROR)
+            toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
         }
     }
 

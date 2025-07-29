@@ -1,6 +1,6 @@
 import { api } from '@/redux/services/api'
 
-import { ChangeUserNameInputs } from './user.types'
+import { ChangeUserEmailInputs, ChangeUserEmailResponse, ChangeUserNameInputs } from './user.types'
 
 export const userAPI = api.injectEndpoints({
     endpoints: build => ({
@@ -10,6 +10,16 @@ export const userAPI = api.injectEndpoints({
                 method: 'PATCH',
                 body,
             }),
+        }),
+        changeUserEmail: build.mutation<ChangeUserEmailResponse, ChangeUserEmailInputs>({
+            query: inputs => ({
+                url: 'user/email',
+                method: 'PATCH',
+                body: inputs,
+            }),
+        }),
+        requestPersonalData: build.mutation<void, void>({
+            query: () => 'user/personal-data',
         }),
     }),
     overrideExisting: false,

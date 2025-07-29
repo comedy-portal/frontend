@@ -64,7 +64,7 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
 
             {status && status !== 'OK' && (
                 <div className="mb-4 rounded-lg border border-red-100 bg-red-50 p-4 text-center text-sm text-red-500">
-                    {messages.COMMON_ERROR}
+                    {messages.COMMON_ERROR_MESSAGE}
                 </div>
             )}
 
