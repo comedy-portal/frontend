@@ -47,9 +47,22 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
             const trimmedInputs = {
                 username: inputs.username.trim(),
             }
-            changeUsername(trimmedInputs)
-            router.replace(`/users/${trimmedInputs.username}/settings`)
-            router.refresh()
+            const response = await changeUsername(trimmedInputs).unwrap()
+
+            switch (response.status) {
+                case 'OK':
+                    router.replace(`/users/${trimmedInputs.username}/settings`)
+                    router.refresh()
+                    break
+
+                case 'USERNAME_ALREADY_EXISTS_ERROR':
+                    formik.setErrors({ username: 'Это имя пользователя уже занято' })
+                    break
+
+                default:
+                    toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
+                    break
+            }
         } catch {
             toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
         }
