@@ -9,9 +9,6 @@ export const metadata: Metadata = {
     },
 }
 
-type SearchParams = Promise<{ token: string }>
-
-export default async function VerifyEmailPage(props: { searchParams: SearchParams }) {
-    const searchParams = await props.searchParams
-    return <VerifyEmail token={searchParams.token} />
+export default async function VerifyEmailPage() {
+    return <VerifyEmail />
 }

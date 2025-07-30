@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
@@ -16,7 +14,6 @@ import { useToast } from '@/utils/providers/toast-provider'
 export const ChangeEmail = () => {
     const dialog = useDialog()
     const toast = useToast()
-    const [status, setStatus] = useState<string>()
 
     const [changeUserEmail, { isLoading }] = userAPI.useChangeUserEmailMutation()
 
