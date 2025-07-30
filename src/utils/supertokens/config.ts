@@ -1,3 +1,4 @@
+import EmailVerificationWebJs from 'supertokens-web-js/recipe/emailverification'
 import PasswordlessWebJs from 'supertokens-web-js/recipe/passwordless'
 import SessionWebJs from 'supertokens-web-js/recipe/session'
 import ThirdPartyWebJs from 'supertokens-web-js/recipe/thirdparty'
@@ -16,6 +17,7 @@ export const config = (): SuperTokensConfig => {
         recipeList: [
             ThirdPartyWebJs.init(),
             PasswordlessWebJs.init(),
+            EmailVerificationWebJs.init(),
             SessionWebJs.init({
                 override: {
                     functions: oI => {

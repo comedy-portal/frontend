@@ -1,5 +1,7 @@
 'use client'
 
+import { useState } from 'react'
+
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
@@ -7,15 +9,16 @@ import { Button } from '@/components/ui/forms/button'
 import { Input } from '@/components/ui/forms/input'
 import { messages } from '@/messages'
 import { userAPI } from '@/redux/services/user/user.api'
-import { RequestUserEmailChangeInputs } from '@/redux/services/user/user.types'
+import { ChangeUserEmailInputs } from '@/redux/services/user/user.types'
 import { useDialog } from '@/utils/providers/dialog-provider'
 import { useToast } from '@/utils/providers/toast-provider'
 
 export const ChangeEmail = () => {
     const dialog = useDialog()
     const toast = useToast()
+    const [status, setStatus] = useState<string>()
 
-    const [changeUserEmail, { isLoading }] = userAPI.useRequestUserEmailChangeMutation()
+    const [changeUserEmail, { isLoading }] = userAPI.useChangeUserEmailMutation()
 
     const initialValues = {
         newEmail: '',
@@ -31,21 +34,28 @@ export const ChangeEmail = () => {
             ),
     })
 
-    const handleSubmit = async (inputs: RequestUserEmailChangeInputs) => {
+    const handleSubmit = async (inputs: ChangeUserEmailInputs) => {
         try {
-            const response = await changeUserEmail({ newEmail: inputs.newEmail.trim() }).unwrap()
+            const trimmedInputs = {
+                newEmail: inputs.newEmail.trim(),
+            }
+            const response = await changeUserEmail(trimmedInputs).unwrap()
 
             switch (response.status) {
-                case 'EMAIL_ALREADY_EXISTS_ERROR':
-                    formik.setErrors({ newEmail: 'Этот адрес электронной почты уже используется.' })
-                    break
-
                 case 'OK':
                     toast.success(
                         'Изменение электронной почты',
                         'Проверьте свою почту для подтверждения нового адреса.',
                     )
                     dialog.close()
+                    break
+
+                case 'EMAIL_ALREADY_VERIFIED_ERROR':
+                    formik.setErrors({ newEmail: 'Почта уже подтверждена' })
+                    break
+
+                case 'EMAIL_ALREADY_EXISTS_ERROR':
+                    formik.setErrors({ newEmail: 'Вы не можете использовать эту почту' })
                     break
 
                 default:
