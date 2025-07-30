@@ -12,6 +12,7 @@ import { userAPI } from '@/redux/services/user/user.api'
 import { ChangeUserNameInputs } from '@/redux/services/user/user.types'
 import { useToast } from '@/utils/providers/toast-provider'
 
+import { UserSettingsBlockChangeEmail } from './components/user-settings-block-change-email'
 import { UserSettingsRequestPersonalData } from './components/user-settings-request-personal-data'
 
 type UserSettingsProps = {
@@ -85,7 +86,7 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
             </form>
 
             <div>
-                {/* <UserSettingsBlockChangeEmail /> */}
+                <UserSettingsBlockChangeEmail />
                 <UserSettingsRequestPersonalData />
 
                 {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">

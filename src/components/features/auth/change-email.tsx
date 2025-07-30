@@ -1,7 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
@@ -9,16 +7,15 @@ import { Button } from '@/components/ui/forms/button'
 import { Input } from '@/components/ui/forms/input'
 import { messages } from '@/messages'
 import { userAPI } from '@/redux/services/user/user.api'
-import { ChangeUserEmailInputs } from '@/redux/services/user/user.types'
+import { RequestUserEmailChangeInputs } from '@/redux/services/user/user.types'
 import { useDialog } from '@/utils/providers/dialog-provider'
 import { useToast } from '@/utils/providers/toast-provider'
 
 export const ChangeEmail = () => {
     const dialog = useDialog()
     const toast = useToast()
-    const [status, setStatus] = useState<string>()
 
-    const [changeUserEmail, { isLoading }] = userAPI.useChangeUserEmailMutation()
+    const [changeUserEmail, { isLoading }] = userAPI.useRequestUserEmailChangeMutation()
 
     const initialValues = {
         newEmail: '',
@@ -34,24 +31,21 @@ export const ChangeEmail = () => {
             ),
     })
 
-    const handleSubmit = async (inputs: ChangeUserEmailInputs) => {
+    const handleSubmit = async (inputs: RequestUserEmailChangeInputs) => {
         try {
-            const trimmedInputs = {
-                newEmail: inputs.newEmail.trim(),
-            }
-            const response = await changeUserEmail(trimmedInputs).unwrap()
+            const response = await changeUserEmail({ newEmail: inputs.newEmail.trim() }).unwrap()
 
             switch (response.status) {
-                case 'OK':
-                    setStatus('OK')
-                    break
-
-                case 'EMAIL_ALREADY_VERIFIED_ERROR':
-                    formik.setErrors({ newEmail: 'Почта уже подтверждена' })
-                    break
-
                 case 'EMAIL_ALREADY_EXISTS_ERROR':
-                    formik.setErrors({ newEmail: 'Вы не можете использовать эту почту' })
+                    formik.setErrors({ newEmail: 'Этот адрес электронной почты уже используется.' })
+                    break
+
+                case 'OK':
+                    toast.success(
+                        'Изменение электронной почты',
+                        'Проверьте свою почту для подтверждения нового адреса.',
+                    )
+                    dialog.close()
                     break
 
                 default:
@@ -70,20 +64,6 @@ export const ChangeEmail = () => {
         validationSchema,
         onSubmit: handleSubmit,
     })
-
-    if (status === 'OK') {
-        return (
-            <div className="sm:w-104">
-                <h1 className="mb-4 text-center text-lg font-semibold">Почти все готово!</h1>
-                <p className="mb-8 text-center">
-                    Проверьте свою почту и перейдите по ссылке, чтобы подтвердить новый адрес электронной почты.
-                </p>
-                <Button variant="outline" className="mb-4 w-full" onClick={() => dialog.close()}>
-                    Закрыть
-                </Button>
-            </div>
-        )
-    }
 
     return (
         <form className="sm:w-104" onSubmit={formik.handleSubmit}>
