@@ -82,7 +82,7 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
                     <div className="relative" ref={ref}>
                         <button
                             onClick={() => setIsMenuOpen(prev => !prev)}
-                            className="cursor-pointer text-gray-300 hover:text-white"
+                            className="cursor-pointer align-top text-gray-300 hover:text-white"
                         >
                             <CircleUserIcon />
                         </button>

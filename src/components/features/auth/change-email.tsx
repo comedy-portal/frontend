@@ -43,7 +43,11 @@ export const ChangeEmail = () => {
 
             switch (response.status) {
                 case 'OK':
-                    setStatus('OK')
+                    toast.success(
+                        'Изменение электронной почты',
+                        'Проверьте свою почту для подтверждения нового адреса.',
+                    )
+                    dialog.close()
                     break
 
                 case 'EMAIL_ALREADY_VERIFIED_ERROR':
@@ -70,20 +74,6 @@ export const ChangeEmail = () => {
         validationSchema,
         onSubmit: handleSubmit,
     })
-
-    if (status === 'OK') {
-        return (
-            <div className="sm:w-104">
-                <h1 className="mb-4 text-center text-lg font-semibold">Почти все готово!</h1>
-                <p className="mb-8 text-center">
-                    Проверьте свою почту и перейдите по ссылке, чтобы подтвердить новый адрес электронной почты.
-                </p>
-                <Button variant="outline" className="mb-4 w-full" onClick={() => dialog.close()}>
-                    Закрыть
-                </Button>
-            </div>
-        )
-    }
 
     return (
         <form className="sm:w-104" onSubmit={formik.handleSubmit}>
