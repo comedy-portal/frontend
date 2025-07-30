@@ -12,6 +12,7 @@ import { userAPI } from '@/redux/services/user/user.api'
 import { ChangeUserNameInputs } from '@/redux/services/user/user.types'
 import { useToast } from '@/utils/providers/toast-provider'
 
+import { UserSettingsBlockChangeEmail } from './components/user-settings-block-change-email'
 import { UserSettingsRequestPersonalData } from './components/user-settings-request-personal-data'
 
 type UserSettingsProps = {
@@ -46,9 +47,22 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
             const trimmedInputs = {
                 username: inputs.username.trim(),
             }
-            changeUsername(trimmedInputs)
-            router.replace(`/users/${trimmedInputs.username}/settings`)
-            router.refresh()
+            const response = await changeUsername(trimmedInputs).unwrap()
+
+            switch (response.status) {
+                case 'OK':
+                    router.replace(`/users/${trimmedInputs.username}/settings`)
+                    router.refresh()
+                    break
+
+                case 'USERNAME_ALREADY_EXISTS_ERROR':
+                    formik.setErrors({ username: 'Это имя пользователя уже занято' })
+                    break
+
+                default:
+                    toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
+                    break
+            }
         } catch {
             toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
         }
@@ -85,7 +99,7 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
             </form>
 
             <div>
-                {/* <UserSettingsBlockChangeEmail /> */}
+                <UserSettingsBlockChangeEmail />
                 <UserSettingsRequestPersonalData />
 
                 {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">

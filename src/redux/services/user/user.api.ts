@@ -1,10 +1,15 @@
 import { api } from '@/redux/services/api'
 
-import { ChangeUserEmailInputs, ChangeUserEmailResponse, ChangeUserNameInputs } from './user.types'
+import {
+    ChangeUserEmailInputs,
+    ChangeUserEmailResponse,
+    ChangeUserNameInputs,
+    ChangeUserNameInputsResponse,
+} from './user.types'
 
 export const userAPI = api.injectEndpoints({
     endpoints: build => ({
-        changeUsername: build.mutation<void, ChangeUserNameInputs>({
+        changeUsername: build.mutation<ChangeUserNameInputsResponse, ChangeUserNameInputs>({
             query: body => ({
                 url: 'user/username',
                 method: 'PATCH',
