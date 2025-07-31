@@ -12,11 +12,11 @@ import { userAPI } from '@/redux/services/user/user.api'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 import { useToast } from '@/utils/providers/toast-provider'
 
-type ConfirmUserRemovalProps = {
+type ConfirmUserDeletionProps = {
     token: string
 }
 
-export const ConfirmUserDeletion = ({ token }: ConfirmUserRemovalProps) => {
+export const ConfirmUserDeletion = ({ token }: ConfirmUserDeletionProps) => {
     const toast = useToast()
     const router = useRouter()
 
