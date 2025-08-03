@@ -55,6 +55,25 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
         }
     }
 
+    const renderError = () => {
+        if (status === 'RESTART_FLOW_ERROR') {
+            return <p>Произошла ошибка, попробуйте позже</p>
+        }
+        if (status === 'USER_DEACTIVATED') {
+            return (
+                <p>
+                    Ваша учетная запись деактивирована и&nbsp;находится в&nbsp;процессе удаления. Мы&nbsp;отправили вам
+                    инструкции по восстановлению вашей учётной записи. Обратите внимание, что время восстановления
+                    учётной записи ограничено.
+                </p>
+            )
+        }
+        if (status === 'SIGN_IN_UP_NOT_ALLOWED') {
+            return <p>Регистрация не разрешена</p>
+        }
+        return <p>Произошла ошибка, попробуйте позже</p>
+    }
+
     return (
         <form className="sm:w-104" onSubmit={handleSubmit}>
             <h1 className="mb-2 text-center text-lg font-semibold">Войти</h1>
@@ -62,9 +81,9 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
                 Для этого укажите только электронную почту, мы отправим на нее данные для входа
             </p>
 
-            {status && status !== 'OK' && (
+            {status !== 'OK' && (
                 <div className="mb-4 rounded-lg border border-red-100 bg-red-50 p-4 text-center text-sm text-red-500">
-                    {messages.COMMON_ERROR_MESSAGE}
+                    {status && renderError()}
                 </div>
             )}
 
