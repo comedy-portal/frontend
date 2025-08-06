@@ -1,4 +1,4 @@
-import { EllipsisVerticalIcon } from 'lucide-react'
+import { Edit3, EllipsisVerticalIcon, MoreVertical, Trash } from 'lucide-react'
 
 import Link from 'next/link'
 
@@ -6,6 +6,7 @@ import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
+import Dropdown from '../dropdown'
 import { ContentBlockDate } from './components/content-block-date'
 import { ContentBlockDuration } from './components/content-block-duration'
 import { ContentBlockRating } from './components/content-block-rating'
@@ -61,9 +62,29 @@ export const ContentBlock = (props: ContentBlockType) => {
 
                         {props.description && <div className="line-clamp-2 h-10 text-sm">{props.description}</div>}
                     </div>
-                    <div className="-mr-2 cursor-pointer p-1 text-gray-500 hover:text-gray-950">
+
+                    <Dropdown
+                        items={[
+                            {
+                                label: 'Редактировать',
+                                icon: <Edit3 size={16} />,
+                                onClick: () => alert('Редактировать'),
+                            },
+                            {
+                                label: 'Удалить',
+                                icon: <Trash size={16} />,
+                                onClick: () => alert('Удалить'),
+                            },
+                            {
+                                label: 'Открыть сайт',
+                                icon: <MoreVertical size={16} />,
+                                href: 'https://example.com',
+                            },
+                        ]}
+                        className="-mr-2 cursor-pointer border-red-500 p-1 text-gray-500 hover:text-gray-950"
+                    >
                         <EllipsisVerticalIcon size={16} />
-                    </div>
+                    </Dropdown>
                 </div>
 
                 <div className="mt-auto flex items-center justify-between gap-x-4">
