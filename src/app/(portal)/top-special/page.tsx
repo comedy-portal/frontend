@@ -12,5 +12,5 @@ export const metadata: Metadata = {
 }
 
 export default function TopSpecialPage() {
-    return <TopContent type={ContentType.SPECIAL} take={GetTopContentTake.FIFTY} />
+    return <TopContent type={ContentType.SPECIAL} take={GetTopContentTake.ONE_HUNDRED} />
 }
