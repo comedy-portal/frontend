@@ -1,9 +1,12 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { RefObject, useRef, useState } from 'react'
 
 import classNames from 'classnames'
-import { ChevronDown } from 'lucide-react'
+import { EllipsisVerticalIcon } from 'lucide-react'
+import { useOnClickOutside } from 'usehooks-ts'
+
+import Link from 'next/link'
 
 type DropdownItem = {
     label: string
@@ -13,65 +16,72 @@ type DropdownItem = {
 }
 
 type DropdownProps = {
-    children: React.ReactNode
     items: DropdownItem[]
     className?: string
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ children, items, className }) => {
+export const Dropdown = ({ items, className }: DropdownProps) => {
     const [open, setOpen] = useState(false)
     const ref = useRef<HTMLDivElement>(null)
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (ref.current && !ref.current.contains(event.target as Node)) {
-                setOpen(false)
-            }
-        }
-        document.addEventListener('mousedown', handleClickOutside)
-        return () => document.removeEventListener('mousedown', handleClickOutside)
-    }, [])
+    // TODO: Consider switching to a different package or waiting for a fix
+    // Issue: `useOnClickOutside` does not support a `null` ref
+    // More details: https://github.com/juliencrn/usehooks-ts/issues/663
+    useOnClickOutside(ref as RefObject<HTMLDivElement>, () => {
+        setOpen(false)
+    })
 
     return (
         <div className={classNames('relative', className)} ref={ref}>
-            <div onClick={() => setOpen(prev => !prev)}>{children}</div>
+            <div
+                className={classNames(
+                    'flex size-6 cursor-pointer items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-950',
+                    {
+                        'bg-gray-100 text-gray-950': open,
+                    },
+                )}
+                onClick={() => setOpen(prev => !prev)}
+            >
+                <EllipsisVerticalIcon size={16} />
+            </div>
 
             {open && (
-                <div className="ring-opacity-5 absolute right-0 z-20 mt-2 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black">
-                    <div className="py-1">
-                        {items.map((item, index) => {
-                            const content = (
-                                <div className="flex cursor-pointer items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                    {item.icon}
-                                    {item.label}
-                                </div>
-                            )
+                <div className="absolute top-full right-0 z-20 mt-1 w-48 overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+                    {items.map((item, index) => {
+                        const content = (
+                            <div className="flex cursor-pointer items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-950">
+                                {item.icon}
+                                {item.label}
+                            </div>
+                        )
 
-                            if (item.href) {
-                                return (
-                                    <a key={index} href={item.href} className="block" onClick={() => setOpen(false)}>
-                                        {content}
-                                    </a>
-                                )
-                            }
-
+                        if (item.href) {
                             return (
-                                <div
-                                    key={index}
-                                    onClick={() => {
-                                        item.onClick?.()
-                                        setOpen(false)
-                                    }}
+                                <Link
+                                    key={`dropdown-item-${index}`}
+                                    href={item.href}
+                                    className="block"
+                                    onClick={() => setOpen(false)}
                                 >
                                     {content}
-                                </div>
+                                </Link>
                             )
-                        })}
-                    </div>
+                        }
+
+                        return (
+                            <div
+                                key={`dropdown-item-${index}`}
+                                onClick={() => {
+                                    item.onClick?.()
+                                    setOpen(false)
+                                }}
+                            >
+                                {content}
+                            </div>
+                        )
+                    })}
                 </div>
             )}
         </div>
     )
 }
-
-export default Dropdown

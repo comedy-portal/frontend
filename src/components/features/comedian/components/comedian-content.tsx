@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 
-import { ContentBlockRow } from '@/components/ui/content-block/content-block-row'
+import { ContentBlockRow } from '@/components/features/common/content-block/content-block-row'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { ContentType } from '@/utils/enums/common'
 import { IImage, ILink, IRating } from '@/utils/types/common'

@@ -1,4 +1,4 @@
-import { ContentBlockSkeleton } from '@/components/ui/content-block/content-block-skeleton'
+import { ContentBlockSkeleton } from '@/components/features/common/content-block/content-block-skeleton'
 
 const BLOCK_QTY = 8
 

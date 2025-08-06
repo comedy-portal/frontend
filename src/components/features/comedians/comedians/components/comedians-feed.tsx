@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { ComedianBlock } from '@/components/ui/comedian-block/comedian-block'
+import { ComedianBlock } from '@/components/features/common/comedian-block/comedian-block'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { comediansAPI } from '@/redux/services/comedians/comedians.api'

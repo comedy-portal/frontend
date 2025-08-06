@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react'
 
-import { ContentBlock } from '@/components/ui/content-block/content-block'
+import { ContentBlock } from '@/components/features/common/content-block/content-block'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { contentAPI } from '@/redux/services/content/content.api'
@@ -15,9 +15,10 @@ import { ContentManyFeedSkeleton } from './content-many-feed-skeleton'
 
 type ContentManyFeedProps = {
     type?: ContentType
+    isAuth?: boolean
 }
 
-export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
+export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
     const [filters] = useSortFilters()
     const [cursor, setCursor] = useState<number>()
 
@@ -81,6 +82,8 @@ export const ContentManyFeed = ({ type }: ContentManyFeedProps) => {
                         myRating={item.reviews?.[0]?.mark}
                         imageUrl={item.contentImages[0]?.url}
                         author={getAuthorDisplayNameForContent(item)}
+                        isAuth={isAuth}
+                        isInWatchlist={(item.watchlists?.length ?? 0) > 0}
                     />
                 ))}
             </div>

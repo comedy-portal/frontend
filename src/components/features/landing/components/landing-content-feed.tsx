@@ -1,6 +1,6 @@
 'use client'
 
-import { ContentBlock } from '@/components/ui/content-block/content-block'
+import { ContentBlock } from '@/components/features/common/content-block/content-block'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { contentAPI } from '@/redux/services/content/content.api'
 import { ContentSortBy } from '@/redux/services/content/content.types'

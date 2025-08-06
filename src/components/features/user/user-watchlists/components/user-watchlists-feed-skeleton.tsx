@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 
-import { ContentBlockRowSkeleton } from '@/components/ui/content-block/content-block-row-skeleton'
+import { ContentBlockRowSkeleton } from '@/components/features/common/content-block/content-block-row-skeleton'
 
 const BLOCK_QTY = 3
 

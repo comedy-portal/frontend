@@ -1,23 +1,23 @@
 'use client'
 
-import { BookmarkIcon } from 'lucide-react'
+import { BookmarkIcon, HeartIcon } from 'lucide-react'
 
 import { useRouter } from 'next/navigation'
 
 import { SignUp } from '@/components/features/auth/sign-up'
-import { Button } from '@/components/ui/forms/button'
+import { Dropdown } from '@/components/ui/dropdown'
 import { messages } from '@/messages'
 import { watchlistsAPI } from '@/redux/services/watchlists/watchlists.api'
 import { useDialog } from '@/utils/providers/dialog-provider'
 import { useToast } from '@/utils/providers/toast-provider'
 
-type ContentAddToWatchListProps = {
+type ContentBlockActionsProps = {
     contentId: number
-    isAuth: boolean
-    isInWatchlist: boolean
+    isAuth?: boolean
+    isInWatchlist?: boolean
 }
 
-export const ContentAddToWatchList = ({ contentId, isAuth, isInWatchlist }: ContentAddToWatchListProps) => {
+export const ContentBlockActions = ({ contentId, isAuth, isInWatchlist }: ContentBlockActionsProps) => {
     const toast = useToast()
     const dialog = useDialog()
     const router = useRouter()
@@ -25,7 +25,7 @@ export const ContentAddToWatchList = ({ contentId, isAuth, isInWatchlist }: Cont
     const [addToWatchlist] = watchlistsAPI.useAddToWatchlistMutation()
     const [deleteFromWatchlist] = watchlistsAPI.useDeleteFromWatchlistMutation()
 
-    const toggle = async () => {
+    const toggleWatchlist = async () => {
         if (!isAuth) {
             dialog.open(<SignUp />)
             return
@@ -40,14 +40,20 @@ export const ContentAddToWatchList = ({ contentId, isAuth, isInWatchlist }: Cont
     }
 
     return (
-        <Button size="lg" variant="outline" className="flex items-center justify-center gap-x-2" onClick={toggle}>
-            <BookmarkIcon
-                size={24}
-                strokeWidth={1.5}
-                stroke="currentColor"
-                fill={isInWatchlist ? 'currentColor' : 'none'}
-            />
-            {isInWatchlist ? 'В списке просмотра' : 'Смотреть позже'}
-        </Button>
+        <Dropdown
+            items={[
+                {
+                    label: isInWatchlist ? 'В списке просмотра' : 'Смотреть позже',
+                    icon: <BookmarkIcon size={16} fill={isInWatchlist ? 'currentColor' : 'none'} />,
+                    onClick: toggleWatchlist,
+                },
+                {
+                    label: 'Оценить',
+                    icon: <HeartIcon size={16} />,
+                    onClick: () => alert('Оценить'),
+                },
+            ]}
+            className="-mr-2"
+        />
     )
 }

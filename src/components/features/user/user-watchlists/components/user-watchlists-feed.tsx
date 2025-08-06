@@ -4,7 +4,7 @@ import { useState } from 'react'
 
 import classNames from 'classnames'
 
-import { ContentBlockRow } from '@/components/ui/content-block/content-block-row'
+import { ContentBlockRow } from '@/components/features/common/content-block/content-block-row'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { watchlistsAPI } from '@/redux/services/watchlists/watchlists.api'

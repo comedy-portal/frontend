@@ -88,35 +88,29 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
                         </button>
 
                         {isMenuOpen && (
-                            <div className="absolute right-0 z-50 w-48 overflow-hidden rounded-lg bg-white shadow-md">
-                                <ul className="text-sm text-gray-700">
-                                    <li>
-                                        <Link
-                                            href={`/users/${username}`}
-                                            className="block px-4 py-2 hover:bg-gray-100 hover:text-gray-950"
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            Мой профиль
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            href={`/users/${username}/settings`}
-                                            className="block px-4 py-2 hover:bg-gray-100 hover:text-gray-950"
-                                            onClick={() => setIsMenuOpen(false)}
-                                        >
-                                            Настройки
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <button
-                                            onClick={handleSignOut}
-                                            className="w-full cursor-pointer px-4 py-2 text-left text-red-400 hover:bg-gray-100 hover:text-red-500"
-                                        >
-                                            Выйти
-                                        </button>
-                                    </li>
-                                </ul>
+                            <div className="absolute top-full right-0 z-20 mt-1 w-48 overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+                                <Link
+                                    href={`/users/${username}`}
+                                    className="flex cursor-pointer items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-950"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    Мой профиль
+                                </Link>
+
+                                <Link
+                                    href={`/users/${username}/settings`}
+                                    className="flex cursor-pointer items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-950"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    Настройки
+                                </Link>
+
+                                <div
+                                    onClick={handleSignOut}
+                                    className="flex cursor-pointer items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-950"
+                                >
+                                    Выйти
+                                </div>
                             </div>
                         )}
                     </div>

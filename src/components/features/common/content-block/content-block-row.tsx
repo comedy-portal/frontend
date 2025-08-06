@@ -2,10 +2,11 @@ import classNames from 'classnames'
 
 import Link from 'next/link'
 
+import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
-import { ImageWithFallback } from '../image-with-fallback'
+import { ContentBlockActions } from './components/content-block-actions'
 import { ContentBlockDate } from './components/content-block-date'
 import { ContentBlockDuration } from './components/content-block-duration'
 import { ContentBlockRating } from './components/content-block-rating'
@@ -27,6 +28,8 @@ type ContentBlockRowType = {
         name: string
         url: string
     }
+    isAuth?: boolean
+    isInWatchlist?: boolean
 }
 
 export const ContentBlockRow = (props: ContentBlockRowType) => {
@@ -55,33 +58,43 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                     'gap-y-4 rounded-tl-none rounded-tr-none rounded-br-lg rounded-bl-lg border-t-0 border-r border-b border-l p-4', // for smaller screens
                 )}
             >
-                <div>
-                    {props.author && props.type ? (
-                        <div className="text-sm text-gray-500">{props.author.name}</div>
-                    ) : null}
+                <div className="flex items-start justify-between gap-x-4">
+                    <div>
+                        {props.author && props.type ? (
+                            <div className="text-sm text-gray-500">{props.author.name}</div>
+                        ) : null}
 
-                    <Link
-                        href={props.contentUrl}
-                        className={classNames(
-                            'mb-1 line-clamp-1 max-h-7 font-bold', // common styles
-                            'lg:text-lg', // for larger screens
-                            'text-base', // for smaller screens
-                        )}
-                        target="_blank"
-                    >
-                        {`${props.position ? props.position + '. ' : ''} ${props.name}`}
-                    </Link>
-
-                    {props.description && (
-                        <div
-                            className={classNames('text-sm', {
-                                'line-clamp-3 h-15': !props.type || !props.author,
-                                'line-clamp-2 h-10': props.type && props.author,
-                            })}
+                        <Link
+                            href={props.contentUrl}
+                            className={classNames(
+                                'mb-1 line-clamp-1 max-h-7 font-bold', // common styles
+                                'lg:text-lg', // for larger screens
+                                'text-base', // for smaller screens
+                            )}
+                            target="_blank"
                         >
-                            {props.description}
-                        </div>
-                    )}
+                            {`${props.position ? props.position + '. ' : ''} ${props.name}`}
+                        </Link>
+
+                        {props.description && (
+                            <div
+                                className={classNames('text-sm', {
+                                    'line-clamp-3 h-15': !props.type || !props.author,
+                                    'line-clamp-2 h-10': props.type && props.author,
+                                })}
+                            >
+                                {props.description}
+                            </div>
+                        )}
+                    </div>
+
+                    <div className="block lg:hidden">
+                        <ContentBlockActions
+                            contentId={props.id}
+                            isAuth={props.isAuth}
+                            isInWatchlist={props.isInWatchlist}
+                        />
+                    </div>
                 </div>
 
                 <div className="flex items-center justify-between gap-x-4">
@@ -107,6 +120,13 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                     <div className="flex items-center gap-x-2">
                         {props.duration && <ContentBlockDuration duration={props.duration} />}
                         <ContentBlockDate year={props.year} />
+                        <div className="hidden lg:block">
+                            <ContentBlockActions
+                                contentId={props.id}
+                                isAuth={props.isAuth}
+                                isInWatchlist={props.isInWatchlist}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

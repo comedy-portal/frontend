@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { AlphaBanner } from '../alpha-banner/alpha-banner'
+import { AlphaBanner } from '@/components/features/layout/alpha-banner/alpha-banner'
 
 export const Footer = async () => {
     return (

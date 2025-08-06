@@ -5,6 +5,8 @@ import { notFound } from 'next/navigation'
 import { ContentMany } from '@/components/features/content-many/content-many'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
+import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
+import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
 
 type Params = Promise<{ slug: ContentType }>
 
@@ -19,11 +21,30 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 
 export default async function ContentManyBySlugPage(props: { params: Params }) {
     const params = await props.params
+    const { accessTokenPayload, hasToken } = await getSSRSessionHelper()
 
     // Check if the slug is included in the ContentType enum
     if (!Object.values(ContentType).includes(params.slug.toLocaleLowerCase() as ContentType)) {
         notFound()
     }
 
-    return <ContentMany slug={params.slug} />
+    if (!accessTokenPayload) {
+        if (!hasToken) {
+            /**
+             * This means that the user is not logged in. If you want to display some other UI in this
+             * case, you can do so here.
+             */
+            return <ContentMany slug={params.slug} isAuth={false} />
+        }
+
+        /**
+         * This means that the session does not exist but we have session tokens for the user. In this case
+         * the `TryRefreshComponent` will try to refresh the session.
+         *
+         * To learn about why the 'key' attribute is required refer to: https://github.com/supertokens/supertokens-node/issues/826#issuecomment-2092144048
+         */
+        return <TryRefreshComponent key={Date.now()} />
+    }
+
+    return <ContentMany slug={params.slug} isAuth={true} />
 }
