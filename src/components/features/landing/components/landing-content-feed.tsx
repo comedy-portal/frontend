@@ -13,6 +13,7 @@ type LandingContentFeedProps = {
     sortBy: ContentSortBy
     order: Order
     take: number
+    isAuth: boolean
 }
 
 export const LandingContentFeed = (props: LandingContentFeedProps) => {
@@ -58,6 +59,8 @@ export const LandingContentFeed = (props: LandingContentFeedProps) => {
                     myRating={item.reviews?.[0]?.mark}
                     imageUrl={item.contentImages[0]?.url}
                     author={getAuthorDisplayNameForContent(item)}
+                    isAuth={props.isAuth}
+                    isInWatchlist={(item.watchlists?.length ?? 0) > 0}
                 />
             ))}
         </div>

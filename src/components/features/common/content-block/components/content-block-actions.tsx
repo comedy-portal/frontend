@@ -13,7 +13,7 @@ import { useToast } from '@/utils/providers/toast-provider'
 
 type ContentBlockActionsProps = {
     contentId: number
-    isAuth?: boolean
+    isAuth: boolean
     isInWatchlist?: boolean
 }
 

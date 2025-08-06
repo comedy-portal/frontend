@@ -15,7 +15,7 @@ import { ContentManyFeedSkeleton } from './content-many-feed-skeleton'
 
 type ContentManyFeedProps = {
     type?: ContentType
-    isAuth?: boolean
+    isAuth: boolean
 }
 
 export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {

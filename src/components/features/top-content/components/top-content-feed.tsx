@@ -15,9 +15,10 @@ type TopContentFeedProps = {
     type: ContentType
     year?: number
     take: GetTopContentTake
+    isAuth: boolean
 }
 
-export const TopContentFeed = ({ type, year, take }: TopContentFeedProps) => {
+export const TopContentFeed = ({ type, year, take, isAuth }: TopContentFeedProps) => {
     const { data, isSuccess, isError } = contentAPI.useGetTopContentQuery({
         type,
         ...(year ? { year } : {}),
@@ -62,6 +63,8 @@ export const TopContentFeed = ({ type, year, take }: TopContentFeedProps) => {
                     imageUrl={item.contentImages[0]?.url}
                     position={index + 1}
                     author={getAuthorDisplayNameForContent(item)}
+                    isAuth={isAuth}
+                    isInWatchlist={(item.watchlists?.length ?? 0) > 0}
                 />
             ))}
         </div>

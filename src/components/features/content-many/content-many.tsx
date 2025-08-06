@@ -4,7 +4,7 @@ import { ContentManyFeed } from './components/content-many-feed'
 
 type ContentManyProps = {
     slug?: ContentType
-    isAuth?: boolean
+    isAuth: boolean
 }
 
 export const ContentMany = ({ slug, isAuth }: ContentManyProps) => {

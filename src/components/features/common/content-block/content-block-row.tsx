@@ -28,8 +28,8 @@ type ContentBlockRowType = {
         name: string
         url: string
     }
-    isAuth?: boolean
-    isInWatchlist?: boolean
+    isAuth: boolean
+    isInWatchlist: boolean
 }
 
 export const ContentBlockRow = (props: ContentBlockRowType) => {

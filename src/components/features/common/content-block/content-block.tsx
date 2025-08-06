@@ -24,8 +24,8 @@ type ContentBlockType = {
         name: string
         url: string
     }
-    isAuth?: boolean
-    isInWatchlist?: boolean
+    isAuth: boolean
+    isInWatchlist: boolean
 }
 
 export const ContentBlock = (props: ContentBlockType) => {

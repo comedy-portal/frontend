@@ -39,6 +39,7 @@ export const watchlistsAPI = api.injectEndpoints({
             invalidatesTags: (result, error, contentId) => [
                 { type: 'Watchlist', id: 'LIST' },
                 { type: 'Content', id: 'LIST' },
+                { type: 'Content', id: 'TOP' },
                 { type: 'Content', id: contentId },
             ],
         }),
@@ -51,6 +52,7 @@ export const watchlistsAPI = api.injectEndpoints({
             invalidatesTags: (result, error, contentId) => [
                 { type: 'Watchlist', id: 'LIST' },
                 { type: 'Content', id: 'LIST' },
+                { type: 'Content', id: 'TOP' },
                 { type: 'Content', id: contentId },
             ],
         }),
