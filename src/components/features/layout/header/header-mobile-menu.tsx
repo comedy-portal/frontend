@@ -17,7 +17,7 @@ import { HeaderSubmitContent } from './components/header-submit-content'
 type HeaderMobileMenuProps = {
     closeMobileMenu: () => void
     isAuth: boolean
-    username?: string
+    username: string | null
 }
 
 export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMobileMenuProps) => {
@@ -77,7 +77,7 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
             <hr className="border-gray-700" />
 
             <nav className="flex flex-col gap-y-4 text-sm text-gray-300">
-                {isAuth ? (
+                {isAuth && username ? (
                     <>
                         <Link
                             href={`/users/${username}`}

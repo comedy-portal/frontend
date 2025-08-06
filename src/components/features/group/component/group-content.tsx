@@ -48,6 +48,9 @@ export const GroupContent = ({ content }: GroupContentProps) => {
                     avgRating={item.rating.avgRating}
                     contentUrl={`/content/${item.type.toLowerCase()}/${item.id}`}
                     imageUrl={item.contentImages[0]?.url || ''}
+                    // todo: need implement
+                    isAuth={false}
+                    isInWatchlist={false}
                 />
             ))}
         </div>

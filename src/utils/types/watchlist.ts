@@ -29,5 +29,8 @@ export type IWatchlist = {
         }[]
         comedians: IComedianPreview[]
         group: IGroupPreview | null
+        watchlists?: {
+            createdAt: Date
+        }[]
     }
 }

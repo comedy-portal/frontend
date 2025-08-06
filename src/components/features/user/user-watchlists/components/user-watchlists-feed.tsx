@@ -14,9 +14,10 @@ import { UserWatchlistsFeedSkeleton } from './user-watchlists-feed-skeleton'
 
 type UserWatchlistsFeedProps = {
     username: string
+    isAuth: boolean
 }
 
-export const UserWatchlistsFeed = ({ username }: UserWatchlistsFeedProps) => {
+export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps) => {
     const [cursor, setCursor] = useState<number>()
 
     const { data, isFetching, isSuccess, isError } = watchlistsAPI.useGetWatchlistQuery({
@@ -65,6 +66,8 @@ export const UserWatchlistsFeed = ({ username }: UserWatchlistsFeedProps) => {
                             comedians: item.content.comedians,
                             group: item.content.group,
                         })}
+                        isAuth={isAuth}
+                        isInWatchlist={(item.content.watchlists?.length ?? 0) > 0}
                     />
                 ))}
             </div>

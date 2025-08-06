@@ -19,7 +19,7 @@ import { HeaderLogin } from './components/header-login'
 import { HeaderSubmitContent } from './components/header-submit-content'
 
 type HeaderDesktopProps = {
-    username?: string
+    username: string | null
     isAuth: boolean
 }
 
@@ -78,7 +78,7 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
 
             <div className="relative flex items-center justify-center gap-x-3 text-sm xl:gap-x-4">
                 <HeaderSubmitContent isAuth={isAuth} />
-                {isAuth ? (
+                {isAuth && username ? (
                     <div className="relative" ref={ref}>
                         <button
                             onClick={() => setIsMenuOpen(prev => !prev)}
