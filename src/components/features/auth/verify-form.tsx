@@ -98,6 +98,13 @@ export const VerifyForm = ({ email, status, isLoading, onVerifyOtp, onResendOtp,
         }
     }
 
+    const handleResendOtp = async () => {
+        setErrors({})
+        onResendOtp()
+        setOtpValues(Array(CODE_LENGTH).fill(''))
+        focusInput(0)
+    }
+
     return (
         <form className="sm:w-104" onSubmit={handleSubmit}>
             <h1 className="mb-2 text-center text-lg font-semibold">Код подтверждения</h1>
@@ -119,7 +126,7 @@ export const VerifyForm = ({ email, status, isLoading, onVerifyOtp, onResendOtp,
             <div className="mb-4">
                 <div className="mb-2 flex items-center justify-between">
                     <label className="block text-sm font-semibold text-gray-700">Код</label>
-                    <VerifyTimer onResendOtp={onResendOtp} />
+                    <VerifyTimer onResendOtp={handleResendOtp} />
                 </div>
 
                 <div className="flex items-center justify-between sm:gap-x-2">

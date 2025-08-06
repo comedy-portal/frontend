@@ -3,7 +3,7 @@ import { Metadata } from 'next/types'
 import { VerifyEmail } from '@/components/features/auth/verify-email'
 
 export const metadata: Metadata = {
-    title: 'Подтверждение электронной почты',
+    title: 'Подтверждение электронной почты - Comedy Portal',
     alternates: {
         canonical: 'auth/verify-email',
     },
