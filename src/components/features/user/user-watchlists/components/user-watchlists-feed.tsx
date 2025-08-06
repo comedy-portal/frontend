@@ -60,14 +60,16 @@ export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps
                         year={item.content.year}
                         duration={item.content.duration}
                         avgRating={item.content.rating.avgRating}
+                        myRating={item.content.reviews?.[0]?.mark}
+                        myReviewId={item.content.reviews?.[0]?.id}
                         contentUrl={`/content/${item.content.type.toLowerCase()}/${item.content.id}`}
                         imageUrl={item.content.contentImages[0]?.url}
                         author={getAuthorDisplayNameForContent({
                             comedians: item.content.comedians,
                             group: item.content.group,
                         })}
-                        isAuth={isAuth}
                         isInWatchlist={(item.content.watchlists?.length ?? 0) > 0}
+                        isAuth={isAuth}
                     />
                 ))}
             </div>
