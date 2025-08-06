@@ -1,3 +1,5 @@
+import { EllipsisVerticalIcon } from 'lucide-react'
+
 import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
@@ -27,7 +29,7 @@ type ContentBlockType = {
 
 export const ContentBlock = (props: ContentBlockType) => {
     return (
-        <div className="relative">
+        <div className="relative flex h-full flex-col">
             <Link href={`/content/${props.type.toLowerCase()}/${props.id}`} target="_blank">
                 <ContentBlockRating avgRating={props.avgRating} myRating={props.myRating} />
 
@@ -40,22 +42,31 @@ export const ContentBlock = (props: ContentBlockType) => {
                 />
             </Link>
 
-            <div className="flex flex-col gap-y-4 rounded-b-lg border-x border-b border-[#DFE2E6] p-4">
-                <div>
-                    {props.author && <div className="text-sm text-gray-500">{props.author.name}</div>}
+            <div className="flex flex-1 flex-col gap-y-4 rounded-b-lg border-x border-b border-[#DFE2E6] p-4">
+                <div className="flex items-start justify-between gap-x-4">
+                    <div>
+                        <Link
+                            href={`/content/${props.type.toLowerCase()}/${props.id}`}
+                            className="line-clamp-2 max-h-12 font-bold"
+                            target="_blank"
+                        >
+                            {props.name}
+                        </Link>
 
-                    <Link
-                        href={`/content/${props.type.toLowerCase()}/${props.id}`}
-                        className="line-clamp-2 h-12 font-bold"
-                        target="_blank"
-                    >
-                        {props.name}
-                    </Link>
+                        {props.author && (
+                            <Link href={props.author.url} className="text-sm text-gray-500 hover:text-gray-950">
+                                {props.author.name}
+                            </Link>
+                        )}
 
-                    {props.description && <div className="line-clamp-2 h-10 text-sm">{props.description}</div>}
+                        {props.description && <div className="line-clamp-2 h-10 text-sm">{props.description}</div>}
+                    </div>
+                    <div className="-mr-2 cursor-pointer p-1 text-gray-500 hover:text-gray-950">
+                        <EllipsisVerticalIcon size={16} />
+                    </div>
                 </div>
 
-                <div className="flex items-center justify-between gap-x-4">
+                <div className="mt-auto flex items-center justify-between gap-x-4">
                     <ContentBlockTag
                         link={`/content/${props.type.toLowerCase()}`}
                         title={categories.find(category => category.type === props.type.toLowerCase())?.label || ''}
