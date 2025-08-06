@@ -59,12 +59,13 @@ export const TopContentFeed = ({ type, year, take, isAuth }: TopContentFeedProps
                     duration={item.duration}
                     avgRating={item.rating.avgRating}
                     myRating={item.reviews?.[0]?.mark}
+                    myReviewId={item.reviews?.[0]?.id}
                     contentUrl={`/content/${item.type.toLowerCase()}/${item.id}`}
                     imageUrl={item.contentImages[0]?.url}
                     position={index + 1}
                     author={getAuthorDisplayNameForContent(item)}
-                    isAuth={isAuth}
                     isInWatchlist={(item.watchlists?.length ?? 0) > 0}
+                    isAuth={isAuth}
                 />
             ))}
         </div>

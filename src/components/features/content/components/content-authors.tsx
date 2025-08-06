@@ -1,10 +1,10 @@
 import Link from 'next/link'
 
-import { IComedianPreview, IGroupPreview } from '@/utils/types/common'
+import { IComedianBaseData, IGroupBaseData } from '@/utils/types/common'
 
 type ContentAuthorsProps = {
-    comedians: IComedianPreview[]
-    group: IGroupPreview | null
+    comedians: IComedianBaseData[]
+    group: IGroupBaseData | null
 }
 
 export const ContentAuthors = ({ comedians, group }: ContentAuthorsProps) => {

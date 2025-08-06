@@ -1,3 +1,5 @@
+'use client'
+
 import classNames from 'classnames'
 
 import { ContentBlockRow } from '@/components/features/common/content-block/content-block-row'
@@ -34,9 +36,10 @@ type ComedianContentProps = {
               }[]
           }[]
         | null
+    isAuth: boolean
 }
 
-export const ComedianContent = ({ content }: ComedianContentProps) => {
+export const ComedianContent = ({ content, isAuth }: ComedianContentProps) => {
     if (!content || content.length === 0) {
         return (
             <EmptyMessage>
@@ -59,11 +62,12 @@ export const ComedianContent = ({ content }: ComedianContentProps) => {
                     year={item.year}
                     duration={item.duration}
                     avgRating={item.rating.avgRating}
+                    myRating={item.reviews?.[0]?.mark}
+                    myReviewId={item.reviews?.[0]?.id}
                     contentUrl={`/content/${item.type.toLowerCase()}/${item.id}`}
                     imageUrl={item.contentImages[0]?.url || ''}
-                    // todo: need implement
-                    isAuth={false}
-                    isInWatchlist={false}
+                    isInWatchlist={(item.watchlists?.length ?? 0) > 0}
+                    isAuth={isAuth}
                 />
             ))}
         </div>

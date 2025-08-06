@@ -1,6 +1,6 @@
 import { ContentType } from '@/utils/enums/common'
 
-import { IComedianPreview, IGroupPreview, ILink } from './common'
+import { IComedianBaseData, IGroupBaseData, ILink } from './common'
 
 export type IWatchlist = {
     id: number
@@ -27,8 +27,8 @@ export type IWatchlist = {
             copyright: string
             isCover: boolean
         }[]
-        comedians: IComedianPreview[]
-        group: IGroupPreview | null
+        comedians: IComedianBaseData[]
+        group: IGroupBaseData | null
         watchlists?: {
             createdAt: Date
         }[]

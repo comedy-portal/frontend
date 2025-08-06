@@ -9,7 +9,7 @@ import { useTimeout } from '@/utils/hooks/use-timeout'
 type ToastProps = {
     variant: 'success' | 'error'
     title: string
-    message: string
+    message?: string
     onClose: () => void
 }
 
@@ -31,7 +31,7 @@ export const Toast = ({ variant, title, message, onClose }: ToastProps) => {
                 )}
                 <div className="space-y-1 text-sm">
                     <div className="font-bold">{title}</div>
-                    <div className="text-gray-500">{message}</div>
+                    {message && <div className="text-gray-500">{message}</div>}
                 </div>
             </div>
             <div className="absolute top-4 right-4 cursor-pointer text-gray-400 hover:text-gray-950" onClick={onClose}>

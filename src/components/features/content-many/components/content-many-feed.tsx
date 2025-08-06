@@ -80,10 +80,11 @@ export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
                         duration={item.duration}
                         avgRating={item.rating.avgRating}
                         myRating={item.reviews?.[0]?.mark}
+                        myReviewId={item.reviews?.[0]?.id}
                         imageUrl={item.contentImages[0]?.url}
                         author={getAuthorDisplayNameForContent(item)}
-                        isAuth={isAuth}
                         isInWatchlist={(item.watchlists?.length ?? 0) > 0}
+                        isAuth={isAuth}
                     />
                 ))}
             </div>

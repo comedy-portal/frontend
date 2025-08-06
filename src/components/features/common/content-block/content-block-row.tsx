@@ -18,18 +18,19 @@ type ContentBlockRowType = {
     description?: string | null
     type?: ContentType
     year: number
-    duration?: number | null
+    duration: number | null
     avgRating: number
     myRating?: number
+    myReviewId?: number
     contentUrl: string
-    imageUrl: string | null
+    imageUrl?: string
     position?: number
     author?: {
         name: string
         url: string
     }
-    isAuth: boolean
     isInWatchlist: boolean
+    isAuth: boolean
 }
 
 export const ContentBlockRow = (props: ContentBlockRowType) => {
@@ -91,6 +92,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                     <div className="block lg:hidden">
                         <ContentBlockActions
                             contentId={props.id}
+                            myReviewId={props.myReviewId}
                             isAuth={props.isAuth}
                             isInWatchlist={props.isInWatchlist}
                         />
@@ -123,6 +125,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                         <div className="hidden lg:block">
                             <ContentBlockActions
                                 contentId={props.id}
+                                myReviewId={props.myReviewId}
                                 isAuth={props.isAuth}
                                 isInWatchlist={props.isInWatchlist}
                             />

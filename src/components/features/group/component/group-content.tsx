@@ -1,3 +1,5 @@
+'use client'
+
 import classNames from 'classnames'
 
 import { ContentBlockRow } from '@/components/features/common/content-block/content-block-row'
@@ -6,24 +8,38 @@ import { ContentType } from '@/utils/enums/common'
 import { IImage, ILink, IRating } from '@/utils/types/common'
 
 type GroupContentProps = {
-    content: {
-        id: number
-        name: string
-        type: ContentType
-        year: number
-        month: number
-        duration?: number
-        rating: IRating
-        contentImages: IImage[]
-        metaInfo: {
-            description: string | null
-            facts: string[]
-            links: ILink[]
-        } | null
-    }[]
+    content:
+        | {
+              id: number
+              name: string
+              type: ContentType
+              year: number
+              month: number | null
+              duration: number | null
+              rating: IRating
+              contentImages: IImage[]
+              metaInfo: {
+                  description: string | null
+                  facts: string[]
+                  links: ILink[]
+              } | null
+              // own review for logged-in user only, 1 object in the array
+              reviews?: {
+                  id: number
+                  mark: number
+                  text?: string // not needed for "get content many"
+                  createdAt: Date
+              }[]
+              // own added to watchlist date for logged-in user only, 1 object in the array
+              watchlists?: {
+                  createdAt: Date
+              }[]
+          }[]
+        | null
+    isAuth: boolean
 }
 
-export const GroupContent = ({ content }: GroupContentProps) => {
+export const GroupContent = ({ content, isAuth }: GroupContentProps) => {
     if (!content || content.length === 0) {
         return (
             <EmptyMessage>
@@ -46,11 +62,12 @@ export const GroupContent = ({ content }: GroupContentProps) => {
                     year={item.year}
                     duration={item.duration}
                     avgRating={item.rating.avgRating}
+                    myRating={item.reviews?.[0]?.mark}
+                    myReviewId={item.reviews?.[0]?.id}
                     contentUrl={`/content/${item.type.toLowerCase()}/${item.id}`}
                     imageUrl={item.contentImages[0]?.url || ''}
-                    // todo: need implement
-                    isAuth={false}
-                    isInWatchlist={false}
+                    isInWatchlist={(item.watchlists?.length ?? 0) > 0}
+                    isAuth={isAuth}
                 />
             ))}
         </div>

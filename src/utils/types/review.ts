@@ -1,5 +1,5 @@
 import { ContentType } from '@/utils/enums/common'
-import { IComedianPreview, IGroupPreview, IImage } from '@/utils/types/common'
+import { IComedianBaseData, IGroupBaseData, IImage } from '@/utils/types/common'
 
 export type IReview = {
     id: number
@@ -10,8 +10,8 @@ export type IReview = {
         name: string
         year: number
         type: ContentType
-        comedians: IComedianPreview[]
-        group: IGroupPreview | null
+        comedians: IComedianBaseData[]
+        group: IGroupBaseData | null
         contentImages: IImage[]
     }
     user: {
