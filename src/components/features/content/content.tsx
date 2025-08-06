@@ -2,11 +2,11 @@
 
 import { CircleArrowLeftIcon } from 'lucide-react'
 
-import Image from 'next/image'
 import Link from 'next/link'
 
 import { DescriptionBlock } from '@/components/ui/description-block'
 import { GlobalLoading } from '@/components/ui/global-loading'
+import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LinksBlock } from '@/components/ui/links-block'
 import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
 import { Share } from '@/components/ui/share'
@@ -61,7 +61,7 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
 
             <div className="flex flex-col-reverse gap-12 sm:flex-row">
                 <div className="flex flex-1 flex-col gap-y-12">
-                    <Image
+                    <ImageWithFallback
                         src={data.contentImages[0].url}
                         width={500}
                         height={500}
