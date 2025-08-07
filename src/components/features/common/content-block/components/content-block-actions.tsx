@@ -14,13 +14,20 @@ import { useDialog } from '@/utils/providers/dialog-provider'
 import { useToast } from '@/utils/providers/toast-provider'
 
 type ContentBlockActionsProps = {
+    name: string
     contentId: number
     myReviewId?: number
     isInWatchlist?: boolean
     isAuth: boolean
 }
 
-export const ContentBlockActions = ({ contentId, myReviewId, isInWatchlist, isAuth }: ContentBlockActionsProps) => {
+export const ContentBlockActions = ({
+    name,
+    contentId,
+    myReviewId,
+    isInWatchlist,
+    isAuth,
+}: ContentBlockActionsProps) => {
     const toast = useToast()
     const dialog = useDialog()
     const router = useRouter()
@@ -37,11 +44,7 @@ export const ContentBlockActions = ({ contentId, myReviewId, isInWatchlist, isAu
         try {
             await (isInWatchlist ? deleteFromWatchlist(contentId) : addToWatchlist(contentId))
             router.refresh()
-            toast.success(
-                isInWatchlist
-                    ? 'Контент успешно удален из списка просмотра'
-                    : 'Контент успешно добавлен в список просмотра',
-            )
+            toast.success(name, isInWatchlist ? 'Удален из списка просмотра' : 'Добавлен в список просмотра')
         } catch {
             toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
         }

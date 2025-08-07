@@ -91,6 +91,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
 
                     <div className="block lg:hidden">
                         <ContentBlockActions
+                            name={props.name}
                             contentId={props.id}
                             myReviewId={props.myReviewId}
                             isAuth={props.isAuth}
@@ -124,6 +125,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                         <ContentBlockDate year={props.year} />
                         <div className="hidden lg:block">
                             <ContentBlockActions
+                                name={props.name}
                                 contentId={props.id}
                                 myReviewId={props.myReviewId}
                                 isAuth={props.isAuth}

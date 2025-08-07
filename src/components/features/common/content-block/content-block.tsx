@@ -65,6 +65,7 @@ export const ContentBlock = (props: ContentBlockType) => {
                     </div>
 
                     <ContentBlockActions
+                        name={props.name}
                         contentId={props.id}
                         myReviewId={props.myReviewId}
                         isAuth={props.isAuth}
