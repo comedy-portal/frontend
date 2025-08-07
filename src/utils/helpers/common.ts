@@ -1,6 +1,5 @@
 import { Platform } from '@/utils/enums/common'
-
-import { IComedianBaseData, IGroupBaseData } from '../types/common'
+import { IComedianBaseData, IGroupBaseData } from '@/utils/types/common'
 
 export function getMonthNameRu(monthNumber: number): string {
     if (monthNumber < 1 || monthNumber > 12) return ''

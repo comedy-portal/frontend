@@ -16,7 +16,11 @@ export type IWatchlist = {
             avgRating: number
             reviewsCount: number
         }
-        metaInfo?: any // ContentMetaInfo
+        metaInfo?: {
+            description: string | null
+            facts: string[]
+            links: ILink[]
+        } | null
         contentImages: {
             id: number
             url: string
