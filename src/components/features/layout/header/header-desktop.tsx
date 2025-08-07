@@ -98,6 +98,14 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
                                 </Link>
 
                                 <Link
+                                    href={`/users/${username}/watchlists`}
+                                    className="flex cursor-pointer items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-950"
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    Моё избранное
+                                </Link>
+
+                                <Link
                                     href={`/users/${username}/settings`}
                                     className="flex cursor-pointer items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-950"
                                     onClick={() => setIsMenuOpen(false)}

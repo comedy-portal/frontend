@@ -18,11 +18,8 @@ type UserWatchlistsFeedProps = {
 }
 
 export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps) => {
-    const [cursor, setCursor] = useState<number>()
-
     const { data, isFetching, isSuccess, isError } = watchlistsAPI.useGetWatchlistQuery({
         username,
-        cursor,
     })
 
     if (isError) {
@@ -33,7 +30,7 @@ export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps
         )
     }
 
-    if (isSuccess && data.items.length === 0) {
+    if (isSuccess && data.length === 0) {
         return (
             <EmptyMessage>
                 Здесь пока нет избранного.
@@ -48,40 +45,29 @@ export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps
     }
 
     return (
-        <div className="space-y-2">
-            <div className={classNames('lg:block lg:space-y-2', 'grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6')}>
-                {data.items.map(item => (
-                    <ContentBlockRow
-                        key={`user-watchlists-feed-item-${item.id}`}
-                        id={item.content.id}
-                        name={item.content.name}
-                        description={item.content.metaInfo?.description}
-                        type={item.content.type}
-                        year={item.content.year}
-                        duration={item.content.duration}
-                        avgRating={item.content.rating.avgRating}
-                        myRating={item.content.reviews?.[0]?.mark}
-                        myReviewId={item.content.reviews?.[0]?.id}
-                        contentUrl={`/content/${item.content.type.toLowerCase()}/${item.content.id}`}
-                        imageUrl={item.content.contentImages[0]?.url}
-                        author={getAuthorDisplayNameForContent({
-                            comedians: item.content.comedians,
-                            group: item.content.group,
-                        })}
-                        isInWatchlist={(item.content.watchlists?.length ?? 0) > 0}
-                        isAuth={isAuth}
-                    />
-                ))}
-            </div>
-
-            {data.items.length < data.total && (
-                <LoadMore
-                    isLoading={isFetching}
-                    onClick={() => {
-                        setCursor(data.items[data.items.length - 1]?.id)
-                    }}
+        <div className={classNames('lg:block lg:space-y-2', 'grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6')}>
+            {data.map(item => (
+                <ContentBlockRow
+                    key={`user-watchlists-feed-item-${item.id}`}
+                    id={item.content.id}
+                    name={item.content.name}
+                    description={item.content.metaInfo?.description}
+                    type={item.content.type}
+                    year={item.content.year}
+                    duration={item.content.duration}
+                    avgRating={item.content.rating.avgRating}
+                    myRating={item.content.reviews?.[0]?.mark}
+                    myReviewId={item.content.reviews?.[0]?.id}
+                    contentUrl={`/content/${item.content.type.toLowerCase()}/${item.content.id}`}
+                    imageUrl={item.content.contentImages[0]?.url}
+                    author={getAuthorDisplayNameForContent({
+                        comedians: item.content.comedians,
+                        group: item.content.group,
+                    })}
+                    isInWatchlist={(item.content.watchlists?.length ?? 0) > 0}
+                    isAuth={isAuth}
                 />
-            )}
+            ))}
         </div>
     )
 }
