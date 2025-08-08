@@ -27,7 +27,6 @@ export const watchlistsAPI = api.injectEndpoints({
                 { type: 'Content', id: contentId },
                 { type: 'Comedians' },
                 { type: 'Groups' },
-                { type: 'Watchlist', id: 'LIST' },
             ],
         }),
         deleteFromWatchlist: build.mutation<void, number>({
@@ -43,7 +42,6 @@ export const watchlistsAPI = api.injectEndpoints({
                 { type: 'Content', id: contentId },
                 { type: 'Comedians' },
                 { type: 'Groups' },
-                { type: 'Watchlist', id: 'LIST' },
             ],
         }),
     }),
