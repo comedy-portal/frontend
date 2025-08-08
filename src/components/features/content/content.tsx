@@ -10,6 +10,7 @@ import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LinksBlock } from '@/components/ui/links-block'
 import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
 import { Share } from '@/components/ui/share'
+import { messages } from '@/messages'
 import { contentAPI } from '@/redux/services/content/content.api'
 import { categories } from '@/utils/dict/categories'
 
@@ -37,7 +38,7 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
     }
 
     if (error) {
-        return <div>Error loading content</div>
+        return <div>{messages.COMMON_ERROR_MESSAGE}</div>
     }
 
     return (

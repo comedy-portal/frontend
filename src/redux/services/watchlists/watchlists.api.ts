@@ -8,26 +8,10 @@ export const watchlistsAPI = api.injectEndpoints({
             query: params => ({
                 url: 'watchlists',
                 method: 'GET',
-                params,
+                params: {
+                    username: params.username,
+                },
             }),
-            serializeQueryArgs: ({ endpointName }) => {
-                return endpointName
-            },
-            merge: (currentCache, newResponse, otherArgs) => {
-                if (otherArgs.arg.cursor === undefined) {
-                    return newResponse
-                }
-
-                if (currentCache) {
-                    return {
-                        ...newResponse,
-                        items: [...currentCache.items, ...newResponse.items],
-                    }
-                }
-            },
-            forceRefetch({ currentArg, previousArg }) {
-                return currentArg !== previousArg
-            },
             providesTags: () => [{ type: 'Watchlist', id: 'LIST' }],
         }),
         addToWatchlist: build.mutation<void, number>({
@@ -38,7 +22,11 @@ export const watchlistsAPI = api.injectEndpoints({
             }),
             invalidatesTags: (result, error, contentId) => [
                 { type: 'Watchlist', id: 'LIST' },
+                { type: 'Content', id: 'LIST' },
+                { type: 'Content', id: 'TOP' },
                 { type: 'Content', id: contentId },
+                { type: 'Comedians' },
+                { type: 'Groups' },
             ],
         }),
         deleteFromWatchlist: build.mutation<void, number>({
@@ -49,7 +37,11 @@ export const watchlistsAPI = api.injectEndpoints({
             }),
             invalidatesTags: (result, error, contentId) => [
                 { type: 'Watchlist', id: 'LIST' },
+                { type: 'Content', id: 'LIST' },
+                { type: 'Content', id: 'TOP' },
                 { type: 'Content', id: contentId },
+                { type: 'Comedians' },
+                { type: 'Groups' },
             ],
         }),
     }),

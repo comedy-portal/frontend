@@ -1,6 +1,6 @@
 import { api } from '@/redux/services/api'
 
-import { GetComediansParams, GetComediansResponse } from './comedians.types'
+import { GetComedianBySlugResponse, GetComediansParams, GetComediansResponse } from './comedians.types'
 
 export const comediansAPI = api.injectEndpoints({
     endpoints: build => ({
@@ -35,6 +35,13 @@ export const comediansAPI = api.injectEndpoints({
                 return JSON.stringify(currentArg) !== JSON.stringify(previousArg)
             },
             providesTags: () => [{ type: 'Comedians', id: 'LIST' }],
+        }),
+        getComedianBySlug: build.query<GetComedianBySlugResponse, string>({
+            query: slug => ({
+                url: `comedians/${slug}`,
+                method: 'GET',
+            }),
+            providesTags: (result, error, slug) => [{ type: 'Comedians', id: slug }],
         }),
     }),
     overrideExisting: false,

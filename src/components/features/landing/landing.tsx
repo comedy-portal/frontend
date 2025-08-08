@@ -7,7 +7,11 @@ import { LandingComediansFeed } from './components/landing-comedians-feed'
 import { LandingContentFeed } from './components/landing-content-feed'
 import { LandingHero } from './landing-hero'
 
-export const Landing = () => {
+type LandingProps = {
+    isAuth: boolean
+}
+
+export const Landing = ({ isAuth }: LandingProps) => {
     return (
         <div>
             <LandingHero />
@@ -25,7 +29,7 @@ export const Landing = () => {
                             </Link>
                         </div>
 
-                        <LandingContentFeed sortBy={ContentSortBy.DATE} order={Order.DESC} take={4} />
+                        <LandingContentFeed sortBy={ContentSortBy.DATE} order={Order.DESC} take={4} isAuth={isAuth} />
                     </section>
 
                     <section className="flex flex-col gap-y-6">
@@ -39,7 +43,7 @@ export const Landing = () => {
                             </Link>
                         </div>
 
-                        <LandingContentFeed sortBy={ContentSortBy.RATING} order={Order.DESC} take={4} />
+                        <LandingContentFeed sortBy={ContentSortBy.RATING} order={Order.DESC} take={4} isAuth={isAuth} />
                     </section>
 
                     <section className="flex flex-col gap-y-6">

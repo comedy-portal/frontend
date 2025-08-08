@@ -2,7 +2,7 @@
 
 import classNames from 'classnames'
 
-import { ContentBlockRow } from '@/components/ui/content-block/content-block-row'
+import { ContentBlockRow } from '@/components/features/common/content-block/content-block-row'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { contentAPI } from '@/redux/services/content/content.api'
 import { GetTopContentTake } from '@/redux/services/content/content.types'
@@ -15,9 +15,10 @@ type TopContentFeedProps = {
     type: ContentType
     year?: number
     take: GetTopContentTake
+    isAuth: boolean
 }
 
-export const TopContentFeed = ({ type, year, take }: TopContentFeedProps) => {
+export const TopContentFeed = ({ type, year, take, isAuth }: TopContentFeedProps) => {
     const { data, isSuccess, isError } = contentAPI.useGetTopContentQuery({
         type,
         ...(year ? { year } : {}),
@@ -58,10 +59,13 @@ export const TopContentFeed = ({ type, year, take }: TopContentFeedProps) => {
                     duration={item.duration}
                     avgRating={item.rating.avgRating}
                     myRating={item.reviews?.[0]?.mark}
+                    myReviewId={item.reviews?.[0]?.id}
                     contentUrl={`/content/${item.type.toLowerCase()}/${item.id}`}
                     imageUrl={item.contentImages[0]?.url}
                     position={index + 1}
                     author={getAuthorDisplayNameForContent(item)}
+                    isInWatchlist={(item.watchlists?.length ?? 0) > 0}
+                    isAuth={isAuth}
                 />
             ))}
         </div>

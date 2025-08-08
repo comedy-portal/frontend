@@ -8,12 +8,12 @@ interface ToastInterface {
     id: number
     variant: 'success' | 'error'
     title: string
-    message: string
+    message?: string
 }
 
 interface ToastContextInterface {
-    success: (title: string, message: string) => void
-    error: (title: string, message: string) => void
+    success: (title: string, message?: string) => void
+    error: (title: string, message?: string) => void
 }
 
 type ToastProviderProps = {
@@ -40,20 +40,19 @@ export function useToast(): ToastContextInterface {
 export const ToastProvider = ({ children }: ToastProviderProps) => {
     const [toasts, setToasts] = useState<ToastInterface[]>([])
 
-    const success = (title: string, message: string) => {
+    const success = (title: string, message?: string) => {
         const id = Date.now()
         const variant = 'success'
-        setToasts((currentToasts: ToastInterface[]) => [...currentToasts, { id, title, message, variant }])
+        setToasts(currentToasts => [...currentToasts, { id, title, message, variant }])
     }
 
-    const error = (title: string, message: string) => {
+    const error = (title: string, message?: string) => {
         const id = Date.now()
         const variant = 'error'
-        setToasts((currentToasts: ToastInterface[]) => [...currentToasts, { id, title, message, variant }])
+        setToasts(currentToasts => [...currentToasts, { id, title, message, variant }])
     }
 
-    const close = (id: number) =>
-        setToasts((currentToasts: ToastInterface[]) => currentToasts.filter((toast: ToastInterface) => toast.id !== id))
+    const close = (id: number) => setToasts(currentToasts => currentToasts.filter(toast => toast.id !== id))
 
     const contextValue = useMemo(() => ({ success, error }), [])
 
@@ -61,7 +60,7 @@ export const ToastProvider = ({ children }: ToastProviderProps) => {
         <ToastContext.Provider value={contextValue}>
             {children}
             <ToastContainer>
-                {toasts.map((toast: ToastInterface) => (
+                {toasts.map(toast => (
                     <Toast
                         key={`toast-${toast.id}`}
                         variant={toast.variant}

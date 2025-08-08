@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 
 import { ContentMany } from '@/components/features/content-many/content-many'
+import { withAuth } from '@/utils/hoc/with-auth'
 
 // prettier-ignore
 export const metadata: Metadata = {
@@ -8,5 +9,7 @@ export const metadata: Metadata = {
 }
 
 export default function ContentManyPage() {
-    return <ContentMany />
+    return withAuth({
+        render: ({ isAuth }) => <ContentMany isAuth={isAuth} />,
+    })
 }

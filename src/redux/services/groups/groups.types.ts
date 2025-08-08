@@ -14,3 +14,4 @@ export type GetGroupsParams = {
 }
 
 export type GetGroupsResponse = PaginatedResponse<IGroup>
+export type GetGroupsBySlugResponse = IGroup

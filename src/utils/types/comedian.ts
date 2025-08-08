@@ -1,5 +1,5 @@
 import { ContentType } from '@/utils/enums/common'
-import { IGroupPreview, IImage, ILink, IRating } from '@/utils/types/common'
+import { IGroupBaseData, IImage, ILink, IRating } from '@/utils/types/common'
 
 export type IComedian = {
     id: number
@@ -41,7 +41,7 @@ export type IComedian = {
               }[]
           }[]
         | null
-    groups: IGroupPreview[]
+    groups: IGroupBaseData[]
     comedianImages: IImage[]
     isAgent: boolean
     createdAt: string

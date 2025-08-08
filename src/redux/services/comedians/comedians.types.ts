@@ -18,3 +18,4 @@ export type GetComediansParams = {
 }
 
 export type GetComediansResponse = PaginatedResponse<IComedian>
+export type GetComedianBySlugResponse = IComedian

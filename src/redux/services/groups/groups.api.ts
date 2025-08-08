@@ -1,6 +1,6 @@
 import { api } from '@/redux/services/api'
 
-import { GetGroupsParams, GetGroupsResponse } from './groups.types'
+import { GetGroupsBySlugResponse, GetGroupsParams, GetGroupsResponse } from './groups.types'
 
 export const groupsAPI = api.injectEndpoints({
     endpoints: build => ({
@@ -29,6 +29,13 @@ export const groupsAPI = api.injectEndpoints({
                 return currentArg !== previousArg
             },
             providesTags: () => [{ type: 'Groups', id: 'LIST' }],
+        }),
+        getGroupsBySlug: build.query<GetGroupsBySlugResponse, string>({
+            query: slug => ({
+                url: `groups/${slug}`,
+                method: 'GET',
+            }),
+            providesTags: (result, error, slug) => [{ type: 'Groups', id: slug }],
         }),
     }),
     overrideExisting: false,

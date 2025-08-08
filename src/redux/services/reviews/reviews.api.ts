@@ -57,6 +57,9 @@ export const reviewsAPI = api.injectEndpoints({
                 { type: 'Content', id: 'LIST' },
                 { type: 'Content', id: 'TOP' },
                 { type: 'Content', id: body.contentId },
+                { type: 'Comedians' },
+                { type: 'Groups' },
+                { type: 'Watchlist', id: 'LIST' },
             ],
         }),
         updateReview: build.mutation<void, UpdateReviewInputs>({
@@ -71,6 +74,9 @@ export const reviewsAPI = api.injectEndpoints({
                 { type: 'Content', id: 'LIST' },
                 { type: 'Content', id: 'TOP' },
                 { type: 'Content', id: body.contentId },
+                { type: 'Comedians' },
+                { type: 'Groups' },
+                { type: 'Watchlist', id: 'LIST' },
             ],
         }),
         deleteReview: build.mutation<void, DeleteReviewParams>({
@@ -84,6 +90,9 @@ export const reviewsAPI = api.injectEndpoints({
                 { type: 'Content', id: 'LIST' },
                 { type: 'Content', id: 'TOP' },
                 { type: 'Content', id: params.contentId },
+                { type: 'Comedians' },
+                { type: 'Groups' },
+                { type: 'Watchlist', id: 'LIST' },
             ],
         }),
         createReviewComplaint: build.mutation<void, ReviewComplaintInputs>({

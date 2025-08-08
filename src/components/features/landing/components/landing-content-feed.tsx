@@ -1,6 +1,6 @@
 'use client'
 
-import { ContentBlock } from '@/components/ui/content-block/content-block'
+import { ContentBlock } from '@/components/features/common/content-block/content-block'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { contentAPI } from '@/redux/services/content/content.api'
 import { ContentSortBy } from '@/redux/services/content/content.types'
@@ -13,6 +13,7 @@ type LandingContentFeedProps = {
     sortBy: ContentSortBy
     order: Order
     take: number
+    isAuth: boolean
 }
 
 export const LandingContentFeed = (props: LandingContentFeedProps) => {
@@ -56,8 +57,11 @@ export const LandingContentFeed = (props: LandingContentFeedProps) => {
                     duration={item.duration}
                     avgRating={item.rating.avgRating}
                     myRating={item.reviews?.[0]?.mark}
+                    myReviewId={item.reviews?.[0]?.id}
                     imageUrl={item.contentImages[0]?.url}
                     author={getAuthorDisplayNameForContent(item)}
+                    isInWatchlist={(item.watchlists?.length ?? 0) > 0}
+                    isAuth={props.isAuth}
                 />
             ))}
         </div>

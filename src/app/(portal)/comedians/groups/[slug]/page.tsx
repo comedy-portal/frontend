@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 
 import { Group } from '@/components/features/group/group'
 import { getGroupsBySlug } from '@/services/groups/groups'
+import { withAuth } from '@/utils/hoc/with-auth'
 
 type Params = Promise<{ slug: string }>
 
@@ -31,6 +32,8 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 
 export default async function GroupPage(props: { params: Params }) {
     const params = await props.params
-    const group = await getGroupsBySlug(params.slug)
-    return <Group group={group} />
+
+    return withAuth({
+        render: ({ isAuth }) => <Group slug={params.slug} isAuth={isAuth} />,
+    })
 }

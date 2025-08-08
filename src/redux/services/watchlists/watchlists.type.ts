@@ -19,4 +19,4 @@ export type GetWatchlistParams = {
     cursor?: number
 }
 
-export type GetWatchlistResponse = PaginatedResponse<IWatchlist>
+export type GetWatchlistResponse = IWatchlist[]

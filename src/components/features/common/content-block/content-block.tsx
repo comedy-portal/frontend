@@ -15,19 +15,22 @@ type ContentBlockType = {
     description?: string | null
     type: ContentType
     year: number
-    duration?: number | null
+    duration: number | null
     avgRating: number
     myRating?: number
-    imageUrl: string | null
+    myReviewId?: number
+    imageUrl?: string
     author?: {
         name: string
         url: string
     }
+    isInWatchlist: boolean
+    isAuth: boolean
 }
 
 export const ContentBlock = (props: ContentBlockType) => {
     return (
-        <div className="relative">
+        <div className="relative flex h-full flex-col">
             <Link href={`/content/${props.type.toLowerCase()}/${props.id}`} target="_blank">
                 <ContentBlockRating avgRating={props.avgRating} myRating={props.myRating} />
 
@@ -35,27 +38,42 @@ export const ContentBlock = (props: ContentBlockType) => {
                     src={props.imageUrl || ''}
                     width={254}
                     height={160}
-                    className="aspect-video h-auto w-auto rounded-t-lg align-top"
+                    className="aspect-video h-auto w-full rounded-t-lg align-top"
                     alt={props.name}
                 />
             </Link>
 
-            <div className="flex flex-col gap-y-4 rounded-b-lg border-x border-b border-[#DFE2E6] p-4">
-                <div>
-                    {props.author && <div className="text-sm text-gray-500">{props.author.name}</div>}
+            <div className="flex flex-1 flex-col gap-y-4 rounded-b-lg border-x border-b border-[#DFE2E6] p-4">
+                <div className="flex items-start justify-between gap-x-4">
+                    <div>
+                        <Link
+                            href={`/content/${props.type.toLowerCase()}/${props.id}`}
+                            className="line-clamp-2 max-h-12 font-bold"
+                            target="_blank"
+                        >
+                            {props.name}
+                        </Link>
 
-                    <Link
-                        href={`/content/${props.type.toLowerCase()}/${props.id}`}
-                        className="line-clamp-2 h-12 font-bold"
-                        target="_blank"
-                    >
-                        {props.name}
-                    </Link>
+                        {props.author && (
+                            <Link href={props.author.url} className="text-sm text-gray-500 hover:text-gray-950">
+                                {props.author.name}
+                            </Link>
+                        )}
 
-                    {props.description && <div className="line-clamp-2 h-10 text-sm">{props.description}</div>}
+                        {props.description && <div className="line-clamp-2 h-10 text-sm">{props.description}</div>}
+                    </div>
+
+                    {/* todo: need to implement actions */}
+                    {/* <ContentBlockActions
+                        name={props.name}
+                        contentId={props.id}
+                        myReviewId={props.myReviewId}
+                        isAuth={props.isAuth}
+                        isInWatchlist={props.isInWatchlist}
+                    /> */}
                 </div>
 
-                <div className="flex items-center justify-between gap-x-4">
+                <div className="mt-auto flex items-center justify-between gap-x-4">
                     <ContentBlockTag
                         link={`/content/${props.type.toLowerCase()}`}
                         title={categories.find(category => category.type === props.type.toLowerCase())?.label || ''}

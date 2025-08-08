@@ -6,8 +6,10 @@ import { useRouter } from 'next/navigation'
 
 import { SignUp } from '@/components/features/auth/sign-up'
 import { Button } from '@/components/ui/forms/button'
+import { messages } from '@/messages'
 import { watchlistsAPI } from '@/redux/services/watchlists/watchlists.api'
 import { useDialog } from '@/utils/providers/dialog-provider'
+import { useToast } from '@/utils/providers/toast-provider'
 
 type ContentAddToWatchListProps = {
     contentId: number
@@ -16,8 +18,10 @@ type ContentAddToWatchListProps = {
 }
 
 export const ContentAddToWatchList = ({ contentId, isAuth, isInWatchlist }: ContentAddToWatchListProps) => {
-    const router = useRouter()
+    const toast = useToast()
     const dialog = useDialog()
+    const router = useRouter()
+
     const [addToWatchlist] = watchlistsAPI.useAddToWatchlistMutation()
     const [deleteFromWatchlist] = watchlistsAPI.useDeleteFromWatchlistMutation()
 
@@ -31,7 +35,7 @@ export const ContentAddToWatchList = ({ contentId, isAuth, isInWatchlist }: Cont
             await (isInWatchlist ? deleteFromWatchlist(contentId) : addToWatchlist(contentId))
             router.refresh()
         } catch {
-            alert('Ошибка при добавлении в список просмотра')
+            toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
         }
     }
 

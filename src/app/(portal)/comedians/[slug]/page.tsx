@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 
 import { Comedian } from '@/components/features/comedian/comedian'
 import { getComedianBySlug } from '@/services/comedians/comedians'
+import { withAuth } from '@/utils/hoc/with-auth'
 
 type Params = Promise<{ slug: string }>
 
@@ -31,6 +32,8 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 
 export default async function ComedianPage(props: { params: Params }) {
     const params = await props.params
-    const comedian = await getComedianBySlug(params.slug)
-    return <Comedian comedian={comedian} />
+
+    return withAuth({
+        render: ({ isAuth }) => <Comedian slug={params.slug} isAuth={isAuth} />,
+    })
 }

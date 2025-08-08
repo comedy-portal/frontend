@@ -22,7 +22,7 @@ export type IRating = {
     reviewsCount: number
 }
 
-export type IComedianPreview = {
+export type IComedianBaseData = {
     id: number
     name: string
     surname: string
@@ -30,7 +30,7 @@ export type IComedianPreview = {
     isAgent: boolean
 }
 
-export type IGroupPreview = {
+export type IGroupBaseData = {
     id: number
     name: string
     slug: string

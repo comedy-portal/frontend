@@ -1,4 +1,4 @@
-import { ComedianBlockSkeleton } from '@/components/ui/comedian-block/comedian-block-skeleton'
+import { ComedianBlockSkeleton } from '@/components/features/common/comedian-block/comedian-block-skeleton'
 
 const BLOCK_QTY = 5
 
