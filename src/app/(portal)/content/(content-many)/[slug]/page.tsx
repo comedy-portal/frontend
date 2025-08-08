@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation'
 import { ContentMany } from '@/components/features/content-many/content-many'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
+import { withAuth } from '@/utils/hoc/with-auth'
 
 type Params = Promise<{ slug: ContentType }>
 
@@ -25,5 +26,7 @@ export default async function ContentManyBySlugPage(props: { params: Params }) {
         notFound()
     }
 
-    return <ContentMany slug={params.slug} />
+    return withAuth({
+        render: ({ isAuth }) => <ContentMany slug={params.slug} isAuth={isAuth} />,
+    })
 }

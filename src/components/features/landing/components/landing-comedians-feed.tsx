@@ -1,6 +1,6 @@
 'use client'
 
-import { ComedianBlock } from '@/components/ui/comedian-block/comedian-block'
+import { ComedianBlock } from '@/components/features/common/comedian-block/comedian-block'
 import { comediansAPI } from '@/redux/services/comedians/comedians.api'
 import { ComedianSortBy } from '@/redux/services/comedians/comedians.types'
 import { Order } from '@/utils/enums/common'

@@ -3,8 +3,7 @@ import { Metadata } from 'next'
 import { Content } from '@/components/features/content/content'
 import { getContentById } from '@/services/content/content'
 import { getUserData } from '@/services/user/user'
-import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
-import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
+import { withAuth } from '@/utils/hoc/with-auth'
 
 type Params = Promise<{ id: number }>
 
@@ -34,27 +33,14 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 
 export default async function ContentPage(props: { params: Params }) {
     const params = await props.params
-    const { accessTokenPayload, hasToken } = await getSSRSessionHelper()
 
-    if (!accessTokenPayload) {
-        if (!hasToken) {
-            /**
-             * This means that the user is not logged in. If you want to display some other UI in this
-             * case, you can do so here.
-             */
-            return <Content contentId={params.id} activeUserId={null} isAuth={false} />
-        }
-
-        /**
-         * This means that the session does not exist but we have session tokens for the user. In this case
-         * the `TryRefreshComponent` will try to refresh the session.
-         *
-         * To learn about why the 'key' attribute is required refer to: https://github.com/supertokens/supertokens-node/issues/826#issuecomment-2092144048
-         */
-        return <TryRefreshComponent key={Date.now()} />
-    }
-
-    const activeUser = await getUserData()
-
-    return <Content contentId={params.id} activeUserId={activeUser.id} isAuth={true} />
+    return withAuth({
+        getAuthData: async () => {
+            const activeUser = await getUserData()
+            return { activeUserId: activeUser.id }
+        },
+        render: ({ isAuth, data }) => (
+            <Content contentId={params.id} activeUserId={data?.activeUserId ?? null} isAuth={isAuth} />
+        ),
+    })
 }

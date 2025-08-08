@@ -2,7 +2,7 @@ import { HeaderDesktop } from './header-desktop'
 import { HeaderMobile } from './header-mobile'
 
 type HeaderProps = {
-    username?: string
+    username: string | null
     isAuth: boolean
 }
 

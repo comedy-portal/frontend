@@ -1,20 +1,35 @@
+'use client'
+
 import { CircleArrowLeftIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
 import { DescriptionBlock } from '@/components/ui/description-block'
+import { GlobalLoading } from '@/components/ui/global-loading'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LinksBlock } from '@/components/ui/links-block'
 import { Share } from '@/components/ui/share'
-import { IGroup } from '@/utils/types/group'
+import { messages } from '@/messages'
+import { groupsAPI } from '@/redux/services/groups/groups.api'
 
 import { GroupContent } from './component/group-content'
 
 type GroupProps = {
-    group: IGroup
+    slug: string
+    isAuth: boolean
 }
 
-export const Group = ({ group }: GroupProps) => {
+export const Group = ({ slug, isAuth }: GroupProps) => {
+    const { data, isSuccess, error } = groupsAPI.useGetGroupsBySlugQuery(slug)
+
+    if (!isSuccess) {
+        return <GlobalLoading />
+    }
+
+    if (error) {
+        return <div>{messages.COMMON_ERROR_MESSAGE}</div>
+    }
+
     return (
         <div className="wrapper space-y-12 pt-12 pb-24">
             <div className="flex items-center justify-between">
@@ -24,9 +39,9 @@ export const Group = ({ group }: GroupProps) => {
                 </Link>
 
                 <Share
-                    title={group.name}
-                    text={group.metaInfo?.description}
-                    url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/comedians/groups/${group.slug}`}
+                    title={data.name}
+                    text={data.metaInfo?.description}
+                    url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/comedians/groups/${data.slug}`}
                 />
             </div>
 
@@ -34,31 +49,31 @@ export const Group = ({ group }: GroupProps) => {
                 <section className="flex-1 space-y-6 lg:space-y-0">
                     <h2 className="text-2xl font-bold lg:hidden">Все видео</h2>
                     <div className="flex flex-col gap-y-12">
-                        <GroupContent content={group.content} />
+                        <GroupContent content={data.content} isAuth={isAuth} />
                     </div>
                 </section>
 
                 <div className="flex shrink-0 flex-col md:flex-row md:gap-x-6 lg:w-[300px] lg:flex-col xl:w-[368px]">
                     <ImageWithFallback
-                        src={group.groupImages[0]?.url}
-                        alt={`${group.name}`}
+                        src={data.groupImages[0]?.url}
+                        alt={`${data.name}`}
                         width={100}
                         height={100}
                         className="mb-12 aspect-square w-full rounded-lg md:size-[300px] lg:size-auto"
                     />
 
                     <div className="flex flex-col gap-y-6">
-                        {group.metaInfo?.description && (
+                        {data.metaInfo?.description && (
                             <section className="space-y-6">
-                                <h1 className="text-4xl font-bold">{group.name}</h1>
-                                <DescriptionBlock text={group.metaInfo.description} limit={200} />
+                                <h1 className="text-4xl font-bold">{data.name}</h1>
+                                <DescriptionBlock text={data.metaInfo.description} limit={200} />
                             </section>
                         )}
 
                         <div className="flex flex-col gap-y-6 md:flex-row md:gap-x-12 lg:flex-col lg:gap-x-0">
                             <section className="space-y-2">
                                 <h3 className="font-bold">Участники</h3>
-                                {group.comedians.map(comedian => (
+                                {data.comedians.map(comedian => (
                                     <div key={`group-author-${comedian.id}`}>
                                         <Link
                                             href={`/comedians/${comedian.slug.toLowerCase()}`}
@@ -70,7 +85,7 @@ export const Group = ({ group }: GroupProps) => {
                                 ))}
                             </section>
 
-                            <LinksBlock caption="Ссылки" links={group.metaInfo?.links || []} />
+                            <LinksBlock caption="Ссылки" links={data.metaInfo?.links || []} />
                         </div>
                     </div>
                 </div>

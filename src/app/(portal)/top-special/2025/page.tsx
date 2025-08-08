@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import { TopContent } from '@/components/features/top-content/top-content'
 import { GetTopContentTake } from '@/redux/services/content/content.types'
 import { ContentType } from '@/utils/enums/common'
+import { withAuth } from '@/utils/hoc/with-auth'
 
 // prettier-ignore
 export const metadata: Metadata = {
@@ -11,6 +12,10 @@ export const metadata: Metadata = {
     keywords: ['стендап на русском 2025', 'топ стендап концертов', 'лучшие стендап концерты 2025', 'лучшие стендап концерты на русском 2025', 'стендап рейтинг 2025', 'лучшие русские стендап концерты 2025 года'],
 }
 
-export default function TopSpecial2025Page() {
-    return <TopContent type={ContentType.SPECIAL} year={2025} take={GetTopContentTake.FIFTY} />
+export default async function TopSpecial2025Page() {
+    return withAuth({
+        render: ({ isAuth }) => (
+            <TopContent type={ContentType.SPECIAL} year={2025} take={GetTopContentTake.FIFTY} isAuth={isAuth} />
+        ),
+    })
 }

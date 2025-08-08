@@ -1,20 +1,35 @@
+'use client'
+
 import { CircleArrowLeftIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
 import { DescriptionBlock } from '@/components/ui/description-block'
+import { GlobalLoading } from '@/components/ui/global-loading'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LinksBlock } from '@/components/ui/links-block'
 import { Share } from '@/components/ui/share'
-import { IComedian } from '@/utils/types/comedian'
+import { messages } from '@/messages'
+import { comediansAPI } from '@/redux/services/comedians/comedians.api'
 
 import { ComedianContent } from './components/comedian-content'
 
 type ComedianProps = {
-    comedian: IComedian
+    slug: string
+    isAuth: boolean
 }
 
-export const Comedian = ({ comedian }: ComedianProps) => {
+export const Comedian = ({ slug, isAuth }: ComedianProps) => {
+    const { data, isSuccess, error } = comediansAPI.useGetComedianBySlugQuery(slug)
+
+    if (!isSuccess) {
+        return <GlobalLoading />
+    }
+
+    if (error) {
+        return <div>{messages.COMMON_ERROR_MESSAGE}</div>
+    }
+
     return (
         <div className="wrapper space-y-12 pt-12 pb-24">
             <div className="flex items-center justify-between">
@@ -24,9 +39,9 @@ export const Comedian = ({ comedian }: ComedianProps) => {
                 </Link>
 
                 <Share
-                    title={`${comedian.name} ${comedian.surname}`}
-                    text={comedian.metaInfo?.description}
-                    url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/comedians/${comedian.slug}`}
+                    title={`${data.name} ${data.surname}`}
+                    text={data.metaInfo?.description}
+                    url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/comedians/${data.slug}`}
                 />
             </div>
 
@@ -34,33 +49,33 @@ export const Comedian = ({ comedian }: ComedianProps) => {
                 <section className="flex-1 space-y-6 lg:space-y-0">
                     <h2 className="text-2xl font-bold lg:hidden">Все видео</h2>
                     <div className="flex flex-col gap-y-12">
-                        <ComedianContent content={comedian.content} />
+                        <ComedianContent content={data.content} isAuth={isAuth} />
                     </div>
                 </section>
 
                 <div className="flex shrink-0 flex-col md:flex-row md:gap-x-6 lg:w-[300px] lg:flex-col xl:w-[368px]">
                     <ImageWithFallback
-                        src={`/images/comedians/${comedian.slug}.jpg`}
-                        alt={`${comedian.name}`}
+                        src={`/images/comedians/${data.slug}.jpg`}
+                        alt={`${data.name}`}
                         width={100}
                         height={100}
                         className="mb-12 aspect-square w-full rounded-lg md:size-[300px] lg:size-auto"
                     />
 
                     <div className="flex flex-col gap-y-6">
-                        {comedian.metaInfo?.description && (
+                        {data.metaInfo?.description && (
                             <section className="space-y-6">
                                 <h1 className="text-4xl font-bold">
-                                    {comedian.name} {comedian.surname}&nbsp;{comedian.isAgent ? '*' : ''}
+                                    {data.name} {data.surname}&nbsp;{data.isAgent ? '*' : ''}
                                 </h1>
-                                <DescriptionBlock text={comedian.metaInfo.description} limit={200} />
+                                <DescriptionBlock text={data.metaInfo.description} limit={200} />
                             </section>
                         )}
 
-                        {comedian.groups.length > 0 && (
+                        {data.groups.length > 0 && (
                             <section className="space-y-2">
                                 <h3 className="font-bold">Группы</h3>
-                                {comedian.groups.map(group => {
+                                {data.groups.map(group => {
                                     return (
                                         <div key={`comedian-group-${group.slug}`}>
                                             <Link
@@ -75,7 +90,7 @@ export const Comedian = ({ comedian }: ComedianProps) => {
                             </section>
                         )}
 
-                        <LinksBlock caption="Ссылки" links={comedian.metaInfo?.links || []} />
+                        <LinksBlock caption="Ссылки" links={data.metaInfo?.links || []} />
                     </div>
                 </div>
             </div>

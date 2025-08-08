@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 
 import { UserWatchlists } from '@/components/features/user/user-watchlists/user-watchlists'
+import { withAuth } from '@/utils/hoc/with-auth'
 
 type Params = Promise<{ username: string }>
 
@@ -14,5 +15,8 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 
 export default async function UserWatchListsPage(props: { params: Params }) {
     const params = await props.params
-    return <UserWatchlists username={params.username} />
+
+    return withAuth({
+        render: ({ isAuth }) => <UserWatchlists username={params.username} isAuth={isAuth} />,
+    })
 }

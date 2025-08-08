@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { ImageWithFallback } from '../image-with-fallback'
+import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 
 type ComedianBlockType = {
     slug: string

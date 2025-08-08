@@ -1,5 +1,5 @@
 import { Platform } from '@/utils/enums/common'
-import { IComedianPreview, IGroupPreview } from '@/utils/types/common'
+import { IComedianBaseData, IGroupBaseData } from '@/utils/types/common'
 
 export function getMonthNameRu(monthNumber: number): string {
     if (monthNumber < 1 || monthNumber > 12) return ''
@@ -15,8 +15,8 @@ export function getAuthorDisplayNameForContent({
     comedians,
     group,
 }: {
-    comedians: IComedianPreview[]
-    group: IGroupPreview | null
+    comedians: IComedianBaseData[]
+    group: IGroupBaseData | null
 }): { name: string; url: string } | undefined {
     if (group) {
         return {

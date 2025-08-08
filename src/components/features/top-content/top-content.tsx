@@ -7,8 +7,9 @@ type TopContentProps = {
     type: ContentType
     year?: number
     take: GetTopContentTake
+    isAuth: boolean
 }
 
-export const TopContent = ({ type, year, take }: TopContentProps) => {
-    return <TopContentFeed type={type} year={year} take={take} />
+export const TopContent = ({ type, year, take, isAuth }: TopContentProps) => {
+    return <TopContentFeed type={type} year={year} take={take} isAuth={isAuth} />
 }

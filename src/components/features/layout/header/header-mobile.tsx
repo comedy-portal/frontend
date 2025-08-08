@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { HeaderMobileMenu } from './header-mobile-menu'
 
 type HeaderMobileProps = {
-    username?: string
+    username: string | null
     isAuth: boolean
 }
 
