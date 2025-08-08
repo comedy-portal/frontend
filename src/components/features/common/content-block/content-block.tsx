@@ -38,7 +38,7 @@ export const ContentBlock = (props: ContentBlockType) => {
                     src={props.imageUrl || ''}
                     width={254}
                     height={160}
-                    className="aspect-video h-auto w-auto rounded-t-lg align-top"
+                    className="aspect-video h-auto w-full rounded-t-lg align-top"
                     alt={props.name}
                 />
             </Link>
