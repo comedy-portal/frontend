@@ -6,7 +6,6 @@ import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
-import { ContentBlockActions } from './components/content-block-actions'
 import { ContentBlockDate } from './components/content-block-date'
 import { ContentBlockDuration } from './components/content-block-duration'
 import { ContentBlockRating } from './components/content-block-rating'
@@ -89,7 +88,8 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                         )}
                     </div>
 
-                    <div className="block lg:hidden">
+                    {/* todo: need to implement actions */}
+                    {/* <div className="block lg:hidden">
                         <ContentBlockActions
                             name={props.name}
                             contentId={props.id}
@@ -97,7 +97,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                             isAuth={props.isAuth}
                             isInWatchlist={props.isInWatchlist}
                         />
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="flex items-center justify-between gap-x-4">
@@ -123,7 +123,9 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                     <div className="flex items-center gap-x-2">
                         {props.duration && <ContentBlockDuration duration={props.duration} />}
                         <ContentBlockDate year={props.year} />
-                        <div className="hidden lg:block">
+
+                        {/* todo: need to implement actions */}
+                        {/* <div className="hidden lg:block">
                             <ContentBlockActions
                                 name={props.name}
                                 contentId={props.id}
@@ -131,7 +133,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                                 isAuth={props.isAuth}
                                 isInWatchlist={props.isInWatchlist}
                             />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

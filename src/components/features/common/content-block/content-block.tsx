@@ -4,7 +4,6 @@ import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
-import { ContentBlockActions } from './components/content-block-actions'
 import { ContentBlockDate } from './components/content-block-date'
 import { ContentBlockDuration } from './components/content-block-duration'
 import { ContentBlockRating } from './components/content-block-rating'
@@ -64,13 +63,14 @@ export const ContentBlock = (props: ContentBlockType) => {
                         {props.description && <div className="line-clamp-2 h-10 text-sm">{props.description}</div>}
                     </div>
 
-                    <ContentBlockActions
+                    {/* todo: need to implement actions */}
+                    {/* <ContentBlockActions
                         name={props.name}
                         contentId={props.id}
                         myReviewId={props.myReviewId}
                         isAuth={props.isAuth}
                         isInWatchlist={props.isInWatchlist}
-                    />
+                    /> */}
                 </div>
 
                 <div className="mt-auto flex items-center justify-between gap-x-4">
