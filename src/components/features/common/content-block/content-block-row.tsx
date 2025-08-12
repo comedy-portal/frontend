@@ -45,7 +45,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                     className={classNames(
                         'aspect-video align-top', // common styles
                         'lg:h-[180px] lg:w-[288px] lg:rounded-none lg:rounded-l-lg', // for larger screens
-                        'h-auto w-auto rounded-t-lg', // for smaller screens
+                        'h-auto w-full rounded-t-lg', // for smaller screens
                     )}
                     alt={props.name}
                 />

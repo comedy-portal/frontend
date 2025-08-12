@@ -1,5 +1,6 @@
 'use client'
 
+import classNames from 'classnames'
 import { CircleArrowLeftIcon } from 'lucide-react'
 
 import Link from 'next/link'
@@ -12,7 +13,9 @@ import { Share } from '@/components/ui/share'
 import { messages } from '@/messages'
 import { comediansAPI } from '@/redux/services/comedians/comedians.api'
 
+import { ContentFacts } from '../content/components/content-facts'
 import { ComedianContent } from './components/comedian-content'
+import { ComedianFacts } from './components/comedian-facts'
 
 type ComedianProps = {
     slug: string
@@ -46,20 +49,35 @@ export const Comedian = ({ slug, isAuth }: ComedianProps) => {
             </div>
 
             <div className="flex flex-col-reverse gap-12 lg:flex-row">
-                <section className="flex-1 space-y-6 lg:space-y-0">
-                    <h2 className="text-2xl font-bold lg:hidden">Все видео</h2>
-                    <div className="flex flex-col gap-y-12">
-                        <ComedianContent content={data.content} isAuth={isAuth} />
-                    </div>
-                </section>
+                <div className="flex flex-1 flex-col gap-y-12">
+                    {data.metaInfo?.facts && data.metaInfo.facts.length > 0 && (
+                        <section className="space-y-6">
+                            <h2 className="text-2xl font-bold">Факты</h2>
+                            <ComedianFacts facts={data.metaInfo.facts} />
+                        </section>
+                    )}
 
-                <div className="flex shrink-0 flex-col md:flex-row md:gap-x-6 lg:w-[300px] lg:flex-col xl:w-[368px]">
+                    <section className="flex-1 space-y-6">
+                        <h2
+                            className={classNames('text-2xl font-bold', {
+                                'block lg:hidden': !data.metaInfo?.facts || data.metaInfo.facts.length === 0,
+                            })}
+                        >
+                            Все видео
+                        </h2>
+                        <div className="flex flex-col gap-y-12">
+                            <ComedianContent content={data.content} isAuth={isAuth} />
+                        </div>
+                    </section>
+                </div>
+
+                <div className="flex shrink-0 flex-col gap-y-12 md:flex-row md:gap-x-6 lg:w-[300px] lg:flex-col xl:w-[368px]">
                     <ImageWithFallback
                         src={`/images/comedians/${data.slug}.jpg`}
                         alt={`${data.name}`}
                         width={100}
                         height={100}
-                        className="mb-12 aspect-square w-full rounded-lg md:size-[300px] lg:size-auto"
+                        className="aspect-square w-full rounded-lg md:size-[300px] lg:size-auto"
                     />
 
                     <div className="flex flex-col gap-y-6">
