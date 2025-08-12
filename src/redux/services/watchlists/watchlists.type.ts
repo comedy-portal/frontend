@@ -1,5 +1,4 @@
 import { ContentType, Order } from '@/utils/enums/common'
-import { PaginatedResponse } from '@/utils/types/common'
 import { IWatchlist } from '@/utils/types/watchlist'
 
 export enum WatchlistSortBy {

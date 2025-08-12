@@ -1,12 +1,9 @@
 'use client'
 
-import { useState } from 'react'
-
 import classNames from 'classnames'
 
 import { ContentBlockRow } from '@/components/features/common/content-block/content-block-row'
 import { EmptyMessage } from '@/components/ui/empty-message'
-import { LoadMore } from '@/components/ui/load-more'
 import { watchlistsAPI } from '@/redux/services/watchlists/watchlists.api'
 import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
 

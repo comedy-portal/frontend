@@ -13,7 +13,6 @@ import { Share } from '@/components/ui/share'
 import { messages } from '@/messages'
 import { comediansAPI } from '@/redux/services/comedians/comedians.api'
 
-import { ContentFacts } from '../content/components/content-facts'
 import { ComedianContent } from './components/comedian-content'
 import { ComedianFacts } from './components/comedian-facts'
 
