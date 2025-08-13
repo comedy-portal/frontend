@@ -1,6 +1,6 @@
 'use client'
 
-import { MessageCircleCodeIcon } from 'lucide-react'
+import { StarIcon } from 'lucide-react'
 
 import { SignUp } from '@/components/features/auth/sign-up'
 import { ReviewCreate } from '@/components/features/dialogs/reviews-form/review-create'
@@ -46,7 +46,7 @@ export const ContentReviewButton = ({ contentId, review, isAuth }: ContentReview
                 className="flex items-center justify-center gap-x-2"
                 onClick={() => handleUpdateClick(review.id)}
             >
-                <MessageCircleCodeIcon size={24} /> Оставить рецензию
+                <StarIcon size={24} /> Оставить рецензию
             </Button>
         )
     }
@@ -58,14 +58,14 @@ export const ContentReviewButton = ({ contentId, review, isAuth }: ContentReview
                 className="flex items-center justify-center gap-x-2"
                 onClick={() => handleUpdateClick(review.id)}
             >
-                <MessageCircleCodeIcon size={24} /> Изменить рецензию
+                <StarIcon size={24} /> Изменить рецензию
             </Button>
         )
     }
 
     return (
         <Button size="lg" className="flex items-center justify-center gap-x-2" onClick={handleCreateClick}>
-            <MessageCircleCodeIcon size={24} /> Оставить рецензию
+            <StarIcon size={24} /> Оставить рецензию
         </Button>
     )
 }

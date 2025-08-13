@@ -1,6 +1,6 @@
 'use client'
 
-import { BookmarkIcon, ChevronRightIcon, HeartIcon, LogOutIcon, SettingsIcon } from 'lucide-react'
+import { BookmarkIcon, ChevronRightIcon, LogOutIcon, SettingsIcon, StarIcon } from 'lucide-react'
 import Session from 'supertokens-web-js/recipe/session'
 import { useScrollLock } from 'usehooks-ts'
 
@@ -84,9 +84,9 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
                             className="flex items-center justify-between"
                             onClick={closeMobileMenu}
                         >
-                            Оценки
+                            Оценки и рецензии
                             <div className="text-gray-700">
-                                <HeartIcon size={20} />
+                                <StarIcon size={20} />
                             </div>
                         </Link>
                         <Link

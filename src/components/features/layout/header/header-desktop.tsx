@@ -2,7 +2,7 @@
 
 import { RefObject, useRef, useState } from 'react'
 
-import { BookmarkIcon, CircleUserIcon, HeartIcon, LogOutIcon, MicIcon, SettingsIcon } from 'lucide-react'
+import { BookmarkIcon, CircleUserIcon, LogOutIcon, MicIcon, SettingsIcon, StarIcon } from 'lucide-react'
 import Session from 'supertokens-web-js/recipe/session'
 import { useOnClickOutside } from 'usehooks-ts'
 
@@ -100,8 +100,8 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
                                         className="flex cursor-pointer items-center gap-2 px-4 text-sm text-gray-600 hover:text-gray-950"
                                         onClick={() => setIsMenuOpen(false)}
                                     >
-                                        <HeartIcon size={20} />
-                                        Оценки
+                                        <StarIcon size={20} />
+                                        Оценки и рецензии
                                     </Link>
 
                                     <Link
