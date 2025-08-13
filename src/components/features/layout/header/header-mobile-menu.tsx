@@ -116,15 +116,16 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
 
                 <HeaderSubmitContent isAuth={isAuth} onClick={closeMobileMenu} />
 
-                <hr className="border-gray-700" />
-
                 {isAuth && (
-                    <button onClick={handleSignOut} className="flex items-center justify-between">
-                        Выйти
-                        <div className="text-gray-700">
-                            <LogOutIcon size={20} />
-                        </div>
-                    </button>
+                    <>
+                        <hr className="border-gray-700" />
+                        <button onClick={handleSignOut} className="flex items-center justify-between">
+                            Выйти
+                            <div className="text-gray-700">
+                                <LogOutIcon size={20} />
+                            </div>
+                        </button>
+                    </>
                 )}
             </nav>
         </div>
