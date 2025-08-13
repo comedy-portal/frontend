@@ -29,7 +29,9 @@ export const ContentManyFilter = () => {
                 <FunnelIcon />
             </div>
 
-            {hasActiveFilters && <span className="absolute top-0 right-0 size-4 rounded-full bg-red-400" />}
+            {hasActiveFilters && (
+                <span className="absolute -top-1 -right-1 size-4 rounded-full border-2 border-white bg-red-400" />
+            )}
         </div>
     )
 }

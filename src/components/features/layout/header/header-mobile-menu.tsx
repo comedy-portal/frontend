@@ -1,6 +1,6 @@
 'use client'
 
-import { ChevronRightIcon, CircleUserRoundIcon, HeartIcon, LogOutIcon, SettingsIcon } from 'lucide-react'
+import { BookmarkIcon, ChevronRightIcon, HeartIcon, LogOutIcon, SettingsIcon } from 'lucide-react'
 import Session from 'supertokens-web-js/recipe/session'
 import { useScrollLock } from 'usehooks-ts'
 
@@ -84,9 +84,9 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
                             className="flex items-center justify-between"
                             onClick={closeMobileMenu}
                         >
-                            Мой профиль
+                            Оценки
                             <div className="text-gray-700">
-                                <CircleUserRoundIcon size={20} />
+                                <HeartIcon size={20} />
                             </div>
                         </Link>
                         <Link
@@ -94,9 +94,9 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
                             className="flex items-center justify-between"
                             onClick={closeMobileMenu}
                         >
-                            Моё избранное
+                            Избранное
                             <div className="text-gray-700">
-                                <HeartIcon size={20} />
+                                <BookmarkIcon size={20} />
                             </div>
                         </Link>
                         <Link
@@ -115,6 +115,8 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
                 )}
 
                 <HeaderSubmitContent isAuth={isAuth} onClick={closeMobileMenu} />
+
+                <hr className="border-gray-700" />
 
                 {isAuth && (
                     <button onClick={handleSignOut} className="flex items-center justify-between">
