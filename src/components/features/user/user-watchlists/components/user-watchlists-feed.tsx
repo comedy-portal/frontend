@@ -1,10 +1,20 @@
 'use client'
 
+import { useMemo } from 'react'
+
 import classNames from 'classnames'
 
 import { ContentBlockRow } from '@/components/features/common/content-block/content-block-row'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { watchlistsAPI } from '@/redux/services/watchlists/watchlists.api'
+import { WatchlistSortBy } from '@/redux/services/watchlists/watchlists.type'
+import { Order } from '@/utils/enums/common'
+import { useQueryFilters } from '@/utils/filters/use-query-filters'
+import {
+    WatchlistsUrlSortBy,
+    buildWatchlistsFiltersQueryString,
+    parseWatchlistsFiltersFromSearchParams,
+} from '@/utils/filters/watchlists-filters'
 import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
 
 import { UserWatchlistsFeedSkeleton } from './user-watchlists-feed-skeleton'
@@ -15,8 +25,27 @@ type UserWatchlistsFeedProps = {
 }
 
 export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps) => {
+    const [filters] = useQueryFilters(parseWatchlistsFiltersFromSearchParams, buildWatchlistsFiltersQueryString)
+
+    const { sortBy, order } = useMemo(() => {
+        switch (filters.sort) {
+            case WatchlistsUrlSortBy.DATE_DESC:
+                return { sortBy: WatchlistSortBy.CONTENT_DATE, order: Order.DESC }
+            case WatchlistsUrlSortBy.SAVED_AT_DESC:
+                return { sortBy: WatchlistSortBy.SAVED_AT, order: Order.DESC }
+            case WatchlistsUrlSortBy.RATING_DESC:
+                return { sortBy: WatchlistSortBy.RATING, order: Order.DESC }
+            default:
+                return { sortBy: WatchlistSortBy.CONTENT_DATE, order: Order.DESC }
+        }
+    }, [filters.sort])
+
     const { data, isFetching, isSuccess, isError } = watchlistsAPI.useGetWatchlistQuery({
         username,
+        order,
+        sort_by: sortBy,
+        min_rating: filters.min_rating,
+        max_rating: filters.max_rating,
     })
 
     if (isError) {

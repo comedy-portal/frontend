@@ -1,3 +1,4 @@
+import { WatchlistFiltersButton } from '@/components/features/dialogs/filters/watchlists-filters/watchlists-filters-button'
 import { Layout } from '@/components/features/layout/layout/layout'
 
 type Params = Promise<{ username: string }>
@@ -11,8 +12,12 @@ export default async function UsersLayout(props: { children: React.ReactNode; pa
             size="sm"
             nav={[
                 { label: 'Оценки', href: `/users/${params.username}` },
-                { label: 'Избранное', href: `/users/${params.username}/watchlists` },
+                {
+                    label: 'Избранное',
+                    href: `/users/${params.username}/watchlists`,
+                },
             ]}
+            filter={<WatchlistFiltersButton />}
         >
             {props.children}
         </Layout>
