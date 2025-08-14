@@ -7,9 +7,14 @@ import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { contentAPI } from '@/redux/services/content/content.api'
 import { ContentSortBy } from '@/redux/services/content/content.types'
-import { ContentType, ContentUrlSortBy, Order } from '@/utils/enums/common'
+import { ContentType, Order } from '@/utils/enums/common'
+import {
+    ContentUrlSortBy,
+    buildContentFiltersQueryString,
+    parseContentFiltersFromSearchParams,
+} from '@/utils/filters/content-filters'
+import { useQueryFilters } from '@/utils/filters/use-query-filters'
 import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
-import { useSortFilters } from '@/utils/helpers/use-sort-filters'
 
 import { ContentManyFeedSkeleton } from './content-many-feed-skeleton'
 
@@ -19,7 +24,7 @@ type ContentManyFeedProps = {
 }
 
 export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
-    const [filters] = useSortFilters()
+    const [filters] = useQueryFilters(parseContentFiltersFromSearchParams, buildContentFiltersQueryString)
     const [cursor, setCursor] = useState<number>()
 
     const { sortBy, order } = useMemo(() => {
