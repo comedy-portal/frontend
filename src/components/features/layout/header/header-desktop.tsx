@@ -114,7 +114,7 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
                                     </Link>
 
                                     <Link
-                                        href={`/users/${username}/settings`}
+                                        href={`/me/settings`}
                                         className="flex cursor-pointer items-center gap-2 px-4 text-sm text-gray-600 hover:text-gray-950"
                                         onClick={() => setIsMenuOpen(false)}
                                     >

@@ -15,20 +15,18 @@ type LayoutNavProps = {
         href: string
         exact?: boolean
     }[]
+    preserveQueryParams?: boolean
 }
 
-export const LayoutNav = ({ items }: LayoutNavProps) => {
+export const LayoutNav = ({ items, preserveQueryParams }: LayoutNavProps) => {
     const pathname = usePathname().toLowerCase()
     const searchParams = useSearchParams()
 
-    // Function to get the first segment of the path
     const getFirstSegment = (path: string) => path.split('/').filter(Boolean)[0] || ''
+    const getLastSegment = (path: string) => path.split('/').filter(Boolean).pop()
 
-    // Current root path and query parameters
     const currentRoot = getFirstSegment(pathname)
     const currentQuery = searchParams.toString()
-
-    const getLastSegment = (path: string) => path.split('/').filter(Boolean).pop()
 
     return (
         <nav>
@@ -43,7 +41,10 @@ export const LayoutNav = ({ items }: LayoutNavProps) => {
                     const targetRoot = getFirstSegment(target)
                     const isActive = exact ? pathname === target : getLastSegment(pathname) === getLastSegment(target)
 
-                    const hrefWithParams = currentRoot === targetRoot && currentQuery ? `${href}?${currentQuery}` : href
+                    let hrefWithParams = href
+                    if (preserveQueryParams && currentRoot === targetRoot && currentQuery) {
+                        hrefWithParams = `${href}?${currentQuery}`
+                    }
 
                     return (
                         <Link

@@ -33,9 +33,14 @@ export const Verify = ({ email, onBack }: VerifyProps) => {
 
             if (response.status === 'OK') {
                 await clearLoginAttemptInfo()
-                router.refresh()
                 dispatch(api.util.resetApiState())
                 dialog.close()
+
+                if (response.createdNewRecipeUser) {
+                    router.push('/welcome')
+                } else {
+                    router.refresh()
+                }
             }
         } catch {
             setStatus('GENERAL_ERROR')

@@ -32,13 +32,7 @@ export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFee
     }
 
     if (isSuccess && data.items.length === 0) {
-        return (
-            <EmptyMessage>
-                Здесь пока нет рецензий.
-                <br />
-                Когда они появятся — Вы увидите их здесь.
-            </EmptyMessage>
-        )
+        return <EmptyMessage>Здесь пока нет оценок и рецензий.</EmptyMessage>
     }
 
     if (!isSuccess) {

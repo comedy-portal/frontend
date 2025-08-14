@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 import { Comedian } from '@/components/features/comedian/comedian'
 import { getComedianBySlug } from '@/services/comedians/comedians'
-import { withAuth } from '@/utils/hoc/with-auth'
+import { withAuth } from '@/utils/supertokens/with-auth'
 
 type Params = Promise<{ slug: string }>
 

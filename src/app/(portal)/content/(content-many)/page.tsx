@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 import { ContentMany } from '@/components/features/content-many/content-many'
-import { withAuth } from '@/utils/hoc/with-auth'
+import { withAuth } from '@/utils/supertokens/with-auth'
 
 // prettier-ignore
 export const metadata: Metadata = {

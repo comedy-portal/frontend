@@ -1,5 +1,5 @@
 import { Landing } from '@/components/features/landing/landing'
-import { withAuth } from '@/utils/hoc/with-auth'
+import { withAuth } from '@/utils/supertokens/with-auth'
 
 export default function HomePage() {
     return withAuth({

@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
 import { UserWatchlists } from '@/components/features/user/user-watchlists/user-watchlists'
-import { withAuth } from '@/utils/hoc/with-auth'
+import { withAuth } from '@/utils/supertokens/with-auth'
 
 type Params = Promise<{ username: string }>
 

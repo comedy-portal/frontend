@@ -1,4 +1,4 @@
-import { ContentManyFilter } from '@/components/features/content-many/components/content-many-filter'
+import { ContentFilterButton } from '@/components/features/content-many/components/content-many-filter-button'
 import { Layout } from '@/components/features/layout/layout/layout'
 import { categories } from '@/utils/dict/categories'
 
@@ -14,7 +14,7 @@ export default async function ContentManyLayout(props: { children: React.ReactNo
                     href: `/content/${type.toLowerCase()}`,
                 })),
             ]}
-            filter={<ContentManyFilter />}
+            filter={<ContentFilterButton />}
         >
             {props.children}
         </Layout>

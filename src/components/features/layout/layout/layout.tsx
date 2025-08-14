@@ -13,9 +13,10 @@ type LayoutProps = {
         href: string
         exact?: boolean
     }[]
+    preserveQueryParams?: boolean
 }
 
-export const Layout = ({ children, filter, title, info, size, nav }: LayoutProps) => {
+export const Layout = ({ children, filter, title, info, size, nav, preserveQueryParams = true }: LayoutProps) => {
     const wrapperSize = `inner-wrapper-${size}`
 
     return (
@@ -27,7 +28,11 @@ export const Layout = ({ children, filter, title, info, size, nav }: LayoutProps
                     <div className="flex items-center gap-x-6">
                         {filter}
                         <div className="min-w-0 flex-1">
-                            {nav ? <LayoutNav items={nav} /> : <hr className="border-gray-200" />}
+                            {nav ? (
+                                <LayoutNav items={nav} preserveQueryParams={preserveQueryParams} />
+                            ) : (
+                                <hr className="border-gray-200" />
+                            )}
                         </div>
                     </div>
                 </div>

@@ -28,13 +28,7 @@ export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps
     }
 
     if (isSuccess && data.length === 0) {
-        return (
-            <EmptyMessage>
-                Здесь пока нет избранного.
-                <br />
-                Контент, добавленный в список, появится здесь.
-            </EmptyMessage>
-        )
+        return <EmptyMessage>В списке избранного пока нет контента.</EmptyMessage>
     }
 
     if (!isSuccess || isFetching) {

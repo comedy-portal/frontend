@@ -7,9 +7,16 @@ import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { contentAPI } from '@/redux/services/content/content.api'
 import { ContentSortBy } from '@/redux/services/content/content.types'
-import { ContentType, ContentUrlSortBy, Order } from '@/utils/enums/common'
+import { ContentType, Order } from '@/utils/enums/common'
 import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
-import { useSortFilters } from '@/utils/helpers/use-sort-filters'
+import {
+    ContentFiltersState,
+    ContentUrlSortBy,
+    DEFAULT_CONTENT_FILTERS,
+    buildContentFilters,
+    parseContentFilters,
+} from '@/utils/helpers/filters/content-filters'
+import { useQueryFilters } from '@/utils/hooks/use-query-filters'
 
 import { ContentManyFeedSkeleton } from './content-many-feed-skeleton'
 
@@ -19,7 +26,7 @@ type ContentManyFeedProps = {
 }
 
 export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
-    const [filters] = useSortFilters()
+    const [filters] = useQueryFilters<ContentFiltersState>(parseContentFilters, buildContentFilters)
     const [cursor, setCursor] = useState<number>()
 
     const { sortBy, order } = useMemo(() => {
@@ -27,8 +34,6 @@ export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
         switch (filters.sort) {
             case ContentUrlSortBy.DATE_DESC:
                 return { sortBy: ContentSortBy.DATE, order: Order.DESC }
-            case ContentUrlSortBy.DATE_ASC:
-                return { sortBy: ContentSortBy.DATE, order: Order.ASC }
             case ContentUrlSortBy.RATING_DESC:
                 return { sortBy: ContentSortBy.RATING, order: Order.DESC }
             default:

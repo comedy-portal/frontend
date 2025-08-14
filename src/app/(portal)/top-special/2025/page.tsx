@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { TopContent } from '@/components/features/top-content/top-content'
 import { GetTopContentTake } from '@/redux/services/content/content.types'
 import { ContentType } from '@/utils/enums/common'
-import { withAuth } from '@/utils/hoc/with-auth'
+import { withAuth } from '@/utils/supertokens/with-auth'
 
 // prettier-ignore
 export const metadata: Metadata = {

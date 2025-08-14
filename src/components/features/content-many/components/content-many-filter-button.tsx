@@ -2,23 +2,27 @@
 
 import { FunnelIcon } from 'lucide-react'
 
-import { Filters } from '@/components/features/dialogs/filters/filters'
-import { DEFAULT_SORT_FILTERS } from '@/utils/helpers/sort-filters'
-import { useSortFilters } from '@/utils/helpers/use-sort-filters'
+import { ContentFilters } from '@/components/features/dialogs/filters/content-filters'
+import {
+    DEFAULT_CONTENT_FILTERS,
+    buildContentFilters,
+    parseContentFilters,
+} from '@/utils/helpers/filters/content-filters'
+import { useQueryFilters } from '@/utils/hooks/use-query-filters'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
-export const ContentManyFilter = () => {
+export const ContentFilterButton = () => {
     const dialog = useDialog()
-    const [filters] = useSortFilters()
+    const [filters] = useQueryFilters(parseContentFilters, buildContentFilters)
 
     const handleClick = () => {
-        dialog.open(<Filters />)
+        dialog.open(<ContentFilters />)
     }
 
     const hasActiveFilters =
-        filters.sort !== DEFAULT_SORT_FILTERS.sort ||
-        filters.min_rating !== DEFAULT_SORT_FILTERS.min_rating ||
-        filters.max_rating !== DEFAULT_SORT_FILTERS.max_rating
+        filters.sort !== DEFAULT_CONTENT_FILTERS.sort ||
+        filters.min_rating !== DEFAULT_CONTENT_FILTERS.min_rating ||
+        filters.max_rating !== DEFAULT_CONTENT_FILTERS.max_rating
 
     return (
         <div className="relative">
