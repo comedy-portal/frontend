@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation'
 import { ContentMany } from '@/components/features/content-many/content-many'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
-import { withAuth } from '@/utils/hoc/with-auth'
+import { withAuth } from '@/utils/supertokens/with-auth'
 
 type Params = Promise<{ slug: ContentType }>
 

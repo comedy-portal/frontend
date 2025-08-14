@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { UserSettings } from '@/components/features/user/user-settings/user-settings'
 import { getUserData } from '@/services/user/user'
 import { getUserByName } from '@/services/users/users'
-import { withAuth } from '@/utils/hoc/with-auth'
+import { withAuth } from '@/utils/supertokens/with-auth'
 
 type Params = Promise<{ username: string }>
 

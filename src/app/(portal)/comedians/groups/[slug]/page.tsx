@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 import { Group } from '@/components/features/group/group'
 import { getGroupsBySlug } from '@/services/groups/groups'
-import { withAuth } from '@/utils/hoc/with-auth'
+import { withAuth } from '@/utils/supertokens/with-auth'
 
 type Params = Promise<{ slug: string }>
 
