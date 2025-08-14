@@ -100,7 +100,11 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
                             </div>
                         </Link>
                         <Link
+<<<<<<< HEAD
                             href={`/me/settings`}
+=======
+                            href="/me/settings"
+>>>>>>> feature/settings
                             className="flex items-center justify-between"
                             onClick={closeMobileMenu}
                         >

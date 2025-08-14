@@ -13,7 +13,10 @@ export default async function UsersLayout(props: { children: React.ReactNode; pa
                 { label: 'Оценки', href: `/users/${params.username}` },
                 { label: 'Избранное', href: `/users/${params.username}/watchlists` },
             ]}
+<<<<<<< HEAD
             preserveQueryParams={false}
+=======
+>>>>>>> feature/settings
         >
             {props.children}
         </Layout>
