@@ -59,9 +59,9 @@ export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps
     if (isSuccess && data.length === 0) {
         return (
             <EmptyMessage>
-                Здесь пока нет избранного.
+                Список избранного пуст. Попробуйте зайти позже или изменить фильтры.
                 <br />
-                Контент, добавленный в список, появится здесь.
+                Каждый зарегистрированный пользователь может добавить контент в&nbsp;своё избранное.
             </EmptyMessage>
         )
     }
