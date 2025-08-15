@@ -11,7 +11,7 @@ export interface WatchlistsFiltersState {
 }
 
 export const DEFAULT_WATCHLISTS_FILTERS: WatchlistsFiltersState = {
-    sort: WatchlistsUrlSortBy.DATE_DESC,
+    sort: WatchlistsUrlSortBy.SAVED_AT_DESC,
     min_rating: 0,
     max_rating: 10,
 }

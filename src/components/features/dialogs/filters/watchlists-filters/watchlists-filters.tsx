@@ -16,8 +16,8 @@ import { useDialog } from '@/utils/providers/dialog-provider'
 import 'react-range-slider-input/dist/style.css'
 
 const SORT_OPTIONS = [
-    { label: 'По дате премьеры', value: WatchlistsUrlSortBy.DATE_DESC },
     { label: 'По дате сохранения', value: WatchlistsUrlSortBy.SAVED_AT_DESC },
+    { label: 'По дате премьеры', value: WatchlistsUrlSortBy.DATE_DESC },
     { label: 'По рейтингу', value: WatchlistsUrlSortBy.RATING_DESC },
 ]
 
