@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { UserReviews } from '@/components/features/user/user-reviews/user-reviews'
 import { getUserData } from '@/services/user/user'
 import { getUserByName } from '@/services/users/users'
-import { withAuth } from '@/utils/hoc/with-auth'
+import { withAuth } from '@/utils/supertokens/with-auth'
 
 type Params = Promise<{ username: string }>
 

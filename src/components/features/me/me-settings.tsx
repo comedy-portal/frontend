@@ -12,14 +12,14 @@ import { userAPI } from '@/redux/services/user/user.api'
 import { ChangeUserNameInputs } from '@/redux/services/user/user.types'
 import { useToast } from '@/utils/providers/toast-provider'
 
-import { UserSettingsBlockChangeEmail } from './components/user-settings-block-change-email'
-import { UserSettingsRequestPersonalData } from './components/user-settings-request-personal-data'
+import { MeSettingsBlockChangeEmail } from './components/me-settings-block-change-email'
+import { MeSettingsRequestPersonalData } from './components/me-settings-request-personal-data'
 
-type UserSettingsProps = {
+type MeSettingsProps = {
     username: string
 }
 
-export const UserSettings = ({ username }: UserSettingsProps) => {
+export const MeSettings = ({ username }: MeSettingsProps) => {
     const toast = useToast()
     const router = useRouter()
 
@@ -51,8 +51,9 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
 
             switch (response.status) {
                 case 'OK':
-                    router.replace(`/users/${trimmedInputs.username}/settings`)
+                    formik.resetForm({ values: trimmedInputs })
                     router.refresh()
+                    toast.success('Имя пользователя успешно изменено')
                     break
 
                 case 'USERNAME_ALREADY_EXISTS_ERROR':
@@ -99,8 +100,8 @@ export const UserSettings = ({ username }: UserSettingsProps) => {
             </form>
 
             <div>
-                <UserSettingsBlockChangeEmail />
-                <UserSettingsRequestPersonalData />
+                <MeSettingsBlockChangeEmail />
+                <MeSettingsRequestPersonalData />
 
                 {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
                     <div className="flex items-center justify-between">

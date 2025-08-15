@@ -1,7 +1,5 @@
 import Link from 'next/link'
 
-import { AlphaBanner } from '@/components/features/layout/alpha-banner/alpha-banner'
-
 export const Footer = async () => {
     return (
         <div>
@@ -21,8 +19,6 @@ export const Footer = async () => {
                         </Link>
                     </nav>
                 </div>
-
-                <AlphaBanner />
             </footer>
         </div>
     )

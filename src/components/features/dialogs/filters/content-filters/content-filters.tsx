@@ -3,9 +3,14 @@ import RangeSlider from 'react-range-slider-input'
 
 import { Button } from '@/components/ui/forms/button'
 import { Radio } from '@/components/ui/forms/radio'
-import { ContentUrlSortBy } from '@/utils/enums/common'
-import { DEFAULT_SORT_FILTERS, SortFiltersState } from '@/utils/helpers/sort-filters'
-import { useSortFilters } from '@/utils/helpers/use-sort-filters'
+import {
+    ContentFiltersState,
+    ContentUrlSortBy,
+    DEFAULT_CONTENT_FILTERS,
+    buildContentFiltersQueryString,
+    parseContentFiltersFromSearchParams,
+} from '@/utils/filters/content-filters'
+import { useQueryFilters } from '@/utils/filters/use-query-filters'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
 import 'react-range-slider-input/dist/style.css'
@@ -16,10 +21,13 @@ const SORT_OPTIONS = [
     { label: 'По популярности', value: ContentUrlSortBy.RATING_DESC },
 ]
 
-export const Filters = () => {
+export const ContentFilters = () => {
     const dialog = useDialog()
-    const [initialFilters, setFiltersToUrl] = useSortFilters()
-    const [filters, setFilters] = useState<SortFiltersState>(initialFilters)
+    const [initialFilters, setFiltersToUrl] = useQueryFilters(
+        parseContentFiltersFromSearchParams,
+        buildContentFiltersQueryString,
+    )
+    const [filters, setFilters] = useState<ContentFiltersState>(initialFilters)
 
     const handleApply = useCallback(() => {
         setFiltersToUrl(filters)
@@ -27,7 +35,7 @@ export const Filters = () => {
     }, [filters, setFiltersToUrl, dialog])
 
     const handleReset = useCallback(() => {
-        setFilters(DEFAULT_SORT_FILTERS)
+        setFilters(DEFAULT_CONTENT_FILTERS)
     }, [])
 
     const handleRatingChange = useCallback((values: readonly number[]) => {
