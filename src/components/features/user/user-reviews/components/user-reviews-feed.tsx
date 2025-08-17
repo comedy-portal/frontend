@@ -62,9 +62,9 @@ export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFee
     if (isSuccess && data.items.length === 0) {
         return (
             <EmptyMessage>
-                Здесь пока нет рецензий.
+                Список оценок и рецензий пуст. Попробуйте зайти позже или изменить фильтры.
                 <br />
-                Когда они появятся — Вы увидите их здесь.
+                Каждый зарегистрированный пользователь может оставить рецензию на контент или просто оценить его.
             </EmptyMessage>
         )
     }
