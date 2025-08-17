@@ -10,6 +10,10 @@ export const watchlistsAPI = api.injectEndpoints({
                 method: 'GET',
                 params: {
                     username: params.username,
+                    order: params.order,
+                    sort_by: params.sort_by,
+                    min_rating: params.min_rating,
+                    max_rating: params.max_rating,
                 },
             }),
             providesTags: () => [{ type: 'Watchlist', id: 'LIST' }],

@@ -15,6 +15,7 @@ export default function ContentManyLayout(props: { children: React.ReactNode }) 
                 })),
             ]}
             filter={<ContentFiltersButton />}
+            preserveQuery
         >
             {props.children}
         </Layout>

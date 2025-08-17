@@ -3,31 +3,31 @@ import RangeSlider from 'react-range-slider-input'
 
 import { Button } from '@/components/ui/forms/button'
 import { Radio } from '@/components/ui/forms/radio'
-import {
-    ContentFiltersState,
-    ContentUrlSortBy,
-    DEFAULT_CONTENT_FILTERS,
-    buildContentFiltersQueryString,
-    parseContentFiltersFromSearchParams,
-} from '@/utils/filters/content-filters'
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
+import {
+    DEFAULT_WATCHLISTS_FILTERS,
+    WatchlistsFiltersState,
+    WatchlistsUrlSortBy,
+    buildWatchlistsFiltersQueryString,
+    parseWatchlistsFiltersFromSearchParams,
+} from '@/utils/filters/watchlists-filters'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
 import 'react-range-slider-input/dist/style.css'
 
 const SORT_OPTIONS = [
-    { label: 'Сначала новые', value: ContentUrlSortBy.DATE_DESC },
-    { label: 'Сначала старые', value: ContentUrlSortBy.DATE_ASC },
-    { label: 'По популярности', value: ContentUrlSortBy.RATING_DESC },
+    { label: 'По дате сохранения', value: WatchlistsUrlSortBy.SAVED_AT_DESC },
+    { label: 'По дате премьеры', value: WatchlistsUrlSortBy.DATE_DESC },
+    { label: 'По рейтингу', value: WatchlistsUrlSortBy.RATING_DESC },
 ]
 
-export const ContentFilters = () => {
+export const WatchlistsFilters = () => {
     const dialog = useDialog()
     const [initialFilters, setFiltersToUrl] = useQueryFilters(
-        parseContentFiltersFromSearchParams,
-        buildContentFiltersQueryString,
+        parseWatchlistsFiltersFromSearchParams,
+        buildWatchlistsFiltersQueryString,
     )
-    const [filters, setFilters] = useState<ContentFiltersState>(initialFilters)
+    const [filters, setFilters] = useState<WatchlistsFiltersState>(initialFilters)
 
     const handleApply = useCallback(() => {
         setFiltersToUrl(filters)
@@ -35,7 +35,7 @@ export const ContentFilters = () => {
     }, [filters, setFiltersToUrl, dialog])
 
     const handleReset = useCallback(() => {
-        setFilters(DEFAULT_CONTENT_FILTERS)
+        setFilters(DEFAULT_WATCHLISTS_FILTERS)
     }, [])
 
     const handleRatingChange = useCallback((values: readonly number[]) => {
