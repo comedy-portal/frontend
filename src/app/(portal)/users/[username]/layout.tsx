@@ -1,6 +1,7 @@
 import { ReviewsFiltersButton } from '@/components/features/dialogs/filters/reviews-filter/reviews-filters-button'
 import { WatchlistFiltersButton } from '@/components/features/dialogs/filters/watchlists-filters/watchlists-filters-button'
 import { Layout } from '@/components/features/layout/layout/layout'
+import { UserSidebar } from '@/components/features/user/components/sidebar/sidebar'
 
 type Params = Promise<{ username: string }>
 
@@ -19,6 +20,7 @@ export default async function UsersLayout(props: { children: React.ReactNode; pa
                     filter: <WatchlistFiltersButton />,
                 },
             ]}
+            sidebar={<UserSidebar />}
         >
             {props.children}
         </Layout>
