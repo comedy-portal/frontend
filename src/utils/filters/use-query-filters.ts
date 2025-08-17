@@ -16,7 +16,11 @@ export function useQueryFilters<T>(
     const setFiltersToUrl = (filters: T, replace = false) => {
         const query = buildFn(filters)
         const url = query ? `${pathname}?${query}` : pathname
-        replace ? router.replace(url) : router.push(url)
+        if (replace) {
+            router.replace(url)
+        } else {
+            router.push(url)
+        }
     }
 
     return [currentFilters, setFiltersToUrl]

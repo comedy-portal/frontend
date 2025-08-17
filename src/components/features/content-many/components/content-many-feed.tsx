@@ -43,11 +43,11 @@ export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
 
     const { data, isFetching, isSuccess, isError } = contentAPI.useGetContentManyQuery({
         type,
-        order,
-        sort_by: sortBy,
-        cursor,
         min_rating: filters.min_rating,
         max_rating: filters.max_rating,
+        sort_by: sortBy,
+        order,
+        cursor,
     })
 
     if (isError) {
