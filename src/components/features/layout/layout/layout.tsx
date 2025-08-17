@@ -27,7 +27,7 @@ export const Layout = ({ children, filter, title, info, size, nav, preserveQuery
                 <div className="mb-12 space-y-6">
                     <h1 className="text-4xl font-bold sm:text-3xl">{title}</h1>
                     {info && <div className="text-gray-500">{info}</div>}
-                    {sidebar && <div className="block lg:hidden">{sidebar}</div>}
+                    {sidebar && <div className="mb-12 block lg:hidden">{sidebar}</div>}
                     <LayoutNav items={nav} filter={filter} preserveQuery={preserveQuery} />
                 </div>
                 {children}
