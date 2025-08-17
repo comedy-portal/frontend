@@ -1,33 +1,32 @@
 import { useCallback, useState } from 'react'
-import RangeSlider from 'react-range-slider-input'
 
 import { Button } from '@/components/ui/forms/button'
 import { Radio } from '@/components/ui/forms/radio'
+import { Switcher } from '@/components/ui/forms/switcher'
 import {
-    ContentFiltersState,
-    ContentUrlSortBy,
-    DEFAULT_CONTENT_FILTERS,
-    buildContentFiltersQueryString,
-    parseContentFiltersFromSearchParams,
-} from '@/utils/filters/content-filters'
+    DEFAULT_REVIEWS_FILTERS,
+    ReviewsFiltersState,
+    ReviewsUrlSortBy,
+    buildReviewsFiltersQueryString,
+    parseReviewsFiltersFromSearchParams,
+} from '@/utils/filters/reviews-filters'
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
-import 'react-range-slider-input/dist/style.css'
-
 const SORT_OPTIONS = [
-    { label: 'Сначала новые', value: ContentUrlSortBy.DATE_DESC },
-    { label: 'Сначала старые', value: ContentUrlSortBy.DATE_ASC },
-    { label: 'По популярности', value: ContentUrlSortBy.RATING_DESC },
+    { label: 'Сначала новые', value: ReviewsUrlSortBy.DATE_DESC },
+    { label: 'Сначала старые', value: ReviewsUrlSortBy.DATE_ASC },
+    { label: 'По убыванию рейтинга', value: ReviewsUrlSortBy.MARK_DESC },
+    { label: 'По возрастанию рейтинга', value: ReviewsUrlSortBy.MARK_ASC },
 ]
 
-export const ContentFilters = () => {
+export const ReviewsFilters = () => {
     const dialog = useDialog()
     const [initialFilters, setFiltersToUrl] = useQueryFilters(
-        parseContentFiltersFromSearchParams,
-        buildContentFiltersQueryString,
+        parseReviewsFiltersFromSearchParams,
+        buildReviewsFiltersQueryString,
     )
-    const [filters, setFilters] = useState<ContentFiltersState>(initialFilters)
+    const [filters, setFilters] = useState<ReviewsFiltersState>(initialFilters)
 
     const handleApply = useCallback(() => {
         setFiltersToUrl(filters)
@@ -35,14 +34,13 @@ export const ContentFilters = () => {
     }, [filters, setFiltersToUrl, dialog])
 
     const handleReset = useCallback(() => {
-        setFilters(DEFAULT_CONTENT_FILTERS)
+        setFilters(DEFAULT_REVIEWS_FILTERS)
     }, [])
 
-    const handleRatingChange = useCallback((values: readonly number[]) => {
+    const handleWithTextChange = useCallback((value: boolean) => {
         setFilters(prev => ({
             ...prev,
-            min_rating: values[0],
-            max_rating: values[1],
+            with_text: value,
         }))
     }, [])
 
@@ -65,19 +63,10 @@ export const ContentFilters = () => {
                 ))}
             </div>
 
-            <div className="flex flex-col gap-y-4">
-                <label className="font-bold">Общий рейтинг:</label>
-                <div className="flex items-center justify-between gap-x-4">
-                    <div>{filters.min_rating}</div>
-                    <RangeSlider
-                        min={0}
-                        max={10}
-                        step={1}
-                        value={[filters.min_rating, filters.max_rating]}
-                        className="range"
-                        onInput={handleRatingChange}
-                    />
-                    <div>{filters.max_rating}</div>
+            <div className="flex items-center gap-x-2">
+                <Switcher checked={filters.with_text} onChange={() => handleWithTextChange(!filters.with_text)} />
+                <div className="cursor-pointer" onClick={() => handleWithTextChange(!filters.with_text)}>
+                    Показать только с рецензиями
                 </div>
             </div>
 

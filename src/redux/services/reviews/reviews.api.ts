@@ -19,11 +19,15 @@ export const reviewsAPI = api.injectEndpoints({
                 method: 'GET',
                 params,
             }),
-            serializeQueryArgs: ({ endpointName }) => {
-                return endpointName
+            serializeQueryArgs: ({ queryArgs }) => {
+                return JSON.stringify({
+                    order: queryArgs.order,
+                    sort_by: queryArgs.sort_by,
+                    with_text: queryArgs.with_text,
+                })
             },
-            merge: (currentCache, newResponse, otherArgs) => {
-                if (otherArgs.arg.cursor === undefined) {
+            merge: (currentCache, newResponse, { arg }) => {
+                if (arg.cursor === undefined) {
                     return newResponse
                 }
 
@@ -33,9 +37,11 @@ export const reviewsAPI = api.injectEndpoints({
                         items: [...currentCache.items, ...newResponse.items],
                     }
                 }
+
+                return newResponse
             },
             forceRefetch({ currentArg, previousArg }) {
-                return currentArg !== previousArg
+                return JSON.stringify(currentArg) !== JSON.stringify(previousArg)
             },
             providesTags: [{ type: 'Reviews', id: 'LIST' }],
         }),
