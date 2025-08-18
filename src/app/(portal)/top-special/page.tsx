@@ -23,7 +23,7 @@ export default async function TopSpecialPage() {
                     <TrophyIcon className="hidden shrink-0 text-blue-400 sm:block" />
                     <div>
                         Примите участие в формировании рейтинга <strong>лучших спешлов за всё время!</strong> Все спешлы
-                        без оценок Вы можете найти{' '}
+                        Вы можете найти{' '}
                         <Link href="/content?max_rating=0" className="text-blue-500 hover:text-blue-700">
                             здесь
                         </Link>
