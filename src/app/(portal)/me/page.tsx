@@ -3,15 +3,7 @@ import { redirect } from 'next/navigation'
 import { getUserData } from '@/services/user/user'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
-<<<<<<< HEAD
-type Params = Promise<{ username: string }>
-
-export default async function MeLayout({ params }: { params: Params }) {
-    const { username: _username } = await params
-
-=======
 export default function MeLayout() {
->>>>>>> feature/settings
     return withAuth({
         onUnauth: 'notFound',
         getAuthData: async () => {
