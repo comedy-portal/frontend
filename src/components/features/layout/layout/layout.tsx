@@ -12,11 +12,12 @@ type LayoutProps = {
         label: string
         href: string
         exact?: boolean
+        filter?: React.ReactNode
     }[]
-    preserveQueryParams?: boolean
+    preserveQuery?: boolean
 }
 
-export const Layout = ({ children, filter, title, info, size, nav, preserveQueryParams = true }: LayoutProps) => {
+export const Layout = ({ children, filter, title, info, size, nav, preserveQuery }: LayoutProps) => {
     const wrapperSize = `inner-wrapper-${size}`
 
     return (
@@ -25,16 +26,7 @@ export const Layout = ({ children, filter, title, info, size, nav, preserveQuery
                 <div className="mb-12 space-y-6">
                     <h1 className="text-4xl font-bold sm:text-3xl">{title}</h1>
                     {info && <div className="text-gray-500">{info}</div>}
-                    <div className="flex items-center gap-x-6">
-                        {filter}
-                        <div className="min-w-0 flex-1">
-                            {nav ? (
-                                <LayoutNav items={nav} preserveQueryParams={preserveQueryParams} />
-                            ) : (
-                                <hr className="border-gray-200" />
-                            )}
-                        </div>
-                    </div>
+                    <LayoutNav items={nav} filter={filter} preserveQuery={preserveQuery} />
                 </div>
                 {children}
             </div>

@@ -1,8 +1,8 @@
-import { ContentFilterButton } from '@/components/features/content-many/components/content-many-filter-button'
+import { ContentFiltersButton } from '@/components/features/dialogs/filters/content-filters/content-filters-button'
 import { Layout } from '@/components/features/layout/layout/layout'
 import { categories } from '@/utils/dict/categories'
 
-export default async function ContentManyLayout(props: { children: React.ReactNode }) {
+export default function ContentManyLayout(props: { children: React.ReactNode }) {
     return (
         <Layout
             title="Контент"
@@ -14,7 +14,8 @@ export default async function ContentManyLayout(props: { children: React.ReactNo
                     href: `/content/${type.toLowerCase()}`,
                 })),
             ]}
-            filter={<ContentFilterButton />}
+            filter={<ContentFiltersButton />}
+            preserveQuery
         >
             {props.children}
         </Layout>

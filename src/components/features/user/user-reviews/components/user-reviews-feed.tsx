@@ -1,10 +1,18 @@
 'use client'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
+import { ReviewSortBy } from '@/redux/services/reviews/reviews.types'
+import { Order } from '@/utils/enums/common'
+import {
+    ReviewsUrlSortBy,
+    buildReviewsFiltersQueryString,
+    parseReviewsFiltersFromSearchParams,
+} from '@/utils/filters/reviews-filters'
+import { useQueryFilters } from '@/utils/filters/use-query-filters'
 
 import { UserReviewsFeedItem } from './user-reviews-feed-item'
 import { UserReviewsFeedSkeleton } from './user-reviews-feed-skeleton'
@@ -16,10 +24,30 @@ type UserReviewsFeedProps = {
 }
 
 export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFeedProps) => {
+    const [filters] = useQueryFilters(parseReviewsFiltersFromSearchParams, buildReviewsFiltersQueryString)
     const [cursor, setCursor] = useState<number>()
+
+    const { sortBy, order } = useMemo(() => {
+        setCursor(undefined)
+        switch (filters.sort) {
+            case ReviewsUrlSortBy.DATE_DESC:
+                return { sortBy: ReviewSortBy.DATE, order: Order.DESC }
+            case ReviewsUrlSortBy.DATE_ASC:
+                return { sortBy: ReviewSortBy.DATE, order: Order.ASC }
+            case ReviewsUrlSortBy.MARK_DESC:
+                return { sortBy: ReviewSortBy.MARK, order: Order.DESC }
+            case ReviewsUrlSortBy.MARK_ASC:
+                return { sortBy: ReviewSortBy.MARK, order: Order.ASC }
+            default:
+                return { sortBy: ReviewSortBy.DATE, order: Order.DESC }
+        }
+    }, [filters.sort])
 
     const { data, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsQuery({
         user_id: userId,
+        sort_by: sortBy,
+        with_text: filters.with_text,
+        order,
         cursor,
     })
 
@@ -32,7 +60,13 @@ export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFee
     }
 
     if (isSuccess && data.items.length === 0) {
-        return <EmptyMessage>Здесь пока нет оценок и рецензий.</EmptyMessage>
+        return (
+            <EmptyMessage>
+                Список оценок и рецензий пуст. Попробуйте зайти позже или изменить фильтры.
+                <br />
+                Каждый зарегистрированный пользователь может оставить рецензию на контент или просто оценить его.
+            </EmptyMessage>
+        )
     }
 
     if (!isSuccess) {

@@ -8,15 +8,13 @@ import { LoadMore } from '@/components/ui/load-more'
 import { contentAPI } from '@/redux/services/content/content.api'
 import { ContentSortBy } from '@/redux/services/content/content.types'
 import { ContentType, Order } from '@/utils/enums/common'
-import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
 import {
-    ContentFiltersState,
     ContentUrlSortBy,
-    DEFAULT_CONTENT_FILTERS,
-    buildContentFilters,
-    parseContentFilters,
-} from '@/utils/helpers/filters/content-filters'
-import { useQueryFilters } from '@/utils/hooks/use-query-filters'
+    buildContentFiltersQueryString,
+    parseContentFiltersFromSearchParams,
+} from '@/utils/filters/content-filters'
+import { useQueryFilters } from '@/utils/filters/use-query-filters'
+import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
 
 import { ContentManyFeedSkeleton } from './content-many-feed-skeleton'
 
@@ -26,7 +24,7 @@ type ContentManyFeedProps = {
 }
 
 export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
-    const [filters] = useQueryFilters<ContentFiltersState>(parseContentFilters, buildContentFilters)
+    const [filters] = useQueryFilters(parseContentFiltersFromSearchParams, buildContentFiltersQueryString)
     const [cursor, setCursor] = useState<number>()
 
     const { sortBy, order } = useMemo(() => {
@@ -43,11 +41,11 @@ export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
 
     const { data, isFetching, isSuccess, isError } = contentAPI.useGetContentManyQuery({
         type,
-        order,
-        sort_by: sortBy,
-        cursor,
         min_rating: filters.min_rating,
         max_rating: filters.max_rating,
+        sort_by: sortBy,
+        order,
+        cursor,
     })
 
     if (isError) {
