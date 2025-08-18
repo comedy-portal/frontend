@@ -1,4 +1,7 @@
+import { MedalIcon, TrophyIcon } from 'lucide-react'
 import { Metadata } from 'next'
+
+import Link from 'next/link'
 
 import { TopContent } from '@/components/features/top-content/top-content'
 import { GetTopContentTake } from '@/redux/services/content/content.types'
@@ -15,7 +18,19 @@ export const metadata: Metadata = {
 export default async function TopSpecial2025Page() {
     return withAuth({
         render: ({ isAuth }) => (
-            <TopContent type={ContentType.SPECIAL} year={2025} take={GetTopContentTake.FIFTY} isAuth={isAuth} />
+            <TopContent type={ContentType.SPECIAL} year={2025} take={GetTopContentTake.FIFTY} isAuth={isAuth}>
+                <div className="mb-4 flex gap-x-3 rounded-lg border border-blue-100 bg-blue-50 p-4">
+                    <MedalIcon className="hidden shrink-0 text-blue-400 sm:block" />
+                    <div>
+                        Примите участие в формировании рейтинга <strong>лучших спешлов 2025 года!</strong> Все спешлы за
+                        2025 год Вы можете найти{' '}
+                        <Link href="/content?sort=rating_asc&year=2025" className="text-blue-500 hover:text-blue-700">
+                            здесь
+                        </Link>
+                        .
+                    </div>
+                </div>
+            </TopContent>
         ),
     })
 }
