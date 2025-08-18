@@ -19,8 +19,8 @@ export default async function TopSpecial2025Page() {
     return withAuth({
         render: ({ isAuth }) => (
             <TopContent type={ContentType.SPECIAL} year={2025} take={GetTopContentTake.FIFTY} isAuth={isAuth}>
-                <div className="mb-4 flex gap-x-3 rounded-lg border border-blue-100 bg-blue-50 p-4">
-                    <MedalIcon className="hidden shrink-0 text-blue-400 sm:block" />
+                <div className="mb-4 flex gap-x-3 rounded-lg border border-orange-100 bg-orange-50 p-4">
+                    <MedalIcon className="hidden shrink-0 text-orange-500 sm:block" />
                     <div>
                         Примите участие в формировании рейтинга <strong>лучших спешлов 2025 года!</strong> Все спешлы за
                         2025 год Вы можете найти{' '}
