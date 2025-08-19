@@ -25,7 +25,7 @@ export default async function TopSpecialPage() {
                         Возможно, Ваш любимый спешл пока не попал в{' '}
                         <strong>топ русскоязычных концертов за всё время</strong>, потому что ещё не набрал достаточно
                         оценок. Помогите ему подняться в рейтинге —{' '}
-                        <Link href="/content/special?max_rating=0" className="text-blue-500 hover:text-blue-700">
+                        <Link href="/content/special?sort=rating_asc" className="text-blue-500 hover:text-blue-700">
                             голосуйте здесь
                         </Link>
                         !
