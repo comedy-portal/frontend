@@ -22,9 +22,9 @@ export default async function TopSpecialPage() {
                 <div className="mb-4 flex gap-x-3 rounded-lg border border-orange-100 bg-orange-50 p-4">
                     <TrophyIcon className="hidden shrink-0 text-orange-500 sm:block" />
                     <div>
-                        Примите участие в формировании рейтинга <strong>лучших русских спешлов за всё время!</strong>{' '}
-                        Пока не все спешлы набрали нужное количество голосов, поэтому часть из них ещё не попала в этот
-                        топ. Помогите им подняться в рейтинге —{' '}
+                        Возможно, Ваш любимый спешл пока не попал в{' '}
+                        <strong>топ русскоязычных концертов за всё время</strong>, потому что ещё не набрал достаточно
+                        оценок. Помогите ему подняться в рейтинге —{' '}
                         <Link href="/content/special?max_rating=0" className="text-blue-500 hover:text-blue-700">
                             голосуйте здесь
                         </Link>
