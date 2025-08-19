@@ -29,7 +29,7 @@ export default async function TopSpecial2025Page() {
                             href="/content/special?sort=rating_asc&year=2025"
                             className="text-blue-500 hover:text-blue-700"
                         >
-                            здесь
+                            голосуйте здесь
                         </Link>
                         .
                     </div>
