@@ -24,7 +24,10 @@ export default async function TopSpecial2025Page() {
                     <div>
                         Примите участие в формировании рейтинга <strong>лучших спешлов 2025 года!</strong> Все спешлы за
                         2025 год Вы можете найти{' '}
-                        <Link href="/content?sort=rating_asc&year=2025" className="text-blue-500 hover:text-blue-700">
+                        <Link
+                            href="/content/special?sort=rating_asc&year=2025"
+                            className="text-blue-500 hover:text-blue-700"
+                        >
                             здесь
                         </Link>
                         .
