@@ -4,12 +4,18 @@ import { ContentType } from '@/utils/enums/common'
 import { TopContentFeed } from './components/top-content-feed'
 
 type TopContentProps = {
+    children?: React.ReactNode
     type: ContentType
     year?: number
     take: GetTopContentTake
     isAuth: boolean
 }
 
-export const TopContent = ({ type, year, take, isAuth }: TopContentProps) => {
-    return <TopContentFeed type={type} year={year} take={take} isAuth={isAuth} />
+export const TopContent = ({ children, type, year, take, isAuth }: TopContentProps) => {
+    return (
+        <div>
+            {children}
+            <TopContentFeed type={type} year={year} take={take} isAuth={isAuth} />
+        </div>
+    )
 }

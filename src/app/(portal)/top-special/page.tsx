@@ -1,4 +1,7 @@
+import { TrophyIcon } from 'lucide-react'
 import { Metadata } from 'next'
+
+import Link from 'next/link'
 
 import { TopContent } from '@/components/features/top-content/top-content'
 import { GetTopContentTake } from '@/redux/services/content/content.types'
@@ -15,7 +18,20 @@ export const metadata: Metadata = {
 export default async function TopSpecialPage() {
     return withAuth({
         render: ({ isAuth }) => (
-            <TopContent type={ContentType.SPECIAL} take={GetTopContentTake.ONE_HUNDRED} isAuth={isAuth} />
+            <TopContent type={ContentType.SPECIAL} take={GetTopContentTake.ONE_HUNDRED} isAuth={isAuth}>
+                <div className="mb-4 flex gap-x-3 rounded-lg border border-orange-100 bg-orange-50 p-4">
+                    <TrophyIcon className="hidden shrink-0 text-orange-500 sm:block" />
+                    <div>
+                        Возможно, Ваш любимый спешл пока не попал в{' '}
+                        <strong>топ русскоязычных концертов за всё время</strong>, потому что ещё не набрал достаточно
+                        оценок. Помогите ему подняться в рейтинге —{' '}
+                        <Link href="/content/special?sort=rating_asc" className="text-blue-500 hover:text-blue-700">
+                            голосуйте здесь
+                        </Link>
+                        !
+                    </div>
+                </div>
+            </TopContent>
         ),
     })
 }
