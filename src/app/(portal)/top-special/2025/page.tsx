@@ -1,4 +1,7 @@
+import { MedalIcon } from 'lucide-react'
 import { Metadata } from 'next'
+
+import Link from 'next/link'
 
 import { TopContent } from '@/components/features/top-content/top-content'
 import { GetTopContentTake } from '@/redux/services/content/content.types'
@@ -15,7 +18,23 @@ export const metadata: Metadata = {
 export default async function TopSpecial2025Page() {
     return withAuth({
         render: ({ isAuth }) => (
-            <TopContent type={ContentType.SPECIAL} year={2025} take={GetTopContentTake.FIFTY} isAuth={isAuth} />
+            <TopContent type={ContentType.SPECIAL} year={2025} take={GetTopContentTake.FIFTY} isAuth={isAuth}>
+                <div className="mb-4 flex gap-x-3 rounded-lg border border-orange-100 bg-orange-50 p-4">
+                    <MedalIcon className="hidden shrink-0 text-orange-500 sm:block" />
+                    <div>
+                        Возможно, Ваш любимый спешл пока не попал в{' '}
+                        <strong>топ русскоязычных концертов 2025 года</strong>, потому что ещё не набрал достаточно
+                        оценок. Помогите ему подняться в рейтинге —{' '}
+                        <Link
+                            href="/content/special?sort=rating_asc&year=2025"
+                            className="text-blue-500 hover:text-blue-700"
+                        >
+                            голосуйте здесь
+                        </Link>
+                        .
+                    </div>
+                </div>
+            </TopContent>
         ),
     })
 }

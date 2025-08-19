@@ -18,7 +18,8 @@ import 'react-range-slider-input/dist/style.css'
 const SORT_OPTIONS = [
     { label: 'Сначала новые', value: ContentUrlSortBy.DATE_DESC },
     { label: 'Сначала старые', value: ContentUrlSortBy.DATE_ASC },
-    { label: 'По популярности', value: ContentUrlSortBy.RATING_DESC },
+    { label: 'По убыванию рейтинга', value: ContentUrlSortBy.RATING_DESC },
+    { label: 'По возрастанию рейтинга', value: ContentUrlSortBy.RATING_ASC },
 ]
 
 export const ContentFilters = () => {

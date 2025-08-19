@@ -16,8 +16,8 @@ import { useDialog } from '@/utils/providers/dialog-provider'
 const SORT_OPTIONS = [
     { label: 'Сначала новые', value: ReviewsUrlSortBy.DATE_DESC },
     { label: 'Сначала старые', value: ReviewsUrlSortBy.DATE_ASC },
-    { label: 'По убыванию рейтинга', value: ReviewsUrlSortBy.MARK_DESC },
-    { label: 'По возрастанию рейтинга', value: ReviewsUrlSortBy.MARK_ASC },
+    { label: 'По убыванию оценки', value: ReviewsUrlSortBy.MARK_DESC },
+    { label: 'По возрастанию оценки', value: ReviewsUrlSortBy.MARK_ASC },
 ]
 
 export const ReviewsFilters = () => {
