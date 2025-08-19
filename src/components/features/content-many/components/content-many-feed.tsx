@@ -36,6 +36,8 @@ export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
                 return { sortBy: ContentSortBy.DATE, order: Order.ASC }
             case ContentUrlSortBy.RATING_DESC:
                 return { sortBy: ContentSortBy.RATING, order: Order.DESC }
+            case ContentUrlSortBy.RATING_ASC:
+                return { sortBy: ContentSortBy.RATING, order: Order.ASC }
             default:
                 return { sortBy: ContentSortBy.DATE, order: Order.DESC }
         }
@@ -45,6 +47,7 @@ export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
         type,
         min_rating: filters.min_rating,
         max_rating: filters.max_rating,
+        year: filters.year,
         sort_by: sortBy,
         order,
         cursor,
