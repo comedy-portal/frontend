@@ -14,7 +14,7 @@ export const ContentAuthors = ({ comedians, group }: ContentAuthorsProps) => {
             {group && (
                 <Link
                     href={`/comedians/groups/${group.slug.toLowerCase()}`}
-                    className="text-gray-500 hover:text-gray-950"
+                    className="text-blue-500 hover:text-blue-700"
                 >
                     {group.name}
                 </Link>
@@ -24,7 +24,7 @@ export const ContentAuthors = ({ comedians, group }: ContentAuthorsProps) => {
                 <div key={`content-author-${comedian.id}`}>
                     <Link
                         href={`/comedians/${comedian.slug.toLowerCase()}`}
-                        className="text-gray-500 hover:text-gray-950"
+                        className="text-blue-500 hover:text-blue-700"
                     >
                         {comedian.name} {comedian.surname}&nbsp;{comedian.isAgent ? '*' : ''}
                     </Link>

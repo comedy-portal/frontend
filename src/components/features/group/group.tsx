@@ -94,7 +94,7 @@ export const Group = ({ slug, isAuth }: GroupProps) => {
                                     <div key={`group-author-${comedian.id}`}>
                                         <Link
                                             href={`/comedians/${comedian.slug.toLowerCase()}`}
-                                            className="text-gray-500 hover:text-gray-950"
+                                            className="text-blue-500 hover:text-blue-700"
                                         >
                                             {comedian.name} {comedian.surname}
                                         </Link>
