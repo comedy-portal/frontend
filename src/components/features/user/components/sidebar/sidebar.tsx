@@ -1,6 +1,7 @@
-import { Share2Icon, ShareIcon } from 'lucide-react'
+'use client'
 
-import { Rating } from '@/components/ui/rating'
+import { Share } from '@/components/ui/share'
+import { formatDuration } from '@/utils/helpers/registration-date-format'
 
 const Item = ({ label, value }: { label: string; value: number }) => {
     return (
@@ -20,30 +21,36 @@ const Item = ({ label, value }: { label: string; value: number }) => {
     )
 }
 
-export const UserSidebar = async () => {
+type UserSidebarProps = {
+    username: string
+    daysSinceRegistration: number
+    _count: {
+        reviews: number
+        watchlists: number
+        textReviewsCount: number
+    }
+}
+
+export const UserSidebar = (props: UserSidebarProps) => {
     return (
         <div className="sticky top-[115px] space-y-6 rounded-xl bg-gray-50 p-6 lg:p-8">
-            <div className="hidden items-center justify-between lg:flex">
+            <div className="flex items-start justify-between">
                 <div>
-                    <h2 className="text-xl font-bold">oskolsky</h2>
-                    <div className="text-sm">22 дня на сайте</div>
+                    <h2 className="hidden text-xl font-bold lg:block">{props.username}</h2>
+                    <div className="text-sm">{formatDuration(props.daysSinceRegistration)} на сайте</div>
                 </div>
-                <div className="cursor-pointer text-gray-500 hover:text-gray-950">
-                    <Share2Icon />
-                </div>
-            </div>
-            <hr className="hidden border-t border-gray-200 lg:block" />
-            <div className="flex items-center gap-x-2">
-                <Rating value={5} className="size-8!" />
-                <div>Средняя оценка</div>
+                <Share
+                    title={props.username}
+                    url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/users/${props.username}`}
+                />
             </div>
             <hr className="border-t border-gray-200" />
             <div className="space-y-2">
                 <div>Статистика:</div>
                 <ul className="flex flex-col gap-y-2">
-                    <Item label="Оценок" value={50} />
-                    <Item label="Рецензий" value={45} />
-                    <Item label="В избранном" value={45} />
+                    <Item label="Оценок" value={props._count.reviews} />
+                    <Item label="Рецензий" value={props._count.textReviewsCount} />
+                    <Item label="В избранном" value={props._count.watchlists} />
                 </ul>
             </div>
         </div>
