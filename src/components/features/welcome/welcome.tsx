@@ -72,7 +72,7 @@ export const Welcome = ({ username }: WelcomeProps) => {
                     </p>
                 </div>
             ),
-            img: '/images/welcome/content-many.jpg',
+            img: '/images/welcome/statistics.jpg',
         },
         {
             title: '🗂️ Формируй коллекцию рекомендаций',
@@ -85,7 +85,7 @@ export const Welcome = ({ username }: WelcomeProps) => {
                     доступна в&nbsp;удобном виде.
                 </p>
             ),
-            img: '/images/welcome/content-many.jpg',
+            img: '/images/welcome/reviews.jpg',
         },
         {
             title: '⭐ Сохраняй в избранное',
@@ -99,7 +99,7 @@ export const Welcome = ({ username }: WelcomeProps) => {
                     могли открыть для себя новые рекомендации.
                 </p>
             ),
-            img: '/images/welcome/content-many.jpg',
+            img: '/images/welcome/watchlists.jpg',
         },
         {
             title: '🏆 Топы лучших спешлов',
