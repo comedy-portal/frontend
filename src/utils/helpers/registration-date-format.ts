@@ -27,7 +27,7 @@ function getWeekWord(n: number) {
     const lastDigit = n % 10
     const lastTwoDigits = n % 100
     if (lastTwoDigits >= 11 && lastTwoDigits <= 14) return 'недель'
-    if (lastDigit === 1) return 'неделя'
+    if (lastDigit === 1) return 'неделю'
     if (lastDigit >= 2 && lastDigit <= 4) return 'недели'
     return 'недель'
 }
