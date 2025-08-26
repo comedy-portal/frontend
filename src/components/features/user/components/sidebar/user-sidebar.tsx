@@ -2,9 +2,8 @@
 
 import { BookmarkIcon, CalendarIcon, EditIcon, StarIcon } from 'lucide-react'
 
+import { Share } from '@/components/ui/share'
 import { formatDuration } from '@/utils/helpers/registration-date-format'
-
-import { UserSidebarShare } from './components/user-sidebar-share'
 
 const Item = ({ label, value }: { label: React.ReactNode; value: number }) => {
     return (
@@ -75,10 +74,7 @@ export const UserSidebar = (props: UserSidebarProps) => {
                     />
                 </ul>
             </div>
-            <UserSidebarShare
-                title={props.username}
-                url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/users/${props.username}`}
-            />
+            <Share title={props.username} url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/users/${props.username}`} />
         </div>
     )
 }
