@@ -1,7 +1,5 @@
 'use client'
 
-import Link from 'next/link'
-
 import { internalApi } from '@/redux/services/internal/internal.api'
 import { Platform } from '@/utils/enums/common'
 import { getPlatformUrl } from '@/utils/helpers/common'

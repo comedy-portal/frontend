@@ -2,6 +2,7 @@
 
 import { ShareIcon } from 'lucide-react'
 
+import { Button } from '@/components/ui/forms/button'
 import { messages } from '@/messages'
 import { useToast } from '@/utils/providers/toast-provider'
 
@@ -29,8 +30,14 @@ export const Share = ({ title, text, url }: ShareProps) => {
     }
 
     return (
-        <div onClick={handleShare} className="block sm:hidden" aria-label="Поделиться">
+        <Button
+            size="lg"
+            variant="outline"
+            className="flex w-full items-center justify-center gap-x-2"
+            onClick={handleShare}
+        >
             <ShareIcon size={24} />
-        </div>
+            Поделиться
+        </Button>
     )
 }
