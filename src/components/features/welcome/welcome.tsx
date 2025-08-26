@@ -135,7 +135,7 @@ export const Welcome = ({ username }: WelcomeProps) => {
                     для предложений&nbsp;&mdash; помоги расширить каталог Comedy Portal.
                 </p>
             ),
-            img: '/images/welcome/content-many.jpg',
+            img: '/images/welcome/content-submit.jpg',
         },
     ]
 

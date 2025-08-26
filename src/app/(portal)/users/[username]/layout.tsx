@@ -1,7 +1,7 @@
 import { ReviewsFiltersButton } from '@/components/features/dialogs/filters/reviews-filter/reviews-filters-button'
 import { WatchlistFiltersButton } from '@/components/features/dialogs/filters/watchlists-filters/watchlists-filters-button'
 import { Layout } from '@/components/features/layout/layout/layout'
-import { UserSidebar } from '@/components/features/user/components/sidebar/sidebar'
+import { UserSidebar } from '@/components/features/user/components/sidebar/user-sidebar'
 import { getUserByName } from '@/services/users/users'
 
 type Params = Promise<{ username: string }>

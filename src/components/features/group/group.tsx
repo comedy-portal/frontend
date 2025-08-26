@@ -34,18 +34,10 @@ export const Group = ({ slug, isAuth }: GroupProps) => {
 
     return (
         <div className="wrapper space-y-12 pt-12 pb-24">
-            <div className="flex items-center justify-between">
-                <Link href="/comedians/groups" className="inline-flex items-center gap-x-2 hover:text-black">
-                    <CircleArrowLeftIcon size={24} className="text-inherit" />
-                    Все группы
-                </Link>
-
-                <Share
-                    title={data.name}
-                    text={data.metaInfo?.description}
-                    url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/comedians/groups/${data.slug}`}
-                />
-            </div>
+            <Link href="/comedians/groups" className="inline-flex items-center gap-x-2 hover:text-black">
+                <CircleArrowLeftIcon size={24} className="text-inherit" />
+                Все группы
+            </Link>
 
             <div className="flex flex-col-reverse gap-12 lg:flex-row">
                 <div className="flex flex-1 flex-col gap-y-12">
@@ -103,6 +95,12 @@ export const Group = ({ slug, isAuth }: GroupProps) => {
                             </section>
 
                             <LinksBlock caption="Ссылки" links={data.metaInfo?.links || []} />
+
+                            <Share
+                                title={data.name}
+                                text={data.metaInfo?.description}
+                                url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/comedians/groups/${data.slug}`}
+                            />
                         </div>
                     </div>
                 </div>

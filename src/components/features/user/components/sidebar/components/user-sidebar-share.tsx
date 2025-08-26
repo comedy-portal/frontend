@@ -6,13 +6,13 @@ import { Button } from '@/components/ui/forms/button'
 import { messages } from '@/messages'
 import { useToast } from '@/utils/providers/toast-provider'
 
-type ShareProps = {
+type UserSidebarShareProps = {
     title: string
     text?: string | null
     url: string
 }
 
-export const Share = ({ title, text, url }: ShareProps) => {
+export const UserSidebarShare = ({ title, text, url }: UserSidebarShareProps) => {
     const toast = useToast()
 
     const handleShare = async () => {
@@ -30,13 +30,8 @@ export const Share = ({ title, text, url }: ShareProps) => {
     }
 
     return (
-        <Button
-            size="lg"
-            variant="outline"
-            className="flex w-full items-center justify-center gap-x-2"
-            onClick={handleShare}
-        >
-            <ShareIcon size={24} />
+        <Button variant="outline" className="flex w-full items-center justify-center gap-x-2" onClick={handleShare}>
+            <ShareIcon size={16} />
             Поделиться
         </Button>
     )
