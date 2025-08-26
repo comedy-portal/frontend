@@ -6,8 +6,22 @@ const features = [
         title: '🔍 Удобный поиск и фильтры',
         text: (
             <div className="space-y-2">
-                <p>Ищи комиков, шоу или группы прямо через строку поиска.</p>
-                <ul className="space-y-1">
+                <p>
+                    Комиков, шоу и группы можно легко найти через строку поиска. В разделе «
+                    <Link href="/content" className="text-blue-500 hover:text-blue-700">
+                        Контент
+                    </Link>
+                    » доступен полный каталог с возможностью сортировки и фильтрации. «
+                    <Link href="/comedians" className="text-blue-500 hover:text-blue-700">
+                        Комики
+                    </Link>
+                    » собраны на отдельной странице, а в разделе «
+                    <Link href="/comedians/groups" className="text-blue-500 hover:text-blue-700">
+                        Группы
+                    </Link>
+                    » представлены объединения артистов.
+                </p>
+                {/* <ul className="space-y-1">
                     <li className="relative pl-4 before:absolute before:top-2.5 before:left-0 before:size-1.5 before:rounded-full before:bg-gray-950">
                         На странице{' '}
                         <Link href="/content" className="font-bold text-blue-500 hover:text-blue-700">
@@ -29,7 +43,7 @@ const features = [
                         </Link>{' '}
                         собраны объединения комиков.
                     </li>
-                </ul>
+                </ul> */}
             </div>
         ),
         img: '/images/welcome/content-many.jpg',
@@ -50,13 +64,13 @@ const features = [
             <div className="space-y-2">
                 <p>После регистрации ты получаешь собственный профиль, где можно увидеть:</p>
                 <ul className="space-y-1">
-                    <li className="relative pl-4 before:absolute before:top-2.5 before:left-0 before:size-1.5 before:rounded-full before:bg-gray-950">
+                    <li className="relative pl-4 before:absolute before:top-3 before:left-0 before:size-1.5 before:rounded-full before:bg-gray-950">
                         все твои оценки и рецензии;
                     </li>
-                    <li className="relative pl-4 before:absolute before:top-2.5 before:left-0 before:size-1.5 before:rounded-full before:bg-gray-950">
+                    <li className="relative pl-4 before:absolute before:top-3 before:left-0 before:size-1.5 before:rounded-full before:bg-gray-950">
                         наглядную статистику по просмотрам;
                     </li>
-                    <li className="relative pl-4 before:absolute before:top-2.5 before:left-0 before:size-1.5 before:rounded-full before:bg-gray-950">
+                    <li className="relative pl-4 before:absolute before:top-3 before:left-0 before:size-1.5 before:rounded-full before:bg-gray-950">
                         рекомендации, которыми легко поделиться с другими.
                     </li>
                 </ul>
@@ -81,17 +95,11 @@ const features = [
     {
         title: '⭐ Сохраняй в избранное',
         text: (
-            <div className="space-y-2">
-                <p>Нашёл шоу или спешл, который хочешь посмотреть позже? Добавь его в избранное.</p>
-                <ul className="space-y-1">
-                    <li className="relative pl-4 before:absolute before:top-2.5 before:left-0 before:size-1.5 before:rounded-full before:bg-gray-950">
-                        Список избранного хранится в твоём профиле.
-                    </li>
-                    <li className="relative pl-4 before:absolute before:top-2.5 before:left-0 before:size-1.5 before:rounded-full before:bg-gray-950">
-                        Другие пользователи могут увидеть его и открыть для себя новые рекомендации.
-                    </li>
-                </ul>
-            </div>
+            <p>
+                Нашёл шоу или спешл, который хочется посмотреть позже? Просто добавь его в избранное — оно сохранится в
+                твоём профиле и будет видно другим пользователям, чтобы они тоже могли открыть для себя новые
+                рекомендации.
+            </p>
         ),
         img: '/images/welcome/content-many.jpg',
     },
