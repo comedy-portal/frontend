@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 import { getUserData } from '@/services/user/user'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
-export default function MeLayout() {
+export default function MePage() {
     return withAuth({
         onUnauth: 'notFound',
         getAuthData: async () => {
