@@ -6,7 +6,7 @@ type WelcomeProps = {
     isAuth: boolean
 }
 
-export const Welcome = ({ username, isAuth }: WelcomeProps) => {
+export const Welcome = ({ username }: WelcomeProps) => {
     const features = [
         {
             title: '🔍 Удобный поиск и фильтры',
