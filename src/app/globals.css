@@ -11,7 +11,7 @@ html {
 }
 
 .inner-wrapper-sm {
-  @apply max-w-[808px];
+  @apply lg:max-w-[808px] max-w-full;
 }
 
 .inner-wrapper-lg {
