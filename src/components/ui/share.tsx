@@ -16,8 +16,6 @@ export const Share = ({ title, text, url }: ShareProps) => {
     const toast = useToast()
 
     const handleShare = async () => {
-        if (!navigator.share) return
-
         try {
             await navigator.share({
                 title,
@@ -27,6 +25,10 @@ export const Share = ({ title, text, url }: ShareProps) => {
         } catch {
             toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
         }
+    }
+
+    if (!navigator.share) {
+        return null
     }
 
     return (
