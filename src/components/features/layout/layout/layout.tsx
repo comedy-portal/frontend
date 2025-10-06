@@ -34,7 +34,7 @@ export const Layout = ({ children, filter, title, info, size, nav, preserveQuery
             </div>
 
             {sidebar && (
-                <div className="hidden shrink-0 flex-col gap-y-12 md:flex-row md:gap-x-6 lg:block lg:w-[300px] lg:flex-col xl:w-[368px]">
+                <div className="hidden shrink-0 flex-col gap-y-12 py-16 md:flex-row md:gap-x-6 lg:block lg:w-[300px] lg:flex-col xl:w-[368px]">
                     {sidebar}
                 </div>
             )}

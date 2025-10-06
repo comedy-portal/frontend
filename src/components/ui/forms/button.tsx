@@ -15,7 +15,7 @@ export const Button = (props: ButtonProps) => {
         <button
             {...rest}
             className={classNames(
-                'cursor-pointer rounded-lg focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
+                'cursor-pointer rounded-lg font-bold focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
                 {
                     'bg-gray-700 text-white enabled:hover:bg-gray-950': variant === 'primary',
                     'border border-gray-700 text-gray-700 enabled:hover:border-gray-950 enabled:hover:text-gray-950':

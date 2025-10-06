@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 import { ShareIcon } from 'lucide-react'
 
 import { Button } from '@/components/ui/forms/button'
@@ -14,6 +16,13 @@ type ShareProps = {
 
 export const Share = ({ title, text, url }: ShareProps) => {
     const toast = useToast()
+    const [canShare, setCanShare] = useState(false)
+
+    useEffect(() => {
+        if (typeof navigator !== 'undefined' && !!navigator.share) {
+            setCanShare(true)
+        }
+    }, [])
 
     const handleShare = async () => {
         try {
@@ -27,7 +36,7 @@ export const Share = ({ title, text, url }: ShareProps) => {
         }
     }
 
-    if (!navigator.share) {
+    if (!canShare) {
         return null
     }
 
@@ -38,7 +47,7 @@ export const Share = ({ title, text, url }: ShareProps) => {
             className="flex w-full items-center justify-center gap-x-2"
             onClick={handleShare}
         >
-            <ShareIcon size={24} />
+            <ShareIcon size={24} strokeWidth={2.5} />
             Поделиться
         </Button>
     )

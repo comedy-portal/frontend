@@ -23,9 +23,9 @@ export const UserReviewsFeedItem = ({ review, isMyReview }: UserReviewsFeedItemP
                         {review.content.name}
                     </Link>
                     <div></div>
-                    <div className="text-gray-500">
+                    <div className="flex flex-col text-gray-500 lg:flex-row lg:items-center lg:gap-x-2.5">
                         <UserReviewsFeedItemAuthor comedians={review.content.comedians} group={review.content.group} />
-                        <span> - </span>
+                        <div className="hidden size-1 rounded-full bg-gray-950 lg:block" />
                         {new Date(review.createdAt).toLocaleDateString('ru-RU', {
                             year: 'numeric',
                             month: 'long',

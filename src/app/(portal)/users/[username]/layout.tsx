@@ -12,7 +12,7 @@ export default async function UsersLayout(props: { children: React.ReactNode; pa
 
     return (
         <Layout
-            title={params.username}
+            title="Профиль"
             size="sm"
             nav={[
                 { label: 'Оценки', href: `/users/${params.username}`, filter: <ReviewsFiltersButton /> },
@@ -26,11 +26,7 @@ export default async function UsersLayout(props: { children: React.ReactNode; pa
                 <UserSidebar
                     username={user.username}
                     daysSinceRegistration={user.daysSinceRegistration}
-                    _count={{
-                        reviews: user._count.reviews,
-                        watchlists: user._count.watchlists,
-                        textReviewsCount: user._count.textReviewsCount,
-                    }}
+                    _count={user._count}
                 />
             }
         >
