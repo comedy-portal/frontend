@@ -27,11 +27,11 @@ type UserSidebarProps = {
 export const UserSidebar = (props: UserSidebarProps) => {
     return (
         <div className="sticky top-[115px] space-y-6">
-            <div className="relative space-y-6 rounded-2xl bg-gray-100 p-[72px]">
+            <div className="relative space-y-6 rounded-2xl bg-gray-100 p-12">
                 <div className="absolute -top-6 left-1/2 size-12 -translate-x-1/2 rounded-full bg-white" />
 
                 <div className="flex flex-col items-center space-y-4">
-                    <CircleUserIcon size={120} />
+                    <CircleUserIcon size={100} />
                     <div className="text-center">
                         <div className="text-2xl font-bold">{props.username}</div>
                         <div>На сайте {formatDuration(props.daysSinceRegistration)}</div>
