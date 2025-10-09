@@ -3,6 +3,7 @@ import { PaginatedResponse } from '@/utils/types/common'
 import { IContent } from '@/utils/types/content'
 
 export enum ContentSortBy {
+    CREATED_AT = 'created_at',
     DATE = 'date',
     NAME = 'name',
     RATING = 'rating',

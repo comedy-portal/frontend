@@ -20,7 +20,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
                 <div className="flex flex-col gap-y-6 sm:gap-y-12">
                     <section className="flex flex-col gap-y-6">
                         <div className="flex items-center justify-between">
-                            <h2 className="text-2xl font-semibold">Новое видео</h2>
+                            <h2 className="text-2xl font-semibold">Последние релизы</h2>
                             <Link
                                 href="/content?sort=date_desc"
                                 className="mt-1 inline-flex items-center text-sm text-blue-500"
@@ -45,6 +45,22 @@ export const Landing = ({ isAuth }: LandingProps) => {
 
                         <LandingContentFeed
                             sortBy={ContentSortBy.RATING}
+                            order={Order.DESC}
+                            take={10}
+                            isAuth={isAuth}
+                        />
+                    </section>
+
+                    <section className="flex flex-col gap-y-6">
+                        <div className="flex items-center justify-between">
+                            <h2 className="text-2xl font-semibold">Недавно добавленное</h2>
+                            <Link href="/content" className="mt-1 inline-flex items-center text-sm text-blue-500">
+                                Посмотреть все
+                            </Link>
+                        </div>
+
+                        <LandingContentFeed
+                            sortBy={ContentSortBy.CREATED_AT}
                             order={Order.DESC}
                             take={10}
                             isAuth={isAuth}
