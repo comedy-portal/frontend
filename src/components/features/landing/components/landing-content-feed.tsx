@@ -1,5 +1,7 @@
 'use client'
 
+import ScrollContainer from 'react-indiana-drag-scroll'
+
 import { ContentBlock } from '@/components/features/common/content-block/content-block'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { contentAPI } from '@/redux/services/content/content.api'
@@ -46,7 +48,7 @@ export const LandingContentFeed = (props: LandingContentFeedProps) => {
     }
 
     return (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4">
+        <ScrollContainer className="grid auto-cols-[minmax(270px,_1fr)] grid-flow-col gap-4">
             {data.items.map(item => (
                 <ContentBlock
                     key={`landing-content-feed-item-${item.id}`}
@@ -64,6 +66,6 @@ export const LandingContentFeed = (props: LandingContentFeedProps) => {
                     isAuth={props.isAuth}
                 />
             ))}
-        </div>
+        </ScrollContainer>
     )
 }

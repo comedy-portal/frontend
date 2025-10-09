@@ -29,7 +29,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
                             </Link>
                         </div>
 
-                        <LandingContentFeed sortBy={ContentSortBy.DATE} order={Order.DESC} take={4} isAuth={isAuth} />
+                        <LandingContentFeed sortBy={ContentSortBy.DATE} order={Order.DESC} take={10} isAuth={isAuth} />
                     </section>
 
                     <section className="flex flex-col gap-y-6">
@@ -43,7 +43,12 @@ export const Landing = ({ isAuth }: LandingProps) => {
                             </Link>
                         </div>
 
-                        <LandingContentFeed sortBy={ContentSortBy.RATING} order={Order.DESC} take={4} isAuth={isAuth} />
+                        <LandingContentFeed
+                            sortBy={ContentSortBy.RATING}
+                            order={Order.DESC}
+                            take={10}
+                            isAuth={isAuth}
+                        />
                     </section>
 
                     <section className="flex flex-col gap-y-6">
