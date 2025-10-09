@@ -3,7 +3,7 @@
 import { ChangeEmail } from '@/components/features/auth/change-email'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
-export const MeSettingsBlockChangeEmail = () => {
+export const SettingsBlockChangeEmail = () => {
     const dialog = useDialog()
 
     const handleChangeEmail = () => {
