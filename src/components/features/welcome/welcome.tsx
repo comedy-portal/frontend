@@ -141,7 +141,7 @@ export const Welcome = ({ username }: WelcomeProps) => {
 
     return (
         <div>
-            <section className="m-auto flex h-[400px] items-center justify-center bg-gray-950 bg-[url('/images/welcome/welcome.jpg')] bg-cover bg-center bg-no-repeat px-4 text-center text-white sm:px-6 lg:px-8">
+            {/* <section className="m-auto flex h-[400px] items-center justify-center bg-gray-950 bg-[url('/images/welcome/welcome.jpg')] bg-cover bg-center bg-no-repeat px-4 text-center text-white sm:px-6 lg:px-8">
                 <div className="space-y-10 sm:w-2/5">
                     <h1 className="text-4xl font-bold sm:text-5xl">Добро пожаловать</h1>
                     <p className="text-muted-foreground text-lg">
@@ -149,7 +149,7 @@ export const Welcome = ({ username }: WelcomeProps) => {
                         собственную историю просмотров.
                     </p>
                 </div>
-            </section>
+            </section> */}
 
             <div className="wrapper flex flex-col gap-y-16 py-16 sm:gap-y-32">
                 {features.map((f, i) => (
