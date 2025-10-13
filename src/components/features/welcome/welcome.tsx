@@ -1,12 +1,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { WelcomeLoginButton } from './components/welcome-login-button'
+
 type WelcomeProps = {
     username?: string
     isAuth: boolean
 }
 
-export const Welcome = ({ username }: WelcomeProps) => {
+export const Welcome = ({ username, isAuth }: WelcomeProps) => {
     const features = [
         {
             title: '🔍 Удобный поиск и фильтры',
@@ -47,10 +49,8 @@ export const Welcome = ({ username }: WelcomeProps) => {
                 <div className="space-y-2">
                     <p>
                         После регистрации ты&nbsp;получаешь собственный{' '}
-                        <Link href={`/users/${username}`} className="text-blue-500 hover:text-blue-700">
-                            профиль
-                        </Link>
-                        , где можно увидеть:
+                        <WelcomeLoginButton caption="профиль" href={`/users/${username}`} isAuth={isAuth} />, где можно
+                        увидеть:
                     </p>
                     <ul className="space-y-1">
                         <li className="relative pl-4 before:absolute before:top-3 before:left-0 before:size-1.5 before:rounded-full before:bg-gray-950">
@@ -65,10 +65,8 @@ export const Welcome = ({ username }: WelcomeProps) => {
                     </ul>
                     <p className="mt-4">
                         💡 Совет: сразу{' '}
-                        <Link href="/me/settings" className="text-blue-500 hover:text-blue-700">
-                            поменяй свой никнейм
-                        </Link>
-                        . По&nbsp;умолчанию выдаётся базовый, а&nbsp;уникальное имя сделает твой профиль заметнее.
+                        <WelcomeLoginButton caption="поменяй свой никнейм" href="/me/settings" isAuth={isAuth} />.
+                        По&nbsp;умолчанию выдаётся базовый, а&nbsp;уникальное имя сделает твой профиль заметнее.
                     </p>
                 </div>
             ),
@@ -79,9 +77,11 @@ export const Welcome = ({ username }: WelcomeProps) => {
             text: (
                 <p>
                     Хочешь поделиться с&nbsp;друзьями тем, что понравилось? В&nbsp;твоём профиле вся{' '}
-                    <Link href={`/users/${username}`} className="text-blue-500 hover:text-blue-700">
-                        история просмотров и&nbsp;оценок
-                    </Link>{' '}
+                    <WelcomeLoginButton
+                        caption="история просмотров и&nbsp;оценок"
+                        href={`/users/${username}`}
+                        isAuth={isAuth}
+                    />{' '}
                     доступна в&nbsp;удобном виде.
                 </p>
             ),
@@ -92,9 +92,7 @@ export const Welcome = ({ username }: WelcomeProps) => {
             text: (
                 <p>
                     Нашёл шоу или спешл, который хочется посмотреть позже? Просто добавь его в&nbsp;
-                    <Link href={`/users/${username}/watchlists`} className="text-blue-500 hover:text-blue-700">
-                        избранное
-                    </Link>
+                    <WelcomeLoginButton caption="избранное" href={`/users/${username}/watchlists`} isAuth={isAuth} />
                     &nbsp;&mdash; оно сохранится в твоём профиле и&nbsp;будет видно другим пользователям, чтобы они тоже
                     могли открыть для себя новые рекомендации.
                 </p>
@@ -129,10 +127,8 @@ export const Welcome = ({ username }: WelcomeProps) => {
             text: (
                 <p>
                     Не&nbsp;нашёл любимое шоу или новый спешл? Сообщи нам! У&nbsp;нас есть удобная{' '}
-                    <Link href="/content/submit" className="text-blue-500 hover:text-blue-700">
-                        форма
-                    </Link>{' '}
-                    для предложений&nbsp;&mdash; помоги расширить каталог Comedy Portal.
+                    <WelcomeLoginButton caption="форма" href="/content/submit" isAuth={isAuth} /> для
+                    предложений&nbsp;&mdash; помоги расширить каталог Comedy Portal.
                 </p>
             ),
             img: '/images/welcome/content-submit.jpg',
