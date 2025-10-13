@@ -140,40 +140,28 @@ export const Welcome = ({ username }: WelcomeProps) => {
     ]
 
     return (
-        <div>
-            {/* <section className="m-auto flex h-[400px] items-center justify-center bg-gray-950 bg-[url('/images/welcome/welcome.jpg')] bg-cover bg-center bg-no-repeat px-4 text-center text-white sm:px-6 lg:px-8">
-                <div className="space-y-10 sm:w-2/5">
-                    <h1 className="text-4xl font-bold sm:text-5xl">Добро пожаловать</h1>
-                    <p className="text-muted-foreground text-lg">
-                        Место, где любители юмора собираются, чтобы открывать новое, делиться мнением и&nbsp;отслеживать
-                        собственную историю просмотров.
-                    </p>
-                </div>
-            </section> */}
+        <div className="wrapper flex flex-col gap-y-16 py-16 sm:gap-y-32">
+            {features.map((f, i) => (
+                <section
+                    key={i}
+                    className={`flex flex-col items-center gap-8 sm:flex-row sm:gap-16 ${i % 2 === 1 ? 'sm:flex-row-reverse' : ''}`}
+                >
+                    <div className="w-full space-y-4 sm:w-1/2">
+                        <h2 className="text-2xl font-bold">{f.title}</h2>
+                        <div className="text-muted-foreground text-base leading-relaxed">{f.text}</div>
+                    </div>
 
-            <div className="wrapper flex flex-col gap-y-16 py-16 sm:gap-y-32">
-                {features.map((f, i) => (
-                    <section
-                        key={i}
-                        className={`flex flex-col items-center gap-8 sm:flex-row sm:gap-16 ${i % 2 === 1 ? 'sm:flex-row-reverse' : ''}`}
-                    >
-                        <div className="w-full space-y-4 sm:w-1/2">
-                            <h2 className="text-2xl font-bold">{f.title}</h2>
-                            <div className="text-muted-foreground text-base leading-relaxed">{f.text}</div>
-                        </div>
-
-                        <div className="w-full overflow-hidden rounded shadow-2xl sm:w-1/2">
-                            <Image
-                                src={f.img}
-                                alt={f.title}
-                                width={800}
-                                height={600}
-                                className="h-auto w-full object-cover"
-                            />
-                        </div>
-                    </section>
-                ))}
-            </div>
+                    <div className="w-full overflow-hidden rounded shadow-2xl sm:w-1/2">
+                        <Image
+                            src={f.img}
+                            alt={f.title}
+                            width={800}
+                            height={600}
+                            className="h-auto w-full object-cover"
+                        />
+                    </div>
+                </section>
+            ))}
         </div>
     )
 }
