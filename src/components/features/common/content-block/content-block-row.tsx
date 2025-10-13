@@ -54,7 +54,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
             <div
                 className={classNames(
                     'flex flex-col border-gray-300', // common styles
-                    'lg:flex-grow lg:justify-between lg:gap-y-0 lg:rounded-tl-none lg:rounded-tr-lg lg:rounded-br-lg lg:rounded-bl-none lg:border-t lg:border-r lg:border-b lg:border-l-0 lg:p-6', // for larger screens
+                    'lg:flex-grow lg:justify-between lg:gap-y-0 lg:rounded-tl-none lg:rounded-tr-lg lg:rounded-br-lg lg:rounded-bl-none lg:border-t lg:border-r lg:border-b lg:border-l-0 lg:p-6 lg:pr-12', // for larger screens
                     'gap-y-4 rounded-tl-none rounded-tr-none rounded-br-lg rounded-bl-lg border-t-0 border-r border-b border-l p-4', // for smaller screens
                 )}
             >
