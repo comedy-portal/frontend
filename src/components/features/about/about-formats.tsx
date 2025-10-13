@@ -1,12 +1,6 @@
 export const AboutFormats = () => {
     return (
         <div className="flex flex-col gap-y-8">
-            <p>
-                На&nbsp;Comedy Portal мы&nbsp;собрали огромную коллекцию смешного контента на&nbsp;любой вкус. Чтобы Вам
-                было проще ориентироваться, мы&nbsp;разделили всё по&nbsp;типам. Узнайте, чем они отличаются,
-                и&nbsp;найдите&nbsp;то, что Вам по&nbsp;вкусу!
-            </p>
-
             <section>
                 <h2 className="mb-4 text-xl font-semibold">Спешлы</h2>
                 <p>
