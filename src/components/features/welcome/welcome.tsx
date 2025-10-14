@@ -136,7 +136,7 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
     ]
 
     return (
-        <div className="wrapper flex flex-col gap-y-16 py-16 sm:gap-y-32">
+        <div className="wrapper flex flex-col gap-y-16 sm:gap-y-32 sm:py-16">
             {features.map((f, i) => (
                 <section
                     key={i}
