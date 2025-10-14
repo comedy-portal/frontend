@@ -26,7 +26,11 @@ export const HeaderMobile = ({ username, isAuth }: HeaderMobileProps) => {
 
     return (
         <div className="flex h-full items-center justify-between">
-            <Link href="/" className="relative flex h-full items-center gap-x-2 whitespace-nowrap text-white">
+            <Link
+                href="/"
+                className="relative flex h-full items-center gap-x-2 whitespace-nowrap text-white"
+                onClick={closeMobileMenu}
+            >
                 <MicIcon size={28} strokeWidth={2} />
                 <div className="text-[20px] leading-none font-extrabold uppercase">ComedyPortal</div>
             </Link>
