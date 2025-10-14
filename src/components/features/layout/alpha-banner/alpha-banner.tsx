@@ -6,12 +6,14 @@ import Link from 'next/link'
 
 import { getTripadvancerBannerClosed, setTripadvancerBannerClosed } from '@/redux/features/app-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
+import { internalApi } from '@/redux/services/internal/internal.api'
 
 export const AlphaBanner = () => {
     const dispatch = useAppDispatch()
+    const { data, isLoading } = internalApi.useGetEdgeGeoQuery()
     const isClosed = useAppSelector(getTripadvancerBannerClosed)
 
-    if (isClosed) {
+    if (isLoading || isClosed || data?.countryCode?.toUpperCase() === 'RU') {
         return null
     }
 
