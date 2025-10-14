@@ -46,7 +46,7 @@ export const LandingHero = ({ isAuth }: LandingHeroProps) => {
             >
                 <section className="m-auto flex h-[400px] items-center justify-center bg-gray-950 bg-[url('/images/welcome/welcome.jpg')] bg-cover bg-center bg-no-repeat px-4 text-center text-white sm:px-6 lg:px-8">
                     <div className="space-y-10 sm:w-2/3">
-                        <h1 className="text-4xl font-bold sm:text-5xl">Комеди Портал</h1>
+                        <h1 className="text-4xl font-bold sm:text-5xl">Камеди Портал</h1>
                         <p className="text-muted-foreground text-lg">
                             Место, где любители юмора собираются, чтобы находить свежие стендапы и новые комедийные шоу,
                             делиться мнением и&nbsp;отслеживать собственную историю просмотров.
