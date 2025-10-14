@@ -9,13 +9,13 @@ import { internalApi } from './services/internal/internal.api'
 
 const createNoopStorage = () => {
     return {
-        getItem(_key: string) {
+        getItem() {
             return Promise.resolve(null)
         },
-        setItem(_key: string, value: string) {
+        setItem(value: string) {
             return Promise.resolve(value)
         },
-        removeItem(_key: string) {
+        removeItem() {
             return Promise.resolve()
         },
     }

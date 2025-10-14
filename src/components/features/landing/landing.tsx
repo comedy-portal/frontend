@@ -1,4 +1,4 @@
-import { ChevronRight, ChevronRightIcon, MedalIcon } from 'lucide-react'
+import { ChevronRightIcon, MedalIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
