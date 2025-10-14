@@ -1,3 +1,5 @@
+import { ChevronRight, ChevronRightIcon, MedalIcon } from 'lucide-react'
+
 import Link from 'next/link'
 
 import { ContentSortBy } from '@/redux/services/content/content.types'
@@ -18,6 +20,23 @@ export const Landing = ({ isAuth }: LandingProps) => {
 
             <div className="wrapper py-8 sm:py-16">
                 <div className="flex flex-col gap-y-6 sm:gap-y-12">
+                    <Link
+                        href="/top-special/2025"
+                        className="flex items-center justify-center rounded-lg border border-red-100 bg-red-50 p-4 text-center sm:justify-between sm:p-6 sm:text-left"
+                    >
+                        <div className="flex items-center gap-x-4">
+                            <MedalIcon className="hidden shrink-0 text-red-500 sm:block" size={32} />
+                            <div>
+                                <div className="font-bold">Топ стендап спешлов 2025!</div>
+                                <div className="text-sm text-gray-500">
+                                    Выбери свой любимый спешл и помоги ему попасть в топ.
+                                </div>
+                            </div>
+                        </div>
+
+                        <ChevronRightIcon className="hidden sm:block" />
+                    </Link>
+
                     <section className="flex flex-col gap-y-6">
                         <div className="flex items-center justify-between">
                             <h2 className="text-2xl font-semibold">Последние релизы</h2>
