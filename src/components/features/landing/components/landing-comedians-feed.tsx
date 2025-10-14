@@ -1,5 +1,7 @@
 'use client'
 
+import ScrollContainer from 'react-indiana-drag-scroll'
+
 import { ComedianBlock } from '@/components/features/common/comedian-block/comedian-block'
 import { comediansAPI } from '@/redux/services/comedians/comedians.api'
 import { ComedianSortBy } from '@/redux/services/comedians/comedians.types'
@@ -7,27 +9,11 @@ import { Order } from '@/utils/enums/common'
 
 import { LandingComediansFeedSkeleton } from './landing-comedians-feed-skeleton'
 
-const getVisibilityClass = (index: number) => {
-    switch (index) {
-        case 0:
-        case 1:
-            return 'block'
-        case 2:
-            return 'hidden sm:block'
-        case 3:
-            return 'hidden md:block'
-        case 4:
-            return 'hidden lg:block'
-        default:
-            return 'hidden'
-    }
-}
-
 export const LandingComediansFeed = () => {
     const { data, isSuccess, isError } = comediansAPI.useGetComediansQuery({
         sort_by: ComedianSortBy.CREATED_AT,
         order: Order.DESC,
-        take: 6,
+        take: 10,
     })
 
     if (isError) {
@@ -47,12 +33,13 @@ export const LandingComediansFeed = () => {
     }
 
     return (
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-            {data.items.map((item, index) => (
-                <div key={item.slug} className={getVisibilityClass(index)}>
+        // <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+        <ScrollContainer className="grid auto-cols-[minmax(200px,_1fr)] grid-flow-col gap-4">
+            {data.items.map(item => (
+                <div key={item.slug}>
                     <ComedianBlock slug={item.slug} name={item.name} surname={item.surname} isAgent={item.isAgent} />
                 </div>
             ))}
-        </div>
+        </ScrollContainer>
     )
 }

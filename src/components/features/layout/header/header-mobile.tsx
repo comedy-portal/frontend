@@ -26,12 +26,13 @@ export const HeaderMobile = ({ username, isAuth }: HeaderMobileProps) => {
 
     return (
         <div className="flex h-full items-center justify-between">
-            <Link href="/" className="relative flex h-full items-center gap-x-2 whitespace-nowrap text-white">
+            <Link
+                href="/"
+                className="relative flex h-full items-center gap-x-2 whitespace-nowrap text-white"
+                onClick={closeMobileMenu}
+            >
                 <MicIcon size={28} strokeWidth={2} />
-                <div>
-                    <div className="mb-0.5 text-[10px] leading-none font-semibold text-white">Альфа</div>
-                    <div className="text-[16px] leading-none font-extrabold uppercase">ComedyPortal</div>
-                </div>
+                <div className="text-[20px] leading-none font-extrabold uppercase">ComedyPortal</div>
             </Link>
 
             {isOpen ? (
