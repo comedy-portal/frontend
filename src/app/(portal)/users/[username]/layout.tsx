@@ -22,13 +22,16 @@ export default async function UsersLayout(props: { children: React.ReactNode; pa
                     filter: <WatchlistFiltersButton />,
                 },
             ]}
-            sidebar={
-                <UserSidebar
-                    username={user.username}
-                    daysSinceRegistration={user.daysSinceRegistration}
-                    _count={user._count}
-                />
-            }
+            sidebar={{
+                component: (
+                    <UserSidebar
+                        username={user.username}
+                        daysSinceRegistration={user.daysSinceRegistration}
+                        _count={user._count}
+                    />
+                ),
+                showOnMobile: true,
+            }}
         >
             {props.children}
         </Layout>

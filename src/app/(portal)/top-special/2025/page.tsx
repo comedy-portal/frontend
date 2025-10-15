@@ -22,16 +22,14 @@ export default async function TopSpecial2025Page() {
                 <div className="mb-4 flex gap-x-3 rounded-lg border border-orange-100 bg-orange-50 p-4">
                     <MedalIcon className="hidden shrink-0 text-orange-500 sm:block" />
                     <div>
-                        Возможно, Ваш любимый спешл пока не попал в{' '}
-                        <strong>топ русскоязычных концертов 2025 года</strong>, потому что ещё не набрал достаточно
-                        оценок. Помогите ему подняться в рейтинге —{' '}
+                        Ваш любимый спешл не попал в топ стендап концертов на русском 2025 года?{' '}
                         <Link
                             href="/content/special?sort=rating_asc&year=2025"
                             className="text-blue-500 hover:text-blue-700"
                         >
-                            голосуйте здесь
-                        </Link>
-                        .
+                            Голосуйте
+                        </Link>{' '}
+                        и помогите ему подняться в рейтинге!
                     </div>
                 </div>
             </TopContent>

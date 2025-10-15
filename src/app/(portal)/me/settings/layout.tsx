@@ -23,15 +23,16 @@ export default function SettingsLayout(props: { children: React.ReactNode }) {
             <Layout
                 title="Настройки"
                 size="sm"
-                sidebar={
-                    data ? (
+                sidebar={{
+                    component: data ? (
                         <UserSidebar
                             username={data.user.username}
                             daysSinceRegistration={data.user.daysSinceRegistration}
                             _count={data.user._count}
                         />
-                    ) : null
-                }
+                    ) : null,
+                    showOnMobile: false,
+                }}
             >
                 {props.children}
             </Layout>

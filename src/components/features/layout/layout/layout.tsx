@@ -15,7 +15,10 @@ type LayoutProps = {
         filter?: React.ReactNode
     }[]
     preserveQuery?: boolean
-    sidebar?: React.ReactNode
+    sidebar?: {
+        component: React.ReactNode
+        showOnMobile?: boolean
+    }
 }
 
 export const Layout = ({ children, filter, title, info, size, nav, preserveQuery, sidebar }: LayoutProps) => {
@@ -27,7 +30,9 @@ export const Layout = ({ children, filter, title, info, size, nav, preserveQuery
                 <div className="mb-12 space-y-6">
                     <h1 className="text-4xl font-bold sm:text-3xl">{title}</h1>
                     {info && <div className="text-gray-500">{info}</div>}
-                    {sidebar && <div className="mb-12 block lg:hidden">{sidebar}</div>}
+                    {sidebar && sidebar.showOnMobile && (
+                        <div className="mb-12 block lg:hidden">{sidebar.component}</div>
+                    )}
                     <LayoutNav items={nav} filter={filter} preserveQuery={preserveQuery} />
                 </div>
                 {children}
@@ -35,7 +40,7 @@ export const Layout = ({ children, filter, title, info, size, nav, preserveQuery
 
             {sidebar && (
                 <div className="hidden shrink-0 flex-col gap-y-12 py-16 md:flex-row md:gap-x-6 lg:block lg:w-[300px] lg:flex-col xl:w-[368px]">
-                    {sidebar}
+                    {sidebar.component}
                 </div>
             )}
         </div>
