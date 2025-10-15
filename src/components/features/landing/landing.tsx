@@ -39,10 +39,16 @@ export const Landing = ({ isAuth }: LandingProps) => {
 
                     <section className="flex flex-col gap-y-6">
                         <div className="flex items-center justify-between">
-                            <h2 className="text-2xl font-semibold">Последние релизы</h2>
                             <Link
                                 href="/content?sort=date_desc"
-                                className="mt-1 inline-flex items-center text-sm text-blue-500"
+                                className="flex w-full items-center justify-between gap-x-2"
+                            >
+                                <h2 className="text-2xl font-semibold">Последние релизы</h2>
+                                <ChevronRightIcon size={24} className="block sm:hidden" />
+                            </Link>
+                            <Link
+                                href="/content?sort=date_desc"
+                                className="mt-1 hidden items-center text-sm text-nowrap text-blue-500 sm:inline-flex"
                             >
                                 Посмотреть все
                             </Link>
@@ -53,10 +59,16 @@ export const Landing = ({ isAuth }: LandingProps) => {
 
                     <section className="flex flex-col gap-y-6">
                         <div className="flex items-center justify-between">
-                            <h2 className="text-2xl font-semibold">Рекомендуемое</h2>
                             <Link
                                 href="/content?sort=rating_desc"
-                                className="mt-1 inline-flex items-center text-sm text-blue-500"
+                                className="flex w-full items-center justify-between gap-x-2"
+                            >
+                                <h2 className="text-2xl font-semibold">Рекомендуемое</h2>
+                                <ChevronRightIcon size={24} className="block sm:hidden" />
+                            </Link>
+                            <Link
+                                href="/content?sort=rating_desc"
+                                className="mt-1 hidden items-center text-sm text-nowrap text-blue-500 sm:inline-flex"
                             >
                                 Посмотреть все
                             </Link>
@@ -72,8 +84,14 @@ export const Landing = ({ isAuth }: LandingProps) => {
 
                     <section className="flex flex-col gap-y-6">
                         <div className="flex items-center justify-between">
-                            <h2 className="text-2xl font-semibold">Недавно добавленное</h2>
-                            <Link href="/content" className="mt-1 inline-flex items-center text-sm text-blue-500">
+                            <Link href="/content" className="flex w-full items-center justify-between gap-x-2">
+                                <h2 className="text-2xl font-semibold">Недавно добавленное</h2>
+                                <ChevronRightIcon size={24} className="block sm:hidden" />
+                            </Link>
+                            <Link
+                                href="/content"
+                                className="mt-1 hidden items-center text-sm text-nowrap text-blue-500 sm:inline-flex"
+                            >
                                 Посмотреть все
                             </Link>
                         </div>
@@ -88,8 +106,14 @@ export const Landing = ({ isAuth }: LandingProps) => {
 
                     <section className="flex flex-col gap-y-6">
                         <div className="flex items-center justify-between">
-                            <h2 className="text-2xl font-semibold">Комики</h2>
-                            <Link href="/comedians" className="mt-1 inline-flex items-center text-sm text-blue-500">
+                            <Link href="/comedians" className="flex w-full items-center justify-between gap-x-2">
+                                <h2 className="text-2xl font-semibold">Комики</h2>
+                                <ChevronRightIcon size={24} className="block sm:hidden" />
+                            </Link>
+                            <Link
+                                href="/comedians"
+                                className="mt-1 hidden items-center text-sm text-nowrap text-blue-500 sm:inline-flex"
+                            >
                                 Все комики
                             </Link>
                         </div>
