@@ -1,5 +1,7 @@
 'use client'
 
+import { BellPlusIcon } from 'lucide-react'
+
 import { useRouter } from 'next/navigation'
 
 import { SignUp } from '@/components/features/auth/sign-up'
@@ -44,6 +46,7 @@ export const SubscribeButton = ({ id, type, isAuth }: SubscribeButtonProps) => {
             className="flex w-full items-center justify-center gap-x-2"
             onClick={toggle}
         >
+            <BellPlusIcon />
             Подписаться
         </Button>
     )
