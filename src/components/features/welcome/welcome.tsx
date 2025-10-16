@@ -128,7 +128,7 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                 <p>
                     Не&nbsp;нашёл любимое шоу или новый спешл? Сообщи нам! У&nbsp;нас есть удобная{' '}
                     <WelcomeLoginButton caption="форма" href="/content/submit" isAuth={isAuth} /> для
-                    предложений&nbsp;&mdash; помоги расширить каталог Comedy Portal.
+                    предложений&nbsp;&mdash; помоги расширить каталог Камеди Портал.
                 </p>
             ),
             img: '/images/welcome/content-submit.jpg',

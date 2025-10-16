@@ -109,12 +109,14 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
                                 <SettingsIcon size={20} />
                             </div>
                         </Link>
+                        <HeaderSubmitContent isAuth={isAuth} onClick={closeMobileMenu} />
                     </>
                 ) : (
-                    <HeaderLogin onClick={closeMobileMenu} />
+                    <>
+                        <HeaderSubmitContent isAuth={isAuth} onClick={closeMobileMenu} />
+                        <HeaderLogin onClick={closeMobileMenu} />
+                    </>
                 )}
-
-                <HeaderSubmitContent isAuth={isAuth} onClick={closeMobileMenu} />
 
                 {isAuth && (
                     <>

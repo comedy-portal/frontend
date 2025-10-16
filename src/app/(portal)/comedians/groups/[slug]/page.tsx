@@ -11,11 +11,13 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     const group = await getGroupsBySlug(params.slug)
 
     return {
-        title: `${group.name} - Comedy Portal`,
+        title: group.name,
         description: group.metaInfo?.description,
         openGraph: {
-            title: `${group.name} - Comedy Portal`,
-            description: group.metaInfo?.description || 'Comedy Portal - Discover the best comedy content',
+            title: group.name,
+            description:
+                group.metaInfo?.description ||
+                'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и твоей персональной историей просмотров.',
             images: [
                 {
                     url: group.groupImages[0]?.url,

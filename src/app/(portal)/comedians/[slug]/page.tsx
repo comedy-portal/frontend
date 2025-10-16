@@ -11,11 +11,13 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     const comedian = await getComedianBySlug(params.slug)
 
     return {
-        title: `${comedian.name} ${comedian.surname} - Comedy Portal`,
+        title: `${comedian.name} ${comedian.surname}`,
         description: comedian.metaInfo?.description,
         openGraph: {
-            title: `${comedian.name} ${comedian.surname} - Comedy Portal`,
-            description: comedian.metaInfo?.description || 'Comedy Portal - Discover the best comedy content',
+            title: `${comedian.name} ${comedian.surname}`,
+            description:
+                comedian.metaInfo?.description ||
+                'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и твоей персональной историей просмотров.',
             images: [
                 {
                     url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/comedians/${comedian.slug}.jpg`,

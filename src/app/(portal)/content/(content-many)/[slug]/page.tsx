@@ -14,7 +14,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     const typeName = categories.find(category => category.type === params.slug)
 
     return {
-        title: `${typeName?.label} - Comedy Portal`,
+        title: typeName?.label,
     }
 }
 

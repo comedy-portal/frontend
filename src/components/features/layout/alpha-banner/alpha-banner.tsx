@@ -29,8 +29,8 @@ export const AlphaBanner = () => {
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                Tripadvancer – находите лучшие достопримечательности, делитесь отзывами и ведите журнал своих
-                путешествий!
+                <strong>Tripadvancer</strong>&nbsp;&mdash; находите лучшие достопримечательности, делитесь отзывами
+                и&nbsp;ведите журнал своих путешествий!
             </Link>
             <div
                 className="hover:text-black-950 absolute top-2 right-2 h-4 w-4 cursor-pointer text-gray-500 hover:text-gray-700 lg:top-1/2 lg:right-4 lg:-translate-y-1/2"

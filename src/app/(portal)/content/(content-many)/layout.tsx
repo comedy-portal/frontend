@@ -10,7 +10,7 @@ export default function ContentManyLayout(props: { children: React.ReactNode }) 
             title="Контент"
             info={
                 <span>
-                    На Comedy Portal мы собрали огромную коллекцию смешного контента на любой вкус. Чтобы Вам было проще
+                    На Камеди Портал мы собрали огромную коллекцию смешного контента на любой вкус. Чтобы Вам было проще
                     ориентироваться, мы разделили всё по типам.{' '}
                     <Link href="/about/formats" className="text-blue-500 hover:text-blue-700">
                         Узнайте

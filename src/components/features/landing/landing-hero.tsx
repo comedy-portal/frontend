@@ -48,14 +48,14 @@ export const LandingHero = ({ isAuth }: LandingHeroProps) => {
                     <div className="space-y-10 sm:w-2/3">
                         <h1 className="text-4xl font-bold sm:text-5xl">Камеди Портал</h1>
                         <p className="text-muted-foreground text-lg">
-                            Место, где любители юмора собираются, чтобы находить свежие стендапы и новые комедийные шоу,
-                            делиться мнением и&nbsp;отслеживать собственную историю просмотров.
+                            Агрегатор лучших стендапов и&nbsp;шоу&nbsp;&mdash; с&nbsp;оценками, рецензиями и&nbsp;твоей
+                            персональной историей просмотров.
                         </p>
 
                         <div className="flex justify-center gap-4">
                             {!isAuth && (
                                 <button
-                                    className="h-10 cursor-pointer rounded-lg bg-gray-700 px-6 text-sm font-bold text-white focus:outline-none"
+                                    className="h-10 cursor-pointer rounded-lg bg-white px-6 text-sm font-bold text-gray-950 focus:outline-none"
                                     onClick={handleClick}
                                 >
                                     Присоединиться

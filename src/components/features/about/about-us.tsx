@@ -7,7 +7,7 @@ export const AboutUs = () => {
         <div className="space-y-8">
             <div className="space-y-4">
                 <p>
-                    <strong>&laquo;Comedy Portal&raquo;</strong>&nbsp;&mdash; это Ваш путеводитель по&nbsp;миру
+                    <strong>&laquo;Камеди Портал&raquo;</strong>&nbsp;&mdash; это Ваш путеводитель по&nbsp;миру
                     русскоязычной комедии, созданный такими же&nbsp;увлечёнными людьми, как и&nbsp;Вы. Мы&nbsp;искренне
                     любим стендап и&nbsp;юмор во&nbsp;всех его проявлениях, поэтому хотим помочь Вам легко находить
                     именно тот комедийный контент, который придётся по&nbsp;душе.

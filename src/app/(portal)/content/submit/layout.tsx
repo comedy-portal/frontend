@@ -4,7 +4,7 @@ import { Layout } from '@/components/features/layout/layout/layout'
 
 // prettier-ignore
 export const metadata: Metadata = {
-    title: 'Предложить контент - Comedy Portal',
+    title: 'Предложить контент',
 }
 
 export default function ContentSubmitLayout(props: { children: React.ReactNode }) {

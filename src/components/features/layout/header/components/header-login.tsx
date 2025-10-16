@@ -1,7 +1,5 @@
 'use client'
 
-import { CircleUserRoundIcon } from 'lucide-react'
-
 import { SignUp } from '@/components/features/auth/sign-up'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
@@ -18,14 +16,11 @@ export const HeaderLogin = ({ onClick }: HeaderLoginProps) => {
     }
 
     return (
-        <div
-            className="flex cursor-pointer items-center justify-between text-gray-300 hover:text-white sm:flex-none"
+        <button
+            className="h-8 cursor-pointer rounded-lg bg-white px-4 text-sm font-bold text-gray-950 focus:outline-none"
             onClick={handleClick}
         >
             Войти
-            <div className="text-gray-700 sm:hidden">
-                <CircleUserRoundIcon size={20} />
-            </div>
-        </div>
+        </button>
     )
 }

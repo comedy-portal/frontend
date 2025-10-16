@@ -8,7 +8,7 @@ export const LegalPrivacyPolicy = () => {
 
                 <p>
                     Настоящая Политика конфиденциальности объясняет, какие данные мы&nbsp;собираем, как
-                    мы&nbsp;их&nbsp;используем и какие права вы&nbsp;имеете как пользователь сервиса Comedy Portal
+                    мы&nbsp;их&nbsp;используем и какие права вы&nbsp;имеете как пользователь сервиса Камеди Портал
                     (далее&nbsp;&mdash; &laquo;Сервис&raquo;, &laquo;мы&raquo;, &laquo;наш&raquo;).
                 </p>
             </div>
@@ -75,7 +75,7 @@ export const LegalPrivacyPolicy = () => {
             <section className="space-y-4">
                 <h2 className="text-xl font-semibold">8. Юрисдикция</h2>
                 <p>
-                    Сервис Comedy Portal создаётся командой из&nbsp;ЕС и&nbsp;ориентирован на&nbsp;русскоязычных
+                    Сервис Камеди Портал создаётся командой из&nbsp;ЕС и&nbsp;ориентирован на&nbsp;русскоязычных
                     пользователей. Мы соблюдаем стандарты конфиденциальности, совместимые с&nbsp;GDPR.
                 </p>
             </section>

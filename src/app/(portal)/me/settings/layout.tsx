@@ -8,7 +8,7 @@ import { withAuth } from '@/utils/supertokens/with-auth'
 
 // prettier-ignore
 export const metadata: Metadata = {
-    title: 'Настройки - Comedy Portal',
+    title: 'Настройки',
 }
 
 export default function MeLayout(props: { children: React.ReactNode }) {
