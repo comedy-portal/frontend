@@ -24,7 +24,12 @@ export const AlphaBanner = () => {
 
     return (
         <div className="relative flex h-8 items-center justify-center bg-[#1890FF]">
-            <Link href="https://tripadvancer.com" className="flex items-center gap-x-4">
+            <Link
+                href="https://tripadvancer.com?utm_source=comedy_portal"
+                className="flex items-center gap-x-4"
+                target="_blank"
+                rel="noreferrer"
+            >
                 <Image
                     src="/images/tripadvancer.png"
                     alt="Tripadvancer"
