@@ -18,59 +18,40 @@ export const LandingHero = ({ isAuth }: LandingHeroProps) => {
     }
 
     return (
-        <div className="relative flex items-center justify-center border bg-gray-950 sm:pt-10 sm:pb-20">
-            {/* <AliceCarousel
-                mouseTracking
-                disableButtonsControls
-                infinite
-                items={items}
-                autoPlay
-                autoPlayInterval={7000}
-                responsive={{
-                    0: {
-                        items: 1,
-                    },
-                }}
-                renderDotsItem={e => (
-                    <div
-                        className={classNames('relative h-2 w-6 cursor-pointer rounded-full border-2 border-white', {
-                            'bg-white': e.isActive,
-                        })}
-                    />
-                )}
-            /> */}
+        <div className="relative flex h-[522px] w-full items-center justify-center overflow-hidden bg-gray-950">
+            <div className="relative flex h-[522px] items-center justify-center">
+                <div
+                    className="h-[522px] w-auto bg-[url('/images/promo/comedy-portal.jpg')] [mask-image:linear-gradient(to_right,transparent_0%,black_30%,black_70%,transparent_100%)] bg-contain bg-center bg-no-repeat [mask-size:contain] [mask-repeat:no-repeat]"
+                    style={{
+                        aspectRatio: '1440 / 522',
+                    }}
+                />
+            </div>
 
-            <div
-                key="landing-hero-item-2"
-                className="mx-auto flex items-center justify-center sm:max-w-[1224px] sm:px-6 lg:px-8"
-            >
-                <section className="m-auto flex h-[400px] items-center justify-center bg-gray-950 bg-[url('/images/welcome/welcome.jpg')] bg-cover bg-center bg-no-repeat px-4 text-center text-white sm:px-6 lg:px-8">
-                    <div className="space-y-10 sm:w-2/3">
-                        <h1 className="text-4xl font-bold sm:text-5xl">Камеди Портал</h1>
-                        <p className="text-muted-foreground text-lg">
-                            Агрегатор лучших стендапов и&nbsp;шоу&nbsp;&mdash; с&nbsp;оценками, рецензиями и&nbsp;твоей
-                            персональной историей просмотров.
-                        </p>
-
-                        <div className="flex justify-center gap-4">
-                            {!isAuth && (
-                                <button
-                                    className="h-10 cursor-pointer rounded-lg bg-white px-6 text-sm font-bold text-gray-950 focus:outline-none"
-                                    onClick={handleClick}
-                                >
-                                    Присоединиться
-                                </button>
-                            )}
-                            <Link
-                                href="/welcome"
-                                className="flex h-10 cursor-pointer items-center justify-center rounded-lg border border-white px-6 text-sm font-bold text-nowrap text-white"
-                                target="_blank"
+            <div className="absolute inset-0 m-auto flex h-[522px] w-full items-center justify-start px-8 text-center md:max-w-[1440px] md:px-[50px] md:text-left lg:px-[100px] xl:px-[200px]">
+                <div className="text-white md:w-[600px]">
+                    <h1 className="mb-6 text-4xl font-bold md:text-6xl">
+                        Твой агрегатор лучших стендапов и&nbsp;популярных шоу
+                    </h1>
+                    <p className="mb-12 text-lg">Оценки, рецензии и&nbsp;персональная история просмотра!</p>
+                    <div className="flex justify-center gap-x-4 md:justify-start">
+                        {!isAuth && (
+                            <button
+                                className="h-12 cursor-pointer rounded-lg bg-white px-6 text-sm font-bold text-gray-950 focus:outline-none"
+                                onClick={handleClick}
                             >
-                                Узнать больше
-                            </Link>
-                        </div>
+                                Присоединиться
+                            </button>
+                        )}
+                        <Link
+                            href="/welcome"
+                            className="flex h-12 cursor-pointer items-center justify-center rounded-lg border border-white px-6 text-sm font-bold text-nowrap text-white"
+                            target="_blank"
+                        >
+                            Узнать больше
+                        </Link>
                     </div>
-                </section>
+                </div>
             </div>
         </div>
     )
