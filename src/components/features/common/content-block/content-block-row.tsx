@@ -68,7 +68,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                         href={props.contentUrl}
                         className={classNames(
                             'mb-1 line-clamp-1 max-h-7 font-bold', // common styles
-                            'lg:text-lg', // for larger screens
+                            'lg:pr-12 lg:text-lg', // for larger screens
                             'text-base', // for smaller screens
                         )}
                         target="_blank"
