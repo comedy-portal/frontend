@@ -37,7 +37,7 @@ export const LandingHero = ({ isAuth }: LandingHeroProps) => {
                     <div className="flex justify-center gap-x-4 md:justify-start">
                         {!isAuth && (
                             <button
-                                className="h-12 cursor-pointer rounded-lg bg-white px-6 text-sm font-bold text-gray-950 focus:outline-none"
+                                className="h-12 cursor-pointer rounded-lg bg-white px-6 font-bold text-gray-950 focus:outline-none"
                                 onClick={handleClick}
                             >
                                 Присоединиться
@@ -45,7 +45,7 @@ export const LandingHero = ({ isAuth }: LandingHeroProps) => {
                         )}
                         <Link
                             href="/welcome"
-                            className="flex h-12 cursor-pointer items-center justify-center rounded-lg border border-white px-6 text-sm font-bold text-nowrap text-white"
+                            className="flex h-12 cursor-pointer items-center justify-center rounded-lg border border-white px-6 font-bold text-nowrap text-white"
                             target="_blank"
                         >
                             Узнать больше
