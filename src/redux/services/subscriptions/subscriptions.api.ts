@@ -15,6 +15,7 @@ export const subscriptionsAPI = api.injectEndpoints({
                 body: inputs,
             }),
             invalidatesTags: (result, error, { id }) => [
+                { type: 'Groups', id },
                 { type: 'Comedians', id },
                 { type: 'Subscriptions', id: 'LIST' },
             ],
@@ -26,6 +27,7 @@ export const subscriptionsAPI = api.injectEndpoints({
                 body: inputs,
             }),
             invalidatesTags: (result, error, { id }) => [
+                { type: 'Groups', id },
                 { type: 'Comedians', id },
                 { type: 'Subscriptions', id: 'LIST' },
             ],

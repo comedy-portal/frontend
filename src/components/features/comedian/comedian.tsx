@@ -5,12 +5,12 @@ import { CircleArrowLeftIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
+import { SubscribeButton } from '@/components/features/common/subscribe-button'
 import { DescriptionBlock } from '@/components/ui/description-block'
 import { GlobalLoading } from '@/components/ui/global-loading'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LinksBlock } from '@/components/ui/links-block'
 import { Share } from '@/components/ui/share'
-import { SubscribeButton } from '@/components/ui/subscribe-button'
 import { messages } from '@/messages'
 import { comediansAPI } from '@/redux/services/comedians/comedians.api'
 import { SubscriptionType } from '@/redux/services/subscriptions/subscriptions.types'

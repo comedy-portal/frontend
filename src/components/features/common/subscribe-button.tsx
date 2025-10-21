@@ -1,6 +1,6 @@
 'use client'
 
-import { BellMinusIcon, BellPlusIcon } from 'lucide-react'
+import { BellOffIcon, BellPlusIcon } from 'lucide-react'
 
 import { useRouter } from 'next/navigation'
 
@@ -50,7 +50,7 @@ export const SubscribeButton = ({ id, type, isActive, isAuth }: SubscribeButtonP
         >
             {isActive ? (
                 <>
-                    <BellMinusIcon />
+                    <BellOffIcon />
                     Убрать из подписок
                 </>
             ) : (

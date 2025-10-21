@@ -1,13 +1,9 @@
 'use client'
 
-import { BellOffIcon } from 'lucide-react'
-
-import Link from 'next/link'
-
 import { EmptyMessage } from '@/components/ui/empty-message'
-import { Button } from '@/components/ui/forms/button'
-import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { subscriptionsAPI } from '@/redux/services/subscriptions/subscriptions.api'
+
+import { SubscriptionsFeedItem } from './subscriptions-feed-item'
 
 export const SubscriptionsFeed = () => {
     const { data, isFetching, isSuccess, isError } = subscriptionsAPI.useGetSubscriptionsQuery()
@@ -35,28 +31,16 @@ export const SubscriptionsFeed = () => {
     }
 
     return (
-        <ul>
+        <div>
             {data.map(subscription => (
-                <li
+                <SubscriptionsFeedItem
                     key={`subscription-feed-item-${subscription.entity.id}`}
-                    className="flex items-center justify-between px-4"
-                >
-                    <div className="mb-4 flex items-center gap-x-4">
-                        <ImageWithFallback
-                            src={`/images/comedians/${subscription.entity.slug}.jpg`}
-                            alt={`${subscription.entity.name}`}
-                            width={80}
-                            height={80}
-                            className="rounded-lg"
-                        />
-                        <div className="text-lg font-semibold">{subscription.entity.name}</div>
-                    </div>
-
-                    <Button variant="outline" size="sm" className="flex items-center justify-center gap-x-2">
-                        <BellOffIcon size={16} /> Отписаться
-                    </Button>
-                </li>
+                    id={subscription.entity.id}
+                    slug={subscription.entity.slug}
+                    name={subscription.entity.name}
+                    type={subscription.type}
+                />
             ))}
-        </ul>
+        </div>
     )
 }
