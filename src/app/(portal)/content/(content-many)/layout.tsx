@@ -9,14 +9,14 @@ export default function ContentManyLayout(props: { children: React.ReactNode }) 
         <Layout
             title="Контент"
             info={
-                <span>
-                    На Comedy Portal мы собрали огромную коллекцию смешного контента на любой вкус. Чтобы Вам было проще
-                    ориентироваться, мы разделили всё по типам.{' '}
-                    <Link href="/about/formats" className="text-blue-500 hover:text-blue-700">
-                        Узнайте
-                    </Link>
-                    , чем они отличаются, и найдите то, что Вам по вкусу!
-                </span>
+                <div className="sm:w-2/3">
+                    У&nbsp;нас собрана большая коллекция смешного контента на&nbsp;любой вкус. Чтобы легче было выбрать,
+                    мы разделили всё по&nbsp;типам&nbsp;&mdash;{' '}
+                    <Link href="/about/formats" className="text-blue-500 hover:text-blue-700" target="_blank">
+                        узнайте
+                    </Link>{' '}
+                    чем они отличаются.
+                </div>
             }
             size="lg"
             nav={[

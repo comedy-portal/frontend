@@ -12,11 +12,13 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     const content = await getContentById(params.id)
 
     return {
-        title: `${content.name} - Comedy Portal`,
+        title: content.name,
         description: content.metaInfo?.description,
         openGraph: {
-            title: `${content.name} - Comedy Portal`,
-            description: content.metaInfo?.description || 'Comedy Portal - Discover the best comedy content',
+            title: content.name,
+            description:
+                content.metaInfo?.description ||
+                'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и твоей персональной историей просмотров.',
             images: [
                 {
                     url: content.contentImages[0].url,

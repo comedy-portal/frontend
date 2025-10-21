@@ -4,7 +4,7 @@ import { ComediansGroups } from '@/components/features/comedians/comedians-group
 
 // prettier-ignore
 export const metadata: Metadata = {
-    title: 'Группы - Comedy Portal',
+    title: 'Группы',
 }
 
 export default function ComediansGroupsPage() {

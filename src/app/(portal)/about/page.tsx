@@ -4,7 +4,7 @@ import { AboutUs } from '@/components/features/about/about-us'
 
 // prettier-ignore
 export const metadata: Metadata = {
-    title: 'Кто мы? - Comedy Portal',
+    title: 'Кто мы?',
 }
 
 export default function AboutUsPage() {

@@ -4,7 +4,7 @@ import { Layout } from '@/components/features/layout/layout/layout'
 
 // prettier-ignore
 export const metadata: Metadata = {
-    title: 'Уведомления - Comedy Portal',
+    title: 'Уведомления',
 }
 
 export default function NotificationsLayout(props: { children: React.ReactNode }) {

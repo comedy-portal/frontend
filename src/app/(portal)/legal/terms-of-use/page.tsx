@@ -4,7 +4,7 @@ import { LegalTermsOfUse } from '@/components/features/legal/legal-terms-of-use'
 
 // prettier-ignore
 export const metadata: Metadata = {
-    title: 'Пользовательское соглашение - Comedy Portal',
+    title: 'Пользовательское соглашение',
 }
 
 export default function LegalTermsOfUsePage() {

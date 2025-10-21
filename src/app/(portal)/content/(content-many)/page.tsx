@@ -5,7 +5,7 @@ import { withAuth } from '@/utils/supertokens/with-auth'
 
 // prettier-ignore
 export const metadata: Metadata = {
-    title: 'Контент - Comedy Portal',
+    title: 'Контент',
 }
 
 export default function ContentManyPage() {

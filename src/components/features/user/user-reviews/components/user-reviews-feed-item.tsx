@@ -36,7 +36,7 @@ export const UserReviewsFeedItem = ({ review, isMyReview }: UserReviewsFeedItemP
 
                 <div className="flex items-center gap-x-4">
                     {isMyReview && <UserReviewsFeedItemControls id={review.id} contentId={review.content.id} />}
-                    <Rating value={review.mark} className="size-12" />
+                    <Rating value={review.mark} isHighlight className="size-12" />
                 </div>
             </div>
 

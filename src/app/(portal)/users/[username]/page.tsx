@@ -11,7 +11,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     const params = await props.params
 
     return {
-        title: `Рецензии пользователя ${params.username} - Comedy Portal`,
+        title: `Рецензии пользователя ${params.username}`,
     }
 }
 

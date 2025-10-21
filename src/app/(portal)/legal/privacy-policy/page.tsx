@@ -4,7 +4,7 @@ import { LegalPrivacyPolicy } from '@/components/features/legal/legal-privacy-po
 
 // prettier-ignore
 export const metadata: Metadata = {
-    title: 'Политика конфиденциальности - Comedy Portal',
+    title: 'Политика конфиденциальности',
 }
 
 export default function LegalPrivacyPolicyPage() {

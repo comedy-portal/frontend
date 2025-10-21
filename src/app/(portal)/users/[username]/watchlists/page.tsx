@@ -9,7 +9,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     const params = await props.params
 
     return {
-        title: `Избранное пользователя ${params.username} - Comedy Portal`,
+        title: `Избранное пользователя ${params.username}`,
     }
 }
 
