@@ -55,6 +55,7 @@ export const TopContentFeed = ({ type, year, take, isAuth }: TopContentFeedProps
                     id={item.id}
                     name={item.name}
                     description={item.metaInfo?.description}
+                    type={item.type}
                     year={item.year}
                     duration={item.duration}
                     avgRating={item.rating.avgRating}

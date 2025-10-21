@@ -16,7 +16,7 @@ type ContentBlockRowType = {
     id: number
     name: string
     description?: string | null
-    type?: ContentType
+    type: ContentType
     year: number
     duration: number | null
     avgRating: number
@@ -60,9 +60,11 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                 )}
             >
                 <div>
-                    {props.author && props.type ? (
-                        <div className="text-sm text-gray-500">{props.author.name}</div>
-                    ) : null}
+                    {props.author && (
+                        <Link href={props.author.url} className="text-sm text-gray-500 hover:text-gray-950">
+                            {props.author.name}
+                        </Link>
+                    )}
 
                     <Link
                         href={props.contentUrl}
@@ -91,29 +93,17 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                 <div className="flex items-center justify-between gap-x-4">
                     <div className="flex items-center gap-x-2">
                         <div className="flex items-center gap-x-1">
-                            {props.type && (
-                                <ContentBlockTag
-                                    link={`/content/${props.type.toLowerCase()}`}
-                                    title={
-                                        categories.find(category => category.type === props.type?.toLowerCase())
-                                            ?.label || ''
-                                    }
-                                />
-                            )}
+                            <ContentBlockTag
+                                link={`/content/${props.type.toLowerCase()}`}
+                                title={
+                                    categories.find(category => category.type === props.type?.toLowerCase())?.label ||
+                                    ''
+                                }
+                            />
                             <ContentBlockDate year={props.year} />
                         </div>
                         {props.duration && <ContentBlockDuration duration={props.duration} />}
                     </div>
-
-                    {props.author && !props.type ? (
-                        <Link
-                            href={props.author.url}
-                            className="max-w-[200px] truncate overflow-hidden text-sm whitespace-nowrap text-gray-500 hover:text-gray-950"
-                            target="_blank"
-                        >
-                            {props.author.name}
-                        </Link>
-                    ) : null}
 
                     <ContentBlockBookmark
                         name={props.name}

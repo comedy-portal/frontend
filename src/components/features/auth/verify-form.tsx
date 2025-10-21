@@ -99,12 +99,10 @@ export const VerifyForm = ({ email, status, isLoading, onVerifyOtp, onResendOtp,
     }
 
     return (
-        <form className="sm:w-104" onSubmit={handleSubmit}>
+        <form className="sm:w-96" onSubmit={handleSubmit}>
             <h1 className="mb-2 text-center text-lg font-semibold">Код подтверждения</h1>
             <p className="m-auto mb-8 text-center text-sm text-gray-500 sm:w-5/6">
-                Мы отправили письмо с кодом подтверждения на
-                <br />
-                <strong>{email}</strong>
+                Мы отправили письмо с&nbsp;кодом подтверждения на&nbsp;<strong>{email}</strong>
             </p>
 
             {status && status !== 'OK' && (
