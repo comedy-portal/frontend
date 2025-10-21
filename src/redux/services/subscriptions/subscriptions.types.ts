@@ -11,4 +11,9 @@ export type SubscribeInputs = {
     type: SubscriptionType
 }
 
+export type UnsubscribeInputs = {
+    id: number
+    type: SubscriptionType
+}
+
 export type GetSubscriptionsResponse = ISubscription[]

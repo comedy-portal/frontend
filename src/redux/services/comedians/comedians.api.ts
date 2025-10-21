@@ -41,7 +41,7 @@ export const comediansAPI = api.injectEndpoints({
                 url: `comedians/${slug}`,
                 method: 'GET',
             }),
-            providesTags: (result, error, slug) => [{ type: 'Comedians', id: slug }],
+            providesTags: (result, error, slug) => [{ type: 'Comedians', id: result?.id }],
         }),
     }),
     overrideExisting: false,

@@ -103,7 +103,12 @@ export const Comedian = ({ slug, isAuth }: ComedianProps) => {
 
                         <LinksBlock caption="Ссылки" links={data.metaInfo?.links || []} />
 
-                        <SubscribeButton id={data.id} type={SubscriptionType.COMEDIAN} isAuth={isAuth} />
+                        <SubscribeButton
+                            id={data.id}
+                            type={SubscriptionType.COMEDIAN}
+                            isActive={(data.comedianSubscriptions?.length ?? 0) > 0}
+                            isAuth={isAuth}
+                        />
 
                         <Share
                             title={`${data.name} ${data.surname}`}

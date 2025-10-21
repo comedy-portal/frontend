@@ -1,6 +1,6 @@
 'use client'
 
-import { BellPlusIcon } from 'lucide-react'
+import { BellMinusIcon, BellPlusIcon } from 'lucide-react'
 
 import { useRouter } from 'next/navigation'
 
@@ -15,15 +15,17 @@ import { useToast } from '@/utils/providers/toast-provider'
 type SubscribeButtonProps = {
     id: number
     type: SubscriptionType
+    isActive: boolean
     isAuth: boolean
 }
 
-export const SubscribeButton = ({ id, type, isAuth }: SubscribeButtonProps) => {
+export const SubscribeButton = ({ id, type, isActive, isAuth }: SubscribeButtonProps) => {
     const toast = useToast()
     const dialog = useDialog()
     const router = useRouter()
 
     const [subscribe] = subscriptionsAPI.useSubscribeMutation()
+    const [unsubscribe] = subscriptionsAPI.useUnsubscribeMutation()
 
     const toggle = async () => {
         if (!isAuth) {
@@ -32,7 +34,7 @@ export const SubscribeButton = ({ id, type, isAuth }: SubscribeButtonProps) => {
         }
 
         try {
-            await subscribe({ id, type })
+            await (isActive ? unsubscribe({ id, type }) : subscribe({ id, type }))
             router.refresh()
         } catch {
             toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
@@ -46,8 +48,17 @@ export const SubscribeButton = ({ id, type, isAuth }: SubscribeButtonProps) => {
             className="flex w-full items-center justify-center gap-x-2"
             onClick={toggle}
         >
-            <BellPlusIcon />
-            Подписаться
+            {isActive ? (
+                <>
+                    <BellMinusIcon />
+                    Убрать из подписок
+                </>
+            ) : (
+                <>
+                    <BellPlusIcon />
+                    Подписаться
+                </>
+            )}
         </Button>
     )
 }
