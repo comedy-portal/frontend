@@ -34,26 +34,25 @@ export const SubscriptionsFeedItem = ({ id, slug, name, type }: SubscriptionsFee
     }
 
     return (
-        <div className="flex items-center justify-between px-4">
-            <div className="mb-4 flex items-center gap-x-4">
-                <ImageWithFallback
-                    src={`/images/comedians/${slug}.jpg`}
-                    alt={name}
-                    width={80}
-                    height={80}
-                    className="h-20 w-20 shrink-0 rounded-lg"
-                />
+        <div className="flex gap-x-4">
+            <ImageWithFallback
+                src={`/images/comedians/${slug}.jpg`}
+                alt={name}
+                width={80}
+                height={80}
+                className="h-20 w-20 shrink-0 rounded-lg"
+            />
+            <div className="flex flex-col justify-center gap-y-2 sm:flex-1 sm:flex-row sm:items-center sm:justify-between sm:gap-y-0">
                 <div className="text-lg font-bold">{name}</div>
+                <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center justify-center gap-x-2"
+                    onClick={handleUnsubscribe}
+                >
+                    <BellOffIcon size={16} /> Убрать из подписок
+                </Button>
             </div>
-
-            <Button
-                variant="outline"
-                size="sm"
-                className="flex items-center justify-center gap-x-2"
-                onClick={handleUnsubscribe}
-            >
-                <BellOffIcon size={16} /> Убрать из подписок
-            </Button>
         </div>
     )
 }
