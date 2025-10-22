@@ -5,14 +5,13 @@ import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 type ComediansGroupsFeedItemType = {
     slug: string
     name: string
-    image: string
 }
 
-export const ComediansGroupsFeedItem = ({ slug, name, image }: ComediansGroupsFeedItemType) => {
+export const ComediansGroupsFeedItem = ({ slug, name }: ComediansGroupsFeedItemType) => {
     return (
         <Link href={`/comedians/groups/${slug}`} className="flex flex-col gap-y-2" target="_blank">
             <ImageWithFallback
-                src={image}
+                src={`/images/groups/${slug}.jpg`}
                 alt={`${name}`}
                 width={100}
                 height={100}

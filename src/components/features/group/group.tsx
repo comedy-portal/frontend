@@ -66,7 +66,7 @@ export const Group = ({ slug, isAuth }: GroupProps) => {
 
                 <div className="flex shrink-0 flex-col gap-y-12 md:flex-row md:gap-x-6 lg:w-[300px] lg:flex-col xl:w-[368px]">
                     <ImageWithFallback
-                        src={data.groupImages[0]?.url}
+                        src={`/images/groups/${slug}.jpg`}
                         alt={`${data.name}`}
                         width={100}
                         height={100}
