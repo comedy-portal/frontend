@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { subscriptionsAPI } from '@/redux/services/subscriptions/subscriptions.api'
 
@@ -21,8 +23,15 @@ export const SubscriptionsFeed = () => {
             <EmptyMessage>
                 У вас пока нет подписок.
                 <br />
-                Подпишитесь на&nbsp;комика или группу на&nbsp;странице их&nbsp;профиля, чтобы не&nbsp;пропускать новые
-                выступления и&nbsp;обновления.
+                Подпишитесь на&nbsp;
+                <Link href="/comedians" className="text-blue-500 hover:text-blue-700">
+                    комика
+                </Link>{' '}
+                или{' '}
+                <Link href="/comedians/groups" className="text-blue-500 hover:text-blue-700">
+                    группу
+                </Link>{' '}
+                на&nbsp;странице их&nbsp;профиля, чтобы не&nbsp;пропускать новые выступления и&nbsp;обновления.
             </EmptyMessage>
         )
     }
