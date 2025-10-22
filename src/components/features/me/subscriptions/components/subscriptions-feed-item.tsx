@@ -47,8 +47,8 @@ export const SubscriptionsFeedItem = ({ id, slug, name, type }: SubscriptionsFee
                     className="h-20 w-20 shrink-0 rounded-lg"
                 />
             </Link>
-            <div className="flex flex-col justify-center gap-y-2 sm:flex-1 sm:flex-row sm:items-center sm:justify-between sm:gap-y-0">
-                <Link href={href} className="text-lg font-bold">
+            <div className="sm:flex sm:flex-1 sm:items-center sm:justify-between">
+                <Link href={href} className="mt-1 mb-2 inline-block align-top text-lg font-bold sm:mb-0">
                     {name}
                 </Link>
                 <Button
