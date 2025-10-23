@@ -21,7 +21,7 @@ export const SubscriptionsFeed = () => {
     if (isSuccess && data.length === 0) {
         return (
             <EmptyMessage>
-                У вас пока нет подписок.
+                У Вас пока нет подписок.
                 <br />
                 Подпишитесь на&nbsp;
                 <Link href="/comedians" className="text-blue-500 hover:text-blue-700">
