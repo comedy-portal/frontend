@@ -89,7 +89,7 @@ export const Comedian = ({ slug, isAuth }: ComedianProps) => {
                                         <div key={`comedian-group-${group.slug}`}>
                                             <Link
                                                 href={`/comedians/groups/${group.slug}`}
-                                                className="text-gray-500 hover:text-gray-950"
+                                                className="text-blue-500 hover:text-blue-700"
                                             >
                                                 <span>{group.name}</span>
                                             </Link>
