@@ -35,7 +35,7 @@ export const groupsAPI = api.injectEndpoints({
                 url: `groups/${slug}`,
                 method: 'GET',
             }),
-            providesTags: (result, error, slug) => [{ type: 'Groups', id: slug }],
+            providesTags: (result, error, slug) => [{ type: 'Groups', id: result?.id }],
         }),
     }),
     overrideExisting: false,

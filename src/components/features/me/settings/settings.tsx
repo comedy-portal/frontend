@@ -12,14 +12,14 @@ import { userAPI } from '@/redux/services/user/user.api'
 import { ChangeUserNameInputs } from '@/redux/services/user/user.types'
 import { useToast } from '@/utils/providers/toast-provider'
 
-import { MeSettingsBlockChangeEmail } from './components/me-settings-block-change-email'
-import { MeSettingsRequestPersonalData } from './components/me-settings-request-personal-data'
+import { SettingsBlockChangeEmail } from './components/settings-block-change-email'
+import { SettingsRequestPersonalData } from './components/settings-request-personal-data'
 
-type MeSettingsProps = {
+type SettingsProps = {
     username: string
 }
 
-export const MeSettings = ({ username }: MeSettingsProps) => {
+export const Settings = ({ username }: SettingsProps) => {
     const toast = useToast()
     const router = useRouter()
 
@@ -100,8 +100,8 @@ export const MeSettings = ({ username }: MeSettingsProps) => {
             </form>
 
             <div>
-                <MeSettingsBlockChangeEmail />
-                <MeSettingsRequestPersonalData />
+                <SettingsBlockChangeEmail />
+                <SettingsRequestPersonalData />
 
                 {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
                     <div className="flex items-center justify-between">

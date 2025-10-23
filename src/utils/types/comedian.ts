@@ -43,6 +43,7 @@ export type IComedian = {
         | null
     groups: IGroupBaseData[]
     comedianImages: IImage[]
+    comedianSubscriptions?: { createdAt: Date }[]
     isAgent: boolean
     createdAt: string
     updatedAt: string
