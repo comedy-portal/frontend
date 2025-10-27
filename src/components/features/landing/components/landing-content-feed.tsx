@@ -36,7 +36,13 @@ export const LandingContentFeed = (props: LandingContentFeedProps) => {
     }
 
     if (isSuccess && data.items.length === 0) {
-        return null
+        return (
+            <EmptyMessage>
+                Контент в этой категории пока отсутствует.
+                <br />
+                Попробуйте зайти позже.
+            </EmptyMessage>
+        )
     }
 
     if (!isSuccess) {
