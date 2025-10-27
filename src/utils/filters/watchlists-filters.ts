@@ -1,3 +1,5 @@
+import { parseRating } from '@/utils/helpers/filters'
+
 export enum WatchlistsUrlSortBy {
     DATE_DESC = 'date_desc',
     RATING_DESC = 'rating_desc',
@@ -21,15 +23,6 @@ const VALID_WATCHLISTS_SORTS = new Set<WatchlistsUrlSortBy>([
     WatchlistsUrlSortBy.RATING_DESC,
     WatchlistsUrlSortBy.SAVED_AT_DESC,
 ])
-
-function parseRating(value: string | null, defaultValue: number): number {
-    if (value === null) return defaultValue
-    const num = Number(value)
-    if (isNaN(num)) return defaultValue
-    if (num < 0) return 0
-    if (num > 10) return 10
-    return num
-}
 
 export function parseWatchlistsFiltersFromSearchParams(params: URLSearchParams): WatchlistsFiltersState {
     const sortParam = params.get('sort') as WatchlistsUrlSortBy | null

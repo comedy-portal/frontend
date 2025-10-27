@@ -3,6 +3,7 @@ import RangeSlider from 'react-range-slider-input'
 
 import { Button } from '@/components/ui/forms/button'
 import { Radio } from '@/components/ui/forms/radio'
+import { Switcher } from '@/components/ui/forms/switcher'
 import {
     ContentFiltersState,
     ContentUrlSortBy,
@@ -22,7 +23,11 @@ const SORT_OPTIONS = [
     { label: 'По возрастанию рейтинга', value: ContentUrlSortBy.RATING_ASC },
 ]
 
-export const ContentFilters = () => {
+type ContentFiltersProps = {
+    isAuth: boolean
+}
+
+export const ContentFilters = ({ isAuth }: ContentFiltersProps) => {
     const dialog = useDialog()
     const [initialFilters, setFiltersToUrl] = useQueryFilters(
         parseContentFiltersFromSearchParams,
@@ -44,6 +49,13 @@ export const ContentFilters = () => {
             ...prev,
             min_rating: values[0],
             max_rating: values[1],
+        }))
+    }, [])
+
+    const handleNotWatchedChange = useCallback((value: boolean) => {
+        setFilters(prev => ({
+            ...prev,
+            not_watched: value,
         }))
     }, [])
 
@@ -81,6 +93,18 @@ export const ContentFilters = () => {
                     <div>{filters.max_rating}</div>
                 </div>
             </div>
+
+            {isAuth && (
+                <div className="flex items-center gap-x-2">
+                    <Switcher
+                        checked={filters.not_watched}
+                        onChange={() => handleNotWatchedChange(!filters.not_watched)}
+                    />
+                    <div className="cursor-pointer" onClick={() => handleNotWatchedChange(!filters.not_watched)}>
+                        Скрыть просмотренные
+                    </div>
+                </div>
+            )}
 
             <div className="flex gap-x-2 pt-2">
                 <Button onClick={handleApply}>Применить</Button>

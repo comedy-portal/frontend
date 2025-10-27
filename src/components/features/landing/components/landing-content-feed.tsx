@@ -15,6 +15,7 @@ type LandingContentFeedProps = {
     sortBy: ContentSortBy
     order: Order
     take: number
+    notWatched?: boolean
     isAuth: boolean
 }
 
@@ -23,6 +24,7 @@ export const LandingContentFeed = (props: LandingContentFeedProps) => {
         order: props.order,
         sort_by: props.sortBy,
         take: props.take,
+        not_watched: props.notWatched || false,
     })
 
     if (isError) {

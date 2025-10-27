@@ -24,6 +24,7 @@ export type GetContentManyParams = {
     max_rating?: number
     cursor?: number
     take?: number
+    not_watched?: boolean
 }
 
 export type GetTopContentParams = {
