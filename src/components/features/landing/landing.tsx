@@ -64,6 +64,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
                             sortBy={ContentSortBy.RATING}
                             order={Order.DESC}
                             take={10}
+                            notWatched={true}
                             isAuth={isAuth}
                         />
                     </section>
