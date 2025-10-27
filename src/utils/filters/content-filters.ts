@@ -10,6 +10,7 @@ export interface ContentFiltersState {
     min_rating: number
     max_rating: number
     year?: number
+    not_watched: boolean
 }
 
 export const DEFAULT_CONTENT_FILTERS: ContentFiltersState = {
@@ -17,6 +18,7 @@ export const DEFAULT_CONTENT_FILTERS: ContentFiltersState = {
     min_rating: 0,
     max_rating: 10,
     year: undefined,
+    not_watched: false,
 }
 
 const VALID_CONTENT_SORTS = new Set<ContentUrlSortBy>([
@@ -35,6 +37,11 @@ function parseRating(value: string | null, defaultValue: number): number {
     return num
 }
 
+function parseWithText(value: string | null, defaultValue: boolean): boolean {
+    if (value === null) return defaultValue
+    return value === 'true'
+}
+
 export function parseContentFiltersFromSearchParams(params: URLSearchParams): ContentFiltersState {
     const sortParam = params.get('sort') as ContentUrlSortBy | null
     const sort = sortParam && VALID_CONTENT_SORTS.has(sortParam) ? sortParam : DEFAULT_CONTENT_FILTERS.sort
@@ -47,6 +54,7 @@ export function parseContentFiltersFromSearchParams(params: URLSearchParams): Co
         min_rating: parseRating(params.get('min_rating'), DEFAULT_CONTENT_FILTERS.min_rating),
         max_rating: parseRating(params.get('max_rating'), DEFAULT_CONTENT_FILTERS.max_rating),
         year: !isNaN(year as number) ? (year as number) : undefined,
+        not_watched: parseWithText(params.get('not_watched'), DEFAULT_CONTENT_FILTERS.not_watched),
     }
 }
 
@@ -57,6 +65,8 @@ export function buildContentFiltersQueryString(filters: ContentFiltersState): st
     if (filters.min_rating !== DEFAULT_CONTENT_FILTERS.min_rating) params.set('min_rating', String(filters.min_rating))
     if (filters.max_rating !== DEFAULT_CONTENT_FILTERS.max_rating) params.set('max_rating', String(filters.max_rating))
     if (filters.year !== undefined) params.set('year', String(filters.year))
+    if (filters.not_watched !== DEFAULT_CONTENT_FILTERS.not_watched)
+        params.set('not_watched', String(filters.not_watched))
 
     return params.toString()
 }

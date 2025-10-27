@@ -49,6 +49,7 @@ export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
         max_rating: filters.max_rating,
         year: filters.year,
         sort_by: sortBy,
+        not_watched: filters.not_watched,
         order,
         cursor,
     })
