@@ -27,7 +27,7 @@ export const Confirmation = ({ title, message, onConfirm }: ConfirmationProps) =
                 <p>{message}</p>
             </div>
             <div className="flex flex-col gap-2 sm:flex-row">
-                <Button onClick={onConfirm}>Да, я подтверждаю</Button>
+                <Button onClick={onConfirm}>Да, подтверждаю</Button>
                 <Button variant="outline" onClick={() => dialog.close()}>
                     Отмена
                 </Button>
