@@ -46,14 +46,14 @@ export const Landing = ({ isAuth }: LandingProps) => {
                     <section className="flex flex-col gap-y-6">
                         <div className="flex items-center justify-between">
                             <Link
-                                href="/content?sort=rating_desc"
+                                href="/content?sort=rating_desc&not_watched=true"
                                 className="flex w-full items-center justify-between gap-x-2"
                             >
-                                <h2 className="text-2xl font-semibold">Рекомендуемое</h2>
+                                <h2 className="text-2xl font-semibold">Смотрите также</h2>
                                 <ChevronRightIcon size={24} className="block sm:hidden" />
                             </Link>
                             <Link
-                                href="/content?sort=rating_desc"
+                                href="/content?sort=rating_desc&not_watched=true"
                                 className="mt-1 hidden items-center text-sm text-nowrap text-blue-500 sm:inline-flex"
                             >
                                 Посмотреть все
@@ -64,6 +64,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
                             sortBy={ContentSortBy.RATING}
                             order={Order.DESC}
                             take={10}
+                            notWatched={true}
                             isAuth={isAuth}
                         />
                     </section>

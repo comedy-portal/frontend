@@ -5,6 +5,7 @@ import { CircleArrowLeftIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
+import { SubscribeButton } from '@/components/features/common/subscribe-button'
 import { DescriptionBlock } from '@/components/ui/description-block'
 import { GlobalLoading } from '@/components/ui/global-loading'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
@@ -12,6 +13,7 @@ import { LinksBlock } from '@/components/ui/links-block'
 import { Share } from '@/components/ui/share'
 import { messages } from '@/messages'
 import { comediansAPI } from '@/redux/services/comedians/comedians.api'
+import { SubscriptionType } from '@/redux/services/subscriptions/subscriptions.types'
 
 import { ComedianContent } from './components/comedian-content'
 import { ComedianFacts } from './components/comedian-facts'
@@ -89,7 +91,7 @@ export const Comedian = ({ slug, isAuth }: ComedianProps) => {
                                         <div key={`comedian-group-${group.slug}`}>
                                             <Link
                                                 href={`/comedians/groups/${group.slug}`}
-                                                className="text-gray-500 hover:text-gray-950"
+                                                className="text-blue-500 hover:text-blue-700"
                                             >
                                                 <span>{group.name}</span>
                                             </Link>
@@ -100,6 +102,13 @@ export const Comedian = ({ slug, isAuth }: ComedianProps) => {
                         )}
 
                         <LinksBlock caption="Ссылки" links={data.metaInfo?.links || []} />
+
+                        <SubscribeButton
+                            id={data.id}
+                            type={SubscriptionType.COMEDIAN}
+                            isActive={(data.comedianSubscriptions?.length ?? 0) > 0}
+                            isAuth={isAuth}
+                        />
 
                         <Share
                             title={`${data.name} ${data.surname}`}

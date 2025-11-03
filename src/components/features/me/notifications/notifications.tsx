@@ -2,7 +2,7 @@ import { CirclePlusIcon, InfoIcon, UserPlusIcon } from 'lucide-react'
 
 export const Notifications = () => {
     return (
-        <div className="space-y-4">
+        <div className="space-y-8">
             <div className="flex gap-x-4">
                 <CirclePlusIcon className="shrink-0" />
                 <div>

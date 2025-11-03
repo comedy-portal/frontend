@@ -1,6 +1,15 @@
 'use client'
 
-import { BookmarkIcon, ChevronRightIcon, LogOutIcon, SettingsIcon, StarIcon } from 'lucide-react'
+import {
+    BookmarkIcon,
+    ChevronRightIcon,
+    CircleUserIcon,
+    LogOutIcon,
+    SettingsIcon,
+    StarIcon,
+    UserIcon,
+    UsersIcon,
+} from 'lucide-react'
 import Session from 'supertokens-web-js/recipe/session'
 import { useScrollLock } from 'usehooks-ts'
 
@@ -79,6 +88,10 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
             <nav className="flex flex-col gap-y-4 text-sm text-gray-300">
                 {isAuth && username ? (
                     <>
+                        <div className="text-base≈ flex items-center gap-x-2">
+                            <CircleUserIcon className="shrink-0" />
+                            {username}
+                        </div>
                         <Link
                             href={`/users/${username}`}
                             className="flex items-center justify-between"
@@ -100,6 +113,16 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
                             </div>
                         </Link>
                         <Link
+                            href="/me/subscriptions"
+                            className="flex items-center justify-between"
+                            onClick={closeMobileMenu}
+                        >
+                            Подписки
+                            <div className="text-gray-700">
+                                <UsersIcon size={20} />
+                            </div>
+                        </Link>
+                        <Link
                             href="/me/settings"
                             className="flex items-center justify-between"
                             onClick={closeMobileMenu}
@@ -109,7 +132,6 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
                                 <SettingsIcon size={20} />
                             </div>
                         </Link>
-                        <HeaderSubmitContent isAuth={isAuth} onClick={closeMobileMenu} />
                     </>
                 ) : (
                     <>
@@ -121,6 +143,7 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
                 {isAuth && (
                     <>
                         <hr className="border-gray-700" />
+                        <HeaderSubmitContent isAuth={isAuth} onClick={closeMobileMenu} />
                         <button onClick={handleSignOut} className="flex items-center justify-between">
                             Выйти
                             <div className="text-gray-700">
