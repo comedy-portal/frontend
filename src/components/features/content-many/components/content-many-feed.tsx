@@ -41,7 +41,7 @@ export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
             default:
                 return { sortBy: ContentSortBy.DATE, order: Order.DESC }
         }
-    }, [filters.sort, filters.min_rating, filters.max_rating])
+    }, [filters.sort, filters.min_rating, filters.max_rating, filters.not_watched])
 
     const { data, isFetching, isSuccess, isError } = contentAPI.useGetContentManyQuery({
         type,
@@ -49,6 +49,7 @@ export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
         max_rating: filters.max_rating,
         year: filters.year,
         sort_by: sortBy,
+        not_watched: filters.not_watched,
         order,
         cursor,
     })

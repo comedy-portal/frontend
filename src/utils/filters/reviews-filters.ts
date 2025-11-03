@@ -1,3 +1,5 @@
+import { parseWithText } from '@/utils/helpers/filters'
+
 export enum ReviewsUrlSortBy {
     DATE_DESC = 'date_desc',
     DATE_ASC = 'date_asc',
@@ -21,11 +23,6 @@ const VALID_REVIEWS_SORTS = new Set<ReviewsUrlSortBy>([
     ReviewsUrlSortBy.MARK_DESC,
     ReviewsUrlSortBy.MARK_ASC,
 ])
-
-function parseWithText(value: string | null, defaultValue: boolean): boolean {
-    if (value === null) return defaultValue
-    return value === 'true'
-}
 
 export function parseReviewsFiltersFromSearchParams(params: URLSearchParams): ReviewsFiltersState {
     const sortParam = params.get('sort') as ReviewsUrlSortBy | null
