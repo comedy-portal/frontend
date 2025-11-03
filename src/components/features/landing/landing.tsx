@@ -49,7 +49,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
                                 href="/content?sort=rating_desc"
                                 className="flex w-full items-center justify-between gap-x-2"
                             >
-                                <h2 className="text-2xl font-semibold">Рекомендуемое</h2>
+                                <h2 className="text-2xl font-semibold">Смотрите также</h2>
                                 <ChevronRightIcon size={24} className="block sm:hidden" />
                             </Link>
                             <Link
