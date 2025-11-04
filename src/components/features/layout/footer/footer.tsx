@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export const Footer = async () => {
     return (
-        <footer className="border-t border-gray-300">
+        <footer className="border-t border-gray-300" data-nosnippet>
             <div className="wrapper space-y-4 py-6 lg:space-y-2">
                 <div className="flex flex-col items-center justify-between gap-2 text-sm sm:flex-row sm:gap-4">
                     <div className="font-bold">&copy; 2025 Comedy Portal</div>

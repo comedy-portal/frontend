@@ -29,7 +29,7 @@ export const LandingHero = ({ isAuth }: LandingHeroProps) => {
             </div>
 
             <div className="absolute inset-0 m-auto flex h-[522px] w-full items-center justify-start px-8 text-center md:max-w-[1440px] md:px-[50px] md:text-left lg:px-[100px] xl:px-[200px]">
-                <div className="text-white md:w-[600px]">
+                <section className="text-white md:w-[600px]">
                     <h1 className="mb-6 text-4xl font-bold md:text-6xl">
                         Твой агрегатор лучших стендапов и&nbsp;популярных шоу
                     </h1>
@@ -51,7 +51,7 @@ export const LandingHero = ({ isAuth }: LandingHeroProps) => {
                             Узнать больше
                         </Link>
                     </div>
-                </div>
+                </section>
             </div>
         </div>
     )

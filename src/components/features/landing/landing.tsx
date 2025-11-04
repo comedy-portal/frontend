@@ -19,7 +19,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
         <div>
             <LandingHero isAuth={isAuth} />
 
-            <div className="wrapper py-8 sm:py-16">
+            <div className="wrapper py-8 sm:py-16" data-nosnippet>
                 <div className="flex flex-col gap-y-6 sm:gap-y-12">
                     <LandingTopEntryPoint />
 
