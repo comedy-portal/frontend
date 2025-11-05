@@ -46,6 +46,7 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
             <Link
                 href={`/content/${data.type.toLowerCase()}`}
                 className="inline-flex items-center gap-x-2 hover:text-black"
+                data-nosnippet
             >
                 <CircleArrowLeftIcon size={24} className="text-inherit" />
                 {categories.find(category => category.type === data.type.toLowerCase())?.toBackLabel ||

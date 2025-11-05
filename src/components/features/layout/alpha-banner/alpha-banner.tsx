@@ -23,7 +23,7 @@ export const AlphaBanner = () => {
     }
 
     return (
-        <div className="relative flex h-8 items-center justify-center bg-[#1890FF]">
+        <div className="relative flex h-8 items-center justify-center bg-[#1890FF]" data-nosnippet>
             <Link
                 href="https://tripadvancer.com?utm_source=comedy_portal"
                 className="flex items-center gap-x-4"
