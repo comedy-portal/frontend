@@ -45,6 +45,38 @@ export const reviewsAPI = api.injectEndpoints({
             },
             providesTags: [{ type: 'Reviews', id: 'LIST' }],
         }),
+        getReviewsByContent: build.query<GetReviewsResponse, GetReviewsParams>({
+            query: params => ({
+                url: 'reviews',
+                method: 'GET',
+                params,
+            }),
+            serializeQueryArgs: ({ queryArgs }) => {
+                return JSON.stringify({
+                    order: queryArgs.order,
+                    sort_by: queryArgs.sort_by,
+                    with_text: queryArgs.with_text,
+                })
+            },
+            merge: (currentCache, newResponse, { arg }) => {
+                if (arg.cursor === undefined) {
+                    return newResponse
+                }
+
+                if (currentCache) {
+                    return {
+                        ...newResponse,
+                        items: [...currentCache.items, ...newResponse.items],
+                    }
+                }
+
+                return newResponse
+            },
+            forceRefetch({ currentArg, previousArg }) {
+                return JSON.stringify(currentArg) !== JSON.stringify(previousArg)
+            },
+            providesTags: (result, error, params) => [{ type: 'ReviewsByContent', id: params.content_id }],
+        }),
         getReviewById: build.query<GetReviewByIdResponse, { id: number }>({
             query: ({ id }) => ({
                 url: `reviews/${id}`,
@@ -53,32 +85,35 @@ export const reviewsAPI = api.injectEndpoints({
             providesTags: (result, error, { id }) => [{ type: 'Reviews', id }],
         }),
         createReview: build.mutation<CreateReviewResponse, CreateReviewInputs>({
-            query: body => ({
+            query: inputs => ({
                 url: 'reviews',
                 method: 'POST',
-                body,
+                body: inputs,
             }),
-            invalidatesTags: (result, error, body) => [
+            invalidatesTags: (result, error, inputs) => [
                 { type: 'Reviews', id: 'LIST' },
+                { type: 'ReviewsByContent', id: inputs.contentId },
                 { type: 'Content', id: 'LIST' },
                 { type: 'Content', id: 'TOP' },
-                { type: 'Content', id: body.contentId },
+                { type: 'Content', id: inputs.contentId },
                 { type: 'Comedians' },
                 { type: 'Groups' },
                 { type: 'Watchlist', id: 'LIST' },
             ],
         }),
         updateReview: build.mutation<void, UpdateReviewInputs>({
-            query: ({ id, ...body }) => ({
+            query: ({ id, ...inputs }) => ({
                 url: `reviews/${id}`,
                 method: 'PATCH',
-                body,
+                body: inputs,
             }),
-            async onQueryStarted({ id, ...body }, { dispatch, getState, queryFulfilled }) {
+            async onQueryStarted({ id, ...inputs }, { dispatch, getState, queryFulfilled }) {
                 // Get all active cached queries for 'getReviews' that might contain this review
                 const activeQueries = reviewsAPI.util
                     .selectInvalidatedBy(getState(), [{ type: 'Reviews', id: 'LIST' }])
                     .filter(entry => entry.endpointName === 'getReviews')
+
+                let shouldInvalidateAll = false
 
                 // Apply optimistic update to each cached query
                 const patches = activeQueries.map(entry =>
@@ -91,7 +126,7 @@ export const reviewsAPI = api.injectEndpoints({
                                 if (index !== -1) {
                                     draft.items[index] = {
                                         ...draft.items[index],
-                                        ...body, // Merge updated fields
+                                        ...inputs,
                                     }
                                 }
                             },
@@ -101,15 +136,19 @@ export const reviewsAPI = api.injectEndpoints({
 
                 try {
                     await queryFulfilled
+                    if (shouldInvalidateAll) {
+                        dispatch(reviewsAPI.util.invalidateTags([{ type: 'Reviews', id: 'LIST' }]))
+                    }
                 } catch {
                     patches.forEach(patch => patch.undo())
                 }
             },
-            invalidatesTags: (result, error, body) => [
-                { type: 'Reviews', id: body.id },
+            invalidatesTags: (result, error, inputs) => [
+                { type: 'Reviews', id: inputs.id },
+                { type: 'ReviewsByContent', id: inputs.contentId },
                 { type: 'Content', id: 'LIST' },
                 { type: 'Content', id: 'TOP' },
-                { type: 'Content', id: body.contentId },
+                { type: 'Content', id: inputs.contentId },
                 { type: 'Comedians' },
                 { type: 'Groups' },
                 { type: 'Watchlist', id: 'LIST' },
@@ -146,6 +185,7 @@ export const reviewsAPI = api.injectEndpoints({
             },
             invalidatesTags: (result, error, params) => [
                 { type: 'Reviews', id: params.id },
+                { type: 'ReviewsByContent', id: params.contentId },
                 { type: 'Content', id: 'LIST' },
                 { type: 'Content', id: 'TOP' },
                 { type: 'Content', id: params.contentId },
