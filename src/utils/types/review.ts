@@ -4,7 +4,7 @@ import { IComedianBaseData, IGroupBaseData, IImage } from '@/utils/types/common'
 export type IReview = {
     id: number
     mark: number
-    text: string
+    text: string | null
     content: {
         id: number
         name: string
