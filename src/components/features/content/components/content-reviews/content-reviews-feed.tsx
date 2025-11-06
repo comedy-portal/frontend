@@ -18,7 +18,7 @@ type ContentReviewsFeedProps = {
 export const ContentReviewsFeed = ({ contentId, activeUserId, isAuth }: ContentReviewsFeedProps) => {
     const [cursor, setCursor] = useState<number>()
 
-    const { data, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsQuery({
+    const { data, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsByContentQuery({
         content_id: contentId,
         with_text: true,
         cursor,

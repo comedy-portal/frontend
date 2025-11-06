@@ -66,7 +66,7 @@ export const ComplaintForm = ({ initialValues, isLoading, onSubmit }: ComplaintF
             </div>
             <div className="flex gap-x-2">
                 <Button type="submit" disabled={isLoading}>
-                    Отправить жалобу
+                    Отправить
                 </Button>
                 <Button variant="outline" disabled={isLoading} onClick={() => dialog.close()}>
                     Отменить
