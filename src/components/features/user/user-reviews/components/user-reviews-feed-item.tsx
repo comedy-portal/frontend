@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import { DescriptionBlock } from '@/components/ui/description-block'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { Rating } from '@/components/ui/rating'
 import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
@@ -25,7 +26,7 @@ export const UserReviewsFeedItem = ({ review, isMyReview }: UserReviewsFeedItemP
                     <Rating value={review.mark} isHighlight className="size-12" />
                 </div>
 
-                <div className="flex flex-col gap-4 md:flex-row md:items-center">
+                <div className="flex w-full flex-col gap-4 md:flex-row md:items-center">
                     <Link href={`/content/${review.content.type.toLowerCase()}/${review.content.id}`}>
                         <ImageWithFallback
                             src={review.content.contentImages?.[0]?.url || ''}
@@ -54,7 +55,11 @@ export const UserReviewsFeedItem = ({ review, isMyReview }: UserReviewsFeedItemP
                 </div>
             </div>
 
-            {review.text && <div className="text-sm">{review.text}</div>}
+            {review.text && (
+                <div className="text-sm">
+                    <DescriptionBlock text={review.text} limit={500} />
+                </div>
+            )}
 
             <div className="flex items-center justify-between gap-x-4">
                 <div className="text-gray-500">
