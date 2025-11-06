@@ -74,8 +74,38 @@ export const reviewsAPI = api.injectEndpoints({
                 method: 'PATCH',
                 body,
             }),
+            async onQueryStarted({ id, ...body }, { dispatch, getState, queryFulfilled }) {
+                // Get all active cached queries for 'getReviews' that might contain this review
+                const activeQueries = reviewsAPI.util
+                    .selectInvalidatedBy(getState(), [{ type: 'Reviews', id: 'LIST' }])
+                    .filter(entry => entry.endpointName === 'getReviews')
+
+                // Apply optimistic update to each cached query
+                const patches = activeQueries.map(entry =>
+                    dispatch(
+                        reviewsAPI.util.updateQueryData(
+                            'getReviews',
+                            entry.originalArgs, // Use the actual query arguments
+                            draft => {
+                                const index = draft.items.findIndex(r => r.id === id)
+                                if (index !== -1) {
+                                    draft.items[index] = {
+                                        ...draft.items[index],
+                                        ...body, // Merge updated fields
+                                    }
+                                }
+                            },
+                        ),
+                    ),
+                )
+
+                try {
+                    await queryFulfilled
+                } catch {
+                    patches.forEach(patch => patch.undo())
+                }
+            },
             invalidatesTags: (result, error, body) => [
-                { type: 'Reviews', id: 'LIST' },
                 { type: 'Reviews', id: body.id },
                 { type: 'Content', id: 'LIST' },
                 { type: 'Content', id: 'TOP' },
@@ -85,13 +115,36 @@ export const reviewsAPI = api.injectEndpoints({
                 { type: 'Watchlist', id: 'LIST' },
             ],
         }),
+
         deleteReview: build.mutation<void, DeleteReviewParams>({
             query: params => ({
                 url: `reviews/${params.id}`,
                 method: 'DELETE',
             }),
+            async onQueryStarted(params, { dispatch, getState, queryFulfilled }) {
+                const activeQueries = reviewsAPI.util
+                    .selectInvalidatedBy(getState(), [{ type: 'Reviews', id: 'LIST' }])
+                    .filter(entry => entry.endpointName === 'getReviews')
+
+                const patches = activeQueries.map(entry =>
+                    dispatch(
+                        reviewsAPI.util.updateQueryData('getReviews', entry.originalArgs, draft => {
+                            const before = draft.items.length
+                            draft.items = draft.items.filter(r => r.id !== params.id)
+                            if (draft.items.length < before) {
+                                draft.total -= 1
+                            }
+                        }),
+                    ),
+                )
+
+                try {
+                    await queryFulfilled
+                } catch {
+                    patches.forEach(patch => patch.undo())
+                }
+            },
             invalidatesTags: (result, error, params) => [
-                { type: 'Reviews', id: 'LIST' },
                 { type: 'Reviews', id: params.id },
                 { type: 'Content', id: 'LIST' },
                 { type: 'Content', id: 'TOP' },
