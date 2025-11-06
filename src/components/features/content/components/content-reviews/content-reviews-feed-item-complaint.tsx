@@ -22,8 +22,12 @@ export const ContentReviewsFeedItemComplaint = ({ reviewId, isAuth }: ContentRev
     }
 
     return (
-        <div onClick={handleClick} className="cursor-pointer text-xs text-gray-300 hover:text-red-500">
-            <MessageCircleWarningIcon />
+        <div
+            onClick={handleClick}
+            className="flex cursor-pointer items-center gap-x-1 text-xs text-gray-500 hover:text-red-500"
+        >
+            <MessageCircleWarningIcon size={16} />
+            Пожаловаться
         </div>
     )
 }

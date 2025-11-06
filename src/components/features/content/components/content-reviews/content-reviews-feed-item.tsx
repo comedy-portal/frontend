@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import { DescriptionBlock } from '@/components/ui/description-block'
 import { Rating } from '@/components/ui/rating'
 
 import { ContentReviewsFeedItemComplaint } from './content-reviews-feed-item-complaint'
@@ -20,30 +21,40 @@ type ContentReviewsFeedItemProps = {
 export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
     return (
         <div className="space-y-4 rounded-lg border border-gray-300 p-6">
-            <div className="flex items-center justify-between gap-x-4">
+            <div className="flex items-center gap-x-4">
+                <Rating value={props.rating} isHighlight className="size-11 shrink-0" />
+
                 <div>
-                    <Link href={`/users/${props.username}`} className="font-bold">
-                        {props.username}
-                    </Link>
-                    <div className="text-gray-500">
+                    <div className="text-sm text-gray-500">
                         {new Date(props.createdAt).toLocaleDateString('ru-RU', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric',
                         })}
                     </div>
+                    <Link href={`/users/${props.username}`} className="line-clamp-1 max-h-6 font-bold" target="_blank">
+                        {props.username}
+                    </Link>
                 </div>
 
-                <div className="flex items-center gap-x-4">
+                {/* <div className="flex items-center gap-x-4">
                     {props.isAuth && props.activeUserId !== props.userId && (
                         <ContentReviewsFeedItemComplaint reviewId={props.id} isAuth={props.isAuth} />
                     )}
 
-                    <Rating value={props.rating} isHighlight className="size-12" />
-                </div>
+                    <Rating value={props.rating} isHighlight className="size-11" />
+                </div> */}
             </div>
 
-            {props.text && <div className="text-sm text-gray-700">{props.text}</div>}
+            {props.text && (
+                <div className="text-sm text-gray-700">
+                    <DescriptionBlock text={props.text} limit={500} />
+                </div>
+            )}
+
+            {props.isAuth && props.activeUserId !== props.userId && (
+                <ContentReviewsFeedItemComplaint reviewId={props.id} isAuth={props.isAuth} />
+            )}
         </div>
     )
 }
