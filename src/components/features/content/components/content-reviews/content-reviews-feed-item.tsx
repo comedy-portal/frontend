@@ -35,12 +35,11 @@ export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
                 </div>
 
                 <div className="flex items-center gap-x-4">
-                    {props.isAuth && props.activeUserId === props.userId ? (
-                        <ContentReviewsFeedItemControls reviewId={props.id} contentId={props.contentId} />
-                    ) : (
+                    {props.isAuth && props.activeUserId !== props.userId && (
                         <ContentReviewsFeedItemComplaint reviewId={props.id} isAuth={props.isAuth} />
                     )}
-                    <Rating value={props.rating} className="size-12" />
+
+                    <Rating value={props.rating} isHighlight className="size-12" />
                 </div>
             </div>
 
