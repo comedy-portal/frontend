@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import { Content } from '@/components/features/content/content'
 import { getContentById } from '@/services/content/content'
 import { getUserData } from '@/services/user/user'
+import { getAuthorDisplayNameForContent, getAuthorsDisplayNamesForContent } from '@/utils/helpers/common'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
 type Params = Promise<{ id: number }>
@@ -10,12 +11,13 @@ type Params = Promise<{ id: number }>
 export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
     const params = await props.params
     const content = await getContentById(params.id)
+    const comedians = getAuthorsDisplayNamesForContent(content)
 
     return {
-        title: content.name,
+        title: comedians.map(comedian => comedian.name).join(', ') + ' ' + content.name,
         description: content.metaInfo?.description,
         openGraph: {
-            title: content.name,
+            title: comedians.map(comedian => comedian.name).join(', ') + ' ' + content.name,
             description:
                 content.metaInfo?.description ||
                 'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и твоей персональной историей просмотров.',

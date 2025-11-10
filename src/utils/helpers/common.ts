@@ -44,6 +44,32 @@ export function getAuthorDisplayNameForContent({
     return undefined
 }
 
+export function getAuthorsDisplayNamesForContent({
+    comedians,
+    group,
+}: {
+    comedians: IComedianBaseData[]
+    group: IGroupBaseData | null
+}): { name: string; url: string }[] {
+    const authors: { name: string; url: string }[] = []
+
+    if (group) {
+        authors.push({
+            name: group.name,
+            url: `/comedians/groups/${group.slug}`,
+        })
+    } else {
+        comedians.forEach(comedian => {
+            authors.push({
+                name: `${comedian.name} ${comedian.surname}${comedian.isAgent ? '\u00A0*' : ''}`,
+                url: `/comedians/${comedian.slug}`,
+            })
+        })
+    }
+
+    return authors
+}
+
 export const getPlatformUrl = (platform: Platform, identifier: string) => {
     switch (platform) {
         case Platform.YOUTUBE:
