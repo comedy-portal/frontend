@@ -23,7 +23,6 @@ export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
         <div className="space-y-4 rounded-lg border border-gray-300 p-6">
             <div className="flex items-center gap-x-4">
                 <Rating value={props.rating} isHighlight className="size-11 shrink-0" />
-
                 <div>
                     <div className="text-sm text-gray-500">
                         {new Date(props.createdAt).toLocaleDateString('ru-RU', {
@@ -36,14 +35,6 @@ export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
                         {props.username}
                     </Link>
                 </div>
-
-                {/* <div className="flex items-center gap-x-4">
-                    {props.isAuth && props.activeUserId !== props.userId && (
-                        <ContentReviewsFeedItemComplaint reviewId={props.id} isAuth={props.isAuth} />
-                    )}
-
-                    <Rating value={props.rating} isHighlight className="size-11" />
-                </div> */}
             </div>
 
             {props.text && (

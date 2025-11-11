@@ -24,7 +24,7 @@ export const ContentReviewsFeedItemComplaint = ({ reviewId, isAuth }: ContentRev
     return (
         <div
             onClick={handleClick}
-            className="flex cursor-pointer items-center gap-x-1 text-xs text-gray-500 hover:text-red-500"
+            className="inline-flex cursor-pointer items-center gap-x-1 align-top text-xs text-gray-500 hover:text-red-500"
         >
             <MessageCircleWarningIcon size={16} />
             Пожаловаться
