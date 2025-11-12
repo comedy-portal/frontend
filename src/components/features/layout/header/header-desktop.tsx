@@ -2,16 +2,7 @@
 
 import { RefObject, useRef, useState } from 'react'
 
-import {
-    BellIcon,
-    BookmarkIcon,
-    CircleUserIcon,
-    LogOutIcon,
-    MicIcon,
-    SettingsIcon,
-    StarIcon,
-    UsersIcon,
-} from 'lucide-react'
+import { BookmarkIcon, CircleUserIcon, LogOutIcon, MicIcon, SettingsIcon, StarIcon, UsersIcon } from 'lucide-react'
 import Session from 'supertokens-web-js/recipe/session'
 import { useOnClickOutside } from 'usehooks-ts'
 
@@ -25,6 +16,7 @@ import { useKeypress } from '@/utils/hooks/use-keypress'
 import { useToast } from '@/utils/providers/toast-provider'
 
 import { HeaderLogin } from './components/header-login'
+import { NotificationsBell } from './components/header-notifications-bell'
 import { HeaderSubmitContent } from './components/header-submit-content'
 
 type HeaderDesktopProps = {
@@ -86,13 +78,7 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
                 <HeaderSubmitContent isAuth={isAuth} />
                 {isAuth && username ? (
                     <>
-                        <Link
-                            href="/me/notifications"
-                            className="relative cursor-pointer text-gray-300 hover:text-white"
-                        >
-                            <BellIcon />
-                            <div className="absolute top-0 right-0 box-content size-2 rounded-full border-2 border-gray-950 bg-red-500" />
-                        </Link>
+                        <NotificationsBell />
 
                         <div className="relative" ref={ref}>
                             <div

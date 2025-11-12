@@ -1,6 +1,7 @@
 export type IUser = {
     id: number
     username: string
+    metaInfo: any
     createdAt: Date
     daysSinceRegistration: number
     _count: {

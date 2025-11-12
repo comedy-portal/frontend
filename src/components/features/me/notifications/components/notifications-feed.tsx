@@ -1,15 +1,30 @@
 'use client'
 
+import { useEffect } from 'react'
+
 import { CirclePlusIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
 import { EmptyMessage } from '@/components/ui/empty-message'
+import { getLastEventId, setLastEventId } from '@/redux/features/user-slice'
+import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { notificationAPI } from '@/redux/services/notification/notification.api'
-import { NotificationType } from '@/utils/types/notifications'
+
+import { NotificationsFeedItem } from './notifications-feed-item'
 
 export const NotificationsFeed = () => {
+    const dispatch = useAppDispatch()
+    const lastEventId = useAppSelector(getLastEventId)
+
     const { data, isFetching, isSuccess, isError } = notificationAPI.useGetNotificationsQuery()
+
+    useEffect(() => {
+        if (isSuccess && data.length > 0) {
+            const maxId = Math.max(...data.map(n => n.id))
+            dispatch(setLastEventId(maxId))
+        }
+    }, [isSuccess, data, dispatch])
 
     if (isError) {
         return (
@@ -42,42 +57,18 @@ export const NotificationsFeed = () => {
     }
 
     return (
-        <div className="space-y-8">
-            {data.map(notification => (
-                <div key={`notifications-feed-item-${notification.id}`} className="flex gap-x-4">
-                    <CirclePlusIcon className="shrink-0" />
-                    <div>
-                        <div className="font-bold">Новое видео</div>
-                        <div>
-                            {notification.entity?.name} - {notification.content?.name}
-                        </div>
-                    </div>
-                </div>
-
-                // <div className="flex gap-x-4">
-                //     <UserPlusIcon className="shrink-0" />
-                //     <div>
-                //         <div className="font-bold">Новый комик</div>
-                //         <div>Юлия Ахмедова</div>
-                //     </div>
-                // </div>
-
-                // <div className="flex gap-x-4">
-                //     <InfoIcon className="shrink-0" />
-                //     <div>
-                //         <div className="font-bold">Новое обновление</div>
-                //         <div>Мы улучшили личный кабинет</div>
-                //     </div>
-                // </div>
-
-                // <div className="flex gap-x-4 opacity-60">
-                //     <CirclePlusIcon className="shrink-0" />
-                //     <div>
-                //         <div className="font-bold">Новое видео</div>
-                //         <div>Юлия Ахмедова - Название спешла</div>
-                //     </div>
-                // </div>
-            ))}
+        <div className="space-y-6">
+            {data.map(notification => {
+                const isRead = lastEventId !== null && notification.id <= lastEventId
+                return (
+                    <NotificationsFeedItem
+                        key={`notifications-feed-item-${notification.id}`}
+                        entity={notification.entity}
+                        content={notification.content}
+                        createdAt={new Date(notification.createdAt)}
+                    />
+                )
+            })}
         </div>
     )
 }

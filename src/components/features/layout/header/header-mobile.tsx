@@ -2,10 +2,11 @@
 
 import { useState } from 'react'
 
-import { BellIcon, MenuIcon, MicIcon, XIcon } from 'lucide-react'
+import { MenuIcon, MicIcon, XIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
+import { NotificationsBell } from './components/header-notifications-bell'
 import { HeaderMobileMenu } from './header-mobile-menu'
 
 type HeaderMobileProps = {
@@ -36,10 +37,7 @@ export const HeaderMobile = ({ username, isAuth }: HeaderMobileProps) => {
             </Link>
 
             <div className="flex items-center gap-x-4">
-                <Link href="/me/notifications" className="relative cursor-pointer text-gray-300 hover:text-white">
-                    <BellIcon />
-                    <div className="absolute top-0 right-0 box-content size-2 rounded-full border-2 border-gray-950 bg-red-500" />
-                </Link>
+                <NotificationsBell />
 
                 {isOpen ? (
                     <XIcon className="text-gray-300" onClick={closeMobileMenu} />

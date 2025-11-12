@@ -3,6 +3,7 @@ import { persistReducer } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 
 import appReducer from '@/redux/features/app-slice'
+import userReducer from '@/redux/features/user-slice'
 import { api } from '@/redux/services/api'
 
 import { internalApi } from './services/internal/internal.api'
@@ -26,11 +27,12 @@ const storage = typeof window === 'undefined' ? createNoopStorage() : createWebS
 const persistConfig = {
     key: 'comedyportal:store:v1.0.0',
     storage,
-    whitelist: ['app'],
+    whitelist: ['app', 'user'],
 }
 
 const reducers = combineReducers({
     app: appReducer,
+    user: userReducer,
     [api.reducerPath]: api.reducer,
     [internalApi.reducerPath]: internalApi.reducer,
 })
