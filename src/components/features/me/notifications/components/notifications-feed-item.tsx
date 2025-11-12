@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { getTimeAgo } from '@/utils/helpers/common'
-import { INotification, INotificationContent, NotificationType } from '@/utils/types/notifications'
+import { INotification, INotificationContent } from '@/utils/types/notifications'
 
 type NotificationsFeedItemProps = {
     entity: INotification | null

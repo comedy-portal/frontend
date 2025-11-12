@@ -7,7 +7,6 @@ import {
     LogOutIcon,
     SettingsIcon,
     StarIcon,
-    UserIcon,
     UsersIcon,
 } from 'lucide-react'
 import Session from 'supertokens-web-js/recipe/session'

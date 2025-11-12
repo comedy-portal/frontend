@@ -27,8 +27,9 @@ type HeaderDesktopProps = {
 export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
     const toast = useToast()
     const router = useRouter()
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
     const ref = useRef<HTMLDivElement>(null)
+
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     useOnClickOutside(ref as RefObject<HTMLDivElement>, () => setIsMenuOpen(false))
 
