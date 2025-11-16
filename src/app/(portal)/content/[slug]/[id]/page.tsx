@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { Content } from '@/components/features/content/content'
 import { getContentById } from '@/services/content/content'
 import { getUserData } from '@/services/user/user'
-import { getAuthorDisplayNameForContent, getAuthorsDisplayNamesForContent } from '@/utils/helpers/common'
+import { getAuthorsDisplayNamesForContent } from '@/utils/helpers/common'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
 type Params = Promise<{ id: number }>

@@ -5,6 +5,7 @@ import { CircleArrowLeftIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
+import { SubscribeButton } from '@/components/features/common/subscribe-button'
 import { DescriptionBlock } from '@/components/ui/description-block'
 import { GlobalLoading } from '@/components/ui/global-loading'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
@@ -12,6 +13,7 @@ import { LinksBlock } from '@/components/ui/links-block'
 import { Share } from '@/components/ui/share'
 import { messages } from '@/messages'
 import { groupsAPI } from '@/redux/services/groups/groups.api'
+import { SubscriptionType } from '@/redux/services/subscriptions/subscriptions.types'
 
 import { GroupContent } from './component/group-content'
 import { GroupFacts } from './component/group-facts'
@@ -64,7 +66,7 @@ export const Group = ({ slug, isAuth }: GroupProps) => {
 
                 <div className="flex shrink-0 flex-col gap-y-12 md:flex-row md:gap-x-6 lg:w-[300px] lg:flex-col xl:w-[368px]">
                     <ImageWithFallback
-                        src={data.groupImages[0]?.url}
+                        src={`/images/groups/${slug}.jpg`}
                         alt={`${data.name}`}
                         width={100}
                         height={100}
@@ -95,6 +97,13 @@ export const Group = ({ slug, isAuth }: GroupProps) => {
                             </section>
 
                             <LinksBlock caption="Ссылки" links={data.metaInfo?.links || []} />
+
+                            <SubscribeButton
+                                id={data.id}
+                                type={SubscriptionType.GROUP}
+                                isActive={(data.groupSubscriptions?.length ?? 0) > 0}
+                                isAuth={isAuth}
+                            />
 
                             <Share
                                 title={data.name}

@@ -41,6 +41,7 @@ export type IGroup = {
         | null
     comedians: IComedianBaseData[]
     groupImages: IImage[]
+    groupSubscriptions?: { createdAt: Date }[]
     createdAt: Date
     updatedAt: Date
 }
