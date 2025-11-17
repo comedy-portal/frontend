@@ -32,6 +32,13 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
             ],
             url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/content/${content.type.toLowerCase()}/${content.id}`,
         },
+        twitter: {
+            title: comedians.map(comedian => comedian.name).join(', ') + ' ' + content.name,
+            description:
+                content.metaInfo?.description ||
+                'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и твоей персональной историей просмотров.',
+            card: 'summary_large_image',
+        },
     }
 }
 

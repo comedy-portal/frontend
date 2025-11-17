@@ -23,7 +23,7 @@ export const AlphaBanner = () => {
     }
 
     return (
-        <div className="relative flex h-8 items-center justify-center bg-[#1890FF]" data-nosnippet>
+        <div className="relative flex h-8 items-center bg-[#1890FF] px-6 sm:justify-center sm:px-0" data-nosnippet>
             <Link
                 href="https://tripadvancer.com?utm_source=comedy_portal"
                 className="flex items-center gap-x-4"
@@ -37,14 +37,14 @@ export const AlphaBanner = () => {
                     height={32}
                     className="absolute top-0 left-0 z-0 opacity-50 md:static md:opacity-100"
                 />
-                <span className="relative z-10 flex items-center gap-x-1 text-nowrap text-white">
-                    Ваш журнал путешествий на <strong>Tripadvancer</strong>
+                <span className="relative z-10 flex items-center gap-x-1 whitespace-nowrap text-white">
+                    <span className="hidden sm:block">Ваш журнал путешествий на</span> <strong>Tripadvancer</strong>
                     <ArrowRightIcon size={16} />
                 </span>
             </Link>
 
             <div
-                className="absolute top-2 right-2 hidden h-4 w-4 cursor-pointer text-white sm:block lg:top-1/2 lg:right-4 lg:-translate-y-1/2"
+                className="absolute top-2 right-2 h-4 w-4 cursor-pointer text-white lg:top-1/2 lg:right-4 lg:-translate-y-1/2"
                 onClick={handleClose}
             >
                 <XIcon size={16} />

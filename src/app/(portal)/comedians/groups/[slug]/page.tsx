@@ -29,6 +29,13 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
             ],
             url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/comedians/groups/${group.slug}`,
         },
+        twitter: {
+            title: group.name,
+            description:
+                group.metaInfo?.description ||
+                'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и твоей персональной историей просмотров.',
+            card: 'summary_large_image',
+        },
     }
 }
 
