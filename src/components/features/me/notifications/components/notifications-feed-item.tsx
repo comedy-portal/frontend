@@ -21,7 +21,7 @@ export const NotificationsFeedItem = ({ entity, content, createdAt }: Notificati
             onClick={() => router.push(`/content/${content?.type.toLowerCase()}/${content?.id}`)}
         >
             <ImageWithFallback
-                src="https://img.youtube.com/vi/CIf-0oTm0hM/maxresdefault.jpg"
+                src={content?.contentImages[0]?.url || ''}
                 width={76}
                 height={48}
                 className="aspect-video h-12 w-auto rounded-lg align-top"

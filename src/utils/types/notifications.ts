@@ -28,4 +28,5 @@ export type INotificationContent = {
     id: number
     name: string
     type: string
+    contentImages: { url: string }[]
 }
