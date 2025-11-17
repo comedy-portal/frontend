@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { Content } from '@/components/features/content/content'
 import { getContentById } from '@/services/content/content'
 import { getUserData } from '@/services/user/user'
-import { getAuthorDisplayNameForContent, getAuthorsDisplayNamesForContent } from '@/utils/helpers/common'
+import { getAuthorsDisplayNamesForContent } from '@/utils/helpers/common'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
 type Params = Promise<{ id: number }>
@@ -31,6 +31,13 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
                 },
             ],
             url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/content/${content.type.toLowerCase()}/${content.id}`,
+        },
+        twitter: {
+            title: comedians.map(comedian => comedian.name).join(', ') + ' ' + content.name,
+            description:
+                content.metaInfo?.description ||
+                'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и твоей персональной историей просмотров.',
+            card: 'summary_large_image',
         },
     }
 }
