@@ -57,7 +57,7 @@ export const NotificationsFeed = () => {
     }
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-8">
             {data.map(notification => {
                 const isRead = lastEventId !== null && notification.id <= lastEventId
                 return (
