@@ -37,7 +37,7 @@ export const HeaderMobile = ({ username, isAuth }: HeaderMobileProps) => {
             </Link>
 
             <div className="flex items-center gap-x-4">
-                <NotificationsBell />
+                {isAuth && username && <NotificationsBell />}
 
                 {isOpen ? (
                     <XIcon className="text-gray-300" onClick={closeMobileMenu} />
