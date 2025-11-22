@@ -96,3 +96,28 @@ export const getPlatformUrl = (platform: Platform, identifier: string) => {
             return null
     }
 }
+
+export const getTimeAgo = (date: Date) => {
+    const now = new Date()
+    const diff = Math.floor((now.getTime() - new Date(date).getTime()) / 1000) // сек
+    const minutes = Math.floor(diff / 60)
+    const hours = Math.floor(minutes / 60)
+    const days = Math.floor(hours / 24)
+
+    if (days > 0) {
+        if (days === 1) return '1 день назад'
+        if (days < 5) return `${days} дня назад`
+        return `${days} дней назад`
+    }
+    if (hours > 0) {
+        if (hours === 1) return '1 час назад'
+        if (hours < 5) return `${hours} часа назад`
+        return `${hours} часов назад`
+    }
+    if (minutes > 0) {
+        if (minutes === 1) return '1 минуту назад'
+        if (minutes < 5) return `${minutes} минуты назад`
+        return `${minutes} минут назад`
+    }
+    return 'только что'
+}

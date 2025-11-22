@@ -8,10 +8,10 @@ import { withAuth } from '@/utils/supertokens/with-auth'
 
 // prettier-ignore
 export const metadata: Metadata = {
-    title: 'Настройки',
+    title: 'Уведомления - Comedy Portal',
 }
 
-export default function SettingsLayout(props: { children: React.ReactNode }) {
+export default function NotificationsLayout(props: { children: React.ReactNode }) {
     return withAuth({
         onUnauth: 'notFound',
         getAuthData: async () => {
@@ -21,7 +21,7 @@ export default function SettingsLayout(props: { children: React.ReactNode }) {
         },
         render: ({ data }) => (
             <Layout
-                title="Настройки"
+                title="Уведомления"
                 size="sm"
                 sidebar={{
                     component: data ? (
