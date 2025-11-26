@@ -7,7 +7,7 @@ import { userAPI } from '@/redux/services/user/user.api'
 import { useDialog } from '@/utils/providers/dialog-provider'
 import { useToast } from '@/utils/providers/toast-provider'
 
-export const MeSettingsRequestPersonalData = () => {
+export const SettingsRequestPersonalData = () => {
     const dialog = useDialog()
     const toast = useToast()
 

@@ -46,7 +46,6 @@ export const ComediansGroupsFeed = () => {
                         key={`comedians-groups-feed-item-${item.slug}`}
                         slug={item.slug}
                         name={item.name}
-                        image={item.groupImages[0]?.url}
                     />
                 ))}
             </div>

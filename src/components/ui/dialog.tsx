@@ -15,7 +15,7 @@ export const Dialog = ({ content, onClose }: DialogProps) => {
             <div className="flex min-h-full items-center justify-center">
                 <div className="relative z-50 w-full rounded-2xl bg-white p-8 shadow-lg sm:w-auto sm:p-12">
                     <div
-                        className="absolute top-4 right-3 cursor-pointer text-gray-300 hover:text-gray-950 sm:right-4"
+                        className="absolute top-4 right-3 z-50 cursor-pointer text-gray-300 hover:text-gray-950 sm:right-4"
                         onClick={onClose}
                     >
                         <XIcon />
