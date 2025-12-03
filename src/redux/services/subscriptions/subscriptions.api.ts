@@ -18,6 +18,7 @@ export const subscriptionsAPI = api.injectEndpoints({
                 { type: 'Groups', id },
                 { type: 'Comedians', id },
                 { type: 'Subscriptions', id: 'LIST' },
+                { type: 'Notifications', id: 'LIST' },
             ],
         }),
         unsubscribe: build.mutation<void, UnsubscribeInputs>({
@@ -30,6 +31,7 @@ export const subscriptionsAPI = api.injectEndpoints({
                 { type: 'Groups', id },
                 { type: 'Comedians', id },
                 { type: 'Subscriptions', id: 'LIST' },
+                { type: 'Notifications', id: 'LIST' },
             ],
         }),
     }),

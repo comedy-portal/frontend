@@ -8,6 +8,7 @@ export const notificationAPI = api.injectEndpoints({
             query: () => ({
                 url: 'events',
             }),
+            providesTags: () => [{ type: 'Notifications', id: 'LIST' }],
         }),
     }),
     overrideExisting: false,
