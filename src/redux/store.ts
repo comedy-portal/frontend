@@ -1,5 +1,5 @@
 import { Action, ThunkAction, combineReducers, configureStore } from '@reduxjs/toolkit'
-import { persistReducer } from 'redux-persist'
+import { persistReducer, persistStore } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 
 import appReducer from '@/redux/features/app-slice'
@@ -45,6 +45,8 @@ export const store = configureStore({
         getDefaultMiddleware({ serializableCheck: false }).concat([api.middleware, internalApi.middleware]),
     devTools: process.env.NODE_ENV !== 'production',
 })
+
+export const persistor = persistStore(store)
 
 export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof store.getState>

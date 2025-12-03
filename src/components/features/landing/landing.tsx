@@ -7,7 +7,6 @@ import { Order } from '@/utils/enums/common'
 
 import { LandingComediansFeed } from './components/landing-comedians-feed'
 import { LandingContentFeed } from './components/landing-content-feed'
-import { LandingNewFeature } from './components/landing-new-feature'
 import { LandingTopEntryPoint } from './components/landing-top-entry-point'
 import { LandingHero } from './landing-hero'
 
@@ -18,7 +17,6 @@ type LandingProps = {
 export const Landing = ({ isAuth }: LandingProps) => {
     return (
         <div>
-            <LandingNewFeature />
             <LandingHero isAuth={isAuth} />
 
             <div className="wrapper py-8 sm:py-16" data-nosnippet>

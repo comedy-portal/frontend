@@ -17,6 +17,7 @@ import { useRouter } from 'next/navigation'
 
 import { Search } from '@/components/features/layout/search/search'
 import { messages } from '@/messages'
+import { persistor } from '@/redux/store'
 import { useToast } from '@/utils/providers/toast-provider'
 
 import { HeaderLogin } from './components/header-login'
@@ -37,6 +38,7 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
     const handleSignOut = async () => {
         try {
             await Session.signOut()
+            await persistor.purge()
             closeMobileMenu()
             router.push('/')
             router.refresh()

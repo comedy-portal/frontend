@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation'
 
 import { Search } from '@/components/features/layout/search/search'
 import { messages } from '@/messages'
+import { persistor } from '@/redux/store'
 import { Keys } from '@/utils/enums/common'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 import { useToast } from '@/utils/providers/toast-provider'
@@ -38,6 +39,7 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
     const handleSignOut = async () => {
         try {
             await Session.signOut()
+            await persistor.purge()
             setIsMenuOpen(false)
             router.push('/')
             router.refresh()
