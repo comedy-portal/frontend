@@ -35,21 +35,7 @@ export const NotificationsFeed = () => {
     }
 
     if (isSuccess && data.length === 0) {
-        return (
-            <EmptyMessage>
-                У Вас пока нет подписок.
-                <br />
-                Подпишитесь на&nbsp;
-                <Link href="/comedians" className="text-blue-500 hover:text-blue-700">
-                    комика
-                </Link>{' '}
-                или{' '}
-                <Link href="/comedians/groups" className="text-blue-500 hover:text-blue-700">
-                    группу
-                </Link>{' '}
-                на&nbsp;странице их&nbsp;профиля, чтобы не&nbsp;пропускать новые выступления и&nbsp;обновления.
-            </EmptyMessage>
-        )
+        return <EmptyMessage>У Вас пока нет уведомлений.</EmptyMessage>
     }
 
     if (!isSuccess || isFetching) {
