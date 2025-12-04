@@ -1,3 +1,5 @@
+import { SparklesIcon } from 'lucide-react'
+
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -6,10 +8,25 @@ import { WelcomeLoginButton } from './components/welcome-login-button'
 type WelcomeProps = {
     username?: string
     isAuth: boolean
+    isNew?: boolean
 }
 
 export const Welcome = ({ username, isAuth }: WelcomeProps) => {
     const features = [
+        {
+            title: '🔔 Подписывайся на комиков и группы',
+            isNew: true,
+            text: (
+                <div className="space-y-2">
+                    <p>Узнавай о новинках первым! Подписывайся на любимых авторов прямо на их странице.</p>
+                    <p>
+                        После оформления подписки ты получаешь уведомления на сайте о новом контенте. Так ты никогда не
+                        пропустишь новые спешлы и шоу от своих любимых артистов.
+                    </p>
+                </div>
+            ),
+            img: '/images/welcome/subscriptions.jpg',
+        },
         {
             title: '🔍 Удобный поиск и фильтры',
             text: (
@@ -151,7 +168,16 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     className={`flex flex-col items-center gap-8 sm:flex-row sm:gap-16 ${i % 2 === 1 ? 'sm:flex-row-reverse' : ''}`}
                 >
                     <div className="w-full space-y-4 sm:w-1/2">
-                        <h2 className="text-2xl font-bold">{f.title}</h2>
+                        <h2 className="flex items-center gap-x-3 text-2xl font-bold">
+                            {f.title}
+
+                            {f.isNew && (
+                                <span className="flex items-center gap-x-1 rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-800">
+                                    <SparklesIcon size={16} />
+                                    Новое!
+                                </span>
+                            )}
+                        </h2>
                         <div className="text-muted-foreground text-base leading-relaxed">{f.text}</div>
                     </div>
 
