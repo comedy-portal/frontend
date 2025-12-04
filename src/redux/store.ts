@@ -1,8 +1,9 @@
 import { Action, ThunkAction, combineReducers, configureStore } from '@reduxjs/toolkit'
-import { persistReducer } from 'redux-persist'
+import { persistReducer, persistStore } from 'redux-persist'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
 
 import appReducer from '@/redux/features/app-slice'
+import userReducer from '@/redux/features/user-slice'
 import { api } from '@/redux/services/api'
 
 import { internalApi } from './services/internal/internal.api'
@@ -26,11 +27,12 @@ const storage = typeof window === 'undefined' ? createNoopStorage() : createWebS
 const persistConfig = {
     key: 'comedyportal:store:v1.0.0',
     storage,
-    whitelist: ['app'],
+    whitelist: ['app', 'user'],
 }
 
 const reducers = combineReducers({
     app: appReducer,
+    user: userReducer,
     [api.reducerPath]: api.reducer,
     [internalApi.reducerPath]: internalApi.reducer,
 })
@@ -43,6 +45,8 @@ export const store = configureStore({
         getDefaultMiddleware({ serializableCheck: false }).concat([api.middleware, internalApi.middleware]),
     devTools: process.env.NODE_ENV !== 'production',
 })
+
+export const persistor = persistStore(store)
 
 export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof store.getState>

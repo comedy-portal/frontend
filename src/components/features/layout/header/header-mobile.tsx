@@ -6,6 +6,7 @@ import { MenuIcon, MicIcon, XIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
+import { NotificationsBell } from './components/header-notifications-bell'
 import { HeaderMobileMenu } from './header-mobile-menu'
 
 type HeaderMobileProps = {
@@ -35,13 +36,17 @@ export const HeaderMobile = ({ username, isAuth }: HeaderMobileProps) => {
                 <div className="text-[20px] leading-none font-extrabold uppercase">ComedyPortal</div>
             </Link>
 
-            {isOpen ? (
-                <XIcon className="text-gray-300" onClick={closeMobileMenu} />
-            ) : (
-                <MenuIcon className="text-gray-300" onClick={openMobileMenu} />
-            )}
+            <div className="flex items-center gap-x-4">
+                {isAuth && username && <NotificationsBell />}
 
-            {isOpen && <HeaderMobileMenu closeMobileMenu={closeMobileMenu} isAuth={isAuth} username={username} />}
+                {isOpen ? (
+                    <XIcon className="text-gray-300" onClick={closeMobileMenu} />
+                ) : (
+                    <MenuIcon className="text-gray-300" onClick={openMobileMenu} />
+                )}
+
+                {isOpen && <HeaderMobileMenu closeMobileMenu={closeMobileMenu} isAuth={isAuth} username={username} />}
+            </div>
         </div>
     )
 }

@@ -137,6 +137,14 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
 
     return (
         <div className="wrapper flex flex-col gap-y-16 sm:gap-y-32 sm:py-16">
+            <section className="m-auto space-y-8 py-24 text-center md:w-2/3">
+                <h1 className="text-4xl font-bold md:text-5xl">Добро пожаловать!</h1>
+                <p className="text-lg">
+                    Мы&nbsp;рады, что&nbsp;Вы присоединились к&nbsp;нам! Ниже, Вы&nbsp;найдете краткое руководство
+                    по&nbsp;основным возможностям нашего портала. Надеемся, что они помогут Вам максимально эффективно
+                    использовать наш сервис.
+                </p>
+            </section>
             {features.map((f, i) => (
                 <section
                     key={i}
