@@ -168,15 +168,14 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     className={`flex flex-col items-center gap-8 sm:flex-row sm:gap-16 ${i % 2 === 1 ? 'sm:flex-row-reverse' : ''}`}
                 >
                     <div className="w-full space-y-4 sm:w-1/2">
-                        <h2 className="flex items-center gap-x-3 text-2xl font-bold">
-                            {f.title}
-
+                        <h2 className="flex flex-col items-start gap-3 text-2xl font-bold">
                             {f.isNew && (
                                 <span className="flex items-center gap-x-1 rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-800">
                                     <SparklesIcon size={16} />
                                     Новое!
                                 </span>
                             )}
+                            {f.title}
                         </h2>
                         <div className="text-muted-foreground text-base leading-relaxed">{f.text}</div>
                     </div>
