@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { ContentSortBy } from '@/redux/services/content/content.types'
 import { Order } from '@/utils/enums/common'
 
-import { LandingArticlesFeed } from './components/landing-articles-feed'
+import { LandingBlogFeed } from './components/landing-blog-feed'
 import { LandingComediansFeed } from './components/landing-comedians-feed'
 import { LandingContentFeed } from './components/landing-content-feed'
 import { LandingTopEntryPoint } from './components/landing-top-entry-point'
@@ -116,14 +116,14 @@ export const Landing = ({ isAuth }: LandingProps) => {
                                 <ChevronRightIcon size={24} className="block sm:hidden" />
                             </Link>
                             <Link
-                                href="/articles"
+                                href="/blog"
                                 className="mt-1 hidden items-center text-sm text-nowrap text-blue-500 sm:inline-flex"
                             >
                                 Все статьи
                             </Link>
                         </div>
 
-                        <LandingArticlesFeed />
+                        <LandingBlogFeed />
                     </section>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-type ArticlesFeedItemProps = {
+type BlogFeedItemProps = {
     url: string
     date: string
     title: string
@@ -9,7 +9,7 @@ type ArticlesFeedItemProps = {
     imageUrl: string
 }
 
-export const ArticlesFeedItem = ({ url, date, title, description, imageUrl }: ArticlesFeedItemProps) => {
+export const BlogFeedItem = ({ url, date, title, description, imageUrl }: BlogFeedItemProps) => {
     return (
         <div>
             <Link href={url}>

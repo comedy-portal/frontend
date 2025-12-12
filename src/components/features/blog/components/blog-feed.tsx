@@ -1,4 +1,4 @@
-import { ArticlesFeedItem } from './articles-feed-item'
+import { BlogFeedItem } from './blog-feed-item'
 
 type IArticles = {
     url: string
@@ -10,7 +10,7 @@ type IArticles = {
 
 const articlesData: IArticles[] = [
     {
-        url: '/articles/comedians-rating',
+        url: '/blog/comedians-rating',
         date: '12 декабря 2025',
         title: 'Тирлист от Давида',
         description:
@@ -19,15 +19,15 @@ const articlesData: IArticles[] = [
     },
 ]
 
-type ArticlesFeedProps = {
+type BlogFeedProps = {
     length?: number
 }
 
-export const ArticlesFeed = ({ length }: ArticlesFeedProps) => {
+export const BlogFeed = ({ length }: BlogFeedProps) => {
     return (
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {articlesData.slice(0, length).map((article, index) => (
-                <ArticlesFeedItem
+                <BlogFeedItem
                     key={`articles-feed-item-${index}`}
                     url={article.url}
                     date={article.date}

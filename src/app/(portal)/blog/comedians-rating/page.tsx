@@ -123,7 +123,7 @@ const categories: Category[] = [
 export default function ComedianTable() {
     return (
         <div className="wrapper space-y-12 pt-12 pb-24">
-            <Link href="/articles" className="inline-flex items-center gap-x-2 hover:text-black">
+            <Link href="/blog" className="inline-flex items-center gap-x-2 hover:text-black">
                 <CircleArrowLeftIcon size={24} className="text-inherit" />
                 Все статьи
             </Link>

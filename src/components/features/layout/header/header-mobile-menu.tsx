@@ -70,8 +70,8 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
                         <ChevronRightIcon size={20} />
                     </div>
                 </Link>
-                <Link href="/comedians/groups" className="flex items-center justify-between" onClick={closeMobileMenu}>
-                    Группы
+                <Link href="/blog" className="flex items-center justify-between" onClick={closeMobileMenu}>
+                    Блог
                     <div className="text-gray-700">
                         <ChevronRightIcon size={20} />
                     </div>
