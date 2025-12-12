@@ -146,7 +146,7 @@ export default function ComedianTable() {
 
                         <div className="grid h-auto grid-cols-[repeat(auto-fit,minmax(144px,1fr))] gap-4">
                             {category.comedians.map((c, i) => (
-                                <div key={i} className="flex flex-col items-center justify-center text-center">
+                                <div key={i} className="flex flex-col items-start justify-start text-center">
                                     <Link
                                         href={`/comedians/${c.slug}`}
                                         className="text-gray-700 hover:text-gray-950"
