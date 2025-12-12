@@ -111,7 +111,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
 
                     <section className="flex flex-col gap-y-6">
                         <div className="flex items-center justify-between">
-                            <Link href="/articles" className="flex w-full items-center justify-between gap-x-2">
+                            <Link href="/blog" className="flex w-full items-center justify-between gap-x-2">
                                 <h2 className="text-2xl font-semibold">Статьи</h2>
                                 <ChevronRightIcon size={24} className="block sm:hidden" />
                             </Link>
