@@ -8,11 +8,38 @@ import Link from 'next/link'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 
 // prettier-ignore
-// prettier-ignore
 export const metadata: Metadata = {
     title: 'Тирлист комиков по версии подписчиков Давида Квахаджелидзе',
     description:'Подписчики комика Давида Квахаджелидзе составили собственный tier list комиков в его Telegram-канале. Comedy portal публикует результаты опросов.',
-    keywords: ['тирлист комиков', 'tier list комиков', 'Давид Квахаджелидзе опрос', 'тирлист подписчиков', 'рейтинг комиков 2025', 'юмористы тирлист', 'телеграм опрос комики', 'субъективный рейтинг комиков', 'Давид Квахаджелидзе tier list', 'комики голосование подписчиков']
+    keywords: ['тирлист комиков', 'tier list комиков', 'Давид Квахаджелидзе опрос', 'тирлист подписчиков', 'рейтинг комиков 2025', 'юмористы тирлист', 'телеграм опрос комики', 'субъективный рейтинг комиков', 'Давид Квахаджелидзе tier list', 'комики голосование подписчиков'],
+    openGraph: {
+        title: 'Тирлист комиков по версии подписчиков Давида Квахаджелидзе',
+        description: 'Подписчики комика Давида Квахаджелидзе составили собственный tier list комиков в его Telegram-канале. Comedy portal публикует результаты опросов.',
+        url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/articles/comedians-rating`,
+        siteName: 'Comedy Portal',
+        images: [
+            {
+                url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/comedians-rating.jpg`,
+                width: 1200,
+                height: 630,
+                type: 'image/jpeg',
+                alt: 'Тирлист комиков по версии подписчиков Давида Квахаджелидзе',
+            },
+        ],
+        locale: 'ru_RU',
+        type: 'article',
+    },
+    twitter: {
+        title: 'Тирлист комиков по версии подписчиков Давида Квахаджелидзе',
+        description: 'Подписчики комика Давида Квахаджелидзе составили собственный tier list комиков в его Telegram-канале. Comedy portal публикует результаты опросов.',
+        card: 'summary_large_image',
+        images: [
+            {
+                url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/comedians-rating.jpg`,
+                alt: 'Тирлист комиков по версии подписчиков Давида Квахаджелидзе',
+            },
+        ],
+    }
 }
 type Category = {
     title: string
