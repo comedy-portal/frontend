@@ -63,12 +63,12 @@ const categories: Category[] = [
             { name: 'Дима Гаврилов', percent: '61%', slug: 'dima-gavrilov' },
             { name: 'Кирилл Селегей', percent: '58%', slug: 'kirill-selegey' },
             { name: 'Артур Чапарян', percent: '54%', slug: 'artur-chaparyan' },
-            { name: 'Ваня Усович', percent: '52%', slug: 'vanya-usovich' },
+            { name: 'Иван Усович', percent: '52%', slug: 'vanya-usovich' },
             { name: 'Идрак Мирзализаде', percent: '52%', slug: 'idrak-mirzalizade' },
-            { name: 'Вася Медведев', percent: '46%', slug: 'vasiliy-medvedev' },
+            { name: 'Василий Медведев', percent: '46%', slug: 'vasiliy-medvedev' },
             { name: 'Сергей Орлов', percent: '45%', slug: 'sergey-orlov' },
             { name: 'Гарик Оганисян', percent: '45%', slug: 'garik-oganisian' },
-            { name: 'Саша Долгополов', percent: '38%', slug: 'aleksandr-dolgopolov' },
+            { name: 'Александр Долгополов', percent: '38%', slug: 'aleksandr-dolgopolov' },
             { name: 'Костя Широков', percent: '31%', slug: 'kostya-shirokov' },
         ],
     },
@@ -79,16 +79,16 @@ const categories: Category[] = [
         comedians: [
             { name: 'Никита Дубровский', slug: 'nikita-dubrovskiy' },
             { name: 'Вера Котельникова', slug: 'vera-kotelnikova' },
-            { name: 'Паша Дедищев', slug: 'pavel-dedishchev' },
+            { name: 'Павел Дедищев', slug: 'pavel-dedishchev' },
             { name: 'Саша Малой', slug: 'sasha-maloy' },
-            { name: 'Женя Сидоров', slug: 'zhenya-sidorov' },
-            { name: 'Лиза Аранова', slug: 'elizaveta-varvara-aranova' },
+            { name: 'Евгений Сидоров', slug: 'zhenya-sidorov' },
+            { name: 'Елизавета-Варвара Аранова', slug: 'elizaveta-varvara-aranova' },
             { name: 'Нурлан Сабуров', slug: 'nurlan-saburov' },
-            { name: 'Дима Коваль', slug: 'dmitry-koval' },
-            { name: 'Сева Ловкачев', slug: 'seva-lovkachyov' },
+            { name: 'Дмитрий Коваль', slug: 'dmitry-koval' },
+            { name: 'Сева Ловкачёв', slug: 'seva-lovkachyov' },
             { name: 'Расул Чабдаров', slug: 'rasul-chabdarov' },
-            { name: 'Гурам Амаряан', slug: 'guram-amaryan' },
-            { name: 'Артем Винокур', slug: 'artyom-vinokur' },
+            { name: 'Гурам Амарян', slug: 'guram-amaryan' },
+            { name: 'Артём Винокур', slug: 'artyom-vinokur' },
         ],
     },
     {
@@ -98,11 +98,11 @@ const categories: Category[] = [
         comedians: [
             { name: 'Роман Косицын', slug: 'roman-kositsyn' },
             { name: 'Карина Мейханаджян', slug: 'karina-meykhanadzhyan' },
-            { name: 'Ира Мягкова', slug: 'irina-miagkova' },
-            { name: 'Вова Бухаров', slug: 'vladimir-buharov' },
-            { name: 'Оля Малащенко', slug: 'olga-malashchenko' },
+            { name: 'Ирина Мягкова', slug: 'irina-miagkova' },
+            { name: 'Владимир Бухаров', slug: 'vladimir-buharov' },
+            { name: 'Ольга Малащенко', slug: 'olga-malashchenko' },
             { name: 'Илья Соболев', slug: 'ilya-sobolev' },
-            { name: 'Яся Тринадцатко', slug: 'yaroslava-trinadtsatko' },
+            { name: 'Ярослава Тринадцатко', slug: 'yaroslava-trinadtsatko' },
             { name: 'Евгений Чебатков', slug: 'eugene-chebatkov' },
         ],
     },
@@ -158,14 +158,16 @@ export default function ComedianTable() {
                 </p>
                 <p>
                     Именно поэтому итоговый тирлист стоит рассматривать только как любопытный срез мнений конкретной
-                    аудитории. Подобные инициативы часто помогают заметить, как различается восприятие юмористов среди
+                    аудитории. Подобные инициативы часто помогают заметить, как различается восприятие комиков среди
                     самых разных групп зрителей, и&nbsp;дают возможность взглянуть на&nbsp;индустрию через призму
                     предпочтений живой, активной фан-базы.
                 </p>
                 <p>
                     Ниже мы&nbsp;публикуем результаты опросов, то&nbsp;есть тот самый тирлист, составленный подписчиками
                     Давида Квахаджелидзе. Это целиком и&nbsp;полностью отражение их&nbsp;субъективного мнения,
-                    сформированного исключительно в&nbsp;рамках его телеграм канала.
+                    сформированного исключительно в&nbsp;рамках его телеграм канала. Для «элиты» Давид также указал
+                    процент голосов, отданных за&nbsp;этот&nbsp;вариант. Это&nbsp;позволяет понять, насколько единодушно
+                    аудитория оценивает тех или&nbsp;иных комиков.
                 </p>
             </div>
             <div className="flex flex-col gap-y-4">
