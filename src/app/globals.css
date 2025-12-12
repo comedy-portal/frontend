@@ -49,3 +49,7 @@ html {
 .range .range-slider__thumb[data-disabled] {
     /* CSS for disabled thumbs */
 }
+
+.link {
+  @apply text-blue-500 hover:text-blue-700;
+}
