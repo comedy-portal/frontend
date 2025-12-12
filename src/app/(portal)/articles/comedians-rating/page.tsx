@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { CircleArrowLeftIcon } from 'lucide-react'
 import { Metadata } from 'next'
 
 import Link from 'next/link'
@@ -7,10 +8,12 @@ import Link from 'next/link'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 
 // prettier-ignore
+// prettier-ignore
 export const metadata: Metadata = {
     title: 'Тирлист комиков по версии подписчиков Давида Квахаджелидзе',
+    description:'Подписчики комика Давида Квахаджелидзе составили собственный tier list комиков в его Telegram-канале. Comedy portal публикует результаты опросов.',
+    keywords: ['тирлист комиков', 'tier list комиков', 'Давид Квахаджелидзе опрос', 'тирлист подписчиков', 'рейтинг комиков 2025', 'юмористы тирлист', 'телеграм опрос комики', 'субъективный рейтинг комиков', 'Давид Квахаджелидзе tier list', 'комики голосование подписчиков']
 }
-
 type Category = {
     title: string
     color: string
@@ -92,8 +95,14 @@ const categories: Category[] = [
 
 export default function ComedianTable() {
     return (
-        <div className="space-y-8">
+        <div className="wrapper space-y-12 pt-12 pb-24">
+            <Link href="/articles" className="inline-flex items-center gap-x-2 hover:text-black">
+                <CircleArrowLeftIcon size={24} className="text-inherit" />
+                Все статьи
+            </Link>
+
             <div className="space-y-8 lg:w-2/3">
+                <h1 className="text-4xl font-bold">Тирлист комиков по версии подписчиков Давида Квахаджелидзе</h1>
                 <p>
                     Стендап-комик{' '}
                     <Link
@@ -169,7 +178,7 @@ export default function ComedianTable() {
                     </div>
                 ))}
             </div>
-            <div className="w-2/3">
+            <div className="lg:w-2/3">
                 <p className="text-sm italic">
                     <strong>**тирлист (от&nbsp;англ. tier list)</strong>&nbsp;&mdash; это ранжированный список,
                     в&nbsp;котором участники или объекты распределяются по&nbsp;уровням (тирам)&nbsp;&mdash;

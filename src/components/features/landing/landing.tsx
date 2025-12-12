@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { ContentSortBy } from '@/redux/services/content/content.types'
 import { Order } from '@/utils/enums/common'
 
+import { LandingArticlesFeed } from './components/landing-articles-feed'
 import { LandingComediansFeed } from './components/landing-comedians-feed'
 import { LandingContentFeed } from './components/landing-content-feed'
 import { LandingTopEntryPoint } from './components/landing-top-entry-point'
@@ -106,6 +107,23 @@ export const Landing = ({ isAuth }: LandingProps) => {
                         </div>
 
                         <LandingComediansFeed />
+                    </section>
+
+                    <section className="flex flex-col gap-y-6">
+                        <div className="flex items-center justify-between">
+                            <Link href="/articles" className="flex w-full items-center justify-between gap-x-2">
+                                <h2 className="text-2xl font-semibold">Статьи</h2>
+                                <ChevronRightIcon size={24} className="block sm:hidden" />
+                            </Link>
+                            <Link
+                                href="/articles"
+                                className="mt-1 hidden items-center text-sm text-nowrap text-blue-500 sm:inline-flex"
+                            >
+                                Все статьи
+                            </Link>
+                        </div>
+
+                        <LandingArticlesFeed />
                     </section>
                 </div>
             </div>

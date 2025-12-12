@@ -68,8 +68,8 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
                     <Link href="/comedians" className="text-nowrap text-gray-300 hover:text-white">
                         Комики
                     </Link>
-                    <Link href="/comedians/groups" className="text-nowrap text-gray-300 hover:text-white">
-                        Группы
+                    <Link href="/articles" className="text-nowrap text-gray-300 hover:text-white">
+                        Статьи
                     </Link>
                     <Link href="/about" className="text-nowrap text-gray-300 hover:text-white">
                         О проекте
