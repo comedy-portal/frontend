@@ -82,7 +82,7 @@ const categories: Category[] = [
             { name: 'Павел Дедищев', slug: 'pavel-dedishchev' },
             { name: 'Саша Малой', slug: 'sasha-maloy' },
             { name: 'Евгений Сидоров', slug: 'zhenya-sidorov' },
-            { name: 'Елизавета-Варвара Аранова', slug: 'elizaveta-varvara-aranova' },
+            { name: 'Лиза-Варвара Аранова', slug: 'elizaveta-varvara-aranova' },
             { name: 'Нурлан Сабуров', slug: 'nurlan-saburov' },
             { name: 'Дмитрий Коваль', slug: 'dmitry-koval' },
             { name: 'Сева Ловкачёв', slug: 'seva-lovkachyov' },
