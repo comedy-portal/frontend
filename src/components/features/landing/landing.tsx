@@ -23,7 +23,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
 
             <div className="wrapper py-8 sm:py-16" data-nosnippet>
                 <div className="flex flex-col gap-y-6 sm:gap-y-12">
-                    <LandingTopEntryPoint />
+                    <LandingTopWinner isAuth={isAuth} />
 
                     <section className="flex flex-col gap-y-6">
                         <div className="flex items-center justify-between">
@@ -31,7 +31,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
                                 href="/content?sort=date_desc"
                                 className="flex w-full items-center justify-between gap-x-2"
                             >
-                                <h2 className="text-2xl font-semibold">Последние релизы</h2>
+                                <h3 className="text-2xl font-semibold">Последние релизы</h3>
                                 <ChevronRightIcon size={24} className="block sm:hidden" />
                             </Link>
                             <Link
@@ -51,7 +51,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
                                 href="/content?sort=rating_desc&not_watched=true"
                                 className="flex w-full items-center justify-between gap-x-2"
                             >
-                                <h2 className="text-2xl font-semibold">Смотрите также</h2>
+                                <h3 className="text-2xl font-semibold">Смотрите также</h3>
                                 <ChevronRightIcon size={24} className="block sm:hidden" />
                             </Link>
                             <Link
@@ -74,7 +74,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
                     <section className="flex flex-col gap-y-6">
                         <div className="flex items-center justify-between">
                             <Link href="/content" className="flex w-full items-center justify-between gap-x-2">
-                                <h2 className="text-2xl font-semibold">Недавно добавленное</h2>
+                                <h3 className="text-2xl font-semibold">Недавно добавленное</h3>
                                 <ChevronRightIcon size={24} className="block sm:hidden" />
                             </Link>
                             <Link
@@ -96,7 +96,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
                     <section className="flex flex-col gap-y-6">
                         <div className="flex items-center justify-between">
                             <Link href="/comedians" className="flex w-full items-center justify-between gap-x-2">
-                                <h2 className="text-2xl font-semibold">Комики</h2>
+                                <h3 className="text-2xl font-semibold">Комики</h3>
                                 <ChevronRightIcon size={24} className="block sm:hidden" />
                             </Link>
                             <Link
@@ -113,7 +113,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
                     <section className="flex flex-col gap-y-6">
                         <div className="flex items-center justify-between">
                             <Link href="/blog" className="flex w-full items-center justify-between gap-x-2">
-                                <h2 className="text-2xl font-semibold">Блог</h2>
+                                <h3 className="text-2xl font-semibold">Блог</h3>
                                 <ChevronRightIcon size={24} className="block sm:hidden" />
                             </Link>
                             <Link

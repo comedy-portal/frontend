@@ -28,6 +28,7 @@
     "react-dom": "^19.2.3",
     "react-indiana-drag-scroll": "^2.2.1",
     "react-range-slider-input": "^3.3.2",
+    "react-snowfall": "^2.4.0",
     "redux-persist": "^6.0.0",
     "supertokens-node": "^21.1.2",
     "supertokens-web-js": "^0.14.0",
