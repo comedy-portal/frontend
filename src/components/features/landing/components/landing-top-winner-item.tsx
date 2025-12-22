@@ -19,7 +19,7 @@ export const LandingTopWinnerItem = (props: LandingTopWinnerItemType) => {
             <div className="absolute top-6 left-6">
                 <Medal place={props.place} />
             </div>
-            <Link href="#" target="_blank">
+            <Link href={props.contentUrl} target="_blank">
                 <ImageWithFallback
                     src={props.contentImage}
                     width={254}
