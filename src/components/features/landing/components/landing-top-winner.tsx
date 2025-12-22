@@ -1,3 +1,7 @@
+import { ChevronsRightIcon } from 'lucide-react'
+
+import Link from 'next/link'
+
 import { LandingTopWinnerItem } from './landing-top-winner-item'
 
 const data = [
@@ -56,6 +60,16 @@ export const LandingTopWinner = () => {
                         authorUrl={item.authorUrl}
                     />
                 ))}
+            </div>
+
+            <div className="flex justify-end">
+                <Link
+                    href="/blog/top-3-specials-2025"
+                    className="flex items-center gap-x-1 text-sm font-bold text-white"
+                >
+                    Подробнее
+                    <ChevronsRightIcon size={16} />
+                </Link>
             </div>
         </section>
     )
