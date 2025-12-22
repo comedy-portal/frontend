@@ -32,7 +32,7 @@ export const BlogFeedItem = ({ url, date, title, description, imageUrl }: BlogFe
                 {title}
             </Link>
             <div className="text-sm" dangerouslySetInnerHTML={{ __html: description }} />
-            <div className="mb-2 flex items-center gap-x-2 text-sm text-gray-500">
+            <div className="flex items-center gap-x-2 text-sm text-gray-500">
                 <CalendarIcon size={16} />
                 {date}
             </div>

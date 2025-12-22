@@ -34,7 +34,7 @@ export const LandingTopWinnerItem = (props: LandingTopWinnerItemType) => {
                     {props.authorName}
                 </Link>
 
-                <Link href={props.contentUrl} className="line-clamp-2 max-h-12 font-bold" target="_blank">
+                <Link href={props.contentUrl} className="mb-2 line-clamp-2 max-h-12 font-bold" target="_blank">
                     {props.contentName}
                 </Link>
 
