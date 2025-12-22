@@ -20,7 +20,7 @@ export const LandingHero = ({ isAuth }: LandingHeroProps) => {
 
     return (
         <div className="relative flex h-[522px] w-full items-center justify-center overflow-hidden bg-gray-950">
-            <Snowfall style={{ zIndex: '50' }} />
+            <Snowfall style={{ zIndex: '20' }} />
             <div className="relative flex h-[522px] items-center justify-center">
                 <div
                     className="h-[522px] w-auto bg-[url('/images/promo/comedy-portal.jpg')] [mask-image:linear-gradient(to_right,transparent_0%,black_30%,black_70%,transparent_100%)] bg-contain bg-center bg-no-repeat [mask-size:contain] [mask-repeat:no-repeat]"
