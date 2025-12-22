@@ -26,9 +26,9 @@ type UserSidebarProps = {
 
 export const UserSidebar = (props: UserSidebarProps) => {
     return (
-        <div className="sticky top-[115px] space-y-6">
-            <div className="relative space-y-6 rounded-2xl bg-gray-100 p-12">
-                <div className="absolute -top-6 left-1/2 size-12 -translate-x-1/2 rounded-full bg-white" />
+        <div className="sticky top-28.75 space-y-6">
+            <div className="relative space-y-6 rounded-2xl bg-white p-12">
+                <div className="absolute -top-6 left-1/2 size-12 -translate-x-1/2 rounded-full bg-gray-100" />
 
                 <div className="flex flex-col items-center space-y-4">
                     <CircleUserIcon size={100} />
@@ -46,7 +46,7 @@ export const UserSidebar = (props: UserSidebarProps) => {
                     <Item label="Добавлено в избранное" value={props._count?.watchlists ?? 0} />
                 </ul>
 
-                <div className="absolute -bottom-6 left-1/2 size-12 -translate-x-1/2 rounded-full bg-white" />
+                <div className="absolute -bottom-6 left-1/2 size-12 -translate-x-1/2 rounded-full bg-gray-100" />
             </div>
             <Share title={props.username} url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/users/${props.username}`} />
         </div>

@@ -5,13 +5,16 @@ html {
   color: var(--color-gray-950);
 }
 
+body {
+  @apply bg-gray-100;
+}
 
 .wrapper {
-  @apply mx-auto max-w-[1224px] px-4 sm:px-6 lg:px-8 box-content;
+  @apply mx-auto max-w-306 px-4 sm:px-6 lg:px-8 box-content;
 }
 
 .inner-wrapper-sm {
-  @apply lg:max-w-[808px] max-w-full;
+  @apply lg:max-w-202 max-w-full;
 }
 
 .inner-wrapper-lg {
@@ -25,29 +28,11 @@ html {
 .range {
     @apply h-0.5! bg-gray-300!;
 }
-.range[data-disabled] {
-    /* CSS for disabled range slider element */
-}
 .range .range-slider__range {
     @apply h-0.5! bg-gray-950!;
 }
-.range .range-slider__range[data-active] {
-    /* CSS for active (actively being dragged) range */
-}
 .range .range-slider__thumb {
     @apply size-6 bg-white! border-2 border-gray-950;
-}
-.range .range-slider__thumb[data-lower] {
-    /* CSS for lower thumb */
-}
-.range .range-slider__thumb[data-upper] {
-    /* CSS for upper thumb */
-}
-.range .range-slider__thumb[data-active] {
-    /* CSS for active (actively being dragged) thumbs */
-}
-.range .range-slider__thumb[data-disabled] {
-    /* CSS for disabled thumbs */
 }
 
 .link {

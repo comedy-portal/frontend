@@ -1,5 +1,11 @@
+import { CalendarIcon } from 'lucide-react'
+
 import Image from 'next/image'
 import Link from 'next/link'
+
+import { ImageWithFallback } from '@/components/ui/image-with-fallback'
+
+import { ContentBlockDate } from '../../common/content-block/components/content-block-date'
 
 type BlogFeedItemProps = {
     url: string
@@ -11,15 +17,25 @@ type BlogFeedItemProps = {
 
 export const BlogFeedItem = ({ url, date, title, description, imageUrl }: BlogFeedItemProps) => {
     return (
-        <div>
-            <Link href={url}>
-                <Image src={imageUrl} alt={title} width={360} height={190} className="mb-4 w-full rounded-lg" />
+        <div className="relative flex h-full flex-1 flex-col gap-y-4 rounded-lg bg-white p-4">
+            <Link href={url} target="_blank">
+                <ImageWithFallback
+                    src={imageUrl}
+                    width={254}
+                    height={160}
+                    className="aspect-video h-auto w-full rounded-lg align-top"
+                    alt={title}
+                />
             </Link>
-            <div className="mb-2 text-sm text-gray-500">{date}</div>
-            <Link href={url} className="text-gray-700 hover:text-gray-950">
-                <h2 className="mb-2 text-xl font-bold">{title}</h2>
+
+            <Link href={url} className="line-clamp-2 max-h-12 font-bold" target="_blank">
+                {title}
             </Link>
-            <p className="text-sm text-gray-600" dangerouslySetInnerHTML={{ __html: description }} />
+            <div className="text-sm" dangerouslySetInnerHTML={{ __html: description }} />
+            <div className="mb-2 flex items-center gap-x-2 text-sm text-gray-500">
+                <CalendarIcon size={16} />
+                {date}
+            </div>
         </div>
     )
 }

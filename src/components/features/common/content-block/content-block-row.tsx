@@ -35,7 +35,7 @@ type ContentBlockRowType = {
 
 export const ContentBlockRow = (props: ContentBlockRowType) => {
     return (
-        <div className="relative lg:flex lg:h-[180px]">
+        <div className="relative rounded-lg bg-white lg:flex lg:h-45">
             <ContentBlockRating avgRating={props.avgRating} myRating={props.myRating} />
 
             <Link href={props.contentUrl} className="shrink-0" target="_blank">
@@ -45,7 +45,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                     height={180}
                     className={classNames(
                         'aspect-video align-top', // common styles
-                        'lg:h-[180px] lg:w-[288px] lg:rounded-none lg:rounded-l-lg', // for larger screens
+                        'lg:h-45 lg:w-[288px] lg:rounded-none lg:rounded-l-lg', // for larger screens
                         'h-auto w-full rounded-t-lg', // for smaller screens
                     )}
                     alt={props.name}
@@ -55,7 +55,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
             <div
                 className={classNames(
                     'flex flex-col border-gray-300', // common styles
-                    'lg:flex-grow lg:justify-between lg:gap-y-0 lg:rounded-tl-none lg:rounded-tr-lg lg:rounded-br-lg lg:rounded-bl-none lg:border-t lg:border-r lg:border-b lg:border-l-0 lg:p-6', // for larger screens
+                    'lg:grow lg:justify-between lg:gap-y-0 lg:rounded-tl-none lg:rounded-tr-lg lg:rounded-br-lg lg:rounded-bl-none lg:border-t lg:border-r lg:border-b lg:border-l-0 lg:p-6', // for larger screens
                     'gap-y-4 rounded-tl-none rounded-tr-none rounded-br-lg rounded-bl-lg border-t-0 border-r border-b border-l p-4', // for smaller screens
                 )}
             >

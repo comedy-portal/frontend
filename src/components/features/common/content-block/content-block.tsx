@@ -31,7 +31,7 @@ type ContentBlockType = {
 
 export const ContentBlock = (props: ContentBlockType) => {
     return (
-        <div className="relative flex h-full flex-col">
+        <div className="relative flex h-full flex-col gap-y-4 rounded-lg bg-white p-4">
             <Link href={`/content/${props.type.toLowerCase()}/${props.id}`} target="_blank">
                 <ContentBlockRating avgRating={props.avgRating} myRating={props.myRating} />
 
@@ -39,54 +39,50 @@ export const ContentBlock = (props: ContentBlockType) => {
                     src={props.imageUrl || ''}
                     width={254}
                     height={160}
-                    className="aspect-video h-auto w-full rounded-t-lg align-top"
+                    className="aspect-video h-auto w-full rounded-lg align-top"
                     alt={props.name}
                 />
             </Link>
 
-            <div className="flex flex-1 flex-col gap-y-4 rounded-b-lg border-x border-b border-[#DFE2E6] p-4">
-                <div>
-                    {props.author && (
-                        <Link href={props.author.url} className="text-sm text-gray-500 hover:text-gray-950">
-                            {props.author.name}
-                        </Link>
-                    )}
-
-                    <Link
-                        href={`/content/${props.type.toLowerCase()}/${props.id}`}
-                        className="line-clamp-2 max-h-12 font-bold"
-                        target="_blank"
-                    >
-                        {props.name}
+            <div>
+                {props.author && (
+                    <Link href={props.author.url} className="text-sm text-gray-500 hover:text-gray-950">
+                        {props.author.name}
                     </Link>
+                )}
 
-                    {props.description && <div className="line-clamp-2 h-10 text-sm">{props.description}</div>}
-                </div>
+                <Link
+                    href={`/content/${props.type.toLowerCase()}/${props.id}`}
+                    className="line-clamp-2 max-h-12 font-bold"
+                    target="_blank"
+                >
+                    {props.name}
+                </Link>
 
-                <div className="mt-auto flex items-center justify-between gap-x-4">
-                    <div className="flex items-center gap-x-2">
-                        <div className="flex items-center gap-x-1">
-                            <ContentBlockTag
-                                link={`/content/${props.type.toLowerCase()}`}
-                                title={
-                                    categories.find(category => category.type === props.type.toLowerCase())?.label || ''
-                                }
-                            />
-                            <ContentBlockDate year={props.year} />
-                        </div>
+                {props.description && <div className="line-clamp-2 h-10 text-sm">{props.description}</div>}
+            </div>
 
-                        <div className="flex items-center gap-x-2">
-                            {props.duration && <ContentBlockDuration duration={props.duration} />}
-                        </div>
+            <div className="mt-auto flex items-center justify-between gap-x-4">
+                <div className="flex items-center gap-x-2">
+                    <div className="flex items-center gap-x-1">
+                        <ContentBlockTag
+                            link={`/content/${props.type.toLowerCase()}`}
+                            title={categories.find(category => category.type === props.type.toLowerCase())?.label || ''}
+                        />
+                        <ContentBlockDate year={props.year} />
                     </div>
 
-                    <ContentBlockBookmark
-                        name={props.name}
-                        contentId={props.id}
-                        isAuth={props.isAuth}
-                        isInWatchlist={props.isInWatchlist}
-                    />
+                    <div className="flex items-center gap-x-2">
+                        {props.duration && <ContentBlockDuration duration={props.duration} />}
+                    </div>
                 </div>
+
+                <ContentBlockBookmark
+                    name={props.name}
+                    contentId={props.id}
+                    isAuth={props.isAuth}
+                    isInWatchlist={props.isInWatchlist}
+                />
             </div>
         </div>
     )

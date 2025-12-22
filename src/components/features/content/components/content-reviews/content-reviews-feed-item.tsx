@@ -20,7 +20,7 @@ type ContentReviewsFeedItemProps = {
 
 export const ContentReviewsFeedItem = (props: ContentReviewsFeedItemProps) => {
     return (
-        <div className="space-y-4 rounded-lg border border-gray-300 p-6">
+        <div className="space-y-4 rounded-lg bg-white p-6">
             <div className="flex items-center gap-x-4">
                 <Rating value={props.rating} isHighlight className="size-11 shrink-0" />
                 <div>

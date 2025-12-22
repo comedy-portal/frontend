@@ -9,6 +9,7 @@ import { LandingBlogFeed } from './components/landing-blog-feed'
 import { LandingComediansFeed } from './components/landing-comedians-feed'
 import { LandingContentFeed } from './components/landing-content-feed'
 import { LandingTopEntryPoint } from './components/landing-top-entry-point'
+import { LandingTopWinner } from './components/landing-top-winner'
 import { LandingHero } from './landing-hero'
 
 type LandingProps = {
@@ -112,7 +113,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
                     <section className="flex flex-col gap-y-6">
                         <div className="flex items-center justify-between">
                             <Link href="/blog" className="flex w-full items-center justify-between gap-x-2">
-                                <h2 className="text-2xl font-semibold">Статьи</h2>
+                                <h2 className="text-2xl font-semibold">Блог</h2>
                                 <ChevronRightIcon size={24} className="block sm:hidden" />
                             </Link>
                             <Link
