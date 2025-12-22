@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Топ спешл 2025 года: итоги года в русскоязычной комедии',
         description: 'Итоги года в русскоязычной комедии: лучший стендап-спешл 2025 года, победители рейтинга, рекомендации к просмотру и главные комедийные концерты года.',
-        url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/articles/comedians-rating`,
+        url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/articles/top-3-specials-2025`,
         siteName: 'Comedy Portal',
         images: [
             {
-                url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/comedians-rating.jpg`,
+                url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/top-3-specials-2025.jpg`,
                 width: 1200,
                 height: 630,
                 type: 'image/jpeg',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         images: [
             {
-                url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/comedians-rating.jpg`,
+                url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/top-3-specials-2025.jpg`,
                 alt: 'Топ спешл 2025 года: итоги года в русскоязычной комедии',
             },
         ],
