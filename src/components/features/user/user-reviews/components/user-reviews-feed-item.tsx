@@ -17,7 +17,7 @@ export const UserReviewsFeedItem = ({ review, isMyReview }: UserReviewsFeedItemP
     const author = getAuthorDisplayNameForContent(review.content)
 
     return (
-        <div className="relative space-y-4 rounded-lg border border-gray-300 p-6">
+        <div className="relative space-y-4 rounded-lg bg-white p-4">
             <div className="flex flex-row-reverse items-center justify-between">
                 <div className="absolute -top-px -right-px flex items-center gap-x-4 rounded-bl-lg bg-white pb-1 pl-1 md:static md:top-auto md:right-auto">
                     <div className="hidden md:block">

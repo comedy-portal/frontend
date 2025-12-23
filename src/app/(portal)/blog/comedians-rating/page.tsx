@@ -1,11 +1,12 @@
 import React from 'react'
 
-import { CircleArrowLeftIcon } from 'lucide-react'
+import { CalendarIcon, CircleArrowLeftIcon } from 'lucide-react'
 import { Metadata } from 'next'
 
 import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
+import { Share } from '@/components/ui/share'
 
 // prettier-ignore
 export const metadata: Metadata = {
@@ -41,6 +42,7 @@ export const metadata: Metadata = {
         ],
     }
 }
+
 type Category = {
     title: string
     color: string
@@ -58,7 +60,7 @@ const categories: Category[] = [
     {
         title: 'Элита/топ ру комедии',
         color: 'bg-red-300',
-        bgColor: 'bg-red-50',
+        bgColor: 'bg-red-100',
         comedians: [
             { name: 'Дима Гаврилов', percent: '61%', slug: 'dima-gavrilov' },
             { name: 'Кирилл Селегей', percent: '58%', slug: 'kirill-selegey' },
@@ -75,7 +77,7 @@ const categories: Category[] = [
     {
         title: 'Хороший комик',
         color: 'bg-orange-300',
-        bgColor: 'bg-orange-50',
+        bgColor: 'bg-orange-100',
         comedians: [
             { name: 'Никита Дубровский', slug: 'nikita-dubrovskiy' },
             { name: 'Вера Котельникова', slug: 'vera-kotelnikova' },
@@ -94,7 +96,7 @@ const categories: Category[] = [
     {
         title: 'Средний комик',
         color: 'bg-yellow-300',
-        bgColor: 'bg-yellow-50',
+        bgColor: 'bg-yellow-100',
         comedians: [
             { name: 'Роман Косицын', slug: 'roman-kositsyn' },
             { name: 'Карина Мейханаджян', slug: 'karina-meykhanadzhyan' },
@@ -106,21 +108,15 @@ const categories: Category[] = [
             { name: 'Евгений Чебатков', slug: 'eugene-chebatkov' },
         ],
     },
-    // {
-    //     title: 'Ниже среднего',
-    //     color: 'bg-green-300',
-    //     bgColor: 'bg-green-50',
-    //     comedians: [],
-    // },
     {
         title: 'Полный отстой',
         color: 'bg-blue-300',
-        bgColor: 'bg-blue-50',
+        bgColor: 'bg-blue-100',
         comedians: [{ name: 'Стас Старовойтов', slug: 'stas-starovoytov' }],
     },
 ]
 
-export default function ComedianTable() {
+export default function ComediansRatingPage() {
     return (
         <div className="wrapper space-y-12 pt-12 pb-24">
             <Link href="/blog" className="inline-flex items-center gap-x-2 hover:text-black">
@@ -130,6 +126,15 @@ export default function ComedianTable() {
 
             <div className="space-y-8 lg:w-2/3">
                 <h1 className="text-4xl font-bold">Тирлист комиков по версии подписчиков Давида Квахаджелидзе</h1>
+                <div className="flex items-center gap-x-2 text-sm text-gray-500">
+                    <CalendarIcon size={16} /> 12 декабря 2025
+                </div>
+                <div className="block sm:hidden">
+                    <Share
+                        title="Тирлист комиков по версии подписчиков Давида Квахаджелидзе"
+                        url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/comedians-rating`}
+                    />
+                </div>
                 <p>
                     Стендап-комик{' '}
                     <Link

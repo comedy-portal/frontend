@@ -4,6 +4,7 @@ import { CircleArrowLeftIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
+import { AwardsTopSpecial } from '@/components/ui/awards/awards-top-special'
 import { DescriptionBlock } from '@/components/ui/description-block'
 import { GlobalLoading } from '@/components/ui/global-loading'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
@@ -83,7 +84,7 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
                     </section>
                 </div>
 
-                <div className="flex shrink-0 flex-col gap-y-6 sm:w-[368px]">
+                <div className="flex shrink-0 flex-col gap-y-6 sm:w-92">
                     <h1 className="text-4xl font-bold">{data.name}</h1>
 
                     <RatingBar
@@ -99,6 +100,8 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
                         text={data.metaInfo?.description}
                         url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/content/${data.type.toLowerCase()}/${data.id}`}
                     />
+
+                    {/* {data.awards.length > 0 && <AwardsTopSpecial name={data.awards[0].name} />} */}
 
                     <ContentAuthors comedians={data.comedians} group={data.group} />
                     <ContentType type={data.type} />

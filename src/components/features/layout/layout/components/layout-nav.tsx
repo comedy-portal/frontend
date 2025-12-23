@@ -53,7 +53,7 @@ export const LayoutNav = ({ items, filter, preserveQuery = false }: LayoutNavPro
                 href={hrefWithParams}
                 replace
                 className={classNames('relative text-lg whitespace-nowrap text-gray-500 hover:text-gray-950', {
-                    'text-gray-950 after:absolute after:-bottom-5 after:left-0 after:h-[1px] after:w-full after:bg-gray-950':
+                    'text-gray-950 after:absolute after:-bottom-5 after:left-0 after:h-px after:w-full after:bg-gray-950':
                         isActive,
                 })}
             >

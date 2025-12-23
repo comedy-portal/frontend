@@ -75,7 +75,7 @@ export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFee
 
     return (
         <div className="flex flex-col gap-y-12">
-            <div className="space-y-2">
+            <div className="space-y-3">
                 {data.items.map(item => (
                     <UserReviewsFeedItem
                         key={`content-reviews-feed-item-${item.id}`}

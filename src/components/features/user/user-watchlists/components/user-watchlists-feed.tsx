@@ -71,7 +71,7 @@ export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps
     }
 
     return (
-        <div className={classNames('lg:block lg:space-y-2', 'grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6')}>
+        <div className={classNames('lg:block lg:space-y-3', 'grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-6')}>
             {data.map(item => (
                 <ContentBlockRow
                     key={`user-watchlists-feed-item-${item.id}`}

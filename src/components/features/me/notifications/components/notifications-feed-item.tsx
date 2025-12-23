@@ -17,7 +17,7 @@ export const NotificationsFeedItem = ({ entity, content, createdAt }: Notificati
 
     return (
         <div
-            className="flex cursor-pointer items-center gap-x-2 text-gray-700 hover:text-gray-950 sm:gap-x-4"
+            className="flex cursor-pointer items-center gap-x-2 rounded-lg bg-white p-4 text-gray-700 hover:text-gray-950 sm:gap-x-4"
             onClick={() => router.push(`/content/${content?.type.toLowerCase()}/${content?.id}`)}
         >
             <ImageWithFallback

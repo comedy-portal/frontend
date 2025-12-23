@@ -13,6 +13,7 @@ export type IContentEntity = {
         links: ILink[]
     } | null
     duration: number | null
+    awards: { name: string }[]
     createdAt: string
     updatedAt: string
 }
