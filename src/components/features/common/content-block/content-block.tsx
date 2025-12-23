@@ -33,7 +33,9 @@ export const ContentBlock = (props: ContentBlockType) => {
     return (
         <div className="relative flex h-full flex-col gap-y-4 rounded-lg bg-white p-4">
             <Link href={`/content/${props.type.toLowerCase()}/${props.id}`} target="_blank">
-                <ContentBlockRating avgRating={props.avgRating} myRating={props.myRating} />
+                <div className="absolute top-4 right-4">
+                    <ContentBlockRating avgRating={props.avgRating} myRating={props.myRating} />
+                </div>
 
                 <ImageWithFallback
                     src={props.imageUrl || ''}
@@ -45,19 +47,21 @@ export const ContentBlock = (props: ContentBlockType) => {
             </Link>
 
             <div>
-                {props.author && (
-                    <Link href={props.author.url} className="text-sm text-gray-500 hover:text-gray-950">
-                        {props.author.name}
-                    </Link>
-                )}
+                <div className="flex flex-col">
+                    {props.author && (
+                        <Link href={props.author.url} className="text-sm text-gray-500 hover:text-gray-950">
+                            {props.author.name}
+                        </Link>
+                    )}
 
-                <Link
-                    href={`/content/${props.type.toLowerCase()}/${props.id}`}
-                    className="line-clamp-2 max-h-12 font-bold"
-                    target="_blank"
-                >
-                    {props.name}
-                </Link>
+                    <Link
+                        href={`/content/${props.type.toLowerCase()}/${props.id}`}
+                        className="line-clamp-2 max-h-12 font-bold"
+                        target="_blank"
+                    >
+                        {props.name}
+                    </Link>
+                </div>
 
                 {props.description && <div className="line-clamp-2 h-10 text-sm">{props.description}</div>}
             </div>

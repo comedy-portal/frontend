@@ -35,8 +35,10 @@ type ContentBlockRowType = {
 
 export const ContentBlockRow = (props: ContentBlockRowType) => {
     return (
-        <div className="relative rounded-lg bg-white lg:flex lg:h-45">
-            <ContentBlockRating avgRating={props.avgRating} myRating={props.myRating} />
+        <div className="relative flex flex-col gap-4 rounded-lg bg-white p-4 lg:flex-row">
+            <div className="absolute top-4 right-4 flex lg:hidden">
+                <ContentBlockRating avgRating={props.avgRating} myRating={props.myRating} />
+            </div>
 
             <Link href={props.contentUrl} className="shrink-0" target="_blank">
                 <ImageWithFallback
@@ -44,9 +46,9 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                     width={288}
                     height={180}
                     className={classNames(
-                        'aspect-video align-top', // common styles
-                        'lg:h-45 lg:w-[288px] lg:rounded-none lg:rounded-l-lg', // for larger screens
-                        'h-auto w-full rounded-t-lg', // for smaller screens
+                        'aspect-video rounded-lg align-top', // common styles
+                        'lg:h-45 lg:w-[288px]', // for larger screens
+                        'h-auto w-full', // for smaller screens
                     )}
                     alt={props.name}
                 />
@@ -54,35 +56,42 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
 
             <div
                 className={classNames(
-                    'flex flex-col border-gray-300', // common styles
-                    'lg:grow lg:justify-between lg:gap-y-0 lg:rounded-tl-none lg:rounded-tr-lg lg:rounded-br-lg lg:rounded-bl-none lg:border-t lg:border-r lg:border-b lg:border-l-0 lg:p-6', // for larger screens
-                    'gap-y-4 rounded-tl-none rounded-tr-none rounded-br-lg rounded-bl-lg border-t-0 border-r border-b border-l p-4', // for smaller screens
+                    'flex flex-col', // common styles
+                    'lg:grow lg:justify-between lg:gap-y-0 lg:rounded-tl-none lg:rounded-tr-lg lg:rounded-br-lg lg:rounded-bl-none', // for larger screens
+                    'gap-y-4 rounded-tl-none rounded-tr-none rounded-br-lg rounded-bl-lg', // for smaller screens
                 )}
             >
-                <div>
-                    {props.author && (
-                        <Link href={props.author.url} className="text-sm text-gray-500 hover:text-gray-950">
-                            {props.author.name}
-                        </Link>
-                    )}
+                <div className="flex flex-col gap-y-2">
+                    <div className="flex items-center justify-between">
+                        <div className="flex flex-col">
+                            {props.author && (
+                                <Link href={props.author.url} className="text-sm text-gray-500 hover:text-gray-950">
+                                    {props.author.name}
+                                </Link>
+                            )}
 
-                    <Link
-                        href={props.contentUrl}
-                        className={classNames(
-                            'mb-1 line-clamp-1 max-h-7 font-bold', // common styles
-                            'lg:pr-12 lg:text-lg', // for larger screens
-                            'text-base', // for smaller screens
-                        )}
-                        target="_blank"
-                    >
-                        {`${props.position ? props.position + '. ' : ''} ${props.name}`}
-                    </Link>
+                            <Link
+                                href={props.contentUrl}
+                                className={classNames(
+                                    'line-clamp-1 font-bold', // common styles
+                                    'lg:text-lg', // for larger screens
+                                    'text-base', // for smaller screens
+                                )}
+                                target="_blank"
+                            >
+                                {`${props.position ? props.position + '. ' : ''} ${props.name}`}
+                            </Link>
+                        </div>
+                        <div className="hidden lg:block">
+                            <ContentBlockRating avgRating={props.avgRating} myRating={props.myRating} />
+                        </div>
+                    </div>
 
                     {props.description && (
                         <div
                             className={classNames('text-sm', {
                                 'line-clamp-3 h-15': !props.type || !props.author,
-                                'line-clamp-2 h-10': props.type && props.author,
+                                'line-clamp-4 h-20': props.type && props.author,
                             })}
                         >
                             {props.description}

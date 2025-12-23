@@ -41,11 +41,13 @@ const data = [
 export const LandingTopWinner = () => {
     return (
         <section className="flex flex-col gap-y-8 rounded-lg bg-[#46CE62] bg-[linear-gradient(rgba(70,206,98,.75),rgba(70,206,98,.4)),url('/images/top-winner-bg.jpg')] bg-top bg-no-repeat px-4 py-8 sm:p-8">
-            <h2 className="text-center text-3xl font-bold text-white">Топ-3 стендап-спешла 2025 года</h2>
-            <p className="m-auto text-center font-semibold text-white sm:w-2/3">
-                Итоги года по&nbsp;версии пользователей Comedy Portal. Три лучших стендап-концерта 2025-го&nbsp;&mdash;
-                самые обсуждаемые, оценённые и&nbsp;запомнившиеся.
-            </p>
+            <div className="flex flex-col gap-y-4">
+                <h2 className="text-center text-3xl font-bold text-white">Топ-3 стендап-спешла 2025 года</h2>
+                <p className="m-auto text-center text-lg font-semibold text-white sm:w-2/3">
+                    Итоги года по&nbsp;версии пользователей Comedy Portal. Три лучших стендап-концерта 2025
+                    года&nbsp;&mdash; самые обсуждаемые, оценённые и&nbsp;запомнившиеся.
+                </p>
+            </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
                 {data.map(item => (

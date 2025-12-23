@@ -1,3 +1,5 @@
+import classNames from 'classnames'
+
 import { Rating } from '@/components/ui/rating'
 
 export type ContentBlockRatingProps = {
@@ -7,7 +9,7 @@ export type ContentBlockRatingProps = {
 
 export const ContentBlockRating = ({ avgRating, myRating }: ContentBlockRatingProps) => {
     return (
-        <div className="absolute top-4 right-4 flex items-start">
+        <div className="flex items-start">
             {myRating && (
                 <div className="rounded-bl-lg bg-white pb-1 pl-1" title="Моя оценка">
                     <Rating value={myRating} isHighlight className="size-8! text-sm" />
