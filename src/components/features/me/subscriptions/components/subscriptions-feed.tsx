@@ -41,7 +41,7 @@ export const SubscriptionsFeed = () => {
     }
 
     return (
-        <div className="space-y-4">
+        <div className="space-y-3">
             {data.map(subscription => (
                 <SubscriptionsFeedItem
                     key={`subscription-feed-item-${subscription.type}-${subscription.entity.id}`}
