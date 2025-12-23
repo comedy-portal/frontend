@@ -23,6 +23,13 @@ export default function SubscriptionsLayout(props: { children: React.ReactNode }
             <Layout
                 title="Подписки"
                 size="sm"
+                nav={[
+                    { label: 'Мои подписки', href: '/me/subscriptions' },
+                    {
+                        label: 'Уведомления',
+                        href: '/me/subscriptions/notifications',
+                    },
+                ]}
                 sidebar={{
                     component: data ? (
                         <UserSidebar
