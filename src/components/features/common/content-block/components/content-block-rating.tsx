@@ -5,6 +5,7 @@ import { Rating } from '@/components/ui/rating'
 export type ContentBlockRatingProps = {
     avgRating: number
     myRating?: number
+    isRow?: boolean
 }
 
 export const ContentBlockRating = ({ avgRating, myRating }: ContentBlockRatingProps) => {

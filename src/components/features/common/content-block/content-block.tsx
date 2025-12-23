@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
+import { Rating } from '@/components/ui/rating'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
@@ -33,8 +34,16 @@ export const ContentBlock = (props: ContentBlockType) => {
     return (
         <div className="relative flex h-full flex-col gap-y-4 rounded-lg bg-white p-4">
             <Link href={`/content/${props.type.toLowerCase()}/${props.id}`} target="_blank">
-                <div className="absolute top-4 right-4">
-                    <ContentBlockRating avgRating={props.avgRating} myRating={props.myRating} />
+                <div className="absolute top-4 right-4 flex items-start">
+                    {props.myRating && (
+                        <div className="rounded-bl-lg bg-white pb-1 pl-1" title="Моя оценка">
+                            <Rating value={props.myRating} isHighlight className="size-8! text-sm" />
+                        </div>
+                    )}
+
+                    <div className="rounded-bl-lg bg-white pb-1 pl-1" title="Средний рейтинг">
+                        <Rating value={props.avgRating} className="size-12" />
+                    </div>
                 </div>
 
                 <ImageWithFallback

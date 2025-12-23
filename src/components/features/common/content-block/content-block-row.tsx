@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
+import { Rating } from '@/components/ui/rating'
 import { categories } from '@/utils/dict/categories'
 import { ContentType } from '@/utils/enums/common'
 
@@ -36,8 +37,16 @@ type ContentBlockRowType = {
 export const ContentBlockRow = (props: ContentBlockRowType) => {
     return (
         <div className="relative flex flex-col gap-4 rounded-lg bg-white p-4 lg:flex-row">
-            <div className="absolute top-4 right-4 flex lg:hidden">
-                <ContentBlockRating avgRating={props.avgRating} myRating={props.myRating} />
+            <div className="absolute top-4 right-4 flex items-start lg:hidden">
+                {props.myRating && (
+                    <div className="rounded-bl-lg bg-white pb-1 pl-1" title="Моя оценка">
+                        <Rating value={props.myRating} isHighlight className="size-8! text-sm" />
+                    </div>
+                )}
+
+                <div className="rounded-bl-lg bg-white pb-1 pl-1" title="Средний рейтинг">
+                    <Rating value={props.avgRating} className="size-12" />
+                </div>
             </div>
 
             <Link href={props.contentUrl} className="shrink-0" target="_blank">
@@ -62,7 +71,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                 )}
             >
                 <div className="flex flex-col gap-y-2">
-                    <div className="flex items-center justify-between">
+                    <div className="flex justify-between">
                         <div className="flex flex-col">
                             {props.author && (
                                 <Link href={props.author.url} className="text-sm text-gray-500 hover:text-gray-950">
@@ -82,8 +91,17 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                                 {`${props.position ? props.position + '. ' : ''} ${props.name}`}
                             </Link>
                         </div>
-                        <div className="hidden lg:block">
-                            <ContentBlockRating avgRating={props.avgRating} myRating={props.myRating} />
+
+                        <div className="hidden lg:flex lg:items-start lg:gap-x-1">
+                            {props.myRating && (
+                                <div title="Моя оценка">
+                                    <Rating value={props.myRating} isHighlight className="size-8! text-sm" />
+                                </div>
+                            )}
+
+                            <div title="Средний рейтинг">
+                                <Rating value={props.avgRating} className="size-12" />
+                            </div>
                         </div>
                     </div>
 

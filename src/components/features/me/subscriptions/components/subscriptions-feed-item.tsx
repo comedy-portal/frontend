@@ -37,7 +37,7 @@ export const SubscriptionsFeedItem = ({ id, slug, name, type }: SubscriptionsFee
     const href = type === 'group' ? `/comedians/groups/${slug}` : `/comedians/${slug}`
 
     return (
-        <div className="flex gap-x-4">
+        <div className="flex gap-x-4 rounded-lg bg-white p-4">
             <Link href={href}>
                 <ImageWithFallback
                     src={`/images/${type}s/${slug}.jpg`}
