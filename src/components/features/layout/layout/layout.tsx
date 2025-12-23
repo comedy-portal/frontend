@@ -33,7 +33,7 @@ export const Layout = ({ children, filter, title, info, size, nav, preserveQuery
                     {sidebar && sidebar.showOnMobile && (
                         <div className="mb-12 block lg:hidden">{sidebar.component}</div>
                     )}
-                    <LayoutNav items={nav} filter={filter} preserveQuery={preserveQuery} />
+                    {nav?.length && <LayoutNav items={nav} filter={filter} preserveQuery={preserveQuery} />}
                 </div>
                 {children}
             </div>

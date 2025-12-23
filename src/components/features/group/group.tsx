@@ -98,18 +98,20 @@ export const Group = ({ slug, isAuth }: GroupProps) => {
 
                             <LinksBlock caption="Ссылки" links={data.metaInfo?.links || []} />
 
-                            <SubscribeButton
-                                id={data.id}
-                                type={SubscriptionType.GROUP}
-                                isActive={(data.groupSubscriptions?.length ?? 0) > 0}
-                                isAuth={isAuth}
-                            />
+                            <div className="flex flex-col gap-y-6">
+                                <SubscribeButton
+                                    id={data.id}
+                                    type={SubscriptionType.GROUP}
+                                    isActive={(data.groupSubscriptions?.length ?? 0) > 0}
+                                    isAuth={isAuth}
+                                />
 
-                            <Share
-                                title={data.name}
-                                text={data.metaInfo?.description}
-                                url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/comedians/groups/${data.slug}`}
-                            />
+                                <Share
+                                    title={data.name}
+                                    text={data.metaInfo?.description}
+                                    url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/comedians/groups/${data.slug}`}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

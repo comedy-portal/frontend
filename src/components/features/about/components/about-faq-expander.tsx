@@ -19,11 +19,11 @@ export const AboutFaqExpander = ({ title, children }: AboutFaqExpanderProps) => 
     return (
         <div>
             <div
-                className="flex cursor-pointer items-center justify-between rounded-lg bg-gray-100 p-4 font-bold transition-colors hover:bg-gray-200"
+                className="flex cursor-pointer items-center justify-between rounded-lg bg-gray-200 p-4 font-bold transition-colors hover:bg-gray-200"
                 onClick={toggleOpen}
             >
                 <h3>{title}</h3>
-                <div className="text-gray-300">{isOpen ? <ChevronDownIcon /> : <ChevronRightIcon />}</div>
+                <div className="text-gray-500">{isOpen ? <ChevronDownIcon /> : <ChevronRightIcon />}</div>
             </div>
             {isOpen && <div className="p-4">{children}</div>}
         </div>

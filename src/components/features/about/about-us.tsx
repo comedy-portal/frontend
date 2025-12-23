@@ -33,7 +33,7 @@ export const AboutUs = () => {
                 </p>
             </div>
 
-            <div className="mb-4 flex gap-x-3 rounded-lg border border-blue-100 bg-blue-50 p-4 text-sm">
+            <div className="mb-4 flex gap-x-3 rounded-lg border border-blue-200 bg-blue-100 p-4 text-sm">
                 <InfoIcon className="hidden shrink-0 text-blue-500 sm:block" />
                 <div className="space-y-4">
                     <p>

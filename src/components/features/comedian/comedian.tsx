@@ -64,13 +64,13 @@ export const Comedian = ({ slug, isAuth }: ComedianProps) => {
                     </section>
                 </div>
 
-                <div className="flex shrink-0 flex-col gap-y-12 md:flex-row md:gap-x-6 lg:w-[300px] lg:flex-col xl:w-[368px]">
+                <div className="flex shrink-0 flex-col gap-y-12 md:flex-row md:gap-x-6 lg:w-75 lg:flex-col xl:w-92">
                     <ImageWithFallback
                         src={`/images/comedians/${data.slug}.jpg`}
                         alt={`${data.name}`}
                         width={100}
                         height={100}
-                        className="aspect-square w-full rounded-lg md:size-[300px] lg:size-auto"
+                        className="aspect-square w-full rounded-lg md:size-75 lg:size-auto"
                     />
 
                     <div className="flex flex-col gap-y-6">

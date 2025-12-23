@@ -48,7 +48,7 @@ export const TopContentFeed = ({ type, year, take, isAuth }: TopContentFeedProps
     }
 
     return (
-        <div className={classNames('lg:block lg:space-y-2', 'grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6')}>
+        <div className={classNames('lg:block lg:space-y-3', 'grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-6')}>
             {data.map((item, index) => (
                 <ContentBlockRow
                     key={`top-content-feed-item-${item.id}`}
