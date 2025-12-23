@@ -7,6 +7,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
+import { Share } from '@/components/ui/share'
 
 // prettier-ignore
 export const metadata: Metadata = {
@@ -55,6 +56,12 @@ export default function Top3Specials2025Page() {
                 <h1 className="text-4xl font-bold">Топ спешл 2025 года: итоги года в русскоязычной комедии</h1>
                 <div className="flex items-center gap-x-2 text-sm text-gray-500">
                     <CalendarIcon size={16} /> 01 января 2026
+                </div>
+                <div className="block sm:hidden">
+                    <Share
+                        title="Топ спешл 2025 года: итоги года в русскоязычной комедии"
+                        url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/top-3-specials-2025`}
+                    />
                 </div>
                 <p>
                     Год подошёл к&nbsp;концу&nbsp;&mdash; и&nbsp;можно уверенно сказать: 2025-й получился по-настоящему
@@ -119,13 +126,11 @@ export default function Top3Specials2025Page() {
                     Оставайтесь с&nbsp;нами и&nbsp;выбирайте лучший спешл следующего года!
                 </p>
                 <p className="italic">
-                    <strong>Важно:</strong> результаты рейтинга зафиксированы сразу после окончания 2025&nbsp;года.
-                    На&nbsp;момент прочтения статьи позиции в&nbsp;рейтинге могут меняться в&nbsp;зависимости
-                    от&nbsp;новых оценок и&nbsp;активности зрителей.{' '}
-                    <strong>
-                        Тем не&nbsp;менее, награды присуждаются исключительно по&nbsp;итогам календарного года
-                        и&nbsp;отражают итоговое голосование за&nbsp;2025&nbsp;год.
-                    </strong>
+                    <strong>Важно:</strong> результаты рейтинга подводятся и&nbsp;фиксируются в&nbsp;декабре
+                    2025&nbsp;года, до окончания календарного года. На&nbsp;момент прочтения статьи позиции
+                    в&nbsp;рейтинге могут меняться в зависимости от&nbsp;новых оценок и&nbsp;активности зрителей. Тем
+                    не&nbsp;менее, награды присуждаются на&nbsp;основании зафиксированных результатов и&nbsp;отражают
+                    итоговое голосование за&nbsp;2025&nbsp;год.
                 </p>
             </div>
         </div>

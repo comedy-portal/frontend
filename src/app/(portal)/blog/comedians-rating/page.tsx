@@ -6,6 +6,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
+import { Share } from '@/components/ui/share'
 
 // prettier-ignore
 export const metadata: Metadata = {
@@ -127,6 +128,12 @@ export default function ComediansRatingPage() {
                 <h1 className="text-4xl font-bold">Тирлист комиков по версии подписчиков Давида Квахаджелидзе</h1>
                 <div className="flex items-center gap-x-2 text-sm text-gray-500">
                     <CalendarIcon size={16} /> 12 декабря 2025
+                </div>
+                <div className="block sm:hidden">
+                    <Share
+                        title="Тирлист комиков по версии подписчиков Давида Квахаджелидзе"
+                        url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/comedians-rating`}
+                    />
                 </div>
                 <p>
                     Стендап-комик{' '}

@@ -4,6 +4,8 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { Share } from '@/components/ui/share'
+
 // prettier-ignore
 export const metadata: Metadata = {
     title: 'Подписка на комиков и группы — чтобы ничего не пропускать',
@@ -51,6 +53,12 @@ export default function SubscriptionsPage() {
                 <h1 className="text-4xl font-bold">Подписка на комиков и группы — чтобы ничего не пропускать</h1>
                 <div className="flex items-center gap-x-2 text-sm text-gray-500">
                     <CalendarIcon size={16} /> 04 декабря 2025
+                </div>
+                <div className="block sm:hidden">
+                    <Share
+                        title="Подписка на комиков и группы — чтобы ничего не пропускать"
+                        url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/subscriptions`}
+                    />
                 </div>
                 <p>
                     Мы добавили новую полезную функцию - <strong>подписки на комиков и группы</strong>.
