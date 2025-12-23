@@ -105,16 +105,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                         </div>
                     </div>
 
-                    {props.description && (
-                        <div
-                            className={classNames('text-sm', {
-                                'line-clamp-3 h-15': !props.type || !props.author,
-                                'line-clamp-4 h-20': props.type && props.author,
-                            })}
-                        >
-                            {props.description}
-                        </div>
-                    )}
+                    {props.description && <div className="line-clamp-4 h-20 text-sm">{props.description}</div>}
                 </div>
 
                 <div className="flex items-center justify-between gap-x-4">
