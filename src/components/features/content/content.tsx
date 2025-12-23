@@ -101,7 +101,7 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
                         url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/content/${data.type.toLowerCase()}/${data.id}`}
                     />
 
-                    {data.awards.length > 0 && <AwardsTopSpecial name={data.awards[0].name} />}
+                    {/* {data.awards.length > 0 && <AwardsTopSpecial name={data.awards[0].name} />} */}
 
                     <ContentAuthors comedians={data.comedians} group={data.group} />
                     <ContentType type={data.type} />
