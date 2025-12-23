@@ -4,18 +4,17 @@ import { CircleArrowLeftIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
+import { AwardsTopSpecial } from '@/components/ui/awards/awards-top-special'
 import { DescriptionBlock } from '@/components/ui/description-block'
 import { GlobalLoading } from '@/components/ui/global-loading'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LinksBlock } from '@/components/ui/links-block'
-import { Medal } from '@/components/ui/medal'
 import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
 import { Share } from '@/components/ui/share'
 import { messages } from '@/messages'
 import { contentAPI } from '@/redux/services/content/content.api'
 import { categories } from '@/utils/dict/categories'
 
-import { LandingTopEntryPoint } from '../landing/components/landing-top-entry-point'
 import { ContentAddToWatchList } from './components/content-add-to-watch-list'
 import { ContentAuthors } from './components/content-authors'
 import { ContentDate } from './components/content-date'
@@ -85,7 +84,7 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
                     </section>
                 </div>
 
-                <div className="flex shrink-0 flex-col gap-y-6 sm:w-[368px]">
+                <div className="flex shrink-0 flex-col gap-y-6 sm:w-92">
                     <h1 className="text-4xl font-bold">{data.name}</h1>
 
                     <RatingBar
@@ -102,14 +101,7 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
                         url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/content/${data.type.toLowerCase()}/${data.id}`}
                     />
 
-                    <Link
-                        href="/top-special/2025"
-                        className="flex h-20 items-center justify-center gap-x-4 rounded-2xl bg-[#46CE62] bg-[linear-gradient(rgba(70,206,98,1),rgba(70,206,98,.4)),url('/images/top-entry-point-bg.png')] bg-top-left px-4 text-lg font-bold text-white md:text-xl"
-                        target="_blank"
-                    >
-                        <Medal place={1} />
-                        <div>Первое места в рейтинге спешлов 2025 года!</div>
-                    </Link>
+                    {data.awards.length > 0 && <AwardsTopSpecial name={data.awards[0].name} />}
 
                     <ContentAuthors comedians={data.comedians} group={data.group} />
                     <ContentType type={data.type} />
