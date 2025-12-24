@@ -18,7 +18,7 @@ export const Footer = async ({ isAuth }: FooterProps) => {
                     </div>
                     <div>18+</div>
                     <div className="text-xs text-gray-500 lg:text-left">
-                        * Министерством юстиции РФ признан иностранным агентом
+                        Артисты отмеченные знаком * министерством юстиции РФ признаны иностраннымы агентами
                     </div>
                 </section>
                 <div className="flex flex-col gap-x-12 gap-y-6 md:flex-row">
