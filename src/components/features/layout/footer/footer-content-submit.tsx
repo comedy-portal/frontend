@@ -23,8 +23,8 @@ export const FooterSubmitContent = ({ isAuth }: HeaderSubmitContentProps) => {
     }
 
     return (
-        <div className="cursor-pointer text-sm text-gray-500 hover:text-gray-950" onClick={handleClick}>
+        <span className="cursor-pointer text-sm text-gray-500 hover:text-gray-950" onClick={handleClick}>
             Предложить контент
-        </div>
+        </span>
     )
 }
