@@ -1,3 +1,3 @@
 export const ContentBlockSkeleton = () => {
-    return <div className="h-[303px] rounded-lg bg-gray-100" />
+    return <div className="h-69.5 rounded-lg bg-gray-300" />
 }

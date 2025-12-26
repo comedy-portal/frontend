@@ -23,8 +23,8 @@ export const Landing = ({ isAuth }: LandingProps) => {
 
             <div className="wrapper py-8 sm:py-16" data-nosnippet>
                 <div className="flex flex-col gap-y-6 sm:gap-y-12">
-                    <LandingTopEntryPoint />
-                    {/* <LandingTopWinner /> */}
+                    {/* <LandingTopEntryPoint /> */}
+                    <LandingTopWinner />
 
                     <section className="flex flex-col gap-y-6">
                         <div className="flex items-center justify-between">

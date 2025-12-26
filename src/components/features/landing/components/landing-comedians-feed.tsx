@@ -34,7 +34,7 @@ export const LandingComediansFeed = () => {
 
     return (
         // <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-        <ScrollContainer className="grid auto-cols-[minmax(200px,_1fr)] grid-flow-col gap-4">
+        <ScrollContainer className="grid auto-cols-[minmax(200px,1fr)] grid-flow-col gap-4">
             {data.items.map(item => (
                 <div key={item.slug}>
                     <ComedianBlock slug={item.slug} name={item.name} surname={item.surname} isAgent={item.isAgent} />
