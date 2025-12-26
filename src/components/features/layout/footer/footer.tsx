@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { FooterSubmitContent } from './footer-content-submit'
@@ -20,6 +21,7 @@ export const Footer = async ({ isAuth }: FooterProps) => {
                     <div className="text-xs text-gray-500 lg:text-left">
                         * Министерством юстиции РФ признан иностранным агентом
                     </div>
+                    <Image src="/images/pwa.svg" width={135} height={40} alt="Comedyportal PWA" />
                 </section>
                 <div className="flex flex-col gap-x-12 gap-y-6 md:flex-row">
                     <section className="space-y-2">
