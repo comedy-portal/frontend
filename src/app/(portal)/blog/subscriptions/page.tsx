@@ -54,12 +54,10 @@ export default function SubscriptionsPage() {
                 <div className="flex items-center gap-x-2 text-sm text-gray-500">
                     <CalendarIcon size={16} /> 04 декабря 2025
                 </div>
-                <div className="block sm:hidden">
-                    <Share
-                        title="Подписка на комиков и группы — чтобы ничего не пропускать"
-                        url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/subscriptions`}
-                    />
-                </div>
+                <Share
+                    title="Подписка на комиков и группы — чтобы ничего не пропускать"
+                    url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/subscriptions`}
+                />
                 <p>
                     Мы добавили новую полезную функцию - <strong>подписки на комиков и группы</strong>.
                 </p>

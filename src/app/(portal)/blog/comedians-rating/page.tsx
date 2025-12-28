@@ -129,12 +129,10 @@ export default function ComediansRatingPage() {
                 <div className="flex items-center gap-x-2 text-sm text-gray-500">
                     <CalendarIcon size={16} /> 12 декабря 2025
                 </div>
-                <div className="block sm:hidden">
-                    <Share
-                        title="Тирлист комиков по версии подписчиков Давида Квахаджелидзе"
-                        url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/comedians-rating`}
-                    />
-                </div>
+                <Share
+                    title="Тирлист комиков по версии подписчиков Давида Квахаджелидзе"
+                    url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/comedians-rating`}
+                />
                 <p>
                     Стендап-комик{' '}
                     <Link
