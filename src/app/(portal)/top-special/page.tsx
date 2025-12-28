@@ -19,7 +19,7 @@ export default async function TopSpecialPage() {
     return withAuth({
         render: ({ isAuth }) => (
             <TopContent type={ContentType.SPECIAL} take={GetTopContentTake.ONE_HUNDRED} isAuth={isAuth}>
-                <div className="mb-4 flex gap-x-3 rounded-lg border border-orange-100 bg-orange-50 p-4">
+                <div className="mb-4 flex gap-x-3 rounded-lg border border-orange-200 bg-orange-50 p-4">
                     <TrophyIcon className="hidden shrink-0 text-orange-500 sm:block" />
                     <div>
                         Любимый спешл пока не вошёл в топ русскоязычных стендап концертов всех времён?{' '}
