@@ -26,6 +26,10 @@ export const LinksBlock = ({ caption, links }: LinksBlockProps) => {
         return true
     })
 
+    if (filteredLinks.length == 0) {
+        return null
+    }
+
     return (
         <section className="space-y-2">
             <h3 className="font-bold">{caption}</h3>
