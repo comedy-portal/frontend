@@ -57,7 +57,7 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
             <div className="flex flex-col-reverse gap-12 sm:flex-row">
                 <div className="flex flex-1 flex-col gap-y-12">
                     <ImageWithFallback
-                        src={data.contentImages[0].url}
+                        src={data.contentImages[0]?.url || ''}
                         width={500}
                         height={500}
                         className="aspect-video w-full rounded-lg object-cover"
@@ -101,7 +101,7 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
                         url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/content/${data.type.toLowerCase()}/${data.id}`}
                     />
 
-                    {/* {data.awards.length > 0 && <AwardsTopSpecial name={data.awards[0].name} />} */}
+                    {data.awards.length > 0 && <AwardsTopSpecial name={data.awards[0].name} />}
 
                     <ContentAuthors comedians={data.comedians} group={data.group} />
                     <ContentType type={data.type} />
