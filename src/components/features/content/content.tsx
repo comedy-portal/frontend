@@ -57,7 +57,7 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
             <div className="flex flex-col-reverse gap-12 sm:flex-row">
                 <div className="flex flex-1 flex-col gap-y-12">
                     <ImageWithFallback
-                        src={data.contentImages[0].url}
+                        src={data.contentImages[0]?.url || ''}
                         width={500}
                         height={500}
                         className="aspect-video w-full rounded-lg object-cover"

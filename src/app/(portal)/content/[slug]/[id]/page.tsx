@@ -23,7 +23,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
                 'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и твоей персональной историей просмотров.',
             images: [
                 {
-                    url: content.contentImages[0].url,
+                    url: content.contentImages[0]?.url || '',
                     width: 500,
                     height: 500,
                     type: 'image/jpeg',

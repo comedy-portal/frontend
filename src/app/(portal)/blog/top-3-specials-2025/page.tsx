@@ -54,12 +54,10 @@ export default function Top3Specials2025Page() {
                 <div className="flex items-center gap-x-2 text-sm text-gray-500">
                     <CalendarIcon size={16} /> 01 января 2026
                 </div>
-                <div className="block sm:hidden">
-                    <Share
-                        title="Топ спешлов 2025 года: итоги года в русскоязычной комедии"
-                        url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/top-3-specials-2025`}
-                    />
-                </div>
+                <Share
+                    title="Топ спешлов 2025 года: итоги года в русскоязычной комедии"
+                    url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/top-3-specials-2025`}
+                />
                 <p>
                     Год подошёл к&nbsp;концу&nbsp;&mdash; и&nbsp;можно уверенно сказать: 2025-й получился по-настоящему
                     интересным и насыщенным для русскоязычной комедии. Новые имена, громкие возвращения, эксперименты
