@@ -59,7 +59,7 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
                 <Search />
 
                 <nav className="flex items-center justify-center gap-x-3 text-sm xl:gap-x-4">
-                    <Link href="/top-special/2025" className="text-nowrap text-gray-300 hover:text-white">
+                    <Link href="/top-special/2026" className="text-nowrap text-gray-300 hover:text-white">
                         Топ
                     </Link>
                     <Link href="/content" className="text-nowrap text-gray-300 hover:text-white">
