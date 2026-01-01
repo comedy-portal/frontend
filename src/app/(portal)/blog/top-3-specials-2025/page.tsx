@@ -1,12 +1,9 @@
-import React from 'react'
-
 import { CalendarIcon, CircleArrowLeftIcon } from 'lucide-react'
 import { Metadata } from 'next'
 
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { Share } from '@/components/ui/share'
 
 // prettier-ignore
@@ -57,12 +54,10 @@ export default function Top3Specials2025Page() {
                 <div className="flex items-center gap-x-2 text-sm text-gray-500">
                     <CalendarIcon size={16} /> 01 января 2026
                 </div>
-                <div className="block sm:hidden">
-                    <Share
-                        title="Топ спешлов 2025 года: итоги года в русскоязычной комедии"
-                        url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/top-3-specials-2025`}
-                    />
-                </div>
+                <Share
+                    title="Топ спешлов 2025 года: итоги года в русскоязычной комедии"
+                    url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/top-3-specials-2025`}
+                />
                 <p>
                     Год подошёл к&nbsp;концу&nbsp;&mdash; и&nbsp;можно уверенно сказать: 2025-й получился по-настоящему
                     интересным и насыщенным для русскоязычной комедии. Новые имена, громкие возвращения, эксперименты
@@ -106,16 +101,26 @@ export default function Top3Specials2025Page() {
                     </Link>
                     , а&nbsp;третье место&nbsp;&mdash; &laquo;
                     <strong>
-                        <Link href="/content/special/18" className="link" target="_blank">
-                            Концерт в&nbsp;Дилижане
+                        <Link href="/content/special/226" className="link" target="_blank">
+                            Крот-Банкрот
                         </Link>
                     </strong>
                     &raquo;{' '}
-                    <Link href="/comedians/artur-chaparyan" className="link" target="_blank">
-                        Артура Чапаряна
+                    <Link href="/comedians/igor-tarletskiy" className="link" target="_blank">
+                        Игоря Тарлецкого
                     </Link>
                     . Эти концерты совершенно заслуженно получают свои награды и&nbsp;также настоятельно рекомендуются
                     к&nbsp;просмотру всем поклонникам стендапа.
+                </p>
+                <p>
+                    Спешлы, которые по&nbsp;итогам года занимают первые три позиции рейтинга, получают специальные
+                    медали&nbsp;&mdash; за&nbsp;1-е, 2-е и&nbsp;3-е место соответственно. Эти награды навсегда
+                    закрепляются за концертами и&nbsp;отражают их&nbsp;итоговый результат в&nbsp;рейтинге года.
+                </p>
+                <p>
+                    В&nbsp;случае если несколько выступлений набирают одинаковый рейтинг, их&nbsp;позиции в&nbsp;списке
+                    определяются по&nbsp;количеству полученных оценок: более высокое место занимает концерт
+                    с&nbsp;большим числом голосов.
                 </p>
                 <p>
                     Поздравляем всех победителей и&nbsp;участников рейтинга! А&nbsp;тем, кто ещё не&nbsp;видел эти
@@ -131,6 +136,19 @@ export default function Top3Specials2025Page() {
                     в&nbsp;рейтинге могут меняться в зависимости от&nbsp;новых оценок и&nbsp;активности зрителей. Тем
                     не&nbsp;менее, награды присуждаются на&nbsp;основании зафиксированных результатов и&nbsp;отражают
                     итоговое голосование за&nbsp;2025&nbsp;год.
+                </p>
+                <p>
+                    По&nbsp;
+                    <Link
+                        href="/images/top-specials/2025.jpg"
+                        className="text-blue-500 hover:text-blue-700"
+                        target="_blank"
+                    >
+                        ссылке
+                    </Link>{' '}
+                    доступен скриншот полного рейтинга спешлов по&nbsp;состоянию на&nbsp;конец 2025 года&nbsp;&mdash;
+                    для истории и&nbsp;сохранения финальной картины года в&nbsp;том виде, в&nbsp;котором она была
+                    зафиксирована.
                 </p>
             </div>
         </div>

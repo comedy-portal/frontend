@@ -14,7 +14,11 @@ export default function TopSpecialLayout(props: { children: React.ReactNode }) {
             size="sm"
             nav={[
                 {
-                    label: 'За 2025 год',
+                    label: '2026',
+                    href: '/top-special/2026',
+                },
+                {
+                    label: '2025',
                     href: '/top-special/2025',
                 },
                 {

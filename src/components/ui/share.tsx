@@ -44,7 +44,7 @@ export const Share = ({ title, text, url }: ShareProps) => {
         <Button
             size="lg"
             variant="outline"
-            className="flex w-full items-center justify-center gap-x-2"
+            className="flex w-full items-center justify-center gap-x-2 sm:hidden"
             onClick={handleShare}
         >
             <ShareIcon size={24} strokeWidth={2.5} />

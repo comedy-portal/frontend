@@ -11,7 +11,7 @@ export const Footer = async ({ isAuth }: FooterProps) => {
         <footer className="border-t border-gray-300" data-nosnippet>
             <div className="wrapper flex flex-col justify-between gap-x-12 gap-y-6 py-6 lg:flex-row">
                 <section className="space-y-2">
-                    <h6 className="font-bold">&copy; 2025 Comedy Portal</h6>
+                    <h6 className="font-bold">&copy; 2026 Comedy Portal</h6>
                     <div className="text-sm text-gray-500">
                         <p>Агрегатор лучших стендапов и шоу.</p>
                         <p>С оценками, рецензиями и твоей персональной историей просмотров.</p>
@@ -66,6 +66,11 @@ export const Footer = async ({ isAuth }: FooterProps) => {
                             <li>
                                 <Link href="/content" className="text-sm text-gray-500 hover:text-gray-950">
                                     Все выступления
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/top-special/2026" className="text-sm text-gray-500 hover:text-gray-950">
+                                    Топ спешлов за 2026 год
                                 </Link>
                             </li>
                             <li>
