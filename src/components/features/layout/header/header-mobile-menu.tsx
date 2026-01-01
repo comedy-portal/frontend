@@ -52,7 +52,7 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
             <Search closeMobileMenu={closeMobileMenu} />
 
             <nav className="flex flex-col gap-y-4 text-sm text-gray-300">
-                <Link href="/top-special/2025" className="flex items-center justify-between" onClick={closeMobileMenu}>
+                <Link href="/top-special/2026" className="flex items-center justify-between" onClick={closeMobileMenu}>
                     Топ
                     <div className="text-gray-700">
                         <ChevronRightIcon size={20} />

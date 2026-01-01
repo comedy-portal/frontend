@@ -19,17 +19,18 @@ export default async function TopSpecial2025Page() {
     return withAuth({
         render: ({ isAuth }) => (
             <TopContent type={ContentType.SPECIAL} year={2025} take={GetTopContentTake.FIFTY} isAuth={isAuth}>
-                <div className="mb-4 flex gap-x-3 rounded-lg border border-orange-100 bg-orange-50 p-4">
+                <div className="mb-4 flex gap-x-3 rounded-lg border border-orange-200 bg-orange-50 p-4">
                     <MedalIcon className="hidden shrink-0 text-orange-500 sm:block" />
                     <div>
-                        Ваш любимый спешл не попал в топ стендап концертов на русском 2025 года?{' '}
+                        Победители 2025 года уже{' '}
                         <Link
-                            href="/content/special?sort=rating_asc&year=2025"
+                            href="/blog/top-3-specials-2025"
                             className="text-blue-500 hover:text-blue-700"
+                            target="_blank"
                         >
-                            Голосуйте
-                        </Link>{' '}
-                        и помогите ему подняться в рейтинге!
+                            определены
+                        </Link>
+                        , награды вручены. При этом рейтинг может обновляться, не&nbsp;влияя на&nbsp;итоги года.
                     </div>
                 </div>
             </TopContent>
