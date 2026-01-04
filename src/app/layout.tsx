@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from 'next'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
 
+import YandexMetrika from '@/components/features/common/yandex-metrika'
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
 
 import './globals.css'
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <Providers>{children}</Providers>
                 <TailwindIndicator />
                 <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string} />
+                <YandexMetrika />
             </body>
         </html>
     )
