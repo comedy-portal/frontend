@@ -30,7 +30,7 @@ export const CookieConsent = () => {
                     </p>
                 </div>
                 <Button size="sm" className="w-full sm:w-auto" onClick={() => dispatch(setCookieAccepted())}>
-                    Закрыть
+                    Принять
                 </Button>
             </div>
         </div>
