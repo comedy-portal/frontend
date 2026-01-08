@@ -20,7 +20,7 @@ const articlesData: IArticles[] = [
     {
         url: '/blog/comedians-rating',
         date: '12 декабря 2025',
-        title: 'Тирлист от Давида',
+        title: 'Тирлист от Давида Квахаджелидзе',
         description:
             'Комик Давид Квахаджелидзе провёл в&nbsp;своём Telegram-канале серию опросов, в&nbsp;которых подписчики распределили различных комиков по&nbsp;тирлисту, основываясь лишь на&nbsp;личных ощущениях.',
         imageUrl: '/images/articles/comedians-rating.jpg',
