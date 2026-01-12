@@ -23,6 +23,14 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                         После оформления подписки ты получаешь уведомления на сайте о новом контенте. Так ты никогда не
                         пропустишь новые спешлы и шоу от своих любимых артистов.
                     </p>
+                    <p>
+                        <Link
+                            href="http://localhost:3000/blog/subscriptions"
+                            className="text-blue-500 hover:text-blue-700"
+                        >
+                            Подробнее
+                        </Link>
+                    </p>
                 </div>
             ),
             img: '/images/welcome/subscriptions.jpg',
@@ -153,44 +161,50 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
     ]
 
     return (
-        <div className="wrapper flex flex-col gap-y-16 sm:gap-y-32 sm:py-16">
-            <section className="m-auto space-y-8 py-24 text-center md:w-2/3">
-                <h1 className="text-4xl font-bold md:text-5xl">Добро пожаловать!</h1>
-                <p className="text-lg">
-                    Мы&nbsp;рады, что&nbsp;Вы присоединились к&nbsp;нам! Ниже, Вы&nbsp;найдете краткое руководство
-                    по&nbsp;основным возможностям нашего портала. Надеемся, что они помогут Вам максимально эффективно
-                    использовать наш сервис.
-                </p>
-            </section>
-            {features.map((f, i) => (
-                <section
-                    key={i}
-                    className={`flex flex-col items-center gap-8 sm:flex-row sm:gap-16 ${i % 2 === 1 ? 'sm:flex-row-reverse' : ''}`}
-                >
-                    <div className="w-full space-y-4 sm:w-1/2">
-                        <h2 className="flex flex-col items-start gap-3 text-2xl font-bold">
-                            {f.isNew && (
-                                <span className="flex items-center gap-x-1 rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-800">
-                                    <SparklesIcon size={16} />
-                                    Новое!
-                                </span>
-                            )}
-                            {f.title}
-                        </h2>
-                        <div className="text-muted-foreground text-base leading-relaxed">{f.text}</div>
-                    </div>
+        <div>
+            <div className="bg-gray-950 text-white">
+                <div className="wrapper flex h-130.5 items-center justify-center bg-[url('/images/welcome/hero.jpg')] [mask-image:linear-gradient(to_right,transparent_0%,black_30%,black_70%,transparent_100%)] bg-cover bg-center bg-no-repeat [mask-size:contain] [mask-repeat:no-repeat]">
+                    <section className="m-auto space-y-8 text-center md:w-2/3">
+                        <h1 className="text-4xl font-bold md:text-5xl">Добро пожаловать!</h1>
+                        <p className="text-lg">
+                            Мы&nbsp;рады, что&nbsp;Вы присоединились к&nbsp;нам! Ниже, Вы&nbsp;найдете краткое
+                            руководство по&nbsp;основным возможностям нашего портала. Надеемся, что они помогут Вам
+                            максимально эффективно использовать наш сервис.
+                        </p>
+                    </section>
+                </div>
+            </div>
+            <div className="wrapper flex flex-col gap-y-16 py-16 sm:gap-y-32">
+                {features.map((f, i) => (
+                    <section
+                        key={i}
+                        className={`flex flex-col items-center gap-8 sm:flex-row sm:gap-16 ${i % 2 === 1 ? 'sm:flex-row-reverse' : ''}`}
+                    >
+                        <div className="w-full space-y-4 sm:w-1/2">
+                            <h2 className="flex flex-col items-start gap-3 text-2xl font-bold">
+                                {f.isNew && (
+                                    <span className="flex items-center gap-x-1 rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-800">
+                                        <SparklesIcon size={16} />
+                                        Новое!
+                                    </span>
+                                )}
+                                {f.title}
+                            </h2>
+                            <div className="text-muted-foreground text-base leading-relaxed">{f.text}</div>
+                        </div>
 
-                    <div className="w-full overflow-hidden rounded shadow-2xl sm:w-1/2">
-                        <Image
-                            src={f.img}
-                            alt={f.title}
-                            width={800}
-                            height={600}
-                            className="h-auto w-full object-cover"
-                        />
-                    </div>
-                </section>
-            ))}
+                        <div className="w-full overflow-hidden rounded shadow-2xl sm:w-1/2">
+                            <Image
+                                src={f.img}
+                                alt={f.title}
+                                width={800}
+                                height={600}
+                                className="h-auto w-full object-cover"
+                            />
+                        </div>
+                    </section>
+                ))}
+            </div>
         </div>
     )
 }
