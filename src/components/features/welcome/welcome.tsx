@@ -7,6 +7,7 @@ import { WelcomeLoginButton } from './components/welcome-login-button'
 
 type WelcomeProps = {
     username?: string
+    href?: string
     isAuth: boolean
     isNew?: boolean
 }
@@ -15,6 +16,7 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
     const features = [
         {
             title: '🔔 Подписывайся на комиков и группы',
+            href: '/blog/subscriptions',
             isNew: true,
             text: (
                 <div className="space-y-2">
@@ -22,14 +24,6 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     <p>
                         После оформления подписки ты получаешь уведомления на сайте о новом контенте. Так ты никогда не
                         пропустишь новые спешлы и шоу от своих любимых артистов.
-                    </p>
-                    <p>
-                        <Link
-                            href="http://localhost:3000/blog/subscriptions"
-                            className="text-blue-500 hover:text-blue-700"
-                        >
-                            Подробнее
-                        </Link>
                     </p>
                 </div>
             ),
@@ -163,7 +157,7 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
     return (
         <div>
             <div className="bg-gray-950 text-white">
-                <div className="wrapper flex h-130.5 items-center justify-center bg-[url('/images/welcome/hero.jpg')] [mask-image:linear-gradient(to_right,transparent_0%,black_30%,black_70%,transparent_100%)] bg-cover bg-center bg-no-repeat [mask-size:contain] [mask-repeat:no-repeat]">
+                <div className="wrapper flex h-130.5 items-center justify-center bg-[url('/images/welcome/hero.jpg')] bg-cover bg-center bg-no-repeat [mask-size:contain] [mask-repeat:no-repeat] sm:[mask-image:linear-gradient(to_right,transparent_0%,black_30%,black_70%,transparent_100%)]">
                     <section className="m-auto space-y-8 text-center md:w-2/3">
                         <h1 className="text-4xl font-bold md:text-5xl">Добро пожаловать!</h1>
                         <p className="text-lg">
@@ -180,17 +174,28 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                         key={i}
                         className={`flex flex-col items-center gap-8 sm:flex-row sm:gap-16 ${i % 2 === 1 ? 'sm:flex-row-reverse' : ''}`}
                     >
-                        <div className="w-full space-y-4 sm:w-1/2">
-                            <h2 className="flex flex-col items-start gap-3 text-2xl font-bold">
-                                {f.isNew && (
-                                    <span className="flex items-center gap-x-1 rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-800">
-                                        <SparklesIcon size={16} />
-                                        Новое!
-                                    </span>
-                                )}
-                                {f.title}
-                            </h2>
-                            <div className="text-muted-foreground text-base leading-relaxed">{f.text}</div>
+                        <div className="flex w-full flex-col items-start gap-y-4 sm:w-1/2">
+                            <div className="space-y-4">
+                                <h2 className="flex flex-col items-start gap-3 text-2xl font-bold">
+                                    {f.isNew && (
+                                        <span className="flex items-center gap-x-1 rounded-full bg-green-100 px-3 py-1 text-sm font-semibold text-green-800">
+                                            <SparklesIcon size={16} />
+                                            Новое!
+                                        </span>
+                                    )}
+                                    {f.title}
+                                </h2>
+                                <div className="text-muted-foreground text-base leading-relaxed">{f.text}</div>
+                            </div>
+
+                            {f.href && (
+                                <Link
+                                    href={f.href}
+                                    className="hidden h-10 items-center justify-center rounded-lg border border-gray-700 px-6 text-sm font-bold text-gray-700 hover:border-gray-950 hover:text-gray-950 sm:inline-flex"
+                                >
+                                    Подробнее
+                                </Link>
+                            )}
                         </div>
 
                         <div className="w-full overflow-hidden rounded shadow-2xl sm:w-1/2">
@@ -202,6 +207,15 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                                 className="h-auto w-full object-cover"
                             />
                         </div>
+
+                        {f.href && (
+                            <Link
+                                href={f.href}
+                                className="flex h-10 w-full items-center justify-center rounded-lg border border-gray-700 px-6 text-sm font-bold text-gray-700 hover:border-gray-950 hover:text-gray-950 sm:hidden"
+                            >
+                                Подробнее
+                            </Link>
+                        )}
                     </section>
                 ))}
             </div>
