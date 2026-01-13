@@ -1,5 +1,3 @@
-import { CalendarIcon } from 'lucide-react'
-
 import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
@@ -27,16 +25,13 @@ export const BlogFeedItem = ({ slug, date, title, description, image }: BlogFeed
             </Link>
 
             <div className="space-y-2">
+                <div className="flex items-center gap-x-2 text-sm text-gray-500">{formatDate(date)}</div>
                 <Link
                     href={`/blog/${slug}`}
                     className="line-clamp-2 max-h-12 font-bold"
                     dangerouslySetInnerHTML={{ __html: title }}
                 />
                 <div className="text-sm" dangerouslySetInnerHTML={{ __html: description }} />
-                <div className="flex items-center gap-x-2 text-sm text-gray-500">
-                    <CalendarIcon size={16} />
-                    {formatDate(date)}
-                </div>
             </div>
         </div>
     )
