@@ -128,7 +128,7 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                             всё время
                         </Link>{' '}
                         и&nbsp;за&nbsp;
-                        <Link href="/top-special/2025" className="text-blue-500 hover:text-blue-700">
+                        <Link href="/top-special/2026" className="text-blue-500 hover:text-blue-700">
                             текущий год
                         </Link>
                         .
@@ -143,6 +143,7 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
         },
         {
             title: '💡 Предлагай контент',
+            href: '/blog/content-submit',
             text: (
                 <p>
                     Не&nbsp;нашёл любимое шоу или новый спешл? Сообщи нам! У&nbsp;нас есть удобная{' '}

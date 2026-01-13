@@ -26,7 +26,7 @@ type UserSidebarProps = {
 
 export const UserSidebar = (props: UserSidebarProps) => {
     return (
-        <div className="sticky top-28.75 space-y-6">
+        <div className="sticky top-28.75 flex flex-col gap-y-6">
             <div className="relative space-y-6 rounded-2xl bg-white p-12">
                 <div className="absolute -top-6 left-1/2 size-12 -translate-x-1/2 rounded-full bg-gray-100" />
 

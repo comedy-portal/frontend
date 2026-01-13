@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { AboutFaqExpander } from './components/about-faq-expander'
 
 export const AboutFaq = () => {
@@ -71,6 +73,18 @@ export const AboutFaq = () => {
                         Вашем главном экране.
                     </li>
                 </ol>
+            </AboutFaqExpander>
+
+            <AboutFaqExpander title="Как предложить контент для Камеди Портал?">
+                <p>
+                    Вы&nbsp;можете легко предложить новый контент&nbsp;&mdash; будь&nbsp;то спешл, подкаст или шоу.
+                    Просто заполните форму с ссылкой на&nbsp;видео и&nbsp;кратким описанием. Для подробной инструкции
+                    и&nbsp;советов по&nbsp;заполнению формы смотрите нашу статью:{' '}
+                    <Link href="/blog/content-submit" className="text-blue-500 hover:text-blue-700">
+                        Как предложить контент
+                    </Link>
+                    .
+                </p>
             </AboutFaqExpander>
         </div>
     )
