@@ -48,7 +48,6 @@ export const LandingHero = ({ isAuth }: LandingHeroProps) => {
                         <Link
                             href="/welcome"
                             className="flex h-12 cursor-pointer items-center justify-center rounded-lg border border-white px-6 font-bold text-nowrap text-white"
-                            target="_blank"
                         >
                             Узнать больше
                         </Link>

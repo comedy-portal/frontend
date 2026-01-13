@@ -121,3 +121,17 @@ export const getTimeAgo = (date: Date) => {
     }
     return 'только что'
 }
+
+export function formatDate(date: string | Date, locale: string = 'ru-RU'): string {
+    const value = typeof date === 'string' ? new Date(date) : date
+
+    if (Number.isNaN(value.getTime())) {
+        return ''
+    }
+
+    return value.toLocaleDateString(locale, {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+    })
+}
