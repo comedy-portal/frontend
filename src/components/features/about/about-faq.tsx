@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { AboutFaqExpander } from './components/about-faq-expander'
@@ -53,26 +54,43 @@ export const AboutFaq = () => {
             </AboutFaqExpander>
 
             <AboutFaqExpander title="Как добавить наш сайт на главный экран как приложение?">
-                <h4 className="mb-2 font-bold">Для устройств Apple (iPhone/iPad) с браузером Safari:</h4>
-                <ol className="mb-4 list-decimal space-y-2 pl-6">
-                    <li>Откройте наш сайт в браузере Safari.</li>
-                    <li>Нажмите на кнопку «Поделиться» (квадрат со стрелкой вверх) в нижней части экрана.</li>
-                    <li>В появившемся меню прокрутите вниз и выберите «Добавить на домашний экран».</li>
-                    <li>
-                        Нажмите «Добавить» в правом верхнем углу, и иконка нашего сайта появится среди Ваших приложений.
-                    </li>
-                </ol>
+                <div className="flex items-center space-x-4">
+                    <div className="hidden w-1/3 shrink-0 sm:block">
+                        <Image
+                            src="/images/about/faq/full-screen.png"
+                            alt="Full Screen Mode"
+                            width={800}
+                            height={1565}
+                            className="w-full"
+                        />
+                    </div>
 
-                <h4 className="mb-2 font-bold">Для устройств Android с браузером Chrome:</h4>
-                <ol className="list-decimal space-y-2 pl-6">
-                    <li>Откройте наш сайт в браузере Chrome.</li>
-                    <li>Нажмите на кнопку меню (три точки) в правом верхнем углу экрана.</li>
-                    <li>В выпадающем меню выберите «Установить приложение» (или «Добавить на главный экран»).</li>
-                    <li>
-                        Подтвердите действие, нажав «Установить» (или «Добавить»), и иконка нашего сайта появится на
-                        Вашем главном экране.
-                    </li>
-                </ol>
+                    <div>
+                        <h4 className="mb-2 font-bold">Для устройств Apple (iPhone/iPad) с браузером Safari:</h4>
+                        <ol className="mb-4 list-decimal space-y-2 pl-6">
+                            <li>Откройте наш сайт в браузере Safari.</li>
+                            <li>Нажмите на кнопку «Поделиться» (квадрат со стрелкой вверх) в нижней части экрана.</li>
+                            <li>В появившемся меню прокрутите вниз и выберите «Добавить на домашний экран».</li>
+                            <li>
+                                Нажмите «Добавить» в правом верхнем углу, и иконка нашего сайта появится среди Ваших
+                                приложений.
+                            </li>
+                        </ol>
+
+                        <h4 className="mb-2 font-bold">Для устройств Android с браузером Chrome:</h4>
+                        <ol className="list-decimal space-y-2 pl-6">
+                            <li>Откройте наш сайт в браузере Chrome.</li>
+                            <li>Нажмите на кнопку меню (три точки) в правом верхнем углу экрана.</li>
+                            <li>
+                                В выпадающем меню выберите «Установить приложение» (или «Добавить на главный экран»).
+                            </li>
+                            <li>
+                                Подтвердите действие, нажав «Установить» (или «Добавить»), и иконка нашего сайта
+                                появится на Вашем главном экране.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
             </AboutFaqExpander>
 
             <AboutFaqExpander title="Как предложить контент для Камеди Портал?">

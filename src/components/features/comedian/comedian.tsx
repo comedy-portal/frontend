@@ -14,6 +14,7 @@ import { Share } from '@/components/ui/share'
 import { messages } from '@/messages'
 import { comediansAPI } from '@/redux/services/comedians/comedians.api'
 import { SubscriptionType } from '@/redux/services/subscriptions/subscriptions.types'
+import { formatDate } from '@/utils/helpers/common'
 
 import { ComedianContent } from './components/comedian-content'
 import { ComedianFacts } from './components/comedian-facts'
@@ -80,6 +81,13 @@ export const Comedian = ({ slug, isAuth }: ComedianProps) => {
                                     {data.name} {data.surname}&nbsp;{data.isAgent ? '*' : ''}
                                 </h1>
                                 <DescriptionBlock text={data.metaInfo.description} limit={200} />
+                            </section>
+                        )}
+
+                        {data.birthDay && (
+                            <section className="space-y-2">
+                                <h3 className="font-bold">Дата рождения</h3>
+                                <p>{formatDate(data.birthDay)}</p>
                             </section>
                         )}
 

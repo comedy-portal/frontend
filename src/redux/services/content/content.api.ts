@@ -6,6 +6,7 @@ import {
     GetContentManyResponse,
     GetTopContentParams,
     GetTopContentResponse,
+    GetTrendsContentResponse,
 } from './content.types'
 
 export const contentAPI = api.injectEndpoints({
@@ -43,6 +44,13 @@ export const contentAPI = api.injectEndpoints({
                 return JSON.stringify(currentArg) !== JSON.stringify(previousArg)
             },
             providesTags: () => [{ type: 'Content', id: 'LIST' }],
+        }),
+        getTrends: build.query<GetTrendsContentResponse, void>({
+            query: () => ({
+                url: 'content/trends',
+                method: 'GET',
+            }),
+            providesTags: () => [{ type: 'Content', id: 'TRENDS' }],
         }),
         getTopContent: build.query<GetTopContentResponse, GetTopContentParams>({
             query: params => ({

@@ -85,11 +85,20 @@ const article: BlogArticle = {
                 подписок, когда у этого автора появится новый контент: стендап, шоу, спешл или другой релиз.
             </p>
 
-            <div className="w-full overflow-hidden rounded shadow-2xl">
+            <div className="hidden w-full overflow-hidden rounded shadow-2xl sm:block">
                 <Image
                     src="/images/welcome/subscriptions.jpg"
-                    width={2560}
-                    height={2560}
+                    width={1280}
+                    height={1231}
+                    alt="Подписка на комиков и группы — чтобы ничего не пропускать"
+                />
+            </div>
+
+            <div className="sm:hidden">
+                <Image
+                    src="/images/welcome/mobile/subscriptions.png"
+                    width={800}
+                    height={1576}
                     alt="Подписка на комиков и группы — чтобы ничего не пропускать"
                 />
             </div>
