@@ -99,11 +99,20 @@ const article: BlogArticle = {
                 <p>После заполнения формы просто нажмите &laquo;Отправить&raquo;. Мы&nbsp;проверим контент&nbsp;и, если он&nbsp;подходит, добавим его на&nbsp;Камеди Портал.</p>
             </div>
 
-            <div className="w-full overflow-hidden rounded shadow-2xl">
+            <div className="hidden w-full overflow-hidden rounded shadow-2xl sm:block">
                 <Image
                     src="/images/welcome/content-submit.jpg"
-                    width={2560}
-                    height={2560}
+                    width={1280}
+                    height={1231}
+                    alt="Как предложить контент для Камеди Портал"
+                />
+            </div>
+
+            <div className="sm:hidden">
+                <Image
+                    src="/images/welcome/mobile/content-submit.png"
+                    width={800}
+                    height={1576}
                     alt="Как предложить контент для Камеди Портал"
                 />
             </div>
