@@ -1,8 +1,7 @@
 'use client'
 
-import classNames from 'classnames'
-
 import { ContentBlockRow } from '@/components/features/common/content-block/content-block-row'
+import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { contentAPI } from '@/redux/services/content/content.api'
 import { GetTopContentTake } from '@/redux/services/content/content.types'
@@ -26,11 +25,7 @@ export const TopContentFeed = ({ type, year, take, isAuth }: TopContentFeedProps
     })
 
     if (isError) {
-        return (
-            <div className="text-center text-gray-500">
-                Ошибка загрузки. Попробуйте обновить страницу или зайдите позже.
-            </div>
-        )
+        return <CommonError />
     }
 
     if (isSuccess && data.length === 0) {
@@ -48,7 +43,7 @@ export const TopContentFeed = ({ type, year, take, isAuth }: TopContentFeedProps
     }
 
     return (
-        <div className={classNames('lg:block lg:space-y-3', 'grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-6')}>
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-6 lg:block lg:space-y-3">
             {data.map((item, index) => (
                 <ContentBlockRow
                     key={`top-content-feed-item-${item.id}`}

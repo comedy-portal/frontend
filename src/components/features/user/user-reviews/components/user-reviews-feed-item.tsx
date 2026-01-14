@@ -19,7 +19,7 @@ export const UserReviewsFeedItem = ({ review, isMyReview }: UserReviewsFeedItemP
     return (
         <div className="relative space-y-4 rounded-lg bg-white p-4">
             <div className="flex flex-row-reverse items-center justify-between">
-                <div className="absolute -top-px -right-px flex items-center gap-x-4 rounded-bl-lg bg-white pb-1 pl-1 md:static md:top-auto md:right-auto">
+                <div className="absolute top-4 right-4 flex items-center gap-x-4 rounded-bl-lg bg-white pb-1 pl-1 md:static md:top-auto md:right-auto">
                     <div className="hidden md:block">
                         {isMyReview && <UserReviewsFeedItemControls id={review.id} contentId={review.content.id} />}
                     </div>

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 
 import { ComedianBlock } from '@/components/features/common/comedian-block/comedian-block'
+import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { comediansAPI } from '@/redux/services/comedians/comedians.api'
@@ -17,11 +18,7 @@ export const ComediansFeed = () => {
     })
 
     if (isError) {
-        return (
-            <div className="text-center text-gray-500">
-                Ошибка загрузки. Попробуйте обновить страницу или зайдите позже.
-            </div>
-        )
+        return <CommonError />
     }
 
     if (isSuccess && data.items.length === 0) {
