@@ -86,7 +86,7 @@ export const Comedian = ({ slug, isAuth }: ComedianProps) => {
 
                         {data.birthDay && (
                             <section className="space-y-2">
-                                <h3 className="font-bold">День рождения</h3>
+                                <h3 className="font-bold">Дата рождения</h3>
                                 <p>{formatDate(data.birthDay)}</p>
                             </section>
                         )}
