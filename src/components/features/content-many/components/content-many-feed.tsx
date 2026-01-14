@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react'
 
 import { ContentBlock } from '@/components/features/common/content-block/content-block'
+import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { contentAPI } from '@/redux/services/content/content.api'
@@ -55,11 +56,7 @@ export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
     })
 
     if (isError) {
-        return (
-            <div className="text-center text-gray-500">
-                Ошибка загрузки. Попробуйте обновить страницу или зайдите позже.
-            </div>
-        )
+        return <CommonError />
     }
 
     if (isSuccess && data.items.length === 0) {
