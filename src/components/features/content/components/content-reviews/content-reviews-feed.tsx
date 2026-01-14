@@ -45,7 +45,7 @@ export const ContentReviewsFeed = ({ contentId, activeUserId, isAuth }: ContentR
 
     return (
         <div className="relative flex flex-col gap-y-12">
-            <div className="space-y-2">
+            <div className="space-y-3">
                 {data.items.map(item => (
                     <ContentReviewsFeedItem
                         key={`content-reviews-feed-item-${item.id}`}
