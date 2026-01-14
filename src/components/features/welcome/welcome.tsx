@@ -27,7 +27,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     </p>
                 </div>
             ),
-            img: '/images/welcome/subscriptions.jpg',
+            imgDesktop: '/images/welcome/subscriptions.jpg',
+            imgMobile: '/images/welcome/mobile/subscriptions.png',
         },
         {
             title: '🔍 Удобный поиск и фильтры',
@@ -50,7 +51,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     </p>
                 </div>
             ),
-            img: '/images/welcome/content-many.jpg',
+            imgDesktop: '/images/welcome/content-many.jpg',
+            imgMobile: '/images/welcome/mobile/content-many.png',
         },
         {
             title: '✍️ Оценивай и пиши рецензии',
@@ -60,7 +62,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     записи сохраняются в&nbsp;профиле и&nbsp;становятся частью твоей личной истории.
                 </p>
             ),
-            img: '/images/welcome/review.jpg',
+            imgDesktop: '/images/welcome/review.jpg',
+            imgMobile: '/images/welcome/mobile/review.png',
         },
         {
             title: '📊 Следи за своей статистикой',
@@ -89,7 +92,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     </p>
                 </div>
             ),
-            img: '/images/welcome/statistics.jpg',
+            imgDesktop: '/images/welcome/statistics.jpg',
+            imgMobile: '/images/welcome/mobile/statistics.png',
         },
         {
             title: '🗂️ Формируй коллекцию рекомендаций',
@@ -104,7 +108,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     доступна в&nbsp;удобном виде.
                 </p>
             ),
-            img: '/images/welcome/reviews.jpg',
+            imgDesktop: '/images/welcome/reviews.jpg',
+            imgMobile: '/images/welcome/mobile/reviews.png',
         },
         {
             title: '⭐ Сохраняй в избранное',
@@ -116,7 +121,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     могли открыть для себя новые рекомендации.
                 </p>
             ),
-            img: '/images/welcome/watchlists.jpg',
+            imgDesktop: '/images/welcome/watchlists.jpg',
+            imgMobile: '/images/welcome/mobile/watchlists.png',
         },
         {
             title: '🏆 Топы лучших спешлов',
@@ -139,7 +145,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     </p>
                 </>
             ),
-            img: '/images/welcome/top.jpg',
+            imgDesktop: '/images/welcome/top.jpg',
+            imgMobile: '/images/welcome/mobile/top.png',
         },
         {
             title: '💡 Предлагай контент',
@@ -151,7 +158,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     предложений&nbsp;&mdash; помоги расширить каталог Камеди Портал.
                 </p>
             ),
-            img: '/images/welcome/content-submit.jpg',
+            imgDesktop: '/images/welcome/content-submit.jpg',
+            imgMobile: '/images/welcome/mobile/content-submit.png',
         },
     ]
 
@@ -199,13 +207,23 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                             )}
                         </div>
 
-                        <div className="w-full overflow-hidden rounded shadow-2xl sm:w-1/2">
+                        <div className="hidden w-full overflow-hidden rounded shadow-2xl sm:block sm:w-1/2">
                             <Image
-                                src={f.img}
+                                src={f.imgDesktop}
                                 alt={f.title}
                                 width={800}
                                 height={600}
                                 className="h-auto w-full object-cover"
+                            />
+                        </div>
+
+                        <div className="block w-3/4 overflow-hidden sm:hidden">
+                            <Image
+                                src={f.imgMobile}
+                                alt={f.title}
+                                width={800}
+                                height={600}
+                                className="m-auto h-auto object-cover"
                             />
                         </div>
 

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 
+import classNames from 'classnames'
 import { ChevronDownIcon, ChevronRightIcon } from 'lucide-react'
 
 type AboutFaqExpanderProps = {
@@ -19,7 +20,12 @@ export const AboutFaqExpander = ({ title, children }: AboutFaqExpanderProps) => 
     return (
         <div>
             <div
-                className="flex cursor-pointer items-center justify-between rounded-lg bg-gray-200 p-4 font-bold transition-colors hover:bg-gray-200"
+                className={classNames(
+                    'flex cursor-pointer items-center justify-between rounded-lg bg-gray-200 p-4 transition-colors hover:bg-gray-300',
+                    {
+                        'bg-gray-300': isOpen,
+                    },
+                )}
                 onClick={toggleOpen}
             >
                 <h3>{title}</h3>
