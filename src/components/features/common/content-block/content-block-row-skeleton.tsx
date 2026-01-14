@@ -1,3 +1,3 @@
 export const ContentBlockRowSkeleton = () => {
-    return <div className="h-[303px] rounded-lg bg-gray-100 lg:h-[180px]" />
+    return <div className="h-98.75 rounded-lg bg-gray-200 lg:h-53" />
 }

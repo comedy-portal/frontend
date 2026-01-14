@@ -4,7 +4,6 @@ import { DescriptionBlock } from '@/components/ui/description-block'
 import { Rating } from '@/components/ui/rating'
 
 import { ContentReviewsFeedItemComplaint } from './content-reviews-feed-item-complaint'
-import { ContentReviewsFeedItemControls } from './content-reviews-feed-item-controls'
 
 type ContentReviewsFeedItemProps = {
     id: number
