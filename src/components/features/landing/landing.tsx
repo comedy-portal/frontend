@@ -6,6 +6,7 @@ import { LandingBlogFeed } from './components/landing-blog-feed'
 import { LandingComediansFeed } from './components/landing-comedians-feed'
 import { LandingContentFeed } from './components/landing-content-feed'
 import { LandingTopWinner } from './components/landing-top-winner'
+import { LandingTrendsFeed } from './components/landing-trends-feed'
 import { LandingHero } from './landing-hero'
 
 type LandingProps = {
@@ -24,7 +25,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
 
                     <section className="flex flex-col gap-y-6">
                         <h3 className="text-2xl font-semibold">В тренде</h3>
-                        <LandingContentFeed sortBy={ContentSortBy.DATE} order={Order.DESC} take={10} isAuth={isAuth} />
+                        <LandingTrendsFeed isAuth={isAuth} />
                     </section>
 
                     <LandingBlock title="Последние релизы" moreTitle="Посмотреть все" url="/content?sort=date_desc">

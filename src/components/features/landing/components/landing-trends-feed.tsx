@@ -6,17 +6,11 @@ import { ContentBlock } from '@/components/features/common/content-block/content
 import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { contentAPI } from '@/redux/services/content/content.api'
-import { ContentSortBy } from '@/redux/services/content/content.types'
-import { Order } from '@/utils/enums/common'
 import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
 
 import { LandingContentFeedSkeleton } from './landing-content-feed-skeleton'
 
 type LandingContentFeedProps = {
-    sortBy: ContentSortBy
-    order: Order
-    take: number
-    notWatched?: boolean
     isAuth: boolean
 }
 
