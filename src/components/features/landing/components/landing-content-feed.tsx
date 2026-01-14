@@ -3,6 +3,7 @@
 import ScrollContainer from 'react-indiana-drag-scroll'
 
 import { ContentBlock } from '@/components/features/common/content-block/content-block'
+import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { contentAPI } from '@/redux/services/content/content.api'
 import { ContentSortBy } from '@/redux/services/content/content.types'
@@ -28,11 +29,7 @@ export const LandingContentFeed = (props: LandingContentFeedProps) => {
     })
 
     if (isError) {
-        return (
-            <div className="text-center text-gray-500">
-                Ошибка загрузки. Попробуйте обновить страницу или зайдите позже.
-            </div>
-        )
+        return <CommonError />
     }
 
     if (isSuccess && data.items.length === 0) {
