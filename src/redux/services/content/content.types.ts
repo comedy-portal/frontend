@@ -34,5 +34,6 @@ export type GetTopContentParams = {
 }
 
 export type GetContentManyResponse = PaginatedResponse<IContent>
+export type GetTrendsContentResponse = IContent[]
 export type GetTopContentResponse = IContent[]
 export type GetContentByIdResponse = IContent

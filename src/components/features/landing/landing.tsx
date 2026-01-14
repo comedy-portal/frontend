@@ -22,6 +22,11 @@ export const Landing = ({ isAuth }: LandingProps) => {
                     {/* <LandingTopEntryPoint /> */}
                     <LandingTopWinner />
 
+                    <section className="flex flex-col gap-y-6">
+                        <h3 className="text-2xl font-semibold">В тренде</h3>
+                        <LandingContentFeed sortBy={ContentSortBy.DATE} order={Order.DESC} take={10} isAuth={isAuth} />
+                    </section>
+
                     <LandingBlock title="Последние релизы" moreTitle="Посмотреть все" url="/content?sort=date_desc">
                         <LandingContentFeed sortBy={ContentSortBy.DATE} order={Order.DESC} take={10} isAuth={isAuth} />
                     </LandingBlock>
