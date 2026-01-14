@@ -37,11 +37,11 @@ export const LandingTrendsFeed = (props: LandingContentFeedProps) => {
 
     return (
         <ScrollContainer className="grid auto-cols-[278px] grid-flow-col gap-3 overflow-x-auto">
-            {data.map(item => (
+            {data.map((item, index) => (
                 <ContentBlock
                     key={`landing-content-feed-item-${item.id}`}
                     id={item.id}
-                    name={item.name}
+                    name={`${++index}. ${item.name}`}
                     type={item.type}
                     year={item.year}
                     duration={item.duration}
