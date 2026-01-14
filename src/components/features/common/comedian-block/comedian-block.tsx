@@ -5,8 +5,8 @@ import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 type ComedianBlockType = {
     slug: string
     name: string
-    surname: string
-    isAgent: boolean
+    surname?: string
+    isAgent?: boolean
 }
 
 export const ComedianBlock = ({ slug, name, surname, isAgent }: ComedianBlockType) => {
@@ -21,7 +21,7 @@ export const ComedianBlock = ({ slug, name, surname, isAgent }: ComedianBlockTyp
             />
 
             <div className="font-semibold">
-                {name} {surname}&nbsp;{isAgent && '*'}
+                {name} {surname && surname}&nbsp;{isAgent && '*'}
             </div>
         </Link>
     )

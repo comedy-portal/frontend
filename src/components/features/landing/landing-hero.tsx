@@ -19,19 +19,19 @@ export const LandingHero = ({ isAuth }: LandingHeroProps) => {
     }
 
     return (
-        <div className="relative flex h-[522px] w-full items-center justify-center overflow-hidden bg-gray-950">
+        <div className="relative flex h-130.5 w-full items-center justify-center overflow-hidden bg-gray-950">
             <Snowfall style={{ zIndex: '20' }} />
-            <div className="relative flex h-[522px] items-center justify-center">
+            <div className="relative flex h-130.5 items-center justify-center">
                 <div
-                    className="h-[522px] w-auto bg-[url('/images/promo/comedy-portal.jpg')] [mask-image:linear-gradient(to_right,transparent_0%,black_30%,black_70%,transparent_100%)] bg-contain bg-center bg-no-repeat [mask-size:contain] [mask-repeat:no-repeat]"
+                    className="h-130.5 w-auto bg-[url('/images/promo/comedy-portal.jpg')] mask-[linear-gradient(to_right,transparent_0%,black_30%,black_70%,transparent_100%)] bg-contain bg-center bg-no-repeat mask-contain mask-no-repeat"
                     style={{
                         aspectRatio: '1440 / 522',
                     }}
                 />
             </div>
 
-            <div className="absolute inset-0 m-auto flex h-[522px] w-full items-center justify-start px-8 text-center md:max-w-[1440px] md:px-[50px] md:text-left lg:px-[100px] xl:px-[200px]">
-                <section className="text-white md:w-[600px]">
+            <div className="absolute inset-0 m-auto flex h-130.5 w-full items-center justify-start px-8 text-center md:max-w-360 md:px-12.5 md:text-left lg:px-25 xl:px-50">
+                <section className="text-white md:w-150">
                     <h1 className="mb-6 text-4xl font-bold md:text-6xl">
                         Твой агрегатор лучших стендапов и&nbsp;популярных шоу
                     </h1>

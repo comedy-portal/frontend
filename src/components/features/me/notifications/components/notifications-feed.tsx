@@ -2,22 +2,20 @@
 
 import { useEffect } from 'react'
 
-import { CirclePlusIcon } from 'lucide-react'
-
-import Link from 'next/link'
-
+import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { getLastEventId, setLastEventId } from '@/redux/features/user-slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
 import { notificationAPI } from '@/redux/services/notification/notification.api'
 
 import { NotificationsFeedItem } from './notifications-feed-item'
+import { NotificationsFeedSkeleton } from './notifications-feed-skeleton'
 
 export const NotificationsFeed = () => {
     const dispatch = useAppDispatch()
     const lastEventId = useAppSelector(getLastEventId)
 
-    const { data, isFetching, isSuccess, isError } = notificationAPI.useGetNotificationsQuery()
+    const { data, isSuccess, isError } = notificationAPI.useGetNotificationsQuery()
 
     useEffect(() => {
         if (isSuccess && data.length > 0) {
@@ -27,19 +25,15 @@ export const NotificationsFeed = () => {
     }, [isSuccess, data, dispatch])
 
     if (isError) {
-        return (
-            <div className="text-center text-gray-500">
-                Ошибка загрузки. Попробуйте обновить страницу или зайдите позже.
-            </div>
-        )
+        return <CommonError />
     }
 
     if (isSuccess && data.length === 0) {
         return <EmptyMessage>У Вас пока нет уведомлений.</EmptyMessage>
     }
 
-    if (!isSuccess || isFetching) {
-        return <div>Загрузка...</div>
+    if (!isSuccess) {
+        return <NotificationsFeedSkeleton />
     }
 
     return (

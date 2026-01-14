@@ -1,3 +1,3 @@
 export const UserReviewsFeedItemSkeleton = () => {
-    return <div className="h-[128px] rounded-lg bg-gray-100" />
+    return <div className="h-77.75 rounded-lg bg-gray-200 md:h-35" />
 }

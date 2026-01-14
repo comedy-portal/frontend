@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
+import { CommonError } from '@/components/ui/common-error'
 import { messages } from '@/messages'
 import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
 import { UpdateReviewInputs } from '@/redux/services/reviews/reviews.types'
@@ -28,7 +29,7 @@ export const ReviewUpdate = ({ id }: ReviewUpdateProps) => {
     }
 
     if (isError) {
-        return <div>{messages.COMMON_ERROR}</div>
+        return <CommonError />
     }
 
     const initialValues: UpdateReviewInputs = {

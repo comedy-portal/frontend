@@ -2,9 +2,8 @@
 
 import { useMemo } from 'react'
 
-import classNames from 'classnames'
-
 import { ContentBlockRow } from '@/components/features/common/content-block/content-block-row'
+import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { watchlistsAPI } from '@/redux/services/watchlists/watchlists.api'
 import { WatchlistSortBy } from '@/redux/services/watchlists/watchlists.type'
@@ -49,11 +48,7 @@ export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps
     })
 
     if (isError) {
-        return (
-            <div className="text-center text-gray-500">
-                Ошибка загрузки. Попробуйте обновить страницу или зайдите позже.
-            </div>
-        )
+        return <CommonError />
     }
 
     if (isSuccess && data.length === 0) {
@@ -71,7 +66,7 @@ export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps
     }
 
     return (
-        <div className={classNames('lg:block lg:space-y-3', 'grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-6')}>
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-6 lg:block lg:space-y-3">
             {data.map(item => (
                 <ContentBlockRow
                     key={`user-watchlists-feed-item-${item.id}`}

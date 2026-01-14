@@ -2,20 +2,18 @@
 
 import Link from 'next/link'
 
+import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { subscriptionsAPI } from '@/redux/services/subscriptions/subscriptions.api'
 
 import { SubscriptionsFeedItem } from './subscriptions-feed-item'
+import { SubscriptionsFeedSkeleton } from './subscriptions-feed-skeleton'
 
 export const SubscriptionsFeed = () => {
-    const { data, isFetching, isSuccess, isError } = subscriptionsAPI.useGetSubscriptionsQuery()
+    const { data, isSuccess, isError } = subscriptionsAPI.useGetSubscriptionsQuery()
 
     if (isError) {
-        return (
-            <div className="text-center text-gray-500">
-                Ошибка загрузки. Попробуйте обновить страницу или зайдите позже.
-            </div>
-        )
+        return <CommonError />
     }
 
     if (isSuccess && data.length === 0) {
@@ -36,8 +34,8 @@ export const SubscriptionsFeed = () => {
         )
     }
 
-    if (!isSuccess || isFetching) {
-        return <div>Загрузка...</div>
+    if (!isSuccess) {
+        return <SubscriptionsFeedSkeleton />
     }
 
     return (

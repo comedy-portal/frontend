@@ -1,16 +1,17 @@
+import ScrollContainer from 'react-indiana-drag-scroll'
+
 import { ContentBlockSkeleton } from '@/components/features/common/content-block/content-block-skeleton'
 
-const BLOCK_QTY = 4
+const BLOCK_QTY = 5
 
 export const LandingContentFeedSkeleton = () => {
     return (
-        <div
-            role="status"
-            className="grid animate-pulse grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 xl:grid-cols-4"
-        >
-            {Array.from({ length: BLOCK_QTY }).map((_, i) => (
-                <ContentBlockSkeleton key={`landing-content-feed-item-skeleton-${i}`} />
-            ))}
+        <div role="status" className="animate-pulse">
+            <ScrollContainer className="grid auto-cols-[278px] grid-flow-col gap-3 overflow-x-auto">
+                {Array.from({ length: BLOCK_QTY }).map((_, i) => (
+                    <ContentBlockSkeleton key={`landing-content-feed-item-skeleton-${i}`} className="h-67.5" />
+                ))}
+            </ScrollContainer>
         </div>
     )
 }

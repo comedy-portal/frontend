@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 
+import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
@@ -25,11 +26,7 @@ export const ContentReviewsFeed = ({ contentId, activeUserId, isAuth }: ContentR
     })
 
     if (isError) {
-        return (
-            <div className="text-center text-gray-500">
-                Ошибка загрузки. Попробуйте обновить страницу или зайдите позже.
-            </div>
-        )
+        return <CommonError />
     }
 
     if (isSuccess && data.items.length === 0) {
@@ -48,7 +45,7 @@ export const ContentReviewsFeed = ({ contentId, activeUserId, isAuth }: ContentR
 
     return (
         <div className="relative flex flex-col gap-y-12">
-            <div className="space-y-2">
+            <div className="space-y-3">
                 {data.items.map(item => (
                     <ContentReviewsFeedItem
                         key={`content-reviews-feed-item-${item.id}`}

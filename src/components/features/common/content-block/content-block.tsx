@@ -65,7 +65,7 @@ export const ContentBlock = (props: ContentBlockType) => {
 
                     <Link
                         href={`/content/${props.type.toLowerCase()}/${props.id}`}
-                        className="line-clamp-2 max-h-12 font-bold"
+                        className="line-clamp-1 max-h-6 font-bold"
                         target="_blank"
                     >
                         {props.name}

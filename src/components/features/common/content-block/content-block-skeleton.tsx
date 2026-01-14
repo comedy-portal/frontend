@@ -1,3 +1,9 @@
-export const ContentBlockSkeleton = () => {
-    return <div className="h-69.5 rounded-lg bg-gray-300" />
+import classNames from 'classnames'
+
+type ContentBlockSkeletonType = {
+    className?: string
+}
+
+export const ContentBlockSkeleton = ({ className }: ContentBlockSkeletonType) => {
+    return <div className={classNames(className, 'rounded-lg bg-gray-300')} />
 }
