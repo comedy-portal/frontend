@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { notFound } from 'next/navigation'
+import { redirect } from 'next/navigation'
 
 import { ContentMany } from '@/components/features/content-many/content-many'
 import { categories } from '@/utils/dict/categories'
@@ -63,7 +63,7 @@ export default async function ContentManyBySlugPage(props: { params: Params }) {
 
     // Check if the slug is included in the ContentType enum
     if (!Object.values(ContentType).includes(params.slug.toLocaleLowerCase() as ContentType)) {
-        notFound()
+        redirect('/404')
     }
 
     return withAuth({

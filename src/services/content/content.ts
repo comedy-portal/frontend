@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation'
+import { redirect } from 'next/navigation'
 
 import { GetContentByIdResponse, GetContentManyParams, GetContentManyResponse } from './content.types'
 
@@ -25,7 +25,7 @@ export async function getContentById(id: number): GetContentByIdResponse {
 
     if (!res.ok) {
         if (res.status === 404) {
-            notFound()
+            redirect('/404')
         }
 
         throw new Error(res.statusText)

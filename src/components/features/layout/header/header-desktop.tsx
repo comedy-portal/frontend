@@ -39,7 +39,6 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
     const handleSignOut = async () => {
         try {
             await Session.signOut()
-            await persistor.purge()
             setIsMenuOpen(false)
             router.push('/')
             router.refresh()

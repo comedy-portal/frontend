@@ -6,8 +6,13 @@ export default function SettingsPage() {
     return withAuth({
         onUnauth: 'notFound',
         getAuthData: async () => {
-            const activeUser = await getUserData()
-            return { username: activeUser.username.toLowerCase() }
+            const userData = await getUserData()
+
+            if (!userData) {
+                return null
+            }
+
+            return { username: userData.username.toLowerCase() }
         },
         render: ({ data }) => <Settings username={data!.username} />,
     })

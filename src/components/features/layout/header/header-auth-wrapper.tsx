@@ -7,6 +7,11 @@ export const HeaderAuthWrapper = async () => {
     return withAuth({
         getAuthData: async () => {
             const userData = await getUserData()
+
+            if (!userData) {
+                return null
+            }
+
             return { userName: userData.username }
         },
         render: ({ isAuth, data }) => <Header username={data?.userName ?? null} isAuth={isAuth} />,

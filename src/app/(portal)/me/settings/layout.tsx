@@ -15,8 +15,13 @@ export default function SettingsLayout(props: { children: React.ReactNode }) {
     return withAuth({
         onUnauth: 'notFound',
         getAuthData: async () => {
-            const activeUser = await getUserData()
-            const user = await getUserByName(activeUser.username)
+            const userData = await getUserData()
+
+            if (!userData) {
+                return null
+            }
+
+            const user = await getUserByName(userData.username)
             return { user }
         },
         render: ({ data }) => (

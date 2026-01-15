@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation'
+import { redirect } from 'next/navigation'
 
 import { GetGroupsBySlugResponse } from './groups.types'
 
@@ -8,7 +8,7 @@ export async function getGroupsBySlug(slug: string): GetGroupsBySlugResponse {
 
     if (!res.ok) {
         if (res.status === 404) {
-            notFound()
+            redirect('/404')
         }
 
         throw new Error(res.statusText)

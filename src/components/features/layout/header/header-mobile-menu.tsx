@@ -38,7 +38,6 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
     const handleSignOut = async () => {
         try {
             await Session.signOut()
-            await persistor.purge()
             closeMobileMenu()
             router.push('/')
             router.refresh()
