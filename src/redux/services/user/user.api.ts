@@ -50,6 +50,12 @@ export const userAPI = api.injectEndpoints({
                 body: { token },
             }),
         }),
+        revokeSessions: build.mutation<void, void>({
+            query: () => ({
+                url: 'user/revoke-sessions',
+                method: 'POST',
+            }),
+        }),
     }),
     overrideExisting: false,
 })

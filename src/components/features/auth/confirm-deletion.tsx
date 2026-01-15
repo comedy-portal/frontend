@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/forms/button'
 import { userAPI } from '@/redux/services/user/user.api'
+import { persistor } from '@/redux/store'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
 
 type ConfirmDeletionProps = {
@@ -19,13 +20,16 @@ export const ConfirmDeletion = ({ token }: ConfirmDeletionProps) => {
     const [status, setStatus] = useState<string>()
 
     const [confirmUserDeletion, { isLoading }] = userAPI.useConfirmUserDeletionMutation()
+    const [revokeSessions] = userAPI.useRevokeSessionsMutation()
 
     useOnMountUnsafe(() => {
         const handleConfirmDeletion = async () => {
             try {
                 const response = await confirmUserDeletion({ token }).unwrap()
                 setStatus(response.status)
+                await revokeSessions()
                 await Session.signOut()
+                await persistor.purge()
             } catch (err) {
                 console.error(err)
             }
