@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { notFound } from 'next/navigation'
+import { redirect } from 'next/navigation'
 
 import { Article } from '@/components/features/article/article'
 import { getArticle } from '@/utils/helpers/blog'
@@ -18,7 +18,7 @@ export default async function BlogArticlePage(props: { params: Params }) {
     const article = getArticle(params.slug)
 
     if (!article) {
-        notFound()
+        redirect('/404')
     }
 
     return <Article slug={article.slug} date={article.date} title={article.title} content={article.content} />
