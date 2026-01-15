@@ -3,9 +3,9 @@ import { Metadata } from 'next/types'
 import { Restore } from '@/components/features/auth/restore'
 
 export const metadata: Metadata = {
-    title: 'Подтверждение удаления аккаунта',
+    title: 'Восстановление аккаунта',
     alternates: {
-        canonical: 'auth/confirm-deletion',
+        canonical: 'auth/restore',
     },
 }
 

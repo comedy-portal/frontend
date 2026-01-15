@@ -3,7 +3,7 @@ import { Metadata } from 'next/types'
 import { ConfirmDeletion } from '@/components/features/auth/confirm-deletion'
 
 export const metadata: Metadata = {
-    title: 'Подтверждение удаления аккаунта',
+    title: 'Удаление аккаунта',
     alternates: {
         canonical: 'auth/confirm-deletion',
     },
