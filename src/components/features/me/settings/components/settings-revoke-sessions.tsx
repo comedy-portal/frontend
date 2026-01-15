@@ -27,7 +27,6 @@ export const SettingsRevokeSessions = () => {
                     try {
                         await revokeSessions()
                         await Session.signOut()
-                        await persistor.purge()
                         router.push('/')
                         router.refresh()
                     } catch {

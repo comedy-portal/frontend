@@ -29,7 +29,6 @@ export const ConfirmDeletion = ({ token }: ConfirmDeletionProps) => {
                 setStatus(response.status)
                 await revokeSessions()
                 await Session.signOut()
-                await persistor.purge()
             } catch (err) {
                 console.error(err)
             }
