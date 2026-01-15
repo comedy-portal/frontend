@@ -1,4 +1,5 @@
 'use client'
+
 import { useState } from 'react'
 
 import Session from 'supertokens-web-js/recipe/session'
@@ -53,7 +54,7 @@ export const ConfirmDeletion = ({ token }: ConfirmDeletionProps) => {
                 </p>
             )}
 
-            <Button variant="outline" className="w-full" onClick={() => router.replace('/')}>
+            <Button variant="outline" className="w-full" disabled={isLoading} onClick={() => router.replace('/')}>
                 На главную
             </Button>
         </div>
