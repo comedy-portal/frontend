@@ -13,6 +13,7 @@ import { ChangeUserNameInputs } from '@/redux/services/user/user.types'
 import { useToast } from '@/utils/providers/toast-provider'
 
 import { SettingsBlockChangeEmail } from './components/settings-block-change-email'
+import { SettingsRequestDeleteAccount } from './components/settings-request-delete-account'
 import { SettingsRequestPersonalData } from './components/settings-request-personal-data'
 
 type SettingsProps = {
@@ -102,40 +103,7 @@ export const Settings = ({ username }: SettingsProps) => {
             <div>
                 <SettingsBlockChangeEmail />
                 <SettingsRequestPersonalData />
-
-                {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
-                    <div className="flex items-center justify-between">
-                        <div className="text-lg font-bold">Аккаунт</div>
-                        <div
-                            className="link cursor-pointer text-sm font-medium text-red-400 hover:text-red-500"
-                            onClick={() => {}}
-                        >
-                            Удалить аккаунт
-                        </div>
-                    </div>
-                    <div className="text-sm text-gray-500">
-                        Вы можете запросить удаление своей учётной записи и всех связанных с ней данных. Вы сможете
-                        восстановить её, перейдя по ссылке, отправленной на Ваш адрес электронной почты до завершения
-                        процесса удаления.
-                    </div>
-                </div> */}
-
-                {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
-                    <div className="flex items-center justify-between">
-                        <div className="text-lg font-bold">Аккаунт</div>
-                        <div
-                            className="link cursor-pointer text-sm font-medium text-red-400 hover:text-red-500"
-                            onClick={() => {}}
-                        >
-                            Удалить аккаунт
-                        </div>
-                    </div>
-                    <div className="text-sm text-gray-500">
-                        Вы можете запросить удаление своей учётной записи и всех связанных с ней данных. Вы сможете
-                        восстановить её, перейдя по ссылке, отправленной на Ваш адрес электронной почты до завершения
-                        процесса удаления.
-                    </div>
-                </div> */}
+                <SettingsRequestDeleteAccount />
 
                 {/* <div className="flex flex-col gap-y-4 border-t border-gray-200 py-8 last:border-b">
                     <div className="flex items-center justify-between">

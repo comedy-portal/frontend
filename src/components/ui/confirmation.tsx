@@ -8,16 +8,14 @@ import { useDialog } from '@/utils/providers/dialog-provider'
 type ConfirmationProps = {
     title: string
     message: string
-
+    intent?: 'default' | 'danger'
     onConfirm: () => void
 }
 
-export const Confirmation = ({ title, message, onConfirm }: ConfirmationProps) => {
+export const Confirmation = ({ title, message, intent = 'default', onConfirm }: ConfirmationProps) => {
     const dialog = useDialog()
 
-    useKeypress(Keys.ENTER, () => {
-        onConfirm()
-    })
+    useKeypress(Keys.ENTER, onConfirm)
 
     return (
         <div className="w-full sm:w-104">
@@ -26,9 +24,13 @@ export const Confirmation = ({ title, message, onConfirm }: ConfirmationProps) =
                 <hr className="border-gray-400" />
                 <p>{message}</p>
             </div>
+
             <div className="flex flex-col gap-2 sm:flex-row">
-                <Button onClick={onConfirm}>Да, подтверждаю</Button>
-                <Button variant="outline" onClick={() => dialog.close()}>
+                <Button intent={intent} onClick={onConfirm}>
+                    Да, подтверждаю
+                </Button>
+
+                <Button variant="outline" intent={intent} onClick={dialog.close}>
                     Отмена
                 </Button>
             </div>
