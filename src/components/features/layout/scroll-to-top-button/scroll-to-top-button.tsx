@@ -29,7 +29,7 @@ export default function ScrollToTopButton() {
     return visible ? (
         <button
             onClick={scrollToTop}
-            className="fixed right-6 bottom-6 z-50 flex items-center gap-x-1 rounded-full bg-gray-600 p-3 text-white hover:bg-gray-950"
+            className="fixed right-6 bottom-6 z-40 flex items-center gap-x-1 rounded-full bg-gray-600 p-3 text-white hover:bg-gray-950"
             aria-label="Вернуться наверх"
         >
             <ChevronsUpIcon />

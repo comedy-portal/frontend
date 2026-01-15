@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { notFound, redirect } from 'next/navigation'
+import { redirect } from 'next/navigation'
 
 import { getSSRSessionHelper } from '@/utils/supertokens/supertokens.utils'
 import { TryRefreshComponent } from '@/utils/supertokens/try-refresh-component'
@@ -18,7 +18,7 @@ export async function withAuth<T = unknown>(options: {
     if (!accessTokenPayload) {
         if (!hasToken) {
             if (onUnauth === 'notFound') {
-                return notFound()
+                redirect('/404')
             }
 
             if (typeof onUnauth === 'object') {

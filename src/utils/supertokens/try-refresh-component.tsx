@@ -14,8 +14,12 @@ export const TryRefreshComponent = () => {
 
     useEffect(() => {
         void Session.attemptRefreshingSession()
-            .then(hasSession => {
-                if (hasSession) {
+            .then(async success => {
+                if (success) {
+                    router.refresh()
+                } else {
+                    await Session.signOut()
+                    router.push('/')
                     router.refresh()
                 }
             })

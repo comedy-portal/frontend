@@ -21,8 +21,13 @@ export default async function UserReviewsPage(props: { params: Params }) {
 
     return withAuth({
         getAuthData: async () => {
-            const activeUser = await getUserData()
-            return { activeUserId: activeUser.id }
+            const userData = await getUserData()
+
+            if (!userData) {
+                return null
+            }
+
+            return { activeUserId: userData.id }
         },
         render: ({ isAuth, data }) => (
             <UserReviews userId={user.id} activeUserId={data?.activeUserId ?? null} isAuth={isAuth} />

@@ -5,6 +5,10 @@ import {
     ChangeUserEmailResponse,
     ChangeUserNameInputs,
     ChangeUserNameInputsResponse,
+    ConfirmUserDeletionInputs,
+    ConfirmUserDeletionResponse,
+    RestoreUserInputs,
+    RestoreUserResponse,
 } from './user.types'
 
 export const userAPI = api.injectEndpoints({
@@ -25,6 +29,32 @@ export const userAPI = api.injectEndpoints({
         }),
         requestPersonalData: build.mutation<void, void>({
             query: () => 'user/personal-data',
+        }),
+        requestUserDeletion: build.mutation<void, void>({
+            query: () => ({
+                url: 'user',
+                method: 'DELETE',
+            }),
+        }),
+        confirmUserDeletion: build.mutation<ConfirmUserDeletionResponse, ConfirmUserDeletionInputs>({
+            query: ({ token }) => ({
+                url: 'user/confirm-deletion',
+                method: 'POST',
+                body: { token },
+            }),
+        }),
+        restoreUser: build.mutation<RestoreUserResponse, RestoreUserInputs>({
+            query: ({ token }) => ({
+                url: 'user/restore',
+                method: 'POST',
+                body: { token },
+            }),
+        }),
+        revokeSessions: build.mutation<void, void>({
+            query: () => ({
+                url: 'user/revoke-sessions',
+                method: 'POST',
+            }),
         }),
     }),
     overrideExisting: false,

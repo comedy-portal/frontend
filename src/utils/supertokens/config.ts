@@ -5,6 +5,7 @@ import ThirdPartyWebJs from 'supertokens-web-js/recipe/thirdparty'
 import { SuperTokensConfig } from 'supertokens-web-js/types'
 
 import { api } from '@/redux/services/api'
+import { persistor } from '@/redux/store'
 import { store } from '@/redux/store'
 
 export const config = (): SuperTokensConfig => {
@@ -25,6 +26,7 @@ export const config = (): SuperTokensConfig => {
                             ...oI,
                             signOut: async function (input) {
                                 await oI.signOut(input)
+                                await persistor.purge()
                                 store.dispatch(api.util.resetApiState())
                             },
                         }
