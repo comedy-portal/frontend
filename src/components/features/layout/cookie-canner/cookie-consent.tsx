@@ -17,7 +17,7 @@ export const CookieConsent = () => {
     }
 
     return (
-        <div className="fixed bottom-0 z-40 bg-gray-950 p-4 text-white sm:bottom-8 sm:left-1/2 sm:w-145 sm:-translate-x-1/2 sm:transform sm:rounded-lg">
+        <div className="fixed bottom-0 z-45 bg-gray-950 p-4 text-white sm:bottom-8 sm:left-1/2 sm:w-145 sm:-translate-x-1/2 sm:transform sm:rounded-lg">
             <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
                 <div className="flex gap-x-3 text-sm">
                     <CookieIcon className="hidden shrink-0 sm:block" />
