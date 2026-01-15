@@ -57,8 +57,6 @@ export const Verify = ({ email, onBack }: VerifyProps) => {
 
                 if (response.createdNewRecipeUser) {
                     router.push('/welcome')
-                    dialog.close()
-                    return
                 }
 
                 router.refresh()
