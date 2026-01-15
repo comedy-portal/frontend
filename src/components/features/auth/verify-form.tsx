@@ -54,15 +54,22 @@ export const VerifyForm = ({ email, status, isLoading, onVerifyOtp, onResendOtp,
         if (value && index < CODE_LENGTH - 1) focusInput(index + 1)
     }
 
-    const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
-        const pasted = e.clipboardData.getData('Text').replace(/\D/g, '').slice(0, CODE_LENGTH)
+    const handlePaste = (e: React.ClipboardEvent<HTMLDivElement>) => {
+        e.preventDefault()
+
+        const pasted = e.clipboardData.getData('text').replace(/\D/g, '').slice(0, CODE_LENGTH)
+
         if (!pasted) return
 
-        const newOtp = Array.from({ length: CODE_LENGTH }, (_, i) => pasted[i] || '')
+        const newOtp = Array(CODE_LENGTH).fill('')
+        pasted.split('').forEach((char, i) => {
+            newOtp[i] = char
+        })
+
         setOtpValues(newOtp)
 
-        const nextEmpty = newOtp.findIndex(c => !c)
-        focusInput(nextEmpty !== -1 ? nextEmpty : CODE_LENGTH - 1)
+        const nextIndex = pasted.length < CODE_LENGTH ? pasted.length : CODE_LENGTH - 1
+        focusInput(nextIndex)
     }
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
@@ -109,7 +116,7 @@ export const VerifyForm = ({ email, status, isLoading, onVerifyOtp, onResendOtp,
                     <VerifyTimer onResendOtp={onResendOtp} />
                 </div>
 
-                <div className="flex items-center justify-between sm:gap-x-2">
+                <div className="flex items-center justify-between sm:gap-x-2" onPasteCapture={handlePaste}>
                     {Array.from({ length: CODE_LENGTH }).map((_, i) => (
                         <input
                             key={i}
@@ -128,7 +135,6 @@ export const VerifyForm = ({ email, status, isLoading, onVerifyOtp, onResendOtp,
                                     : 'border-gray-300 hover:border-gray-400 focus:border-gray-400',
                             )}
                             onChange={e => handleChange(i, e.target.value)}
-                            onPaste={handlePaste}
                             onKeyDown={e => handleKeyDown(e, i)}
                         />
                     ))}
