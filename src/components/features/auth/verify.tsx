@@ -57,6 +57,7 @@ export const Verify = ({ email, onBack }: VerifyProps) => {
 
                 if (response.createdNewRecipeUser) {
                     router.push('/welcome')
+                    dialog.close()
                     return
                 }
 
@@ -65,8 +66,6 @@ export const Verify = ({ email, onBack }: VerifyProps) => {
             }
         } catch (err: unknown) {
             const { statusCode, message } = await parseSupertokensError(err)
-
-            console.log('Error statusCode, message:', statusCode, message)
 
             if (statusCode === 403 && message === 'USER_DEACTIVATED') {
                 setStatus('USER_DEACTIVATED')
