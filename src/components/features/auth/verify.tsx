@@ -24,6 +24,26 @@ export const Verify = ({ email, onBack }: VerifyProps) => {
     const [status, setStatus] = useState<string>()
     const [isLoading, setIsLoading] = useState(false)
 
+    const parseSupertokensError = async (err: unknown) => {
+        let statusCode: number | undefined
+        let message: string | undefined
+
+        try {
+            if (err instanceof Response) {
+                const data = await err.json()
+                statusCode = data.statusCode
+                message = data.message
+            } else if (typeof err === 'object' && err !== null) {
+                statusCode = (err as any)?.statusCode
+                message = (err as any)?.message
+            }
+        } catch (parseErr) {
+            console.error('Failed to parse error response', parseErr)
+        }
+
+        return { statusCode, message }
+    }
+
     const handleVerifyOtp = async (formData: FormData) => {
         setIsLoading(true)
         try {
@@ -37,13 +57,22 @@ export const Verify = ({ email, onBack }: VerifyProps) => {
 
                 if (response.createdNewRecipeUser) {
                     router.push('/welcome')
+                    return
                 }
 
                 router.refresh()
                 dialog.close()
             }
-        } catch {
-            setStatus('GENERAL_ERROR')
+        } catch (err: unknown) {
+            const { statusCode, message } = await parseSupertokensError(err)
+
+            console.log('Error statusCode, message:', statusCode, message)
+
+            if (statusCode === 403 && message === 'USER_DEACTIVATED') {
+                setStatus('USER_DEACTIVATED')
+            } else {
+                setStatus('GENERAL_ERROR')
+            }
         } finally {
             setIsLoading(false)
         }
