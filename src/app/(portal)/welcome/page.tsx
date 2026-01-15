@@ -14,8 +14,13 @@ export const metadata: Metadata = {
 export default function WelcomePage() {
     return withAuth({
         getAuthData: async () => {
-            const activeUser = await getUserData()
-            return { userName: activeUser.username }
+            const userData = await getUserData()
+
+            if (!userData) {
+                return null
+            }
+
+            return { userName: userData.username }
         },
         render: ({ isAuth, data }) => <Welcome username={data?.userName} isAuth={isAuth} />,
     })
