@@ -69,7 +69,8 @@ const article: BlogArticle = {
     content: (
         <>
             <p>Мы&nbsp;рады сообщить, что теперь <strong>Comedy&nbsp;Portal</strong> доступен не&nbsp;только через браузер, но&nbsp;и&nbsp;как полноценное приложение на&nbsp;Вашем устройстве! С&nbsp;помощью технологии <strong>PWA (Progressive Web App)</strong> Вы&nbsp;сможете запускать наш портал прямо с&nbsp;экрана телефона или с&nbsp;рабочего стола, без лишних вкладок браузера.</p>
-            <div className="space-y-4">
+            
+            <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Что такое PWA?</h2>
                 <p><strong>PWA (Progressive Web App)</strong>&nbsp;&mdash; это сайт, который ведет себя как приложение.</p>
                 <p>С PWA вы получаете:</p>
@@ -79,16 +80,16 @@ const article: BlogArticle = {
                     <li>Возможность получать уведомления</li>
                 </ul>
                 <p>И&nbsp;всё это <strong>без необходимости скачивать приложение из&nbsp;Google Play или App Store</strong>&nbsp;&mdash; достаточно один раз открыть сайт в&nbsp;браузере.</p>
-            </div>
+            </section>
 
-            <div className="space-y-4">
+            <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Быстрая установка через кнопку в&nbsp;подвале сайта</h2>
                 <p>На&nbsp;всех страницах <strong>Comedy&nbsp;Portal</strong> внизу сайта есть специальная кнопка &laquo;Установить приложение&raquo;, которая позволяет мгновенно добавить <strong>PWA</strong> на&nbsp;Ваше устройство.</p>
                 <InstallPWAButton width={200} height={60} />
-            </div>
+            </section>
 
             
-            <div>
+            <section>
                 <h2 className="text-lg font-semibold">Как установить на&nbsp;смартфон или компьютер вручную</h2>
                 <div className="flex items-center space-x-4">
                     <div className="hidden w-1/3 shrink-0 sm:block">
@@ -127,9 +128,9 @@ const article: BlogArticle = {
                         </ol>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div className="space-y-4">
+            <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Преимущества установки</h2>
                 <ul className="list-disc pl-12">
                     <li>Быстрый доступ с&nbsp;домашнего экрана или рабочего стола</li>
@@ -137,7 +138,7 @@ const article: BlogArticle = {
                     <li>Возможность сохранять прогресс в&nbsp;просмотре контента</li>
                     <li>Поддержка всех устройств: Android, iOS, Windows, Mac</li>
                 </ul>
-            </div>
+            </section>
 
             <p>Устанавливайте <strong>Comedy&nbsp;Portal</strong> как приложение и&nbsp;наслаждайтесь контентом быстрее и&nbsp;удобнее, где&nbsp;бы вы&nbsp;ни&nbsp;были! А&nbsp;если есть идеи или пожелания по&nbsp;функционалу PWA&nbsp;&mdash; <Link href="mailto:comedyportal.team@gmail.com" className="text-blue-500 hover:text-blue-700">пишите нам</Link>.</p>
         </>
