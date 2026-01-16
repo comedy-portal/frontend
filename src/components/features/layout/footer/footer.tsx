@@ -19,7 +19,7 @@ export const Footer = async ({ isAuth }: FooterProps) => {
                     </div>
                     <div>18+</div>
                     <div className="text-xs lg:text-left">* Министерством юстиции РФ признан иностранным агентом</div>
-                    <InstallPWAButton />
+                    <InstallPWAButton width={135} height={40} />
                 </section>
                 <div className="flex flex-col gap-x-12 gap-y-6 md:flex-row">
                     <section className="space-y-2">
