@@ -57,7 +57,7 @@ const article: BlogArticle = {
             <p>Мы&nbsp;ценим вклад нашей аудитории и&nbsp;комиков. Если у&nbsp;Вас есть идея для нового контента&nbsp;&mdash; будь&nbsp;то спешл, юмористический подкаст или шоу, Вы&nbsp;можете легко предложить его для добавления в&nbsp;сервис.</p>
             <div className="space-y-4">
                 <h2 className="text-lg font-semibold">Важно</h2>
-                <p>Мы&nbsp;добавляем только контент, который соответствует нашим типам и&nbsp;описанию форматов. Подробности о&nbsp;подходящем контенте можно посмотреть <Link href="/about/formats" className="text-blue-500 hover:text-blue-700" target="_blank">здесь</Link>.</p>
+                <p>Мы&nbsp;добавляем только контент, который соответствует нашим типам и&nbsp;описанию форматов. Подробности о&nbsp;подходящем контенте можно посмотреть <Link href="/blog/content-formats" className="text-blue-500 hover:text-blue-700">здесь</Link>.</p>
             </div>
 
             <div className="space-y-4">

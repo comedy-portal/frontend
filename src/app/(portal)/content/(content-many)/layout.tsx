@@ -14,7 +14,7 @@ export default function ContentManyLayout(props: { children: React.ReactNode }) 
                     <div className="sm:w-2/3">
                         У&nbsp;нас собрана большая коллекция смешного контента на&nbsp;любой вкус. Чтобы легче было
                         выбрать, мы разделили всё по&nbsp;типам&nbsp;&mdash;{' '}
-                        <Link href="/about/formats" className="text-blue-500 hover:text-blue-700" target="_blank">
+                        <Link href="/blog/content-formats" className="text-blue-500 hover:text-blue-700">
                             узнайте
                         </Link>{' '}
                         чем они отличаются.

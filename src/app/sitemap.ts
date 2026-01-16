@@ -93,6 +93,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.8,
         },
         {
+            url: `${metadataBase.href}blog/content-formats`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
             url: `${metadataBase.href}content`,
             lastModified: now,
             changeFrequency: 'daily',
