@@ -36,7 +36,7 @@ export const Footer = async ({ isAuth }: FooterProps) => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/about/faq" className="text-sm hover:text-white">
+                                <Link href="/faq" className="text-sm hover:text-white">
                                     Вопросы и ответы
                                 </Link>
                             </li>
