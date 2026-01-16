@@ -58,19 +58,19 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
                 <Search />
 
                 <nav className="flex items-center justify-center gap-x-3 text-sm xl:gap-x-4">
-                    <Link href="/top-special/2026" className="text-nowrap text-gray-300 hover:text-white">
+                    <Link href="/top-special/2026" className="font-bold text-nowrap text-gray-300 hover:text-white">
                         Топ
                     </Link>
-                    <Link href="/content" className="text-nowrap text-gray-300 hover:text-white">
+                    <Link href="/content" className="font-bold text-nowrap text-gray-300 hover:text-white">
                         Контент
                     </Link>
-                    <Link href="/comedians" className="text-nowrap text-gray-300 hover:text-white">
+                    <Link href="/comedians" className="font-bold text-nowrap text-gray-300 hover:text-white">
                         Комики
                     </Link>
-                    <Link href="/blog" className="text-nowrap text-gray-300 hover:text-white">
+                    <Link href="/blog" className="font-bold text-nowrap text-gray-300 hover:text-white">
                         Блог
                     </Link>
-                    <Link href="/about" className="text-nowrap text-gray-300 hover:text-white">
+                    <Link href="/about" className="font-bold text-nowrap text-gray-300 hover:text-white">
                         О проекте
                     </Link>
                 </nav>

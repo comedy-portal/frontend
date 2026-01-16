@@ -20,6 +20,7 @@ export const viewport: Viewport = {
     initialScale: 1,
     maximumScale: 1,
     userScalable: false,
+    viewportFit: 'cover',
 }
 
 // prettier-ignore
@@ -52,9 +53,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     return (
         <html lang="ru" className={classNames('h-full', roboto.className)}>
             <head>
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta name="apple-mobile-web-app-status-bar-style" content="default" />
                 <meta name="verify-admitad" content="42d1abdfa5" />
                 <meta name="yandex-verification" content="14610f2354e7c899" />
                 <link rel="icon" href="/favicon.png" type="image/png" />
+                <link rel="apple-touch-icon" href="/icons/icon-192.png" />
             </head>
             <body className="h-full antialiased">
                 <Providers>{children}</Providers>
