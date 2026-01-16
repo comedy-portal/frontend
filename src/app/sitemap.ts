@@ -21,13 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 0.8,
         },
         {
-            url: `${metadataBase.href}about/formats`,
-            lastModified: now,
-            changeFrequency: 'weekly',
-            priority: 0.8,
-        },
-        {
-            url: `${metadataBase.href}about/faq`,
+            url: `${metadataBase.href}faq`,
             lastModified: now,
             changeFrequency: 'weekly',
             priority: 0.8,
@@ -88,6 +82,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
         {
             url: `${metadataBase.href}blog/content-submit`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${metadataBase.href}blog/content-formats`,
             lastModified: now,
             changeFrequency: 'monthly',
             priority: 0.8,

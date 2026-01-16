@@ -89,7 +89,7 @@ const article: BlogArticle = {
     
     metadata: {
         title: 'Тирлист комиков по версии подписчиков Давида Квахаджелидзе',
-        description: 'Подписчики комика Давида Квахаджелидзе составили собственный tier list комиков в его Telegram-канале. Comedy portal публикует результаты опросов.',
+        description: 'Подписчики комика Давида Квахаджелидзе составили собственный tier list комиков в его Telegram-канале. Камеди Портал публикует результаты опросов.',
         keywords: [
             'тирлист комиков',
             'tier list комиков',
@@ -105,7 +105,7 @@ const article: BlogArticle = {
         openGraph: {
             type: 'article',
             title: 'Тирлист комиков по версии подписчиков Давида Квахаджелидзе',
-            description: 'Подписчики комика Давида Квахаджелидзе составили собственный tier list комиков в его Telegram-канале. Comedy portal публикует результаты опросов.',
+            description: 'Подписчики комика Давида Квахаджелидзе составили собственный tier list комиков в его Telegram-канале. Камеди Портал публикует результаты опросов.',
             url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/`,
             siteName: 'Comedy Portal',
             images: [
@@ -121,7 +121,7 @@ const article: BlogArticle = {
         twitter: {
             card: 'summary_large_image',
             title: 'Тирлист комиков по версии подписчиков Давида Квахаджелидзе',
-            description: 'Подписчики комика Давида Квахаджелидзе составили собственный tier list комиков в его Telegram-канале. Comedy portal публикует результаты опросов.',
+            description: 'Подписчики комика Давида Квахаджелидзе составили собственный tier list комиков в его Telegram-канале. Камеди Портал публикует результаты опросов.',
             images: [
                 {
                     url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/comedians-rating.jpg`,

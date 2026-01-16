@@ -57,10 +57,10 @@ const article: BlogArticle = {
             <p>Мы&nbsp;ценим вклад нашей аудитории и&nbsp;комиков. Если у&nbsp;Вас есть идея для нового контента&nbsp;&mdash; будь&nbsp;то спешл, юмористический подкаст или шоу, Вы&nbsp;можете легко предложить его для добавления в&nbsp;сервис.</p>
             <div className="space-y-4">
                 <h2 className="text-lg font-semibold">Важно</h2>
-                <p>Мы&nbsp;добавляем только контент, который соответствует нашим типам и&nbsp;описанию форматов. Подробности о&nbsp;подходящем контенте можно посмотреть <Link href="/about/formats" className="text-blue-500 hover:text-blue-700" target="_blank">здесь</Link>.</p>
+                <p>Мы&nbsp;добавляем только контент, который соответствует нашим типам и&nbsp;описанию форматов. Подробности о&nbsp;подходящем контенте можно посмотреть <Link href="/blog/content-formats" className="text-blue-500 hover:text-blue-700">здесь</Link>.</p>
             </div>
 
-            <div className="space-y-4">
+            <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Как это работает</h2>
                 <ul className="list-disc pl-12">
                     <li>Найдите кнопку &laquo;Предложить контент&raquo;</li>
@@ -71,18 +71,18 @@ const article: BlogArticle = {
                         На&nbsp;мобильных устройствах: нажмите на&nbsp;меню в&nbsp;правом верхнем углу, там найдёте кнопку &laquo;Предложить контент&raquo;. Просто нажмите&nbsp;её, и&nbsp;откроется удобная форма для предложений.
                     </li>
                 </ul>
-            </div>
+            </section>
             
-            <div className="space-y-4">
+            <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Заполните форму</h2>
                 <p>В&nbsp;форме есть два основных поля:</p>
                 <ul className="list-disc pl-12">
                     <li><strong>Ссылка на&nbsp;видео</strong>&nbsp;&mdash; укажите прямую ссылку на&nbsp;контент, который хотите предложить.</li>
                     <li><strong>Описание видео</strong>&nbsp;&mdash; кратко расскажите, о&nbsp;чём видео, чтобы мы&nbsp;понимали, что это за&nbsp;материал и&nbsp;зачем его добавлять.</li>
                 </ul>
-            </div>
+            </section>
             
-            <div className="space-y-4">
+            <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Для комиков и авторов</h2>
                 <p>Если Вы&nbsp;автор контента или хотите дать больше информации, добавьте информацию об&nbsp;авторе контента:</p>
                 <ul className="list-disc pl-12">
@@ -91,13 +91,13 @@ const article: BlogArticle = {
                     <li>Любые достижения или участие в&nbsp;проектах/шоу</li>
                 </ul>
                 <p>Это помогает нам добавлять больше полезной информации о&nbsp;комике и&nbsp;делать каталог качественным и&nbsp;интересным для всех пользователей.</p>
-            </div>
+            </section>
 
             
-            <div className="space-y-4">
+            <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Отправьте предложение</h2>
                 <p>После заполнения формы просто нажмите &laquo;Отправить&raquo;. Мы&nbsp;проверим контент&nbsp;и, если он&nbsp;подходит, добавим его на&nbsp;Камеди Портал.</p>
-            </div>
+            </section>
 
             <div className="hidden w-full overflow-hidden rounded shadow-2xl sm:block">
                 <Image

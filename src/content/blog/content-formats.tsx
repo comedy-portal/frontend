@@ -1,20 +1,88 @@
-export const AboutFormats = () => {
-    return (
-        <div className="flex flex-col gap-y-8">
-            <section>
-                <h2 className="mb-4 text-xl font-semibold">Спешлы</h2>
-                <p>
-                    От&nbsp;английского &laquo;Comedy special&raquo;. Это полноценные{' '}
+import { BlogArticle } from '@/utils/types/blog'
+
+// prettier-ignore
+const article: BlogArticle = {
+    slug: 'content-formats',
+    date: '2026-01-17',
+
+    preview: {
+        image: '/images/articles/content-formats.jpg',
+        title: 'Форматы комедийного контента',
+        description: 'Разбираемся в форматах комедийного контента на Камеди Портал: от стендап-спешлов и шоу до импровизаций, подкастов, прожарок и комедийных сериалов. Кратко и понятно — чтобы вы сразу нашли формат по душе.',
+    },
+
+    metadata: {
+        title: 'Форматы комедийного контента',
+        description: 'Разбираемся в форматах комедийного контента на Камеди Портал: от стендап-спешлов и шоу до импровизаций, подкастов, прожарок и комедийных сериалов. Кратко и понятно — чтобы вы сразу нашли формат по душе.',
+        keywords: [
+            'форматы комедийного контента',
+            'форматы стендапа',
+            'комедийные шоу форматы',
+            'импровизация формат',
+            'комедийные подкасты',
+            'комедийные сериалы',
+            'прожарки формат',
+            'виды комедийного контента',
+            'комедия',
+            'стендап',
+            'стендап спешлы',
+            'комедийные шоу',
+            'импровизация',
+            'прожарки',
+            'подкасты',
+            'скетчи',
+            'комедийные сериалы',
+            'юмор',
+            'comedy portal',
+            'камеди портал',
+        ],
+        openGraph: {
+            type: 'article',
+            title: 'Форматы комедийного контента',
+            description: 'Разбираемся в форматах комедийного контента на Камеди Портал: от стендап-спешлов и шоу до импровизаций, подкастов, прожарок и комедийных сериалов. Кратко и понятно — чтобы вы сразу нашли формат по душе.',
+            url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/content-formats`,
+            siteName: 'Камеди Портал',
+            images: [
+                {
+                    url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/content-formats.jpg`,
+                    width: 1200,
+                    height: 630,
+                    alt: 'Разбираемся в форматах контента на Камеди Портал',
+                },
+            ],
+            locale: 'ru_RU',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: 'Форматы комедийного контента',
+            description: 'Разбираемся в форматах комедийного контента на Камеди Портал: от стендап-спешлов и шоу до импровизаций, подкастов, прожарок и комедийных сериалов. Кратко и понятно — чтобы вы сразу нашли формат по душе.',
+            images: [
+                {
+                    url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/content-formats.jpg`,
+                    alt: 'Разбираемся в форматах контента на Камеди Портал',
+                },
+            ],
+        },
+    },
+
+    title: 'Форматы комедийного контента',
+    content: (
+        <>
+            <p>Мир современной комедии гораздо шире, чем просто стендап на&nbsp;сцене. Сегодня комики выступают в&nbsp;самых разных форматах: от&nbsp;сольных концертов и&nbsp;коллективных шоу до&nbsp;подкастов, импровизаций и&nbsp;авторских блогов. Каждый из&nbsp;них по-своему раскрывает юмор и&nbsp;личность артиста, а&nbsp;значит&nbsp;&mdash; подходит для разного настроения и&nbsp;разных зрителей.</p>
+            <p>На&nbsp;Камеди Портал мы&nbsp;собрали все основные форматы комедийного контента и&nbsp;аккуратно разложили их&nbsp;по&nbsp;категориям. В&nbsp;этой статье вы&nbsp;найдёте краткое и&nbsp;понятное описание каждого из&nbsp;них&nbsp;&mdash; чтобы легко ориентироваться на&nbsp;сайте и&nbsp;быстро выбирать&nbsp;то, что хочется посмотреть именно сейчас.</p>
+            
+            <section className="space-y-4">
+                <h2 className="text-lg font-semibold">Спешлы</h2>
+                <p> От&nbsp;английского &laquo;Comedy special&raquo;. Это полноценные{' '}
                     <strong>сольные стендап концерты</strong> одного комика, часто записанные для большой аудитории.
                     У&nbsp;каждого спешла есть своё уникальное название, и длится он&nbsp;обычно в&nbsp;пределах
                     40-60&nbsp;минут, иногда больше, иногда меньше, но&nbsp;не&nbsp;менее 15-20&nbsp;минут. Если
                     Вы&nbsp;хотите глубоко погрузиться в&nbsp;творчество любимого стендапера, начать стоит именно
-                    со&nbsp;спешлов.
-                </p>
+                    со&nbsp;спешлов.</p>
             </section>
 
-            <section>
-                <h2 className="mb-4 text-xl font-semibold">Стендап</h2>
+            <section className="space-y-4">
+                <h2 className="text-lg font-semibold">Стендап</h2>
                 <p>
                     Здесь собраны <strong>полноценные шоу и&nbsp;программы</strong> с&nbsp;комедийными монологами
                     нескольких артистов. Это шоу с&nbsp;участием нескольких комиков, выступающих со&nbsp;стендапом,
@@ -24,8 +92,8 @@ export const AboutFormats = () => {
                 </p>
             </section>
 
-            <section>
-                <h2 className="mb-4 text-xl font-semibold">Дискуссии</h2>
+            <section className="space-y-4">
+                <h2 className="text-lg font-semibold">Дискуссии</h2>
                 <p>
                     В&nbsp;этом разделе&nbsp;Вы найдёте <strong>шоу, где комики обсуждают различные темы</strong>. Хотя
                     часто используются заранее подготовленные шутки и&nbsp;направления для разговора, здесь также много
@@ -34,8 +102,8 @@ export const AboutFormats = () => {
                 </p>
             </section>
 
-            <section>
-                <h2 className="mb-4 text-xl font-semibold">Импровизация</h2>
+            <section className="space-y-4">
+                <h2 className="text-lg font-semibold">Импровизация</h2>
                 <p>
                     Это <strong>комедия без сценария</strong>! Комики создают шутки и&nbsp;ситуации прямо на&nbsp;Ваших
                     глазах, реагируя на&nbsp;предложения зрителей (краудворк, от&nbsp;англ.
@@ -44,8 +112,8 @@ export const AboutFormats = () => {
                 </p>
             </section>
 
-            <section>
-                <h2 className="mb-4 text-xl font-semibold">Подкасты</h2>
+            <section className="space-y-4">
+                <h2 className="text-lg font-semibold">Подкасты</h2>
                 <p>
                     Слушайте или смотрите <strong>подкасты, которые ведут комики</strong>. Независимо от&nbsp;формата
                     (аудио или видео), большинство из&nbsp;них наполнены юмором, но&nbsp;также могут затрагивать темы
@@ -54,8 +122,8 @@ export const AboutFormats = () => {
                 </p>
             </section>
 
-            <section>
-                <h2 className="mb-4 text-xl font-semibold">Прожарки</h2>
+            <section className="space-y-4">
+                <h2 className="text-lg font-semibold">Прожарки</h2>
                 <p>
                     Готовьтесь к&nbsp;порции <strong>жёстких, но&nbsp;смешных шуток</strong>! В&nbsp;прожарках комики
                     собираются, чтобы высмеять кого-то одного&nbsp;&mdash; другого комика, знаменитость или приглашённую
@@ -64,8 +132,8 @@ export const AboutFormats = () => {
                 </p>
             </section>
 
-            <section>
-                <h2 className="mb-4 text-xl font-semibold">Сериалы</h2>
+            <section className="space-y-4">
+                <h2 className="text-lg font-semibold">Сериалы</h2>
                 <p>
                     Здесь представлены <strong>комедийные сериалы</strong>, в&nbsp;которых снимаются наши любимые
                     комики. От ситкомов до&nbsp;более сложных комедийных драм&nbsp;&mdash; эти сериалы подарят вам
@@ -73,8 +141,8 @@ export const AboutFormats = () => {
                 </p>
             </section>
 
-            <section>
-                <h2 className="mb-4 text-xl font-semibold">Скетчи</h2>
+            <section className="space-y-4">
+                <h2 className="text-lg font-semibold">Скетчи</h2>
                 <p>
                     <strong>Короткие, остроумные юмористические сценки</strong>, которые могут разыгрывать один или
                     несколько актёров и\или комиков. Скетчи&nbsp;&mdash; это быстрый и&nbsp;концентрированный источник
@@ -83,8 +151,8 @@ export const AboutFormats = () => {
                 </p>
             </section>
 
-            <section>
-                <h2 className="mb-4 text-xl font-semibold">Ток-шоу</h2>
+            <section className="space-y-4">
+                <h2 className="text-lg font-semibold">Ток-шоу</h2>
                 <p>
                     Смотрите <strong>комедийные ток-шоу</strong>, где ведущий и&nbsp;приглашённые гости (часто другие
                     комики или знаменитости) обсуждают различные темы, шутят, играют в&nbsp;игры и&nbsp;создают
@@ -93,8 +161,8 @@ export const AboutFormats = () => {
                 </p>
             </section>
 
-            <section>
-                <h2 className="mb-4 text-xl font-semibold">Блоги</h2>
+            <section className="space-y-4">
+                <h2 className="text-lg font-semibold">Блоги</h2>
                 <p>
                     <strong>Авторский контент</strong>, где комик или другая медийная личность делится своими{' '}
                     <strong>личными мыслями, наблюдениями, историями или размышлениями</strong> в&nbsp;более{' '}
@@ -105,6 +173,8 @@ export const AboutFormats = () => {
                     погрузиться в его мир и&nbsp;ход мыслей, часто с&nbsp;элементами юмора и&nbsp;самоиронии.
                 </p>
             </section>
-        </div>
-    )
+        </>
+    ),
 }
+
+export default article
