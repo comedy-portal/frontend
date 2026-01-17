@@ -15,6 +15,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1,
         },
         {
+            url: `${metadataBase.href}welcome`,
+            lastModified: now,
+            changeFrequency: 'weekly',
+            priority: 0.8,
+        },
+        {
             url: `${metadataBase.href}about`,
             lastModified: now,
             changeFrequency: 'weekly',
