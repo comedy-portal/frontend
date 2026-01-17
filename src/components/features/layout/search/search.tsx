@@ -48,7 +48,7 @@ export const Search = ({ closeMobileMenu }: SearchProps) => {
     }
 
     return (
-        <div className="relative lg:w-[300px]" ref={ref}>
+        <div className="relative w-full lg:w-60 xl:w-80" ref={ref}>
             <SearchInput
                 searchTerm={searchTerm}
                 isLoading={isLoading}

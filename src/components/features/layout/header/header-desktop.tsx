@@ -11,7 +11,6 @@ import { useRouter } from 'next/navigation'
 
 import { Search } from '@/components/features/layout/search/search'
 import { messages } from '@/messages'
-import { persistor } from '@/redux/store'
 import { Keys } from '@/utils/enums/common'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 import { useToast } from '@/utils/providers/toast-provider'
@@ -58,8 +57,11 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
                 <Search />
 
                 <nav className="flex items-center justify-center gap-x-3 text-sm xl:gap-x-4">
-                    <Link href="/top-special/2026" className="font-bold text-nowrap text-gray-300 hover:text-white">
-                        Топ
+                    <Link
+                        href="/top-special/2026"
+                        className="rounded bg-[#46CE62] bg-[linear-gradient(rgba(70,206,98,.75),rgba(70,206,98,.4)),url('/images/top-entry-point-bg.png')] bg-cover bg-top bg-no-repeat px-2 py-1 font-bold text-nowrap text-white hover:text-white"
+                    >
+                        Топ спешлов
                     </Link>
                     <Link href="/content" className="font-bold text-nowrap text-gray-300 hover:text-white">
                         Контент

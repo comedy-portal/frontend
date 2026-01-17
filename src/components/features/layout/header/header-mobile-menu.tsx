@@ -51,31 +51,51 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
             <Search closeMobileMenu={closeMobileMenu} />
 
             <nav className="flex flex-col gap-y-4 text-sm text-gray-300">
-                <Link href="/top-special/2026" className="flex items-center justify-between" onClick={closeMobileMenu}>
-                    Топ
-                    <div className="text-gray-700">
+                <Link
+                    href="/top-special/2026"
+                    className="flex items-center justify-between rounded bg-[#46CE62] bg-[linear-gradient(rgba(70,206,98,.75),rgba(70,206,98,.4)),url('/images/top-entry-point-bg.png')] bg-cover bg-top bg-no-repeat p-2 font-bold text-white"
+                    onClick={closeMobileMenu}
+                >
+                    Топ спешлов
+                    <div className="text-white">
                         <ChevronRightIcon size={20} />
                     </div>
                 </Link>
-                <Link href="/content" className="flex items-center justify-between" onClick={closeMobileMenu}>
+                <Link
+                    href="/content"
+                    className="flex items-center justify-between px-2 font-bold"
+                    onClick={closeMobileMenu}
+                >
                     Контент
                     <div className="text-gray-700">
                         <ChevronRightIcon size={20} />
                     </div>
                 </Link>
-                <Link href="/comedians" className="flex items-center justify-between" onClick={closeMobileMenu}>
+                <Link
+                    href="/comedians"
+                    className="flex items-center justify-between px-2 font-bold"
+                    onClick={closeMobileMenu}
+                >
                     Комики
                     <div className="text-gray-700">
                         <ChevronRightIcon size={20} />
                     </div>
                 </Link>
-                <Link href="/blog" className="flex items-center justify-between" onClick={closeMobileMenu}>
+                <Link
+                    href="/blog"
+                    className="flex items-center justify-between px-2 font-bold"
+                    onClick={closeMobileMenu}
+                >
                     Блог
                     <div className="text-gray-700">
                         <ChevronRightIcon size={20} />
                     </div>
                 </Link>
-                <Link href="/about" className="flex items-center justify-between" onClick={closeMobileMenu}>
+                <Link
+                    href="/about"
+                    className="flex items-center justify-between px-2 font-bold"
+                    onClick={closeMobileMenu}
+                >
                     О проекте
                     <div className="text-gray-700">
                         <ChevronRightIcon size={20} />
@@ -88,13 +108,13 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
             <nav className="flex flex-col gap-y-4 text-sm text-gray-300">
                 {isAuth && username ? (
                     <>
-                        <div className="text-base≈ flex items-center gap-x-2">
+                        <div className="flex items-center gap-x-2 px-2 font-bold">
                             <CircleUserIcon className="shrink-0" />
                             {username}
                         </div>
                         <Link
                             href={`/users/${username}`}
-                            className="flex items-center justify-between"
+                            className="flex items-center justify-between px-2 font-bold"
                             onClick={closeMobileMenu}
                         >
                             Оценки и рецензии
@@ -104,7 +124,7 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
                         </Link>
                         <Link
                             href={`/users/${username}/watchlists`}
-                            className="flex items-center justify-between"
+                            className="flex items-center justify-between px-2 font-bold"
                             onClick={closeMobileMenu}
                         >
                             Избранное
@@ -114,7 +134,7 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
                         </Link>
                         <Link
                             href="/me/subscriptions"
-                            className="flex items-center justify-between"
+                            className="flex items-center justify-between px-2 font-bold"
                             onClick={closeMobileMenu}
                         >
                             Подписки
@@ -124,7 +144,7 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
                         </Link>
                         <Link
                             href="/me/settings"
-                            className="flex items-center justify-between"
+                            className="flex items-center justify-between px-2 font-bold"
                             onClick={closeMobileMenu}
                         >
                             Настройки
@@ -144,7 +164,7 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
                     <>
                         <hr className="border-gray-700" />
                         <HeaderSubmitContent isAuth={isAuth} onClick={closeMobileMenu} />
-                        <button onClick={handleSignOut} className="flex items-center justify-between">
+                        <button onClick={handleSignOut} className="flex items-center justify-between px-2 font-bold">
                             Выйти
                             <div className="text-gray-700">
                                 <LogOutIcon size={20} />

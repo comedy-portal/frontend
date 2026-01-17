@@ -28,7 +28,10 @@ export const HeaderSubmitContent = ({ isAuth, onClick }: HeaderSubmitContentProp
     }
 
     return (
-        <div className="cursor-pointer text-gray-300 hover:text-white lg:flex-none" onClick={handleClick}>
+        <div
+            className="cursor-pointer px-2 font-bold text-gray-300 hover:text-white lg:flex-none lg:px-0"
+            onClick={handleClick}
+        >
             <div className="flex items-center justify-between lg:hidden">
                 Предложить контент
                 <div className="text-gray-700">
