@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import InstallPWAButton from '../layout/install-pwa-button/install-pwa-button'
 import { AboutFaqExpander } from './components/about-faq-expander'
 
 export const AboutFaq = () => {
@@ -53,7 +54,7 @@ export const AboutFaq = () => {
                 </p>
             </AboutFaqExpander>
 
-            <AboutFaqExpander title="Как добавить наш сайт на главный экран как приложение?">
+            <AboutFaqExpander title="Как установить Камеди Портал на&nbsp;смартфон или компьютер?">
                 <div className="flex items-center space-x-4">
                     <div className="hidden w-1/3 shrink-0 sm:block">
                         <Image
@@ -65,44 +66,36 @@ export const AboutFaq = () => {
                         />
                     </div>
 
-                    <div>
-                        <h4 className="mb-2 font-bold">Для устройств Apple (iPhone/iPad) с браузером Safari:</h4>
-                        <ol className="mb-4 list-decimal space-y-2 pl-6">
-                            <li>Откройте наш сайт в браузере Safari.</li>
-                            <li>Нажмите на кнопку «Поделиться» (квадрат со стрелкой вверх) в нижней части экрана.</li>
-                            <li>В появившемся меню прокрутите вниз и выберите «Добавить на домашний экран».</li>
-                            <li>
-                                Нажмите «Добавить» в правом верхнем углу, и иконка нашего сайта появится среди Ваших
-                                приложений.
-                            </li>
-                        </ol>
-
-                        <h4 className="mb-2 font-bold">Для устройств Android с браузером Chrome:</h4>
-                        <ol className="list-decimal space-y-2 pl-6">
-                            <li>Откройте наш сайт в браузере Chrome.</li>
-                            <li>Нажмите на кнопку меню (три точки) в правом верхнем углу экрана.</li>
-                            <li>
-                                В выпадающем меню выберите «Установить приложение» (или «Добавить на главный экран»).
-                            </li>
-                            <li>
-                                Подтвердите действие, нажав «Установить» (или «Добавить»), и иконка нашего сайта
-                                появится на Вашем главном экране.
-                            </li>
-                        </ol>
+                    <div className="space-y-4">
+                        <p>
+                            Наш сайт поддерживает технологию <strong>PWA (Progressive Web App)</strong>, что позволяет
+                            Вам устанавливать его на&nbsp;главный экран Вашего устройства, будь&nbsp;то смартфон,
+                            планшет или компьютер. Это обеспечивает быстрый доступ к&nbsp;порталу и&nbsp;удобство
+                            использования, словно это&nbsp;настоящее приложение.
+                        </p>
+                        <p>
+                            <Link href="/blog/pwa" className="text-blue-500 hover:text-blue-700">
+                                Подробная инструкция по установке PWA
+                            </Link>
+                             на&nbsp;разные устройства и&nbsp;платформы доступна в&nbsp;нашем блоге.
+                        </p>
                     </div>
                 </div>
             </AboutFaqExpander>
 
             <AboutFaqExpander title="Как предложить контент для Камеди Портал?">
-                <p>
-                    Вы&nbsp;можете легко предложить новый контент&nbsp;&mdash; будь&nbsp;то спешл, подкаст или шоу.
-                    Просто заполните форму с ссылкой на&nbsp;видео и&nbsp;кратким описанием. Для подробной инструкции
-                    и&nbsp;советов по&nbsp;заполнению формы смотрите нашу статью:{' '}
-                    <Link href="/blog/content-submit" className="text-blue-500 hover:text-blue-700">
-                        Как предложить контент
-                    </Link>
-                    .
-                </p>
+                <div className="space-y-4">
+                    <p>
+                        Вы&nbsp;можете легко предложить новый контент&nbsp;&mdash; будь&nbsp;то спешл, подкаст или шоу.
+                        Просто заполните форму с ссылкой на&nbsp;видео и&nbsp;кратким описанием.
+                    </p>
+                    <p>
+                        <Link href="/blog/content-submit" className="text-blue-500 hover:text-blue-700">
+                            Подробная инструкция по&nbsp;заполнению формы
+                        </Link>{' '}
+                        доступна в&nbsp;нашем блоге.
+                    </p>
+                </div>
             </AboutFaqExpander>
         </div>
     )

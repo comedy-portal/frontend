@@ -9,7 +9,12 @@ interface BeforeInstallPromptEvent extends Event {
     userChoice: Promise<{ outcome: 'accepted' | 'dismissed'; platform: string }>
 }
 
-export default function InstallPWAButton() {
+type InstallPWAButtonProps = {
+    width: number
+    height: number
+}
+
+export default function InstallPWAButton({ width, height }: InstallPWAButtonProps) {
     const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null)
     const [isIos, setIsIos] = useState(false)
     const [showButton, setShowButton] = useState(false)
@@ -58,7 +63,7 @@ export default function InstallPWAButton() {
 
     return (
         <div onClick={handleInstallClick} className="cursor-pointer">
-            <Image src="/images/pwa.svg" width={135} height={40} alt="Install Comedyportal App" />
+            <Image src="/images/pwa.svg" width={width} height={height} alt="Install Comedyportal App" />
         </div>
     )
 }

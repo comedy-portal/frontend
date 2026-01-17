@@ -9,13 +9,13 @@ const article: BlogArticle = {
 
     preview: {
         image: '/images/articles/subscriptions.jpg',
-        title: 'Подписка на&nbsp;комиков и&nbsp;группы',
-        description: 'Подписывайся на&nbsp;комиков и&nbsp;группы, чтобы первым узнавать о&nbsp;новых стендапах, шоу и&nbsp;спешлах. Получай уведомления на&nbsp;Comedy Portal и&nbsp;не&nbsp;пропускай новый контент.',
+        title: 'Подписка на комиков и группы',
+        description: 'Подписывайся на комиков и группы, чтобы первым узнавать о новых стендапах, шоу и спешлах. Получай уведомления на Камеди Портал и не пропускай новый контент.',
     },
 
     metadata: {
         title: 'Подписка на комиков и группы — чтобы ничего не пропускать',
-        description: 'Подписывайся на комиков и группы, чтобы первым узнавать о новых стендапах, шоу и спешлах. Получай уведомления на Comedy Portal и не пропускай новый контент.',
+        description: 'Подписывайся на комиков и группы, чтобы первым узнавать о новых стендапах, шоу и спешлах. Получай уведомления на Камеди Портал и не пропускай новый контент.',
         keywords: [
             'подписка на комиков',
             'подписаться на комика',
@@ -28,7 +28,7 @@ const article: BlogArticle = {
         openGraph: {
             type: 'article',
             title: 'Подписка на комиков и группы — чтобы ничего не пропускать',
-            description: 'Подписывайся на комиков и группы, чтобы первым узнавать о новых стендапах, шоу и спешлах. Получай уведомления на Comedy Portal и не пропускай новый контент.',
+            description: 'Подписывайся на комиков и группы, чтобы первым узнавать о новых стендапах, шоу и спешлах. Получай уведомления на Камеди Портал и не пропускай новый контент.',
             url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/subscriptions`,
             siteName: 'Comedy Portal',
             images: [
@@ -44,7 +44,7 @@ const article: BlogArticle = {
         twitter: {
             card: 'summary_large_image',
             title: 'Подписка на комиков и группы — чтобы ничего не пропускать',
-            description: 'Подписывайся на комиков и группы, чтобы первым узнавать о новых стендапах, шоу и спешлах. Получай уведомления на Comedy Portal и не пропускай новый контент.',
+            description: 'Подписывайся на комиков и группы, чтобы первым узнавать о новых стендапах, шоу и спешлах. Получай уведомления на Камеди Портал и не пропускай новый контент.',
             images: [
                 {
                     url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/subscriptions.jpg`,
@@ -68,7 +68,7 @@ const article: BlogArticle = {
                 тебя.
             </p>
 
-            <div className="space-y-4">
+            <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Как это работает?</h2>
                 <p>Всё максимально просто:</p>
                 <ul className="list-disc pl-12">
@@ -78,7 +78,7 @@ const article: BlogArticle = {
                     </li>
                     <li>готово</li>
                 </ul>
-            </div>
+            </section>
 
             <p>
                 С&nbsp;этого момента ты&nbsp;будешь получать уведомления прямо на&nbsp;сайте, на&nbsp;странице своих
@@ -103,7 +103,7 @@ const article: BlogArticle = {
                 />
             </div>
 
-            <div className="space-y-4">
+            <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Зачем это нужно?</h2>
                 <p>Если ты:</p>
                 <ul className="list-disc pl-12">
@@ -113,13 +113,13 @@ const article: BlogArticle = {
                 </ul>
                 <p>&mdash;&nbsp;подписка решает эту проблему. Ты&nbsp;сам выбираешь, за&nbsp;кем следить, и&nbsp;получаешь
                 только те уведомления, которые реально интересны.</p>
-            </div>
+            </section>
 
-            <div className="space-y-4">
+            <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Попробуй прямо сейчас</h2>
                 <p>Функция уже доступна. Подпишись на&nbsp;любимых авторов и&nbsp;убедись сам, насколько это удобно! Новые
                 спешлы и шоу выходят постоянно&nbsp;&mdash; теперь ты&nbsp;точно их&nbsp;не&nbsp;пропустишь.</p>
-            </div>
+            </section>
         </>
     ),
 }

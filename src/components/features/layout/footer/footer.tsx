@@ -19,7 +19,7 @@ export const Footer = async ({ isAuth }: FooterProps) => {
                     </div>
                     <div>18+</div>
                     <div className="text-xs lg:text-left">* Министерством юстиции РФ признан иностранным агентом</div>
-                    <InstallPWAButton />
+                    <InstallPWAButton width={135} height={40} />
                 </section>
                 <div className="flex flex-col gap-x-12 gap-y-6 md:flex-row">
                     <section className="space-y-2">
@@ -31,12 +31,12 @@ export const Footer = async ({ isAuth }: FooterProps) => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/about/formats" className="text-sm hover:text-white">
+                                <Link href="/blog/content-formats" className="text-sm hover:text-white">
                                     Разбираемся в форматах
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/about/faq" className="text-sm hover:text-white">
+                                <Link href="/faq" className="text-sm hover:text-white">
                                     Вопросы и ответы
                                 </Link>
                             </li>
