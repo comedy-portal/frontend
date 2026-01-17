@@ -7,7 +7,7 @@ import { BlogArticle } from '@/utils/types/blog'
 // prettier-ignore
 const article: BlogArticle = {
     slug: 'pwa',
-    date: '2026-01-16',
+    date: '2026-01-17',
 
     preview: {
         image: '/images/articles/pwa.jpg',
