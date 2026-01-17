@@ -75,7 +75,7 @@ export const getPlatformUrl = (platform: Platform, identifier: string) => {
         case Platform.YOUTUBE:
             return { href: `https://www.youtube.com/${identifier}`, label: 'YouTube' }
         case Platform.TIKTOK:
-            return { href: `https://www.tiktok.com/@${identifier}`, label: 'TikTok' }
+            return { href: `https://www.tiktok.com/${identifier}`, label: 'TikTok' }
         case Platform.INSTAGRAM:
             return { href: `https://www.instagram.com/${identifier}`, label: 'Instagram' }
         case Platform.TELEGRAM:
