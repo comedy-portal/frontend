@@ -68,7 +68,7 @@ const article: BlogArticle = {
     title: 'Установите Камеди Портал на смартфон или компьютер',
     content: (
         <>
-            <p>Мы&nbsp;рады сообщить, что теперь <strong>Comedy&nbsp;Portal</strong> доступен не&nbsp;только через браузер, но&nbsp;и&nbsp;как полноценное приложение на&nbsp;Вашем устройстве! С&nbsp;помощью технологии <strong>PWA (Progressive Web App)</strong> Вы&nbsp;сможете запускать наш портал прямо с&nbsp;экрана телефона или с&nbsp;рабочего стола, без лишних вкладок браузера.</p>
+            <p>Мы&nbsp;рады сообщить, что теперь <strong>Камеди&nbsp;Портал</strong> доступен не&nbsp;только через браузер, но&nbsp;и&nbsp;как полноценное приложение на&nbsp;Вашем устройстве! С&nbsp;помощью технологии <strong>PWA (Progressive Web App)</strong> Вы&nbsp;сможете запускать наш портал прямо с&nbsp;экрана телефона или с&nbsp;рабочего стола, без лишних вкладок браузера.</p>
             
             <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Что такое PWA?</h2>
@@ -84,7 +84,7 @@ const article: BlogArticle = {
 
             <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Быстрая установка через кнопку в&nbsp;подвале сайта</h2>
-                <p>На&nbsp;всех страницах <strong>Comedy&nbsp;Portal</strong> внизу сайта есть специальная кнопка &laquo;Установить приложение&raquo;, которая позволяет мгновенно добавить <strong>PWA</strong> на&nbsp;Ваше устройство.</p>
+                <p>На&nbsp;всех страницах <strong>Камеди&nbsp;Портал</strong> внизу сайта есть специальная кнопка &laquo;Установить приложение&raquo;, которая позволяет мгновенно добавить <strong>PWA</strong> на&nbsp;Ваше устройство.</p>
                 <InstallPWAButton width={200} height={60} />
             </section>
 
@@ -140,7 +140,7 @@ const article: BlogArticle = {
                 </ul>
             </section>
 
-            <p>Устанавливайте <strong>Comedy&nbsp;Portal</strong> как приложение и&nbsp;наслаждайтесь контентом быстрее и&nbsp;удобнее, где&nbsp;бы вы&nbsp;ни&nbsp;были! А&nbsp;если есть идеи или пожелания по&nbsp;функционалу PWA&nbsp;&mdash; <Link href="mailto:comedyportal.team@gmail.com" className="text-blue-500 hover:text-blue-700">пишите нам</Link>.</p>
+            <p>Устанавливайте <strong>Камеди&nbsp;Портал</strong> как приложение и&nbsp;наслаждайтесь контентом быстрее и&nbsp;удобнее, где&nbsp;бы вы&nbsp;ни&nbsp;были! А&nbsp;если есть идеи или пожелания по&nbsp;функционалу PWA&nbsp;&mdash; <Link href="mailto:comedyportal.team@gmail.com" className="text-blue-500 hover:text-blue-700">пишите нам</Link>.</p>
         </>
     ),
 }

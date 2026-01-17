@@ -166,8 +166,9 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
     return (
         <div>
             <div className="bg-gray-950 text-white">
-                <div className="wrapper flex h-130.5 items-center justify-center bg-[url('/images/welcome/hero.jpg')] bg-cover bg-center bg-no-repeat [mask-size:contain] [mask-repeat:no-repeat] sm:[mask-image:linear-gradient(to_right,transparent_0%,black_30%,black_70%,transparent_100%)]">
-                    <section className="m-auto space-y-8 text-center md:w-2/3">
+                <div className="wrapper relative h-130">
+                    <div className="absolute inset-0 bg-[url('/images/welcome/hero.jpg')] bg-cover bg-center bg-no-repeat mask-contain mask-no-repeat sm:mask-[linear-gradient(to_right,transparent_0%,black_30%,black_70%,transparent_100%)]"></div>
+                    <section className="absolute inset-0 m-auto flex flex-col items-center justify-center space-y-8 text-center md:w-2/3">
                         <h1 className="text-4xl font-bold md:text-5xl">Добро пожаловать!</h1>
                         <p className="text-lg">
                             Мы&nbsp;рады, что&nbsp;Вы присоединились к&nbsp;нам! Ниже, Вы&nbsp;найдете краткое

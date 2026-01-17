@@ -62,8 +62,13 @@ export default function InstallPWAButton({ width, height }: InstallPWAButtonProp
     if (!showButton) return null
 
     return (
-        <div onClick={handleInstallClick} className="cursor-pointer">
-            <Image src="/images/pwa.svg" width={width} height={height} alt="Install Comedyportal App" />
-        </div>
+        <Image
+            src="/images/pwa.svg"
+            width={width}
+            height={height}
+            className="cursor-pointer align-top"
+            onClick={handleInstallClick}
+            alt="Install Comedyportal App"
+        />
     )
 }

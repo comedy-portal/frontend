@@ -19,7 +19,7 @@ export const LandingHero = ({ isAuth }: LandingHeroProps) => {
     }
 
     return (
-        <div className="relative flex h-130.5 w-full items-center justify-center overflow-hidden bg-gray-950">
+        <div className="relative flex h-130 w-full items-center justify-center overflow-hidden bg-gray-950">
             <Snowfall style={{ zIndex: '20' }} />
             <div className="relative flex h-130.5 items-center justify-center">
                 <div
