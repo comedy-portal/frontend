@@ -5,12 +5,12 @@ import { useState } from 'react'
 import classNames from 'classnames'
 import { ChevronDownIcon, ChevronRightIcon } from 'lucide-react'
 
-type AboutFaqExpanderProps = {
+type FaqExpanderProps = {
     title: string
     children: React.ReactNode
 }
 
-export const AboutFaqExpander = ({ title, children }: AboutFaqExpanderProps) => {
+export const FaqExpander = ({ title, children }: FaqExpanderProps) => {
     const [isOpen, setIsOpen] = useState(false)
 
     const toggleOpen = () => {

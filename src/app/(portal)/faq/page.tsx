@@ -1,12 +1,28 @@
 import { Metadata } from 'next'
 
-import { AboutFaq } from '@/components/features/about/about-faq'
+import { Faq } from '@/components/features/faq/faq'
 
 // prettier-ignore
 export const metadata: Metadata = {
     title: 'Вопросы и ответы',
+    description: 'Ответы на частые вопросы о Камеди Портал: как работает рейтинговая система, как установить Камеди Портал на устройство, как предложить контент и многое другое.',
+    keywords: [
+        'Камеди Портал',
+        'FAQ Камеди Портал',
+        'вопросы и ответы стендап',
+        'комедийный портал',
+        'рейтинги стендап концертов',
+        'как формируется рейтинг',
+        'оценки пользователей',
+        'топ стендап концертов',
+        'установить Камеди Портал',
+        'PWA комедийный сайт',
+        'установить сайт как приложение',
+        'добавить стендап концерт',
+        'предложить комедийный контент'
+    ],
 }
 
 export default function AboutFaqPage() {
-    return <AboutFaq />
+    return <Faq />
 }

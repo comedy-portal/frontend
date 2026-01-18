@@ -33,6 +33,14 @@ export const AboutUs = () => {
                 </p>
             </div>
 
+            <p>
+                Ответы на самые частые вопросы о работе сервиса — Вы можете найти в разделе{' '}
+                <Link href="/faq" className="link">
+                    FAQ
+                </Link>
+                .
+            </p>
+
             <div className="mb-4 flex gap-x-3 rounded-lg border border-blue-200 bg-blue-100 p-4 text-sm">
                 <InfoIcon className="hidden shrink-0 text-blue-500 sm:block" />
                 <div className="space-y-4">
@@ -45,7 +53,7 @@ export const AboutUs = () => {
                     <p>
                         Если Вы заметили какие-либо проблемы или у Вас есть вопросы и предложения, пожалуйста, пишите
                         нам на{' '}
-                        <Link href="mailto:comedyportal.team@gmail.com" className="text-blue-500 hover:text-blue-700">
+                        <Link href="mailto:comedyportal.team@gmail.com" className="link">
                             comedyportal.team@gmail.com
                         </Link>
                         . Ваше мнение важно для нас!

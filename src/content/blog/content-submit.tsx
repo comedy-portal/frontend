@@ -62,7 +62,7 @@ const article: BlogArticle = {
 
             <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Как это работает</h2>
-                <ul className="list-disc pl-12">
+                <ul className="list-disc sm:pl-12 pl-4 space-y-1">
                     <li>Найдите кнопку &laquo;Предложить контент&raquo;</li>
                     <li>
                         На&nbsp;большом экране: это кнопка &laquo;+&raquo;, она всегда видна в&nbsp;верхней части страницы.
@@ -76,7 +76,7 @@ const article: BlogArticle = {
             <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Заполните форму</h2>
                 <p>В&nbsp;форме есть два основных поля:</p>
-                <ul className="list-disc pl-12">
+                <ul className="list-disc sm:pl-12 pl-4 space-y-1">
                     <li><strong>Ссылка на&nbsp;видео</strong>&nbsp;&mdash; укажите прямую ссылку на&nbsp;контент, который хотите предложить.</li>
                     <li><strong>Описание видео</strong>&nbsp;&mdash; кратко расскажите, о&nbsp;чём видео, чтобы мы&nbsp;понимали, что это за&nbsp;материал и&nbsp;зачем его добавлять.</li>
                 </ul>
@@ -85,7 +85,7 @@ const article: BlogArticle = {
             <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Для комиков и авторов</h2>
                 <p>Если Вы&nbsp;автор контента или хотите дать больше информации, добавьте информацию об&nbsp;авторе контента:</p>
-                <ul className="list-disc pl-12">
+                <ul className="list-disc sm:pl-12 pl-4 space-y-1">
                     <li>Ссылка на&nbsp;социальные сети или личный сайт</li>
                     <li>Краткая биография (откуда комик, когда родился, интересные факты)</li>
                     <li>Любые достижения или участие в&nbsp;проектах/шоу</li>
