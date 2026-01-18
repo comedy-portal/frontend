@@ -87,7 +87,7 @@ const article: BlogArticle = {
 
             <div className="hidden w-full overflow-hidden rounded shadow-2xl sm:block">
                 <Image
-                    src="/images/welcome/subscriptions.jpg"
+                    src="/images/screenshots/desktop/subscriptions.jpg"
                     width={1280}
                     height={1231}
                     alt="Подписка на комиков и группы — чтобы ничего не пропускать"
@@ -96,7 +96,7 @@ const article: BlogArticle = {
 
             <div className="sm:hidden">
                 <Image
-                    src="/images/welcome/mobile/subscriptions.png"
+                    src="/images/screenshots/mobile/subscriptions.png"
                     width={800}
                     height={1576}
                     alt="Подписка на комиков и группы — чтобы ничего не пропускать"

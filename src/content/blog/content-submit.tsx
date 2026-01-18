@@ -101,7 +101,7 @@ const article: BlogArticle = {
 
             <div className="hidden w-full overflow-hidden rounded shadow-2xl sm:block">
                 <Image
-                    src="/images/welcome/content-submit.jpg"
+                    src="/images/screenshots/desktop/content-submit.jpg"
                     width={1280}
                     height={1231}
                     alt="Как предложить контент для Камеди Портал"
@@ -110,7 +110,7 @@ const article: BlogArticle = {
 
             <div className="sm:hidden">
                 <Image
-                    src="/images/welcome/mobile/content-submit.png"
+                    src="/images/screenshots/mobile/content-submit.png"
                     width={800}
                     height={1576}
                     alt="Как предложить контент для Камеди Портал"

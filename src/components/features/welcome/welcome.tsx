@@ -27,8 +27,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     </p>
                 </div>
             ),
-            imgDesktop: '/images/welcome/subscriptions.jpg',
-            imgMobile: '/images/welcome/mobile/subscriptions.png',
+            imgDesktop: '/images/screenshots/desktop/subscriptions.jpg',
+            imgMobile: '/images/screenshots/mobile/subscriptions.png',
         },
         {
             title: '🔍 Удобный поиск и фильтры',
@@ -51,8 +51,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     </p>
                 </div>
             ),
-            imgDesktop: '/images/welcome/content-many.jpg',
-            imgMobile: '/images/welcome/mobile/content-many.png',
+            imgDesktop: '/images/screenshots/desktop/content-many.jpg',
+            imgMobile: '/images/screenshots/mobile/content-many.png',
         },
         {
             title: '✍️ Оценивай и пиши рецензии',
@@ -62,8 +62,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     записи сохраняются в&nbsp;профиле и&nbsp;становятся частью твоей личной истории.
                 </p>
             ),
-            imgDesktop: '/images/welcome/review.jpg',
-            imgMobile: '/images/welcome/mobile/review.png',
+            imgDesktop: '/images/screenshots/desktop/review.jpg',
+            imgMobile: '/images/screenshots/mobile/review.png',
         },
         {
             title: '📊 Следи за своей статистикой',
@@ -92,8 +92,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     </p>
                 </div>
             ),
-            imgDesktop: '/images/welcome/statistics.jpg',
-            imgMobile: '/images/welcome/mobile/statistics.png',
+            imgDesktop: '/images/screenshots/desktop/statistics.jpg',
+            imgMobile: '/images/screenshots/mobile/statistics.png',
         },
         {
             title: '🗂️ Формируй коллекцию рекомендаций',
@@ -108,8 +108,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     доступна в&nbsp;удобном виде.
                 </p>
             ),
-            imgDesktop: '/images/welcome/reviews.jpg',
-            imgMobile: '/images/welcome/mobile/reviews.png',
+            imgDesktop: '/images/screenshots/desktop/reviews.jpg',
+            imgMobile: '/images/screenshots/mobile/reviews.png',
         },
         {
             title: '⭐ Сохраняй в избранное',
@@ -121,8 +121,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     могли открыть для себя новые рекомендации.
                 </p>
             ),
-            imgDesktop: '/images/welcome/watchlists.jpg',
-            imgMobile: '/images/welcome/mobile/watchlists.png',
+            imgDesktop: '/images/screenshots/desktop/watchlists.jpg',
+            imgMobile: '/images/screenshots/mobile/watchlists.png',
         },
         {
             title: '🏆 Топы лучших спешлов',
@@ -145,8 +145,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     </p>
                 </>
             ),
-            imgDesktop: '/images/welcome/top.jpg',
-            imgMobile: '/images/welcome/mobile/top.png',
+            imgDesktop: '/images/screenshots/desktop/top.jpg',
+            imgMobile: '/images/screenshots/mobile/top.png',
         },
         {
             title: '💡 Предлагай контент',
@@ -158,8 +158,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     предложений&nbsp;&mdash; помоги расширить каталог Камеди Портал.
                 </p>
             ),
-            imgDesktop: '/images/welcome/content-submit.jpg',
-            imgMobile: '/images/welcome/mobile/content-submit.png',
+            imgDesktop: '/images/screenshots/desktop/content-submit.jpg',
+            imgMobile: '/images/screenshots/mobile/content-submit.png',
         },
     ]
 
