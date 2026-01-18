@@ -71,7 +71,7 @@ const article: BlogArticle = {
             <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Как это работает?</h2>
                 <p>Всё максимально просто:</p>
-                <ul className="list-disc sm:pl-12 pl-4 space-y-1">
+                <ul className="list-disc sm:pl-12 pl-8 space-y-1">
                     <li>заходишь на страницу комика или группы</li>
                     <li>
                         нажимаешь кнопку <strong>«Подписаться»</strong>
@@ -106,7 +106,7 @@ const article: BlogArticle = {
             <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Зачем это нужно?</h2>
                 <p>Если ты:</p>
-                <ul className="list-disc sm:pl-12 pl-4 space-y-1">
+                <ul className="list-disc sm:pl-12 pl-8 space-y-1">
                     <li>следишь за&nbsp;конкретными комиками</li>
                     <li>не&nbsp;хочешь пропускать новые выступления</li>
                     <li>устал узнавать о&nbsp;релизах случайно или слишком поздно</li>
