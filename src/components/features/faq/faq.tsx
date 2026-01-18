@@ -22,10 +22,10 @@ export const Faq = () => {
                 <div className="flex items-center space-x-4">
                     <div className="hidden w-1/3 shrink-0 sm:block">
                         <Image
-                            src="/images/about/faq/full-screen.png"
+                            src="/images/faq/full-screen.png"
                             alt="Full Screen Mode"
-                            width={800}
-                            height={1565}
+                            width={500}
+                            height={978}
                             className="w-full"
                         />
                     </div>
