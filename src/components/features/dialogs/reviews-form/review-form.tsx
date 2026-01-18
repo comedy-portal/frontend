@@ -3,6 +3,7 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
+import { ExternalLink } from '@/components/ui/external-link'
 import { Button } from '@/components/ui/forms/button'
 import { Textarea } from '@/components/ui/forms/textarea'
 import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
@@ -59,6 +60,14 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                         onChange={formik.handleChange}
                     />
                 </div>
+
+                <p className="text-sm text-gray-500">
+                    Рецензия должна соответствовать{' '}
+                    <ExternalLink href="/legal/terms-of-use" className="link">
+                        правилам
+                    </ExternalLink>
+                    .
+                </p>
             </div>
 
             <div className="flex gap-x-2">
