@@ -71,7 +71,7 @@ const article: BlogArticle = {
             <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Как это работает?</h2>
                 <p>Всё максимально просто:</p>
-                <ul className="list-disc pl-12">
+                <ul className="list-disc sm:pl-12 pl-4 space-y-1">
                     <li>заходишь на страницу комика или группы</li>
                     <li>
                         нажимаешь кнопку <strong>«Подписаться»</strong>
@@ -87,7 +87,7 @@ const article: BlogArticle = {
 
             <div className="hidden w-full overflow-hidden rounded shadow-2xl sm:block">
                 <Image
-                    src="/images/welcome/subscriptions.jpg"
+                    src="/images/screenshots/desktop/subscriptions.jpg"
                     width={1280}
                     height={1231}
                     alt="Подписка на комиков и группы — чтобы ничего не пропускать"
@@ -96,7 +96,7 @@ const article: BlogArticle = {
 
             <div className="sm:hidden">
                 <Image
-                    src="/images/welcome/mobile/subscriptions.png"
+                    src="/images/screenshots/mobile/subscriptions.png"
                     width={800}
                     height={1576}
                     alt="Подписка на комиков и группы — чтобы ничего не пропускать"
@@ -106,7 +106,7 @@ const article: BlogArticle = {
             <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Зачем это нужно?</h2>
                 <p>Если ты:</p>
-                <ul className="list-disc pl-12">
+                <ul className="list-disc sm:pl-12 pl-4 space-y-1">
                     <li>следишь за&nbsp;конкретными комиками</li>
                     <li>не&nbsp;хочешь пропускать новые выступления</li>
                     <li>устал узнавать о&nbsp;релизах случайно или слишком поздно</li>

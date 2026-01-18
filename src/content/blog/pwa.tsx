@@ -74,7 +74,7 @@ const article: BlogArticle = {
                 <h2 className="text-lg font-semibold">Что такое PWA?</h2>
                 <p><strong>PWA (Progressive Web App)</strong>&nbsp;&mdash; это сайт, который ведет себя как приложение.</p>
                 <p>С PWA вы получаете:</p>
-                <ul className="list-disc pl-12">
+                <ul className="list-disc sm:pl-12 pl-4 space-y-1">
                     <li>Отдельное окно без адресной строки</li>
                     <li>Быстрый доступ и&nbsp;экономию трафика</li>
                     <li>Возможность получать уведомления</li>
@@ -89,22 +89,22 @@ const article: BlogArticle = {
             </section>
 
             
-            <section>
+            <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Как установить на&nbsp;смартфон или компьютер вручную</h2>
                 <div className="flex items-center space-x-4">
                     <div className="hidden w-1/3 shrink-0 sm:block">
                         <Image
-                            src="/images/about/faq/full-screen.png"
+                            src="/images/faq/full-screen.png"
                             alt="Full Screen Mode"
-                            width={800}
-                            height={1565}
+                            width={500}
+                            height={978}
                             className="w-full"
                         />
                     </div>
 
                     <div>
                         <h4 className="mb-2 font-bold">Для устройств Apple (iPhone/iPad) с браузером Safari:</h4>
-                        <ol className="mb-4 list-decimal space-y-2 pl-6">
+                        <ol className="mb-4 list-decimal space-y-2 sm:pl-12 pl-4">
                             <li>Откройте наш сайт в браузере Safari.</li>
                             <li>Нажмите на кнопку «Поделиться» (квадрат со стрелкой вверх) в нижней части экрана.</li>
                             <li>В появившемся меню прокрутите вниз и выберите «Добавить на домашний экран».</li>
@@ -115,7 +115,7 @@ const article: BlogArticle = {
                         </ol>
 
                         <h4 className="mb-2 font-bold">Для устройств Android с браузером Chrome:</h4>
-                        <ol className="list-decimal space-y-2 pl-6">
+                        <ol className="list-decimal space-y-2 sm:pl-12 pl-4">
                             <li>Откройте наш сайт в браузере Chrome.</li>
                             <li>Нажмите на кнопку меню (три точки) в правом верхнем углу экрана.</li>
                             <li>
@@ -132,7 +132,7 @@ const article: BlogArticle = {
 
             <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Преимущества установки</h2>
-                <ul className="list-disc pl-12">
+                <ul className="list-disc sm:pl-12 pl-4 space-y-1">
                     <li>Быстрый доступ с&nbsp;домашнего экрана или рабочего стола</li>
                     <li>Удобный интерфейс без лишних вкладок браузера</li>
                     <li>Возможность сохранять прогресс в&nbsp;просмотре контента</li>
