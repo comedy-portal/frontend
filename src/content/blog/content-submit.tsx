@@ -96,7 +96,7 @@ const article: BlogArticle = {
             
             <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Отправьте предложение</h2>
-                <p>После заполнения формы просто нажмите &laquo;Отправить&raquo;. Мы&nbsp;проверим контент&nbsp;и, если он&nbsp;подходит, добавим его на&nbsp;Камеди Портал.</p>
+                <p>После заполнения формы просто нажмите &laquo;Отправить&raquo;. Мы&nbsp;проверим контент&nbsp;и, если он&nbsp;подходит, добавим его на&nbsp;<strong>Камеди Портал</strong>.</p>
             </section>
 
             <div className="hidden w-full overflow-hidden rounded shadow-2xl sm:block">
