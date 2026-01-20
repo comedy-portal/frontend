@@ -33,9 +33,11 @@ export const LandingHero = ({ isAuth }: LandingHeroProps) => {
             <div className="absolute inset-0 m-auto flex h-130.5 w-full items-center justify-start px-8 text-center md:max-w-360 md:px-12.5 md:text-left lg:px-25 xl:px-50">
                 <section className="text-white md:w-150">
                     <h1 className="mb-6 text-4xl font-bold md:text-6xl">
-                        Твой агрегатор лучших стендапов и&nbsp;популярных шоу
+                        Агрегатор лучших стендапов и&nbsp;популярных шоу
                     </h1>
-                    <p className="mb-12 text-lg">Оценки, рецензии и&nbsp;персональная история просмотра!</p>
+                    <p className="mb-12 text-lg">
+                        С&nbsp;оценками, рецензиями и&nbsp;Вашей персональной историей просмотров.
+                    </p>
                     <div className="flex flex-col justify-center gap-4 sm:flex-row md:justify-start" data-nosnippet>
                         {!isAuth && (
                             <button

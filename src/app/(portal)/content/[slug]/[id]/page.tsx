@@ -20,7 +20,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
             title: comedians.map(comedian => comedian.name).join(', ') + ' ' + content.name,
             description:
                 content.metaInfo?.description ||
-                'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и твоей персональной историей просмотров.',
+                'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и Вашей персональной историей просмотров.',
             images: [
                 {
                     url: content.contentImages[0]?.url || '',
@@ -36,7 +36,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
             title: comedians.map(comedian => comedian.name).join(', ') + ' ' + content.name,
             description:
                 content.metaInfo?.description ||
-                'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и твоей персональной историей просмотров.',
+                'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и Вашей персональной историей просмотров.',
             card: 'summary_large_image',
         },
     }

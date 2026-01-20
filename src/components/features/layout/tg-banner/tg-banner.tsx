@@ -11,8 +11,8 @@ export const TGBanner = () => {
             <div className="wrapper">
                 <div className="m-auto space-y-8 text-center sm:w-2/3">
                     <p className="text-lg font-bold text-white">
-                        Будьте в&nbsp;курсе всех изменений на&nbsp;Камеди&nbsp;Портал! Подписывайтесь на&nbsp;наш
-                        Telegram-канал и&nbsp;получайте новости о&nbsp;новых функциях и&nbsp;обновлениях.
+                        Будьте в&nbsp;курсе всех изменений на&nbsp;<strong>Камеди портал</strong>! Подписывайтесь
+                        на&nbsp;наш Telegram-канал и&nbsp;получайте новости о&nbsp;новых функциях и&nbsp;обновлениях.
                     </p>
                     <Link
                         href="https://t.me/comedyportal"
