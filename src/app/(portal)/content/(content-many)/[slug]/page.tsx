@@ -29,7 +29,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 
     const baseUrl = process.env.NEXT_PUBLIC_WEBSITE_DOMAIN as string
     const title = typeName?.label ? typeName.label : 'Камеди Портал'
-    const description = descriptions[params.slug] || 'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и твоей персональной историей просмотров.'
+    const description = descriptions[params.slug] || 'Агрегатор лучших стендапов и популярных шоу с оценками, рецензиями и Вашей персональной историей просмотров.'
     const url = `/${params.slug}`
 
     return {

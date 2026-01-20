@@ -59,7 +59,7 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
         <form className="sm:w-104" onSubmit={handleSubmit}>
             <h1 className="mb-2 text-center text-lg font-semibold">Войти</h1>
             <p className="m-auto mb-8 text-center text-sm text-gray-500 sm:w-3/4">
-                Для этого укажите только электронную почту, мы отправим на нее данные для входа
+                Для этого укажите только электронную почту, мы отправим на неё данные для входа
             </p>
 
             {status && status !== 'OK' && (
@@ -86,7 +86,7 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
             </Button>
 
             {/* prettier-ignore */}
-            <p className="m-auto text-center text-xs text-gray-400 sm:w-3/4">Нажимая кнопку Продолжить, я подтверждаю, что ознакомился с <Link href="/legal/privacy-policy" className="text-blue-500">Политикой конфиденциальности</Link> и <Link href="/legal/terms-of-use" className="text-blue-500">Пользовательским соглашением</Link></p>
+            <p className="m-auto text-center text-xs text-gray-400 sm:w-3/4">Нажимая кнопку «Продолжить», я подтверждаю, что ознакомился с <Link href="/legal/privacy-policy" className="text-blue-500">Политикой конфиденциальности</Link> и <Link href="/legal/terms-of-use" className="text-blue-500">Пользовательским соглашением</Link></p>
         </form>
     )
 }

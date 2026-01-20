@@ -17,7 +17,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
             title: `${comedian.name} ${comedian.surname}`,
             description:
                 comedian.metaInfo?.description ||
-                'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и твоей персональной историей просмотров.',
+                'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и Вашей персональной историей просмотров.',
             images: [
                 {
                     url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/comedians/${comedian.slug}.jpg`,
@@ -33,7 +33,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
             title: `${comedian.name} ${comedian.surname}`,
             description:
                 comedian.metaInfo?.description ||
-                'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и твоей персональной историей просмотров.',
+                'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и Вашей персональной историей просмотров.',
             card: 'summary_large_image',
         },
     }

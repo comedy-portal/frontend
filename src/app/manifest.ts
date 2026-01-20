@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
         id: '/',
         name: 'Comedy Portal',
         short_name: 'Comedy Portal',
-        description: 'Comedy Portal – ваш портал в мир комедии!',
+        description: 'Камеди Портал – Агрегатор лучших стендапов и популярных шоу!',
 
         start_url: '/',
         scope: '/',

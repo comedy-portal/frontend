@@ -68,13 +68,13 @@ const article: BlogArticle = {
     title: 'Установите Камеди Портал на смартфон или компьютер',
     content: (
         <>
-            <p>Мы&nbsp;рады сообщить, что теперь <strong>Камеди&nbsp;Портал</strong> доступен не&nbsp;только через браузер, но&nbsp;и&nbsp;как полноценное приложение на&nbsp;Вашем устройстве! С&nbsp;помощью технологии <strong>PWA (Progressive Web App)</strong> Вы&nbsp;сможете запускать наш портал прямо с&nbsp;экрана телефона или с&nbsp;рабочего стола, без лишних вкладок браузера.</p>
+            <p>Мы&nbsp;рады сообщить, что теперь <strong>Камеди Портал</strong> доступен не&nbsp;только через браузер, но&nbsp;и&nbsp;как полноценное приложение на&nbsp;Вашем устройстве! С&nbsp;помощью технологии <strong>PWA (Progressive Web App)</strong> Вы&nbsp;сможете запускать наш портал прямо с&nbsp;экрана телефона или с&nbsp;рабочего стола, без лишних вкладок браузера.</p>
             
             <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Что такое PWA?</h2>
                 <p><strong>PWA (Progressive Web App)</strong>&nbsp;&mdash; это сайт, который ведет себя как приложение.</p>
                 <p>С PWA вы получаете:</p>
-                <ul className="list-disc sm:pl-12 pl-4 space-y-1">
+                <ul className="list-disc sm:pl-12 pl-8 space-y-1">
                     <li>Отдельное окно без адресной строки</li>
                     <li>Быстрый доступ и&nbsp;экономию трафика</li>
                     <li>Возможность получать уведомления</li>
@@ -84,7 +84,7 @@ const article: BlogArticle = {
 
             <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Быстрая установка через кнопку в&nbsp;подвале сайта</h2>
-                <p>На&nbsp;всех страницах <strong>Камеди&nbsp;Портал</strong> внизу сайта есть специальная кнопка &laquo;Установить приложение&raquo;, которая позволяет мгновенно добавить <strong>PWA</strong> на&nbsp;Ваше устройство.</p>
+                <p>На&nbsp;всех страницах <strong>Камеди Портал</strong> внизу сайта есть специальная кнопка &laquo;Установить приложение&raquo;, которая позволяет мгновенно добавить <strong>PWA</strong> на&nbsp;Ваше устройство.</p>
                 <InstallPWAButton width={200} height={60} />
             </section>
 
@@ -94,17 +94,17 @@ const article: BlogArticle = {
                 <div className="flex items-center space-x-4">
                     <div className="hidden w-1/3 shrink-0 sm:block">
                         <Image
-                            src="/images/faq/full-screen.png"
+                            src="/images/screenshots/mobile/content-many.png"
                             alt="Full Screen Mode"
-                            width={500}
-                            height={978}
+                            width={800}
+                            height={1576}
                             className="w-full"
                         />
                     </div>
 
                     <div>
                         <h4 className="mb-2 font-bold">Для устройств Apple (iPhone/iPad) с браузером Safari:</h4>
-                        <ol className="mb-4 list-decimal space-y-2 sm:pl-12 pl-4">
+                        <ol className="mb-4 list-decimal space-y-2 sm:pl-12 pl-8">
                             <li>Откройте наш сайт в браузере Safari.</li>
                             <li>Нажмите на кнопку «Поделиться» (квадрат со стрелкой вверх) в нижней части экрана.</li>
                             <li>В появившемся меню прокрутите вниз и выберите «Добавить на домашний экран».</li>
@@ -115,7 +115,7 @@ const article: BlogArticle = {
                         </ol>
 
                         <h4 className="mb-2 font-bold">Для устройств Android с браузером Chrome:</h4>
-                        <ol className="list-decimal space-y-2 sm:pl-12 pl-4">
+                        <ol className="list-decimal space-y-2 sm:pl-12 pl-8">
                             <li>Откройте наш сайт в браузере Chrome.</li>
                             <li>Нажмите на кнопку меню (три точки) в правом верхнем углу экрана.</li>
                             <li>
@@ -132,7 +132,7 @@ const article: BlogArticle = {
 
             <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Преимущества установки</h2>
-                <ul className="list-disc sm:pl-12 pl-4 space-y-1">
+                <ul className="list-disc sm:pl-12 pl-8 space-y-1">
                     <li>Быстрый доступ с&nbsp;домашнего экрана или рабочего стола</li>
                     <li>Удобный интерфейс без лишних вкладок браузера</li>
                     <li>Возможность сохранять прогресс в&nbsp;просмотре контента</li>
@@ -140,7 +140,7 @@ const article: BlogArticle = {
                 </ul>
             </section>
 
-            <p>Устанавливайте <strong>Камеди&nbsp;Портал</strong> как приложение и&nbsp;наслаждайтесь контентом быстрее и&nbsp;удобнее, где&nbsp;бы вы&nbsp;ни&nbsp;были! А&nbsp;если есть идеи или пожелания по&nbsp;функционалу PWA&nbsp;&mdash; <Link href="mailto:comedyportal.team@gmail.com" className="text-blue-500 hover:text-blue-700">пишите нам</Link>.</p>
+            <p>Устанавливайте <strong>Камеди портал</strong> как приложение и&nbsp;наслаждайтесь контентом быстрее и&nbsp;удобнее, где&nbsp;бы вы&nbsp;ни&nbsp;были! А&nbsp;если есть идеи или пожелания по&nbsp;функционалу PWA&nbsp;&mdash; <Link href="mailto:comedyportal.team@gmail.com" className="text-blue-500 hover:text-blue-700">пишите нам</Link>.</p>
         </>
     ),
 }

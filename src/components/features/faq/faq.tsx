@@ -13,8 +13,8 @@ export const Faq = () => {
                     <Link href="/blog/rating" className="link">
                         статье
                     </Link>{' '}
-                    мы&nbsp;расскажем, как формируются рейтинги на&nbsp;Камеди Портале и&nbsp;почему каждая оценка
-                    действительно важна.
+                    мы&nbsp;расскажем, как формируются рейтинги на&nbsp;<strong>Камеди Портал</strong> и&nbsp;почему
+                    каждая оценка действительно важна.
                 </p>
             </FaqExpander>
 
@@ -22,10 +22,10 @@ export const Faq = () => {
                 <div className="flex items-center space-x-4">
                     <div className="hidden w-1/3 shrink-0 sm:block">
                         <Image
-                            src="/images/faq/full-screen.png"
+                            src="/images/screenshots/mobile/content-many.png"
                             alt="Full Screen Mode"
-                            width={500}
-                            height={978}
+                            width={800}
+                            height={1576}
                             className="w-full"
                         />
                     </div>
