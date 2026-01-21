@@ -56,6 +56,7 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
         },
         {
             title: '✍️ Оценивайте и пишите рецензии',
+            href: '/blog/rating',
             text: (
                 <p>
                     Добавляйте оценки и&nbsp;оставляйте рецензии на&nbsp;стендап-спешлы и&nbsp;юмористические шоу. Все
@@ -64,6 +65,31 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
             ),
             imgDesktop: '/images/screenshots/desktop/review.jpg',
             imgMobile: '/images/screenshots/mobile/review.png',
+        },
+        {
+            title: '🏆 Топы лучших спешлов',
+            href: '/blog/rating',
+            text: (
+                <>
+                    <p>
+                        Смотрите топ стендап-спешлов за&nbsp;
+                        <Link href="/top-special" className="text-blue-500 hover:text-blue-700">
+                            всё время
+                        </Link>{' '}
+                        и&nbsp;за&nbsp;
+                        <Link href="/top-special/2026" className="text-blue-500 hover:text-blue-700">
+                            текущий год
+                        </Link>
+                        .
+                    </p>
+                    <p>
+                        Каждая Ваша оценка влияет на&nbsp;рейтинг&nbsp;&mdash; помогите любимому концерту подняться выше
+                        в&nbsp;списке!
+                    </p>
+                </>
+            ),
+            imgDesktop: '/images/screenshots/desktop/top.jpg',
+            imgMobile: '/images/screenshots/mobile/top.png',
         },
         {
             title: '📊 Следите за своей статистикой',
@@ -125,31 +151,7 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
             imgMobile: '/images/screenshots/mobile/watchlists.png',
         },
         {
-            title: '🏆 Топы лучших спешлов',
-            text: (
-                <>
-                    <p>
-                        Смотрите топ стендап-спешлов за&nbsp;
-                        <Link href="/top-special" className="text-blue-500 hover:text-blue-700">
-                            всё время
-                        </Link>{' '}
-                        и&nbsp;за&nbsp;
-                        <Link href="/top-special/2026" className="text-blue-500 hover:text-blue-700">
-                            текущий год
-                        </Link>
-                        .
-                    </p>
-                    <p>
-                        Каждая Ваша оценка влияет на&nbsp;рейтинг&nbsp;&mdash; помогите любимому концерту подняться выше
-                        в&nbsp;списке!
-                    </p>
-                </>
-            ),
-            imgDesktop: '/images/screenshots/desktop/top.jpg',
-            imgMobile: '/images/screenshots/mobile/top.png',
-        },
-        {
-            title: '💡 Предлагай контент',
+            title: '💡 Предлагайте контент',
             href: '/blog/content-submit',
             text: (
                 <p>
