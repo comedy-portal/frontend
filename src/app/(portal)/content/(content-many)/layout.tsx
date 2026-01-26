@@ -22,7 +22,7 @@ export default function ContentManyLayout(props: { children: React.ReactNode }) 
                 }
                 size="lg"
                 nav={[
-                    { label: 'Весь контент', href: '/content' },
+                    { label: 'Все', href: '/content' },
                     ...categories.map(({ type, label }) => ({
                         label,
                         href: `/content/${type.toLowerCase()}`,
