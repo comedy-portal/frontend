@@ -30,8 +30,8 @@ export const HeaderSearchResult = ({
     const debouncedSearch = useDebounceCallback(search, 500)
 
     useEffect(() => {
-        if (searchTerm.length >= 3) {
-            debouncedSearch({ query: searchTerm })
+        if (searchTerm.trim().length >= 3) {
+            debouncedSearch({ query: searchTerm.trim() })
         }
     }, [debouncedSearch, searchTerm])
 
