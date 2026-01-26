@@ -17,4 +17,5 @@ export const categories: Category[] = [
     { type: ContentType.SERIES, label: 'Сериалы', toBackLabel: 'Все сериалы' },
     { type: ContentType.SKETCH, label: 'Скетчи', toBackLabel: 'Все скетчи' },
     { type: ContentType.TALK_SHOW, label: 'Ток-шоу', toBackLabel: 'Все ток-шоу' },
+    { type: ContentType.TEAM_SHOW, label: 'Командные', toBackLabel: 'Все командные шоу' },
 ]

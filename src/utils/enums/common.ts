@@ -29,6 +29,7 @@ export enum ContentType {
     SPECIAL = 'special',
     STANDUP = 'standup',
     TALK_SHOW = 'talk_show',
+    TEAM_SHOW = 'team_show',
 }
 
 export enum Order {

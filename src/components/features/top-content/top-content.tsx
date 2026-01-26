@@ -13,7 +13,7 @@ type TopContentProps = {
 
 export const TopContent = ({ children, type, year, take, isAuth }: TopContentProps) => {
     return (
-        <div className="-mt-8">
+        <div>
             {children}
             <TopContentFeed type={type} year={year} take={take} isAuth={isAuth} />
         </div>

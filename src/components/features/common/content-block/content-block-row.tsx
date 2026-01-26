@@ -87,6 +87,7 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                                     'text-base', // for smaller screens
                                 )}
                                 target="_blank"
+                                title={props.name}
                             >
                                 {`${props.position ? props.position + '. ' : ''} ${props.name}`}
                             </Link>
