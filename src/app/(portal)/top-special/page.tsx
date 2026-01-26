@@ -1,35 +1,47 @@
-import { TrophyIcon } from 'lucide-react'
 import { Metadata } from 'next'
 
 import Link from 'next/link'
 
+import { Layout } from '@/components/features/layout/layout/layout'
 import { TopContent } from '@/components/features/top-content/top-content'
 import { GetTopContentTake } from '@/redux/services/content/content.types'
+import { getSettings } from '@/services/settings/settings'
 import { ContentType } from '@/utils/enums/common'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
-// prettier-ignore
 export const metadata: Metadata = {
-    title: 'Топ стендапа за всё время',
-    description:'Ищете, что посмотреть из стендапа на вечер и где найти лучший юмор? Вы попали по адресу. На этой странице собраны лучшие стендап концерты на русском за всё время. Этот топ спешлов сформирован на основе Ваших оценок и является результатом выбора сообщества. Здесь Вы найдёте всё, чтобы посмотреть стендап онлайн: будь то уже культовый спешл или свежее выступление от молодых комиков. Эта подборка поможет Вам выбрать идеальное шоу и насладиться комедией на все сто! Хотите внести свой вклад в формирование этого рейтинга концертов? Ставьте свои оценки на нашей платформе!',
-    keywords: ['топ стендап концертов', 'лучшие стендап концерты', 'русский стендап концерты', 'стендап рейтинг', 'лучшие стендап концерты']
+    title: 'Топ стендап спешлов за всё время',
+    description: 'Лучшие русские стендап спешлы за всё время. Рейтинг сформирован на основе оценок сообщества.',
+    keywords: ['топ стендап спешлов', 'лучшие стендап концерты', 'стендап рейтинг', 'стендап на русском'],
 }
 
-export default async function TopSpecialPage() {
+export default async function TopSpecialAllTimePage() {
+    const settings = await getSettings()
+
     return withAuth({
         render: ({ isAuth }) => (
-            <TopContent type={ContentType.SPECIAL} take={GetTopContentTake.ONE_HUNDRED} isAuth={isAuth}>
-                <div className="mb-4 flex gap-x-3 rounded-lg border border-orange-200 bg-orange-50 p-4">
-                    <TrophyIcon className="hidden shrink-0 text-orange-500 sm:block" />
+            <Layout
+                title="Топ спешлов"
+                info={
                     <div>
-                        Любимый спешл пока не вошёл в топ русскоязычных стендап концертов всех времён?{' '}
-                        <Link href="/content/special?sort=rating_asc" className="text-blue-500 hover:text-blue-700">
-                            Голосуйте
-                        </Link>
-                        , чтобы изменить это!
+                        Этот топ стендап-спешлов <strong>за&nbsp;всё время</strong> формируется на&nbsp;основе оценок
+                        сообщества. В&nbsp;рейтинг попадают выступления, набравшие{' '}
+                        <strong>не&nbsp;менее {settings.topContentMinReviewsCount} оценок</strong>.{' '}
+                        <Link href="/content/special?sort=rating_asc" className="link">
+                            Оценивайте выступления
+                        </Link>{' '}
+                        и&nbsp;влияйте на&nbsp;результаты.
                     </div>
-                </div>
-            </TopContent>
+                }
+                size="sm"
+                nav={[
+                    { label: '2026', href: '/top-special/2026' },
+                    { label: '2025', href: '/top-special/2025' },
+                    { label: 'За всё время', href: '/top-special' },
+                ]}
+            >
+                <TopContent type={ContentType.SPECIAL} take={GetTopContentTake.FIFTY} isAuth={isAuth} />
+            </Layout>
         ),
     })
 }
