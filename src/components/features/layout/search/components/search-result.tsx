@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react'
 import { ClapperboardIcon, UserIcon, UsersIcon } from 'lucide-react'
 import { useDebounceCallback } from 'usehooks-ts'
 
+import Image from 'next/image'
+
 import { messages } from '@/messages'
 import { searchAPI } from '@/redux/services/search/search.api'
 import { ISearch } from '@/utils/types/search'
@@ -83,7 +85,15 @@ export const HeaderSearchResult = ({
                             <SearchResultItem
                                 key={`search-result-item-comedian-${item.slug}`}
                                 title={`${item.name} ${item.surname}${item.isAgent ? '\u00A0*' : ''}`}
-                                icon={<UserIcon size={20} strokeWidth={2.5} />}
+                                icon={
+                                    <Image
+                                        src={`/images/comedians/${item.slug}.jpg`}
+                                        alt={item.name}
+                                        width={36}
+                                        height={36}
+                                        className="rounded-full"
+                                    />
+                                }
                                 href={`/comedians/${item.slug}`}
                                 hideResults={hideResults}
                             />
