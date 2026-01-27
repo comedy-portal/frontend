@@ -1,4 +1,4 @@
-![Deploy Status](https://github.com/comedy-portal/frontend/actions/workflows/deploy.yml/badge.svg)
+[![Deploy Status](https://github.com/comedy-portal/frontend/actions/workflows/deploy.yml/badge.svg)](https://github.com/comedy-portal/frontend/actions/workflows/deploy.yml)
 
 # Comedy portal frontend
 
