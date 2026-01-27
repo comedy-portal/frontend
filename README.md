@@ -1,3 +1,5 @@
+![Deploy Status](https://github.com/comedyportal/frontend/actions/workflows/deploy.yml/badge.svg)
+
 # Comedy portal frontend
 
 ## Prerequisites
