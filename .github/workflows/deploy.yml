@@ -1,9 +1,12 @@
 name: Deploy to Vercel
 
 on:
-    push:
-        branches:
-            - master
+    workflow_dispatch:
+        inputs:
+            branch:
+                description: 'Branch to deploy'
+                required: true
+                default: 'master'
 
 jobs:
     deploy:
@@ -12,6 +15,8 @@ jobs:
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
+              with:
+                  ref: ${{ github.event.inputs.branch }}
 
             - name: Setup Node.js
               uses: actions/setup-node@v4
@@ -28,6 +33,4 @@ jobs:
             - name: Deploy to Vercel
               env:
                   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-                  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-                  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
               run: vercel deploy --prod --token=$VERCEL_TOKEN
