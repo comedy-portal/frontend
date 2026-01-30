@@ -1,7 +1,5 @@
 'use client'
 
-import Snowfall from 'react-snowfall'
-
 import Link from 'next/link'
 
 import { SignUp } from '@/components/features/auth/sign-up'
@@ -20,7 +18,6 @@ export const LandingHero = ({ isAuth }: LandingHeroProps) => {
 
     return (
         <div className="relative flex h-130 w-full items-center justify-center overflow-hidden bg-gray-950">
-            <Snowfall style={{ zIndex: '20' }} />
             <div className="relative flex h-130.5 items-center justify-center">
                 <div
                     className="h-130.5 w-auto bg-[url('/images/promo/comedy-portal.jpg')] mask-[linear-gradient(to_right,transparent_0%,black_30%,black_70%,transparent_100%)] bg-contain bg-center bg-no-repeat mask-contain mask-no-repeat"

@@ -5,7 +5,7 @@ import { LandingBlock } from './components/landing-block'
 import { LandingBlogFeed } from './components/landing-blog-feed'
 import { LandingComediansFeed } from './components/landing-comedians-feed'
 import { LandingContentFeed } from './components/landing-content-feed'
-import { LandingTopWinner } from './components/landing-top-winner'
+import { LandingTopEntryPoint } from './components/landing-top-entry-point'
 import { LandingTrendsFeed } from './components/landing-trends-feed'
 import { LandingHero } from './landing-hero'
 
@@ -20,8 +20,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
 
             <div className="wrapper py-8 sm:py-16" data-nosnippet>
                 <div className="flex flex-col gap-y-6 sm:gap-y-12">
-                    {/* <LandingTopEntryPoint /> */}
-                    <LandingTopWinner />
+                    <LandingTopEntryPoint />
 
                     <section className="flex flex-col gap-y-6">
                         <h3 className="text-2xl font-semibold">В тренде</h3>
