@@ -44,6 +44,26 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 
 export default async function ContentPage(props: { params: Params }) {
     const params = await props.params
+    const content = await getContentById(params.id)
+
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'VideoObject',
+        name: content.name,
+        description: content.metaInfo?.description,
+        thumbnailUrl: content.contentImages?.[0]?.url,
+        uploadDate: content.createdAt,
+        aggregateRating:
+            content.rating.reviewsCount > 0
+                ? {
+                      '@type': 'AggregateRating',
+                      ratingValue: content.rating.avgRating.toString(),
+                      reviewCount: content.rating.reviewsCount.toString(),
+                      bestRating: '10',
+                      worstRating: '1',
+                  }
+                : undefined,
+    }
 
     return withAuth({
         getAuthData: async () => {
@@ -56,7 +76,12 @@ export default async function ContentPage(props: { params: Params }) {
             return { activeUserId: userData.id }
         },
         render: ({ isAuth, data }) => (
-            <Content contentId={params.id} activeUserId={data?.activeUserId ?? null} isAuth={isAuth} />
+            <>
+                {content.rating.reviewsCount > 0 && (
+                    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+                )}
+                <Content contentId={params.id} activeUserId={data?.activeUserId ?? null} isAuth={isAuth} />
+            </>
         ),
     })
 }
