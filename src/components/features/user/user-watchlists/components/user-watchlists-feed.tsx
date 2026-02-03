@@ -17,6 +17,7 @@ import {
 import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
 
 import { UserWatchlistsFeedSkeleton } from './user-watchlists-feed-skeleton'
+import { UserWatchlistsSort } from './user-watchlists-sort'
 
 type UserWatchlistsFeedProps = {
     username: string
@@ -66,7 +67,11 @@ export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps
     }
 
     return (
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-6 lg:block lg:space-y-3">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-6 lg:block lg:space-y-6">
+            <div className="flex items-center justify-between">
+                <div></div>
+                <UserWatchlistsSort />
+            </div>
             {data.map(item => (
                 <ContentBlockRow
                     key={`user-watchlists-feed-item-${item.id}`}

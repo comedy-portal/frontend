@@ -17,6 +17,7 @@ import { useQueryFilters } from '@/utils/filters/use-query-filters'
 
 import { UserReviewsFeedItem } from './user-reviews-feed-item'
 import { UserReviewsFeedSkeleton } from './user-reviews-feed-skeleton'
+import { UserReviewsSort } from './user-reviews-sort'
 
 type UserReviewsFeedProps = {
     userId: number
@@ -71,25 +72,31 @@ export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFee
     }
 
     return (
-        <div className="flex flex-col gap-y-12">
-            <div className="space-y-3">
-                {data.items.map(item => (
-                    <UserReviewsFeedItem
-                        key={`content-reviews-feed-item-${item.id}`}
-                        review={item}
-                        isMyReview={isAuth && activeUserId === userId && item.user.id === activeUserId}
-                    />
-                ))}
+        <div className="space-y-6">
+            <div className="flex items-center justify-between">
+                <div></div>
+                <UserReviewsSort onChange={() => setCursor(undefined)} />
             </div>
+            <div className="flex flex-col gap-y-12">
+                <div className="space-y-3">
+                    {data.items.map(item => (
+                        <UserReviewsFeedItem
+                            key={`content-reviews-feed-item-${item.id}`}
+                            review={item}
+                            isMyReview={isAuth && activeUserId === userId && item.user.id === activeUserId}
+                        />
+                    ))}
+                </div>
 
-            {data.items.length < data.total && (
-                <LoadMore
-                    isLoading={isFetching}
-                    onClick={() => {
-                        setCursor(data.items[data.items.length - 1]?.id)
-                    }}
-                />
-            )}
+                {data.items.length < data.total && (
+                    <LoadMore
+                        isLoading={isFetching}
+                        onClick={() => {
+                            setCursor(data.items[data.items.length - 1]?.id)
+                        }}
+                    />
+                )}
+            </div>
         </div>
     )
 }

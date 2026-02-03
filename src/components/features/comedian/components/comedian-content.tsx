@@ -51,7 +51,7 @@ export const ComedianContent = ({ content, isAuth }: ComedianContentProps) => {
     }
 
     return (
-        <div className={classNames('lg:block lg:space-y-2', 'grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6')}>
+        <div className={classNames('lg:block lg:space-y-3', 'grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6')}>
             {content.map(item => (
                 <ContentBlockRow
                     key={`comedian-content-feed-item-${item.id}`}

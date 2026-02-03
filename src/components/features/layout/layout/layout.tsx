@@ -27,7 +27,7 @@ export const Layout = ({ children, filter, title, info, size, nav, preserveQuery
     return (
         <div className="wrapper flex gap-x-12 pt-12 pb-24">
             <div className={classNames('flex-1 shrink-0', innerWrapperSize)}>
-                <div className="mb-12 space-y-6">
+                <div className="mb-6 space-y-6">
                     <h1 className="text-4xl font-bold sm:text-3xl">{title}</h1>
                     {info && <div className="text-gray-500">{info}</div>}
                     {sidebar && sidebar.showOnMobile && (

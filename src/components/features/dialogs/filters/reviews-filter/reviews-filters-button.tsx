@@ -12,9 +12,6 @@ import { ReviewsFilters } from './reviews-filters'
 
 export const ReviewsFiltersButton = () => {
     const [filters] = useQueryFilters(parseReviewsFiltersFromSearchParams, buildReviewsFiltersQueryString)
-
-    const hasActiveFilters =
-        filters.sort !== DEFAULT_REVIEWS_FILTERS.sort || filters.with_text !== DEFAULT_REVIEWS_FILTERS.with_text
-
+    const hasActiveFilters = filters.with_text !== DEFAULT_REVIEWS_FILTERS.with_text
     return <FiltersButton filterComponent={<ReviewsFilters />} isActive={hasActiveFilters} />
 }

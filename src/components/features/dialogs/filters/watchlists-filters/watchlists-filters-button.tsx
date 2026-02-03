@@ -13,7 +13,6 @@ export const WatchlistFiltersButton = () => {
     const [filters] = useQueryFilters(parseWatchlistsFiltersFromSearchParams, buildWatchlistsFiltersQueryString)
 
     const hasActiveFilters =
-        filters.sort !== DEFAULT_WATCHLISTS_FILTERS.sort ||
         filters.min_rating !== DEFAULT_WATCHLISTS_FILTERS.min_rating ||
         filters.max_rating !== DEFAULT_WATCHLISTS_FILTERS.max_rating
 
