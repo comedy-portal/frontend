@@ -1,6 +1,6 @@
 'use client'
 
-import { FunnelIcon } from 'lucide-react'
+import { FunnelIcon, FunnelXIcon } from 'lucide-react'
 
 import { useDialog } from '@/utils/providers/dialog-provider'
 
@@ -17,17 +17,9 @@ export const FiltersButton = ({ filterComponent, isActive }: FiltersButtonProps)
     }
 
     return (
-        <div className="relative">
-            <div
-                className="hover:text-950 flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-lg border border-gray-700 hover:border-gray-950"
-                onClick={handleClick}
-            >
-                <FunnelIcon />
-            </div>
-
-            {isActive && (
-                <span className="absolute -top-1 -right-1 size-4 rounded-full border-2 border-white bg-red-400" />
-            )}
+        <div className="relative flex cursor-pointer items-center gap-x-1.5" onClick={handleClick}>
+            {isActive ? <FunnelXIcon /> : <FunnelIcon />}
+            Фильтр
         </div>
     )
 }

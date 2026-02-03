@@ -1,3 +1,4 @@
+import { UserReviewsControls } from './components/user-reviews-controls/user-reviews-controls'
 import { UserReviewsFeed } from './components/user-reviews-feed'
 
 type UserReviewsProps = {
@@ -7,5 +8,10 @@ type UserReviewsProps = {
 }
 
 export const UserReviews = ({ userId, activeUserId, isAuth }: UserReviewsProps) => {
-    return <UserReviewsFeed userId={userId} activeUserId={activeUserId} isAuth={isAuth} />
+    return (
+        <div className="space-y-6">
+            <UserReviewsControls />
+            <UserReviewsFeed userId={userId} activeUserId={activeUserId} isAuth={isAuth} />
+        </div>
+    )
 }
