@@ -16,11 +16,10 @@ type LayoutNavProps = {
         exact?: boolean
         filter?: React.ReactNode
     }[]
-    filter?: React.ReactNode
     preserveQuery?: boolean
 }
 
-export const LayoutNav = ({ items, filter, preserveQuery = false }: LayoutNavProps) => {
+export const LayoutNav = ({ items, preserveQuery = false }: LayoutNavProps) => {
     const pathname = usePathname().toLowerCase()
     const searchParams = useSearchParams()
 
@@ -34,15 +33,9 @@ export const LayoutNav = ({ items, filter, preserveQuery = false }: LayoutNavPro
         return <hr className="border-gray-200" />
     }
 
-    let activeFilter: React.ReactNode = filter ?? null
-
     const renderedItems = items.map(({ label, href, exact = false, filter: itemFilter }) => {
         const target = href.toLowerCase()
         const isActive = exact ? pathname === target : getLastSegment(pathname) === getLastSegment(target)
-
-        if (!activeFilter && isActive) {
-            activeFilter = itemFilter ?? null
-        }
 
         const hrefWithParams =
             preserveQuery && currentRoot === getFirstSegment(target) && currentQuery ? `${href}?${currentQuery}` : href
@@ -64,7 +57,6 @@ export const LayoutNav = ({ items, filter, preserveQuery = false }: LayoutNavPro
 
     return (
         <div className="flex items-center gap-x-6">
-            {activeFilter && <div className="shrink-0">{activeFilter}</div>}
             <nav className="min-w-0 flex-1">
                 <ScrollContainer
                     className="relative flex gap-x-4 pb-5"

@@ -15,11 +15,7 @@ const SORT_OPTIONS = [
     { label: 'По возрастанию рейтинга', value: ContentUrlSortBy.RATING_ASC },
 ]
 
-type UserReviewsSortProps = {
-    onChange: (value?: number) => void
-}
-
-export const ContentManySort = ({ onChange }: UserReviewsSortProps) => {
+export const ContentManyControlsSort = () => {
     const [filters, setFilters] = useQueryFilters(parseContentFiltersFromSearchParams, buildContentFiltersQueryString)
 
     const activeSortOption = SORT_OPTIONS.find(option => option.value === filters.sort) ?? SORT_OPTIONS[0]
@@ -30,7 +26,6 @@ export const ContentManySort = ({ onChange }: UserReviewsSortProps) => {
             items={SORT_OPTIONS.map(option => ({
                 label: option.label,
                 onClick: () => {
-                    onChange()
                     setFilters({
                         ...filters,
                         sort: option.value,

@@ -18,7 +18,6 @@ import { useQueryFilters } from '@/utils/filters/use-query-filters'
 import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
 
 import { ContentManyFeedSkeleton } from './content-many-feed-skeleton'
-import { ContentManySort } from './content-many-sort'
 
 type ContentManyFeedProps = {
     type?: ContentType
@@ -76,31 +75,24 @@ export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
 
     return (
         <div className="flex flex-col gap-y-12">
-            <div className="space-y-6">
-                <div className="flex items-center justify-between">
-                    <div></div>
-                    <ContentManySort onChange={() => setCursor(undefined)} />
-                </div>
-
-                <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-3 lg:grid-cols-3 xl:grid-cols-4">
-                    {data.items.map(item => (
-                        <ContentBlock
-                            key={`content-many-feed-item-${item.id}`}
-                            id={item.id}
-                            name={item.name}
-                            type={item.type}
-                            year={item.year}
-                            duration={item.duration}
-                            avgRating={item.rating.avgRating}
-                            myRating={item.reviews?.[0]?.mark}
-                            myReviewId={item.reviews?.[0]?.id}
-                            imageUrl={item.contentImages[0]?.url}
-                            author={getAuthorDisplayNameForContent(item)}
-                            isInWatchlist={(item.watchlists?.length ?? 0) > 0}
-                            isAuth={isAuth}
-                        />
-                    ))}
-                </div>
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-3 lg:grid-cols-3 xl:grid-cols-4">
+                {data.items.map(item => (
+                    <ContentBlock
+                        key={`content-many-feed-item-${item.id}`}
+                        id={item.id}
+                        name={item.name}
+                        type={item.type}
+                        year={item.year}
+                        duration={item.duration}
+                        avgRating={item.rating.avgRating}
+                        myRating={item.reviews?.[0]?.mark}
+                        myReviewId={item.reviews?.[0]?.id}
+                        imageUrl={item.contentImages[0]?.url}
+                        author={getAuthorDisplayNameForContent(item)}
+                        isInWatchlist={(item.watchlists?.length ?? 0) > 0}
+                        isAuth={isAuth}
+                    />
+                ))}
             </div>
 
             {data.items.length < data.total && (
