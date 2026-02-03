@@ -2,11 +2,9 @@ import { useCallback, useState } from 'react'
 import RangeSlider from 'react-range-slider-input'
 
 import { Button } from '@/components/ui/forms/button'
-import { Radio } from '@/components/ui/forms/radio'
 import { Switcher } from '@/components/ui/forms/switcher'
 import {
     ContentFiltersState,
-    ContentUrlSortBy,
     DEFAULT_CONTENT_FILTERS,
     buildContentFiltersQueryString,
     parseContentFiltersFromSearchParams,
@@ -15,13 +13,6 @@ import { useQueryFilters } from '@/utils/filters/use-query-filters'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
 import 'react-range-slider-input/dist/style.css'
-
-const SORT_OPTIONS = [
-    { label: 'Сначала новые', value: ContentUrlSortBy.DATE_DESC },
-    { label: 'Сначала старые', value: ContentUrlSortBy.DATE_ASC },
-    { label: 'По убыванию рейтинга', value: ContentUrlSortBy.RATING_DESC },
-    { label: 'По возрастанию рейтинга', value: ContentUrlSortBy.RATING_ASC },
-]
 
 type ContentFiltersProps = {
     isAuth: boolean
@@ -41,7 +32,10 @@ export const ContentFilters = ({ isAuth }: ContentFiltersProps) => {
     }, [filters, setFiltersToUrl, dialog])
 
     const handleReset = useCallback(() => {
-        setFilters(DEFAULT_CONTENT_FILTERS)
+        setFilters(prev => ({
+            ...DEFAULT_CONTENT_FILTERS,
+            sort: prev.sort,
+        }))
     }, [])
 
     const handleRatingChange = useCallback((values: readonly number[]) => {
@@ -62,21 +56,6 @@ export const ContentFilters = ({ isAuth }: ContentFiltersProps) => {
     return (
         <div className="flex w-full flex-col gap-y-6 sm:w-104">
             <h1 className="text-2xl font-bold">Фильтр</h1>
-
-            <div className="flex flex-col gap-y-2">
-                <label className="font-bold">Сортировать:</label>
-                {SORT_OPTIONS.map(option => (
-                    <Radio
-                        key={option.value}
-                        name="sort"
-                        value={option.value}
-                        checked={filters.sort === option.value}
-                        onChange={() => setFilters(prev => ({ ...prev, sort: option.value }))}
-                    >
-                        {option.label}
-                    </Radio>
-                ))}
-            </div>
 
             <div className="flex flex-col gap-y-4">
                 <label className="font-bold">Общий рейтинг:</label>

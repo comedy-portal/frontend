@@ -17,7 +17,6 @@ export const ContentFiltersButton = ({ isAuth }: ContentFiltersButtonProps) => {
     const [filters] = useQueryFilters(parseContentFiltersFromSearchParams, buildContentFiltersQueryString)
 
     const hasActiveFilters =
-        filters.sort !== DEFAULT_CONTENT_FILTERS.sort ||
         filters.min_rating !== DEFAULT_CONTENT_FILTERS.min_rating ||
         filters.max_rating !== DEFAULT_CONTENT_FILTERS.max_rating ||
         filters.not_watched !== DEFAULT_CONTENT_FILTERS.not_watched
