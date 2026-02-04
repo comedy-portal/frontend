@@ -85,9 +85,9 @@ const article: BlogArticle = {
                 <h2 className="text-lg font-semibold">Как устроены рейтинги?</h2>
                 <p>На&nbsp;<strong>Камеди Портал</strong> мы&nbsp;используем прозрачную рейтинговую систему: Вы&nbsp;можете видеть количество оценок и&nbsp;среднюю оценку любого контента. Рейтинги формируются исключительно пользователями нашего сервиса.</p>
                 <ul className="list-disc sm:pl-12 pl-8 space-y-1">
-                    <li>Вы&nbsp;можете поставить любому <Link href="/content" className='link'>комедийному контенту</Link> оценку от&nbsp;<strong>1&nbsp;до&nbsp;10&nbsp;баллов</strong>. Мы&nbsp;принимаем только целые числа&nbsp;&mdash; так процесс остаётся максимально простым и&nbsp;понятным.</li>
-                    <li>Все оценки пересчитываются <strong>каждый день</strong>. Это значит, что рейтинг всегда актуален и&nbsp;отражает свежие впечатления сообщества.</li>
-                    <li>Итоговый рейтинг контента&nbsp;&mdash; это его <strong>средний балл</strong>. Мы&nbsp;рассчитываем его по&nbsp;простой формуле: <strong>сумма всех оценок делится на&nbsp;их&nbsp;общее количество</strong>. Результат всегда отображается с&nbsp;точностью до&nbsp;одной десятой (например, <strong>8.4</strong>).</li>
+                    <li>Вы&nbsp;можете поставить любому <Link href="/content" className='link'>комедийному контенту</Link> оценку от&nbsp;<strong>1&nbsp;до&nbsp;10&nbsp;баллов</strong>. Мы&nbsp;принимаем только целые числа&nbsp;&mdash; так процесс остаётся максимально простым и&nbsp;понятным;</li>
+                    <li>все оценки пересчитываются <strong>каждый день</strong>. Это значит, что рейтинг всегда актуален и&nbsp;отражает свежие впечатления сообщества;</li>
+                    <li>итоговый рейтинг контента&nbsp;&mdash; это его <strong>средний балл</strong>. Мы&nbsp;рассчитываем его по&nbsp;простой формуле: <strong>сумма всех оценок делится на&nbsp;их&nbsp;общее количество</strong>. Результат всегда отображается с&nbsp;точностью до&nbsp;одной десятой (например, <strong>8.4</strong>).</li>
                 </ul>
             </section>
 
@@ -96,7 +96,7 @@ const article: BlogArticle = {
                 <div className="flex items-center sm:space-x-8 space-y-8 sm:space-y-0 flex-col sm:flex-row">
                     <div className="sm:w-1/3 shrink-0">
                         <Image
-                            src="/images/screenshots/mobile/statistics.png"
+                            src="/images/screenshots/mobile/profile.png"
                             alt="Full Screen Mode"
                             width={800}
                             height={1576}
