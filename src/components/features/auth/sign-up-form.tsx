@@ -86,7 +86,7 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
             </Button>
 
             {/* prettier-ignore */}
-            <p className="m-auto text-center text-xs text-gray-400 sm:w-3/4">Нажимая кнопку «Продолжить», я подтверждаю, что ознакомился с <Link href="/legal/privacy-policy" className="text-blue-500">Политикой конфиденциальности</Link> и <Link href="/legal/terms-of-use" className="text-blue-500">Пользовательским соглашением</Link></p>
+            <p className="m-auto text-center text-xs text-gray-400 sm:w-3/4">Нажимая кнопку «Продолжить», подтверждаю ознакомление с <Link href="/legal/privacy-policy" className="text-blue-500">Политикой конфиденциальности</Link> и <Link href="/legal/terms-of-use" className="text-blue-500">Пользовательским соглашением</Link></p>
         </form>
     )
 }

@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import { SparklesIcon } from 'lucide-react'
 
 import Image from 'next/image'
@@ -7,17 +9,23 @@ import { WelcomeLoginButton } from './components/welcome-login-button'
 
 type WelcomeProps = {
     username?: string
-    href?: string
     isAuth: boolean
+}
+
+type Feature = {
+    title: string
+    href?: string
+    text: ReactNode
+    imgDesktop: string
+    imgMobile: string
     isNew?: boolean
 }
 
 export const Welcome = ({ username, isAuth }: WelcomeProps) => {
-    const features = [
+    const features: Feature[] = [
         {
             title: '🔔 Подписывайтесь на комиков и группы',
             href: '/blog/subscriptions',
-            isNew: true,
             text: (
                 <div className="space-y-2">
                     <p>Узнавайте о новинках первыми! Подписывайтесь на любимых авторов прямо на их странице.</p>
@@ -145,7 +153,7 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     <section className="absolute inset-0 m-auto flex flex-col items-center justify-center space-y-8 text-center md:w-2/3">
                         <h1 className="text-4xl font-bold md:text-5xl">Добро пожаловать!</h1>
                         <p className="text-lg">
-                            Мы&nbsp;рады, что&nbsp;Вы присоединились к&nbsp;нам! Ниже, Вы&nbsp;найдете краткое
+                            Мы&nbsp;рады, что&nbsp;Вы присоединились к&nbsp;нам! Ниже Вы&nbsp;найдете краткое
                             руководство по&nbsp;основным возможностям нашего портала. Надеемся, что они помогут Вам
                             максимально эффективно использовать наш сервис.
                         </p>
