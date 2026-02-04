@@ -153,7 +153,7 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     <section className="absolute inset-0 m-auto flex flex-col items-center justify-center space-y-8 text-center md:w-2/3">
                         <h1 className="text-4xl font-bold md:text-5xl">Добро пожаловать!</h1>
                         <p className="text-lg">
-                            Мы&nbsp;рады, что&nbsp;Вы присоединились к&nbsp;нам! Ниже Вы&nbsp;найдете краткое
+                            Мы&nbsp;рады, что&nbsp;Вы присоединились к&nbsp;нам! Ниже Вы&nbsp;найдёте краткое
                             руководство по&nbsp;основным возможностям нашего портала. Надеемся, что они помогут Вам
                             максимально эффективно использовать наш сервис.
                         </p>
