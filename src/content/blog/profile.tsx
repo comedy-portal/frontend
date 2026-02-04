@@ -5,7 +5,7 @@ import { BlogArticle } from '@/utils/types/blog'
 // prettier-ignore
 const article: BlogArticle = {
     slug: 'profile',
-    date: '2026-02-03',
+    date: '2026-02-04',
 
     preview: {
         image: '/images/articles/profile.jpg',
