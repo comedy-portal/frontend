@@ -34,7 +34,7 @@ export const LinksBlock = ({ caption, links }: LinksBlockProps) => {
         <section className="space-y-2">
             <h3 className="font-bold">{caption}</h3>
             {filteredLinks.map(link => {
-                const platformData = getPlatformUrl(link.platform, link.identifier)
+                const platformData = getPlatformUrl(link)
 
                 if (!platformData) return null
 

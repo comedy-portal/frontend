@@ -1,5 +1,5 @@
 import { Platform } from '@/utils/enums/common'
-import { IComedianBaseData, IGroupBaseData } from '@/utils/types/common'
+import { IComedianBaseData, IGroupBaseData, ILink } from '@/utils/types/common'
 
 export function getMonthNameRu(monthNumber: number): string {
     if (monthNumber < 1 || monthNumber > 12) return ''
@@ -70,7 +70,7 @@ export function getAuthorsDisplayNamesForContent({
     return authors
 }
 
-export const getPlatformUrl = (platform: Platform, identifier: string) => {
+export const getPlatformUrl = ({ platform, identifier }: ILink) => {
     switch (platform) {
         case Platform.YOUTUBE:
             return { href: `https://www.youtube.com/${identifier}`, label: 'YouTube' }

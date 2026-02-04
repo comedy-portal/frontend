@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 
 import { Content } from '@/components/features/content/content'
+import { VideoSchema } from '@/components/features/seo/video-schema'
 import { getContentById } from '@/services/content/content'
 import { getUserData } from '@/services/user/user'
 import { getAuthorsDisplayNamesForContent } from '@/utils/helpers/common'
@@ -44,19 +45,21 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 
 export default async function ContentPage(props: { params: Params }) {
     const params = await props.params
+    const content = await getContentById(params.id)
 
-    return withAuth({
-        getAuthData: async () => {
-            const userData = await getUserData()
+    return (
+        <>
+            <VideoSchema content={content} />
 
-            if (!userData) {
-                return null
-            }
-
-            return { activeUserId: userData.id }
-        },
-        render: ({ isAuth, data }) => (
-            <Content contentId={params.id} activeUserId={data?.activeUserId ?? null} isAuth={isAuth} />
-        ),
-    })
+            {withAuth({
+                getAuthData: async () => {
+                    const userData = await getUserData()
+                    return userData ? { activeUserId: userData.id } : null
+                },
+                render: ({ isAuth, data }) => (
+                    <Content contentId={params.id} activeUserId={data?.activeUserId ?? null} isAuth={isAuth} />
+                ),
+            })}
+        </>
+    )
 }
