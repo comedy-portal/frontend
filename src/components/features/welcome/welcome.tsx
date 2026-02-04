@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import { SparklesIcon } from 'lucide-react'
 
 import Image from 'next/image'
@@ -7,17 +9,23 @@ import { WelcomeLoginButton } from './components/welcome-login-button'
 
 type WelcomeProps = {
     username?: string
-    href?: string
     isAuth: boolean
+}
+
+type Feature = {
+    title: string
+    href?: string
+    text: ReactNode
+    imgDesktop: string
+    imgMobile: string
     isNew?: boolean
 }
 
 export const Welcome = ({ username, isAuth }: WelcomeProps) => {
-    const features = [
+    const features: Feature[] = [
         {
             title: '🔔 Подписывайтесь на комиков и группы',
             href: '/blog/subscriptions',
-            isNew: true,
             text: (
                 <div className="space-y-2">
                     <p>Узнавайте о новинках первыми! Подписывайтесь на любимых авторов прямо на их странице.</p>
@@ -31,7 +39,7 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
             imgMobile: '/images/screenshots/mobile/subscriptions.png',
         },
         {
-            title: '🔍 Удобный поиск и фильтры',
+            title: '🔍 Весь контент в одном месте',
             text: (
                 <div className="space-y-2">
                     <p>
@@ -92,7 +100,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
             imgMobile: '/images/screenshots/mobile/top.png',
         },
         {
-            title: '📊 Следите за своей статистикой',
+            title: '📊 Создайте свой профиль',
+            href: '/blog/profile',
             text: (
                 <div className="space-y-2">
                     <p>
@@ -118,37 +127,8 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     </p>
                 </div>
             ),
-            imgDesktop: '/images/screenshots/desktop/statistics.jpg',
-            imgMobile: '/images/screenshots/mobile/statistics.png',
-        },
-        {
-            title: '🗂️ Формируйте коллекцию рекомендаций',
-            text: (
-                <p>
-                    Хотите поделиться с&nbsp;друзьями тем, что понравилось? В&nbsp;Вашем профиле вся{' '}
-                    <WelcomeLoginButton
-                        caption="история просмотров и&nbsp;оценок"
-                        href={`/users/${username}`}
-                        isAuth={isAuth}
-                    />{' '}
-                    доступна в&nbsp;удобном виде.
-                </p>
-            ),
             imgDesktop: '/images/screenshots/desktop/reviews.jpg',
-            imgMobile: '/images/screenshots/mobile/reviews.png',
-        },
-        {
-            title: '⭐ Сохраняйте в избранное',
-            text: (
-                <p>
-                    Нашли шоу или спешл, который хочется посмотреть позже? Просто добавьте его в&nbsp;
-                    <WelcomeLoginButton caption="избранное" href={`/users/${username}/watchlists`} isAuth={isAuth} />
-                    &nbsp;&mdash; оно сохранится в Вашем профиле и&nbsp;будет видно другим пользователям, чтобы они тоже
-                    могли открыть для себя новые рекомендации.
-                </p>
-            ),
-            imgDesktop: '/images/screenshots/desktop/watchlists.jpg',
-            imgMobile: '/images/screenshots/mobile/watchlists.png',
+            imgMobile: '/images/screenshots/mobile/profile.png',
         },
         {
             title: '💡 Предлагайте контент',
@@ -173,7 +153,7 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
                     <section className="absolute inset-0 m-auto flex flex-col items-center justify-center space-y-8 text-center md:w-2/3">
                         <h1 className="text-4xl font-bold md:text-5xl">Добро пожаловать!</h1>
                         <p className="text-lg">
-                            Мы&nbsp;рады, что&nbsp;Вы присоединились к&nbsp;нам! Ниже, Вы&nbsp;найдете краткое
+                            Мы&nbsp;рады, что&nbsp;Вы присоединились к&nbsp;нам! Ниже Вы&nbsp;найдёте краткое
                             руководство по&nbsp;основным возможностям нашего портала. Надеемся, что они помогут Вам
                             максимально эффективно использовать наш сервис.
                         </p>

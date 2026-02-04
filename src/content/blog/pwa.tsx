@@ -75,9 +75,9 @@ const article: BlogArticle = {
                 <p><strong>PWA (Progressive Web App)</strong>&nbsp;&mdash; это сайт, который ведет себя как приложение.</p>
                 <p>С PWA вы получаете:</p>
                 <ul className="list-disc sm:pl-12 pl-8 space-y-1">
-                    <li>Отдельное окно без адресной строки</li>
-                    <li>Быстрый доступ и&nbsp;экономию трафика</li>
-                    <li>Возможность получать уведомления</li>
+                    <li>отдельное окно без адресной строки;</li>
+                    <li>быстрый доступ и&nbsp;экономию трафика;</li>
+                    <li>возможность получать уведомления.</li>
                 </ul>
                 <p>И&nbsp;всё это <strong>без необходимости скачивать приложение из&nbsp;Google Play или App Store</strong>&nbsp;&mdash; достаточно один раз открыть сайт в&nbsp;браузере.</p>
             </section>
@@ -133,10 +133,10 @@ const article: BlogArticle = {
             <section className="space-y-4">
                 <h2 className="text-lg font-semibold">Преимущества установки</h2>
                 <ul className="list-disc sm:pl-12 pl-8 space-y-1">
-                    <li>Быстрый доступ с&nbsp;домашнего экрана или рабочего стола</li>
-                    <li>Удобный интерфейс без лишних вкладок браузера</li>
-                    <li>Возможность сохранять прогресс в&nbsp;просмотре контента</li>
-                    <li>Поддержка всех устройств: Android, iOS, Windows, Mac</li>
+                    <li>быстрый доступ с&nbsp;домашнего экрана или рабочего стола;</li>
+                    <li>удобный интерфейс без лишних вкладок браузера;</li>
+                    <li>возможность сохранять прогресс в&nbsp;просмотре контента;</li>
+                    <li>поддержка всех устройств: Android, iOS, Windows, Mac;</li>
                 </ul>
             </section>
 
