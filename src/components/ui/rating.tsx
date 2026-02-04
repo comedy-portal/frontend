@@ -10,9 +10,9 @@ type RatingProps = {
 export const Rating = ({ value, className, isHighlight, onClick }: RatingProps) => {
     const getColor = (value: number) => {
         if (value === 0) return 'gray'
-        if (value >= 1 && value < 4) return 'red'
-        if (value >= 4 && value < 8) return 'yellow'
-        if (value >= 8 && value <= 10) return 'green'
+        if (value >= 1 && value <= 3) return 'red'
+        if (value > 3 && value <= 7) return 'yellow'
+        if (value > 7 && value <= 10) return 'green'
         return 'gray'
     }
 

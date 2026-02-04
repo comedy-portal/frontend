@@ -99,7 +99,7 @@ export const RatingBar = (props: RatingBarProps) => {
 
                 <Rating
                     value={currentRating}
-                    className={classNames('size-12 flex-shrink-0 text-lg', {
+                    className={classNames('size-12 shrink-0 text-lg', {
                         'cursor-pointer': showPointerOnRating,
                     })}
                     isHighlight={props.isHighlight}
