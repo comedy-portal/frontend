@@ -1,18 +1,11 @@
-'use client'
-
 import { CircleUserIcon } from 'lucide-react'
 
 import { Share } from '@/components/ui/share'
+import { ContentType } from '@/utils/enums/common'
 import { formatDuration } from '@/utils/helpers/registration-date-format'
 
-const Item = ({ label, value }: { label: React.ReactNode; value: number }) => {
-    return (
-        <li className="text-center">
-            <div className="whitespace-nowrap text-gray-500">{label}</div>
-            <div className="text-2xl font-bold">{value}</div>
-        </li>
-    )
-}
+import { UserSidebarReviewsWithTypes } from './components/user-sidebar-reviews-with-types'
+import { UserSidebarStatRow } from './components/user-sidebar-stat-row'
 
 type UserSidebarProps = {
     username: string
@@ -21,6 +14,7 @@ type UserSidebarProps = {
         reviews: number
         watchlists: number
         textReviewsCount: number
+        reviewsByType: Partial<Record<ContentType, number>>
     }
 }
 
@@ -40,14 +34,18 @@ export const UserSidebar = (props: UserSidebarProps) => {
 
                 <hr className="border-dashed border-gray-300" />
 
-                <ul className="flex flex-col gap-y-4">
-                    <Item label="Оценено выступлений" value={props._count?.reviews ?? 0} />
-                    <Item label="Написано рецензий" value={props._count?.textReviewsCount ?? 0} />
-                    <Item label="Добавлено в избранное" value={props._count?.watchlists ?? 0} />
+                <ul className="flex flex-col gap-y-3">
+                    <UserSidebarReviewsWithTypes
+                        total={props._count?.reviews ?? 0}
+                        reviewsByType={props._count.reviewsByType}
+                    />
+                    <UserSidebarStatRow label="Написано рецензий" value={props._count?.textReviewsCount ?? 0} />
+                    <UserSidebarStatRow label="Добавлено в избранное" value={props._count?.watchlists ?? 0} />
                 </ul>
 
                 <div className="absolute -bottom-6 left-1/2 size-12 -translate-x-1/2 rounded-full bg-gray-100" />
             </div>
+
             <Share title={props.username} url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/users/${props.username}`} />
         </div>
     )

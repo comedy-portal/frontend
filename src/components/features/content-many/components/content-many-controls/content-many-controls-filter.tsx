@@ -9,17 +9,21 @@ import {
 } from '@/utils/filters/content-filters'
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
 
-type ContentFiltersButtonProps = {
+type ContentManyControlsFilterProps = {
     isAuth: boolean
 }
 
-export const ContentFiltersButton = ({ isAuth }: ContentFiltersButtonProps) => {
+export const ContentManyControlsFilter = ({ isAuth }: ContentManyControlsFilterProps) => {
     const [filters] = useQueryFilters(parseContentFiltersFromSearchParams, buildContentFiltersQueryString)
 
-    const hasActiveFilters =
-        filters.min_rating !== DEFAULT_CONTENT_FILTERS.min_rating ||
-        filters.max_rating !== DEFAULT_CONTENT_FILTERS.max_rating ||
-        filters.not_watched !== DEFAULT_CONTENT_FILTERS.not_watched
-
-    return <FiltersButton filterComponent={<ContentFilters isAuth={isAuth} />} isActive={hasActiveFilters} />
+    return (
+        <FiltersButton
+            filterComponent={<ContentFilters isAuth={isAuth} />}
+            isActive={
+                filters.min_rating !== DEFAULT_CONTENT_FILTERS.min_rating ||
+                filters.max_rating !== DEFAULT_CONTENT_FILTERS.max_rating ||
+                filters.not_watched !== DEFAULT_CONTENT_FILTERS.not_watched
+            }
+        />
+    )
 }

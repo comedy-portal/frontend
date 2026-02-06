@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
@@ -29,20 +29,37 @@ export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFee
     const [cursor, setCursor] = useState<number>()
 
     const { sortBy, order } = useMemo(() => {
-        setCursor(undefined)
+        let sortBy = ReviewSortBy.DATE
+        let order = Order.DESC
+
         switch (filters.sort) {
             case ReviewsUrlSortBy.DATE_DESC:
-                return { sortBy: ReviewSortBy.DATE, order: Order.DESC }
+                sortBy = ReviewSortBy.DATE
+                order = Order.DESC
+                break
+
             case ReviewsUrlSortBy.DATE_ASC:
-                return { sortBy: ReviewSortBy.DATE, order: Order.ASC }
+                sortBy = ReviewSortBy.DATE
+                order = Order.ASC
+                break
+
             case ReviewsUrlSortBy.MARK_DESC:
-                return { sortBy: ReviewSortBy.MARK, order: Order.DESC }
+                sortBy = ReviewSortBy.MARK
+                order = Order.DESC
+                break
+
             case ReviewsUrlSortBy.MARK_ASC:
-                return { sortBy: ReviewSortBy.MARK, order: Order.ASC }
-            default:
-                return { sortBy: ReviewSortBy.DATE, order: Order.DESC }
+                sortBy = ReviewSortBy.MARK
+                order = Order.ASC
+                break
         }
+
+        return { sortBy, order }
     }, [filters.sort])
+
+    useEffect(() => {
+        setCursor(undefined)
+    }, [filters.sort, filters.with_text, filters.types])
 
     const { data, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsQuery({
         user_id: userId,
@@ -50,6 +67,7 @@ export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFee
         with_text: filters.with_text,
         order,
         cursor,
+        types: filters.types,
     })
 
     if (isError) {
@@ -59,7 +77,7 @@ export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFee
     if (isSuccess && data.items.length === 0) {
         return (
             <EmptyMessage>
-                Список оценок и рецензий пуст. Попробуйте зайти позже или изменить фильтры.
+                Список оценок и рецензий пуст. Попробуйте зайти позже или изменить фильтр.
                 <br />
                 Каждый зарегистрированный пользователь может оставить рецензию на контент или просто оценить его.
             </EmptyMessage>

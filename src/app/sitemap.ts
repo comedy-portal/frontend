@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-import { categories } from '@/utils/dict/categories'
+import { contentTypesDict } from '@/utils/dict/content-types'
 
 const metadataBase = new URL(process.env.NEXT_PUBLIC_WEBSITE_DOMAIN as string)
 
@@ -118,8 +118,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
     ]
 
-    const contentRoutes: MetadataRoute.Sitemap = categories.map(({ type }) => ({
-        url: `${metadataBase.href}content/${type.toLowerCase()}`,
+    const contentRoutes: MetadataRoute.Sitemap = contentTypesDict.map(({ slug }) => ({
+        url: `${metadataBase.href}content/${slug.toLowerCase()}`,
         lastModified: now,
         changeFrequency: 'daily',
         priority: 0.8,

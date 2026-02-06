@@ -63,6 +63,7 @@ export const LandingContentFeed = (props: LandingContentFeedProps) => {
                     author={getAuthorDisplayNameForContent(item)}
                     isInWatchlist={(item.watchlists?.length ?? 0) > 0}
                     isAuth={props.isAuth}
+                    hasWatchlistControl
                 />
             ))}
         </ScrollContainer>

@@ -12,7 +12,7 @@ export type GetWatchlistParams = {
     sort_by?: WatchlistSortBy
     order?: Order
     year?: number
-    type?: ContentType
+    types?: ContentType[]
     min_rating?: number
     max_rating?: number
     cursor?: number

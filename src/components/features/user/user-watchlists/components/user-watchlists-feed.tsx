@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 
 import { ContentBlockRow } from '@/components/features/common/content-block/content-block-row'
 import { CommonError } from '@/components/ui/common-error'
@@ -27,16 +27,27 @@ export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps
     const [filters] = useQueryFilters(parseWatchlistsFiltersFromSearchParams, buildWatchlistsFiltersQueryString)
 
     const { sortBy, order } = useMemo(() => {
+        let sortBy = WatchlistSortBy.CONTENT_DATE
+        let order = Order.DESC
+
         switch (filters.sort) {
             case WatchlistsUrlSortBy.DATE_DESC:
-                return { sortBy: WatchlistSortBy.CONTENT_DATE, order: Order.DESC }
+                sortBy = WatchlistSortBy.CONTENT_DATE
+                order = Order.DESC
+                break
+
             case WatchlistsUrlSortBy.SAVED_AT_DESC:
-                return { sortBy: WatchlistSortBy.SAVED_AT, order: Order.DESC }
+                sortBy = WatchlistSortBy.SAVED_AT
+                order = Order.DESC
+                break
+
             case WatchlistsUrlSortBy.RATING_DESC:
-                return { sortBy: WatchlistSortBy.RATING, order: Order.DESC }
-            default:
-                return { sortBy: WatchlistSortBy.CONTENT_DATE, order: Order.DESC }
+                sortBy = WatchlistSortBy.RATING
+                order = Order.DESC
+                break
         }
+
+        return { sortBy, order }
     }, [filters.sort])
 
     const { data, isFetching, isSuccess, isError } = watchlistsAPI.useGetWatchlistQuery({
@@ -45,6 +56,7 @@ export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps
         sort_by: sortBy,
         min_rating: filters.min_rating,
         max_rating: filters.max_rating,
+        types: filters.types,
     })
 
     if (isError) {
@@ -66,7 +78,7 @@ export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps
     }
 
     return (
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-6 lg:block lg:space-y-3">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-6 lg:block lg:space-y-6">
             {data.map(item => (
                 <ContentBlockRow
                     key={`user-watchlists-feed-item-${item.id}`}

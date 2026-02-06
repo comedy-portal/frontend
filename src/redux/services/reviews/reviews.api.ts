@@ -14,16 +14,30 @@ import {
 export const reviewsAPI = api.injectEndpoints({
     endpoints: build => ({
         getReviews: build.query<GetReviewsResponse, GetReviewsParams>({
-            query: params => ({
-                url: 'reviews',
-                method: 'GET',
-                params,
-            }),
+            query: ({ types, ...rest }) => {
+                const searchParams = new URLSearchParams()
+
+                Object.entries(rest).forEach(([key, value]) => {
+                    if (value !== undefined) {
+                        searchParams.append(key, String(value))
+                    }
+                })
+
+                if (types?.length) {
+                    types.forEach(t => searchParams.append('types', t))
+                }
+
+                return {
+                    url: `reviews?${searchParams.toString()}`,
+                    method: 'GET',
+                }
+            },
             serializeQueryArgs: ({ queryArgs }) => {
                 return JSON.stringify({
                     order: queryArgs.order,
                     sort_by: queryArgs.sort_by,
                     with_text: queryArgs.with_text,
+                    types: queryArgs.types,
                 })
             },
             merge: (currentCache, newResponse, { arg }) => {

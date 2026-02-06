@@ -1,4 +1,5 @@
-import { parseWithText } from '@/utils/helpers/filters'
+import { ContentType } from '@/utils/enums/common'
+import { parseTypes, parseWithText } from '@/utils/helpers/filters'
 
 export enum ReviewsUrlSortBy {
     DATE_DESC = 'date_desc',
@@ -10,11 +11,13 @@ export enum ReviewsUrlSortBy {
 export interface ReviewsFiltersState {
     sort: ReviewsUrlSortBy
     with_text: boolean
+    types: ContentType[]
 }
 
 export const DEFAULT_REVIEWS_FILTERS: ReviewsFiltersState = {
     sort: ReviewsUrlSortBy.DATE_DESC,
     with_text: false,
+    types: [],
 }
 
 const VALID_REVIEWS_SORTS = new Set<ReviewsUrlSortBy>([
@@ -31,6 +34,7 @@ export function parseReviewsFiltersFromSearchParams(params: URLSearchParams): Re
     return {
         sort,
         with_text: parseWithText(params.get('with_text'), DEFAULT_REVIEWS_FILTERS.with_text),
+        types: parseTypes(params.get('types')),
     }
 }
 
@@ -39,5 +43,6 @@ export function buildReviewsFiltersQueryString(filters: ReviewsFiltersState): st
 
     if (filters.sort !== DEFAULT_REVIEWS_FILTERS.sort) params.set('sort', filters.sort)
     if (filters.with_text !== DEFAULT_REVIEWS_FILTERS.with_text) params.set('with_text', String(filters.with_text))
+    if (filters.types.length > 0) params.set('types', filters.types.join(','))
     return params.toString()
 }

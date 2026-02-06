@@ -6,7 +6,7 @@ export const ComedianFacts = ({ facts }: ComedianFactsProps) => {
     return (
         <ul className="list-disc space-y-2 pl-6">
             {facts.map((fact, index) => (
-                <li key={`comedian-fact-${index}`} dangerouslySetInnerHTML={{ __html: fact }}></li>
+                <li key={`comedian-facts-item-${index}`} dangerouslySetInnerHTML={{ __html: fact }} />
             ))}
         </ul>
     )

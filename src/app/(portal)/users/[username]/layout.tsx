@@ -1,5 +1,3 @@
-import { ReviewsFiltersButton } from '@/components/features/dialogs/filters/reviews-filter/reviews-filters-button'
-import { WatchlistFiltersButton } from '@/components/features/dialogs/filters/watchlists-filters/watchlists-filters-button'
 import { Layout } from '@/components/features/layout/layout/layout'
 import { UserSidebar } from '@/components/features/user/components/sidebar/user-sidebar'
 import { getUserByName } from '@/services/users/users'
@@ -15,11 +13,10 @@ export default async function UsersLayout(props: { children: React.ReactNode; pa
             title="Профиль"
             size="sm"
             nav={[
-                { label: 'Оценки', href: `/users/${params.username}`, filter: <ReviewsFiltersButton /> },
+                { label: 'Оценки', href: `/users/${params.username}` },
                 {
                     label: 'Избранное',
                     href: `/users/${params.username}/watchlists`,
-                    filter: <WatchlistFiltersButton />,
                 },
             ]}
             sidebar={{

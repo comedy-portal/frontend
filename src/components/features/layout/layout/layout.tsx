@@ -1,39 +1,40 @@
+import { ReactNode } from 'react'
+
 import classNames from 'classnames'
 
 import { LayoutNav } from './components/layout-nav'
 
 type LayoutProps = {
-    children: React.ReactNode
-    filter?: React.ReactNode
+    children: ReactNode
     title: string
-    info?: React.ReactNode
+    info?: ReactNode
     size?: 'sm' | 'lg'
     nav?: {
         label: string
         href: string
         exact?: boolean
-        filter?: React.ReactNode
+        filter?: ReactNode
     }[]
     preserveQuery?: boolean
     sidebar?: {
-        component: React.ReactNode
+        component: ReactNode
         showOnMobile?: boolean
     }
 }
 
-export const Layout = ({ children, filter, title, info, size, nav, preserveQuery, sidebar }: LayoutProps) => {
+export const Layout = ({ children, title, info, size, nav, preserveQuery, sidebar }: LayoutProps) => {
     const innerWrapperSize = `inner-wrapper-${size}`
 
     return (
         <div className="wrapper flex gap-x-12 pt-12 pb-24">
             <div className={classNames('flex-1 shrink-0', innerWrapperSize)}>
-                <div className="mb-12 space-y-6">
+                <div className="mb-6 space-y-6">
                     <h1 className="text-4xl font-bold sm:text-3xl">{title}</h1>
                     {info && <div className="text-gray-500">{info}</div>}
                     {sidebar && sidebar.showOnMobile && (
                         <div className="mb-12 block lg:hidden">{sidebar.component}</div>
                     )}
-                    {nav?.length && <LayoutNav items={nav} filter={filter} preserveQuery={preserveQuery} />}
+                    {nav?.length && <LayoutNav items={nav} preserveQuery={preserveQuery} />}
                 </div>
                 {children}
             </div>

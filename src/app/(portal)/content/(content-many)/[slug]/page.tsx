@@ -3,7 +3,7 @@ import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 
 import { ContentMany } from '@/components/features/content-many/content-many'
-import { categories } from '@/utils/dict/categories'
+import { contentTypesDict } from '@/utils/dict/content-types'
 import { ContentType } from '@/utils/enums/common'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
@@ -12,7 +12,7 @@ type Params = Promise<{ slug: ContentType }>
 // prettier-ignore
 export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
     const params = await props.params
-    const typeName = categories.find(category => category.type === params.slug)
+    const typeName = contentTypesDict.find(contentType => contentType.slug === params.slug)
 
     const descriptions: Record<string, string> = {
         [ContentType.SPECIAL]: 'Лучшие стендап-спешлы от известных комиков. Смотри сольные выступления и открывай новые имена в мире комедии.',
