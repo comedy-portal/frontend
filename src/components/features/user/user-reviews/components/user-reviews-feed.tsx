@@ -42,7 +42,7 @@ export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFee
             default:
                 return { sortBy: ReviewSortBy.DATE, order: Order.DESC }
         }
-    }, [filters.sort])
+    }, [filters.sort, filters.with_text])
 
     const { data, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsQuery({
         user_id: userId,
