@@ -1,4 +1,6 @@
-import { parseRating } from '@/utils/helpers/filters'
+import { parseRating, parseTypes } from '@/utils/helpers/filters'
+
+import { ContentType } from '../enums/common'
 
 export enum WatchlistsUrlSortBy {
     DATE_DESC = 'date_desc',
@@ -10,12 +12,14 @@ export interface WatchlistsFiltersState {
     sort: WatchlistsUrlSortBy
     min_rating: number
     max_rating: number
+    types: ContentType[]
 }
 
 export const DEFAULT_WATCHLISTS_FILTERS: WatchlistsFiltersState = {
     sort: WatchlistsUrlSortBy.SAVED_AT_DESC,
     min_rating: 0,
     max_rating: 10,
+    types: [],
 }
 
 const VALID_WATCHLISTS_SORTS = new Set<WatchlistsUrlSortBy>([
@@ -32,6 +36,7 @@ export function parseWatchlistsFiltersFromSearchParams(params: URLSearchParams):
         sort,
         min_rating: parseRating(params.get('min_rating'), DEFAULT_WATCHLISTS_FILTERS.min_rating),
         max_rating: parseRating(params.get('max_rating'), DEFAULT_WATCHLISTS_FILTERS.max_rating),
+        types: parseTypes(params.get('types')),
     }
 }
 export function buildWatchlistsFiltersQueryString(filters: WatchlistsFiltersState): string {
@@ -44,6 +49,8 @@ export function buildWatchlistsFiltersQueryString(filters: WatchlistsFiltersStat
 
     if (filters.max_rating !== DEFAULT_WATCHLISTS_FILTERS.max_rating)
         params.set('max_rating', String(filters.max_rating))
+
+    if (filters.types.length > 0) params.set('types', filters.types.join(','))
 
     return params.toString()
 }

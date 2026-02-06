@@ -13,6 +13,8 @@ import { useDialog } from '@/utils/providers/dialog-provider'
 
 import 'react-range-slider-input/dist/style.css'
 
+import { FiltersTypes } from '../components/filters-types'
+
 export const WatchlistsFilters = () => {
     const dialog = useDialog()
     const [initialFilters, setFiltersToUrl] = useQueryFilters(
@@ -44,6 +46,19 @@ export const WatchlistsFilters = () => {
     return (
         <div className="flex w-full flex-col gap-y-6 sm:w-104">
             <h1 className="text-2xl font-bold">Фильтр</h1>
+
+            <div className="flex flex-col gap-y-4">
+                <label className="font-bold">Тип контента:</label>
+                <FiltersTypes
+                    value={filters.types}
+                    onChange={types =>
+                        setFilters(prev => ({
+                            ...prev,
+                            types: types,
+                        }))
+                    }
+                />
+            </div>
 
             <div className="flex flex-col gap-y-4">
                 <label className="font-bold">Общий рейтинг:</label>

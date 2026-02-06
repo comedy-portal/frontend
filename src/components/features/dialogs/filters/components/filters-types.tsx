@@ -3,12 +3,12 @@ import classNames from 'classnames'
 import { contentTypesDict } from '@/utils/dict/content-types'
 import { ContentType } from '@/utils/enums/common'
 
-type ReviewsFiltersTypesProps = {
+type FiltersTypesProps = {
     value: ContentType[]
     onChange: (next: ContentType[]) => void
 }
 
-export const ReviewsFiltersTypes = ({ value, onChange }: ReviewsFiltersTypesProps) => {
+export const FiltersTypes = ({ value, onChange }: FiltersTypesProps) => {
     const toggle = (type: ContentType) => {
         if (value.includes(type)) {
             onChange(value.filter(v => v !== type))

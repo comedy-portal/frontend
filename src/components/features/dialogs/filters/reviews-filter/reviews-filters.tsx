@@ -11,7 +11,7 @@ import {
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
-import { ReviewsFiltersTypes } from './components/reviews-filter-types'
+import { FiltersTypes } from '../components/filters-types'
 
 export const ReviewsFilters = () => {
     const dialog = useDialog()
@@ -46,7 +46,7 @@ export const ReviewsFilters = () => {
 
             <div className="flex flex-col gap-y-4">
                 <label className="font-bold">Тип контента:</label>
-                <ReviewsFiltersTypes
+                <FiltersTypes
                     value={filters.types}
                     onChange={types =>
                         setFilters(prev => ({

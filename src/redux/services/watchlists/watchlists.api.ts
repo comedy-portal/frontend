@@ -6,27 +6,23 @@ export const watchlistsAPI = api.injectEndpoints({
     endpoints: build => ({
         getWatchlist: build.query<GetWatchlistResponse, GetWatchlistParams>({
             query: params => {
-                const queryParams: Record<string, string | number | undefined> = {
-                    username: params.username,
-                    order: params.order,
-                    sort_by: params.sort_by,
-                    year: params.year,
-                    min_rating: params.min_rating,
-                    max_rating: params.max_rating,
-                    cursor: params.cursor,
-                }
+                const searchParams = new URLSearchParams()
 
-                if (params.types && params.types.length > 0) {
-                    queryParams.types = params.types.join(',')
+                Object.entries(params).forEach(([key, value]) => {
+                    if (value !== undefined && key !== 'types') {
+                        searchParams.append(key, String(value))
+                    }
+                })
+
+                if (params.types?.length) {
+                    params.types.forEach(t => searchParams.append('types', t))
                 }
 
                 return {
-                    url: 'watchlists',
+                    url: `watchlists?${searchParams.toString()}`,
                     method: 'GET',
-                    params: queryParams,
                 }
             },
-
             providesTags: () => [{ type: 'Watchlist', id: 'LIST' }],
         }),
         addToWatchlist: build.mutation<void, number>({
