@@ -28,6 +28,9 @@ type ContentBlockType = {
     }
     isInWatchlist: boolean
     isAuth: boolean
+
+    // Workaround: This update fixes a feed issue on many content pages.
+    hasWatchlistControl?: boolean
 }
 
 export const ContentBlock = (props: ContentBlockType) => {
@@ -91,12 +94,14 @@ export const ContentBlock = (props: ContentBlockType) => {
                     </div>
                 </div>
 
-                <ContentBlockBookmark
-                    name={props.name}
-                    contentId={props.id}
-                    isAuth={props.isAuth}
-                    isInWatchlist={props.isInWatchlist}
-                />
+                {props.hasWatchlistControl ? (
+                    <ContentBlockBookmark
+                        name={props.name}
+                        contentId={props.id}
+                        isAuth={props.isAuth}
+                        isInWatchlist={props.isInWatchlist}
+                    />
+                ) : null}
             </div>
         </div>
     )
