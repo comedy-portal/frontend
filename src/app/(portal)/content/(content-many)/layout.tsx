@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { Layout } from '@/components/features/layout/layout/layout'
-import { categories } from '@/utils/dict/categories'
+import { contentTypesDict } from '@/utils/dict/content-types'
 
 export default function ContentManyLayout(props: { children: React.ReactNode }) {
     return (
@@ -20,9 +20,9 @@ export default function ContentManyLayout(props: { children: React.ReactNode }) 
             size="lg"
             nav={[
                 { label: 'Все', href: '/content' },
-                ...categories.map(({ type, label }) => ({
+                ...contentTypesDict.map(({ slug, label }) => ({
                     label,
-                    href: `/content/${type.toLowerCase()}`,
+                    href: `/content/${slug.toLowerCase()}`,
                 })),
             ]}
             preserveQuery

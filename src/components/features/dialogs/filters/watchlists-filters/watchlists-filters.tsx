@@ -2,7 +2,6 @@ import { useCallback, useState } from 'react'
 import RangeSlider from 'react-range-slider-input'
 
 import { Button } from '@/components/ui/forms/button'
-import { ContentType } from '@/utils/enums/common'
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
 import {
     DEFAULT_WATCHLISTS_FILTERS,
@@ -13,8 +12,6 @@ import {
 import { useDialog } from '@/utils/providers/dialog-provider'
 
 import 'react-range-slider-input/dist/style.css'
-
-import { WatchlistsFiltersCategories } from './components/watchlists-filters-categories'
 
 export const WatchlistsFilters = () => {
     const dialog = useDialog()
@@ -47,19 +44,6 @@ export const WatchlistsFilters = () => {
     return (
         <div className="flex w-full flex-col gap-y-6 sm:w-104">
             <h1 className="text-2xl font-bold">Фильтр</h1>
-
-            <div className="flex flex-col gap-y-4">
-                <label className="font-bold">Тип контента:</label>
-                <WatchlistsFiltersCategories
-                    value={filters.categories}
-                    onChange={cats =>
-                        setFilters(prev => ({
-                            ...prev,
-                            categories: cats,
-                        }))
-                    }
-                />
-            </div>
 
             <div className="flex flex-col gap-y-4">
                 <label className="font-bold">Общий рейтинг:</label>

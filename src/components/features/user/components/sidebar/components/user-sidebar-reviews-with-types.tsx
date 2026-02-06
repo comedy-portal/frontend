@@ -6,14 +6,14 @@ import { ChevronDownIcon } from 'lucide-react'
 
 import { UserSidebarStatRow } from './user-sidebar-stat-row'
 
-type UserSidebarReviewsWithCategoriesProps = {
+type UserSidebarReviewsWithTypesProps = {
     total: number
 }
 
-export const UserSidebarReviewsWithCategories = ({ total }: UserSidebarReviewsWithCategoriesProps) => {
+export const UserSidebarReviewsWithTypes = ({ total }: UserSidebarReviewsWithTypesProps) => {
     const [open, setOpen] = useState(false)
 
-    const categories = [
+    const types = [
         { label: 'Спешл', value: 8 },
         { label: 'Стендап', value: 5 },
         { label: 'Блоги', value: 3 },
@@ -53,8 +53,8 @@ export const UserSidebarReviewsWithCategories = ({ total }: UserSidebarReviewsWi
 
             {open && (
                 <ul className="ml-4 flex flex-col gap-y-1">
-                    {categories.map(cat => (
-                        <UserSidebarStatRow key={cat.label} label={cat.label} value={cat.value} variant="sub" />
+                    {types.map(type => (
+                        <UserSidebarStatRow key={type.label} label={type.label} value={type.value} variant="sub" />
                     ))}
                 </ul>
             )}

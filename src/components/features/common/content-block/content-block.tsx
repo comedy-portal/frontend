@@ -2,13 +2,12 @@ import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { Rating } from '@/components/ui/rating'
-import { categories } from '@/utils/dict/categories'
+import { contentTypesDict } from '@/utils/dict/content-types'
 import { ContentType } from '@/utils/enums/common'
 
 import { ContentBlockBookmark } from './components/content-block-bookmark'
 import { ContentBlockDate } from './components/content-block-date'
 import { ContentBlockDuration } from './components/content-block-duration'
-import { ContentBlockRating } from './components/content-block-rating'
 import { ContentBlockTag } from './components/content-block-tag'
 
 type ContentBlockType = {
@@ -84,7 +83,10 @@ export const ContentBlock = (props: ContentBlockType) => {
                     <div className="flex items-center gap-x-1">
                         <ContentBlockTag
                             link={`/content/${props.type.toLowerCase()}`}
-                            title={categories.find(category => category.type === props.type.toLowerCase())?.label || ''}
+                            title={
+                                contentTypesDict.find(contentType => contentType.slug === props.type.toLowerCase())
+                                    ?.label || ''
+                            }
                         />
                         <ContentBlockDate year={props.year} />
                     </div>

@@ -45,7 +45,6 @@ export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps
         sort_by: sortBy,
         min_rating: filters.min_rating,
         max_rating: filters.max_rating,
-        types: filters.categories,
     })
 
     if (isError) {

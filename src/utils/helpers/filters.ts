@@ -14,7 +14,7 @@ export function parseRating(value: string | null, defaultValue: number): number 
     return num
 }
 
-export function parseCategories(param: string | null): ContentType[] {
+export function parseTypes(param: string | null): ContentType[] {
     const VALID_CONTENT_TYPES = new Set<string>(Object.values(ContentType))
 
     if (!param) return []

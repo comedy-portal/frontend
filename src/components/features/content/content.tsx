@@ -13,7 +13,7 @@ import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
 import { Share } from '@/components/ui/share'
 import { messages } from '@/messages'
 import { contentAPI } from '@/redux/services/content/content.api'
-import { categories } from '@/utils/dict/categories'
+import { contentTypesDict } from '@/utils/dict/content-types'
 
 import { ContentAddToWatchList } from './components/content-add-to-watch-list'
 import { ContentAuthors } from './components/content-authors'
@@ -50,7 +50,7 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
                 data-nosnippet
             >
                 <CircleArrowLeftIcon size={24} className="text-inherit" />
-                {categories.find(category => category.type === data.type.toLowerCase())?.toBackLabel ||
+                {contentTypesDict.find(contentType => contentType.slug === data.type.toLowerCase())?.toBackLabel ||
                     'Назад к контенту'}
             </Link>
 

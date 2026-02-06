@@ -3,7 +3,7 @@ import { CircleUserIcon } from 'lucide-react'
 import { Share } from '@/components/ui/share'
 import { formatDuration } from '@/utils/helpers/registration-date-format'
 
-import { UserSidebarReviewsWithCategories } from './components/user-sidebar-reviews-with-categories'
+import { UserSidebarReviewsWithTypes } from './components/user-sidebar-reviews-with-types'
 import { UserSidebarStatRow } from './components/user-sidebar-stat-row'
 
 type UserSidebarProps = {
@@ -33,7 +33,7 @@ export const UserSidebar = (props: UserSidebarProps) => {
                 <hr className="border-dashed border-gray-300" />
 
                 <ul className="flex flex-col gap-y-3">
-                    <UserSidebarReviewsWithCategories total={props._count?.reviews ?? 0} />
+                    <UserSidebarReviewsWithTypes total={props._count?.reviews ?? 0} />
                     <UserSidebarStatRow label="Написано рецензий" value={props._count?.textReviewsCount ?? 0} />
                     <UserSidebarStatRow label="Добавлено в избранное" value={props._count?.watchlists ?? 0} />
                 </ul>

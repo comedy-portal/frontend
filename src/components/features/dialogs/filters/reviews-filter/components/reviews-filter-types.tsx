@@ -1,14 +1,14 @@
 import classNames from 'classnames'
 
-import { categories } from '@/utils/dict/categories'
+import { contentTypesDict } from '@/utils/dict/content-types'
 import { ContentType } from '@/utils/enums/common'
 
-interface WatchlistsFiltersCategoriesProps {
+type ReviewsFiltersTypesProps = {
     value: ContentType[]
     onChange: (next: ContentType[]) => void
 }
 
-export const WatchlistsFiltersCategories = ({ value, onChange }: WatchlistsFiltersCategoriesProps) => {
+export const ReviewsFiltersTypes = ({ value, onChange }: ReviewsFiltersTypesProps) => {
     const toggle = (type: ContentType) => {
         if (value.includes(type)) {
             onChange(value.filter(v => v !== type))
@@ -19,20 +19,20 @@ export const WatchlistsFiltersCategories = ({ value, onChange }: WatchlistsFilte
 
     return (
         <div className="flex flex-wrap gap-2">
-            {categories.map(category => {
-                const active = value.includes(category.type)
+            {contentTypesDict.map(contentType => {
+                const active = value.includes(contentType.slug)
 
                 return (
                     <button
-                        key={category.type}
+                        key={`reviews-filter-types-item-${contentType.slug}`}
                         type="button"
-                        onClick={() => toggle(category.type)}
+                        onClick={() => toggle(contentType.slug)}
                         className={classNames('cursor-pointer rounded px-3 py-1 text-xs transition', {
                             'bg-gray-600 text-white': active,
                             'bg-gray-200 text-gray-500 hover:bg-gray-600 hover:text-white': !active,
                         })}
                     >
-                        {category.label}
+                        {contentType.label}
                     </button>
                 )
             })}

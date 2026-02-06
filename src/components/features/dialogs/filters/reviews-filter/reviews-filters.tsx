@@ -11,6 +11,8 @@ import {
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
+import { ReviewsFiltersTypes } from './components/reviews-filter-types'
+
 export const ReviewsFilters = () => {
     const dialog = useDialog()
     const [initialFilters, setFiltersToUrl] = useQueryFilters(
@@ -41,6 +43,19 @@ export const ReviewsFilters = () => {
     return (
         <div className="flex w-full flex-col gap-y-6 sm:w-104">
             <h1 className="text-2xl font-bold">Фильтр</h1>
+
+            <div className="flex flex-col gap-y-4">
+                <label className="font-bold">Тип контента:</label>
+                <ReviewsFiltersTypes
+                    value={filters.types}
+                    onChange={types =>
+                        setFilters(prev => ({
+                            ...prev,
+                            types: types,
+                        }))
+                    }
+                />
+            </div>
 
             <div className="flex items-center gap-x-2">
                 <Switcher checked={filters.with_text} onChange={() => handleWithTextChange(!filters.with_text)} />
