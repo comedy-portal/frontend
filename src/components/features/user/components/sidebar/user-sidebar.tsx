@@ -1,6 +1,7 @@
 import { CircleUserIcon } from 'lucide-react'
 
 import { Share } from '@/components/ui/share'
+import { ContentType } from '@/utils/enums/common'
 import { formatDuration } from '@/utils/helpers/registration-date-format'
 
 import { UserSidebarReviewsWithTypes } from './components/user-sidebar-reviews-with-types'
@@ -13,6 +14,7 @@ type UserSidebarProps = {
         reviews: number
         watchlists: number
         textReviewsCount: number
+        reviewsByType: Partial<Record<ContentType, number>>
     }
 }
 
@@ -33,7 +35,10 @@ export const UserSidebar = (props: UserSidebarProps) => {
                 <hr className="border-dashed border-gray-300" />
 
                 <ul className="flex flex-col gap-y-3">
-                    <UserSidebarReviewsWithTypes total={props._count?.reviews ?? 0} />
+                    <UserSidebarReviewsWithTypes
+                        total={props._count?.reviews ?? 0}
+                        reviewsByType={props._count.reviewsByType}
+                    />
                     <UserSidebarStatRow label="Написано рецензий" value={props._count?.textReviewsCount ?? 0} />
                     <UserSidebarStatRow label="Добавлено в избранное" value={props._count?.watchlists ?? 0} />
                 </ul>

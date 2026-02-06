@@ -1,3 +1,5 @@
+import { ContentType } from '@/utils/enums/common'
+
 export type IUser = {
     id: number
     username: string
@@ -8,5 +10,6 @@ export type IUser = {
         reviews: number
         watchlists: number
         textReviewsCount: number
+        reviewsByType: Partial<Record<ContentType, number>>
     }
 }
