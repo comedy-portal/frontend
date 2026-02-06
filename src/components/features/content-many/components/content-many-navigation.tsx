@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 
 import { useSearchParams } from 'next/navigation'
 
-import { categories } from '@/utils/dict/categories'
+import { contentTypesDict } from '@/utils/dict/content-types'
 
 export const ContentManyNavigation = () => {
     const searchParams = useSearchParams()
@@ -17,9 +17,9 @@ export const ContentManyNavigation = () => {
     const nav = useMemo(
         () => [
             { label: 'Весь контент', href: `/content${filterQuery}` },
-            ...categories.map(({ type, label }) => ({
+            ...contentTypesDict.map(({ slug, label }) => ({
                 label,
-                href: `/content/${type.toLowerCase()}${filterQuery}`,
+                href: `/content/${slug.toLowerCase()}${filterQuery}`,
             })),
         ],
         [filterQuery],

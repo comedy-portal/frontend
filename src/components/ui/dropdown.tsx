@@ -1,26 +1,27 @@
 'use client'
 
-import React, { RefObject, useRef, useState } from 'react'
+import { ReactNode, RefObject, useRef, useState } from 'react'
 
 import classNames from 'classnames'
-import { EllipsisVerticalIcon } from 'lucide-react'
+import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react'
 import { useOnClickOutside } from 'usehooks-ts'
 
 import Link from 'next/link'
 
 type DropdownItem = {
     label: string
-    icon?: React.ReactNode
+    icon?: ReactNode
     href?: string
     onClick?: () => void
 }
 
 type DropdownProps = {
+    activeOption: string
     items: DropdownItem[]
     className?: string
 }
 
-export const Dropdown = ({ items, className }: DropdownProps) => {
+export const Dropdown = ({ activeOption, items, className }: DropdownProps) => {
     const [open, setOpen] = useState(false)
     const ref = useRef<HTMLDivElement>(null)
 
@@ -33,23 +34,16 @@ export const Dropdown = ({ items, className }: DropdownProps) => {
 
     return (
         <div className={classNames('relative', className)} ref={ref}>
-            <div
-                className={classNames(
-                    'flex size-6 cursor-pointer items-center justify-center rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-950',
-                    {
-                        'bg-gray-100 text-gray-950': open,
-                    },
-                )}
-                onClick={() => setOpen(prev => !prev)}
-            >
-                <EllipsisVerticalIcon size={16} />
+            <div className="flex cursor-pointer items-center gap-x-1" onClick={() => setOpen(prev => !prev)}>
+                {activeOption}
+                {open ? <ChevronUpIcon size={20} /> : <ChevronDownIcon size={20} />}
             </div>
 
             {open && (
-                <div className="absolute top-full right-0 z-20 mt-1 w-48 overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+                <div className="absolute top-full right-0 z-20 mt-1 w-48 overflow-hidden rounded-lg bg-white shadow-md">
                     {items.map((item, index) => {
                         const content = (
-                            <div className="flex cursor-pointer items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-950">
+                            <div className="flex cursor-pointer items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:text-gray-950">
                                 {item.icon}
                                 {item.label}
                             </div>

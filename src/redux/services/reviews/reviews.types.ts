@@ -1,4 +1,4 @@
-import { ComplaintReasons, Order } from '@/utils/enums/common'
+import { ComplaintReasons, ContentType, Order } from '@/utils/enums/common'
 import { PaginatedResponse } from '@/utils/types/common'
 import { IReview } from '@/utils/types/review'
 
@@ -15,6 +15,7 @@ export type GetReviewsParams = {
     cursor?: number
     mark?: number
     with_text?: boolean
+    types?: ContentType[]
 }
 
 export type GetReviewsResponse = PaginatedResponse<IReview>

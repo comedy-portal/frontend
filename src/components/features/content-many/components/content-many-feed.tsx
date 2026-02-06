@@ -91,6 +91,7 @@ export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
                         author={getAuthorDisplayNameForContent(item)}
                         isInWatchlist={(item.watchlists?.length ?? 0) > 0}
                         isAuth={isAuth}
+                        hasWatchlistControl={false}
                     />
                 ))}
             </div>

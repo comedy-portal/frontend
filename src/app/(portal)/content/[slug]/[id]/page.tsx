@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
+import { VideoSchema } from '@/components/features/common/seo/video-schema'
 import { Content } from '@/components/features/content/content'
-import { VideoSchema } from '@/components/features/seo/video-schema'
 import { getContentById } from '@/services/content/content'
 import { getUserData } from '@/services/user/user'
 import { getAuthorsDisplayNamesForContent } from '@/utils/helpers/common'
