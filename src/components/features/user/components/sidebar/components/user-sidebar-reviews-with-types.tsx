@@ -19,12 +19,21 @@ export const UserSidebarReviewsWithTypes = ({ total, reviewsByType }: UserSideba
 
     const reviewsArray = useMemo(() => {
         if (!reviewsByType) return []
-        return Object.entries(reviewsByType)
+
+        const array = Object.entries(reviewsByType)
             .map(([key, value]) => {
                 const contentType = contentTypesDict.find(item => item.slug === key.toLowerCase())
                 return contentType ? { slug: contentType.slug, label: contentType.label, value } : null
             })
             .filter(Boolean) as { slug: ContentType; label: string; value: number }[]
+
+        array.sort((a, b) => {
+            const indexA = contentTypesDict.findIndex(item => item.slug === a.slug)
+            const indexB = contentTypesDict.findIndex(item => item.slug === b.slug)
+            return indexA - indexB
+        })
+
+        return array
     }, [reviewsByType])
 
     const hasReviews = reviewsArray.length > 0
