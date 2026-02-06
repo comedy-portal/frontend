@@ -26,22 +26,28 @@ export const RatingHistogram = ({ ratings }: RatingHistogramProps) => {
     }
 
     return (
-        <div className="flex h-40 w-full gap-1">
-            {ratings.map((count, index) => {
-                const heightPercent = (count / maxCount) * 100
-                return (
-                    <div
-                        key={`rating-histogram-${index}`}
-                        className="flex flex-1 flex-col items-center justify-end gap-y-2"
-                    >
+        <section className="space-y-6">
+            <h3 className="font-bold">Распределение оценок</h3>
+            <div className="flex h-40 w-full gap-1">
+                {ratings.map((count, index) => {
+                    const heightPercent = (count / maxCount) * 100
+                    return (
                         <div
-                            className={classNames('w-full rounded-t transition-all duration-300', bgColor(index + 1))}
-                            style={{ height: `${heightPercent}%` }}
-                        />
-                        <div className="text-sm font-semibold text-gray-500">{index + 1}</div>
-                    </div>
-                )
-            })}
-        </div>
+                            key={`rating-histogram-${index}`}
+                            className="flex flex-1 flex-col items-center justify-end gap-y-2"
+                        >
+                            <div
+                                className={classNames(
+                                    'w-full rounded-t transition-all duration-300',
+                                    bgColor(index + 1),
+                                )}
+                                style={{ height: `${heightPercent}%` }}
+                            />
+                            <div className="text-sm font-semibold text-gray-500">{index + 1}</div>
+                        </div>
+                    )
+                })}
+            </div>
+        </section>
     )
 }

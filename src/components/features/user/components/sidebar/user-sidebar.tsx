@@ -1,5 +1,6 @@
 import { CircleUserIcon } from 'lucide-react'
 
+import { RatingHistogram } from '@/components/ui/rating-histogram'
 import { Share } from '@/components/ui/share'
 import { ContentType } from '@/utils/enums/common'
 import { formatDuration } from '@/utils/helpers/registration-date-format'
@@ -47,6 +48,8 @@ export const UserSidebar = (props: UserSidebarProps) => {
             </div>
 
             <Share title={props.username} url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/users/${props.username}`} />
+
+            <RatingHistogram ratings={[10, 25, 10, 34, 33, 89, 2, 20, 45, 33]} />
         </div>
     )
 }
