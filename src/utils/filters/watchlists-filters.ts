@@ -1,6 +1,5 @@
+import { ContentType } from '@/utils/enums/common'
 import { parseCategories, parseRating } from '@/utils/helpers/filters'
-
-import { ContentType } from '../enums/common'
 
 export enum WatchlistsUrlSortBy {
     DATE_DESC = 'date_desc',

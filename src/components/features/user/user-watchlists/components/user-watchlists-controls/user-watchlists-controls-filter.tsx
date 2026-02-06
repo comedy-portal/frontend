@@ -17,7 +17,8 @@ export const UserWatchlistsControlsFilter = () => {
             filterComponent={<WatchlistsFilters />}
             isActive={
                 filters.min_rating !== DEFAULT_WATCHLISTS_FILTERS.min_rating ||
-                filters.max_rating !== DEFAULT_WATCHLISTS_FILTERS.max_rating
+                filters.max_rating !== DEFAULT_WATCHLISTS_FILTERS.max_rating ||
+                filters.categories.length > 0
             }
         />
     )
