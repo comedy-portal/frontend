@@ -41,7 +41,7 @@ export const RatingHistogram = ({ ratings }: RatingHistogramProps) => {
                             <div
                                 className={classNames(
                                     'w-full rounded-t transition-all duration-300',
-                                    bgColor(index + 1),
+                                    count !== 0 ? bgColor(index + 1) : 'bg-gray-300',
                                 )}
                                 style={{ height: `${heightPercent}%` }}
                             />
