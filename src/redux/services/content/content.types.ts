@@ -18,10 +18,11 @@ export enum GetTopContentTake {
 export type GetContentManyParams = {
     sort_by?: ContentSortBy
     order?: Order
-    year?: number
     type?: ContentType
     min_rating?: number
     max_rating?: number
+    min_year?: number
+    max_year?: number
     cursor?: number
     take?: number
     not_watched?: boolean

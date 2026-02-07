@@ -20,6 +20,8 @@ export const ContentManyControlsFilter = ({ isAuth }: ContentManyControlsFilterP
         <FilterButton
             filterComponent={<ContentFilters isAuth={isAuth} />}
             isActive={
+                filters.min_year !== DEFAULT_CONTENT_FILTERS.min_year ||
+                filters.max_year !== DEFAULT_CONTENT_FILTERS.max_year ||
                 filters.min_rating !== DEFAULT_CONTENT_FILTERS.min_rating ||
                 filters.max_rating !== DEFAULT_CONTENT_FILTERS.max_rating ||
                 filters.not_watched !== DEFAULT_CONTENT_FILTERS.not_watched

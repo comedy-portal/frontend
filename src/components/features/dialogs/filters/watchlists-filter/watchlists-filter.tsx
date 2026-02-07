@@ -24,18 +24,6 @@ export const WatchlistsFilter = () => {
 
     const [filters, setFilters] = useState<WatchlistsFiltersState>(initialFilters)
 
-    const handleApply = useCallback(() => {
-        setFiltersToUrl(filters)
-        dialog.close()
-    }, [filters, setFiltersToUrl, dialog])
-
-    const handleReset = useCallback(() => {
-        setFilters(prev => ({
-            ...DEFAULT_WATCHLISTS_FILTERS,
-            sort: prev.sort,
-        }))
-    }, [])
-
     const handleTypesChange = useCallback((types: ContentType[]) => {
         setFilters(prev => ({
             ...prev,
@@ -51,6 +39,18 @@ export const WatchlistsFilter = () => {
         }))
     }, [])
 
+    const handleApply = useCallback(() => {
+        setFiltersToUrl(filters)
+        dialog.close()
+    }, [filters, setFiltersToUrl, dialog])
+
+    const handleReset = useCallback(() => {
+        setFilters(prev => ({
+            ...DEFAULT_WATCHLISTS_FILTERS,
+            sort: prev.sort,
+        }))
+    }, [])
+
     return (
         <div className="w-full space-y-4 sm:w-104">
             <h1 className="text-lg font-bold">Фильтр</h1>
@@ -59,14 +59,12 @@ export const WatchlistsFilter = () => {
             <div className="space-y-8">
                 <div className="space-y-4">
                     <FilterByTypes value={filters.types} onChange={handleTypesChange} />
-                    <hr className="border-gray-300" />
 
                     <FilterByRating
                         minRating={filters.min_rating}
                         maxRating={filters.max_rating}
                         onChange={handleRatingChange}
                     />
-                    <hr className="border-gray-300" />
                 </div>
 
                 <div className="space-x-2">

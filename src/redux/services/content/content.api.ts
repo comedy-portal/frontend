@@ -24,6 +24,8 @@ export const contentAPI = api.injectEndpoints({
                     sort_by: queryArgs.sort_by,
                     min_rating: queryArgs.min_rating,
                     max_rating: queryArgs.max_rating,
+                    min_year: queryArgs.min_year,
+                    max_year: queryArgs.max_year,
                 })
             },
             merge: (currentCache, newResponse, { arg }) => {

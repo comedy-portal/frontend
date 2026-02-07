@@ -24,18 +24,6 @@ export const ReviewsFilter = () => {
 
     const [filters, setFilters] = useState<ReviewsFiltersState>(initialFilters)
 
-    const handleApply = useCallback(() => {
-        setFiltersToUrl(filters)
-        dialog.close()
-    }, [filters, setFiltersToUrl, dialog])
-
-    const handleReset = useCallback(() => {
-        setFilters(prev => ({
-            ...DEFAULT_REVIEWS_FILTERS,
-            sort: prev.sort,
-        }))
-    }, [])
-
     const handleTypesChange = useCallback((types: ContentType[]) => {
         setFilters(prev => ({
             ...prev,
@@ -47,6 +35,18 @@ export const ReviewsFilter = () => {
         setFilters(prev => ({
             ...prev,
             with_text: value,
+        }))
+    }, [])
+
+    const handleApply = useCallback(() => {
+        setFiltersToUrl(filters)
+        dialog.close()
+    }, [filters, setFiltersToUrl, dialog])
+
+    const handleReset = useCallback(() => {
+        setFilters(prev => ({
+            ...DEFAULT_REVIEWS_FILTERS,
+            sort: prev.sort,
         }))
     }, [])
 

@@ -29,10 +29,12 @@ export const FilterByTypes = ({ value, onChange }: FilterByTypesProps) => {
                             key={`reviews-filter-types-item-${contentType.slug}`}
                             type="button"
                             onClick={() => toggle(contentType.slug)}
-                            className={classNames('cursor-pointer rounded px-3 py-1 text-xs transition', {
-                                'bg-gray-500 text-white': active,
-                                'bg-gray-200 text-gray-500 hover:bg-gray-500 hover:text-white': !active,
-                            })}
+                            className={classNames(
+                                'cursor-pointer rounded px-3 py-1 text-xs',
+                                active
+                                    ? 'bg-gray-500 text-white'
+                                    : 'bg-gray-200 text-gray-500 hover:bg-gray-500 hover:text-white',
+                            )}
                         >
                             {contentType.label}
                         </button>
