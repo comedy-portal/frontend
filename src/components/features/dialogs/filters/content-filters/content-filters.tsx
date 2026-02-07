@@ -17,10 +17,11 @@ import { FilterByNotWatched } from '../components/filter-by-not-watched'
 import { FilterByRating } from '../components/filter-by-rating'
 
 type ContentFiltersProps = {
+    currentYear: number
     isAuth: boolean
 }
 
-export const ContentFilters = ({ isAuth }: ContentFiltersProps) => {
+export const ContentFilters = ({ currentYear, isAuth }: ContentFiltersProps) => {
     const dialog = useDialog()
 
     const [initialFilters, setFiltersToUrl] = useQueryFilters(
@@ -72,7 +73,11 @@ export const ContentFilters = ({ isAuth }: ContentFiltersProps) => {
 
             <div className="space-y-8">
                 <div className="space-y-4">
-                    <FilterByDate value={[filters.min_year, filters.max_year]} onChange={handleDateChange} />
+                    <FilterByDate
+                        currentYear={currentYear}
+                        value={[filters.min_year, filters.max_year]}
+                        onChange={handleDateChange}
+                    />
 
                     <FilterByRating
                         minRating={filters.min_rating}

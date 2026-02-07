@@ -12,24 +12,29 @@ type YearPreset = {
 }
 
 type FilterByDateProps = {
+    currentYear: number
     value: [number | undefined, number | undefined]
     onChange: (range: [number, number]) => void
 }
 
-export const FilterByDate = ({ value, onChange }: FilterByDateProps) => {
+export const FilterByDate = ({ currentYear, value, onChange }: FilterByDateProps) => {
     const MIN_YEAR = 2010
-    const CURRENT_YEAR = 2026
-    const DEFAULT_RANGE: [number, number] = [MIN_YEAR, CURRENT_YEAR]
+    const MAX_YEAR = currentYear
+    const DEFAULT_RANGE: [number, number] = [MIN_YEAR, MAX_YEAR]
+
+    useEffect(() => {
+        console.log(currentYear)
+    }, [currentYear])
 
     const yearPresets: YearPreset[] = useMemo(
         () => [
-            { key: '1y', label: 'За год', range: [CURRENT_YEAR, CURRENT_YEAR] },
-            { key: '2y', label: 'За 2 года', range: [CURRENT_YEAR - 1, CURRENT_YEAR] },
-            { key: '3y', label: 'За 3 года', range: [CURRENT_YEAR - 2, CURRENT_YEAR] },
-            { key: '5y', label: 'За 5 лет', range: [CURRENT_YEAR - 4, CURRENT_YEAR] },
-            { key: '10y', label: 'За 10 лет', range: [CURRENT_YEAR - 9, CURRENT_YEAR] },
+            { key: '1y', label: 'За год', range: [MAX_YEAR, MAX_YEAR] },
+            { key: '2y', label: 'За 2 года', range: [MAX_YEAR - 1, MAX_YEAR] },
+            { key: '3y', label: 'За 3 года', range: [MAX_YEAR - 2, MAX_YEAR] },
+            { key: '5y', label: 'За 5 лет', range: [MAX_YEAR - 4, MAX_YEAR] },
+            { key: '10y', label: 'За 10 лет', range: [MAX_YEAR - 9, MAX_YEAR] },
         ],
-        [CURRENT_YEAR],
+        [MAX_YEAR],
     )
 
     const displayRange: [number, number] = [value[0] ?? DEFAULT_RANGE[0], value[1] ?? DEFAULT_RANGE[1]]
@@ -63,7 +68,7 @@ export const FilterByDate = ({ value, onChange }: FilterByDateProps) => {
 
                 <RangeSlider
                     min={MIN_YEAR}
-                    max={CURRENT_YEAR}
+                    max={MAX_YEAR}
                     step={1}
                     value={displayRange}
                     className="range"
@@ -76,7 +81,7 @@ export const FilterByDate = ({ value, onChange }: FilterByDateProps) => {
             <div className="flex flex-wrap gap-2">
                 {yearPresets.map(preset => (
                     <button
-                        key={preset.key}
+                        key={`filter-by-date-year-preset-${preset.key}`}
                         type="button"
                         onClick={() => handlePresetClick(preset)}
                         className={classNames(

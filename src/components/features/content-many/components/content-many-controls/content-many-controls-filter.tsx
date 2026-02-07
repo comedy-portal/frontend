@@ -10,15 +10,16 @@ import {
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
 
 type ContentManyControlsFilterProps = {
+    currentYear: number
     isAuth: boolean
 }
 
-export const ContentManyControlsFilter = ({ isAuth }: ContentManyControlsFilterProps) => {
+export const ContentManyControlsFilter = ({ currentYear, isAuth }: ContentManyControlsFilterProps) => {
     const [filters] = useQueryFilters(parseContentFiltersFromSearchParams, buildContentFiltersQueryString)
 
     return (
         <FilterButton
-            filterComponent={<ContentFilters isAuth={isAuth} />}
+            filterComponent={<ContentFilters currentYear={currentYear} isAuth={isAuth} />}
             isActive={
                 filters.min_year !== DEFAULT_CONTENT_FILTERS.min_year ||
                 filters.max_year !== DEFAULT_CONTENT_FILTERS.max_year ||
