@@ -73,18 +73,19 @@ export const ContentFilters = ({ currentYear, isAuth }: ContentFiltersProps) => 
 
             <div className="space-y-8">
                 <div className="space-y-4">
-                    <FilterByDate
-                        currentYear={currentYear}
-                        value={[filters.min_year, filters.max_year]}
-                        onChange={handleDateChange}
-                    />
+                    <div className="space-y-6">
+                        <FilterByRating
+                            minRating={filters.min_rating}
+                            maxRating={filters.max_rating}
+                            onChange={handleRatingChange}
+                        />
 
-                    <FilterByRating
-                        minRating={filters.min_rating}
-                        maxRating={filters.max_rating}
-                        onChange={handleRatingChange}
-                    />
-
+                        <FilterByDate
+                            currentYear={currentYear}
+                            value={[filters.min_year, filters.max_year]}
+                            onChange={handleDateChange}
+                        />
+                    </div>
                     <hr className="border-gray-300" />
 
                     <FilterByNotWatched
