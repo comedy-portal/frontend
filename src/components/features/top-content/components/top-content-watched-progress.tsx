@@ -1,10 +1,19 @@
-export const TopContentWatchedProgress = () => {
+type TopContentWatchedProgressProps = {
+    total: number
+    watchedCount: number
+}
+
+export const TopContentWatchedProgress = ({ total, watchedCount }: TopContentWatchedProgressProps) => {
+    const progress = total > 0 ? (watchedCount / total) * 100 : 0
+
     return (
         <div className="space-y-1">
-            <div className="h-3 rounded bg-gray-300">
-                <div className="h-full w-[30%] rounded-l bg-blue-500"></div>
+            <div className="text-sm text-gray-400">
+                Просмотрено {watchedCount} из {total}
             </div>
-            <div className="text-sm text-gray-400">Просмотренно 30 из 90</div>
+            <div className="h-3 w-full overflow-hidden rounded bg-gray-300">
+                <div className="h-full bg-blue-500 transition-all duration-500" style={{ width: `${progress}%` }}></div>
+            </div>
         </div>
     )
 }
