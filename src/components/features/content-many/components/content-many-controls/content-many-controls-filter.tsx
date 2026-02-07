@@ -1,7 +1,7 @@
 'use client'
 
 import { ContentFilters } from '@/components/features/dialogs/filters/content-filters/content-filters'
-import { FiltersButton } from '@/components/ui/filters-button'
+import { FilterButton } from '@/components/ui/filter-button'
 import {
     DEFAULT_CONTENT_FILTERS,
     buildContentFiltersQueryString,
@@ -17,7 +17,7 @@ export const ContentManyControlsFilter = ({ isAuth }: ContentManyControlsFilterP
     const [filters] = useQueryFilters(parseContentFiltersFromSearchParams, buildContentFiltersQueryString)
 
     return (
-        <FiltersButton
+        <FilterButton
             filterComponent={<ContentFilters isAuth={isAuth} />}
             isActive={
                 filters.min_rating !== DEFAULT_CONTENT_FILTERS.min_rating ||

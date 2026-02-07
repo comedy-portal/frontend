@@ -1,7 +1,7 @@
 'use client'
 
-import { ReviewsFilters } from '@/components/features/dialogs/filters/reviews-filter/reviews-filters'
-import { FiltersButton } from '@/components/ui/filters-button'
+import { ReviewsFilter } from '@/components/features/dialogs/filters/reviews-filter/reviews-filters'
+import { FilterButton } from '@/components/ui/filter-button'
 import {
     DEFAULT_REVIEWS_FILTERS,
     buildReviewsFiltersQueryString,
@@ -13,8 +13,8 @@ export const UserReviewsControlsFilter = () => {
     const [filters] = useQueryFilters(parseReviewsFiltersFromSearchParams, buildReviewsFiltersQueryString)
 
     return (
-        <FiltersButton
-            filterComponent={<ReviewsFilters />}
+        <FilterButton
+            filterComponent={<ReviewsFilter />}
             isActive={filters.with_text !== DEFAULT_REVIEWS_FILTERS.with_text || filters.types.length > 0}
         />
     )

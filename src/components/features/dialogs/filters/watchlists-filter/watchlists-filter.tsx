@@ -2,27 +2,27 @@ import { useCallback, useState } from 'react'
 
 import { Button } from '@/components/ui/forms/button'
 import { ContentType } from '@/utils/enums/common'
-import {
-    DEFAULT_REVIEWS_FILTERS,
-    ReviewsFiltersState,
-    buildReviewsFiltersQueryString,
-    parseReviewsFiltersFromSearchParams,
-} from '@/utils/filters/reviews-filters'
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
+import {
+    DEFAULT_WATCHLISTS_FILTERS,
+    WatchlistsFiltersState,
+    buildWatchlistsFiltersQueryString,
+    parseWatchlistsFiltersFromSearchParams,
+} from '@/utils/filters/watchlists-filters'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
+import { FilterByRating } from '../components/filter-by-rating'
 import { FilterByTypes } from '../components/filter-by-types'
-import { FilterByWithText } from '../components/filter-by-with-text'
 
-export const ReviewsFilter = () => {
+export const WatchlistsFilter = () => {
     const dialog = useDialog()
 
     const [initialFilters, setFiltersToUrl] = useQueryFilters(
-        parseReviewsFiltersFromSearchParams,
-        buildReviewsFiltersQueryString,
+        parseWatchlistsFiltersFromSearchParams,
+        buildWatchlistsFiltersQueryString,
     )
 
-    const [filters, setFilters] = useState<ReviewsFiltersState>(initialFilters)
+    const [filters, setFilters] = useState<WatchlistsFiltersState>(initialFilters)
 
     const handleApply = useCallback(() => {
         setFiltersToUrl(filters)
@@ -31,7 +31,7 @@ export const ReviewsFilter = () => {
 
     const handleReset = useCallback(() => {
         setFilters(prev => ({
-            ...DEFAULT_REVIEWS_FILTERS,
+            ...DEFAULT_WATCHLISTS_FILTERS,
             sort: prev.sort,
         }))
     }, [])
@@ -43,10 +43,11 @@ export const ReviewsFilter = () => {
         }))
     }, [])
 
-    const handleWithTextChange = useCallback((value: boolean) => {
+    const handleRatingChange = useCallback((values: readonly number[]) => {
         setFilters(prev => ({
             ...prev,
-            with_text: value,
+            min_rating: values[0],
+            max_rating: values[1],
         }))
     }, [])
 
@@ -60,9 +61,10 @@ export const ReviewsFilter = () => {
                     <FilterByTypes value={filters.types} onChange={handleTypesChange} />
                     <hr className="border-gray-300" />
 
-                    <FilterByWithText
-                        isChecked={filters.with_text}
-                        onChange={() => handleWithTextChange(!filters.with_text)}
+                    <FilterByRating
+                        minRating={filters.min_rating}
+                        maxRating={filters.max_rating}
+                        onChange={handleRatingChange}
                     />
                     <hr className="border-gray-300" />
                 </div>
