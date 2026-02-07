@@ -21,7 +21,6 @@ export const FilterByDate = ({ value, onChange }: FilterByDateProps) => {
     const CURRENT_YEAR = 2026
     const DEFAULT_RANGE: [number, number] = [MIN_YEAR, CURRENT_YEAR]
 
-    // Пресеты "за N лет"
     const yearPresets: YearPreset[] = useMemo(
         () => [
             { key: '1y', label: 'За год', range: [CURRENT_YEAR, CURRENT_YEAR] },
@@ -33,7 +32,6 @@ export const FilterByDate = ({ value, onChange }: FilterByDateProps) => {
         [CURRENT_YEAR],
     )
 
-    // Диапазон, который показываем на слайдере
     const displayRange: [number, number] = [value[0] ?? DEFAULT_RANGE[0], value[1] ?? DEFAULT_RANGE[1]]
 
     const [activePreset, setActivePreset] = useState<string | null>(null)
