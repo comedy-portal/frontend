@@ -1,5 +1,6 @@
 import { CircleUserIcon } from 'lucide-react'
 
+import { RatingHistogram } from '@/components/ui/rating-histogram'
 import { Share } from '@/components/ui/share'
 import { ContentType } from '@/utils/enums/common'
 import { formatDuration } from '@/utils/helpers/registration-date-format'
@@ -15,12 +16,14 @@ type UserSidebarProps = {
         watchlists: number
         textReviewsCount: number
         reviewsByType: Partial<Record<ContentType, number>>
+        reviewsByMark: Record<number, number>
     }
 }
 
 export const UserSidebar = (props: UserSidebarProps) => {
     return (
-        <div className="sticky top-28.75 flex flex-col gap-y-6">
+        // <div className="sticky top-28.75 flex flex-col gap-y-6">
+        <div className="flex flex-col gap-y-6">
             <div className="relative space-y-6 rounded-2xl bg-white p-12">
                 <div className="absolute -top-6 left-1/2 size-12 -translate-x-1/2 rounded-full bg-gray-100" />
 
@@ -46,6 +49,7 @@ export const UserSidebar = (props: UserSidebarProps) => {
                 <div className="absolute -bottom-6 left-1/2 size-12 -translate-x-1/2 rounded-full bg-gray-100" />
             </div>
 
+            <RatingHistogram ratings={Array.from({ length: 10 }, (_, i) => props._count.reviewsByMark[i + 1] ?? 0)} />
             <Share title={props.username} url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/users/${props.username}`} />
         </div>
     )

@@ -36,5 +36,9 @@ export type GetTopContentParams = {
 
 export type GetContentManyResponse = PaginatedResponse<IContent>
 export type GetTrendsContentResponse = IContent[]
-export type GetTopContentResponse = IContent[]
+export type GetTopContentResponse = {
+    items: IContent[]
+    total: number
+    watchedCount: number
+}
 export type GetContentByIdResponse = IContent

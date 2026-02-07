@@ -9,6 +9,7 @@ import { ContentType } from '@/utils/enums/common'
 import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
 
 import { TopContentFeedSkeleton } from './top-content-feed-skeleton'
+import { TopContentWatchedProgress } from './top-content-watched-progress'
 
 type TopContentFeedProps = {
     type: ContentType
@@ -28,7 +29,7 @@ export const TopContentFeed = ({ type, year, take, isAuth }: TopContentFeedProps
         return <CommonError />
     }
 
-    if (isSuccess && data.length === 0) {
+    if (isSuccess && data.items.length === 0) {
         return (
             <EmptyMessage>
                 Контент в этом топе пока отсутствует.
@@ -43,27 +44,30 @@ export const TopContentFeed = ({ type, year, take, isAuth }: TopContentFeedProps
     }
 
     return (
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-6 lg:block lg:space-y-3">
-            {data.map((item, index) => (
-                <ContentBlockRow
-                    key={`top-content-feed-item-${item.id}`}
-                    id={item.id}
-                    name={item.name}
-                    description={item.metaInfo?.description}
-                    type={item.type}
-                    year={item.year}
-                    duration={item.duration}
-                    avgRating={item.rating.avgRating}
-                    myRating={item.reviews?.[0]?.mark}
-                    myReviewId={item.reviews?.[0]?.id}
-                    contentUrl={`/content/${item.type.toLowerCase()}/${item.id}`}
-                    imageUrl={item.contentImages[0]?.url}
-                    position={index + 1}
-                    author={getAuthorDisplayNameForContent(item)}
-                    isInWatchlist={(item.watchlists?.length ?? 0) > 0}
-                    isAuth={isAuth}
-                />
-            ))}
+        <div className="space-y-6">
+            <TopContentWatchedProgress total={data.total} watchedCount={data.watchedCount} />
+            <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-6 lg:block lg:space-y-3">
+                {data.items.map((item, index) => (
+                    <ContentBlockRow
+                        key={`top-content-feed-item-${item.id}`}
+                        id={item.id}
+                        name={item.name}
+                        description={item.metaInfo?.description}
+                        type={item.type}
+                        year={item.year}
+                        duration={item.duration}
+                        avgRating={item.rating.avgRating}
+                        myRating={item.reviews?.[0]?.mark}
+                        myReviewId={item.reviews?.[0]?.id}
+                        contentUrl={`/content/${item.type.toLowerCase()}/${item.id}`}
+                        imageUrl={item.contentImages[0]?.url}
+                        position={index + 1}
+                        author={getAuthorDisplayNameForContent(item)}
+                        isInWatchlist={(item.watchlists?.length ?? 0) > 0}
+                        isAuth={isAuth}
+                    />
+                ))}
+            </div>
         </div>
     )
 }
