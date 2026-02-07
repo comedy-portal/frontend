@@ -11,5 +11,6 @@ export type IUser = {
         watchlists: number
         textReviewsCount: number
         reviewsByType: Partial<Record<ContentType, number>>
+        reviewsByMark: Record<number, number>
     }
 }
