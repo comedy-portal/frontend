@@ -63,11 +63,13 @@ export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFee
 
     const { data, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsQuery({
         user_id: userId,
-        sort_by: sortBy,
-        with_text: filters.with_text,
         order,
         cursor,
         types: filters.types,
+        min_year: filters.min_year,
+        max_year: filters.max_year,
+        with_text: filters.with_text,
+        sort_by: sortBy,
     })
 
     if (isError) {
