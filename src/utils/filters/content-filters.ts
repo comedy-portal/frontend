@@ -52,8 +52,8 @@ export function buildContentFiltersQueryString(filters: ContentFiltersState): st
     if (filters.sort !== DEFAULT_CONTENT_FILTERS.sort) params.set('sort', filters.sort)
     if (filters.min_rating !== DEFAULT_CONTENT_FILTERS.min_rating) params.set('min_rating', String(filters.min_rating))
     if (filters.max_rating !== DEFAULT_CONTENT_FILTERS.max_rating) params.set('max_rating', String(filters.max_rating))
-    if (filters.min_year !== undefined) params.set('min_year', String(filters.min_year))
-    if (filters.max_year !== undefined) params.set('max_year', String(filters.max_year))
+    if (filters.min_year !== DEFAULT_CONTENT_FILTERS.min_year) params.set('min_year', String(filters.min_year))
+    if (filters.max_year !== DEFAULT_CONTENT_FILTERS.max_year) params.set('max_year', String(filters.max_year))
     if (filters.not_watched !== DEFAULT_CONTENT_FILTERS.not_watched)
         params.set('not_watched', String(filters.not_watched))
 

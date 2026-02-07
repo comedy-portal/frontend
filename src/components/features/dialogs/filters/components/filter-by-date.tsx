@@ -57,7 +57,7 @@ export const FilterByDate = ({ currentYear, value, onChange }: FilterByDateProps
 
     return (
         <div className="flex flex-col gap-y-3">
-            <label className="text-sm font-semibold">По году:</label>
+            <label className="text-sm font-semibold">По году выхода:</label>
 
             <div className="flex items-center gap-x-4">
                 <div className="w-12 text-sm">{displayRange[0]}</div>

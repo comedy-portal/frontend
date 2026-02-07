@@ -15,7 +15,12 @@ export const UserReviewsControlsFilter = () => {
     return (
         <FilterButton
             filterComponent={<ReviewsFilter />}
-            isActive={filters.with_text !== DEFAULT_REVIEWS_FILTERS.with_text || filters.types.length > 0}
+            isActive={
+                filters.types.length > 0 ||
+                filters.min_year !== DEFAULT_REVIEWS_FILTERS.min_year ||
+                filters.max_year !== DEFAULT_REVIEWS_FILTERS.max_year ||
+                filters.with_text !== DEFAULT_REVIEWS_FILTERS.with_text
+            }
         />
     )
 }

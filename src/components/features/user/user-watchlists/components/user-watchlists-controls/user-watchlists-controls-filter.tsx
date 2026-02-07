@@ -16,9 +16,11 @@ export const UserWatchlistsControlsFilter = () => {
         <FilterButton
             filterComponent={<WatchlistsFilter />}
             isActive={
+                filters.types.length > 0 ||
+                filters.min_year !== DEFAULT_WATCHLISTS_FILTERS.min_year ||
+                filters.max_year !== DEFAULT_WATCHLISTS_FILTERS.max_year ||
                 filters.min_rating !== DEFAULT_WATCHLISTS_FILTERS.min_rating ||
-                filters.max_rating !== DEFAULT_WATCHLISTS_FILTERS.max_rating ||
-                filters.types.length > 0
+                filters.max_rating !== DEFAULT_WATCHLISTS_FILTERS.max_rating
             }
         />
     )

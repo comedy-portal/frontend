@@ -11,6 +11,7 @@ import {
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
+import { FilterByDate } from '../components/filter-by-date'
 import { FilterByTypes } from '../components/filter-by-types'
 import { FilterByWithText } from '../components/filter-by-with-text'
 
@@ -58,6 +59,9 @@ export const ReviewsFilter = () => {
             <div className="space-y-8">
                 <div className="space-y-4">
                     <FilterByTypes value={filters.types} onChange={handleTypesChange} />
+                    <hr className="border-gray-300" />
+
+                    <FilterByDate currentYear={2026} value={[2010, 2026]} onChange={() => {}} />
                     <hr className="border-gray-300" />
 
                     <FilterByWithText
