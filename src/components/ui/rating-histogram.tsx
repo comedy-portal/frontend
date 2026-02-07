@@ -28,9 +28,11 @@ export const RatingHistogram = ({ ratings }: RatingHistogramProps) => {
     return (
         <section className="space-y-6">
             <h3 className="font-bold">Распределение оценок</h3>
-            <div className="flex h-40 w-full gap-1">
+            <div className="flex h-36 w-full gap-1">
                 {ratings.map((count, index) => {
-                    const heightPercent = (count / maxCount) * 100
+                    const rawHeight = maxCount > 0 ? (count / maxCount) * 100 : 0
+                    const heightPercent = rawHeight > 0 ? rawHeight : 5
+
                     return (
                         <div
                             key={`rating-histogram-${index}`}

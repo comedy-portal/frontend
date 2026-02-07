@@ -16,6 +16,7 @@ type UserSidebarProps = {
         watchlists: number
         textReviewsCount: number
         reviewsByType: Partial<Record<ContentType, number>>
+        reviewsByMark: Record<number, number>
     }
 }
 
@@ -48,8 +49,7 @@ export const UserSidebar = (props: UserSidebarProps) => {
             </div>
 
             <Share title={props.username} url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/users/${props.username}`} />
-
-            <RatingHistogram ratings={[10, 25, 10, 34, 33, 89, 2, 20, 45, 33]} />
+            <RatingHistogram ratings={Array.from({ length: 10 }, (_, i) => props._count.reviewsByMark[i + 1] ?? 0)} />
         </div>
     )
 }
