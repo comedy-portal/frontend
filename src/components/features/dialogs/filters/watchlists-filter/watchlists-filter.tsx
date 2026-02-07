@@ -59,12 +59,14 @@ export const WatchlistsFilter = () => {
             <div className="space-y-8">
                 <div className="space-y-4">
                     <FilterByTypes value={filters.types} onChange={handleTypesChange} />
+                    <hr className="border-gray-300" />
 
                     <FilterByRating
                         minRating={filters.min_rating}
                         maxRating={filters.max_rating}
                         onChange={handleRatingChange}
                     />
+                    <hr className="border-gray-300" />
                 </div>
 
                 <div className="space-x-2">

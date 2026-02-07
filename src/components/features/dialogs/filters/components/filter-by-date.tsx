@@ -18,13 +18,13 @@ type FilterByDateProps = {
 }
 
 export const FilterByDate = ({ currentYear, value, onChange }: FilterByDateProps) => {
+    const [activePreset, setActivePreset] = useState<string | null>(null)
+
     const MIN_YEAR = 2010
     const MAX_YEAR = currentYear
     const DEFAULT_RANGE: [number, number] = [MIN_YEAR, MAX_YEAR]
 
-    useEffect(() => {
-        console.log(currentYear)
-    }, [currentYear])
+    const displayRange: [number, number] = [value[0] ?? DEFAULT_RANGE[0], value[1] ?? DEFAULT_RANGE[1]]
 
     const yearPresets: YearPreset[] = useMemo(
         () => [
@@ -36,10 +36,6 @@ export const FilterByDate = ({ currentYear, value, onChange }: FilterByDateProps
         ],
         [MAX_YEAR],
     )
-
-    const displayRange: [number, number] = [value[0] ?? DEFAULT_RANGE[0], value[1] ?? DEFAULT_RANGE[1]]
-
-    const [activePreset, setActivePreset] = useState<string | null>(null)
 
     useEffect(() => {
         const matched = yearPresets.find(p => p.range[0] === displayRange[0] && p.range[1] === displayRange[1])
