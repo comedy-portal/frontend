@@ -8,11 +8,11 @@ export const TopContentWatchedProgress = ({ total, watchedCount }: TopContentWat
 
     return (
         <div className="space-y-1">
-            <div className="text-sm text-gray-400">
+            <div className="text-xs text-gray-500 uppercase">
                 Просмотрено {watchedCount} из {total}
             </div>
-            <div className="h-3 w-full overflow-hidden rounded bg-gray-300">
-                <div className="h-full bg-blue-500 transition-all duration-500" style={{ width: `${progress}%` }}></div>
+            <div className="h-2 w-full overflow-hidden rounded-lg bg-gray-300">
+                <div className="h-full bg-blue-400 transition-all duration-500" style={{ width: `${progress}%` }}></div>
             </div>
         </div>
     )
