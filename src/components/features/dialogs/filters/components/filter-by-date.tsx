@@ -21,22 +21,20 @@ export const FilterByDate = ({ value, onChange }: FilterByDateProps) => {
     const CURRENT_YEAR = 2026
     const DEFAULT_RANGE: [number, number] = [MIN_YEAR, CURRENT_YEAR]
 
-    const makePreset = (years: number): YearPreset => ({
-        key: `${years}y`,
-        label: `За ${years} ${years === 1 ? 'год' : years < 5 ? 'года' : 'лет'}`,
-        range: [CURRENT_YEAR - (years - 1), CURRENT_YEAR],
-    })
-
-    const yearPresets = useMemo(
-        () => [makePreset(1), makePreset(2), makePreset(3), makePreset(5), makePreset(10)],
+    // Пресеты "за N лет"
+    const yearPresets: YearPreset[] = useMemo(
+        () => [
+            { key: '1y', label: 'За год', range: [CURRENT_YEAR, CURRENT_YEAR] },
+            { key: '2y', label: 'За 2 года', range: [CURRENT_YEAR - 1, CURRENT_YEAR] },
+            { key: '3y', label: 'За 3 года', range: [CURRENT_YEAR - 2, CURRENT_YEAR] },
+            { key: '5y', label: 'За 5 лет', range: [CURRENT_YEAR - 4, CURRENT_YEAR] },
+            { key: '10y', label: 'За 10 лет', range: [CURRENT_YEAR - 9, CURRENT_YEAR] },
+        ],
         [CURRENT_YEAR],
     )
 
+    // Диапазон, который показываем на слайдере
     const displayRange: [number, number] = [value[0] ?? DEFAULT_RANGE[0], value[1] ?? DEFAULT_RANGE[1]]
-
-    const invert = (year: number) => CURRENT_YEAR - (year - MIN_YEAR)
-
-    const sliderValue: [number, number] = [invert(displayRange[1]), invert(displayRange[0])]
 
     const [activePreset, setActivePreset] = useState<string | null>(null)
 
@@ -51,14 +49,10 @@ export const FilterByDate = ({ value, onChange }: FilterByDateProps) => {
     }
 
     const handleSliderChange = (next: number[]) => {
-        const realMin = CURRENT_YEAR - (next[1] - MIN_YEAR)
-        const realMax = CURRENT_YEAR - (next[0] - MIN_YEAR)
-
-        const range: [number, number] = [realMin, realMax]
+        const range: [number, number] = [next[0], next[1]]
         onChange(range)
 
         const matched = yearPresets.find(p => p.range[0] === range[0] && p.range[1] === range[1])
-
         setActivePreset(matched?.key ?? null)
     }
 
@@ -67,18 +61,18 @@ export const FilterByDate = ({ value, onChange }: FilterByDateProps) => {
             <label className="text-sm font-semibold">По году:</label>
 
             <div className="flex items-center gap-x-4">
-                <div className="w-12 text-sm">{displayRange[1]}</div>
+                <div className="w-12 text-sm">{displayRange[0]}</div>
 
                 <RangeSlider
                     min={MIN_YEAR}
                     max={CURRENT_YEAR}
                     step={1}
-                    value={sliderValue}
+                    value={displayRange}
                     className="range"
                     onInput={handleSliderChange}
                 />
 
-                <div className="w-12 text-sm">{displayRange[0]}</div>
+                <div className="w-12 text-sm">{displayRange[1]}</div>
             </div>
 
             <div className="flex flex-wrap gap-2">
