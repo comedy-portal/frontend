@@ -9,12 +9,16 @@ import {
     parseWatchlistsFiltersFromSearchParams,
 } from '@/utils/filters/watchlists-filters'
 
-export const UserWatchlistsControlsFilter = () => {
+type UserWatchlistsControlsFilterProps = {
+    currentYear: number
+}
+
+export const UserWatchlistsControlsFilter = ({ currentYear }: UserWatchlistsControlsFilterProps) => {
     const [filters] = useQueryFilters(parseWatchlistsFiltersFromSearchParams, buildWatchlistsFiltersQueryString)
 
     return (
         <FilterButton
-            filterComponent={<WatchlistsFilter />}
+            filterComponent={<WatchlistsFilter currentYear={currentYear} />}
             isActive={
                 filters.types.length > 0 ||
                 filters.min_year !== DEFAULT_WATCHLISTS_FILTERS.min_year ||

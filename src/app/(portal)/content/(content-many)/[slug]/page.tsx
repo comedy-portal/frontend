@@ -63,7 +63,6 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 export default async function ContentManyBySlugPage(props: { params: Params }) {
     const params = await props.params
     const settings = await getSettings()
-    const currentYear = settings.currentYear
 
     // Check if the slug is included in the ContentType enum
     if (!Object.values(ContentType).includes(params.slug.toLocaleLowerCase() as ContentType)) {
@@ -71,6 +70,6 @@ export default async function ContentManyBySlugPage(props: { params: Params }) {
     }
 
     return withAuth({
-        render: ({ isAuth }) => <ContentMany currentYear={currentYear} slug={params.slug} isAuth={isAuth} />,
+        render: ({ isAuth }) => <ContentMany currentYear={settings.currentYear} slug={params.slug} isAuth={isAuth} />,
     })
 }

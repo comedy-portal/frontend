@@ -15,7 +15,11 @@ import { FilterByDate } from '../components/filter-by-date'
 import { FilterByRating } from '../components/filter-by-rating'
 import { FilterByTypes } from '../components/filter-by-types'
 
-export const WatchlistsFilter = () => {
+type WatchlistsFilterProps = {
+    currentYear: number
+}
+
+export const WatchlistsFilter = ({ currentYear }: WatchlistsFilterProps) => {
     const dialog = useDialog()
 
     const [initialFilters, setFiltersToUrl] = useQueryFilters(
@@ -29,6 +33,14 @@ export const WatchlistsFilter = () => {
         setFilters(prev => ({
             ...prev,
             types: types,
+        }))
+    }, [])
+
+    const handleDateChange = useCallback((range: [number, number]) => {
+        setFilters(prev => ({
+            ...prev,
+            min_year: range[0],
+            max_year: range[1],
         }))
     }, [])
 
@@ -62,7 +74,11 @@ export const WatchlistsFilter = () => {
                     <FilterByTypes value={filters.types} onChange={handleTypesChange} />
                     <hr className="border-gray-300" />
 
-                    <FilterByDate currentYear={2026} value={[2010, 2026]} onChange={() => {}} />
+                    <FilterByDate
+                        currentYear={currentYear}
+                        value={[filters.min_year, filters.max_year]}
+                        onChange={handleDateChange}
+                    />
                     <hr className="border-gray-300" />
 
                     <FilterByRating

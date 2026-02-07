@@ -9,12 +9,16 @@ import {
 } from '@/utils/filters/reviews-filters'
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
 
-export const UserReviewsControlsFilter = () => {
+type UserReviewsControlsFilterProps = {
+    currentYear: number
+}
+
+export const UserReviewsControlsFilter = ({ currentYear }: UserReviewsControlsFilterProps) => {
     const [filters] = useQueryFilters(parseReviewsFiltersFromSearchParams, buildReviewsFiltersQueryString)
 
     return (
         <FilterButton
-            filterComponent={<ReviewsFilter />}
+            filterComponent={<ReviewsFilter currentYear={currentYear} />}
             isActive={
                 filters.types.length > 0 ||
                 filters.min_year !== DEFAULT_REVIEWS_FILTERS.min_year ||

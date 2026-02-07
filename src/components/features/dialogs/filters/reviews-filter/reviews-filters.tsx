@@ -15,7 +15,11 @@ import { FilterByDate } from '../components/filter-by-date'
 import { FilterByTypes } from '../components/filter-by-types'
 import { FilterByWithText } from '../components/filter-by-with-text'
 
-export const ReviewsFilter = () => {
+type ReviewsFilterProps = {
+    currentYear: number
+}
+
+export const ReviewsFilter = ({ currentYear }: ReviewsFilterProps) => {
     const dialog = useDialog()
 
     const [initialFilters, setFiltersToUrl] = useQueryFilters(
@@ -29,6 +33,14 @@ export const ReviewsFilter = () => {
         setFilters(prev => ({
             ...prev,
             types: types,
+        }))
+    }, [])
+
+    const handleDateChange = useCallback((range: [number, number]) => {
+        setFilters(prev => ({
+            ...prev,
+            min_year: range[0],
+            max_year: range[1],
         }))
     }, [])
 
@@ -61,7 +73,11 @@ export const ReviewsFilter = () => {
                     <FilterByTypes value={filters.types} onChange={handleTypesChange} />
                     <hr className="border-gray-300" />
 
-                    <FilterByDate currentYear={2026} value={[2010, 2026]} onChange={() => {}} />
+                    <FilterByDate
+                        currentYear={currentYear}
+                        value={[filters.min_year, filters.max_year]}
+                        onChange={handleDateChange}
+                    />
                     <hr className="border-gray-300" />
 
                     <FilterByWithText
