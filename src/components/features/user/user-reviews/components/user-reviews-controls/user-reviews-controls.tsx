@@ -1,13 +1,14 @@
-import { ReviewsFilters } from '@/components/features/dialogs/filters/reviews-filter/reviews-filters'
-import { FiltersButton } from '@/components/ui/filters-button'
-
 import { UserReviewsControlsFilter } from './user-reviews-controls-filter'
 import { UserReviewsControlsSort } from './user-reviews-controls-sort'
 
-export const UserReviewsControls = () => {
+type UserReviewsControlsProps = {
+    currentYear: number
+}
+
+export const UserReviewsControls = ({ currentYear }: UserReviewsControlsProps) => {
     return (
         <div className="flex items-center justify-between">
-            <UserReviewsControlsFilter />
+            <UserReviewsControlsFilter currentYear={currentYear} />
             <UserReviewsControlsSort />
         </div>
     )

@@ -24,7 +24,7 @@ export const Radio = (props: RadioProps) => {
                     )}
                 />
             </span>
-            {children && <span>{children}</span>}
+            {children && <span className="text-sm">{children}</span>}
         </label>
     )
 }

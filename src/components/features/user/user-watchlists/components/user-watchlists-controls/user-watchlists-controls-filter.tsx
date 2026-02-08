@@ -1,7 +1,7 @@
 'use client'
 
-import { WatchlistsFilters } from '@/components/features/dialogs/filters/watchlists-filters/watchlists-filters'
-import { FiltersButton } from '@/components/ui/filters-button'
+import { WatchlistsFilter } from '@/components/features/dialogs/filters/watchlists-filter/watchlists-filter'
+import { FilterButton } from '@/components/ui/filter-button'
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
 import {
     DEFAULT_WATCHLISTS_FILTERS,
@@ -9,16 +9,22 @@ import {
     parseWatchlistsFiltersFromSearchParams,
 } from '@/utils/filters/watchlists-filters'
 
-export const UserWatchlistsControlsFilter = () => {
+type UserWatchlistsControlsFilterProps = {
+    currentYear: number
+}
+
+export const UserWatchlistsControlsFilter = ({ currentYear }: UserWatchlistsControlsFilterProps) => {
     const [filters] = useQueryFilters(parseWatchlistsFiltersFromSearchParams, buildWatchlistsFiltersQueryString)
 
     return (
-        <FiltersButton
-            filterComponent={<WatchlistsFilters />}
+        <FilterButton
+            filterComponent={<WatchlistsFilter currentYear={currentYear} />}
             isActive={
+                filters.types.length > 0 ||
+                filters.min_year !== DEFAULT_WATCHLISTS_FILTERS.min_year ||
+                filters.max_year !== DEFAULT_WATCHLISTS_FILTERS.max_year ||
                 filters.min_rating !== DEFAULT_WATCHLISTS_FILTERS.min_rating ||
-                filters.max_rating !== DEFAULT_WATCHLISTS_FILTERS.max_rating ||
-                filters.types.length > 0
+                filters.max_rating !== DEFAULT_WATCHLISTS_FILTERS.max_rating
             }
         />
     )

@@ -53,10 +53,12 @@ export const UserWatchlistsFeed = ({ username, isAuth }: UserWatchlistsFeedProps
     const { data, isFetching, isSuccess, isError } = watchlistsAPI.useGetWatchlistQuery({
         username,
         order,
-        sort_by: sortBy,
+        types: filters.types,
+        min_year: filters.min_year,
+        max_year: filters.max_year,
         min_rating: filters.min_rating,
         max_rating: filters.max_rating,
-        types: filters.types,
+        sort_by: sortBy,
     })
 
     if (isError) {

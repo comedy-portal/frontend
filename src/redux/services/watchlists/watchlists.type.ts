@@ -11,10 +11,11 @@ export type GetWatchlistParams = {
     username: string
     sort_by?: WatchlistSortBy
     order?: Order
-    year?: number
     types?: ContentType[]
     min_rating?: number
     max_rating?: number
+    min_year?: number
+    max_year?: number
     cursor?: number
 }
 

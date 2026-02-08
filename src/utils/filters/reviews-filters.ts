@@ -1,5 +1,5 @@
 import { ContentType } from '@/utils/enums/common'
-import { parseTypes, parseWithText } from '@/utils/helpers/filters'
+import { parseTypes, parseWithText, parseYear } from '@/utils/helpers/filters'
 
 export enum ReviewsUrlSortBy {
     DATE_DESC = 'date_desc',
@@ -10,14 +10,18 @@ export enum ReviewsUrlSortBy {
 
 export interface ReviewsFiltersState {
     sort: ReviewsUrlSortBy
-    with_text: boolean
     types: ContentType[]
+    min_year?: number
+    max_year?: number
+    with_text: boolean
 }
 
 export const DEFAULT_REVIEWS_FILTERS: ReviewsFiltersState = {
     sort: ReviewsUrlSortBy.DATE_DESC,
-    with_text: false,
     types: [],
+    min_year: undefined,
+    max_year: undefined,
+    with_text: false,
 }
 
 const VALID_REVIEWS_SORTS = new Set<ReviewsUrlSortBy>([
@@ -33,8 +37,10 @@ export function parseReviewsFiltersFromSearchParams(params: URLSearchParams): Re
 
     return {
         sort,
-        with_text: parseWithText(params.get('with_text'), DEFAULT_REVIEWS_FILTERS.with_text),
         types: parseTypes(params.get('types')),
+        min_year: parseYear(params.get('min_year'), DEFAULT_REVIEWS_FILTERS.min_year, 1900),
+        max_year: parseYear(params.get('max_year'), DEFAULT_REVIEWS_FILTERS.max_year, 1900),
+        with_text: parseWithText(params.get('with_text'), DEFAULT_REVIEWS_FILTERS.with_text),
     }
 }
 
@@ -42,7 +48,10 @@ export function buildReviewsFiltersQueryString(filters: ReviewsFiltersState): st
     const params = new URLSearchParams()
 
     if (filters.sort !== DEFAULT_REVIEWS_FILTERS.sort) params.set('sort', filters.sort)
-    if (filters.with_text !== DEFAULT_REVIEWS_FILTERS.with_text) params.set('with_text', String(filters.with_text))
     if (filters.types.length > 0) params.set('types', filters.types.join(','))
+    if (filters.min_year !== DEFAULT_REVIEWS_FILTERS.min_year) params.set('min_year', String(filters.min_year))
+    if (filters.max_year !== DEFAULT_REVIEWS_FILTERS.max_year) params.set('max_year', String(filters.max_year))
+    if (filters.with_text !== DEFAULT_REVIEWS_FILTERS.with_text) params.set('with_text', String(filters.with_text))
+
     return params.toString()
 }

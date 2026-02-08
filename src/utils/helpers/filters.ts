@@ -14,6 +14,20 @@ export function parseRating(value: string | null, defaultValue: number): number 
     return num
 }
 
+export function parseYear(
+    value: string | null,
+    defaultValue: number | undefined = undefined,
+    min: number = 1900,
+    max: number = new Date().getFullYear(),
+): number | undefined {
+    if (value === null) return defaultValue
+    const num = Number(value)
+    if (isNaN(num)) return defaultValue
+    if (num < min) return min
+    if (num > max) return max
+    return Math.floor(num)
+}
+
 export function parseTypes(param: string | null): ContentType[] {
     const VALID_CONTENT_TYPES = new Set<string>(Object.values(ContentType))
 
