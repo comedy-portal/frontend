@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 
 import { ContentMany } from '@/components/features/content-many/content-many'
+import { getSettings } from '@/services/settings/settings'
 import { contentTypesDict } from '@/utils/dict/content-types'
 import { ContentType } from '@/utils/enums/common'
 import { withAuth } from '@/utils/supertokens/with-auth'
@@ -61,6 +62,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 
 export default async function ContentManyBySlugPage(props: { params: Params }) {
     const params = await props.params
+    const settings = await getSettings()
 
     // Check if the slug is included in the ContentType enum
     if (!Object.values(ContentType).includes(params.slug.toLocaleLowerCase() as ContentType)) {
@@ -68,6 +70,6 @@ export default async function ContentManyBySlugPage(props: { params: Params }) {
     }
 
     return withAuth({
-        render: ({ isAuth }) => <ContentMany slug={params.slug} isAuth={isAuth} />,
+        render: ({ isAuth }) => <ContentMany currentYear={settings.currentYear} slug={params.slug} isAuth={isAuth} />,
     })
 }

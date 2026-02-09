@@ -7,6 +7,8 @@ import { getArticle } from '@/utils/helpers/blog'
 
 type Params = Promise<{ slug: string }>
 
+export const dynamic = 'force-static'
+
 export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
     const params = await props.params
     const article = getArticle(params.slug)

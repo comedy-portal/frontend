@@ -17,7 +17,6 @@ import { useRouter } from 'next/navigation'
 
 import { Search } from '@/components/features/layout/search/search'
 import { messages } from '@/messages'
-import { persistor } from '@/redux/store'
 import { useToast } from '@/utils/providers/toast-provider'
 
 import { HeaderLogin } from './components/header-login'
@@ -53,7 +52,7 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
             <nav className="flex flex-col gap-y-4 text-sm text-gray-300">
                 <Link
                     href="/top-special/2026"
-                    className="flex items-center justify-between rounded bg-[#46CE62] bg-[linear-gradient(rgba(70,206,98,.75),rgba(70,206,98,.4)),url('/images/top-entry-point-bg.png')] bg-cover bg-top bg-no-repeat p-2 font-bold text-white"
+                    className="flex items-center justify-between rounded bg-[#46CE62] bg-[linear-gradient(rgba(70,206,98,.75),rgba(70,206,98,.4)),url('/images/top-entry-point-bg.png')] bg-cover bg-top bg-no-repeat p-2 text-lg font-bold text-white"
                     onClick={closeMobileMenu}
                 >
                     Топ спешлов
@@ -108,10 +107,15 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
             <nav className="flex flex-col gap-y-4 text-sm text-gray-300">
                 {isAuth && username ? (
                     <>
-                        <div className="flex items-center gap-x-2 px-2 font-bold">
-                            <CircleUserIcon className="shrink-0" />
+                        <Link
+                            href={`/users/${username}`}
+                            scroll={false}
+                            className="flex items-center gap-x-2 p-2 text-lg font-bold"
+                            onClick={closeMobileMenu}
+                        >
+                            <CircleUserIcon className="shrink-0" size={32} />
                             {username}
-                        </div>
+                        </Link>
                         <Link
                             href={`/users/${username}`}
                             className="flex items-center justify-between px-2 font-bold"

@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 
 import { UserReviews } from '@/components/features/user/user-reviews/user-reviews'
+import { getSettings } from '@/services/settings/settings'
 import { getUserData } from '@/services/user/user'
 import { getUserByName } from '@/services/users/users'
 import { withAuth } from '@/utils/supertokens/with-auth'
@@ -18,6 +19,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 export default async function UserReviewsPage(props: { params: Params }) {
     const params = await props.params
     const user = await getUserByName(params.username)
+    const settings = await getSettings()
 
     return withAuth({
         getAuthData: async () => {
@@ -30,7 +32,12 @@ export default async function UserReviewsPage(props: { params: Params }) {
             return { activeUserId: userData.id }
         },
         render: ({ isAuth, data }) => (
-            <UserReviews userId={user.id} activeUserId={data?.activeUserId ?? null} isAuth={isAuth} />
+            <UserReviews
+                userId={user.id}
+                activeUserId={data?.activeUserId ?? null}
+                currentYear={settings.currentYear}
+                isAuth={isAuth}
+            />
         ),
     })
 }

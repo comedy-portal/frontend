@@ -4,13 +4,12 @@ import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { Rating } from '@/components/ui/rating'
-import { contentTypesDict } from '@/utils/dict/content-types'
 import { ContentType } from '@/utils/enums/common'
 
 import { ContentBlockBookmark } from './components/content-block-bookmark'
 import { ContentBlockDate } from './components/content-block-date'
 import { ContentBlockDuration } from './components/content-block-duration'
-import { ContentBlockTag } from './components/content-block-tag'
+import { ContentBlockType } from './components/content-block-tag'
 
 type ContentBlockRowType = {
     id: number
@@ -111,14 +110,8 @@ export const ContentBlockRow = (props: ContentBlockRowType) => {
                 <div className="flex items-center justify-between gap-x-4">
                     <div className="flex items-center gap-x-2">
                         <div className="flex items-center gap-x-1">
-                            <ContentBlockTag
-                                link={`/content/${props.type.toLowerCase()}`}
-                                title={
-                                    contentTypesDict.find(contentType => contentType.slug === props.type?.toLowerCase())
-                                        ?.label || ''
-                                }
-                            />
-                            <ContentBlockDate year={props.year} />
+                            <ContentBlockType slug={props.type} />
+                            <ContentBlockDate slug={props.type} year={props.year} />
                         </div>
                         {props.duration && <ContentBlockDuration duration={props.duration} />}
                     </div>

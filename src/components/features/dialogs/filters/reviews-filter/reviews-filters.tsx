@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 
 import { Button } from '@/components/ui/forms/button'
-import { Switcher } from '@/components/ui/forms/switcher'
+import { ContentType } from '@/utils/enums/common'
 import {
     DEFAULT_REVIEWS_FILTERS,
     ReviewsFiltersState,
@@ -11,15 +11,45 @@ import {
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
-import { FiltersTypes } from '../components/filters-types'
+import { FilterByDate } from '../components/filter-by-date'
+import { FilterByTypes } from '../components/filter-by-types'
+import { FilterByWithText } from '../components/filter-by-with-text'
 
-export const ReviewsFilters = () => {
+type ReviewsFilterProps = {
+    currentYear: number
+}
+
+export const ReviewsFilter = ({ currentYear }: ReviewsFilterProps) => {
     const dialog = useDialog()
+
     const [initialFilters, setFiltersToUrl] = useQueryFilters(
         parseReviewsFiltersFromSearchParams,
         buildReviewsFiltersQueryString,
     )
+
     const [filters, setFilters] = useState<ReviewsFiltersState>(initialFilters)
+
+    const handleTypesChange = useCallback((types: ContentType[]) => {
+        setFilters(prev => ({
+            ...prev,
+            types: types,
+        }))
+    }, [])
+
+    const handleDateChange = useCallback((range: [number, number]) => {
+        setFilters(prev => ({
+            ...prev,
+            content_min_year: range[0],
+            content_max_year: range[1],
+        }))
+    }, [])
+
+    const handleWithTextChange = useCallback((value: boolean) => {
+        setFilters(prev => ({
+            ...prev,
+            with_text: value,
+        }))
+    }, [])
 
     const handleApply = useCallback(() => {
         setFiltersToUrl(filters)
@@ -33,42 +63,36 @@ export const ReviewsFilters = () => {
         }))
     }, [])
 
-    const handleWithTextChange = useCallback((value: boolean) => {
-        setFilters(prev => ({
-            ...prev,
-            with_text: value,
-        }))
-    }, [])
-
     return (
-        <div className="flex w-full flex-col gap-y-6 sm:w-104">
-            <h1 className="text-2xl font-bold">Фильтр</h1>
+        <div className="w-full space-y-4 sm:w-104">
+            <h1 className="text-lg font-bold">Фильтр</h1>
+            <hr className="border-gray-950" />
 
-            <div className="flex flex-col gap-y-4">
-                <label className="font-bold">Тип контента:</label>
-                <FiltersTypes
-                    value={filters.types}
-                    onChange={types =>
-                        setFilters(prev => ({
-                            ...prev,
-                            types: types,
-                        }))
-                    }
-                />
-            </div>
+            <div className="space-y-8">
+                <div className="space-y-4">
+                    <FilterByTypes value={filters.types} onChange={handleTypesChange} />
+                    <hr className="border-gray-300" />
 
-            <div className="flex items-center gap-x-2">
-                <Switcher checked={filters.with_text} onChange={() => handleWithTextChange(!filters.with_text)} />
-                <div className="cursor-pointer" onClick={() => handleWithTextChange(!filters.with_text)}>
-                    Показать только с рецензиями
+                    <FilterByDate
+                        currentYear={currentYear}
+                        value={[filters.content_min_year, filters.content_max_year]}
+                        onChange={handleDateChange}
+                    />
+                    <hr className="border-gray-300" />
+
+                    <FilterByWithText
+                        isChecked={filters.with_text}
+                        onChange={() => handleWithTextChange(!filters.with_text)}
+                    />
+                    <hr className="border-gray-300" />
                 </div>
-            </div>
 
-            <div className="flex gap-x-2 pt-2">
-                <Button onClick={handleApply}>Применить</Button>
-                <Button variant="outline" onClick={handleReset}>
-                    Сбросить
-                </Button>
+                <div className="space-x-2">
+                    <Button onClick={handleApply}>Применить</Button>
+                    <Button variant="outline" onClick={handleReset}>
+                        Сбросить
+                    </Button>
+                </div>
             </div>
         </div>
     )

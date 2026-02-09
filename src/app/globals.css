@@ -3,6 +3,7 @@
 html {
   font-family: var(--font-roboto), sans-serif;
   color: var(--color-gray-950);
+  scroll-padding-top: 146px;
 }
 
 body {
