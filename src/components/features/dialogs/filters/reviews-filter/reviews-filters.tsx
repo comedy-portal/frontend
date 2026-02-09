@@ -39,8 +39,8 @@ export const ReviewsFilter = ({ currentYear }: ReviewsFilterProps) => {
     const handleDateChange = useCallback((range: [number, number]) => {
         setFilters(prev => ({
             ...prev,
-            min_year: range[0],
-            max_year: range[1],
+            content_min_year: range[0],
+            content_max_year: range[1],
         }))
     }, [])
 
@@ -75,7 +75,7 @@ export const ReviewsFilter = ({ currentYear }: ReviewsFilterProps) => {
 
                     <FilterByDate
                         currentYear={currentYear}
-                        value={[filters.min_year, filters.max_year]}
+                        value={[filters.content_min_year, filters.content_max_year]}
                         onChange={handleDateChange}
                     />
                     <hr className="border-gray-300" />

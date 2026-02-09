@@ -11,16 +11,16 @@ export enum ReviewsUrlSortBy {
 export interface ReviewsFiltersState {
     sort: ReviewsUrlSortBy
     types: ContentType[]
-    min_year?: number
-    max_year?: number
+    content_min_year?: number
+    content_max_year?: number
     with_text: boolean
 }
 
 export const DEFAULT_REVIEWS_FILTERS: ReviewsFiltersState = {
     sort: ReviewsUrlSortBy.DATE_DESC,
     types: [],
-    min_year: undefined,
-    max_year: undefined,
+    content_min_year: undefined,
+    content_max_year: undefined,
     with_text: false,
 }
 
@@ -38,8 +38,8 @@ export function parseReviewsFiltersFromSearchParams(params: URLSearchParams): Re
     return {
         sort,
         types: parseTypes(params.get('types')),
-        min_year: parseYear(params.get('min_year'), DEFAULT_REVIEWS_FILTERS.min_year, 1900),
-        max_year: parseYear(params.get('max_year'), DEFAULT_REVIEWS_FILTERS.max_year, 1900),
+        content_min_year: parseYear(params.get('content_min_year'), DEFAULT_REVIEWS_FILTERS.content_min_year, 1900),
+        content_max_year: parseYear(params.get('content_max_year'), DEFAULT_REVIEWS_FILTERS.content_max_year, 1900),
         with_text: parseWithText(params.get('with_text'), DEFAULT_REVIEWS_FILTERS.with_text),
     }
 }
@@ -49,8 +49,10 @@ export function buildReviewsFiltersQueryString(filters: ReviewsFiltersState): st
 
     if (filters.sort !== DEFAULT_REVIEWS_FILTERS.sort) params.set('sort', filters.sort)
     if (filters.types.length > 0) params.set('types', filters.types.join(','))
-    if (filters.min_year !== DEFAULT_REVIEWS_FILTERS.min_year) params.set('min_year', String(filters.min_year))
-    if (filters.max_year !== DEFAULT_REVIEWS_FILTERS.max_year) params.set('max_year', String(filters.max_year))
+    if (filters.content_min_year !== DEFAULT_REVIEWS_FILTERS.content_min_year)
+        params.set('content_min_year', String(filters.content_min_year))
+    if (filters.content_max_year !== DEFAULT_REVIEWS_FILTERS.content_max_year)
+        params.set('content_max_year', String(filters.content_max_year))
     if (filters.with_text !== DEFAULT_REVIEWS_FILTERS.with_text) params.set('with_text', String(filters.with_text))
 
     return params.toString()

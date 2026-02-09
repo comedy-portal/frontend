@@ -66,8 +66,8 @@ export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFee
         order,
         cursor,
         types: filters.types,
-        min_year: filters.min_year,
-        max_year: filters.max_year,
+        content_min_year: filters.content_min_year,
+        content_max_year: filters.content_max_year,
         with_text: filters.with_text,
         sort_by: sortBy,
     })

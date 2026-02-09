@@ -21,8 +21,8 @@ export const UserReviewsControlsFilter = ({ currentYear }: UserReviewsControlsFi
             filterComponent={<ReviewsFilter currentYear={currentYear} />}
             isActive={
                 filters.types.length > 0 ||
-                filters.min_year !== DEFAULT_REVIEWS_FILTERS.min_year ||
-                filters.max_year !== DEFAULT_REVIEWS_FILTERS.max_year ||
+                filters.content_min_year !== DEFAULT_REVIEWS_FILTERS.content_min_year ||
+                filters.content_max_year !== DEFAULT_REVIEWS_FILTERS.content_max_year ||
                 filters.with_text !== DEFAULT_REVIEWS_FILTERS.with_text
             }
         />

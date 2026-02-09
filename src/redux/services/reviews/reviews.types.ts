@@ -16,8 +16,8 @@ export type GetReviewsParams = {
     mark?: number
     with_text?: boolean
     types?: ContentType[]
-    min_year?: number
-    max_year?: number
+    content_min_year?: number
+    content_max_year?: number
 }
 
 export type GetReviewsResponse = PaginatedResponse<IReview>
