@@ -81,21 +81,21 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
                     </div>
                 </Link>
                 <Link
-                    href="/blog"
+                    href="/venues"
                     className="flex items-center justify-between px-2 font-bold"
                     onClick={closeMobileMenu}
                 >
-                    Блог
+                    Площадки
                     <div className="text-gray-700">
                         <ChevronRightIcon size={20} />
                     </div>
                 </Link>
                 <Link
-                    href="/about"
+                    href="/blog"
                     className="flex items-center justify-between px-2 font-bold"
                     onClick={closeMobileMenu}
                 >
-                    О проекте
+                    Блог
                     <div className="text-gray-700">
                         <ChevronRightIcon size={20} />
                     </div>
