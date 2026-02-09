@@ -52,7 +52,7 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
             <nav className="flex flex-col gap-y-4 text-sm text-gray-300">
                 <Link
                     href="/top-special/2026"
-                    className="flex items-center justify-between rounded bg-[#46CE62] bg-[linear-gradient(rgba(70,206,98,.75),rgba(70,206,98,.4)),url('/images/top-entry-point-bg.png')] bg-cover bg-top bg-no-repeat p-2 text-lg font-bold text-white"
+                    className="flex items-center justify-between rounded bg-[#46CE62] bg-[linear-gradient(rgba(70,206,98,.75),rgba(70,206,98,.4)),url('/images/top-entry-point-bg.png')] bg-cover bg-top bg-no-repeat p-2 font-bold text-white"
                     onClick={closeMobileMenu}
                 >
                     Топ спешлов
@@ -110,10 +110,10 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
                         <Link
                             href={`/users/${username}`}
                             scroll={false}
-                            className="flex items-center gap-x-2 p-2 text-lg font-bold"
+                            className="flex items-center gap-x-2 p-2 font-bold"
                             onClick={closeMobileMenu}
                         >
-                            <CircleUserIcon className="shrink-0" size={32} />
+                            <CircleUserIcon className="shrink-0" />
                             {username}
                         </Link>
                         <Link
