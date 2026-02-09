@@ -2,6 +2,8 @@ import { Metadata } from 'next'
 
 import { Faq } from '@/components/features/faq/faq'
 
+export const dynamic = 'force-static'
+
 // prettier-ignore
 export const metadata: Metadata = {
     title: 'Вопросы и ответы',

@@ -1,35 +1,40 @@
 import { useCallback, useState } from 'react'
 
 import { Button } from '@/components/ui/forms/button'
-import {
-    ContentFiltersState,
-    DEFAULT_CONTENT_FILTERS,
-    buildContentFiltersQueryString,
-    parseContentFiltersFromSearchParams,
-} from '@/utils/filters/content-filters'
+import { ContentType } from '@/utils/enums/common'
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
+import {
+    DEFAULT_WATCHLISTS_FILTERS,
+    WatchlistsFiltersState,
+    buildWatchlistsFiltersQueryString,
+    parseWatchlistsFiltersFromSearchParams,
+} from '@/utils/filters/watchlists-filters'
 import { useDialog } from '@/utils/providers/dialog-provider'
 
-import 'react-range-slider-input/dist/style.css'
-
 import { FilterByDate } from '../components/filter-by-date'
-import { FilterByNotWatched } from '../components/filter-by-not-watched'
 import { FilterByRating } from '../components/filter-by-rating'
+import { FilterByTypes } from '../components/filter-by-types'
 
-type ContentFiltersProps = {
+type WatchlistsFilterProps = {
     currentYear: number
-    isAuth: boolean
 }
 
-export const ContentFilters = ({ currentYear, isAuth }: ContentFiltersProps) => {
+export const WatchlistsFilter = ({ currentYear }: WatchlistsFilterProps) => {
     const dialog = useDialog()
 
     const [initialFilters, setFiltersToUrl] = useQueryFilters(
-        parseContentFiltersFromSearchParams,
-        buildContentFiltersQueryString,
+        parseWatchlistsFiltersFromSearchParams,
+        buildWatchlistsFiltersQueryString,
     )
 
-    const [filters, setFilters] = useState<ContentFiltersState>(initialFilters)
+    const [filters, setFilters] = useState<WatchlistsFiltersState>(initialFilters)
+
+    const handleTypesChange = useCallback((types: ContentType[]) => {
+        setFilters(prev => ({
+            ...prev,
+            types: types,
+        }))
+    }, [])
 
     const handleDateChange = useCallback((range: [number, number]) => {
         setFilters(prev => ({
@@ -47,13 +52,6 @@ export const ContentFilters = ({ currentYear, isAuth }: ContentFiltersProps) => 
         }))
     }, [])
 
-    const handleNotWatchedChange = useCallback((value: boolean) => {
-        setFilters(prev => ({
-            ...prev,
-            not_watched: value,
-        }))
-    }, [])
-
     const handleApply = useCallback(() => {
         setFiltersToUrl(filters)
         dialog.close()
@@ -61,7 +59,7 @@ export const ContentFilters = ({ currentYear, isAuth }: ContentFiltersProps) => 
 
     const handleReset = useCallback(() => {
         setFilters(prev => ({
-            ...DEFAULT_CONTENT_FILTERS,
+            ...DEFAULT_WATCHLISTS_FILTERS,
             sort: prev.sort,
         }))
     }, [])
@@ -73,6 +71,9 @@ export const ContentFilters = ({ currentYear, isAuth }: ContentFiltersProps) => 
 
             <div className="space-y-8">
                 <div className="space-y-4">
+                    <FilterByTypes value={filters.types} onChange={handleTypesChange} />
+                    <hr className="border-gray-300" />
+
                     <FilterByDate
                         currentYear={currentYear}
                         value={[filters.min_year, filters.max_year]}
@@ -84,12 +85,6 @@ export const ContentFilters = ({ currentYear, isAuth }: ContentFiltersProps) => 
                         minRating={filters.min_rating}
                         maxRating={filters.max_rating}
                         onChange={handleRatingChange}
-                    />
-                    <hr className="border-gray-300" />
-
-                    <FilterByNotWatched
-                        isChecked={filters.not_watched}
-                        onChange={() => handleNotWatchedChange(!filters.not_watched)}
                     />
                     <hr className="border-gray-300" />
                 </div>
