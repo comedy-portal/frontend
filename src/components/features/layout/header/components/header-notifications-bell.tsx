@@ -7,7 +7,7 @@ import { useAppSelector } from '@/redux/hooks'
 import { notificationAPI } from '@/redux/services/notification/notification.api'
 
 type NotificationsBellProps = {
-    closeMobileMenu: () => void
+    closeMobileMenu?: () => void
 }
 
 export const NotificationsBell = ({ closeMobileMenu }: NotificationsBellProps) => {
@@ -22,7 +22,7 @@ export const NotificationsBell = ({ closeMobileMenu }: NotificationsBellProps) =
         <Link
             href="/me/subscriptions/notifications"
             className="relative cursor-pointer text-gray-300 hover:text-white"
-            onClick={closeMobileMenu}
+            onClick={() => closeMobileMenu?.()}
         >
             <BellIcon />
             {hasNew && (
