@@ -2,12 +2,11 @@
 
 import { useState } from 'react'
 
-import { MenuIcon, MicIcon, XIcon } from 'lucide-react'
+import { MenuIcon, XIcon } from 'lucide-react'
 
-import Link from 'next/link'
-
-import { NotificationsBell } from './components/header-notifications-bell'
-import { HeaderMobileMenu } from './header-mobile-menu'
+import { NotificationsBell } from '../components/header-notifications-bell'
+import { HeaderMobileLogo } from './components/header-mobile-logo'
+import { HeaderMobileMenu } from './components/header-mobile-menu'
 
 type HeaderMobileProps = {
     username: string | null
@@ -27,14 +26,7 @@ export const HeaderMobile = ({ username, isAuth }: HeaderMobileProps) => {
 
     return (
         <div className="flex h-full items-center justify-between">
-            <Link
-                href="/"
-                className="relative flex h-full items-center gap-x-2 whitespace-nowrap text-white"
-                onClick={closeMobileMenu}
-            >
-                <MicIcon size={28} strokeWidth={2} />
-                <div className="text-[20px] leading-none font-extrabold uppercase">ComedyPortal</div>
-            </Link>
+            <HeaderMobileLogo closeMobileMenu={closeMobileMenu} />
 
             <div className="flex items-center gap-x-4">
                 {isAuth && username && <NotificationsBell closeMobileMenu={closeMobileMenu} />}

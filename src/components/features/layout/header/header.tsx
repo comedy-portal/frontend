@@ -1,20 +1,15 @@
-import { HeaderDesktop } from './header-desktop'
-import { HeaderMobile } from './header-mobile'
+import { HeaderDesktopAuthWrapper } from './header-desktop/header-desktop-auth-wrapper'
+import { HeaderMobileAuthWrapper } from './header-mobile/header-mobile-auth-wrapper'
 
-type HeaderProps = {
-    username: string | null
-    isAuth: boolean
-}
-
-export const Header = ({ username, isAuth }: HeaderProps) => {
+export const Header = () => {
     return (
         <header className="sticky top-0 z-40 bg-gray-950" data-nosnippet>
             <div className="wrapper block h-14 lg:hidden">
-                <HeaderMobile username={username} isAuth={isAuth} />
+                <HeaderMobileAuthWrapper />
             </div>
 
             <div className="wrapper hidden h-16 lg:block">
-                <HeaderDesktop username={username} isAuth={isAuth} />
+                <HeaderDesktopAuthWrapper />
             </div>
         </header>
     )

@@ -2,22 +2,19 @@
 
 import { RefObject, useRef, useState } from 'react'
 
-import { BookmarkIcon, CircleUserIcon, LogOutIcon, MicIcon, SettingsIcon, StarIcon, UsersIcon } from 'lucide-react'
-import Session from 'supertokens-web-js/recipe/session'
+import { BookmarkIcon, CircleUserIcon, MicIcon, SettingsIcon, StarIcon, UsersIcon } from 'lucide-react'
 import { useOnClickOutside } from 'usehooks-ts'
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 
 import { Search } from '@/components/features/layout/search/search'
-import { messages } from '@/messages'
 import { Keys } from '@/utils/enums/common'
 import { useKeypress } from '@/utils/hooks/use-keypress'
-import { useToast } from '@/utils/providers/toast-provider'
 
-import { HeaderLogin } from './components/header-login'
-import { NotificationsBell } from './components/header-notifications-bell'
-import { HeaderSubmitContent } from './components/header-submit-content'
+import { HeaderLogin } from '../components/header-login'
+import { NotificationsBell } from '../components/header-notifications-bell'
+import { HeaderSubmitContent } from '../components/header-submit-content'
+import { HeaderDesktopSignoutButton } from './components/header-desktop-signout-button'
 
 type HeaderDesktopProps = {
     username: string | null
@@ -25,26 +22,11 @@ type HeaderDesktopProps = {
 }
 
 export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
-    const toast = useToast()
-    const router = useRouter()
     const ref = useRef<HTMLDivElement>(null)
-
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     useOnClickOutside(ref as RefObject<HTMLDivElement>, () => setIsMenuOpen(false))
-
     useKeypress(Keys.ESCAPE, () => setIsMenuOpen(false))
-
-    const handleSignOut = async () => {
-        try {
-            await Session.signOut()
-            setIsMenuOpen(false)
-            router.push('/')
-            router.refresh()
-        } catch {
-            toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
-        }
-    }
 
     return (
         <div className="flex h-full flex-row items-center justify-between">
@@ -132,13 +114,7 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
 
                                     <hr className="border-gray-100" />
 
-                                    <div
-                                        onClick={handleSignOut}
-                                        className="flex cursor-pointer items-center gap-2 px-4 text-sm text-gray-600 hover:text-gray-950"
-                                    >
-                                        <LogOutIcon size={20} />
-                                        Выйти
-                                    </div>
+                                    <HeaderDesktopSignoutButton onClick={() => setIsMenuOpen(false)} />
                                 </div>
                             )}
                         </div>
