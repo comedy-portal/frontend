@@ -12,12 +12,14 @@ export const Footer = async ({ isAuth }: FooterProps) => {
         <footer className="bg-gray-950 text-gray-300" data-nosnippet>
             <div className="wrapper flex flex-col justify-between gap-x-12 gap-y-6 py-10 lg:flex-row">
                 <section className="space-y-2">
-                    <h6 className="text-lg font-bold text-white">&copy; 2026 Comedy Portal</h6>
+                    <div className="flex items-center gap-x-2">
+                        <h6 className="text-white">&copy;&nbsp;2025-2026 Comedy Portal</h6>
+                        <div className="text-sm text-gray-500">18+</div>
+                    </div>
                     <div className="text-sm">
                         <p>Агрегатор лучших стендапов и шоу.</p>
                         <p>С оценками, рецензиями и Вашей персональной историей просмотров.</p>
                     </div>
-                    <div>18+</div>
                     <div className="text-xs lg:text-left">* Министерством юстиции РФ признан иностранным агентом</div>
                     <InstallPWAButton width={135} height={40} />
                 </section>
