@@ -2,8 +2,6 @@ import { Metadata } from 'next'
 
 import { LegalPrivacyPolicy } from '@/components/features/legal/legal-privacy-policy'
 
-export const dynamic = 'force-static'
-
 // prettier-ignore
 export const metadata: Metadata = {
     title: 'Политика конфиденциальности',

@@ -7,7 +7,7 @@ import { useDialog } from '@/utils/providers/dialog-provider'
 
 type WelcomeLoginButtonProps = {
     caption: string
-    href?: string
+    href: string
     isAuth: boolean
 }
 
@@ -18,7 +18,7 @@ export const WelcomeLoginButton = ({ caption, href, isAuth }: WelcomeLoginButton
         dialog.open(<SignUp />)
     }
 
-    return isAuth && href ? (
+    return isAuth ? (
         <Link href={href} className="text-blue-500 hover:text-blue-700">
             {caption}
         </Link>
