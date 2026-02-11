@@ -53,7 +53,10 @@ export default async function TopSpecialYearPage(props: { params: Params }) {
                                 оценок сообщества. В&nbsp;рейтинг попадают выступления, набравшие{' '}
                                 <strong>не&nbsp;менее {settings.currentYearTopSpecialsMinReviewsCount} оценок</strong>.
                                 Любимый спешл ещё не&nbsp;в&nbsp;топе?{' '}
-                                <Link href={`/content/special?sort=rating_asc&year=${year}`} className="link">
+                                <Link
+                                    href={`/content/special?sort=rating_asc&min_year=${year}&max_year=${year}`}
+                                    className="link"
+                                >
                                     Оценивайте выступления
                                 </Link>{' '}
                                 и&nbsp;влияйте на&nbsp;результаты.

@@ -4,8 +4,6 @@ import { Welcome } from '@/components/features/welcome/welcome'
 import { getUserData } from '@/services/user/user'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
-export const dynamic = 'force-static'
-
 // prettier-ignore
 export const metadata: Metadata = {
     title: 'Добро пожаловать!',

@@ -1,9 +1,9 @@
 import { getUserData } from '@/services/user/user'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
-import { Header } from './header'
+import { HeaderMobile } from './header-mobile'
 
-export const HeaderAuthWrapper = async () => {
+export const HeaderMobileAuthWrapper = async () => {
     return withAuth({
         getAuthData: async () => {
             const userData = await getUserData()
@@ -14,6 +14,6 @@ export const HeaderAuthWrapper = async () => {
 
             return { userName: userData.username }
         },
-        render: ({ isAuth, data }) => <Header username={data?.userName ?? null} isAuth={isAuth} />,
+        render: ({ isAuth, data }) => <HeaderMobile username={data?.userName ?? null} isAuth={isAuth} />,
     })
 }

@@ -1,4 +1,6 @@
-import { ReactNode } from 'react'
+'use client'
+
+import { ReactNode, useEffect } from 'react'
 
 import { SparklesIcon } from 'lucide-react'
 
@@ -22,6 +24,10 @@ type Feature = {
 }
 
 export const Welcome = ({ username, isAuth }: WelcomeProps) => {
+    useEffect(() => {
+        console.log(isAuth)
+    }, [isAuth])
+
     const features: Feature[] = [
         {
             title: '🔔 Подписывайтесь на комиков и группы',
