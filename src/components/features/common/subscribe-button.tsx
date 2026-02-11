@@ -5,12 +5,12 @@ import { BellOffIcon, BellPlusIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import { SignUp } from '@/components/features/auth/sign-up'
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { Button } from '@/components/ui/forms/button'
 import { messages } from '@/messages'
-import { subscriptionsAPI } from '@/redux/services/subscriptions/subscriptions.api'
-import { SubscriptionType } from '@/redux/services/subscriptions/subscriptions.types'
-import { useDialog } from '@/utils/providers/dialog-provider'
-import { useToast } from '@/utils/providers/toast-provider'
+import { subscriptionsAPI } from '@/utils/redux/services/subscriptions/subscriptions.api'
+import { SubscriptionType } from '@/utils/redux/services/subscriptions/subscriptions.types'
 
 type SubscribeButtonProps = {
     id: number

@@ -4,8 +4,8 @@ import Session from 'supertokens-web-js/recipe/session'
 
 import { useRouter } from 'next/navigation'
 
+import { useToast } from '@/components/providers/toast-provider'
 import { messages } from '@/messages'
-import { useToast } from '@/utils/providers/toast-provider'
 
 type HeaderDesktopSignoutButtonProps = {
     onClick: () => void

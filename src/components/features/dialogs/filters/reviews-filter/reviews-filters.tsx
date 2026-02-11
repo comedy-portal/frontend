@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 
+import { useDialog } from '@/components/providers/dialog-provider'
 import { Button } from '@/components/ui/forms/button'
 import { ContentType } from '@/utils/enums/common'
 import {
@@ -9,7 +10,6 @@ import {
     parseReviewsFiltersFromSearchParams,
 } from '@/utils/filters/reviews-filters'
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
-import { useDialog } from '@/utils/providers/dialog-provider'
 
 import { FilterByDate } from '../components/filter-by-date'
 import { FilterByTypes } from '../components/filter-by-types'

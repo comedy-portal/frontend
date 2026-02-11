@@ -5,11 +5,11 @@ import { SquarePenIcon, TrashIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import { ReviewUpdate } from '@/components/features/dialogs/reviews-form/review-update'
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { Confirmation } from '@/components/ui/confirmation'
 import { messages } from '@/messages'
-import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
-import { useDialog } from '@/utils/providers/dialog-provider'
-import { useToast } from '@/utils/providers/toast-provider'
+import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
 
 type UserReviewsFeedItemProps = {
     id: number

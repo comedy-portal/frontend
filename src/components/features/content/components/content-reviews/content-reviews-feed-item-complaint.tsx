@@ -2,7 +2,7 @@ import { MessageCircleWarningIcon } from 'lucide-react'
 
 import { SignUp } from '@/components/features/auth/sign-up'
 import { ComplainFormReview } from '@/components/features/dialogs/complaint/complain-form-review'
-import { useDialog } from '@/utils/providers/dialog-provider'
+import { useDialog } from '@/components/providers/dialog-provider'
 
 type ContentReviewsFeedItemComplaintProps = {
     reviewId: number

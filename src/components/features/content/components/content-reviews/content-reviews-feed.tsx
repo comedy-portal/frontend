@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
-import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
+import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
 
 import { ContentReviewsFeedItem } from './content-reviews-feed-item'
 import { ContentReviewsFeedSkeleton } from './content-reviews-feed-skeleton'

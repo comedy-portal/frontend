@@ -5,10 +5,10 @@ import ScrollContainer from 'react-indiana-drag-scroll'
 import { ContentBlock } from '@/components/features/common/content-block/content-block'
 import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
-import { contentAPI } from '@/redux/services/content/content.api'
-import { ContentSortBy } from '@/redux/services/content/content.types'
 import { Order } from '@/utils/enums/common'
 import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
+import { contentAPI } from '@/utils/redux/services/content/content.api'
+import { ContentSortBy } from '@/utils/redux/services/content/content.types'
 
 import { LandingContentFeedSkeleton } from './landing-content-feed-skeleton'
 

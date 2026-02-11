@@ -1,10 +1,10 @@
 'use client'
 
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { Confirmation } from '@/components/ui/confirmation'
 import { messages } from '@/messages'
-import { userAPI } from '@/redux/services/user/user.api'
-import { useDialog } from '@/utils/providers/dialog-provider'
-import { useToast } from '@/utils/providers/toast-provider'
+import { userAPI } from '@/utils/redux/services/user/user.api'
 
 export const SettingsRequestDeleteAccount = () => {
     const dialog = useDialog()

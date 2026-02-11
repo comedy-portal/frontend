@@ -2,7 +2,7 @@
 
 import { ListFilterIcon, ListFilterPlusIcon } from 'lucide-react'
 
-import { useDialog } from '@/utils/providers/dialog-provider'
+import { useDialog } from '@/components/providers/dialog-provider'
 
 type FilterButtonProps = {
     filterComponent: React.ReactNode

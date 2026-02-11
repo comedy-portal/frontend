@@ -3,7 +3,7 @@
 import { BookmarkIcon, CircleUserIcon, SettingsIcon, StarIcon, UsersIcon } from 'lucide-react'
 import { useScrollLock } from 'usehooks-ts'
 
-import { Search } from '@/components/features/layout/search/search'
+import { Search } from '@/components/features/common/search/search'
 
 import { HeaderLogin } from '../../components/header-login'
 import { HeaderSubmitContent } from '../../components/header-submit-content'
