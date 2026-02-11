@@ -1,9 +1,9 @@
 'use client'
 
+import { useDialog } from '@/components/providers/dialog-provider'
 import { Button } from '@/components/ui/forms/button'
 import { Keys } from '@/utils/enums/common'
 import { useKeypress } from '@/utils/hooks/use-keypress'
-import { useDialog } from '@/utils/providers/dialog-provider'
 
 type ConfirmationProps = {
     title: string

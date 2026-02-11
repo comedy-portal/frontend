@@ -5,8 +5,8 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/forms/button'
-import { userAPI } from '@/redux/services/user/user.api'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
+import { userAPI } from '@/utils/redux/services/user/user.api'
 
 type RestoreProps = {
     token: string

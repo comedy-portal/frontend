@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 
 import { SignUp } from '@/components/features/auth/sign-up'
-import { useDialog } from '@/utils/providers/dialog-provider'
+import { useDialog } from '@/components/providers/dialog-provider'
 
 type HeaderSubmitContentProps = {
     isAuth: boolean

@@ -7,13 +7,13 @@ import * as yup from 'yup'
 
 import Link from 'next/link'
 
+import { useToast } from '@/components/providers/toast-provider'
 import { Button } from '@/components/ui/forms/button'
 import { Input } from '@/components/ui/forms/input'
 import { Textarea } from '@/components/ui/forms/textarea'
 import { messages } from '@/messages'
-import { ContentProposalsAPI } from '@/redux/services/content-proposals/content-proposals.api'
-import { CreateProposalsInputs } from '@/redux/services/content-proposals/content-proposals.types'
-import { useToast } from '@/utils/providers/toast-provider'
+import { ContentProposalsAPI } from '@/utils/redux/services/content-proposals/content-proposals.api'
+import { CreateProposalsInputs } from '@/utils/redux/services/content-proposals/content-proposals.types'
 
 export const ContentSubmit = () => {
     const toast = useToast()

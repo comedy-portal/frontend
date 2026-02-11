@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import InstallPWAButton from '@/components/features/layout/install-pwa-button/install-pwa-button'
+import InstallPWAButton from '@/components/features/common/install-pwa-button'
 import { BlogArticle } from '@/utils/types/blog'
 
 // prettier-ignore

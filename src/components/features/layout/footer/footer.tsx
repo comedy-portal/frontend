@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import InstallPWAButton from '../install-pwa-button/install-pwa-button'
+import InstallPWAButton from '../../common/install-pwa-button'
 import { FooterSubmitContent } from './footer-content-submit'
 
 type FooterProps = {

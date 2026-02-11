@@ -1,11 +1,11 @@
 'use client'
 
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { messages } from '@/messages'
-import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
-import { ReviewComplaintInputs } from '@/redux/services/reviews/reviews.types'
 import { ComplaintReasons } from '@/utils/enums/common'
-import { useDialog } from '@/utils/providers/dialog-provider'
-import { useToast } from '@/utils/providers/toast-provider'
+import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
+import { ReviewComplaintInputs } from '@/utils/redux/services/reviews/reviews.types'
 
 import { ComplaintForm } from './complaint-form'
 

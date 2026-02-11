@@ -3,12 +3,12 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
+import { useDialog } from '@/components/providers/dialog-provider'
 import { ExternalLink } from '@/components/ui/external-link'
 import { Button } from '@/components/ui/forms/button'
 import { Textarea } from '@/components/ui/forms/textarea'
 import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
-import { CreateReviewInputs, UpdateReviewInputs } from '@/redux/services/reviews/reviews.types'
-import { useDialog } from '@/utils/providers/dialog-provider'
+import { CreateReviewInputs, UpdateReviewInputs } from '@/utils/redux/services/reviews/reviews.types'
 
 type ReviewFormProps = {
     initialValues: CreateReviewInputs | UpdateReviewInputs

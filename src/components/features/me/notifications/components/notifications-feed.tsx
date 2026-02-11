@@ -4,9 +4,9 @@ import { useEffect } from 'react'
 
 import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
-import { getLastEventId, setLastEventId } from '@/redux/features/user-slice'
-import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { notificationAPI } from '@/redux/services/notification/notification.api'
+import { getLastEventId, setLastEventId } from '@/utils/redux/features/user-slice'
+import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
+import { notificationAPI } from '@/utils/redux/services/notification/notification.api'
 
 import { NotificationsFeedItem } from './notifications-feed-item'
 import { NotificationsFeedSkeleton } from './notifications-feed-skeleton'

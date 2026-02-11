@@ -4,7 +4,7 @@ import { CalendarIcon, CircleArrowLeftIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
-import { Share } from '@/components/ui/share'
+import { Share } from '@/components/features/common/share'
 import { formatDate } from '@/utils/helpers/common'
 
 type ArticleProps = {

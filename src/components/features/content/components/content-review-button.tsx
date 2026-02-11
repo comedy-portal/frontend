@@ -5,8 +5,8 @@ import { StarIcon } from 'lucide-react'
 import { SignUp } from '@/components/features/auth/sign-up'
 import { ReviewCreate } from '@/components/features/dialogs/reviews-form/review-create'
 import { ReviewUpdate } from '@/components/features/dialogs/reviews-form/review-update'
+import { useDialog } from '@/components/providers/dialog-provider'
 import { Button } from '@/components/ui/forms/button'
-import { useDialog } from '@/utils/providers/dialog-provider'
 
 type ContentReviewButtonProps = {
     contentId: number
