@@ -1,7 +1,5 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-
 import { ShareIcon } from 'lucide-react'
 
 import { useToast } from '@/components/providers/toast-provider'
@@ -16,13 +14,7 @@ type ShareProps = {
 
 export const Share = ({ title, text, url }: ShareProps) => {
     const toast = useToast()
-    const [canShare, setCanShare] = useState(false)
-
-    useEffect(() => {
-        if (typeof navigator !== 'undefined' && !!navigator.share) {
-            setCanShare(true)
-        }
-    }, [])
+    const canShare = typeof navigator !== 'undefined' && typeof navigator.share === 'function'
 
     const handleShare = async () => {
         try {
@@ -31,7 +23,11 @@ export const Share = ({ title, text, url }: ShareProps) => {
                 text: text || '',
                 url,
             })
-        } catch {
+        } catch (err: unknown) {
+            if (err instanceof DOMException && err.name === 'AbortError') {
+                return
+            }
+
             toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
         }
     }

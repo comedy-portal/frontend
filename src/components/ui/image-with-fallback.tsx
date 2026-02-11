@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import classNames from 'classnames'
 
@@ -9,11 +9,11 @@ import Image, { ImageProps } from 'next/image'
 import { ImageStub } from '@/components/ui/image-stub'
 
 export const ImageWithFallback = (props: ImageProps) => {
-    const [error, setError] = useState<boolean | null>(null)
+    return <ImageWithFallbackInner key={String(props.src)} {...props} />
+}
 
-    useEffect(() => {
-        setError(null)
-    }, [props.src])
+function ImageWithFallbackInner(props: ImageProps) {
+    const [error, setError] = useState(false)
 
     if (error || !props.src) {
         return (
