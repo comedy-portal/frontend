@@ -7,12 +7,18 @@ import {
     ChangeUserNameInputsResponse,
     ConfirmUserDeletionInputs,
     ConfirmUserDeletionResponse,
+    GetUserDataResponse,
     RestoreUserInputs,
     RestoreUserResponse,
 } from './user.types'
 
 export const userAPI = api.injectEndpoints({
     endpoints: build => ({
+        getUserData: build.query<GetUserDataResponse, void>({
+            query: () => ({
+                url: 'user',
+            }),
+        }),
         changeUsername: build.mutation<ChangeUserNameInputsResponse, ChangeUserNameInputs>({
             query: body => ({
                 url: 'user/username',
