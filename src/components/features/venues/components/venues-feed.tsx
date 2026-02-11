@@ -1,14 +1,48 @@
 'use client'
 
+import { useMemo } from 'react'
+
 import { VenuesBlock } from '@/components/features/common/venues-block/venues-block'
 import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { venuesAPI } from '@/redux/services/venues/venues.api'
+import { VenueSortBy } from '@/redux/services/venues/venues.types'
+import { Order } from '@/utils/enums/common'
+import { useQueryFilters } from '@/utils/filters/use-query-filters'
+import {
+    VenuesUrlSortBy,
+    buildVenuesFiltersQueryString,
+    parseVenuesFiltersFromSearchParams,
+} from '@/utils/filters/venues-filters'
 
 import { VenuesFeedSkeleton } from './venues-feed-skeleton'
 
 export const VenuesFeed = () => {
-    const { data, isSuccess, isError } = venuesAPI.useGetVenuesQuery({})
+    const [filters] = useQueryFilters(parseVenuesFiltersFromSearchParams, buildVenuesFiltersQueryString)
+
+    const { sortBy, order } = useMemo(() => {
+        let sortBy = VenueSortBy.NAME
+        let order = Order.DESC
+
+        switch (filters.sort) {
+            case VenuesUrlSortBy.NAME_DESC:
+                sortBy = VenueSortBy.NAME
+                order = Order.DESC
+                break
+
+            case VenuesUrlSortBy.CITY_DESC:
+                sortBy = VenueSortBy.CITY
+                order = Order.ASC
+                break
+        }
+
+        return { sortBy, order }
+    }, [filters.sort])
+
+    const { data, isSuccess, isError } = venuesAPI.useGetVenuesQuery({
+        order,
+        sort_by: sortBy,
+    })
 
     if (isError) {
         return <CommonError />
