@@ -1,6 +1,6 @@
 'use client'
 
-import { ContentFilters } from '@/components/features/dialogs/filters/content-filters/content-filters'
+import { ContentFilter } from '@/components/features/dialogs/filters/content-filters/content-filter'
 import { FilterButton } from '@/components/ui/filter-button'
 import {
     DEFAULT_CONTENT_FILTERS,
@@ -19,7 +19,7 @@ export const ContentManyControlsFilter = ({ currentYear, isAuth }: ContentManyCo
 
     return (
         <FilterButton
-            filterComponent={<ContentFilters currentYear={currentYear} isAuth={isAuth} />}
+            filterComponent={<ContentFilter currentYear={currentYear} isAuth={isAuth} />}
             isActive={
                 filters.min_year !== DEFAULT_CONTENT_FILTERS.min_year ||
                 filters.max_year !== DEFAULT_CONTENT_FILTERS.max_year ||

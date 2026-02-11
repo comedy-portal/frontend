@@ -38,3 +38,9 @@ export function parseTypes(param: string | null): ContentType[] {
         .map(v => v.trim())
         .filter(v => VALID_CONTENT_TYPES.has(v)) as ContentType[]
 }
+
+export function parseCity(value: string | null, defaultValue?: string): string | undefined {
+    if (!value) return defaultValue
+    const trimmed = value.trim()
+    return trimmed.length > 0 ? trimmed : defaultValue
+}

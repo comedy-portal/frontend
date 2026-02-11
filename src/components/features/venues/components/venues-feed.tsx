@@ -42,6 +42,7 @@ export const VenuesFeed = () => {
     const { data, isSuccess, isError } = venuesAPI.useGetVenuesQuery({
         order,
         sort_by: sortBy,
+        city: filters.city,
     })
 
     if (isError) {
