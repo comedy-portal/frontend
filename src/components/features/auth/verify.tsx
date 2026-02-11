@@ -7,8 +7,8 @@ import { clearLoginAttemptInfo, consumeCode, resendCode } from 'supertokens-web-
 
 import { useRouter } from 'next/navigation'
 
-import { api } from '@/redux/services/api'
-import { useDialog } from '@/utils/providers/dialog-provider'
+import { useDialog } from '@/components/providers/dialog-provider'
+import { api } from '@/utils/redux/services/api'
 
 import { VerifyForm } from './verify-form'
 

@@ -1,0 +1,15 @@
+import { api } from '@/utils/redux/services/api'
+
+import { GetNotificationsResponse } from './notification.types'
+
+export const notificationAPI = api.injectEndpoints({
+    endpoints: build => ({
+        getNotifications: build.query<GetNotificationsResponse, void>({
+            query: () => ({
+                url: 'events',
+            }),
+            providesTags: () => [{ type: 'Notifications', id: 'LIST' }],
+        }),
+    }),
+    overrideExisting: false,
+})

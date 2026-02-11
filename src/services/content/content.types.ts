@@ -1,5 +1,5 @@
-import { ContentSortBy } from '@/redux/services/content/content.types'
 import { ContentType, Order } from '@/utils/enums/common'
+import { ContentSortBy } from '@/utils/redux/services/content/content.types'
 import { PaginatedResponse } from '@/utils/types/common'
 import { IContent } from '@/utils/types/content'
 

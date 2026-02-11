@@ -5,8 +5,6 @@ import { useEffect, useMemo } from 'react'
 import { ContentBlockRow } from '@/components/features/common/content-block/content-block-row'
 import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
-import { watchlistsAPI } from '@/redux/services/watchlists/watchlists.api'
-import { WatchlistSortBy } from '@/redux/services/watchlists/watchlists.type'
 import { Order } from '@/utils/enums/common'
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
 import {
@@ -15,6 +13,8 @@ import {
     parseWatchlistsFiltersFromSearchParams,
 } from '@/utils/filters/watchlists-filters'
 import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
+import { watchlistsAPI } from '@/utils/redux/services/watchlists/watchlists.api'
+import { WatchlistSortBy } from '@/utils/redux/services/watchlists/watchlists.type'
 
 import { UserWatchlistsFeedSkeleton } from './user-watchlists-feed-skeleton'
 

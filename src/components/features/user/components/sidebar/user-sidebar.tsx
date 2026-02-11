@@ -1,7 +1,7 @@
 import { CircleUserIcon } from 'lucide-react'
 
+import { Share } from '@/components/features/common/share'
 import { RatingHistogram } from '@/components/ui/rating-histogram'
-import { Share } from '@/components/ui/share'
 import { ContentType } from '@/utils/enums/common'
 import { formatDuration } from '@/utils/helpers/registration-date-format'
 

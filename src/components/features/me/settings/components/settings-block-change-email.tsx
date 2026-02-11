@@ -1,7 +1,7 @@
 'use client'
 
 import { ChangeEmail } from '@/components/features/auth/change-email'
-import { useDialog } from '@/utils/providers/dialog-provider'
+import { useDialog } from '@/components/providers/dialog-provider'
 
 export const SettingsBlockChangeEmail = () => {
     const dialog = useDialog()

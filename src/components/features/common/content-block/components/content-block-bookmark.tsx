@@ -5,10 +5,10 @@ import { BookmarkIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import { SignUp } from '@/components/features/auth/sign-up'
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { messages } from '@/messages'
-import { watchlistsAPI } from '@/redux/services/watchlists/watchlists.api'
-import { useDialog } from '@/utils/providers/dialog-provider'
-import { useToast } from '@/utils/providers/toast-provider'
+import { watchlistsAPI } from '@/utils/redux/services/watchlists/watchlists.api'
 
 type ContentBlockBookmarkProps = {
     name: string

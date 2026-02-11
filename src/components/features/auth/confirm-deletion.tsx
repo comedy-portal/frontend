@@ -7,9 +7,9 @@ import Session from 'supertokens-web-js/recipe/session'
 import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/forms/button'
-import { userAPI } from '@/redux/services/user/user.api'
-import { persistor } from '@/redux/store'
 import { useOnMountUnsafe } from '@/utils/hooks/use-on-mount-unsafe'
+import { userAPI } from '@/utils/redux/services/user/user.api'
+import { persistor } from '@/utils/redux/store'
 
 type ConfirmDeletionProps = {
     token: string
