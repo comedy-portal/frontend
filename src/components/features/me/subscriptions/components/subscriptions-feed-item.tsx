@@ -5,12 +5,12 @@ import { BellOffIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
+import { useToast } from '@/components/providers/toast-provider'
 import { Button } from '@/components/ui/forms/button'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { messages } from '@/messages'
-import { subscriptionsAPI } from '@/redux/services/subscriptions/subscriptions.api'
-import { SubscriptionType } from '@/redux/services/subscriptions/subscriptions.types'
-import { useToast } from '@/utils/providers/toast-provider'
+import { subscriptionsAPI } from '@/utils/redux/services/subscriptions/subscriptions.api'
+import { SubscriptionType } from '@/utils/redux/services/subscriptions/subscriptions.types'
 
 type SubscriptionsFeedItemProps = {
     id: number

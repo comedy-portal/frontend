@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react'
 
 import { ShareIcon } from 'lucide-react'
 
+import { useToast } from '@/components/providers/toast-provider'
 import { Button } from '@/components/ui/forms/button'
 import { messages } from '@/messages'
-import { useToast } from '@/utils/providers/toast-provider'
 
 type ShareProps = {
     title: string

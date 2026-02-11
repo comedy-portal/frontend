@@ -1,4 +1,4 @@
-import { SubscriptionType } from '@/redux/services/subscriptions/subscriptions.types'
+import { SubscriptionType } from '@/utils/redux/services/subscriptions/subscriptions.types'
 
 export type ISubscription = {
     type: SubscriptionType.COMEDIAN | SubscriptionType.GROUP | SubscriptionType.VENUE

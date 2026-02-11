@@ -5,12 +5,12 @@ import * as yup from 'yup'
 
 import { useRouter } from 'next/navigation'
 
+import { useToast } from '@/components/providers/toast-provider'
 import { Button } from '@/components/ui/forms/button'
 import { Input } from '@/components/ui/forms/input'
 import { messages } from '@/messages'
-import { userAPI } from '@/redux/services/user/user.api'
-import { ChangeUserNameInputs } from '@/redux/services/user/user.types'
-import { useToast } from '@/utils/providers/toast-provider'
+import { userAPI } from '@/utils/redux/services/user/user.api'
+import { ChangeUserNameInputs } from '@/utils/redux/services/user/user.types'
 
 import { SettingsBlockChangeEmail } from './components/settings-block-change-email'
 import { SettingsRequestDeleteAccount } from './components/settings-request-delete-account'

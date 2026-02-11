@@ -5,8 +5,6 @@ import { useEffect, useMemo, useState } from 'react'
 import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
-import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
-import { ReviewSortBy } from '@/redux/services/reviews/reviews.types'
 import { Order } from '@/utils/enums/common'
 import {
     ReviewsUrlSortBy,
@@ -14,6 +12,8 @@ import {
     parseReviewsFiltersFromSearchParams,
 } from '@/utils/filters/reviews-filters'
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
+import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
+import { ReviewSortBy } from '@/utils/redux/services/reviews/reviews.types'
 
 import { UserReviewsFeedItem } from './user-reviews-feed-item'
 import { UserReviewsFeedSkeleton } from './user-reviews-feed-skeleton'
@@ -59,7 +59,7 @@ export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFee
 
     useEffect(() => {
         setCursor(undefined)
-    }, [filters.sort, filters.with_text, filters.types])
+    }, [filters.sort, filters.with_text, filters.content_min_year, filters.content_max_year, filters.types])
 
     const { data, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsQuery({
         user_id: userId,

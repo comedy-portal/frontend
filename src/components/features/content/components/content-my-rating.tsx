@@ -3,8 +3,8 @@
 import { SignUp } from '@/components/features/auth/sign-up'
 import { ReviewCreate } from '@/components/features/dialogs/reviews-form/review-create'
 import { ReviewUpdate } from '@/components/features/dialogs/reviews-form/review-update'
+import { useDialog } from '@/components/providers/dialog-provider'
 import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
-import { useDialog } from '@/utils/providers/dialog-provider'
 
 type ContentMyRatingProps = {
     contentId: number

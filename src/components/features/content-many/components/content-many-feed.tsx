@@ -1,13 +1,11 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { ContentBlock } from '@/components/features/common/content-block/content-block'
 import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
-import { contentAPI } from '@/redux/services/content/content.api'
-import { ContentSortBy } from '@/redux/services/content/content.types'
 import { ContentType, Order } from '@/utils/enums/common'
 import {
     ContentUrlSortBy,
@@ -16,6 +14,8 @@ import {
 } from '@/utils/filters/content-filters'
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
 import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
+import { contentAPI } from '@/utils/redux/services/content/content.api'
+import { ContentSortBy } from '@/utils/redux/services/content/content.types'
 
 import { ContentManyFeedSkeleton } from './content-many-feed-skeleton'
 
@@ -29,31 +29,48 @@ export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
     const [cursor, setCursor] = useState<number>()
 
     const { sortBy, order } = useMemo(() => {
-        setCursor(undefined)
+        let sortBy = ContentSortBy.DATE
+        let order = Order.DESC
+
         switch (filters.sort) {
             case ContentUrlSortBy.DATE_DESC:
-                return { sortBy: ContentSortBy.DATE, order: Order.DESC }
+                sortBy = ContentSortBy.DATE
+                order = Order.DESC
+                break
+
             case ContentUrlSortBy.DATE_ASC:
-                return { sortBy: ContentSortBy.DATE, order: Order.ASC }
+                sortBy = ContentSortBy.DATE
+                order = Order.ASC
+                break
+
             case ContentUrlSortBy.RATING_DESC:
-                return { sortBy: ContentSortBy.RATING, order: Order.DESC }
+                sortBy = ContentSortBy.RATING
+                order = Order.DESC
+                break
+
             case ContentUrlSortBy.RATING_ASC:
-                return { sortBy: ContentSortBy.RATING, order: Order.ASC }
-            default:
-                return { sortBy: ContentSortBy.DATE, order: Order.DESC }
+                sortBy = ContentSortBy.RATING
+                order = Order.ASC
+                break
         }
-    }, [filters.sort, filters.min_rating, filters.max_rating, filters.not_watched])
+
+        return { sortBy, order }
+    }, [filters.sort])
+
+    useEffect(() => {
+        setCursor(undefined)
+    }, [filters.sort, filters.min_year, filters.max_year, filters.min_rating, filters.max_rating, filters.not_watched])
 
     const { data, isFetching, isSuccess, isError } = contentAPI.useGetContentManyQuery({
-        type,
-        min_rating: filters.min_rating,
-        max_rating: filters.max_rating,
-        min_year: filters.min_year,
-        max_year: filters.max_year,
-        sort_by: sortBy,
-        not_watched: filters.not_watched,
         order,
         cursor,
+        type,
+        min_year: filters.min_year,
+        max_year: filters.max_year,
+        min_rating: filters.min_rating,
+        max_rating: filters.max_rating,
+        not_watched: filters.not_watched,
+        sort_by: sortBy,
     })
 
     if (isError) {

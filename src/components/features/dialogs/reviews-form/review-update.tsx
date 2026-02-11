@@ -2,12 +2,12 @@
 
 import { useRouter } from 'next/navigation'
 
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { CommonError } from '@/components/ui/common-error'
 import { messages } from '@/messages'
-import { reviewsAPI } from '@/redux/services/reviews/reviews.api'
-import { UpdateReviewInputs } from '@/redux/services/reviews/reviews.types'
-import { useDialog } from '@/utils/providers/dialog-provider'
-import { useToast } from '@/utils/providers/toast-provider'
+import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
+import { UpdateReviewInputs } from '@/utils/redux/services/reviews/reviews.types'
 
 import { ReviewForm } from './review-form'
 import { ReviewUpdateSkeleton } from './review-update-skeleton'

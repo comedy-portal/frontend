@@ -1,5 +1,5 @@
-import { GetTopContentTake } from '@/redux/services/content/content.types'
 import { ContentType } from '@/utils/enums/common'
+import { GetTopContentTake } from '@/utils/redux/services/content/content.types'
 
 import { TopContentFeed } from './components/top-content-feed'
 

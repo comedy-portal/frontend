@@ -3,13 +3,13 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
+import { useDialog } from '@/components/providers/dialog-provider'
 import { Button } from '@/components/ui/forms/button'
 import { Input } from '@/components/ui/forms/input'
 import { Radio } from '@/components/ui/forms/radio'
 import { complaintReasons } from '@/messages'
-import { ReviewComplaintInputs } from '@/redux/services/reviews/reviews.types'
 import { ComplaintReasons } from '@/utils/enums/common'
-import { useDialog } from '@/utils/providers/dialog-provider'
+import { ReviewComplaintInputs } from '@/utils/redux/services/reviews/reviews.types'
 
 type ComplaintFormProps = {
     initialValues: ReviewComplaintInputs

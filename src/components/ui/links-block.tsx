@@ -1,8 +1,8 @@
 'use client'
 
-import { internalApi } from '@/redux/services/internal/internal.api'
 import { Platform } from '@/utils/enums/common'
 import { getPlatformUrl } from '@/utils/helpers/common'
+import { internalApi } from '@/utils/redux/services/internal/internal.api'
 import { ILink } from '@/utils/types/common'
 
 import { ExternalLink } from './external-link'

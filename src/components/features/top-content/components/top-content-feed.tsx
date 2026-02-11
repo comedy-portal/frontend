@@ -3,10 +3,10 @@
 import { ContentBlockRow } from '@/components/features/common/content-block/content-block-row'
 import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
-import { contentAPI } from '@/redux/services/content/content.api'
-import { GetTopContentTake } from '@/redux/services/content/content.types'
 import { ContentType } from '@/utils/enums/common'
 import { getAuthorDisplayNameForContent } from '@/utils/helpers/common'
+import { contentAPI } from '@/utils/redux/services/content/content.api'
+import { GetTopContentTake } from '@/utils/redux/services/content/content.types'
 
 import { TopContentFeedSkeleton } from './top-content-feed-skeleton'
 import { TopContentWatchedProgress } from './top-content-watched-progress'

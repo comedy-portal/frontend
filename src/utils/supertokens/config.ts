@@ -4,9 +4,9 @@ import SessionWebJs from 'supertokens-web-js/recipe/session'
 import ThirdPartyWebJs from 'supertokens-web-js/recipe/thirdparty'
 import { SuperTokensConfig } from 'supertokens-web-js/types'
 
-import { api } from '@/redux/services/api'
-import { persistor } from '@/redux/store'
-import { store } from '@/redux/store'
+import { api } from '@/utils/redux/services/api'
+import { persistor } from '@/utils/redux/store'
+import { store } from '@/utils/redux/store'
 
 export const config = (): SuperTokensConfig => {
     return {

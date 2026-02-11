@@ -3,13 +3,13 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { Button } from '@/components/ui/forms/button'
 import { Input } from '@/components/ui/forms/input'
 import { messages } from '@/messages'
-import { userAPI } from '@/redux/services/user/user.api'
-import { ChangeUserEmailInputs } from '@/redux/services/user/user.types'
-import { useDialog } from '@/utils/providers/dialog-provider'
-import { useToast } from '@/utils/providers/toast-provider'
+import { userAPI } from '@/utils/redux/services/user/user.api'
+import { ChangeUserEmailInputs } from '@/utils/redux/services/user/user.types'
 
 export const ChangeEmail = () => {
     const dialog = useDialog()
