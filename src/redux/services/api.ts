@@ -54,6 +54,7 @@ export const api = createApi({
         'Reviews',
         'ReviewsByContent',
         'Subscriptions',
+        'Venues',
         'Watchlist',
     ],
     endpoints: () => ({}),
