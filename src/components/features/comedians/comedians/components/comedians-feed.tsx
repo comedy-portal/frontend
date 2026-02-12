@@ -6,7 +6,7 @@ import { ComedianBlock } from '@/components/features/common/comedian-block/comed
 import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
-import { comediansAPI } from '@/redux/services/comedians/comedians.api'
+import { comediansAPI } from '@/utils/redux/services/comedians/comedians.api'
 
 import { ComediansFeedSkeleton } from './comedians-feed-skeleton'
 

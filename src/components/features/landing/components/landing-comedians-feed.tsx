@@ -4,9 +4,9 @@ import ScrollContainer from 'react-indiana-drag-scroll'
 
 import { ComedianBlock } from '@/components/features/common/comedian-block/comedian-block'
 import { CommonError } from '@/components/ui/common-error'
-import { comediansAPI } from '@/redux/services/comedians/comedians.api'
-import { ComedianSortBy } from '@/redux/services/comedians/comedians.types'
 import { Order } from '@/utils/enums/common'
+import { comediansAPI } from '@/utils/redux/services/comedians/comedians.api'
+import { ComedianSortBy } from '@/utils/redux/services/comedians/comedians.types'
 
 import { LandingComediansFeedSkeleton } from './landing-comedians-feed-skeleton'
 

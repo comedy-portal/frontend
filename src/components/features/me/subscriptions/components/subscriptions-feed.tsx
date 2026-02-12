@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
-import { subscriptionsAPI } from '@/redux/services/subscriptions/subscriptions.api'
+import { subscriptionsAPI } from '@/utils/redux/services/subscriptions/subscriptions.api'
 
 import { SubscriptionsFeedItem } from './subscriptions-feed-item'
 import { SubscriptionsFeedSkeleton } from './subscriptions-feed-skeleton'

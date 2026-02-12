@@ -2,9 +2,9 @@ import { BellIcon } from 'lucide-react'
 
 import Link from 'next/link'
 
-import { getLastEventId } from '@/redux/features/user-slice'
-import { useAppSelector } from '@/redux/hooks'
-import { notificationAPI } from '@/redux/services/notification/notification.api'
+import { getLastEventId } from '@/utils/redux/features/user-slice'
+import { useAppSelector } from '@/utils/redux/hooks'
+import { notificationAPI } from '@/utils/redux/services/notification/notification.api'
 
 type NotificationsBellProps = {
     closeMobileMenu?: () => void

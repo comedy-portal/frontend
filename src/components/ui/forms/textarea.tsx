@@ -1,6 +1,6 @@
 'use client'
 
-import { Ref, TextareaHTMLAttributes, useEffect, useState } from 'react'
+import { Ref, TextareaHTMLAttributes } from 'react'
 
 import classNames from 'classnames'
 
@@ -11,28 +11,22 @@ type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 }
 
 export const Textarea = (props: TextareaProps) => {
-    const [characterCount, setCharacterCount] = useState<number>(0)
-
-    const { ref, error, className, ...rest } = props
-
-    useEffect(() => {
-        if (typeof props.value === 'string') {
-            setCharacterCount(props.value.trim().length)
-        }
-    }, [props.value])
+    const { ref, error, className, value, maxLength, ...rest } = props
+    const characterCount = typeof value === 'string' ? value.trim().length : 0
 
     return (
         <div className={className}>
             <div className="relative">
-                {props.maxLength && (
+                {maxLength && (
                     <div className="absolute -top-7 right-0 text-xs text-gray-500">
-                        {characterCount} / {props.maxLength}
+                        {characterCount} / {maxLength}
                     </div>
                 )}
 
                 <textarea
                     {...rest}
                     ref={ref}
+                    value={value}
                     className={classNames(
                         'w-full resize-none rounded-lg border border-gray-300 bg-white p-3 align-top focus:outline-none disabled:cursor-no-drop disabled:opacity-30',
                         {

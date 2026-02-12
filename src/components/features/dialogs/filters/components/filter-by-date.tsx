@@ -18,13 +18,9 @@ type FilterByDateProps = {
 }
 
 export const FilterByDate = ({ currentYear, value, onChange }: FilterByDateProps) => {
-    const [activePreset, setActivePreset] = useState<string | null>(null)
-
     const MIN_YEAR = 2010
     const MAX_YEAR = currentYear
     const DEFAULT_RANGE: [number, number] = [MIN_YEAR, MAX_YEAR]
-
-    const displayRange: [number, number] = [value[0] ?? DEFAULT_RANGE[0], value[1] ?? DEFAULT_RANGE[1]]
 
     const yearPresets: YearPreset[] = useMemo(
         () => [
@@ -37,22 +33,23 @@ export const FilterByDate = ({ currentYear, value, onChange }: FilterByDateProps
         [MAX_YEAR],
     )
 
-    useEffect(() => {
+    const displayRange = useMemo<[number, number]>(() => {
+        const DEFAULT_RANGE: [number, number] = [2010, currentYear]
+        return [value[0] ?? DEFAULT_RANGE[0], value[1] ?? DEFAULT_RANGE[1]]
+    }, [value, currentYear])
+
+    const activePreset = useMemo(() => {
         const matched = yearPresets.find(p => p.range[0] === displayRange[0] && p.range[1] === displayRange[1])
-        setActivePreset(matched?.key ?? null)
+        return matched?.key ?? null
     }, [displayRange, yearPresets])
 
     const handlePresetClick = (preset: YearPreset) => {
-        setActivePreset(preset.key)
         onChange(preset.range)
     }
 
     const handleSliderChange = (next: number[]) => {
         const range: [number, number] = [next[0], next[1]]
         onChange(range)
-
-        const matched = yearPresets.find(p => p.range[0] === range[0] && p.range[1] === range[1])
-        setActivePreset(matched?.key ?? null)
     }
 
     return (

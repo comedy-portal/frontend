@@ -7,7 +7,7 @@ import { useOnClickOutside } from 'usehooks-ts'
 
 import Link from 'next/link'
 
-import { Search } from '@/components/features/layout/search/search'
+import { Search } from '@/components/features/common/search/search'
 import { Keys } from '@/utils/enums/common'
 import { useKeypress } from '@/utils/hooks/use-keypress'
 

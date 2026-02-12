@@ -1,5 +1,5 @@
-import { ContentSortBy } from '@/redux/services/content/content.types'
 import { Order } from '@/utils/enums/common'
+import { ContentSortBy } from '@/utils/redux/services/content/content.types'
 
 import { LandingBlock } from './components/landing-block'
 import { LandingBlogFeed } from './components/landing-blog-feed'

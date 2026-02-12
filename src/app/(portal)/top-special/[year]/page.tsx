@@ -5,9 +5,9 @@ import { redirect } from 'next/navigation'
 
 import { Layout } from '@/components/features/layout/layout/layout'
 import { TopContent } from '@/components/features/top-content/top-content'
-import { GetTopContentTake } from '@/redux/services/content/content.types'
 import { getSettings } from '@/services/settings/settings'
 import { ContentType } from '@/utils/enums/common'
+import { GetTopContentTake } from '@/utils/redux/services/content/content.types'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
 type Params = Promise<{ year: string }>

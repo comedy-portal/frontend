@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
-import { groupsAPI } from '@/redux/services/groups/groups.api'
+import { groupsAPI } from '@/utils/redux/services/groups/groups.api'
 
 import { ComediansGroupsFeedItem } from './comedians-groups-feed-item'
 import { ComediansGroupsFeedSkeleton } from './comedians-groups-feed-skeleton'
