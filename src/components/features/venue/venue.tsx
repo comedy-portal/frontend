@@ -56,6 +56,13 @@ export const Venue = ({ slug }: VenueProps) => {
                             </section>
                         )}
 
+                        {data.city && (
+                            <section className="space-y-2">
+                                <h3 className="font-bold">Город</h3>
+                                <p>{data.city}</p>
+                            </section>
+                        )}
+
                         <LinksBlock caption="Ссылки" links={data.metaInfo?.links || []} />
 
                         <Share
