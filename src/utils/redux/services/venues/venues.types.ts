@@ -13,3 +13,4 @@ export type GetVenuesParams = {
 }
 
 export type GetVenuesResponse = IVenue[]
+export type GetVenueBySlugResponse = IVenue

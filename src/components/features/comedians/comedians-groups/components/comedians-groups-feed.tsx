@@ -2,12 +2,12 @@
 
 import { useState } from 'react'
 
+import { ComedianBlock } from '@/components/features/common/comedian-block/comedian-block'
 import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
 import { LoadMore } from '@/components/ui/load-more'
 import { groupsAPI } from '@/utils/redux/services/groups/groups.api'
 
-import { ComediansGroupsFeedItem } from './comedians-groups-feed-item'
 import { ComediansGroupsFeedSkeleton } from './comedians-groups-feed-skeleton'
 
 export const ComediansGroupsFeed = () => {
@@ -39,10 +39,11 @@ export const ComediansGroupsFeed = () => {
         <div className="flex flex-col gap-y-12">
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 md:grid-cols-4 lg:grid-cols-5">
                 {data.items.map(item => (
-                    <ComediansGroupsFeedItem
+                    <ComedianBlock
                         key={`comedians-groups-feed-item-${item.slug}`}
                         slug={item.slug}
                         name={item.name}
+                        type="groups"
                     />
                 ))}
             </div>

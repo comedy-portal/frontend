@@ -52,7 +52,7 @@ export const VenuesFeed = () => {
     if (isSuccess && data.length === 0) {
         return (
             <EmptyMessage>
-                Контент в этой категории пока отсутствует.
+                В этой категории пока пусто.
                 <br />
                 Попробуйте выбрать другую категорию или зайдите позже.
             </EmptyMessage>

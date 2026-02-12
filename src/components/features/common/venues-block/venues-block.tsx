@@ -10,7 +10,7 @@ type VenuesBlockType = {
 
 export const VenuesBlock = ({ slug, name, city }: VenuesBlockType) => {
     return (
-        <Link href={`/venues/${slug}`} className="flex flex-col gap-y-2" target="_blank">
+        <Link href={`/venues/${slug}`} className="flex flex-col gap-y-2">
             <ImageWithFallback
                 src={`/images/venues/${slug}.jpg`}
                 width={100}
