@@ -18,6 +18,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
         title: comedians.map(comedian => comedian.name).join(', ') + ' ' + content.name,
         description: content.metaInfo?.description,
         openGraph: {
+            type: 'website',
             title: comedians.map(comedian => comedian.name).join(', ') + ' ' + content.name,
             description:
                 content.metaInfo?.description ||

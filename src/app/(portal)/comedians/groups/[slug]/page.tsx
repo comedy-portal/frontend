@@ -14,6 +14,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
         title: group.name,
         description: group.metaInfo?.description,
         openGraph: {
+            type: 'website',
             title: group.name,
             description:
                 group.metaInfo?.description ||
