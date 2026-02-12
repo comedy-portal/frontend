@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation'
 import { useDialog } from '@/components/providers/dialog-provider'
 import { api } from '@/utils/redux/services/api'
 
+import { ChangeUsername } from './change-username'
 import { VerifyForm } from './verify-form'
 
 type VerifyProps = {
@@ -56,11 +57,12 @@ export const Verify = ({ email, onBack }: VerifyProps) => {
                 dispatch(api.util.resetApiState())
 
                 if (response.createdNewRecipeUser) {
-                    router.push('/welcome')
+                    dialog.open(<ChangeUsername />)
+                } else {
+                    dialog.close()
                 }
 
                 router.refresh()
-                dialog.close()
             }
         } catch (err: unknown) {
             const { statusCode, message } = await parseSupertokensError(err)
