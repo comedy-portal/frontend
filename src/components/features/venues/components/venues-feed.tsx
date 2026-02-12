@@ -5,8 +5,6 @@ import { useMemo } from 'react'
 import { VenuesBlock } from '@/components/features/common/venues-block/venues-block'
 import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
-import { venuesAPI } from '@/redux/services/venues/venues.api'
-import { VenueSortBy } from '@/redux/services/venues/venues.types'
 import { Order } from '@/utils/enums/common'
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
 import {
@@ -14,6 +12,8 @@ import {
     buildVenuesFiltersQueryString,
     parseVenuesFiltersFromSearchParams,
 } from '@/utils/filters/venues-filters'
+import { venuesAPI } from '@/utils/redux/services/venues/venues.api'
+import { VenueSortBy } from '@/utils/redux/services/venues/venues.types'
 
 import { VenuesFeedSkeleton } from './venues-feed-skeleton'
 
