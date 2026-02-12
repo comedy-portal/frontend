@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 
+import { useDialog } from '@/components/providers/dialog-provider'
 import { Button } from '@/components/ui/forms/button'
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
 import {
@@ -8,7 +9,6 @@ import {
     buildVenuesFiltersQueryString,
     parseVenuesFiltersFromSearchParams,
 } from '@/utils/filters/venues-filters'
-import { useDialog } from '@/utils/providers/dialog-provider'
 
 import { FilterByCity } from '../components/filter-by-city'
 

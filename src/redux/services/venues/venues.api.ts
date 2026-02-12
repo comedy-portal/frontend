@@ -1,4 +1,4 @@
-import { api } from '@/redux/services/api'
+import { api } from '@/utils/redux/services/api'
 
 import { GetVenuesParams, GetVenuesResponse } from './venues.types'
 
