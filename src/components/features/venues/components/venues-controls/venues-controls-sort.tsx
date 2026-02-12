@@ -10,7 +10,7 @@ import {
 
 const SORT_OPTIONS = [
     { label: 'По названию', value: VenuesUrlSortBy.NAME_DESC },
-    { label: 'По стране', value: VenuesUrlSortBy.CITY_DESC },
+    { label: 'По городу', value: VenuesUrlSortBy.CITY_DESC },
 ]
 
 export const VenuesControlsSort = () => {
