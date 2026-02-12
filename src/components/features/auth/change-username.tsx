@@ -5,14 +5,14 @@ import * as yup from 'yup'
 
 import { useRouter } from 'next/navigation'
 
+import { useDialog } from '@/components/providers/dialog-provider'
+import { useToast } from '@/components/providers/toast-provider'
 import { CommonError } from '@/components/ui/common-error'
 import { Button } from '@/components/ui/forms/button'
 import { Input } from '@/components/ui/forms/input'
 import { messages } from '@/messages'
-import { userAPI } from '@/redux/services/user/user.api'
-import { ChangeUserNameInputs } from '@/redux/services/user/user.types'
-import { useDialog } from '@/utils/providers/dialog-provider'
-import { useToast } from '@/utils/providers/toast-provider'
+import { userAPI } from '@/utils/redux/services/user/user.api'
+import { ChangeUserNameInputs } from '@/utils/redux/services/user/user.types'
 
 export const ChangeUsername = () => {
     const router = useRouter()
