@@ -18,10 +18,15 @@ export const FilterButton = ({ filterComponent, isActive }: FilterButtonProps) =
 
     return (
         <div
-            className="relative flex cursor-pointer items-center gap-x-1.5 text-gray-700 hover:text-gray-950"
+            className="flex cursor-pointer items-center gap-x-1.5 text-gray-700 hover:text-gray-950"
             onClick={handleClick}
         >
-            {isActive ? <ListFilterPlusIcon /> : <ListFilterIcon />}
+            <div className="relative">
+                <ListFilterIcon />
+                {isActive && (
+                    <div className="absolute -top-0.5 -right-1 size-3 rounded-full border-2 border-white bg-red-500" />
+                )}
+            </div>
             Фильтр
         </div>
     )

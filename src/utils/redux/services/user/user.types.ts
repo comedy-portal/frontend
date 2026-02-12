@@ -1,3 +1,11 @@
+export type GetUserDataResponse = {
+    id: number
+    username: string
+    metaInfo: {}
+    createdAt: Date
+    lastEventId: number | null
+}
+
 export type ChangeUserNameInputs = {
     username: string
 }
