@@ -1,8 +1,10 @@
 import { CircleUserIcon } from 'lucide-react'
 
 import { Share } from '@/components/features/common/share'
+import { CornerRibbon } from '@/components/ui/corner-ribbon'
+import { LinksBlock } from '@/components/ui/links-block'
 import { RatingHistogram } from '@/components/ui/rating-histogram'
-import { ContentType } from '@/utils/enums/common'
+import { ContentType, Platform } from '@/utils/enums/common'
 import { formatDuration } from '@/utils/helpers/registration-date-format'
 
 import { UserSidebarReviewsWithTypes } from './components/user-sidebar-reviews-with-types'
@@ -25,6 +27,7 @@ export const UserSidebar = (props: UserSidebarProps) => {
         // <div className="sticky top-28.75 flex flex-col gap-y-6">
         <div className="flex flex-col gap-y-6">
             <div className="relative space-y-6 rounded-2xl bg-white p-12">
+                <CornerRibbon text="Критик" />
                 <div className="absolute -top-6 left-1/2 size-12 -translate-x-1/2 rounded-full bg-gray-100" />
 
                 <div className="flex flex-col items-center space-y-4">
@@ -51,6 +54,34 @@ export const UserSidebar = (props: UserSidebarProps) => {
 
             <RatingHistogram ratings={Array.from({ length: 10 }, (_, i) => props._count.reviewsByMark[i + 1] ?? 0)} />
             <Share title={props.username} url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/users/${props.username}`} />
+
+            <section className="space-y-2">
+                <h3 className="font-bold">Обо мне</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pulvinar quam eu nisi cursus
+                    suscipit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed rutrum dolor. Nullam in
+                    scelerisque lectus. Nulla interdum, ligula quis egestas rutrum, nisl mauris dictum arcu, sed
+                    consequat sapien enim at tellus.
+                </p>
+            </section>
+
+            <LinksBlock
+                caption="Ссылки"
+                links={[
+                    {
+                        platform: Platform.INSTAGRAM,
+                        identifier: 'vikaskladchikova',
+                    },
+                    {
+                        platform: Platform.BOOSTY,
+                        identifier: '@skladchikovavictoria',
+                    },
+                    {
+                        platform: Platform.YOUTUBE,
+                        identifier: 'https://vikaskladchikova.ru/',
+                    },
+                ]}
+            />
         </div>
     )
 }
