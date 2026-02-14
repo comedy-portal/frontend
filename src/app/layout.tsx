@@ -35,9 +35,9 @@ export const metadata: Metadata = {
         title: 'Камеди Портал',
     },
     openGraph: {
+        type: 'website',
         title: 'Камеди Портал',
         description: 'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и Вашей персональной историей просмотров.',
-        type: 'website',
         locale: 'ru_RU',
         url: '/',
         siteName: 'Камеди Портал',

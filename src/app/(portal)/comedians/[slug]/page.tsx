@@ -14,6 +14,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
         title: `${comedian.name} ${comedian.surname}`,
         description: comedian.metaInfo?.description,
         openGraph: {
+            type: 'website',
             title: `${comedian.name} ${comedian.surname}`,
             description:
                 comedian.metaInfo?.description ||

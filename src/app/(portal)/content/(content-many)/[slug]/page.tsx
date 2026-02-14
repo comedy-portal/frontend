@@ -45,9 +45,9 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
             title,
         },
         openGraph: {
+            type: 'website',
             title,
             description,
-            type: 'website',
             locale: 'ru_RU',
             url,
             siteName: 'Камеди Портал',
