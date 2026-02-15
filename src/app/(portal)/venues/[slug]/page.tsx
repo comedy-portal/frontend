@@ -1,42 +1,55 @@
 import { Metadata } from 'next'
 
-import { Comedian } from '@/components/features/comedian/comedian'
+import { VenueSchema } from '@/components/features/common/seo/venue-schema'
 import { Venue } from '@/components/features/venue/venue'
-import { getComedianBySlug } from '@/services/comedians/comedians'
-import { withAuth } from '@/utils/supertokens/with-auth'
+import { getVenueBySlug } from '@/services/venues/venues'
 
 type Params = Promise<{ slug: string }>
 
 export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
+    const params = await props.params
+    const venue = await getVenueBySlug(params.slug)
+
+    const title = `${venue.name} — ${venue.city}`
+
     return {
-        // title: '',
-        // description: "",
-        // openGraph: {
-        //     type: 'website',
-        //     title: "",
-        //     description: ""
-        //     images: [
-        //         {
-        //             url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/comedians/${comedian.slug}.jpg`,
-        //             width: 500,
-        //             height: 500,
-        //             type: 'image/jpeg',
-        //             alt: `${comedian.name} ${comedian.surname}`,
-        //         },
-        //     ],
-        //     url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/comedians/${comedian.slug}`,
-        // },
-        // twitter: {
-        //     title: `${comedian.name} ${comedian.surname}`,
-        //     description:
-        //         comedian.metaInfo?.description ||
-        //         'Агрегатор лучших стендапов и шоу - с оценками, рецензиями и Вашей персональной историей просмотров.',
-        //     card: 'summary_large_image',
-        // },
+        title,
+        description: venue.metaInfo?.description || 'Площадка для стендапа и шоу.',
+
+        openGraph: {
+            type: 'website',
+            title,
+            description: venue.metaInfo?.description,
+            images: [
+                {
+                    url:
+                        venue.venueImages[0]?.url ||
+                        `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/venues/${venue.slug}.jpg`,
+                    width: 800,
+                    height: 600,
+                    type: 'image/jpeg',
+                    alt: venue.name,
+                },
+            ],
+            url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/venues/${venue.slug}`,
+        },
+
+        twitter: {
+            title,
+            description: venue.metaInfo?.description,
+            card: 'summary_large_image',
+        },
     }
 }
 
 export default async function VenuePage(props: { params: Params }) {
     const params = await props.params
-    return <Venue slug={params.slug} />
+    const venue = await getVenueBySlug(params.slug)
+
+    return (
+        <>
+            <VenueSchema venue={venue} />
+            <Venue slug={params.slug} />
+        </>
+    )
 }

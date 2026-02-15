@@ -110,11 +110,31 @@ export const Footer = async ({ currentYear, isAuth }: FooterProps) => {
                         </ul>
                     </section>
                     <section className="space-y-2">
-                        <h6 className="font-bold text-white">Плащадки</h6>
+                        <h6 className="font-bold text-white">Площадки</h6>
                         <ul>
                             <li>
                                 <Link href="/venues" className="text-sm hover:text-white">
                                     Все площадки
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/venues?city=Москва" className="text-sm hover:text-white">
+                                    Москва
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/venues?city=Ереван" className="text-sm hover:text-white">
+                                    Ереван
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/venues?city=Алматы" className="text-sm hover:text-white">
+                                    Алматы
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/venues?city=Варшава" className="text-sm hover:text-white">
+                                    Варшава
                                 </Link>
                             </li>
                         </ul>
