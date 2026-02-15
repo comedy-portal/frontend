@@ -9,11 +9,13 @@ import {
     buildVenuesFiltersQueryString,
     parseVenuesFiltersFromSearchParams,
 } from '@/utils/filters/venues-filters'
+import { useVenueCities } from '@/utils/hooks/use-venue-cities'
 
 import { FilterByCity } from '../components/filter-by-city'
 
 export const VenuesFilter = () => {
     const dialog = useDialog()
+    const cities = useVenueCities()
 
     const [initialFilters, setFiltersToUrl] = useQueryFilters(
         parseVenuesFiltersFromSearchParams,
@@ -48,7 +50,7 @@ export const VenuesFilter = () => {
 
             <div className="space-y-8">
                 <div className="space-y-4">
-                    <FilterByCity value={filters.city} onChange={handleTypesChange} />
+                    <FilterByCity cities={cities} value={filters.city} onChange={handleTypesChange} />
                 </div>
 
                 <div className="space-x-2">

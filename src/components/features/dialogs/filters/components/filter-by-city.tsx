@@ -7,40 +7,14 @@ import { ChevronDownIcon } from 'lucide-react'
 import { useOnClickOutside } from 'usehooks-ts'
 
 type FilterByCityProps = {
+    cities: { value: string; label: string }[]
     value: string | undefined
     onChange: (value: string) => void
 }
 
-const RAW_CITIES = [
-    'Москва',
-    'Варшава',
-    'Берлин',
-    'Прага',
-    'Париж',
-    'Лондон',
-    'Мадрид',
-    'Рим',
-    'Барселона',
-    'Вена',
-    'Амстердам',
-    'Брюссель',
-    'Краков',
-    'Гданьск',
-    'Познань',
-    'Киев',
-    'Минск',
-    'Вильнюс',
-    'Рига',
-    'Таллин',
-]
-
-const CITIES = RAW_CITIES.slice()
-    .sort((a, b) => a.localeCompare(b, 'ru', { sensitivity: 'base' }))
-    .map(c => ({ value: c, label: c }))
-
 const DEFAULT_CITY = ''
 
-export const FilterByCity = ({ value, onChange }: FilterByCityProps) => {
+export const FilterByCity = ({ cities, value, onChange }: FilterByCityProps) => {
     const rootRef = useRef<HTMLDivElement>(null)
     const inputRef = useRef<HTMLInputElement>(null)
 
@@ -54,9 +28,9 @@ export const FilterByCity = ({ value, onChange }: FilterByCityProps) => {
     }, [value])
 
     const filteredCities = useMemo(() => {
-        if (!search) return CITIES
-        return CITIES.filter(c => c.label.toLowerCase().includes(search.toLowerCase()))
-    }, [search])
+        if (!search) return cities
+        return cities.filter(c => c.label.toLowerCase().includes(search.toLowerCase()))
+    }, [search, cities])
 
     const handleSelect = (city: string) => {
         onChange(city)

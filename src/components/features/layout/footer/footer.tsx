@@ -117,26 +117,6 @@ export const Footer = async ({ currentYear, isAuth }: FooterProps) => {
                                     Все площадки
                                 </Link>
                             </li>
-                            <li>
-                                <Link href="/venues?city=Москва" className="text-sm hover:text-white">
-                                    Москва
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/venues?city=Воронеж" className="text-sm hover:text-white">
-                                    Воронеж
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/venues?city=Омск" className="text-sm hover:text-white">
-                                    Омск
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/venues?city=Калининград" className="text-sm hover:text-white">
-                                    Калининград
-                                </Link>
-                            </li>
                         </ul>
                     </section>
                 </div>
