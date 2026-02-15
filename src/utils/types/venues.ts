@@ -1,16 +1,18 @@
 import { IImage, ILink } from './common'
 
 export type IVenueMetaInfo = {
-    links: ILink[]
-    address: string
     description: string
+    links: ILink[]
 }
 
 export type IVenue = {
     id: number
     name: string
-    city: string
     slug: string
+    city: string
+    address: string
+    lat: number
+    lng: number
     metaInfo: IVenueMetaInfo | null
     venueImages: IImage[]
     createdAt: string

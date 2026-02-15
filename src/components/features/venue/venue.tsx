@@ -36,30 +36,43 @@ export const Venue = ({ slug }: VenueProps) => {
 
             <div className="flex flex-col-reverse gap-12 lg:flex-row">
                 <div className="flex flex-1 flex-col gap-y-12">
-                    <div className="flex h-125 items-center justify-center rounded-lg bg-gray-300">This is map</div>
-                </div>
-
-                <div className="flex shrink-0 flex-col gap-y-12 md:flex-row md:gap-x-6 lg:w-75 lg:flex-col xl:w-92">
                     <ImageWithFallback
                         src={`/images/venues/${data.slug}.jpg`}
                         alt={`${data.name}`}
-                        width={100}
-                        height={100}
-                        className="aspect-square w-full rounded-lg md:size-75 lg:size-auto"
+                        width={500}
+                        height={500}
+                        className="aspect-video w-full rounded-lg md:size-75 lg:size-auto"
                     />
 
+                    {data.metaInfo?.description && (
+                        <section className="space-y-6">
+                            <h2 className="text-2xl font-bold">Описание</h2>
+                            <DescriptionBlock text={data.metaInfo.description} limit={1000} />
+                        </section>
+                    )}
+                </div>
+
+                <div className="flex shrink-0 flex-col gap-y-12 md:flex-row md:gap-x-6 lg:w-75 lg:flex-col xl:w-92">
+                    <div className="flex aspect-square items-center justify-center rounded-lg bg-gray-300">
+                        This is map
+                    </div>
+
                     <div className="flex flex-col gap-y-6">
-                        {data.metaInfo?.description && (
-                            <section className="space-y-6">
-                                <h1 className="text-4xl font-bold">{data.name}</h1>
-                                <DescriptionBlock text={data.metaInfo.description} limit={200} />
-                            </section>
-                        )}
+                        <section className="space-y-6">
+                            <h1 className="text-4xl font-bold">{data.name}</h1>
+                        </section>
 
                         {data.city && (
                             <section className="space-y-2">
                                 <h3 className="font-bold">Город</h3>
                                 <p>{data.city}</p>
+                            </section>
+                        )}
+
+                        {data.address && (
+                            <section className="space-y-2">
+                                <h3 className="font-bold">Адрес</h3>
+                                <p>{data.address}</p>
                             </section>
                         )}
 
