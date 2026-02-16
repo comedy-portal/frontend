@@ -25,7 +25,7 @@ const createNoopStorage = () => {
 const storage = typeof window === 'undefined' ? createNoopStorage() : createWebStorage('local')
 
 const persistConfig = {
-    key: 'comedyportal:store:v1.0.0',
+    key: 'comedyportal:store:v1.0.1',
     storage,
     whitelist: ['app', 'user'],
 }

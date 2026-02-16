@@ -4,6 +4,7 @@ import type { Metadata, Viewport } from 'next'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
 
+import { AppBootstrap } from '@/components/features/common/app-bootstrap'
 import YandexMetrika from '@/components/features/common/yandex-metrika'
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
 
@@ -61,7 +62,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <link rel="apple-touch-icon" href="/icons/icon-192.png" />
             </head>
             <body className="h-full antialiased">
-                <Providers>{children}</Providers>
+                <Providers>
+                    <AppBootstrap />
+                    {children}
+                </Providers>
                 <TailwindIndicator />
                 <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string} />
                 <YandexMetrika />

@@ -6,15 +6,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { getTripadvancerBannerClosed, setTripadvancerBannerClosed } from '@/utils/redux/features/app-slice'
+import { getUserCountry } from '@/utils/redux/features/user-slice'
 import { useAppDispatch, useAppSelector } from '@/utils/redux/hooks'
-import { internalApi } from '@/utils/redux/services/internal/internal.api'
 
 export const AlphaBanner = () => {
     const dispatch = useAppDispatch()
-    const { data, isLoading } = internalApi.useGetEdgeGeoQuery()
+    const country = useAppSelector(getUserCountry)
     const isClosed = useAppSelector(getTripadvancerBannerClosed)
 
-    if (isLoading || isClosed || data?.countryCode?.toUpperCase() === 'RU') {
+    if (isClosed || country?.toUpperCase() === 'RU') {
         return null
     }
 
@@ -38,7 +38,8 @@ export const AlphaBanner = () => {
                     className="absolute top-0 left-0 z-0 opacity-50 md:static md:opacity-100"
                 />
                 <span className="relative z-10 flex items-center gap-x-1 whitespace-nowrap text-white">
-                    <span className="hidden sm:block">Ваш журнал путешествий на</span> <strong>Tripadvancer</strong>
+                    <span className="hidden sm:block">Ваш журнал путешествий на</span>
+                    <strong>Tripadvancer</strong>
                     <ArrowRightIcon size={16} />
                 </span>
             </Link>
