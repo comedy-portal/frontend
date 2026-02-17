@@ -30,7 +30,7 @@ export const LandingComediansFeed = () => {
     }
 
     return (
-        <ScrollContainer className="grid auto-cols-[minmax(200px,1fr)] grid-flow-col gap-4">
+        <ScrollContainer className="grid auto-cols-[minmax(220px,1fr)] grid-flow-col gap-4">
             {data.items.map(item => (
                 <ComedianBlock
                     key={item.slug}

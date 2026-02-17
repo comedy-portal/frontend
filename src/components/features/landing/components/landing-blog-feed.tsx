@@ -8,7 +8,7 @@ import { getAllArticles } from '@/utils/helpers/blog'
 export const LandingBlogFeed = () => {
     const articles = getAllArticles({ limit: 10 })
     return (
-        <ScrollContainer className="grid auto-cols-[278px] grid-flow-col gap-3 overflow-x-auto">
+        <ScrollContainer className="grid auto-cols-[280px] grid-flow-col gap-3 overflow-x-auto">
             {articles.map(article => (
                 <BlogFeedItem
                     key={article.slug}
