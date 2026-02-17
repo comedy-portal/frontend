@@ -78,7 +78,7 @@ export const Content = ({ contentId, activeUserId, isAuth }: ContentProps) => {
                         </section>
                     )}
 
-                    <section className="space-y-6">
+                    <section className="relative space-y-6">
                         <h2 className="text-2xl font-bold">Рецензии</h2>
                         <ContentReviewsFeed contentId={data.id} activeUserId={activeUserId} isAuth={isAuth} />
                     </section>

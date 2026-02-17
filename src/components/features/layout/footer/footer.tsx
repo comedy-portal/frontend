@@ -21,7 +21,7 @@ export const Footer = async ({ currentYear, isAuth }: FooterProps) => {
                             <div className="text-sm text-gray-500">18+</div>
                         </div>
                         <div className="text-sm">
-                            <p>Агрегатор лучших стендапов и шоу.</p>
+                            <p>Лучшие стендапы и популярные шоу.</p>
                             <p>С оценками, рецензиями и Вашей персональной историей просмотров.</p>
                         </div>
                         <div className="text-xs lg:text-left">

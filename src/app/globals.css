@@ -11,11 +11,11 @@ body {
 }
 
 .wrapper {
-  @apply mx-auto max-w-306 px-4 sm:px-6 lg:px-8 box-content;
+  @apply mx-auto max-w-324 px-4 sm:px-6 lg:px-8 box-content;
 }
 
 .inner-wrapper-sm {
-  @apply lg:max-w-202 max-w-full;
+  @apply lg:max-w-220 max-w-full;
 }
 
 .inner-wrapper-lg {

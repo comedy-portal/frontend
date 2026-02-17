@@ -5,7 +5,7 @@ import { AboutUs } from '@/components/features/about/about-us'
 // prettier-ignore
 export const metadata: Metadata = {
     title: 'Кто мы?',
-    description: 'Камеди Портал — Агрегатор лучших стендапов и популярных шоу с оценками, рецензиями и Вашей персональной историей просмотров..',
+    description: 'Камеди Портал — Лучшие стендапы и популярные шоу с оценками, рецензиями и Вашей персональной историей просмотров.',
     keywords: [
         'Comedy Portal',
         'Камеди Портал',

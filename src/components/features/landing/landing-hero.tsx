@@ -29,9 +29,7 @@ export const LandingHero = ({ isAuth }: LandingHeroProps) => {
 
             <div className="absolute inset-0 m-auto flex h-130.5 w-full items-center justify-start px-8 text-center md:max-w-360 md:px-12.5 md:text-left lg:px-25 xl:px-50">
                 <section className="text-white md:w-150">
-                    <h1 className="mb-6 text-4xl font-bold md:text-6xl">
-                        Агрегатор лучших стендапов и&nbsp;популярных шоу
-                    </h1>
+                    <h1 className="mb-6 text-4xl font-bold md:text-6xl">Лучшие стендапы и&nbsp;популярные шоу</h1>
                     <p className="mb-12 text-lg">
                         С&nbsp;оценками, рецензиями и&nbsp;Вашей персональной историей просмотров.
                     </p>
