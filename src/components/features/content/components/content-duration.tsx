@@ -1,16 +1,7 @@
+import { formatDuration } from '@/utils/helpers/common'
+
 type ContentDurationProps = {
     duration: number | null
-}
-
-const formatDuration = (duration: number): string => {
-    const hours = Math.floor(duration / 60)
-    const minutes = duration % 60
-
-    if (hours > 0) {
-        return `${hours} ч${minutes > 0 ? ` ${minutes} мин.` : ''}`
-    }
-
-    return `${minutes} мин.`
 }
 
 export const ContentDuration = ({ duration }: ContentDurationProps) => {
