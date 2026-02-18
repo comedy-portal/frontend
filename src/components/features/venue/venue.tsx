@@ -12,6 +12,8 @@ import { LinksBlock } from '@/components/ui/links-block'
 import { messages } from '@/messages'
 import { venuesAPI } from '@/utils/redux/services/venues/venues.api'
 
+import { VenueMap } from './components/venue-map'
+
 type VenueProps = {
     slug: string
 }
@@ -53,9 +55,7 @@ export const Venue = ({ slug }: VenueProps) => {
                 </div>
 
                 <div className="flex shrink-0 flex-col gap-y-12 md:flex-row md:gap-x-6 lg:w-75 lg:flex-col xl:w-92">
-                    <div className="flex aspect-square items-center justify-center rounded-lg bg-gray-300">
-                        This is map
-                    </div>
+                    <VenueMap lat={data.lat} lng={data.lng} />
 
                     <div className="flex flex-col gap-y-6">
                         <section className="space-y-6">
