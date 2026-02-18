@@ -85,7 +85,7 @@ export const HeaderSearchResult = ({
 
                 {items.comedians.length > 0 && (
                     <div>
-                        <div className="p-1 text-sm text-gray-400">Комики</div>
+                        <div className="p-2 text-sm text-gray-500">Комики</div>
                         {items.comedians.map(item => (
                             <SearchResultItem
                                 key={`search-result-item-comedian-${item.slug}`}
@@ -95,7 +95,7 @@ export const HeaderSearchResult = ({
                                         src={`/images/comedians/${item.slug}.jpg`}
                                         width={32}
                                         height={32}
-                                        className="rounded"
+                                        className="size-8 rounded"
                                         alt={item.name}
                                     />
                                 }
@@ -108,7 +108,7 @@ export const HeaderSearchResult = ({
 
                 {items.groups.length > 0 && (
                     <div>
-                        <div className="p-1 text-sm text-gray-300">Группы</div>
+                        <div className="p-2 text-sm text-gray-500">Группы</div>
                         {items.groups.map(item => (
                             <SearchResultItem
                                 key={`search-result-item-group-${item.slug}`}
@@ -131,7 +131,7 @@ export const HeaderSearchResult = ({
 
                 {items.venues.length > 0 && (
                     <div>
-                        <div className="p-1 text-sm text-gray-300">Площадки</div>
+                        <div className="p-2 text-sm text-gray-500">Площадки</div>
                         {items.venues.map(item => (
                             <SearchResultItemVenue
                                 key={`search-result-item-venue-${item.slug}`}
