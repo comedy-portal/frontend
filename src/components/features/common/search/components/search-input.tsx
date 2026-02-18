@@ -31,7 +31,7 @@ export const SearchInput = ({ searchTerm, isResultVisible, onChange, onClick, on
                 value={searchTerm}
                 autoComplete="off"
                 className={classNames(
-                    'h-10 w-full rounded-lg bg-gray-700 px-9 text-sm text-gray-300 placeholder:text-gray-300 focus:bg-white focus:text-gray-950 focus:outline-none focus:placeholder:text-gray-950 lg:h-8',
+                    'h-10 w-full rounded-lg bg-gray-700 px-9 text-sm text-gray-300 placeholder:text-gray-300 focus:bg-white focus:text-gray-950 focus:outline-none focus:placeholder:text-gray-950',
                     {
                         'bg-white text-gray-950 placeholder:text-gray-950': isResultVisible,
                     },

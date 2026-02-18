@@ -1,13 +1,13 @@
 import { IImage, ILink } from './common'
 
 export type IVenueMetaInfo = {
-    description: string
     links: ILink[]
 }
 
 export type IVenue = {
     id: number
     name: string
+    description: string
     slug: string
     city: string
     address: string

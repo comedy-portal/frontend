@@ -46,10 +46,10 @@ export const Venue = ({ slug }: VenueProps) => {
                         className="aspect-video w-full rounded-lg md:size-75 lg:size-auto"
                     />
 
-                    {data.metaInfo?.description && (
+                    {data.description && (
                         <section className="space-y-6">
                             <h2 className="text-2xl font-bold">Описание</h2>
-                            <DescriptionBlock text={data.metaInfo.description} limit={1000} />
+                            <DescriptionBlock text={data.description} limit={1000} />
                         </section>
                     )}
                 </div>
@@ -80,7 +80,7 @@ export const Venue = ({ slug }: VenueProps) => {
 
                         <Share
                             title={data.name}
-                            text={data.metaInfo?.description}
+                            text={data.description}
                             url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/venues/${data.slug}`}
                         />
                     </div>
