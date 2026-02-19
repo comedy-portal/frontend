@@ -12,9 +12,9 @@ type FilterByCityProps = {
     onChange: (value: string) => void
 }
 
-const DEFAULT_CITY = ''
-
 export const FilterByCity = ({ cities, value, onChange }: FilterByCityProps) => {
+    const DEFAULT_CITY = ''
+
     const rootRef = useRef<HTMLDivElement>(null)
     const inputRef = useRef<HTMLInputElement>(null)
 

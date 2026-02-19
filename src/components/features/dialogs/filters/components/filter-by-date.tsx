@@ -20,7 +20,6 @@ type FilterByDateProps = {
 export const FilterByDate = ({ currentYear, value, onChange }: FilterByDateProps) => {
     const MIN_YEAR = 2010
     const MAX_YEAR = currentYear
-    const DEFAULT_RANGE: [number, number] = [MIN_YEAR, MAX_YEAR]
 
     const yearPresets: YearPreset[] = useMemo(
         () => [

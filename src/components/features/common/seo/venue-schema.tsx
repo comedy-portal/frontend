@@ -9,7 +9,7 @@ export function VenueSchema({ venue }: { venue: IVenue }) {
         '@type': 'Place',
 
         name: venue.name,
-        description: venue.metaInfo?.description,
+        description: venue.description,
 
         address: venue.address && {
             '@type': 'PostalAddress',
