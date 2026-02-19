@@ -22,15 +22,15 @@ export const VenuesFeed = () => {
 
     const { sortBy, order } = useMemo(() => {
         let sortBy = VenueSortBy.NAME
-        let order = Order.DESC
+        let order = Order.ASC
 
         switch (filters.sort) {
-            case VenuesUrlSortBy.NAME_DESC:
+            case VenuesUrlSortBy.NAME_ASC:
                 sortBy = VenueSortBy.NAME
-                order = Order.DESC
+                order = Order.ASC
                 break
 
-            case VenuesUrlSortBy.CITY_DESC:
+            case VenuesUrlSortBy.CITY_ASC:
                 sortBy = VenueSortBy.CITY
                 order = Order.ASC
                 break

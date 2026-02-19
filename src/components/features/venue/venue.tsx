@@ -6,6 +6,7 @@ import Link from 'next/link'
 
 import { Share } from '@/components/features/common/share'
 import { DescriptionBlock } from '@/components/ui/description-block'
+import { ExternalLink } from '@/components/ui/external-link'
 import { GlobalLoading } from '@/components/ui/global-loading'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LinksBlock } from '@/components/ui/links-block'
@@ -72,7 +73,14 @@ export const Venue = ({ slug }: VenueProps) => {
                         {data.address && (
                             <section className="space-y-2">
                                 <h3 className="font-bold">Адрес</h3>
-                                <p>{data.address}</p>
+                                <p>
+                                    <ExternalLink
+                                        href={`https://yandex.ru/maps/?ll=${data.lng}%2C${data.lat}&z=18&pt=${data.lng},${data.lat}`}
+                                        className="link"
+                                    >
+                                        {data.address}
+                                    </ExternalLink>
+                                </p>
                             </section>
                         )}
 

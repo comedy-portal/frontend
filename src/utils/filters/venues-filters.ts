@@ -1,8 +1,8 @@
 import { parseCity } from '../helpers/filters'
 
 export enum VenuesUrlSortBy {
-    NAME_DESC = 'name_desc',
-    CITY_DESC = 'city_desc',
+    NAME_ASC = 'name_asc',
+    CITY_ASC = 'city_asc',
 }
 
 export interface VenuesFiltersState {
@@ -11,11 +11,11 @@ export interface VenuesFiltersState {
 }
 
 export const DEFAULT_VENUES_FILTERS: VenuesFiltersState = {
-    sort: VenuesUrlSortBy.NAME_DESC,
+    sort: VenuesUrlSortBy.NAME_ASC,
     city: undefined,
 }
 
-const VALID_VENUES_SORTS = new Set<VenuesUrlSortBy>([VenuesUrlSortBy.NAME_DESC, VenuesUrlSortBy.CITY_DESC])
+const VALID_VENUES_SORTS = new Set<VenuesUrlSortBy>([VenuesUrlSortBy.NAME_ASC, VenuesUrlSortBy.CITY_ASC])
 
 export function parseVenuesFiltersFromSearchParams(params: URLSearchParams): VenuesFiltersState {
     const sortParam = params.get('sort') as VenuesUrlSortBy | null
