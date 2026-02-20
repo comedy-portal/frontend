@@ -4,15 +4,11 @@ import { useEffect } from 'react'
 
 import { useDebounceCallback } from 'usehooks-ts'
 
-import Image from 'next/image'
-
-import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { messages } from '@/messages'
+import { contentTypesDict } from '@/utils/dict/content-types'
 import { searchAPI } from '@/utils/redux/services/search/search.api'
 
 import { SearchResultItem } from './search-result-item'
-import { SearchResultItemContent } from './search-result-item-content'
-import { SearchResultItemVenue } from './search-result-item-venue'
 
 type HeaderSearchResultProps = {
     searchTerm: string
@@ -64,19 +60,16 @@ export const HeaderSearchResult = ({
 
     if (isSuccess && items && isResultVisible) {
         return (
-            <div className="absolute top-0 right-0 left-0 z-0 rounded-lg bg-white p-2 pt-10 shadow">
+            <div className="absolute top-0 right-0 left-0 z-0 rounded-lg bg-white p-1 pt-10 shadow">
                 {items.content.length > 0 && (
                     <div>
                         <div className="p-2 text-sm text-gray-500">Контент</div>
                         {items.content.map(item => (
-                            <SearchResultItemContent
+                            <SearchResultItem
                                 key={`search-result-item-content-${item.id}`}
-                                id={item.id}
-                                name={item.name}
-                                type={item.type}
-                                year={item.year}
-                                imageUrl={item.contentImages[0]?.url}
-                                avgRating={item.rating.avgRating}
+                                title={item.name}
+                                info={`${item.year} / ${contentTypesDict.find(contentType => contentType.slug === item.type.toLowerCase())?.label || ''}`}
+                                href={`/content/${item.type.toLowerCase()}/${item.id}`}
                                 hideResults={hideResults}
                             />
                         ))}
@@ -90,15 +83,6 @@ export const HeaderSearchResult = ({
                             <SearchResultItem
                                 key={`search-result-item-comedian-${item.slug}`}
                                 title={`${item.name} ${item.surname}${item.isAgent ? '\u00A0*' : ''}`}
-                                icon={
-                                    <ImageWithFallback
-                                        src={`/images/comedians/${item.slug}.jpg`}
-                                        width={32}
-                                        height={32}
-                                        className="size-8 rounded"
-                                        alt={item.name}
-                                    />
-                                }
                                 href={`/comedians/${item.slug}`}
                                 hideResults={hideResults}
                             />
@@ -113,15 +97,6 @@ export const HeaderSearchResult = ({
                             <SearchResultItem
                                 key={`search-result-item-group-${item.slug}`}
                                 title={item.name}
-                                icon={
-                                    <ImageWithFallback
-                                        src={`/images/groups/${item.slug}.jpg`}
-                                        width={32}
-                                        height={32}
-                                        className="rounded"
-                                        alt={item.name}
-                                    />
-                                }
                                 href={`/comedians/groups/${item.slug}`}
                                 hideResults={hideResults}
                             />
@@ -133,12 +108,11 @@ export const HeaderSearchResult = ({
                     <div>
                         <div className="p-2 text-sm text-gray-500">Площадки</div>
                         {items.venues.map(item => (
-                            <SearchResultItemVenue
+                            <SearchResultItem
                                 key={`search-result-item-venue-${item.slug}`}
-                                name={item.name}
-                                city={item.city}
-                                address={item.address}
-                                slug={item.slug}
+                                title={item.name}
+                                info={`${item.city}, ${item.address}`}
+                                href={`/venues/${item.slug}`}
                                 hideResults={hideResults}
                             />
                         ))}
