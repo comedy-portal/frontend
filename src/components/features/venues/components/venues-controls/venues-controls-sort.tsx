@@ -9,8 +9,8 @@ import {
 } from '@/utils/filters/venues-filters'
 
 const SORT_OPTIONS = [
-    { label: 'По названию', value: VenuesUrlSortBy.NAME_DESC },
-    { label: 'По городу', value: VenuesUrlSortBy.CITY_DESC },
+    { label: 'По названию', value: VenuesUrlSortBy.NAME_ASC },
+    { label: 'По городу', value: VenuesUrlSortBy.CITY_ASC },
 ]
 
 export const VenuesControlsSort = () => {

@@ -15,7 +15,7 @@ export const VenuesBlock = ({ slug, name, city }: VenuesBlockType) => {
                 src={`/images/venues/${slug}.jpg`}
                 width={100}
                 height={100}
-                className="aspect-square w-full rounded-lg"
+                className="aspect-square w-full rounded-lg object-cover"
                 alt={name}
             />
             <div>

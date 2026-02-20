@@ -14,12 +14,12 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 
     return {
         title,
-        description: venue.metaInfo?.description || 'Площадка для стендапа и шоу.',
+        description: venue.description || 'Площадка для стендапа и шоу.',
 
         openGraph: {
             type: 'website',
             title,
-            description: venue.metaInfo?.description,
+            description: venue.description,
             images: [
                 {
                     url:
@@ -36,7 +36,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 
         twitter: {
             title,
-            description: venue.metaInfo?.description,
+            description: venue.description,
             card: 'summary_large_image',
         },
     }
