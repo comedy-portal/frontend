@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { VideoSchema } from '@/components/features/common/seo/video-schema'
+import { ContentSchema } from '@/components/features/common/seo/content-schema'
 import { Content } from '@/components/features/content/content'
 import { getContentById } from '@/services/content/content'
 import { getUserData } from '@/services/user/user'
@@ -50,7 +50,7 @@ export default async function ContentPage(props: { params: Params }) {
 
     return (
         <>
-            <VideoSchema content={content} />
+            <ContentSchema content={content} />
 
             {withAuth({
                 getAuthData: async () => {

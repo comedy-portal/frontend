@@ -77,7 +77,7 @@ export const ContentSubmit = () => {
     return (
         <form className="flex flex-col gap-y-8" onSubmit={formik.handleSubmit}>
             <div className="flex flex-col gap-y-2">
-                <label className="text-sm font-semibold text-gray-700">Ссылка на видео</label>
+                <label className="text-sm font-semibold text-gray-700">Ссылка на видео/комика/площадку</label>
                 <Input
                     name="url"
                     autoFocus
@@ -89,7 +89,7 @@ export const ContentSubmit = () => {
             </div>
 
             <div className="flex flex-col gap-y-2">
-                <label className="text-sm font-semibold text-gray-700">Описание видео</label>
+                <label className="text-sm font-semibold text-gray-700">Описание</label>
                 <Textarea
                     name="text"
                     rows={12}

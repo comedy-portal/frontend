@@ -1,49 +1,78 @@
 import { Metadata } from 'next'
 
-import { Comedian } from '@/components/features/comedian/comedian'
-import { getComedianBySlug } from '@/services/comedians/comedians'
-import { withAuth } from '@/utils/supertokens/with-auth'
+import { Venues } from '@/components/features/venues/venues'
 
-type Params = Promise<{ slug: string }>
+const title = 'Площадки со стендапом на русском языке'
+const description =
+    'Каталог стендап-клубов, баров и концертных площадок, где проходят выступления русскоязычных комиков по всему миру. Афиша, open mic и туры.'
 
-export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
-    const params = await props.params
-    const comedian = await getComedianBySlug(params.slug)
-
-    return {
-        title: `${comedian.name} ${comedian.surname}`,
-        description: comedian.metaInfo?.description,
-        openGraph: {
-            type: 'website',
-            title: `${comedian.name} ${comedian.surname}`,
-            description:
-                comedian.metaInfo?.description ||
-                'Лучшие стендапы и популярные шоу с оценками, рецензиями и Вашей персональной историей просмотров.',
-            images: [
-                {
-                    url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/comedians/${comedian.slug}.jpg`,
-                    width: 500,
-                    height: 500,
-                    type: 'image/jpeg',
-                    alt: `${comedian.name} ${comedian.surname}`,
-                },
-            ],
-            url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/comedians/${comedian.slug}`,
-        },
-        twitter: {
-            title: `${comedian.name} ${comedian.surname}`,
-            description:
-                comedian.metaInfo?.description ||
-                'Лучшие стендапы и популярные шоу с оценками, рецензиями и Вашей персональной историей просмотров.',
-            card: 'summary_large_image',
-        },
-    }
+export const metadata: Metadata = {
+    title,
+    description,
+    keywords: [
+        'стендап клубы',
+        'стендап-клубы',
+        'стендап туры',
+        'стендап бары',
+        'стендап клубы на русском',
+        'русский стендап',
+        'стендап на русском языке',
+        'русскоязычный стендап за границей',
+        'русский стендап за границей',
+        'стендап на русском за границей',
+        'где посмотреть стендап',
+        'стендап клубы Европы',
+        'русскоязычные комики',
+        'концерты стендап комиков',
+        'лучшие стендап площадки',
+        'афиша стендапа',
+        'standup на русском',
+        'русский stand up клуб',
+        'расписание стендап концертов',
+        'где проходит стендап',
+        'стендап площадки',
+        'каталог стендап клубов',
+        'список стендап клубов',
+        'концертные площадки стендап',
+        'open mic на русском языке',
+        'открытый микрофон стендап',
+        'афиша стендап клубов',
+        'стендап мероприятия',
+        'стендап в Европе',
+        'стендап в Армении',
+        'стендап в Казахстане',
+        'стендап в Польше',
+        'стендап в России',
+        'russian stand up club',
+        'russian comedy club abroad',
+    ],
+    openGraph: {
+        type: 'website',
+        title,
+        description,
+        url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/venues`,
+        siteName: 'Comedy Portal',
+        images: [
+            {
+                url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/og/venues.jpg`,
+                width: 1200,
+                height: 630,
+                alt: 'Стендап площадки на русском языке',
+                type: 'image/jpeg',
+            },
+        ],
+    },
+    twitter: {
+        title,
+        description,
+        card: 'summary_large_image',
+        images: [`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/og/venues.jpg`],
+    },
+    alternates: {
+        canonical: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/venues`,
+    },
 }
 
-export default async function ComedianPage(props: { params: Params }) {
-    const params = await props.params
-
-    return withAuth({
-        render: ({ isAuth }) => <Comedian slug={params.slug} isAuth={isAuth} />,
-    })
+export default function VenuesPage() {
+    return <Venues />
 }

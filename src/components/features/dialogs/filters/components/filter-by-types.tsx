@@ -5,7 +5,7 @@ import { ContentType } from '@/utils/enums/common'
 
 type FilterByTypesProps = {
     value: ContentType[]
-    onChange: (next: ContentType[]) => void
+    onChange: (value: ContentType[]) => void
 }
 
 export const FilterByTypes = ({ value, onChange }: FilterByTypesProps) => {

@@ -1,6 +1,6 @@
 import { IContent } from '@/utils/types/content'
 
-export function VideoSchema({ content }: { content: IContent }) {
+export function ContentSchema({ content }: { content: IContent }) {
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'VideoObject',
