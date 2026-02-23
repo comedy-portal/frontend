@@ -45,37 +45,52 @@ export default async function TopSpecialYearPage(props: { params: Params }) {
         render: ({ isAuth }) => (
             <Layout
                 title="Топ спешлов"
-                info={
-                    <div>
-                        {isCurrentYear ? (
-                            <div>
-                                Этот топ стендап-спешлов <strong>за&nbsp;{year}</strong> год формируется на&nbsp;основе
-                                оценок сообщества. В&nbsp;рейтинг попадают выступления, набравшие{' '}
-                                <strong>не&nbsp;менее {settings.currentYearTopSpecialsMinReviewsCount} оценок</strong>.
-                                Любимый спешл ещё не&nbsp;в&nbsp;топе?{' '}
-                                <Link
-                                    href={`/content/special?sort=rating_asc&min_year=${year}&max_year=${year}`}
-                                    className="link"
-                                >
-                                    Оценивайте выступления
-                                </Link>{' '}
-                                и&nbsp;влияйте на&nbsp;результаты.
-                            </div>
-                        ) : (
-                            <div>
-                                Этот топ стендап-спешлов <strong>за&nbsp;{year}</strong> год сформирован на&nbsp;основе
-                                оценок сообщества. В&nbsp;рейтинг попали выступления, набравшие{' '}
-                                <strong>не&nbsp;менее {settings.topContentMinReviewsCount} оценок</strong>. Победители
-                                уже{' '}
-                                <Link href="/blog/top-3-specials-2025" className="link" target="_blank">
-                                    определены
-                                </Link>
-                                , награды вручены. При этом рейтинг может обновляться, не&nbsp;влияя на&nbsp;итоги года.
-                            </div>
-                        )}
-                    </div>
-                }
                 size="sm"
+                sidebar={{
+                    component: (
+                        <>
+                            {isCurrentYear ? (
+                                <div className="space-y-3">
+                                    <p>
+                                        Этот топ стендап-спешлов <strong>за&nbsp;{year}</strong> год формируется
+                                        на&nbsp;основе оценок сообщества. В&nbsp;рейтинг попадают выступления, набравшие{' '}
+                                        <strong>
+                                            не&nbsp;менее {settings.currentYearTopSpecialsMinReviewsCount} оценок
+                                        </strong>
+                                        .
+                                    </p>
+                                    <p>
+                                        Любимый спешл ещё не&nbsp;в&nbsp;топе?{' '}
+                                        <Link
+                                            href={`/content/special?sort=rating_asc&min_year=${year}&max_year=${year}`}
+                                            className="link"
+                                        >
+                                            Оценивайте выступления
+                                        </Link>{' '}
+                                        и&nbsp;влияйте на&nbsp;результаты.
+                                    </p>
+                                </div>
+                            ) : (
+                                <div className="space-y-3">
+                                    <p>
+                                        Этот топ стендап-спешлов <strong>за&nbsp;{year}</strong> год сформирован
+                                        на&nbsp;основе оценок сообщества. В&nbsp;рейтинг попали выступления, набравшие{' '}
+                                        <strong>не&nbsp;менее {settings.topContentMinReviewsCount} оценок</strong>.
+                                    </p>
+                                    <p>
+                                        Победители уже{' '}
+                                        <Link href="/blog/top-3-specials-2025" className="link" target="_blank">
+                                            определены
+                                        </Link>
+                                        , награды вручены. При этом рейтинг может обновляться, не&nbsp;влияя
+                                        на&nbsp;итоги года.
+                                    </p>
+                                </div>
+                            )}
+                        </>
+                    ),
+                    showOnMobile: true,
+                }}
                 nav={[
                     { label: '2026', href: '/top-special/2026' },
                     { label: '2025', href: '/top-special/2025' },

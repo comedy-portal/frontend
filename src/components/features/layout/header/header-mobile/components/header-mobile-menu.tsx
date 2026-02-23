@@ -24,7 +24,7 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
         { href: '/content', label: 'Контент' },
         { href: '/comedians', label: 'Комики' },
         { href: '/blog', label: 'Блог' },
-        { href: '/about', label: 'О проекте' },
+        { href: '/venues', label: 'Площадки' },
     ]
 
     const userNav: HeaderMobileMenuLinkProps[] =

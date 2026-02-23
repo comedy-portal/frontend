@@ -95,7 +95,7 @@ export const Settings = ({ username }: SettingsProps) => {
                 </div>
 
                 <div className="flex gap-x-2">
-                    <Button type="submit" disabled={isLoading || !formik.dirty}>
+                    <Button type="submit" className="w-full sm:w-auto" disabled={isLoading || !formik.dirty}>
                         Сохранить настройки
                     </Button>
                 </div>

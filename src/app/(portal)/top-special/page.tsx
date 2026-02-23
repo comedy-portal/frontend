@@ -22,18 +22,25 @@ export default async function TopSpecialAllTimePage() {
         render: ({ isAuth }) => (
             <Layout
                 title="Топ спешлов"
-                info={
-                    <div>
-                        Этот топ стендап-спешлов <strong>за&nbsp;всё время</strong> формируется на&nbsp;основе оценок
-                        сообщества. В&nbsp;рейтинг попадают выступления, набравшие{' '}
-                        <strong>не&nbsp;менее {settings.topContentMinReviewsCount} оценок</strong>.{' '}
-                        <Link href="/content/special?sort=rating_asc" className="link">
-                            Оценивайте выступления
-                        </Link>{' '}
-                        и&nbsp;влияйте на&nbsp;результаты.
-                    </div>
-                }
                 size="sm"
+                sidebar={{
+                    component: (
+                        <div className="space-y-3">
+                            <p>
+                                Этот топ стендап-спешлов <strong>за&nbsp;всё время</strong> формируется на&nbsp;основе
+                                оценок сообщества. В&nbsp;рейтинг попадают выступления, набравшие{' '}
+                                <strong>не&nbsp;менее {settings.topContentMinReviewsCount} оценок</strong>.
+                            </p>
+                            <p>
+                                <Link href="/content/special?sort=rating_asc" className="link">
+                                    Оценивайте выступления
+                                </Link>{' '}
+                                и&nbsp;влияйте на&nbsp;результаты.
+                            </p>
+                        </div>
+                    ),
+                    showOnMobile: true,
+                }}
                 nav={[
                     { label: '2026', href: '/top-special/2026' },
                     { label: '2025', href: '/top-special/2025' },
