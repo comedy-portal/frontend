@@ -4,16 +4,28 @@ import { UserReviews } from '@/components/features/user/user-reviews/user-review
 import { getSettings } from '@/services/settings/settings'
 import { getUserData } from '@/services/user/user'
 import { getUserByName } from '@/services/users/users'
+import { createMetadata } from '@/utils/helpers/metadata'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
 type Params = Promise<{ username: string }>
 
 export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
     const params = await props.params
+    const username = params.username
 
-    return {
-        title: `Рецензии пользователя ${params.username}`,
-    }
+    return createMetadata({
+        title: `Рецензии пользователя ${username}`,
+        description: `Посмотрите рецензии и оценки стендап-выступлений, оставленные пользователем ${username} на Камеди Портал.`,
+        path: `/users/${username}`,
+        keywords: [
+            `рецензии ${username}`,
+            `стендап рецензии`,
+            `пользовательский рейтинг`,
+            `стендап отзывы`,
+            `Камеди Портал ${username}`,
+        ],
+        type: 'website',
+    })
 }
 
 export default async function UserReviewsPage(props: { params: Params }) {

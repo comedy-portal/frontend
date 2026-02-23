@@ -6,14 +6,17 @@ import { Layout } from '@/components/features/layout/layout/layout'
 import { TopContent } from '@/components/features/top-content/top-content'
 import { getSettings } from '@/services/settings/settings'
 import { ContentType } from '@/utils/enums/common'
+import { createMetadata } from '@/utils/helpers/metadata'
 import { GetTopContentTake } from '@/utils/redux/services/content/content.types'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
     title: 'Топ стендап спешлов за всё время',
     description: 'Лучшие русские стендап спешлы за всё время. Рейтинг сформирован на основе оценок сообщества.',
+    path: '/top-special',
     keywords: ['топ стендап спешлов', 'лучшие стендап концерты', 'стендап рейтинг', 'стендап на русском'],
-}
+    type: 'website',
+})
 
 export default async function TopSpecialAllTimePage() {
     const settings = await getSettings()

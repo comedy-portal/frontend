@@ -43,6 +43,39 @@ export const metadata: Metadata = {
         'russian stand up club',
         'russian comedy club abroad',
     ],
+
+    openGraph: {
+        type: 'website',
+        title: 'Площадки',
+        description:
+            'На этой странице собраны стендап клубы, бары и концертные площадки, где регулярно проходят выступления русскоязычных комиков. Здесь Вы найдёте информацию о стендап клубах в разных странах, узнаете, где проходят концерты, открытые микрофоны и туры популярных артистов.',
+        images: [
+            {
+                url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/venues/hero.jpg`,
+                width: 1536,
+                height: 1024,
+                type: 'image/jpeg',
+                alt: 'Площадки стендап-клубов',
+            },
+        ],
+        url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/venues`,
+    },
+
+    twitter: {
+        title: 'Площадки',
+        description:
+            'На этой странице собраны стендап клубы, бары и концертные площадки, где регулярно проходят выступления русскоязычных комиков. Здесь Вы найдёте информацию о стендап клубах в разных странах, узнаете, где проходят концерты, открытые микрофоны и туры популярных артистов.',
+        images: [
+            {
+                url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/venues/hero.jpg`,
+                width: 1536,
+                height: 1024,
+                type: 'image/jpeg',
+                alt: 'Площадки стендап-клубов',
+            },
+        ],
+        card: 'summary_large_image',
+    },
 }
 
 export default function VenuesPage() {

@@ -3,10 +3,16 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 import { Layout } from '@/components/features/layout/layout/layout'
+import { createMetadata } from '@/utils/helpers/metadata'
 
-export const metadata: Metadata = {
+// prettier-ignore
+export const metadata: Metadata = createMetadata({
     title: 'Предложить контент',
-}
+    description: 'Если Вы знаете спешл, шоу, комика или площадку, которых ещё нет на Камеди Портал, Вы можете предложить этот контент для добавления в сервис.',
+    path: '/content/submit',
+    type: 'website',
+    noindex: true,
+})
 
 export default function ContentSubmitLayout(props: { children: React.ReactNode }) {
     return (

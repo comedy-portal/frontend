@@ -4,12 +4,16 @@ import { Layout } from '@/components/features/layout/layout/layout'
 import { UserSidebar } from '@/components/features/user/components/sidebar/user-sidebar'
 import { getUserData } from '@/services/user/user'
 import { getUserByName } from '@/services/users/users'
+import { createMetadata } from '@/utils/helpers/metadata'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
-// prettier-ignore
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
     title: 'Настройки',
-}
+    description: 'Настройки вашего профиля и персональных данных на Камеди Портал.',
+    path: '/me/settings',
+    type: 'website',
+    noindex: true,
+})
 
 export default function SettingsLayout(props: { children: React.ReactNode }) {
     return withAuth({

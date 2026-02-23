@@ -86,6 +86,15 @@ export const Venue = ({ slug }: VenueProps) => {
 
                         <LinksBlock caption="Ссылки" links={data.metaInfo?.links || []} />
 
+                        <p className="text-sm text-gray-400">
+                            Данные могут обновляться — актуальную информацию смотрите на сайте площадки. Если нашли
+                            неточность или стендап-клуба нет в списке, сообщите нам через{' '}
+                            <Link href="mailto:comedyportal.team@gmail.com" className="link">
+                                почту
+                            </Link>{' '}
+                            или форму добавления контента.
+                        </p>
+
                         <Share
                             title={data.name}
                             text={data.description}

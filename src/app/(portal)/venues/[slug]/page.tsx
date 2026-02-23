@@ -37,6 +37,17 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
         twitter: {
             title,
             description: venue.description,
+            images: [
+                {
+                    url:
+                        venue.venueImages[0]?.url ||
+                        `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/venues/${venue.slug}.jpg`,
+                    width: 800,
+                    height: 600,
+                    type: 'image/jpeg',
+                    alt: venue.name,
+                },
+            ],
             card: 'summary_large_image',
         },
     }

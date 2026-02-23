@@ -7,6 +7,7 @@ import { Layout } from '@/components/features/layout/layout/layout'
 import { TopContent } from '@/components/features/top-content/top-content'
 import { getSettings } from '@/services/settings/settings'
 import { ContentType } from '@/utils/enums/common'
+import { createMetadata } from '@/utils/helpers/metadata'
 import { GetTopContentTake } from '@/utils/redux/services/content/content.types'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
@@ -16,16 +17,18 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     const params = await props.params
     const year = Number(params.year)
 
-    return {
+    return createMetadata({
         title: `Топ стендап спешлов за ${year} год`,
         description: `На этой странице собраны лучшие русские стендап концерты ${year} года. Этот рейтинг сформирован на основе оценок сообщества.`,
+        path: `/top-special/${year}`,
         keywords: [
             `стендап на русском ${year}`,
             'топ стендап концертов',
             `лучшие стендап концерты ${year}`,
             `стендап рейтинг ${year}`,
         ],
-    }
+        type: 'website',
+    })
 }
 
 const ALLOWED_YEARS = [2025, 2026] as const
