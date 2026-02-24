@@ -49,13 +49,7 @@ export const UserSidebar = (props: UserSidebarProps) => {
                 <div className="absolute -bottom-6 left-1/2 size-12 -translate-x-1/2 rounded-full bg-gray-100" />
             </div>
 
-            <section className="space-y-6">
-                <h3 className="font-bold">Распределение оценок</h3>
-                <RatingHistogram
-                    ratings={Array.from({ length: 10 }, (_, i) => props._count.reviewsByMark[i + 1] ?? 0)}
-                />
-            </section>
-
+            <RatingHistogram ratings={Array.from({ length: 10 }, (_, i) => props._count.reviewsByMark[i + 1] ?? 0)} />
             <Share title={props.username} url={`${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/users/${props.username}`} />
         </div>
     )
