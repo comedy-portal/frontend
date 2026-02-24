@@ -21,7 +21,7 @@ const DEFAULT_DESCRIPTION = 'Лучшие стендапы и популярны
 const DEFAULT_IMAGE = '/images/og-default.jpg'
 
 export function createMetadata({
-    title,
+    title = SITE_NAME,
     description = DEFAULT_DESCRIPTION,
     path = '/',
     image = DEFAULT_IMAGE,
