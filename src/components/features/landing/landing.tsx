@@ -23,7 +23,7 @@ export const Landing = ({ isAuth }: LandingProps) => {
                     <LandingTopEntryPoint />
 
                     <section className="flex flex-col gap-y-6">
-                        <h3 className="text-2xl font-semibold">В тренде</h3>
+                        <h2 className="text-2xl font-semibold">В тренде</h2>
                         <LandingTrendsFeed isAuth={isAuth} />
                     </section>
 

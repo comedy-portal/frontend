@@ -37,6 +37,7 @@ export const LandingComediansFeed = () => {
                     slug={item.slug}
                     name={item.name}
                     surname={item.surname}
+                    type="comedians"
                     isAgent={item.isAgent}
                 />
             ))}

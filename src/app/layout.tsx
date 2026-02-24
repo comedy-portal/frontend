@@ -6,6 +6,7 @@ import { Roboto } from 'next/font/google'
 
 import YandexMetrika from '@/components/features/common/yandex-metrika'
 import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
+import { createMetadata } from '@/utils/helpers/metadata'
 
 import './globals.css'
 
@@ -25,27 +26,22 @@ export const viewport: Viewport = {
 
 // prettier-ignore
 export const metadata: Metadata = {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_WEBSITE_DOMAIN as string),
-    alternates: {
-        canonical: '/',
-    },
-    title: 'Камеди Портал',
-    description: 'Лучшие стендапы и популярные шоу с оценками, рецензиями и Вашей персональной историей просмотров.',
+    ...createMetadata({
+        title: 'Камеди Портал',
+        description: 'Лучшие стендапы и популярные шоу с оценками, рецензиями и Вашей персональной историей просмотров.',
+        path: '/',
+        type: 'website',
+        keywords: [
+            'Камеди Портал',
+            'русский стендап',
+            'комедийный портал',
+            'стендап концерты',
+            'рецензии на стендап',
+            'топ стендап концертов',
+        ],
+    }),
     appleWebApp: {
         title: 'Камеди Портал',
-    },
-    openGraph: {
-        type: 'website',
-        title: 'Камеди Портал',
-        description: 'Лучшие стендапы и популярные шоу с оценками, рецензиями и Вашей персональной историей просмотров.',
-        locale: 'ru_RU',
-        url: '/',
-        siteName: 'Камеди Портал',
-    },
-    twitter: {
-        title: 'Камеди Портал',
-        description: 'Лучшие стендапы и популярные шоу с оценками, рецензиями и Вашей персональной историей просмотров.',
-        card: 'summary_large_image',
     },
 }
 

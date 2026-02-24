@@ -48,21 +48,37 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
             title: '🔍 Весь контент в одном месте',
             text: (
                 <div className="space-y-2">
-                    <p>
-                        Комиков, шоу и&nbsp;группы можно легко найти через строку поиска. В&nbsp;разделе{' '}
-                        <Link href="/content" className="text-blue-500 hover:text-blue-700">
-                            Контент
-                        </Link>{' '}
-                        доступен полный каталог с&nbsp;возможностью сортировки и&nbsp;фильтрации.{' '}
-                        <Link href="/comedians" className="text-blue-500 hover:text-blue-700">
-                            Комики
-                        </Link>{' '}
-                        собраны на&nbsp;отдельной странице, а&nbsp;в&nbsp;разделе{' '}
-                        <Link href="/comedians/groups" className="text-blue-500 hover:text-blue-700">
-                            Группы
-                        </Link>{' '}
-                        представлены объединения артистов.
-                    </p>
+                    <p>Ищите комиков, шоу или площадки прямо через строку поиска.</p>
+                    <ul className="space-y-1">
+                        <li className="relative pl-4 before:absolute before:top-3 before:left-0 before:size-1.5 before:rounded-full before:bg-gray-950">
+                            на странице{' '}
+                            <Link href="/content" className="text-blue-500 hover:text-blue-700">
+                                Контент
+                            </Link>{' '}
+                            можно просматривать весь каталог, сортировать по популярности и дате, фильтровать по типу;
+                        </li>
+                        <li className="relative pl-4 before:absolute before:top-3 before:left-0 before:size-1.5 before:rounded-full before:bg-gray-950">
+                            на странице{' '}
+                            <Link href="/comedians" className="text-blue-500 hover:text-blue-700">
+                                Комики
+                            </Link>{' '}
+                            собраны все артисты, представленные на площадке;
+                        </li>
+                        <li className="relative pl-4 before:absolute before:top-3 before:left-0 before:size-1.5 before:rounded-full before:bg-gray-950">
+                            на странице{' '}
+                            <Link href="/comedians/groups" className="text-blue-500 hover:text-blue-700">
+                                Группы
+                            </Link>{' '}
+                            собраны объединения комиков;
+                        </li>
+                        <li className="relative pl-4 before:absolute before:top-3 before:left-0 before:size-1.5 before:rounded-full before:bg-gray-950">
+                            на странице{' '}
+                            <Link href="/venues" className="text-blue-500 hover:text-blue-700">
+                                Площадки
+                            </Link>{' '}
+                            собраны стендап-клубы и концертные площадки, где проходят выступления на русском языке.
+                        </li>
+                    </ul>
                 </div>
             ),
             imgDesktop: '/images/screenshots/desktop/content-many.jpg',
@@ -141,7 +157,7 @@ export const Welcome = ({ username, isAuth }: WelcomeProps) => {
             href: '/blog/content-submit',
             text: (
                 <p>
-                    Не&nbsp;нашли любимое шоу или новый спешл? Сообщите нам! У&nbsp;нас есть удобная{' '}
+                    Не&nbsp;нашли любимое шоу, комика или площадку? Сообщите нам! У&nbsp;нас есть удобная{' '}
                     <WelcomeLoginButton caption="форма" href="/content/submit" isAuth={isAuth} /> для
                     предложений&nbsp;&mdash; помогите расширить каталог <strong>Камеди Портал</strong>.
                 </p>

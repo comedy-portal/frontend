@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 
 import { Comedian } from '@/components/features/comedian/comedian'
 import { getComedianBySlug } from '@/services/comedians/comedians'
+import { createMetadata } from '@/utils/helpers/metadata'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
 type Params = Promise<{ slug: string }>
@@ -10,34 +11,24 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     const params = await props.params
     const comedian = await getComedianBySlug(params.slug)
 
-    return {
+    // prettier-ignore
+    return createMetadata({
         title: `${comedian.name} ${comedian.surname}`,
-        description: comedian.metaInfo?.description,
-        openGraph: {
-            type: 'website',
-            title: `${comedian.name} ${comedian.surname}`,
-            description:
-                comedian.metaInfo?.description ||
-                'Лучшие стендапы и популярные шоу с оценками, рецензиями и Вашей персональной историей просмотров.',
-            images: [
-                {
-                    url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/comedians/${comedian.slug}.jpg`,
-                    width: 500,
-                    height: 500,
-                    type: 'image/jpeg',
-                    alt: `${comedian.name} ${comedian.surname}`,
-                },
-            ],
-            url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/comedians/${comedian.slug}`,
-        },
-        twitter: {
-            title: `${comedian.name} ${comedian.surname}`,
-            description:
-                comedian.metaInfo?.description ||
-                'Лучшие стендапы и популярные шоу с оценками, рецензиями и Вашей персональной историей просмотров.',
-            card: 'summary_large_image',
-        },
-    }
+        description: comedian.metaInfo?.description || `Биография, лучшие выступления и спешлы комика ${comedian.name} ${comedian.surname} на Камеди Портале.`,
+        path: `/comedians/${comedian.slug}`,
+        image: `/images/comedians/${comedian.slug}.jpg`,
+        type: 'website',
+        keywords: [
+            `${comedian.name} ${comedian.surname}`,
+            `${`${comedian.name} ${comedian.surname}`} стендап`,
+            `${`${comedian.name} ${comedian.surname}`} спешл`,
+            'стендап комик',
+            'русский стендап',
+            'биография комика',
+            'юмор',
+        ],
+        authors: [{ name: `${comedian.name} ${comedian.surname}` }],
+    })
 }
 
 export default async function ComedianPage(props: { params: Params }) {

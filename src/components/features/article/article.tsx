@@ -1,4 +1,4 @@
-import { JSX } from 'react'
+import { JSX, ReactNode } from 'react'
 
 import { CalendarIcon, CircleArrowLeftIcon } from 'lucide-react'
 
@@ -11,7 +11,7 @@ type ArticleProps = {
     slug: string
     date: string
     title: string
-    content: JSX.Element
+    content: ReactNode
 }
 
 export const Article = ({ slug, date, title, content }: ArticleProps) => {

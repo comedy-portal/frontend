@@ -1,10 +1,11 @@
 import { Metadata } from 'next'
 
-import { VideoSchema } from '@/components/features/common/seo/video-schema'
+import { ContentSchema } from '@/components/features/common/seo/content-schema'
 import { Content } from '@/components/features/content/content'
 import { getContentById } from '@/services/content/content'
 import { getUserData } from '@/services/user/user'
 import { getAuthorsDisplayNamesForContent } from '@/utils/helpers/common'
+import { createMetadata } from '@/utils/helpers/metadata'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
 type Params = Promise<{ id: number }>
@@ -14,34 +15,27 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     const content = await getContentById(params.id)
     const comedians = getAuthorsDisplayNamesForContent(content)
 
-    return {
-        title: comedians.map(comedian => comedian.name).join(', ') + ' ' + content.name,
-        description: content.metaInfo?.description,
-        openGraph: {
-            type: 'website',
-            title: comedians.map(comedian => comedian.name).join(', ') + ' ' + content.name,
-            description:
-                content.metaInfo?.description ||
-                'Лучшие стендапы и популярные шоу с оценками, рецензиями и Вашей персональной историей просмотров.',
-            images: [
-                {
-                    url: content.contentImages[0]?.url || '',
-                    width: 500,
-                    height: 500,
-                    type: 'image/jpeg',
-                    alt: content.name,
-                },
-            ],
-            url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/content/${content.type.toLowerCase()}/${content.id}`,
-        },
-        twitter: {
-            title: comedians.map(comedian => comedian.name).join(', ') + ' ' + content.name,
-            description:
-                content.metaInfo?.description ||
-                'Лучшие стендапы и популярные шоу с оценками, рецензиями и Вашей персональной историей просмотров.',
-            card: 'summary_large_image',
-        },
-    }
+    return createMetadata({
+        title: content.name + ' — ' + comedians.map(comedian => comedian.name).join(', '),
+        description:
+            content.metaInfo?.description ||
+            'Лучшие стендапы и популярные шоу с оценками, рецензиями и Вашей персональной историей просмотров.',
+        path: `/content/${content.type.toLowerCase()}/${content.id}`,
+        image: content.contentImages[0]?.url || '/images/og-default.jpg',
+        type: 'article',
+        keywords: [
+            ...comedians.map(comedian => comedian.name),
+            content.name,
+            'стендап',
+            'комедия',
+            'русский стендап',
+            content.type.toLowerCase(),
+        ],
+        authors: comedians.map(comedian => ({
+            name: comedian.name,
+            url: comedian.url,
+        })),
+    })
 }
 
 export default async function ContentPage(props: { params: Params }) {
@@ -50,7 +44,7 @@ export default async function ContentPage(props: { params: Params }) {
 
     return (
         <>
-            <VideoSchema content={content} />
+            <ContentSchema content={content} />
 
             {withAuth({
                 getAuthData: async () => {

@@ -1,22 +1,26 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 
 import { Layout } from '@/components/features/layout/layout/layout'
+import { createMetadata } from '@/utils/helpers/metadata'
 
 // prettier-ignore
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
     title: 'Блог',
-    description: 'Добро пожаловать в наш блог! Здесь вы найдете последние новости, статьи и обновления по различным темам. Присоединяйтесь к нам, чтобы быть в курсе всех событий и получать полезную информацию.',
-    openGraph: {
-        type: 'website',
-        title: 'Блог',
-        description: 'Добро пожаловать в наш блог! Здесь вы найдете последние новости, статьи и обновления по различным темам. Присоединяйтесь к нам, чтобы быть в курсе всех событий и получать полезную информацию.',
-    },
-    twitter: {
-        title: 'Блог',
-        description: 'Добро пожаловать в наш блог! Здесь вы найдете последние новости, статьи и обновления по различным темам. Присоединяйтесь к нам, чтобы быть в курсе всех событий и получать полезную информацию.',
-        card: 'summary_large_image',
-    },
-}
+    description: 'Последние обновления Камеди Портал, новости и улучшения сайта. Следите за новыми функциями, событиями и контентом нашего портала.',
+    path: '/blog',
+    keywords: [
+        'Камеди Портал',
+        'блог',
+        'обновления сайта',
+        'новости портала',
+        'стендап',
+        'комедийный портал',
+        'функции сайта',
+        'новый контент',
+        'улучшения',
+    ],
+    type: 'website',
+})
 
 export default function BlogLayout(props: { children: React.ReactNode }) {
     return (
