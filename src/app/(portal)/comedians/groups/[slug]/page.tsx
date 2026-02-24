@@ -1,43 +1,34 @@
 import { Metadata } from 'next'
 
 import { Group } from '@/components/features/group/group'
-import { getGroupsBySlug } from '@/services/groups/groups'
+import { getGroupBySlug } from '@/services/groups/groups'
+import { createMetadata } from '@/utils/helpers/metadata'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
 type Params = Promise<{ slug: string }>
 
 export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
     const params = await props.params
-    const group = await getGroupsBySlug(params.slug)
+    const group = await getGroupBySlug(params.slug)
 
-    return {
+    // prettier-ignore
+    return createMetadata({
         title: group.name,
-        description: group.metaInfo?.description,
-        openGraph: {
-            type: 'website',
-            title: group.name,
-            description:
-                group.metaInfo?.description ||
-                'Лучшие стендапы и популярные шоу с оценками, рецензиями и Вашей персональной историей просмотров.',
-            images: [
-                {
-                    url: group.groupImages[0]?.url,
-                    width: 500,
-                    height: 500,
-                    type: 'image/jpeg',
-                    alt: `${group.name}`,
-                },
-            ],
-            url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/comedians/groups/${group.slug}`,
-        },
-        twitter: {
-            title: group.name,
-            description:
-                group.metaInfo?.description ||
-                'Лучшие стендапы и популярные шоу с оценками, рецензиями и Вашей персональной историей просмотров.',
-            card: 'summary_large_image',
-        },
-    }
+        description: group.metaInfo?.description || `Комедийная группа ${group.name}. Участники, шоу, лучшие выступления и рейтинги на Камеди Портале.`,
+        path: `/comedians/groups/${group.slug}`,
+        image: group.groupImages[0]?.url || '/images/og-default.jpg',
+        type: 'website',
+        keywords: [
+            group.name,
+            `${group.name} комики`,
+            `${group.name} стендап`,
+            'группа комиков',
+            'комедийная команда',
+            'стендап коллектив',
+            'юмор',
+        ],
+        authors: [{ name: group.name }],
+    })
 }
 
 export default async function GroupPage(props: { params: Params }) {

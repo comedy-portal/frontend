@@ -1,15 +1,8 @@
-import { Metadata } from 'next'
-
 import { Layout } from '@/components/features/layout/layout/layout'
 import { UserSidebar } from '@/components/features/user/components/sidebar/user-sidebar'
 import { getUserData } from '@/services/user/user'
 import { getUserByName } from '@/services/users/users'
 import { withAuth } from '@/utils/supertokens/with-auth'
-
-// prettier-ignore
-export const metadata: Metadata = {
-    title: 'Подписки - Comedy Portal',
-}
 
 export default function SubscriptionsLayout(props: { children: React.ReactNode }) {
     return withAuth({

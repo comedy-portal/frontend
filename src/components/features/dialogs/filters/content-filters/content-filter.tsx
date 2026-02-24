@@ -16,12 +16,12 @@ import { FilterByDate } from '../components/filter-by-date'
 import { FilterByNotWatched } from '../components/filter-by-not-watched'
 import { FilterByRating } from '../components/filter-by-rating'
 
-type ContentFiltersProps = {
+type ContentFilterProps = {
     currentYear: number
     isAuth: boolean
 }
 
-export const ContentFilters = ({ currentYear, isAuth }: ContentFiltersProps) => {
+export const ContentFilter = ({ currentYear, isAuth }: ContentFilterProps) => {
     const dialog = useDialog()
 
     const [initialFilters, setFiltersToUrl] = useQueryFilters(

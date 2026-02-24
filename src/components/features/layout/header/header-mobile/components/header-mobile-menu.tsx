@@ -23,8 +23,8 @@ export const HeaderMobileMenu = ({ closeMobileMenu, isAuth, username }: HeaderMo
         { href: '/top-special/2026', label: 'Топ спешлов', highlight: true },
         { href: '/content', label: 'Контент' },
         { href: '/comedians', label: 'Комики' },
+        { href: '/venues', label: 'Площадки' },
         { href: '/blog', label: 'Блог' },
-        { href: '/about', label: 'О проекте' },
     ]
 
     const userNav: HeaderMobileMenuLinkProps[] =

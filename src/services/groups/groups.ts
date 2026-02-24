@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation'
 
 import { GetGroupsBySlugResponse } from './groups.types'
 
-export async function getGroupsBySlug(slug: string): GetGroupsBySlugResponse {
+export async function getGroupBySlug(slug: string): GetGroupsBySlugResponse {
     const url = process.env.NEXT_PUBLIC_API_URL + '/groups/' + slug
     const res = await fetch(url)
 

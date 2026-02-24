@@ -25,36 +25,9 @@ const article: BlogArticle = {
             'новые выступления комиков',
             'подписка на группы комиков',
         ],
-        openGraph: {
-            type: 'article',
-            title: 'Подписка на комиков и группы — чтобы ничего не пропускать',
-            description: 'Подписывайтесь на комиков и группы, чтобы первыми узнавать о новых стендапах, шоу и спешлах. Получайте уведомления на Камеди Портал и не пропускайте новый контент.',
-            url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/subscriptions`,
-            siteName: 'Comedy Portal',
-            images: [
-                {
-                    url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/subscriptions.jpg`,
-                    width: 1200,
-                    height: 630,
-                    alt: 'Подписка на комиков и группы — чтобы ничего не пропускать',
-                },
-            ],
-            locale: 'ru_RU',
-        },
-        twitter: {
-            card: 'summary_large_image',
-            title: 'Подписка на комиков и группы — чтобы ничего не пропускать',
-            description: 'Подписывайтесь на комиков и группы, чтобы первыми узнавать о новых стендапах, шоу и спешлах. Получайте уведомления на Камеди Портал и не пропускайте новый контент.',
-            images: [
-                {
-                    url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/subscriptions.jpg`,
-                    alt: 'Подписка на комиков и группы — чтобы ничего не пропускать',
-                },
-            ],
-        },
     },
 
-    title: 'Подписка на&nbsp;комиков и&nbsp;группы&nbsp;&mdash; чтобы ничего не&nbsp;пропускать',
+    title: 'Подписка на комиков и группы — чтобы ничего не пропускать',
     content: (
         <>
             <p>

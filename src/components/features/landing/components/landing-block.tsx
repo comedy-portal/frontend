@@ -16,7 +16,7 @@ export const LandingBlock = ({ children, title, moreTitle, url }: LandingBlockTy
         <section className="flex flex-col gap-y-6">
             <div className="flex items-center justify-between">
                 <Link href={url} className="flex items-center justify-between gap-x-2">
-                    <h3 className="text-2xl font-semibold">{title}</h3>
+                    <h2 className="text-2xl font-semibold">{title}</h2>
                     <ChevronRightIcon size={24} className="block sm:hidden" />
                 </Link>
                 <Link
