@@ -15,8 +15,8 @@ const article: BlogArticle = {
     },
     
     metadata: {
-        title: '',
-        description: '',
+        title: 'Топ спешлов 2025 года',
+        description: 'Итоги года в русскоязычной комедии: лучший стендап-спешл 2025 года, победители рейтинга, рекомендации к просмотру и главные комедийные концерты года.',
         keywords: [
             'топ спешлов 2025',
             'лучший стендап 2025',
@@ -28,33 +28,6 @@ const article: BlogArticle = {
             'комедия 2025 итоги года',
             'лучшие комики 2025',
         ],
-        openGraph: {
-            type: 'article',
-            title: 'Топ спешлов 2025 года: итоги года в русскоязычной комедии',
-            description: 'Итоги года в русскоязычной комедии: лучший стендап-спешл 2025 года, победители рейтинга, рекомендации к просмотру и главные комедийные концерты года.',
-            url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/top-3-specials-2025`,
-            siteName: 'Comedy Portal',
-            images: [
-                {
-                    url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/top-3-specials-2025.jpg`,
-                    width: 1200,
-                    height: 630,
-                    alt: 'Топ спешлов 2025 года: итоги года в русскоязычной комедии',
-                },
-            ],
-            locale: 'ru_RU',
-        },
-        twitter: {
-            card: 'summary_large_image',
-            title: 'Топ спешлов 2025 года: итоги года в русскоязычной комедии',
-            description: 'Итоги года в русскоязычной комедии: лучший стендап-спешл 2025 года, победители рейтинга, рекомендации к просмотру и главные комедийные концерты года.',
-            images: [
-                {
-                    url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/top-3-specials-2025.jpg`,
-                    alt: 'Топ спешлов 2025 года: итоги года в русскоязычной комедии',
-                },
-            ],
-        },
     },
 
     title: 'Топ спешлов 2025&nbsp;года: итоги года в&nbsp;русскоязычной комедии',

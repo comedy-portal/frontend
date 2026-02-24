@@ -30,33 +30,6 @@ const article: BlogArticle = {
             'рейтинг стендапа',
             'персональный рейтинг стендапа',
         ],
-        openGraph: {
-            type: 'article',
-            title: 'Профиль пользователя на Камеди Портал',
-            description: 'Профиль пользователя на ComedyPortal: статистика просмотров, оценки, избранное и рекомендации. Узнайте, какие возможности доступны после регистрации.',
-            url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/`,
-            siteName: 'Comedy Portal',
-            images: [
-                {
-                    url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/profile.jpg`,
-                    width: 1200,
-                    height: 630,
-                    alt: 'Профиль на Камеди Портал',
-                },
-            ],
-            locale: 'ru_RU',
-        },
-        twitter: {
-            card: 'summary_large_image',
-            title: 'Профиль пользователя на Камеди Портал',
-            description: 'Профиль пользователя на ComedyPortal: статистика просмотров, оценки, избранное и рекомендации. Узнайте, какие возможности доступны после регистрации.',
-            images: [
-                {
-                    url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/profile.jpg`,
-                    alt: 'Профиль на Камеди Портал',
-                },
-            ],
-        },
     },
 
     title: 'Профиль пользователя на Камеди Портал',

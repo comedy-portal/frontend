@@ -11,18 +11,21 @@ type ComedianBlockType = {
 }
 
 export const ComedianBlock = ({ slug, name, surname, type, isAgent }: ComedianBlockType) => {
+    const href = type === 'groups' ? `/comedians/groups/${slug}` : `/comedians/${slug}`
+
     return (
-        <Link href={`/${type}/${slug}`} className="flex flex-col gap-y-2" target="_blank">
+        <Link href={href} className="flex flex-col gap-y-2" target="_blank">
             <ImageWithFallback
                 src={`/images/${type}/${slug}.jpg`}
                 width={100}
                 height={100}
                 className="aspect-square w-full rounded-lg"
-                alt={`${name} ${surname}`}
+                alt={`${name} ${surname ?? ''}`}
             />
 
             <div className="font-semibold">
-                {name} {surname && surname}&nbsp;{isAgent && '*'}
+                {name} {surname && surname}
+                &nbsp;{isAgent && '*'}
             </div>
         </Link>
     )

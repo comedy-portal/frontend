@@ -18,33 +18,6 @@ const article: BlogArticle = {
             '',
             '',
         ],
-        openGraph: {
-            type: 'article',
-            title: '',
-            description: '',
-            url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/blog/`,
-            siteName: 'Comedy Portal',
-            images: [
-                {
-                    url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/`,
-                    width: 1200,
-                    height: 630,
-                    alt: '',
-                },
-            ],
-            locale: 'ru_RU',
-        },
-        twitter: {
-            card: 'summary_large_image',
-            title: '',
-            description: '',
-            images: [
-                {
-                    url: `${process.env.NEXT_PUBLIC_WEBSITE_DOMAIN}/images/articles/`,
-                    alt: '',
-                },
-            ],
-        },
     },
 
     title: '',

@@ -1,16 +1,22 @@
-import { JSX } from 'react'
+import { ReactNode } from 'react'
 
-import { Metadata } from 'next'
+export type BlogArticleMetadata = {
+    title: string
+    description: string
+    keywords?: string[]
+}
+
+export type BlogArticlePreview = {
+    image: string
+    title: string
+    description: string
+}
 
 export type BlogArticle = {
     slug: string
-    date: string // ISO
-    preview: {
-        image: string
-        title: string
-        description: string
-    }
-    metadata: Metadata
+    date: string
+    preview: BlogArticlePreview
+    metadata: BlogArticleMetadata
     title: string
-    content: JSX.Element
+    content: ReactNode
 }
