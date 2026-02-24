@@ -16,7 +16,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
     const comedians = getAuthorsDisplayNamesForContent(content)
 
     return createMetadata({
-        title: comedians.map(comedian => comedian.name).join(', ') + ' — ' + content.name,
+        title: content.name + ' — ' + comedians.map(comedian => comedian.name).join(', '),
         description:
             content.metaInfo?.description ||
             'Лучшие стендапы и популярные шоу с оценками, рецензиями и Вашей персональной историей просмотров.',
