@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 
+import Image from 'next/image'
 import Link from 'next/link'
 
 type VenueMapProps = {
@@ -30,7 +31,7 @@ export const VenueMap = ({ lat, lng }: VenueMapProps) => {
             target="_blank"
             rel="noopener noreferrer"
         >
-            <img
+            <Image
                 src={imgSrc}
                 alt="Map preview"
                 width={450}

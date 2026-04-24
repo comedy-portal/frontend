@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { CommonError } from '@/components/ui/common-error'
 import { EmptyMessage } from '@/components/ui/empty-message'
@@ -26,7 +26,10 @@ type UserReviewsFeedProps = {
 
 export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFeedProps) => {
     const [filters] = useQueryFilters(parseReviewsFiltersFromSearchParams, buildReviewsFiltersQueryString)
-    const [cursor, setCursor] = useState<number>()
+    const [pagination, setPagination] = useState<{ filterKey: string; cursor?: number }>({
+        filterKey: '',
+        cursor: undefined,
+    })
 
     const { sortBy, order } = useMemo(() => {
         let sortBy = ReviewSortBy.DATE
@@ -57,9 +60,20 @@ export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFee
         return { sortBy, order }
     }, [filters.sort])
 
-    useEffect(() => {
-        setCursor(undefined)
-    }, [filters.sort, filters.with_text, filters.content_min_year, filters.content_max_year, filters.types])
+    const filterKey = useMemo(
+        () =>
+            JSON.stringify({
+                sort: filters.sort,
+                with_text: filters.with_text,
+                content_min_year: filters.content_min_year,
+                content_max_year: filters.content_max_year,
+                types: filters.types,
+                userId,
+            }),
+        [filters.sort, filters.with_text, filters.content_min_year, filters.content_max_year, filters.types, userId],
+    )
+
+    const cursor = pagination.filterKey === filterKey ? pagination.cursor : undefined
 
     const { data, isFetching, isSuccess, isError } = reviewsAPI.useGetReviewsQuery({
         user_id: userId,
@@ -106,7 +120,10 @@ export const UserReviewsFeed = ({ userId, activeUserId, isAuth }: UserReviewsFee
                 <LoadMore
                     isLoading={isFetching}
                     onClick={() => {
-                        setCursor(data.items[data.items.length - 1]?.id)
+                        setPagination({
+                            filterKey,
+                            cursor: data.items[data.items.length - 1]?.id,
+                        })
                     }}
                 />
             )}

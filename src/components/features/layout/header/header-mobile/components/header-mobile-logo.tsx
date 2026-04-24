@@ -14,7 +14,7 @@ export const HeaderMobileLogo = ({ closeMobileMenu }: HeaderMobileLogoProps) => 
             onClick={closeMobileMenu}
         >
             <MicIcon size={28} strokeWidth={2} />
-            <div className="text-[20px] leading-none font-extrabold uppercase">ComedyPortal</div>
+            <div className="text-[20px] leading-none font-extrabold uppercase">Камеди Портал</div>
         </Link>
     )
 }
