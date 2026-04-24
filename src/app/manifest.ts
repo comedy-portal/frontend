@@ -3,8 +3,8 @@ import type { MetadataRoute } from 'next'
 export default function manifest(): MetadataRoute.Manifest {
     return {
         id: '/',
-        name: 'Comedy Portal',
-        short_name: 'Comedy Portal',
+        name: 'Камеди Портал',
+        short_name: 'Камеди Портал',
         description: 'Камеди Портал – Лучшие стендапы и популярные шоу!',
 
         start_url: '/',

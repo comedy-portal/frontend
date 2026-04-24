@@ -15,7 +15,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
             <div className="space-y-4">
                 <Link href="/" className="relative flex h-full items-center gap-x-2 whitespace-nowrap text-white">
                     <MicIcon size={32} strokeWidth={2} />
-                    <div className="text-[18px] leading-none font-extrabold uppercase">ComedyPortal</div>
+                    <div className="text-[18px] leading-none font-extrabold uppercase">КамедиПортал</div>
                 </Link>
                 <div className="box-content flex flex-col items-center gap-y-8 rounded-2xl bg-white px-8 py-16 sm:w-104 sm:p-16">
                     {children}
