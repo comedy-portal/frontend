@@ -1,6 +1,6 @@
 'use client'
 
-import { RefObject, useEffect, useMemo, useRef, useState } from 'react'
+import { RefObject, useMemo, useRef, useState } from 'react'
 
 import classNames from 'classnames'
 import { ChevronDownIcon } from 'lucide-react'
@@ -23,9 +23,7 @@ export const FilterByCity = ({ cities, value, onChange }: FilterByCityProps) => 
 
     useOnClickOutside(rootRef as RefObject<HTMLDivElement>, () => setIsMenuOpen(false))
 
-    useEffect(() => {
-        setSearch(value ?? '')
-    }, [value])
+    const selectedCityLabel = useMemo(() => cities.find(city => city.value === value)?.label ?? '', [cities, value])
 
     const filteredCities = useMemo(() => {
         if (!search) return cities
@@ -33,8 +31,10 @@ export const FilterByCity = ({ cities, value, onChange }: FilterByCityProps) => 
     }, [search, cities])
 
     const handleSelect = (city: string) => {
+        const cityLabel = cities.find(item => item.value === city)?.label ?? ''
+
         onChange(city)
-        setSearch(city)
+        setSearch(cityLabel)
         setIsMenuOpen(false)
         inputRef.current?.blur()
     }
@@ -52,9 +52,12 @@ export const FilterByCity = ({ cities, value, onChange }: FilterByCityProps) => 
             <div className="relative">
                 <input
                     ref={inputRef}
-                    value={search}
+                    value={isMenuOpen ? search : selectedCityLabel}
                     placeholder="Введите город..."
-                    onFocus={() => setIsMenuOpen(true)}
+                    onFocus={() => {
+                        setSearch(selectedCityLabel)
+                        setIsMenuOpen(true)
+                    }}
                     onChange={e => handleChange(e.target.value)}
                     className={classNames(
                         'h-10 w-full rounded-lg border border-gray-300 bg-white px-4 pr-10 text-sm',

@@ -33,7 +33,7 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
             <div className="flex h-full items-center justify-center gap-x-4 xl:gap-x-6">
                 <Link href="/" className="relative flex h-full items-center gap-x-2 whitespace-nowrap text-white">
                     <MicIcon size={32} strokeWidth={2} />
-                    <div className="text-[20px] leading-none font-extrabold uppercase">ComedyPortal</div>
+                    <div className="text-[20px] leading-none font-extrabold uppercase">Камеди Портал</div>
                 </Link>
 
                 <Search />

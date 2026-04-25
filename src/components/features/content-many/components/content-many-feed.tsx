@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { ContentBlock } from '@/components/features/common/content-block/content-block'
 import { CommonError } from '@/components/ui/common-error'
@@ -26,7 +26,10 @@ type ContentManyFeedProps = {
 
 export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
     const [filters] = useQueryFilters(parseContentFiltersFromSearchParams, buildContentFiltersQueryString)
-    const [cursor, setCursor] = useState<number>()
+    const [pagination, setPagination] = useState<{ filterKey: string; cursor?: number }>({
+        filterKey: '',
+        cursor: undefined,
+    })
 
     const { sortBy, order } = useMemo(() => {
         let sortBy = ContentSortBy.DATE
@@ -57,9 +60,21 @@ export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
         return { sortBy, order }
     }, [filters.sort])
 
-    useEffect(() => {
-        setCursor(undefined)
-    }, [filters.sort, filters.min_year, filters.max_year, filters.min_rating, filters.max_rating, filters.not_watched])
+    const filterKey = useMemo(
+        () =>
+            JSON.stringify({
+                sort: filters.sort,
+                min_year: filters.min_year,
+                max_year: filters.max_year,
+                min_rating: filters.min_rating,
+                max_rating: filters.max_rating,
+                not_watched: filters.not_watched,
+                type,
+            }),
+        [filters.sort, filters.min_year, filters.max_year, filters.min_rating, filters.max_rating, filters.not_watched, type],
+    )
+
+    const cursor = pagination.filterKey === filterKey ? pagination.cursor : undefined
 
     const { data, isFetching, isSuccess, isError } = contentAPI.useGetContentManyQuery({
         order,
@@ -118,7 +133,10 @@ export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
                 <LoadMore
                     isLoading={isFetching}
                     onClick={() => {
-                        setCursor(data.items[data.items.length - 1]?.id)
+                        setPagination({
+                            filterKey,
+                            cursor: data.items[data.items.length - 1]?.id,
+                        })
                     }}
                 />
             )}

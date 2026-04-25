@@ -17,6 +17,11 @@ const nextConfig: NextConfig = {
                 hostname: 'fastly.picsum.photos',
                 port: '',
             },
+            {
+                protocol: 'https',
+                hostname: 'static-maps.yandex.ru',
+                port: '',
+            },
         ],
     },
 }
