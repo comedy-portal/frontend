@@ -98,7 +98,7 @@ export const BottomSheet = ({ content, isOpen, onClose, onClosed }: BottomSheetP
                     <div className="h-1.5 w-12 rounded-full bg-gray-300" />
                 </div>
 
-                <div className="min-h-0 flex-1 overflow-y-auto px-6 pb-[calc(3rem+env(safe-area-inset-bottom))]">
+                <div className="min-h-0 flex-1 overflow-y-auto px-6 pb-[calc(2rem+env(safe-area-inset-bottom))]">
                     {content}
                 </div>
             </div>
