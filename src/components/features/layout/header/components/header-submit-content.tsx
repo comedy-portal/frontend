@@ -5,7 +5,7 @@ import { PlusCircleIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import { SignUp } from '@/components/features/auth/sign-up'
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 
 type HeaderSubmitContentProps = {
     isAuth: boolean
@@ -13,14 +13,14 @@ type HeaderSubmitContentProps = {
 }
 
 export const HeaderSubmitContent = ({ isAuth, onClick }: HeaderSubmitContentProps) => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
     const router = useRouter()
 
     const handleClick = () => {
         onClick?.()
 
         if (!isAuth) {
-            dialog.open(<SignUp />)
+            overlay.open(<SignUp />)
             return
         }
 

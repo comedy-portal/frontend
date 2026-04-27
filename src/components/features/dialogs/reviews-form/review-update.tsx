@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { CommonError } from '@/components/ui/common-error'
 import { messages } from '@/messages'
@@ -17,7 +17,7 @@ type ReviewUpdateProps = {
 }
 
 export const ReviewUpdate = ({ id }: ReviewUpdateProps) => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
     const toast = useToast()
     const router = useRouter()
     const { data, isLoading: isReviewLoading, isSuccess, isError } = reviewsAPI.useGetReviewByIdQuery({ id })
@@ -49,7 +49,7 @@ export const ReviewUpdate = ({ id }: ReviewUpdateProps) => {
             }
             updateReview(trimmedInputs)
             router.refresh()
-            dialog.close()
+            overlay.close()
         } catch {
             toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
         }

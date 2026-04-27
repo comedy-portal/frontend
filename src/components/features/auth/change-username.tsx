@@ -5,7 +5,7 @@ import * as yup from 'yup'
 
 import { useRouter } from 'next/navigation'
 
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { CommonError } from '@/components/ui/common-error'
 import { Button } from '@/components/ui/forms/button'
@@ -16,7 +16,7 @@ import { ChangeUserNameInputs } from '@/utils/redux/services/user/user.types'
 
 export const ChangeUsername = () => {
     const router = useRouter()
-    const dialog = useDialog()
+    const overlay = useOverlay()
     const toast = useToast()
 
     const { data, isSuccess, isError } = userAPI.useGetUserDataQuery()
@@ -50,7 +50,7 @@ export const ChangeUsername = () => {
                 case 'OK':
                     toast.success('Имя пользователя успешно изменено')
                     router.refresh()
-                    dialog.close()
+                    overlay.close()
                     break
 
                 case 'USERNAME_ALREADY_EXISTS_ERROR':

@@ -3,7 +3,7 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { Button } from '@/components/ui/forms/button'
 import { Input } from '@/components/ui/forms/input'
 import { Radio } from '@/components/ui/forms/radio'
@@ -18,7 +18,7 @@ type ComplaintFormProps = {
 }
 
 export const ComplaintForm = ({ initialValues, isLoading, onSubmit }: ComplaintFormProps) => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
 
     const reasons = Object.values(ComplaintReasons)
 
@@ -64,11 +64,11 @@ export const ComplaintForm = ({ initialValues, isLoading, onSubmit }: ComplaintF
                     onChange={formik.handleChange}
                 />
             </div>
-            <div className="flex gap-x-2">
-                <Button type="submit" disabled={isLoading}>
+            <div className="flex flex-col gap-2 sm:flex-row">
+                <Button type="submit" className="w-full sm:w-auto" disabled={isLoading}>
                     Отправить
                 </Button>
-                <Button variant="outline" disabled={isLoading} onClick={() => dialog.close()}>
+                <Button variant="outline" className="w-full sm:w-auto" disabled={isLoading} onClick={() => overlay.close()}>
                     Отменить
                 </Button>
             </div>

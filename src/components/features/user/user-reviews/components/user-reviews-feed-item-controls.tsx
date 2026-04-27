@@ -5,7 +5,7 @@ import { SquarePenIcon, TrashIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import { ReviewUpdate } from '@/components/features/dialogs/reviews-form/review-update'
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { Confirmation } from '@/components/ui/confirmation'
 import { messages } from '@/messages'
@@ -17,18 +17,18 @@ type UserReviewsFeedItemProps = {
 }
 
 export const UserReviewsFeedItemControls = ({ id, contentId }: UserReviewsFeedItemProps) => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
     const toast = useToast()
     const router = useRouter()
 
     const [deleteReview] = reviewsAPI.useDeleteReviewMutation()
 
     const handleEditClick = () => {
-        dialog.open(<ReviewUpdate id={id} />)
+        overlay.open(<ReviewUpdate id={id} />)
     }
 
     const handleDeleteClick = () => {
-        dialog.open(
+        overlay.open(
             <Confirmation
                 title="Удаление рецензии"
                 message="Вы уверены, что хотите удалить эту рецензию? Это действие необратимо."
@@ -36,7 +36,7 @@ export const UserReviewsFeedItemControls = ({ id, contentId }: UserReviewsFeedIt
                     try {
                         await deleteReview({ id, contentId })
                         router.refresh()
-                        dialog.close()
+                        overlay.close()
                     } catch {
                         toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
                     }
