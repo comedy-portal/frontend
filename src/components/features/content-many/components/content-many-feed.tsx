@@ -71,7 +71,15 @@ export const ContentManyFeed = ({ type, isAuth }: ContentManyFeedProps) => {
                 not_watched: filters.not_watched,
                 type,
             }),
-        [filters.sort, filters.min_year, filters.max_year, filters.min_rating, filters.max_rating, filters.not_watched, type],
+        [
+            filters.sort,
+            filters.min_year,
+            filters.max_year,
+            filters.min_rating,
+            filters.max_rating,
+            filters.not_watched,
+            type,
+        ],
     )
 
     const cursor = pagination.filterKey === filterKey ? pagination.cursor : undefined

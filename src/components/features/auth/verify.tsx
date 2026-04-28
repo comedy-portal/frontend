@@ -7,7 +7,7 @@ import { clearLoginAttemptInfo, consumeCode, resendCode } from 'supertokens-web-
 
 import { useRouter } from 'next/navigation'
 
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { api } from '@/utils/redux/services/api'
 
 import { ChangeUsername } from './change-username'
@@ -20,7 +20,7 @@ type VerifyProps = {
 
 export const Verify = ({ email, onBack }: VerifyProps) => {
     const router = useRouter()
-    const dialog = useDialog()
+    const overlay = useOverlay()
     const dispatch = useDispatch()
     const [status, setStatus] = useState<string>()
     const [isLoading, setIsLoading] = useState(false)
@@ -57,9 +57,9 @@ export const Verify = ({ email, onBack }: VerifyProps) => {
                 dispatch(api.util.resetApiState())
 
                 if (response.createdNewRecipeUser) {
-                    dialog.open(<ChangeUsername />)
+                    overlay.open(<ChangeUsername />)
                 } else {
-                    dialog.close()
+                    overlay.close()
                 }
 
                 router.refresh()

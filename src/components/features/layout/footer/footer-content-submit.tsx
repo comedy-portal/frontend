@@ -3,19 +3,19 @@
 import { useRouter } from 'next/navigation'
 
 import { SignUp } from '@/components/features/auth/sign-up'
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 
 type HeaderSubmitContentProps = {
     isAuth: boolean
 }
 
 export const FooterSubmitContent = ({ isAuth }: HeaderSubmitContentProps) => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
     const router = useRouter()
 
     const handleClick = () => {
         if (!isAuth) {
-            dialog.open(<SignUp />)
+            overlay.open(<SignUp />)
             return
         }
 

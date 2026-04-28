@@ -3,7 +3,7 @@
 import Link from 'next/link'
 
 import { SignUp } from '@/components/features/auth/sign-up'
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 
 type WelcomeLoginButtonProps = {
     caption: string
@@ -12,10 +12,10 @@ type WelcomeLoginButtonProps = {
 }
 
 export const WelcomeLoginButton = ({ caption, href, isAuth }: WelcomeLoginButtonProps) => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
 
     const handleClick = () => {
-        dialog.open(<SignUp />)
+        overlay.open(<SignUp />)
     }
 
     return isAuth ? (

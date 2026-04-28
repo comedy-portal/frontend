@@ -3,7 +3,7 @@ import Session from 'supertokens-web-js/recipe/session'
 
 import { useRouter } from 'next/navigation'
 
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { Confirmation } from '@/components/ui/confirmation'
 import { messages } from '@/messages'
@@ -12,13 +12,13 @@ import { persistor } from '@/utils/redux/store'
 
 export const SettingsRevokeSessions = () => {
     const router = useRouter()
-    const dialog = useDialog()
+    const overlay = useOverlay()
     const toast = useToast()
 
     const [revokeSessions] = userAPI.useRevokeSessionsMutation()
 
     const handleRevokeSessions = () => {
-        dialog.open(
+        overlay.open(
             <Confirmation
                 title="Выйти из всех сессий"
                 message="Вы уверены, что хотите выйти из всех активных сессий? Это действие потребует повторной аутентификации на всех устройствах."
@@ -32,7 +32,7 @@ export const SettingsRevokeSessions = () => {
                     } catch {
                         toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
                     } finally {
-                        dialog.close()
+                        overlay.close()
                     }
                 }}
             />,

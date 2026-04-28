@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { messages } from '@/messages'
 import { reviewsAPI } from '@/utils/redux/services/reviews/reviews.api'
@@ -16,7 +16,7 @@ type ReviewCreateProps = {
 }
 
 export const ReviewCreate = ({ contentId, initialMark }: ReviewCreateProps) => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
     const toast = useToast()
     const router = useRouter()
 
@@ -37,7 +37,7 @@ export const ReviewCreate = ({ contentId, initialMark }: ReviewCreateProps) => {
             }
             createReview(trimmedInputs)
             router.refresh()
-            dialog.close()
+            overlay.close()
         } catch {
             toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
         }

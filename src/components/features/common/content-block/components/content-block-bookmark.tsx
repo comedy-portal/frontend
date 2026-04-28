@@ -5,7 +5,7 @@ import { BookmarkIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import { SignUp } from '@/components/features/auth/sign-up'
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { messages } from '@/messages'
 import { watchlistsAPI } from '@/utils/redux/services/watchlists/watchlists.api'
@@ -19,7 +19,7 @@ type ContentBlockBookmarkProps = {
 
 export const ContentBlockBookmark = ({ name, contentId, isAuth, isInWatchlist }: ContentBlockBookmarkProps) => {
     const toast = useToast()
-    const dialog = useDialog()
+    const overlay = useOverlay()
     const router = useRouter()
 
     const [addToWatchlist] = watchlistsAPI.useAddToWatchlistMutation()
@@ -27,7 +27,7 @@ export const ContentBlockBookmark = ({ name, contentId, isAuth, isInWatchlist }:
 
     const toggleWatchlist = async () => {
         if (!isAuth) {
-            dialog.open(<SignUp />)
+            overlay.open(<SignUp />)
             return
         }
 

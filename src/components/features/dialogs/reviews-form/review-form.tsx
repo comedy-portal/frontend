@@ -3,7 +3,7 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { ExternalLink } from '@/components/ui/external-link'
 import { Button } from '@/components/ui/forms/button'
 import { Textarea } from '@/components/ui/forms/textarea'
@@ -17,7 +17,7 @@ type ReviewFormProps = {
 }
 
 export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormProps) => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
 
     const validationSchema = Yup.object().shape({
         mark: Yup.number().min(1, 'Рейтинг обязателен').required('Рейтинг обязателен'),
@@ -70,11 +70,11 @@ export const ReviewForm = ({ initialValues, isLoading, onSubmit }: ReviewFormPro
                 </p>
             </div>
 
-            <div className="flex gap-x-2">
-                <Button type="submit" disabled={isLoading}>
+            <div className="flex flex-col gap-2 sm:flex-row">
+                <Button type="submit" className="w-full sm:w-auto" disabled={isLoading}>
                     Сохранить
                 </Button>
-                <Button variant="outline" disabled={isLoading} onClick={() => dialog.close()}>
+                <Button variant="outline" className="w-full sm:w-auto" disabled={isLoading} onClick={() => overlay.close()}>
                     Отменить
                 </Button>
             </div>
