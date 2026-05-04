@@ -55,7 +55,7 @@ export default async function TopSpecialYearPage(props: { params: Params }) {
                             {isCurrentYear ? (
                                 <div className="space-y-3">
                                     <p>
-                                        Этот топ стендап-спешлов <strong>за&nbsp;{year}</strong> год формируется
+                                        Этот топ стендап-спешлов <strong>за&nbsp;{year}&nbsp;год</strong> формируется
                                         на&nbsp;основе оценок сообщества. В&nbsp;рейтинг попадают выступления, набравшие{' '}
                                         <strong>
                                             не&nbsp;менее {settings.currentYearTopSpecialsMinReviewsCount} оценок
@@ -76,7 +76,7 @@ export default async function TopSpecialYearPage(props: { params: Params }) {
                             ) : (
                                 <div className="space-y-3">
                                     <p>
-                                        Этот топ стендап-спешлов <strong>за&nbsp;{year}</strong> год сформирован
+                                        Этот топ стендап-спешлов <strong>за&nbsp;{year}&nbsp;год</strong> сформирован
                                         на&nbsp;основе оценок сообщества. В&nbsp;рейтинг попали выступления, набравшие{' '}
                                         <strong>не&nbsp;менее {settings.topContentMinReviewsCount} оценок</strong>.
                                     </p>
