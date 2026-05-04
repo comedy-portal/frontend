@@ -32,6 +32,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 }
 
 const ALLOWED_YEARS = [2025, 2026] as const
+const BREAKABLE_SPACE = ' '
 
 export default async function TopSpecialYearPage(props: { params: Params }) {
     const params = await props.params
@@ -55,8 +56,9 @@ export default async function TopSpecialYearPage(props: { params: Params }) {
                             {isCurrentYear ? (
                                 <div className="space-y-3">
                                     <p>
-                                        Этот топ стендап-спешлов <strong>за&nbsp;{year}&nbsp;год</strong> формируется
-                                        на&nbsp;основе оценок сообщества. В&nbsp;рейтинг попадают выступления, набравшие{' '}
+                                        Этот топ стендап-спешлов <strong>за&nbsp;{year}&nbsp;год</strong>
+                                        {BREAKABLE_SPACE}формируется на&nbsp;основе оценок сообщества. В&nbsp;рейтинг
+                                        попадают выступления, набравшие{' '}
                                         <strong>
                                             не&nbsp;менее {settings.currentYearTopSpecialsMinReviewsCount} оценок
                                         </strong>
@@ -76,8 +78,9 @@ export default async function TopSpecialYearPage(props: { params: Params }) {
                             ) : (
                                 <div className="space-y-3">
                                     <p>
-                                        Этот топ стендап-спешлов <strong>за&nbsp;{year}&nbsp;год</strong> сформирован
-                                        на&nbsp;основе оценок сообщества. В&nbsp;рейтинг попали выступления, набравшие{' '}
+                                        Этот топ стендап-спешлов <strong>за&nbsp;{year}&nbsp;год</strong>
+                                        {BREAKABLE_SPACE}сформирован на&nbsp;основе оценок сообщества. В&nbsp;рейтинг
+                                        попали выступления, набравшие{' '}
                                         <strong>не&nbsp;менее {settings.topContentMinReviewsCount} оценок</strong>.
                                     </p>
                                     <p>
