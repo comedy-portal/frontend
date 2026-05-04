@@ -57,10 +57,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <link rel="apple-touch-icon" href="/icons/icon-192.png" />
             </head>
             <body className="h-full antialiased">
-                <Providers>{children}</Providers>
+                {/* <Providers>{children}</Providers>
                 <TailwindIndicator />
                 <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string} />
-                <YandexMetrika />
+                <YandexMetrika /> */}
+                <div>Test test test</div>
             </body>
         </html>
     )
