@@ -1,16 +1,11 @@
 import classNames from 'classnames'
 import type { Metadata, Viewport } from 'next'
 
-import { GoogleAnalytics } from '@next/third-parties/google'
 import { Roboto } from 'next/font/google'
 
-import YandexMetrika from '@/components/features/common/yandex-metrika'
-import { TailwindIndicator } from '@/components/ui/tailwind-indicator'
 import { createMetadata } from '@/utils/helpers/metadata'
 
 import './globals.css'
-
-import { Providers } from './providers'
 
 const roboto = Roboto({
     subsets: ['latin', 'cyrillic'],
