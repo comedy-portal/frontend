@@ -1,5 +1,7 @@
 import type { NextConfig } from 'next'
-import withPWA from 'next-pwa'
+// TEMP TEST: PWA is disabled to compare production behavior with TripAdvancer.
+// Restore this import together with the wrapped export below.
+// import withPWA from 'next-pwa'
 
 const nextConfig: NextConfig = {
     pageExtensions: ['js', 'jsx', 'ts', 'tsx'],
@@ -26,9 +28,12 @@ const nextConfig: NextConfig = {
     },
 }
 
-export default withPWA({
-    dest: 'public',
-    register: true,
-    skipWaiting: true,
-    disable: process.env.NODE_ENV === 'development',
-})(nextConfig as any)
+// TEMP TEST: PWA is disabled to make this easy to revert after the Vercel/RU availability check.
+// export default withPWA({
+//     dest: 'public',
+//     register: true,
+//     skipWaiting: true,
+//     disable: process.env.NODE_ENV === 'development',
+// })(nextConfig as any)
+
+export default nextConfig
