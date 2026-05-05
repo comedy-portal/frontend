@@ -52,7 +52,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <meta name="apple-mobile-web-app-capable" content="yes" />
                 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
                 <meta name="verify-admitad" content="42d1abdfa5" />
-                <meta name="yandex-verification" content="c2fe7f08f21190fa" />
+                <meta name="yandex-verification" content="6efc8405e6c8df86" />
                 <link rel="icon" href="/favicon.png" type="image/png" />
                 <link rel="apple-touch-icon" href="/icons/icon-192.png" />
             </head>
