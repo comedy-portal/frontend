@@ -1,5 +1,5 @@
 User-Agent: *
 Allow: /
 Disallow:
-Sitemap: https://api.comedyportal.ru/public/sitemap.xml
-Sitemap: https://comedyportal.ru/sitemap.xml
+Sitemap: https://api.comedyportal.me/public/sitemap.xml
+Sitemap: https://comedyportal.me/sitemap.xml
