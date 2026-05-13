@@ -10,6 +10,8 @@ import { createMetadata } from '@/utils/helpers/metadata'
 import { GetTopContentTake } from '@/utils/redux/services/content/content.types'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
+const BREAKABLE_SPACE = ' '
+
 export const metadata: Metadata = createMetadata({
     title: 'Топ стендап спешлов за всё время',
     description: 'Лучшие русские стендап спешлы за всё время. Рейтинг сформирован на основе оценок сообщества.',
@@ -30,8 +32,9 @@ export default async function TopSpecialAllTimePage() {
                     component: (
                         <div className="space-y-3">
                             <p>
-                                Этот топ стендап-спешлов <strong>за&nbsp;всё время</strong> формируется на&nbsp;основе
-                                оценок сообщества. В&nbsp;рейтинг попадают выступления, набравшие{' '}
+                                Этот топ стендап-спешлов <strong>за&nbsp;всё время</strong>
+                                {BREAKABLE_SPACE}формируется на&nbsp;основе оценок сообщества. В&nbsp;рейтинг попадают
+                                выступления, набравшие{' '}
                                 <strong>не&nbsp;менее {settings.topContentMinReviewsCount} оценок</strong>.
                             </p>
                             <p>
