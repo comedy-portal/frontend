@@ -5,6 +5,7 @@ interface EnvVariables {
     NEXT_PUBLIC_API_DOMAIN: string
     NEXT_PUBLIC_API_URL: string
     NEXT_PUBLIC_APP_NAME: string
+    NEXT_PUBLIC_ASSETS_BASE_URL: string
     NEXT_PUBLIC_WEBSITE_AUTH_CALLBACK_PATH: string
     NEXT_PUBLIC_WEBSITE_DOMAIN: string
     NEXT_PUBLIC_INTERNAL_API_URL: string
@@ -19,6 +20,7 @@ const defaultValues: EnvVariables = {
     NEXT_PUBLIC_API_DOMAIN: 'http://localhost:3001',
     NEXT_PUBLIC_API_URL: 'http://localhost:3001/api/v1',
     NEXT_PUBLIC_APP_NAME: 'ComedyPortal',
+    NEXT_PUBLIC_ASSETS_BASE_URL: 'https://assets.comedyportal.me',
     NEXT_PUBLIC_WEBSITE_AUTH_CALLBACK_PATH: 'http://localhost:3000/auth/callback',
     NEXT_PUBLIC_WEBSITE_DOMAIN: 'http://localhost:3000',
     NEXT_PUBLIC_INTERNAL_API_URL: 'http://localhost:3000/api',

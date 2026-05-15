@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 
 import { Comedian } from '@/components/features/comedian/comedian'
 import { getComedianBySlug } from '@/services/comedians/comedians'
+import { assetsUrlBuilder } from '@/utils/helpers/assets-url-builder'
 import { createMetadata } from '@/utils/helpers/metadata'
 import { withAuth } from '@/utils/supertokens/with-auth'
 
@@ -16,7 +17,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
         title: `${comedian.name} ${comedian.surname}`,
         description: comedian.metaInfo?.description || `Биография, лучшие выступления и спешлы комика ${comedian.name} ${comedian.surname} на Камеди Портале.`,
         path: `/comedians/${comedian.slug}`,
-        image: `/images/comedians/${comedian.slug}.jpg`,
+        image: assetsUrlBuilder('comedians', `${comedian.slug}.jpg`),
         type: 'website',
         keywords: [
             `${comedian.name} ${comedian.surname}`,

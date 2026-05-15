@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import { VenueSchema } from '@/components/features/common/seo/venue-schema'
 import { Venue } from '@/components/features/venue/venue'
 import { getVenueBySlug } from '@/services/venues/venues'
+import { assetsUrlBuilder } from '@/utils/helpers/assets-url-builder'
 import { createMetadata } from '@/utils/helpers/metadata'
 
 type Params = Promise<{ slug: string }>
@@ -15,7 +16,7 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
         title: `${venue.name} — ${venue.city}`,
         description: venue.description || 'Площадка для стендапа и шоу.',
         path: `/venues/${venue.slug}`,
-        image: `/images/venues/${venue.slug}.jpg`,
+        image: assetsUrlBuilder('venues', `${venue.slug}.jpg`),
         type: 'website',
         keywords: [
             venue.name,

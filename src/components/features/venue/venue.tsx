@@ -11,6 +11,7 @@ import { GlobalLoading } from '@/components/ui/global-loading'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LinksBlock } from '@/components/ui/links-block'
 import { messages } from '@/messages'
+import { assetsUrlBuilder } from '@/utils/helpers/assets-url-builder'
 import { venuesAPI } from '@/utils/redux/services/venues/venues.api'
 
 import { VenueMap } from './components/venue-map'
@@ -40,7 +41,7 @@ export const Venue = ({ slug }: VenueProps) => {
             <div className="flex flex-col-reverse gap-12 lg:flex-row">
                 <div className="flex flex-1 flex-col gap-y-12">
                     <ImageWithFallback
-                        src={`/images/venues/${data.slug}.jpg`}
+                        src={assetsUrlBuilder('venues', `${data.slug}.jpg`)}
                         alt={`${data.name}`}
                         width={500}
                         height={500}

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
+import { assetsUrlBuilder } from '@/utils/helpers/assets-url-builder'
 
 type VenuesBlockType = {
     slug: string
@@ -12,7 +13,7 @@ export const VenuesBlock = ({ slug, name, city }: VenuesBlockType) => {
     return (
         <Link href={`/venues/${slug}`} className="flex flex-col gap-y-2">
             <ImageWithFallback
-                src={`/images/venues/${slug}.jpg`}
+                src={assetsUrlBuilder('venues', `${slug}.jpg`)}
                 width={100}
                 height={100}
                 className="aspect-square w-full rounded-lg object-cover"

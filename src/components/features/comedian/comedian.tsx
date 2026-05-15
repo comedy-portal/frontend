@@ -12,6 +12,7 @@ import { GlobalLoading } from '@/components/ui/global-loading'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LinksBlock } from '@/components/ui/links-block'
 import { messages } from '@/messages'
+import { assetsUrlBuilder } from '@/utils/helpers/assets-url-builder'
 import { formatDate } from '@/utils/helpers/common'
 import { comediansAPI } from '@/utils/redux/services/comedians/comedians.api'
 import { SubscriptionType } from '@/utils/redux/services/subscriptions/subscriptions.types'
@@ -67,7 +68,7 @@ export const Comedian = ({ slug, isAuth }: ComedianProps) => {
 
                 <div className="flex shrink-0 flex-col gap-y-12 md:flex-row md:gap-x-6 lg:w-75 lg:flex-col xl:w-92">
                     <ImageWithFallback
-                        src={`/images/comedians/${data.slug}.jpg`}
+                        src={assetsUrlBuilder('comedians', `${data.slug}.jpg`)}
                         alt={`${data.name}`}
                         width={100}
                         height={100}

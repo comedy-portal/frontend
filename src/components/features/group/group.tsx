@@ -12,6 +12,7 @@ import { GlobalLoading } from '@/components/ui/global-loading'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { LinksBlock } from '@/components/ui/links-block'
 import { messages } from '@/messages'
+import { assetsUrlBuilder } from '@/utils/helpers/assets-url-builder'
 import { groupsAPI } from '@/utils/redux/services/groups/groups.api'
 import { SubscriptionType } from '@/utils/redux/services/subscriptions/subscriptions.types'
 
@@ -66,7 +67,7 @@ export const Group = ({ slug, isAuth }: GroupProps) => {
 
                 <div className="flex shrink-0 flex-col gap-y-12 md:flex-row md:gap-x-6 lg:w-75 lg:flex-col xl:w-92">
                     <ImageWithFallback
-                        src={`/images/groups/${slug}.jpg`}
+                        src={assetsUrlBuilder('groups', `${slug}.jpg`)}
                         alt={`${data.name}`}
                         width={100}
                         height={100}
