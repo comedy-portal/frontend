@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
+import { assetsUrlBuilder } from '@/utils/helpers/assets-url-builder'
 import { BlogArticle } from '@/utils/types/blog'
 
 type Category = {
@@ -163,7 +164,7 @@ const article: BlogArticle = {
                                         rel="noopener noreferrer"
                                     >
                                         <ImageWithFallback
-                                            src={`/images/comedians/${c.slug}.jpg`}
+                                            src={assetsUrlBuilder('comedians', `${c.slug}.jpg`)}
                                             alt={c.name}
                                             width={144}
                                             height={144}

@@ -51,9 +51,6 @@ export const HeaderDesktop = ({ username, isAuth }: HeaderDesktopProps) => {
                     <Link href="/comedians" className="font-bold text-nowrap text-gray-300 hover:text-white">
                         Комики
                     </Link>
-                    <Link href="/venues" className="font-bold text-nowrap text-gray-300 hover:text-white">
-                        Площадки
-                    </Link>
                     <Link href="/blog" className="font-bold text-nowrap text-gray-300 hover:text-white">
                         Блог
                     </Link>

@@ -22,6 +22,11 @@ const nextConfig: NextConfig = {
                 hostname: 'static-maps.yandex.ru',
                 port: '',
             },
+            {
+                protocol: 'https',
+                hostname: 'assets.comedyportal.me',
+                port: '',
+            },
         ],
     },
 }
