@@ -16,7 +16,20 @@ export const SignUp = () => {
         setIsLoading(true)
         try {
             const email = formData.get('email') as string
-            const response = await createCode({ email })
+            const consents = {
+                personalData: formData.get('personalDataConsent') === 'true',
+                newsletter: formData.get('newsletterConsent') === 'true',
+                acceptedAt: new Date().toISOString(),
+                source: 'auth.sign-up',
+                documents: {
+                    termsOfUse: '/legal/terms-of-use',
+                    privacyPolicy: '/legal/privacy-policy',
+                    personalDataConsent: '/legal/personal-data-consent',
+                    newsletterConsent: '/legal/newsletter-consent',
+                },
+            }
+
+            const response = await createCode({ email, userContext: { consents } })
             setEmail(email)
             setStatus(response.status)
         } catch {
