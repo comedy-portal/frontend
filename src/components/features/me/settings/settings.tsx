@@ -3,10 +3,12 @@
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 import { useToast } from '@/components/providers/toast-provider'
 import { Button } from '@/components/ui/forms/button'
+import { Checkbox } from '@/components/ui/forms/checkbox'
 import { Input } from '@/components/ui/forms/input'
 import { messages } from '@/messages'
 import { userAPI } from '@/utils/redux/services/user/user.api'
@@ -19,9 +21,10 @@ import { SettingsRevokeSessions } from './components/settings-revoke-sessions'
 
 type SettingsProps = {
     username: string
+    initialNewsletterConsent?: boolean
 }
 
-export const Settings = ({ username }: SettingsProps) => {
+export const Settings = ({ username, initialNewsletterConsent = false }: SettingsProps) => {
     const toast = useToast()
     const router = useRouter()
 
@@ -38,16 +41,19 @@ export const Settings = ({ username }: SettingsProps) => {
                 'Имя пользователя может содержать только латинские буквы, цифры и символы подчеркивания и дефиса',
             )
             .required('Имя пользователя обязательно'),
+        newsletterConsent: yup.boolean().required(),
     })
 
     const initialValues: ChangeUserNameInputs = {
         username: username || '',
+        newsletterConsent: initialNewsletterConsent,
     }
 
     const handleSubmit = async (inputs: ChangeUserNameInputs) => {
         try {
             const trimmedInputs = {
                 username: inputs.username.trim(),
+                newsletterConsent: inputs.newsletterConsent,
             }
             const response = await changeUsername(trimmedInputs).unwrap()
 
@@ -93,6 +99,23 @@ export const Settings = ({ username }: SettingsProps) => {
                         onChange={formik.handleChange}
                     />
                 </div>
+
+                <Checkbox
+                    name="newsletterConsent"
+                    checked={formik.values.newsletterConsent}
+                    disabled={isLoading}
+                    className="text-sm text-gray-600"
+                    onChange={formik.handleChange}
+                >
+                    <span className="text-sm text-gray-600">
+                        Получать новости, подборки и&nbsp;важные обновления Камеди Портал по&nbsp;email. Согласие
+                        добровольное, подробнее в{' '}
+                        <Link href="/legal/newsletter-consent" className="text-blue-500 hover:text-blue-700">
+                            согласии на&nbsp;получение рассылок
+                        </Link>
+                        .
+                    </span>
+                </Checkbox>
 
                 <div className="flex gap-x-2">
                     <Button type="submit" className="w-full sm:w-auto" disabled={isLoading || !formik.dirty}>

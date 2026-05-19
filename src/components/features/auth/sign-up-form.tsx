@@ -7,6 +7,7 @@ import * as yup from 'yup'
 import Link from 'next/link'
 
 import { Button } from '@/components/ui/forms/button'
+import { Checkbox } from '@/components/ui/forms/checkbox'
 import { Input } from '@/components/ui/forms/input'
 import { messages } from '@/messages'
 
@@ -19,6 +20,10 @@ const validationSchema = yup.object().shape({
             /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/g,
             'Введите почту',
         ),
+    personalDataConsent: yup
+        .boolean()
+        .oneOf([true], 'Чтобы продолжить, нужно принять соглашение и дать согласие на обработку данных'),
+    newsletterConsent: yup.boolean(),
 })
 
 type SignUpFormProps = {
@@ -29,12 +34,14 @@ type SignUpFormProps = {
 
 export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => {
     const [email, setEmail] = useState('')
-    const [errors, setErrors] = useState<{ email?: string }>({})
+    const [personalDataConsent, setPersonalDataConsent] = useState(false)
+    const [newsletterConsent, setNewsletterConsent] = useState(false)
+    const [errors, setErrors] = useState<{ email?: string; personalDataConsent?: string }>({})
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
 
-        const formData = { email }
+        const formData = { email, personalDataConsent, newsletterConsent }
 
         try {
             await validationSchema.validate(formData, { abortEarly: false })
@@ -42,6 +49,8 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
 
             const form = new FormData()
             form.append('email', email)
+            form.append('personalDataConsent', String(personalDataConsent))
+            form.append('newsletterConsent', String(newsletterConsent))
 
             onSignUp(form)
         } catch (validationError) {
@@ -85,8 +94,45 @@ export const SignUpForm = ({ status, isLoading, onSignUp }: SignUpFormProps) => 
                 Продолжить
             </Button>
 
-            {/* prettier-ignore */}
-            <p className="m-auto text-center text-xs text-gray-400 sm:w-3/4">Нажимая кнопку «Продолжить», подтверждаю ознакомление с <Link href="/legal/privacy-policy" className="text-blue-500">Политикой конфиденциальности</Link> и <Link href="/legal/terms-of-use" className="text-blue-500">Пользовательским соглашением</Link></p>
+            <div className="space-y-3 text-xs text-gray-500">
+                <Checkbox
+                    checked={personalDataConsent}
+                    disabled={isLoading}
+                    onChange={e => setPersonalDataConsent(e.target.checked)}
+                >
+                    Я принимаю{' '}
+                    <Link href="/legal/terms-of-use" className="text-blue-500">
+                        Пользовательское соглашение
+                    </Link>{' '}
+                    и даю{' '}
+                    <Link href="/legal/personal-data-consent" className="text-blue-500">
+                        согласие на обработку персональных данных
+                    </Link>
+                    .
+                </Checkbox>
+
+                {errors.personalDataConsent && <div className="text-xs text-red-500">{errors.personalDataConsent}</div>}
+
+                <Checkbox
+                    checked={newsletterConsent}
+                    disabled={isLoading}
+                    onChange={e => setNewsletterConsent(e.target.checked)}
+                >
+                    Хочу получать новости и обновления Камеди Портал по email. Согласие добровольное, подробнее в{' '}
+                    <Link href="/legal/newsletter-consent" className="text-blue-500">
+                        согласии на рассылки
+                    </Link>
+                    .
+                </Checkbox>
+
+                <p>
+                    Подробнее об обработке данных см. в{' '}
+                    <Link href="/legal/privacy-policy" className="text-blue-500">
+                        Политике обработки персональных данных
+                    </Link>
+                    .
+                </p>
+            </div>
         </form>
     )
 }

@@ -5,8 +5,9 @@ import { createMetadata } from '@/utils/helpers/metadata'
 
 // prettier-ignore
 export const metadata: Metadata = createMetadata({
-    title: 'Политика конфиденциальности',
-    description: 'Узнайте, как Камеди Портал собирает, использует и защищает ваши персональные данные при использовании сайта и его сервисов.',
+    title: 'Политика обработки персональных данных',
+    description:
+        'Узнайте, как Камеди Портал собирает, использует и защищает ваши персональные данные при использовании сайта и его сервисов.',
     path: '/legal/privacy-policy',
     type: 'website',
 })

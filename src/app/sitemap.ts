@@ -116,6 +116,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'daily',
             priority: 0.8,
         },
+        {
+            url: `${metadataBase.href}legal/terms-of-use`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.5,
+        },
+        {
+            url: `${metadataBase.href}legal/privacy-policy`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.5,
+        },
+        {
+            url: `${metadataBase.href}legal/personal-data-consent`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.5,
+        },
+        {
+            url: `${metadataBase.href}legal/newsletter-consent`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.5,
+        },
+        {
+            url: `${metadataBase.href}legal/cookie-policy`,
+            lastModified: now,
+            changeFrequency: 'monthly',
+            priority: 0.5,
+        },
     ]
 
     const contentRoutes: MetadataRoute.Sitemap = contentTypesDict.map(({ slug }) => ({

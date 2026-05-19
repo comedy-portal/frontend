@@ -12,8 +12,13 @@ export default function SettingsPage() {
                 return null
             }
 
-            return { username: userData.username.toLowerCase() }
+            return {
+                username: userData.username.toLowerCase(),
+                newsletterConsent: Boolean(userData.settings?.newsletterConsent),
+            }
         },
-        render: ({ data }) => <Settings username={data!.username} />,
+        render: ({ data }) => (
+            <Settings username={data!.username} initialNewsletterConsent={data!.newsletterConsent} />
+        ),
     })
 }
