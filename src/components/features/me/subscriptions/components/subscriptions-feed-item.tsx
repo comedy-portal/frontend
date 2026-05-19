@@ -9,6 +9,7 @@ import { useToast } from '@/components/providers/toast-provider'
 import { Button } from '@/components/ui/forms/button'
 import { ImageWithFallback } from '@/components/ui/image-with-fallback'
 import { messages } from '@/messages'
+import { assetsUrlBuilder, type AssetCategory } from '@/utils/helpers/assets-url-builder'
 import { subscriptionsAPI } from '@/utils/redux/services/subscriptions/subscriptions.api'
 import { SubscriptionType } from '@/utils/redux/services/subscriptions/subscriptions.types'
 
@@ -17,6 +18,12 @@ type SubscriptionsFeedItemProps = {
     slug: string
     name: string
     type: SubscriptionType
+}
+
+const assetCategoryBySubscriptionType: Record<SubscriptionType, AssetCategory> = {
+    [SubscriptionType.COMEDIAN]: 'comedians',
+    [SubscriptionType.GROUP]: 'groups',
+    [SubscriptionType.VENUE]: 'venues',
 }
 
 export const SubscriptionsFeedItem = ({ id, slug, name, type }: SubscriptionsFeedItemProps) => {
@@ -40,7 +47,7 @@ export const SubscriptionsFeedItem = ({ id, slug, name, type }: SubscriptionsFee
         <div className="flex gap-x-4 rounded-lg bg-white p-4">
             <Link href={href}>
                 <ImageWithFallback
-                    src={`/images/${type}s/${slug}.jpg`}
+                    src={assetsUrlBuilder(assetCategoryBySubscriptionType[type], `${slug}.jpg`)}
                     alt={name}
                     width={80}
                     height={80}

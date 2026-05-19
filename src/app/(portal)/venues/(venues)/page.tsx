@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 
 import { Venues } from '@/components/features/venues/venues'
+import { assetsUrlBuilder } from '@/utils/helpers/assets-url-builder'
 import { createMetadata } from '@/utils/helpers/metadata'
 
 // prettier-ignore
@@ -46,7 +47,7 @@ export const metadata: Metadata = createMetadata({
         'russian stand up club',
         'russian comedy club abroad',
     ],
-    image: '/images/venues/hero.jpg',
+    image: assetsUrlBuilder('venues', 'hero.jpg'),
 })
 
 export default function VenuesPage() {
