@@ -1,6 +1,6 @@
 'use client'
 
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { Button } from '@/components/ui/forms/button'
 import { Keys } from '@/utils/enums/common'
 import { useKeypress } from '@/utils/hooks/use-keypress'
@@ -13,7 +13,7 @@ type ConfirmationProps = {
 }
 
 export const Confirmation = ({ title, message, intent = 'default', onConfirm }: ConfirmationProps) => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
 
     useKeypress(Keys.ENTER, onConfirm)
 
@@ -26,11 +26,11 @@ export const Confirmation = ({ title, message, intent = 'default', onConfirm }: 
             </div>
 
             <div className="flex flex-col gap-2 sm:flex-row">
-                <Button intent={intent} onClick={onConfirm}>
+                <Button intent={intent} className="w-full sm:w-auto" onClick={onConfirm}>
                     Да, подтверждаю
                 </Button>
 
-                <Button variant="outline" intent={intent} onClick={dialog.close}>
+                <Button variant="outline" intent={intent} className="w-full sm:w-auto" onClick={overlay.close}>
                     Отмена
                 </Button>
             </div>

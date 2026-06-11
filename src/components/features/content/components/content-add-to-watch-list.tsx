@@ -5,7 +5,7 @@ import { BookmarkIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 import { SignUp } from '@/components/features/auth/sign-up'
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { Button } from '@/components/ui/forms/button'
 import { messages } from '@/messages'
@@ -19,7 +19,7 @@ type ContentAddToWatchListProps = {
 
 export const ContentAddToWatchList = ({ contentId, isAuth, isInWatchlist }: ContentAddToWatchListProps) => {
     const toast = useToast()
-    const dialog = useDialog()
+    const overlay = useOverlay()
     const router = useRouter()
 
     const [addToWatchlist] = watchlistsAPI.useAddToWatchlistMutation()
@@ -27,7 +27,7 @@ export const ContentAddToWatchList = ({ contentId, isAuth, isInWatchlist }: Cont
 
     const toggle = async () => {
         if (!isAuth) {
-            dialog.open(<SignUp />)
+            overlay.open(<SignUp />)
             return
         }
 

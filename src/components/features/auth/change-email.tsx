@@ -3,7 +3,7 @@
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { Button } from '@/components/ui/forms/button'
 import { Input } from '@/components/ui/forms/input'
@@ -12,7 +12,7 @@ import { userAPI } from '@/utils/redux/services/user/user.api'
 import { ChangeUserEmailInputs } from '@/utils/redux/services/user/user.types'
 
 export const ChangeEmail = () => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
     const toast = useToast()
 
     const [changeUserEmail, { isLoading }] = userAPI.useChangeUserEmailMutation()
@@ -44,7 +44,7 @@ export const ChangeEmail = () => {
                         'Изменение электронной почты',
                         'Проверьте свою почту для подтверждения нового адреса.',
                     )
-                    dialog.close()
+                    overlay.close()
                     break
 
                 case 'EMAIL_ALREADY_VERIFIED_ERROR':

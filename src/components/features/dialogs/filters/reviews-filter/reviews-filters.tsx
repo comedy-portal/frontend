@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { Button } from '@/components/ui/forms/button'
 import { ContentType } from '@/utils/enums/common'
 import {
@@ -20,7 +20,7 @@ type ReviewsFilterProps = {
 }
 
 export const ReviewsFilter = ({ currentYear }: ReviewsFilterProps) => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
 
     const [initialFilters, setFiltersToUrl] = useQueryFilters(
         parseReviewsFiltersFromSearchParams,
@@ -53,8 +53,8 @@ export const ReviewsFilter = ({ currentYear }: ReviewsFilterProps) => {
 
     const handleApply = useCallback(() => {
         setFiltersToUrl(filters)
-        dialog.close()
-    }, [filters, setFiltersToUrl, dialog])
+        overlay.close()
+    }, [filters, setFiltersToUrl, overlay])
 
     const handleReset = useCallback(() => {
         setFilters(prev => ({
@@ -87,9 +87,11 @@ export const ReviewsFilter = ({ currentYear }: ReviewsFilterProps) => {
                     <hr className="border-gray-300" />
                 </div>
 
-                <div className="space-x-2">
-                    <Button onClick={handleApply}>Применить</Button>
-                    <Button variant="outline" onClick={handleReset}>
+                <div className="flex flex-col gap-2 sm:flex-row">
+                    <Button className="w-full sm:w-auto" onClick={handleApply}>
+                        Применить
+                    </Button>
+                    <Button variant="outline" className="w-full sm:w-auto" onClick={handleReset}>
                         Сбросить
                     </Button>
                 </div>

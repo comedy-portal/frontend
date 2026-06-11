@@ -2,7 +2,7 @@
 
 import { ListFilterIcon, ListFilterPlusIcon } from 'lucide-react'
 
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 
 type FilterButtonProps = {
     filterComponent: React.ReactNode
@@ -10,10 +10,10 @@ type FilterButtonProps = {
 }
 
 export const FilterButton = ({ filterComponent, isActive }: FilterButtonProps) => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
 
     const handleClick = () => {
-        dialog.open(filterComponent)
+        overlay.open(filterComponent)
     }
 
     return (

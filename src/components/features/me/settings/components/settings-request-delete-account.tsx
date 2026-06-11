@@ -1,19 +1,19 @@
 'use client'
 
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { Confirmation } from '@/components/ui/confirmation'
 import { messages } from '@/messages'
 import { userAPI } from '@/utils/redux/services/user/user.api'
 
 export const SettingsRequestDeleteAccount = () => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
     const toast = useToast()
 
     const [requestUserDeletion] = userAPI.useRequestUserDeletionMutation()
 
     const handleRequestPersonalData = () => {
-        dialog.open(
+        overlay.open(
             <Confirmation
                 title="Удаление аккаунта"
                 message="Вы уверены, что хотите удалить свой аккаунт?"
@@ -28,7 +28,7 @@ export const SettingsRequestDeleteAccount = () => {
                     } catch {
                         toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
                     } finally {
-                        dialog.close()
+                        overlay.close()
                     }
                 }}
             />,

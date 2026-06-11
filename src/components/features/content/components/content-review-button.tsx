@@ -5,7 +5,7 @@ import { StarIcon } from 'lucide-react'
 import { SignUp } from '@/components/features/auth/sign-up'
 import { ReviewCreate } from '@/components/features/dialogs/reviews-form/review-create'
 import { ReviewUpdate } from '@/components/features/dialogs/reviews-form/review-update'
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { Button } from '@/components/ui/forms/button'
 
 type ContentReviewButtonProps = {
@@ -19,24 +19,24 @@ type ContentReviewButtonProps = {
 }
 
 export const ContentReviewButton = ({ contentId, review, isAuth }: ContentReviewButtonProps) => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
 
     const handleCreateClick = () => {
         if (!isAuth) {
-            dialog.open(<SignUp />)
+            overlay.open(<SignUp />)
             return
         }
 
-        dialog.open(<ReviewCreate contentId={contentId} />)
+        overlay.open(<ReviewCreate contentId={contentId} />)
     }
 
     const handleUpdateClick = (reviewId: number) => {
         if (!isAuth) {
-            dialog.open(<SignUp />)
+            overlay.open(<SignUp />)
             return
         }
 
-        dialog.open(<ReviewUpdate id={reviewId} />)
+        overlay.open(<ReviewUpdate id={reviewId} />)
     }
 
     if (review && !review.text) {

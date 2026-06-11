@@ -1,13 +1,13 @@
 'use client'
 
 import { ChangeEmail } from '@/components/features/auth/change-email'
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 
 export const SettingsBlockChangeEmail = () => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
 
     const handleChangeEmail = () => {
-        dialog.open(<ChangeEmail />)
+        overlay.open(<ChangeEmail />)
     }
 
     return (

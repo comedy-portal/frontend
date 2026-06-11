@@ -3,17 +3,17 @@
 import Link from 'next/link'
 
 import { SignUp } from '@/components/features/auth/sign-up'
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 
 type LandingHeroProps = {
     isAuth: boolean
 }
 
 export const LandingHero = ({ isAuth }: LandingHeroProps) => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
 
     const handleClick = () => {
-        dialog.open(<SignUp />)
+        overlay.open(<SignUp />)
     }
 
     return (

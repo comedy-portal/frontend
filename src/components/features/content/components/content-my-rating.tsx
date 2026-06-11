@@ -3,7 +3,7 @@
 import { SignUp } from '@/components/features/auth/sign-up'
 import { ReviewCreate } from '@/components/features/dialogs/reviews-form/review-create'
 import { ReviewUpdate } from '@/components/features/dialogs/reviews-form/review-update'
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { RatingBar } from '@/components/ui/rating-bar/rating-bar'
 
 type ContentMyRatingProps = {
@@ -17,24 +17,24 @@ type ContentMyRatingProps = {
 }
 
 export const ContentMyRating = ({ contentId, review, isAuth }: ContentMyRatingProps) => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
 
     const handleCreateClick = (value: number) => {
         if (!isAuth) {
-            dialog.open(<SignUp />)
+            overlay.open(<SignUp />)
             return
         }
 
-        dialog.open(<ReviewCreate initialMark={value} contentId={contentId} />)
+        overlay.open(<ReviewCreate initialMark={value} contentId={contentId} />)
     }
 
     const handleUpdateClick = (reviewId: number) => {
         if (!isAuth) {
-            dialog.open(<SignUp />)
+            overlay.open(<SignUp />)
             return
         }
 
-        dialog.open(<ReviewUpdate id={reviewId} />)
+        overlay.open(<ReviewUpdate id={reviewId} />)
     }
 
     if (!review) {

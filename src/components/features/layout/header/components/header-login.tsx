@@ -1,17 +1,17 @@
 'use client'
 
 import { SignUp } from '@/components/features/auth/sign-up'
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 
 type HeaderLoginProps = {
     onClick?: () => void
 }
 
 export const HeaderLogin = ({ onClick }: HeaderLoginProps) => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
 
     const handleClick = () => {
-        dialog.open(<SignUp />)
+        overlay.open(<SignUp />)
         onClick?.()
     }
 

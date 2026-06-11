@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { Button } from '@/components/ui/forms/button'
 import { useQueryFilters } from '@/utils/filters/use-query-filters'
 import {
@@ -14,7 +14,7 @@ import { useVenueCities } from '@/utils/hooks/use-venue-cities'
 import { FilterByCity } from '../components/filter-by-city'
 
 export const VenuesFilter = () => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
     const cities = useVenueCities()
 
     const [initialFilters, setFiltersToUrl] = useQueryFilters(
@@ -33,8 +33,8 @@ export const VenuesFilter = () => {
 
     const handleApply = useCallback(() => {
         setFiltersToUrl(filters)
-        dialog.close()
-    }, [filters, setFiltersToUrl, dialog])
+        overlay.close()
+    }, [filters, setFiltersToUrl, overlay])
 
     const handleReset = useCallback(() => {
         setFilters(prev => ({
@@ -53,9 +53,11 @@ export const VenuesFilter = () => {
                     <FilterByCity cities={cities} value={filters.city} onChange={handleTypesChange} />
                 </div>
 
-                <div className="space-x-2">
-                    <Button onClick={handleApply}>Применить</Button>
-                    <Button variant="outline" onClick={handleReset}>
+                <div className="flex flex-col gap-2 sm:flex-row">
+                    <Button className="w-full sm:w-auto" onClick={handleApply}>
+                        Применить
+                    </Button>
+                    <Button variant="outline" className="w-full sm:w-auto" onClick={handleReset}>
                         Сбросить
                     </Button>
                 </div>

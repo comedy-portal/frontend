@@ -1,6 +1,6 @@
 'use client'
 
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { Confirmation } from '@/components/ui/confirmation'
 import { ExternalLink } from '@/components/ui/external-link'
@@ -8,13 +8,13 @@ import { messages } from '@/messages'
 import { userAPI } from '@/utils/redux/services/user/user.api'
 
 export const SettingsRequestPersonalData = () => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
     const toast = useToast()
 
     const [requestPersonalData] = userAPI.useRequestPersonalDataMutation()
 
     const handleRequestPersonalData = () => {
-        dialog.open(
+        overlay.open(
             <Confirmation
                 title="Запрос персональных данных"
                 message="Мы отправим копию Ваших персональных данных на электронную почту указанную при регистрации. Вы уверены, что хотите продолжить?"
@@ -28,7 +28,7 @@ export const SettingsRequestPersonalData = () => {
                     } catch {
                         toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
                     } finally {
-                        dialog.close()
+                        overlay.close()
                     }
                 }}
             />,

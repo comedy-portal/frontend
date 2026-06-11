@@ -1,6 +1,6 @@
 'use client'
 
-import { useDialog } from '@/components/providers/dialog-provider'
+import { useOverlay } from '@/components/providers/overlay-provider'
 import { useToast } from '@/components/providers/toast-provider'
 import { messages } from '@/messages'
 import { ComplaintReasons } from '@/utils/enums/common'
@@ -10,7 +10,7 @@ import { ReviewComplaintInputs } from '@/utils/redux/services/reviews/reviews.ty
 import { ComplaintForm } from './complaint-form'
 
 export const ComplainFormReview = ({ reviewId }: { reviewId: number }) => {
-    const dialog = useDialog()
+    const overlay = useOverlay()
     const toast = useToast()
 
     const [complain, { isLoading }] = reviewsAPI.useCreateReviewComplaintMutation()
@@ -22,7 +22,7 @@ export const ComplainFormReview = ({ reviewId }: { reviewId: number }) => {
                 text: inputs.text.trim(),
             }
             await complain(trimmedInputs)
-            dialog.close()
+            overlay.close()
         } catch {
             toast.error(messages.COMMON_ERROR, messages.COMMON_ERROR_MESSAGE)
         }
