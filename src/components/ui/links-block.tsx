@@ -5,7 +5,6 @@ import { getPlatformUrl } from '@/utils/helpers/common'
 import { internalApi } from '@/utils/redux/services/internal/internal.api'
 import { ILink } from '@/utils/types/common'
 import Image from 'next/image'
-import { Globe } from 'lucide-react'
 
 import { ExternalLink } from './external-link'
 
@@ -60,18 +59,14 @@ export const LinksBlock = ({ caption, links }: LinksBlockProps) => {
                     return (
                         <div key={`link-block-${link.platform}-${link.identifier}`}>
                             <ExternalLink href={platformData.href} className="gap-x-2 text-blue-500 hover:text-blue-700">
-                                {platformIcons[link.platform] ? (
-                                    <Image
-                                        src={platformIcons[link.platform]!}
-                                        alt=""
-                                        aria-hidden="true"
-                                        width={24}
-                                        height={24}
-                                        className="shrink-0"
-                                    />
-                                ) : (
-                                    <Globe size={24} strokeWidth={1.8} aria-hidden="true" className="shrink-0" />
-                                )}
+                                <Image
+                                    src={platformIcons[link.platform]!}
+                                    alt=""
+                                    aria-hidden="true"
+                                    width={24}
+                                    height={24}
+                                    className="shrink-0"
+                                />
                                 <span>{platformData.label}</span>
                             </ExternalLink>
                         </div>
