@@ -49,7 +49,8 @@ export const HeaderSearchResult = ({
         items.comedians.length === 0 &&
         items.groups.length === 0 &&
         items.content.length === 0 &&
-        items.venues.length === 0
+        items.venues.length === 0 &&
+        isResultVisible
     ) {
         return (
             <div className="absolute top-0 right-0 left-0 z-0 rounded-lg bg-white px-2 pt-15 pb-5 text-center text-sm text-gray-500 shadow">
