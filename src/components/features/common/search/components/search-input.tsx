@@ -22,7 +22,7 @@ export const SearchInput = ({ searchTerm, isResultVisible, onChange, onClick, on
     return (
         <div className="relative z-40">
             <div className="absolute top-1/2 left-2 -translate-y-1/2 transform text-gray-300">
-                <SearchIcon size={20} absoluteStrokeWidth />
+                <SearchIcon size={20} />
             </div>
 
             <input
@@ -46,7 +46,7 @@ export const SearchInput = ({ searchTerm, isResultVisible, onChange, onClick, on
                     className="absolute top-1/2 right-2 -translate-y-1/2 transform cursor-pointer text-gray-300"
                     onClick={onClear}
                 >
-                    <XIcon size={20} absoluteStrokeWidth />
+                    <XIcon size={20} />
                 </div>
             )}
         </div>

@@ -85,6 +85,8 @@ export const getPlatformUrl = ({ platform, identifier }: ILink) => {
     switch (platform) {
         case Platform.YOUTUBE:
             return { href: `https://www.youtube.com/${identifier}`, label: 'YouTube' }
+        case Platform.THREADS:
+            return { href: `https://www.threads.net/@${identifier}`, label: 'Threads' }
         case Platform.TIKTOK:
             return { href: `https://www.tiktok.com/${identifier}`, label: 'TikTok' }
         case Platform.INSTAGRAM:
